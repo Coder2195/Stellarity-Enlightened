@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 
-public interface CodecExtensionHelper {
+public interface CodecExtender {
 
 	static <A> Codec<A> recursive(final String name, final Function<Codec<A>, Codec<A>> wrapped) {
 		return new RecursiveCodec<>(name, wrapped);
@@ -53,7 +53,7 @@ public interface CodecExtensionHelper {
 			primary,
 			alternative
 		).xmap(
-			CodecExtensionHelper::eitherUnwrap,
+			CodecExtender::eitherUnwrap,
 			Either::left
 		);
 	}

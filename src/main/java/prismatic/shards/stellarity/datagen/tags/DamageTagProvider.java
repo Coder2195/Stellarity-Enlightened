@@ -13,6 +13,7 @@ import prismatic.shards.stellarity.tags.StellarityDamageTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("unchecked")
 public class DamageTagProvider extends FabricTagsProvider<DamageType> {
 	public DamageTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, Registries.DAMAGE_TYPE, registriesFuture);
@@ -21,16 +22,8 @@ public class DamageTagProvider extends FabricTagsProvider<DamageType> {
 
 	@Override
 	protected void addTags(HolderLookup.@NonNull Provider provider) {
-
-		builder(DamageTypeTags.BYPASSES_COOLDOWN).addOptional(
-			StellarityDamageTypes.BRITTLE
-		);
-
+		builder(DamageTypeTags.BYPASSES_COOLDOWN).add(StellarityDamageTypes.BRITTLE);
 		builder(StellarityDamageTypeTags.MELEE).add(DamageTypes.PLAYER_ATTACK, DamageTypes.MOB_ATTACK, DamageTypes.MOB_ATTACK);
-
-		builder(DamageTypeTags.NO_KNOCKBACK).addOptional(
-			StellarityDamageTypes.BRITTLE
-		);
-
+		builder(DamageTypeTags.NO_KNOCKBACK).add(StellarityDamageTypes.BRITTLE);
 	}
 }

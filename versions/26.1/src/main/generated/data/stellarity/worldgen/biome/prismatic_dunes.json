@@ -2,18 +2,14 @@
   "attributes": {
     "minecraft:audio/ambient_sounds": {
       "additions": {
-        "sound": {
-          "sound_id": "minecraft:ambient.underwater.loop.additions.ultra_rare"
-        },
+        "sound": "minecraft:ambient.cave",
         "tick_chance": 0.001
       },
       "loop": "stellarity:ambient.the_end.heavenly_grim",
       "mood": {
         "block_search_extent": 4,
         "offset": 2.0,
-        "sound": {
-          "sound_id": "minecraft:ambient.underwater.loop.additions.rare"
-        },
+        "sound": "minecraft:ambient.cave",
         "tick_delay": 1000
       }
     },
@@ -29,7 +25,24 @@
     "grass_color": "#deadff",
     "water_color": "#f3d1ff"
   },
-  "features": [],
+  "features": [
+    [
+      "stellarity:global/stalactites"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "stellarity:global/dungeons",
+      "stellarity:global/fossils"
+    ]
+  ],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {

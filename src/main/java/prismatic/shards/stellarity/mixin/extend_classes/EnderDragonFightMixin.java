@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.interface_injection.ExtEnderDragonFight;
-import prismatic.shards.stellarity.util.CodecExtensionHelper;
+import prismatic.shards.stellarity.util.CodecExtender;
 
 @Mixin(EnderDragonFight.class)
 public class EnderDragonFightMixin implements ExtEnderDragonFight {
@@ -27,7 +27,7 @@ public class EnderDragonFightMixin implements ExtEnderDragonFight {
 
 	@ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;"))
 	private static Codec<EnderDragonFight> modifyCodec(Codec<EnderDragonFight> original) {
-		return CodecExtensionHelper.buildExtensionCodec(original, (instance, wrapper) -> instance.group(wrapper,
+		return CodecExtender.buildExtensionCodec(original, (instance, wrapper) -> instance.group(wrapper,
 				Codec.BOOL.fieldOf("stellarity:portal_chest_generated").forGetter(ExtEnderDragonFight::stellarity$portalChestGenerated)
 			).apply(instance, ExtEnderDragonFight::apply),
 			ExtEnderDragonFight::applyDefaults

@@ -5,9 +5,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.level.levelgen.Heightmap;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityEntityIds;
 import prismatic.shards.stellarity.registry.entity.*;
@@ -38,5 +39,9 @@ public interface StellarityEntities {
 		FabricDefaultAttributeRegistry.register(VOIDED_SKELETON, VoidedSkeleton.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SILVERFISH, VoidedSilverfish.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SLIME, VoidedSlime.createAttributes());
+		SpawnPlacements.register(VOIDED_ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+		SpawnPlacements.register(VOIDED_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+		SpawnPlacements.register(VOIDED_SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+		SpawnPlacements.register(VOIDED_SLIME, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSlime::checkSpawnRules);
 	}
 }

@@ -58,6 +58,16 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_CRAGS_CRYSTAL_GRASS = id("crystal_crags/crystal_grass");
 	ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_CRAGS_GRASS = id("crystal_crags/grass");
 
+	ResourceKey<ConfiguredFeature<?, ?>> END_SHRUBLAND_GRASS = id("end_shrubland/grass");
+	ResourceKey<ConfiguredFeature<?, ?>> END_SHRUBLAND_SHRUB = id("end_shrubland/shrub");
+
+	ResourceKey<ConfiguredFeature<?, ?>> END_WILDS_DIRT = id("end_wilds/dirt");
+	ResourceKey<ConfiguredFeature<?, ?>> END_WILDS_TREE = id("end_wilds/trees");
+	ResourceKey<ConfiguredFeature<?, ?>> END_WILDS_GRASS = id("end_wilds/grass");
+	ResourceKey<ConfiguredFeature<?, ?>> END_WILDS_BUSH = id("end_wilds/bush");
+
+	ResourceKey<ConfiguredFeature<?, ?>> ENDER_WASTES_HILLS = id("ender_wastes/hills");
+
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {
 		return Stellarity.key(Registries.CONFIGURED_FEATURE, name);
 	}

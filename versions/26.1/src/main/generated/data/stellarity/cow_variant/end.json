@@ -1,6 +1,6 @@
 {
-  "asset_id": "stellarity:entity/cow/ender_cow",
-  "baby_asset_id": "stellarity:entity/cow/ender_cow_baby",
+  "asset_id": "stellarity:entity/cow/cow_end",
+  "baby_asset_id": "stellarity:entity/cow/cow_end_baby",
   "spawn_conditions": [
     {
       "condition": {

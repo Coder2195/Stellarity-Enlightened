@@ -69,6 +69,17 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> END_SHRUBLAND_GRASS = id("end_shrubland/grass");
 	ResourceKey<PlacedFeature> END_SHRUBLAND_SHRUBS = id("end_shrubland/shrubs");
 
+	ResourceKey<PlacedFeature> END_WILDS_DIRT = id("end_wilds/dirt");
+	ResourceKey<PlacedFeature> END_WILDS_ROOTS = id("end_wilds/roots");
+	ResourceKey<PlacedFeature> END_WILDS_TREES = id("end_wilds/trees");
+	ResourceKey<PlacedFeature> END_WILDS_FOREST = id("end_wilds/forest");
+	ResourceKey<PlacedFeature> END_WILDS_CHORUS_PLANTS = id("end_wilds/chorus_plants");
+	ResourceKey<PlacedFeature> END_WILDS_GRASS = id("end_wilds/grass");
+	ResourceKey<PlacedFeature> END_WILDS_BUSHES = id("end_wilds/bushes");
+
+	ResourceKey<PlacedFeature> ENDER_WASTES_CHORUS_PLANTS = id("ender_wastes/chorus_plants");
+	ResourceKey<PlacedFeature> ENDER_WASTES_HILLS = id("ender_wastes/hills");
+
 	static ResourceKey<PlacedFeature> id(String name) {
 		return Stellarity.key(Registries.PLACED_FEATURE, name);
 	}

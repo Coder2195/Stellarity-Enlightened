@@ -48,11 +48,11 @@ public interface WorldgenUtil {
 		return InSquarePlacement.spread();
 	}
 
-	static NoiseBasedCountPlacement noisePlace(final int noiseToCountRatio, final double noiseFactor, final double noiseOffset) {
+	static NoiseBasedCountPlacement noiseCount(final int noiseToCountRatio, final double noiseFactor, final double noiseOffset) {
 		return NoiseBasedCountPlacement.of(noiseToCountRatio, noiseFactor, noiseOffset);
 	}
 
-	static HeightRangePlacement heightPlace(HeightProvider heightProvider) {
+	static HeightRangePlacement heightRange(HeightProvider heightProvider) {
 		return HeightRangePlacement.of(heightProvider);
 	}
 
@@ -191,7 +191,7 @@ public interface WorldgenUtil {
 		return new DualNoiseProvider(variety, slowNoiseParameters, slowScale, seed, parameters, scale, Arrays.stream(blocks).map(Block::defaultBlockState).toList());
 	}
 
-	static RandomOffsetPlacement placeRandom(IntProvider xzSpread, IntProvider ySpread) {
+	static RandomOffsetPlacement randOffset(IntProvider xzSpread, IntProvider ySpread) {
 		return RandomOffsetPlacement.of(xzSpread, ySpread);
 	}
 

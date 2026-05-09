@@ -9,14 +9,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.EndSpikeFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FossilFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
@@ -39,11 +35,11 @@ import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityPlacedFeatures;
 import prismatic.shards.stellarity.registry.StellarityFeatures;
 import prismatic.shards.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
+import prismatic.shards.stellarity.tags.StellarityBlockTags;
 import prismatic.shards.stellarity.util.Constants;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -145,8 +141,8 @@ public interface ConfiguredFeatureProvider {
 		context.register(END_MIDLANDS_OBSIDIAN_SPIKE, new ConfiguredFeature<>(Feature.ROOT_SYSTEM, new RootSystemConfiguration(direct(
 			new PlacedFeature(direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(new Block[]{OBSIDIAN, CRYING_OBSIDIAN}, new int[]{14, 1})))), List.of(
 				countPlace(num(128, 256)), countPlace(num(6, 8)),
-				placeRandom(num(-1, 1), num(0)), placeRandom(num(-1, 1), num(0)), placeRandom(num(-1, 1), num(0)), placeRandom(num(-1, 1), num(0)), placeRandom(num(-1, 1), num(0)),
-				placeRandom(normal(0, 0.65f, -1, 1), num(0)), placeRandom(normal(0, 0.65f, -1, 1), num(0)),
+				randOffset(num(-1, 1), num(0)), randOffset(num(-1, 1), num(0)), randOffset(num(-1, 1), num(0)), randOffset(num(-1, 1), num(0)), randOffset(num(-1, 1), num(0)),
+				randOffset(normal(0, 0.65f, -1, 1), num(0)), randOffset(normal(0, 0.65f, -1, 1), num(0)),
 				envScan(Direction.DOWN, not(replaceable()), all(), 32), envScan(Direction.UP, replaceable(), all(), 32),
 				blockFilter(not(any(
 					matchBlocks(vec(-1, -4, 0), AIR, WATER), matchBlocks(vec(1, -4, 0), AIR, WATER), matchBlocks(vec(0, -4, 1), AIR, WATER), matchBlocks(vec(0, -4, -1), AIR, WATER)
@@ -155,9 +151,9 @@ public interface ConfiguredFeatureProvider {
 			3, 2, block(CRYING_OBSIDIAN), 15, 1, all()
 		)));
 		context.register(END_MIDLANDS_ROCK, new ConfiguredFeature<>(Feature.BLOCK_BLOB, new BlockBlobConfiguration(from(SMOOTH_BASALT), all())));
-		context.register(END_MIDLANDS_VEGETATION, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(new BlockState[]{
-			property(TALL_GRASS, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), from(SHORT_GRASS)
-		}, new int[]{1, 14}))));
+		context.register(END_MIDLANDS_VEGETATION, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			new Block[]{TALL_GRASS, SHORT_GRASS},
+			new int[]{1, 14}))));
 
 		context.register(END_HIGHLANDS_LARGE_DIRT_PATCH, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
 			WORLDGEN_REPLACEABLE_GRASS_BLOCK, weightedBlocks(new Block[]{ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT}, new int[]{39, 5}), NOTHING, CaveSurface.FLOOR, num(1),
@@ -177,9 +173,9 @@ public interface ConfiguredFeatureProvider {
 				block(property(property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true), BlockStateProperties.DISTANCE, 1)), 1, List.of(Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
 			)), false, block(CHERRY_WOOD)
 		)));
-		context.register(END_HIGHLANDS_PITCHER_PLANT, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(property(PITCHER_PLANT, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER)))));
+		context.register(END_HIGHLANDS_PITCHER_PLANT, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(PITCHER_PLANT))));
 		context.register(END_HIGHLANDS_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
-			new BlockState[]{from(SHORT_GRASS), property(TALL_GRASS, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER), from(FERN), property(LARGE_FERN, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER)},
+			new Block[]{SHORT_GRASS, TALL_GRASS, FERN, LARGE_FERN},
 			new int[]{28, 18, 8, 4}
 		))));
 		context.register(END_HIGHLANDS_ROOTS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(HANGING_ROOTS))));
@@ -235,11 +231,7 @@ public interface ConfiguredFeatureProvider {
 		context.register(AMETHYST_FOREST_CRYSTAL_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(AMETHYST_CRYSTALS_UP, new int[]{1, 3, 3, 3}))));
 		context.register(AMETHYST_FOREST_FLOWER, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(noiseBlocks(
 			12345, new NormalNoise.NoiseParameters(1, 1, 1), 1f,
-			from(ALLIUM), UP_AMETHYST_CLUSTER, from(PINK_TULIP),
-			property(PEONY, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-			from(PINK_TULIP), from(ALLIUM),
-			property(LILAC, BlockStateProperties.DOUBLE_BLOCK_HALF, DoubleBlockHalf.LOWER),
-			from(ALLIUM), UP_AMETHYST_CLUSTER
+			from(ALLIUM), UP_AMETHYST_CLUSTER, from(PINK_TULIP), from(PEONY), from(PINK_TULIP), from(ALLIUM), from(LILAC), from(ALLIUM), UP_AMETHYST_CLUSTER
 		))));
 
 		context.register(ASHFALL_DELTAS_WATER_DELTA, new ConfiguredFeature<>(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(from(WATER), from(MUD), num(8, 10), num(1, 4))));
@@ -276,6 +268,7 @@ public interface ConfiguredFeatureProvider {
 		context.register(ASHFALL_DELTAS_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(new Block[]{SHORT_GRASS, FERN}, new int[]{16, 1}))));
 		context.register(ASHFALL_DELTAS_ASH_PILE, new ConfiguredFeature<>(Feature.BLOCK_PILE, new BlockPileConfiguration(block(LIGHT_GRAY_CONCRETE_POWDER))));
 
+
 		context.register(CRYSTAL_CRAGS_HILLS, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
 			WORLDGEN_REPLACEABLE_STALACTITE, block(BASALT),
 			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
@@ -298,5 +291,89 @@ public interface ConfiguredFeatureProvider {
 		)));
 		context.register(CRYSTAL_CRAGS_CRYSTAL_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(blocks(AMETHYST_CRYSTALS_UP))));
 		context.register(CRYSTAL_CRAGS_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(new Block[]{SHORT_GRASS, TALL_GRASS}, new int[]{4, 1}))));
+
+		context.register(END_SHRUBLAND_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			new BlockState[]{from(FERN), from(SHORT_GRASS), from(TALL_GRASS), from(TALL_GRASS), property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true)},
+			new int[]{2, 11, 2, 2, 2}
+		))));
+		context.register(END_SHRUBLAND_SHRUB, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			List.of(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+					block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
+					block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(1), 2),
+					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
+				))), List.of())), 0.1f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+					block(OAK_LOG), new StraightTrunkPlacer(2, 0, 0),
+					block(OAK_LEAVES), new BlobFoliagePlacer(num(2), num(0), 1),
+					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
+				))), List.of())), 0.25f)
+			),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
+				block(OAK_LEAVES), new BlobFoliagePlacer(num(2), num(0), 1),
+				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
+			))), List.of()))
+		)));
+
+		context.register(END_WILDS_DIRT, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_REPLACEABLE_GRASS_BLOCK, weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, ENDER_GRASS_BLOCK}, new int[]{6, 50}), NOTHING,
+			CaveSurface.FLOOR, num(2), 0, 5, 0, num(1, 3), 0.5f
+		)));
+		context.register(END_WILDS_TREE, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
+			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+					block(OAK_WOOD), new StraightTrunkPlacer(1, 0, 0),
+					block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
+					Optional.of(new MangroveRootPlacer(
+						num(2, 4), block(OAK_WOOD),
+						Optional.of(new AboveRootPlacement(
+							block(OAK_WOOD), 0.25f
+						)),
+						new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), HolderSet.empty(), block(COBBLESTONE), 4, 15, 0.15f)
+					)), twoLayersSize(0, 0, 0), List.of(), true, block(OAK_LOG)
+				))
+			), List.of(
+				countPlace(50), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0))
+			))), 0.6f),
+			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+					block(OAK_WOOD), new StraightTrunkPlacer(5, 0, 2),
+					block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
+					Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
+				))
+			), List.of(
+				countPlace(4), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(num(0), num(3))
+			))), 0.6f),
+			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+					block(OAK_LOG), new ForkingTrunkPlacer(9, 0, 3),
+					block(property(ACACIA_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(num(4), num(0),
+					num(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
+				))
+			), List.of(
+				countPlace(3), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(num(0), num(9))
+			))), 0.6f)
+		), NOTHING)));
+		context.register(END_WILDS_GRASS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			new Block[]{FERN, SHORT_GRASS, TALL_GRASS, LARGE_FERN}, new int[]{2, 11, 2, 2}
+		))));
+		context.register(END_WILDS_BUSH, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_REPLACEABLE_END_STONE, block(GRASS_BLOCK),
+			direct(new PlacedFeature(
+				direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(property(OAK_LEAVES, BlockStateProperties.PERSISTENT, true))))),
+				List.of(countPlace(3), randOffset(trapezoid(-1, 1, 0), trapezoid(-1, 1, 0)))
+			)), CaveSurface.FLOOR, num(1), 0, 1, 1, num(0), 0
+		)));
+
+		context.register(ENDER_WASTES_HILLS, new ConfiguredFeature<>(Feature.VEGETATION_PATCH,
+			new VegetationPatchConfiguration(
+				WORLDGEN_REPLACEABLE_STALACTITE, block(END_STONE), direct(new PlacedFeature(direct(
+				new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+					List.of(new BlockColumnConfiguration.Layer(num(1), block(END_STONE))),
+					Direction.UP, matchBlocks(AIR), true
+				))
+			), List.of())), CaveSurface.FLOOR, num(1), 0, 11, 1, num(3, 6), 0.5f
+			)));
 	}
 }

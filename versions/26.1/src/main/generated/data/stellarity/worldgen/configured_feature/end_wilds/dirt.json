@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:vegetation_patch",
+  "config": {
+    "depth": 2,
+    "extra_bottom_block_chance": 0.0,
+    "extra_edge_column_chance": 0.5,
+    "ground_state": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "stellarity:rooted_ender_dirt"
+          },
+          "weight": 6
+        },
+        {
+          "data": {
+            "Name": "stellarity:ender_grass_block",
+            "Properties": {
+              "snowy": "false"
+            }
+          },
+          "weight": 50
+        }
+      ]
+    },
+    "replaceable": "#stellarity:worldgen/replaceable/grass_block",
+    "surface": "floor",
+    "vegetation_chance": 0.0,
+    "vegetation_feature": "stellarity:nothing",
+    "vertical_range": 5,
+    "xz_radius": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 1
+    }
+  }
+}

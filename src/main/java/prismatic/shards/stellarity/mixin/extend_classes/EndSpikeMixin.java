@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.interface_injection.ExtEndSpike;
-import prismatic.shards.stellarity.util.CodecExtensionHelper;
+import prismatic.shards.stellarity.util.CodecExtender;
 
 @Mixin(EndSpikeFeature.EndSpike.class)
 public class EndSpikeMixin implements ExtEndSpike {
@@ -63,7 +63,7 @@ public class EndSpikeMixin implements ExtEndSpike {
 		)
 	)
 	private static Codec<EndSpikeFeature.EndSpike> more(Codec<EndSpikeFeature.EndSpike> original) {
-		return CodecExtensionHelper.buildExtensionCodec(original, (instance, wrapper) -> instance.group(wrapper,
+		return CodecExtender.buildExtensionCodec(original, (instance, wrapper) -> instance.group(wrapper,
 				Codec.BOOL.optionalFieldOf("stellarity:altar", false).forGetter(ExtEndSpike::stellarity$hasAltar),
 				Codec.BOOL.optionalFieldOf("stellarity:crying_obsidian_tops", false).forGetter(ExtEndSpike::stellarity$hasCryingObsidianTops),
 				Codec.BOOL.optionalFieldOf("stellarity:has_crystal", true).forGetter(ExtEndSpike::stellarity$hasCrystal)

@@ -1,6 +1,6 @@
 {
-  "asset_id": "stellarity:entity/pig/ender_pig",
-  "baby_asset_id": "stellarity:entity/pig/ender_pig_baby",
+  "asset_id": "stellarity:entity/pig/pig_end",
+  "baby_asset_id": "stellarity:entity/pig/pig_end",
   "spawn_conditions": [
     {
       "condition": {

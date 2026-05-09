@@ -6,8 +6,10 @@ import com.klikli_dev.modonomicon.api.datagen.EntryProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookIconModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookEmptyPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
+import com.klikli_dev.modonomicon.client.gui.book.theme.GuiSprite;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.item.Items;
+import prismatic.shards.stellarity.Stellarity;
 
 public class EmptyPageEntry extends EntryProvider {
 	public static final String ID = "empty";
@@ -45,7 +47,7 @@ public class EmptyPageEntry extends EntryProvider {
 	}
 
 	@Override
-	protected Pair<Integer, Integer> entryBackground() {
+	protected GuiSprite entryBackground() {
 		return EntryBackground.DEFAULT;
 	}
 

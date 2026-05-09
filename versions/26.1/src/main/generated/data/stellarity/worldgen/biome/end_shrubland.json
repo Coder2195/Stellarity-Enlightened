@@ -36,7 +36,9 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites"
+      "stellarity:global/stalactites",
+      "stellarity:end_wilds/dirt",
+      "stellarity:end_wilds/roots"
     ],
     [],
     [],
@@ -46,7 +48,13 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:end_wilds/trees",
+      "stellarity:end_wilds/forest",
+      "stellarity:end_wilds/chorus_plants",
+      "stellarity:end_shrubland/grass",
+      "stellarity:end_shrubland/shrubs"
+    ],
     [
       "stellarity:global/dungeons",
       "stellarity:global/fossils"

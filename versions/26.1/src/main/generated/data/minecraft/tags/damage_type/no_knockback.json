@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "stellarity:brittle",
-      "required": false
-    }
+    "stellarity:brittle"
   ]
 }
