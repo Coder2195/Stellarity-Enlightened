@@ -19,7 +19,7 @@ public interface ConfiguredCarverProvider {
 		final var whiteGlass = from(WHITE_STAINED_GLASS);
 		final var glass = from(GLASS);
 		final var carverDebug = CarverDebugSettings.of(whiteGlass, candle, orangeGlass, glass);
-		final var replaceable = blocks.getOrThrow(StellarityBlockTags.WORLDGEN_REPLACEABLE_CARVER);
+		final var replaceable = blocks.getOrThrow(StellarityBlockTags.WORLDGEN_CARVER);
 
 		context.register(CAVE, new ConfiguredWorldCarver<>(WorldCarver.CAVE, new CaveCarverConfiguration(
 			0.15f, height(aboveBottom(8), belowTop(8)), numf(0.4f, 1.5f), absolute(0), carverDebug, replaceable, numf(1, 2.2f), numf(1, 2.2f), numf(-1, -0.4f)

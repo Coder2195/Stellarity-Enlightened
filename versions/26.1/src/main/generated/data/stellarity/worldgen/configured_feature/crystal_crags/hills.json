@@ -13,7 +13,7 @@
         }
       }
     },
-    "replaceable": "#stellarity:worldgen/replaceable/stalactite",
+    "replaceable": "#stellarity:worldgen/stalactite",
     "surface": "floor",
     "vegetation_chance": 1.0,
     "vegetation_feature": {

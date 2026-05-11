@@ -24,7 +24,7 @@
         }
       ]
     },
-    "replaceable": "#stellarity:worldgen/replaceable/grass_block",
+    "replaceable": "#stellarity:worldgen/grass_block",
     "surface": "floor",
     "vegetation_chance": 0.0,
     "vegetation_feature": "stellarity:nothing",

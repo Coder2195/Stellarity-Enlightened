@@ -39,7 +39,7 @@
         }
       },
       "mangrove_root_placement": {
-        "can_grow_through": "#stellarity:worldgen/replaceable/grass_block",
+        "can_grow_through": "#stellarity:worldgen/grass_block",
         "max_root_length": 3,
         "max_root_width": 1,
         "muddy_roots_in": "stellarity:ender_dirt",

@@ -80,6 +80,13 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> ENDER_WASTES_CHORUS_PLANTS = id("ender_wastes/chorus_plants");
 	ResourceKey<PlacedFeature> ENDER_WASTES_HILLS = id("ender_wastes/hills");
 
+	ResourceKey<PlacedFeature> ENDLESS_DUNES_SAND_DELTAS = id("endless_dunes/sand_deltas");
+	ResourceKey<PlacedFeature> ENDLESS_DUNES_VEGETATION = id("endless_dunes/vegetation");
+	ResourceKey<PlacedFeature> ENDLESS_DUNES_CHORUS_PLANTS = id("endless_dunes/chorus_plants");
+	ResourceKey<PlacedFeature> ENDLESS_DUNES_GRASS = id("endless_dunes/grass");
+	ResourceKey<PlacedFeature> ENDLESS_DUNES_OASIS = id("endless_dunes/oasis");
+
+
 	static ResourceKey<PlacedFeature> id(String name) {
 		return Stellarity.key(Registries.PLACED_FEATURE, name);
 	}

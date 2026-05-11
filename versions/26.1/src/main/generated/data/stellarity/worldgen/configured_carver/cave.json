@@ -34,7 +34,7 @@
       "absolute": 0
     },
     "probability": 0.15,
-    "replaceable": "#stellarity:worldgen/replaceable/carver",
+    "replaceable": "#stellarity:worldgen/carver",
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "max_exclusive": 2.2,

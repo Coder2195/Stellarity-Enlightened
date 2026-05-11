@@ -7,13 +7,13 @@
     "ground_state": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:grass_block",
+        "Name": "stellarity:ender_grass_block",
         "Properties": {
           "snowy": "false"
         }
       }
     },
-    "replaceable": "#stellarity:worldgen/replaceable/end_stone",
+    "replaceable": "#stellarity:worldgen/end_stone",
     "surface": "floor",
     "vegetation_chance": 1.0,
     "vegetation_feature": {
@@ -51,6 +51,12 @@
             "max": 1,
             "min": -1,
             "plateau": 0
+          }
+        },
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:true"
           }
         }
       ]

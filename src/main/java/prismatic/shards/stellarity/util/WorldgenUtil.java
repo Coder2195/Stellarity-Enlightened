@@ -3,10 +3,12 @@ package prismatic.shards.stellarity.util;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -227,5 +229,31 @@ public interface WorldgenUtil {
 		return BlockPredicate.replaceable(pos);
 	}
 
+	static BlockPredicate matchTag(TagKey<Block> tag) {
+		return BlockPredicate.matchesTag(tag);
+	}
 
+	static BlockPredicate matchTag(Vec3i pos, TagKey<Block> tag) {
+		return BlockPredicate.matchesTag(pos, tag);
+	}
+
+	static RandomizedIntStateProvider randIntState(BlockStateProvider block, IntegerProperty property, IntProvider num) {
+		return new RandomizedIntStateProvider(block, property, num);
+	}
+
+	static RandomizedIntStateProvider randIntState(BlockState block, IntegerProperty property, IntProvider num) {
+		return new RandomizedIntStateProvider(block(block), property, num);
+	}
+
+	static RandomizedIntStateProvider randIntState(Block block, IntegerProperty property, IntProvider num) {
+		return new RandomizedIntStateProvider(block(block), property, num);
+	}
+
+	static SimpleStateProvider randIntState(Block block) {
+		return RandomizedIntStateProvider.simple(block);
+	}
+
+	static SimpleStateProvider randIntState(BlockState block) {
+		return RandomizedIntStateProvider.simple(block);
+	}
 }

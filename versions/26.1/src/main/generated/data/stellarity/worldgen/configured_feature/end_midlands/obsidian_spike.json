@@ -205,7 +205,7 @@
     "root_column_max_height": 100,
     "root_placement_attempts": 20,
     "root_radius": 3,
-    "root_replaceable": "#stellarity:worldgen/replaceable/stalactite",
+    "root_replaceable": "#stellarity:worldgen/stalactite",
     "root_state_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {

@@ -68,6 +68,19 @@ public interface StellarityConfiguredFeatures {
 
 	ResourceKey<ConfiguredFeature<?, ?>> ENDER_WASTES_HILLS = id("ender_wastes/hills");
 
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_SAND_DELTA = id("endless_dunes/sand_delta");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_VEGETATION = id("endless_dunes/vegetation");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_GRASS = id("endless_dunes/grass");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS = id("endless_dunes/oasis");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_PALM_TREE = id("endless_dunes/oasis/palm_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_LAKE = id("endless_dunes/oasis/lake");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_VEGETATION_LAKE = id("endless_dunes/oasis/vegetation_lake");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_VEGETATION_MIDDLE = id("endless_dunes/oasis/vegetation_middle");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_ROCK = id("endless_dunes/oasis/rock");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_DIRT = id("endless_dunes/oasis/dirt");
+	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_VEGETATION = id("endless_dunes/oasis/vegetation");
+
+
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {
 		return Stellarity.key(Registries.CONFIGURED_FEATURE, name);
 	}

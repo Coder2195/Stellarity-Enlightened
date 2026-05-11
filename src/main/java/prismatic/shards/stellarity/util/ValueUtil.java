@@ -38,6 +38,10 @@ public interface ValueUtil {
 		return UniformInt.of(min, max);
 	}
 
+	static BiasedToBottomInt biasBottom(int min, int max) {
+		return BiasedToBottomInt.of(min, max);
+	}
+
 	static ConstantFloat numf(float num) {
 		return ConstantFloat.of(num);
 	}
@@ -49,7 +53,7 @@ public interface ValueUtil {
 
 	static <T> WeightedList<T> weighted(T[] values, int[] weights) {
 		if (values.length != weights.length)
-			throw new IllegalArgumentException("Blockstates must correspond to weights");
+			throw new IllegalArgumentException("Blockstates must correspond to weights. %s %s".formatted(Arrays.toString(values), Arrays.toString(weights)));
 		@SuppressWarnings("unchecked") Weighted<T>[] weightList = new Weighted[values.length];
 		for (int i = 0; i < values.length; i++) {
 			weightList[i] = new Weighted<>(values[i], weights[i]);

@@ -8,7 +8,7 @@
           "Name": "minecraft:budding_amethyst"
         }
       },
-      "cannot_replace": "#stellarity:worldgen/invalid/amethyst_geode",
+      "cannot_replace": "#stellarity:worldgen/amethyst_geode_invalid",
       "filling_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
@@ -51,7 +51,7 @@
           }
         }
       ],
-      "invalid_blocks": "#stellarity:worldgen/invalid/amethyst_geode",
+      "invalid_blocks": "#stellarity:worldgen/amethyst_geode_invalid",
       "middle_layer_provider": {
         "type": "minecraft:weighted_state_provider",
         "entries": [

@@ -25,7 +25,7 @@
         }
       ]
     },
-    "replaceable": "#stellarity:worldgen/replaceable/end_stone",
+    "replaceable": "#stellarity:worldgen/end_stone",
     "surface": "ceiling",
     "vegetation_chance": 1.0,
     "vegetation_feature": {

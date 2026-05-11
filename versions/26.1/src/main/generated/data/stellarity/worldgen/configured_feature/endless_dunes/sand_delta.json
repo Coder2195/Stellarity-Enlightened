@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:delta_feature",
+  "config": {
+    "contents": {
+      "Name": "minecraft:sand"
+    },
+    "rim": {
+      "Name": "minecraft:coarse_dirt"
+    },
+    "rim_size": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 4,
+      "min_inclusive": 1
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 16,
+      "min_inclusive": 4
+    }
+  }
+}

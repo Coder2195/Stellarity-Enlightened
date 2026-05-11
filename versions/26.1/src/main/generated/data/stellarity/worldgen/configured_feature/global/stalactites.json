@@ -10,7 +10,7 @@
         "Name": "minecraft:end_stone"
       }
     },
-    "replaceable": "#stellarity:worldgen/replaceable/stalactite",
+    "replaceable": "#stellarity:worldgen/stalactite",
     "surface": "ceiling",
     "vegetation_chance": 1.0,
     "vegetation_feature": {
