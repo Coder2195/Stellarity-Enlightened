@@ -23,7 +23,7 @@ public interface ValueUtil {
 	 * @param values DATA THEN WEIGHT
 	 * @return weightedlist thingy
 	 */
-	static WeightedListInt weighted(int... values) {
+	static WeightedListInt weightedInts(int... values) {
 		if (values.length % 2 != 0) throw new IllegalArgumentException("Must be even number of values (value, weight)");
 		@SuppressWarnings("unchecked") Weighted<IntProvider>[] weights = new Weighted[values.length / 2];
 
@@ -31,11 +31,11 @@ public interface ValueUtil {
 			weights[i] = new Weighted<>(num(values[2 * i]), values[2 * i + 1]);
 		}
 
-		return weighted(weights);
+		return new WeightedListInt(WeightedList.of(weights));
 	}
 
-	static WeightedListInt weighted(Weighted<IntProvider>... weights) {
-		return new WeightedListInt(WeightedList.of(weights));
+	static WeightedListInt weightedInts(IntProvider[] ints, int[] weights) {
+		return new WeightedListInt(weighted(ints, weights));
 	}
 
 	static UniformInt num(int min, int max) {

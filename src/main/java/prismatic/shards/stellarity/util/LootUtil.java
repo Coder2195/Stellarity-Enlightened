@@ -14,6 +14,7 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -21,10 +22,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
-import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
-import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
+import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -72,7 +70,7 @@ public interface LootUtil {
 		return new ConstantValue(num);
 	}
 
-	static UniformGenerator range(float min, float max) {
+	static UniformGenerator num(float min, float max) {
 		return new UniformGenerator(num(min), num(max));
 	}
 
@@ -99,11 +97,11 @@ public interface LootUtil {
 
 
 	static EnchantWithLevelsFunction.Builder enchant(HolderLookup.Provider provider, int min, int max) {
-		return EnchantWithLevelsFunction.enchantWithLevels(provider, range(min, max));
+		return EnchantWithLevelsFunction.enchantWithLevels(provider, num(min, max));
 	}
 
 	static EnchantWithLevelsFunction.Builder enchant(HolderGetter<Enchantment> enchantments, int min, int max) {
-		return new EnchantWithLevelsFunction.Builder(range(min, max)).withOptions(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
+		return new EnchantWithLevelsFunction.Builder(num(min, max)).withOptions(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
 	}
 
 	static LootItemConditionalFunction.Builder<?> damage(float damage) {
@@ -111,7 +109,7 @@ public interface LootUtil {
 	}
 
 	static LootItemConditionalFunction.Builder<?> damage(float min, float max) {
-		return SetItemDamageFunction.setDamage(range(min, max));
+		return SetItemDamageFunction.setDamage(num(min, max));
 	}
 
 
@@ -172,11 +170,11 @@ public interface LootUtil {
 		return FunctionReference.functionReference(key).build();
 	}
 
-	static LootItemCondition entityProperty(LootContext.EntityTarget target, EntityPredicate.Builder predicate) {
-		return LootItemEntityPropertyCondition.hasProperties(target, predicate.build()).build();
+	static LootItemCondition.Builder entityProperty(LootContext.EntityTarget target, EntityPredicate.Builder predicate) {
+		return LootItemEntityPropertyCondition.hasProperties(target, predicate.build());
 	}
 
-	static LootItemCondition entityProperty(EntityPredicate.Builder predicate) {
+	static LootItemCondition.Builder entityProperty(EntityPredicate.Builder predicate) {
 		return entityProperty(LootContext.EntityTarget.THIS, predicate);
 	}
 
@@ -198,6 +196,30 @@ public interface LootUtil {
 
 	static AnyOfCondition.Builder any(LootItemCondition.Builder... conditions) {
 		return AnyOfCondition.anyOf(conditions);
+	}
+
+	static EnchantedCountIncreaseFunction.Builder enchantCount(Holder<Enchantment> enchant, NumberProvider count) {
+		return new EnchantedCountIncreaseFunction.Builder(enchant, count);
+	}
+
+	static EnchantedCountIncreaseFunction.Builder enchantCount(HolderLookup.Provider provider, NumberProvider count) {
+		return EnchantedCountIncreaseFunction.lootingMultiplier(provider, count);
+	}
+
+	static LootItemCondition.Builder playerKill() {
+		return LootItemKilledByPlayerCondition.killedByPlayer();
+	}
+
+	static LootItemCondition.Builder chanceEnchanted(HolderLookup.Provider provider, float chance, float perLevel) {
+		return LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(provider, chance, perLevel);
+	}
+
+	static LootItemCondition.Builder chanceEnchanted(Holder<Enchantment> enchantment, float chance, LevelBasedValue perLevel) {
+		return () -> new LootItemRandomChanceWithEnchantedBonusCondition(chance, perLevel, enchantment);
+	}
+
+	static AlternativesEntry.Builder alternatives(LootPoolEntryContainer.Builder<?>... entries) {
+		return new AlternativesEntry.Builder(entries);
 	}
 
 

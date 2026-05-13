@@ -160,6 +160,10 @@ public interface WorldgenUtil {
 		return new ThreeLayersFeatureSize(1, 1, 0, 1, 1, OptionalInt.empty());
 	}
 
+	static ThreeLayersFeatureSize threeLayersSize(int limit, int upperLimit, int lowerSize, int middleSize, int upperSize) {
+		return new ThreeLayersFeatureSize(limit, upperLimit, lowerSize, middleSize, upperSize, OptionalInt.empty());
+	}
+
 	static BlockPredicateFilter blockFilter(BlockPredicate predicate) {
 		return BlockPredicateFilter.forPredicate(predicate);
 	}

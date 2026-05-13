@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:delta_feature",
+  "config": {
+    "contents": {
+      "Name": "minecraft:crimson_nylium"
+    },
+    "rim": {
+      "Name": "minecraft:nether_wart_block"
+    },
+    "rim_size": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 6,
+      "min_inclusive": 0
+    },
+    "size": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 7,
+      "min_inclusive": 6
+    }
+  }
+}

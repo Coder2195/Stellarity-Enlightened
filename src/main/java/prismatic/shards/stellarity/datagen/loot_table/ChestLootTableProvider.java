@@ -9,7 +9,6 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.jspecify.annotations.NonNull;
 
-import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
@@ -34,30 +33,30 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 		var enchantments = lookup.lookupOrThrow(Registries.ENCHANTMENT);
 		consumer.accept(EXIT_PORTAL, lootTable()
 			.withPool(pool().add(item(END_CRYSTAL).apply(count(num(4)))))
-			.withPool(pool().add(item(BONE).apply(countAdd(range(2, 5)))))
-			.withPool(pool().add(item(STRING).apply(countAdd(range(2, 5)))))
-			.withPool(pool().add(item(GUNPOWDER).apply(countAdd(range(2, 5)))))
-			.withPool(pool().setRolls(range(1, 2))
-				.add(item(OBSIDIAN).setWeight(2).apply(countAdd(range(1, 3))))
-				.add(item(CRYING_OBSIDIAN).setWeight(1).apply(countAdd(range(1, 3))))
+			.withPool(pool().add(item(BONE).apply(countAdd(num(2, 5)))))
+			.withPool(pool().add(item(STRING).apply(countAdd(num(2, 5)))))
+			.withPool(pool().add(item(GUNPOWDER).apply(countAdd(num(2, 5)))))
+			.withPool(pool().setRolls(num(1, 2))
+				.add(item(OBSIDIAN).setWeight(2).apply(countAdd(num(1, 3))))
+				.add(item(CRYING_OBSIDIAN).setWeight(1).apply(countAdd(num(1, 3))))
 			)
 			.withPool(pool().add(item(ENCHANTED_BOOK)))
 		);
 
 		consumer.accept(DUNGEON, lootTable()
-			.withPool(pool().add(item(ENDERITE_SHARD).apply(count(range(1, 2)))))
-			.withPool(pool().setRolls(range(1, 2))
-				.add(item(IRON_INGOT).setWeight(12).apply(count(range(1, 2))))
-				.add(item(GOLD_INGOT).setWeight(9).apply(count(range(1, 2))))
+			.withPool(pool().add(item(ENDERITE_SHARD).apply(count(num(1, 2)))))
+			.withPool(pool().setRolls(num(1, 2))
+				.add(item(IRON_INGOT).setWeight(12).apply(count(num(1, 2))))
+				.add(item(GOLD_INGOT).setWeight(9).apply(count(num(1, 2))))
 			)
 			.withPool(pool().setRolls(num(3))
 				.add(item(END_CRYSTAL).setWeight(7))
-				.add(item(ENDER_PEARL).setWeight(6).apply(count(range(1, 2))))
-				.add(item(PHANTOM_ITEM_FRAME).setWeight(6).apply(count(range(1, 2))))
-				.add(item(CHORUS_FRUIT).setWeight(8).apply(count(range(1, 2))))
+				.add(item(ENDER_PEARL).setWeight(6).apply(count(num(1, 2))))
+				.add(item(PHANTOM_ITEM_FRAME).setWeight(6).apply(count(num(1, 2))))
+				.add(item(CHORUS_FRUIT).setWeight(8).apply(count(num(1, 2))))
 				.add(item(BOOK).setWeight(5).apply(enchant(enchantments, 25, 35)))
 				.add(empty().setWeight(2))
-				.add(item(ENDER_EYE).setWeight(3).apply(count(range(1, 2))))
+				.add(item(ENDER_EYE).setWeight(3).apply(count(num(1, 2))))
 			)
 			.withPool(pool().add(empty().setWeight(4)).add(item(SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE)))
 			.withPool(pool().add(empty().setWeight(9)).add(item(ENDERITE_UPGRADE_SMITHING_TEMPLATE)))

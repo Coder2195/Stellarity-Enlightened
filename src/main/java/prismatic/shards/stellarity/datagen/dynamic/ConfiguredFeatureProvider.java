@@ -5,8 +5,11 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.VineBlock;
+import net.minecraft.world.level.block.WeepingVinesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
@@ -14,19 +17,13 @@ import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BushFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.CherryFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.rootplacers.AboveRootPlacement;
 import net.minecraft.world.level.levelgen.feature.rootplacers.MangroveRootPlacement;
 import net.minecraft.world.level.levelgen.feature.rootplacers.MangroveRootPlacer;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.CherryTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
@@ -36,8 +33,10 @@ import prismatic.shards.stellarity.key.StellarityPlacedFeatures;
 import prismatic.shards.stellarity.registry.StellarityFeatures;
 import prismatic.shards.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
 import prismatic.shards.stellarity.util.Constants;
+import prismatic.shards.stellarity.util.ValueUtil;
 import prismatic.shards.stellarity.util.tuple.Tuple3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -260,7 +259,7 @@ public interface ConfiguredFeatureProvider {
 			))));
 		}
 		context.register(ASHFALL_DELTAS_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
-			block(ACACIA_WOOD), new CherryTrunkPlacer(5, 3, 6, weighted(1, 1, 2, 1, 3, 1), num(3, 5), num(-4, -3), num(-1, 0)),
+			block(ACACIA_WOOD), new CherryTrunkPlacer(5, 3, 6, ValueUtil.weightedInts(1, 1, 2, 1, 3, 1), num(3, 5), num(-4, -3), num(-1, 0)),
 			block(property(OAK_LEAVES, BlockStateProperties.WATERLOGGED, false)), new CherryFoliagePlacer(num(4), num(0), num(5), 0.25f, 0.25f, 0.16666667f, 0.33333334f),
 			Optional.of(new MangroveRootPlacer(num(0, 5), block(ACACIA_WOOD), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)), new MangroveRootPlacement(
 				blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
@@ -532,5 +531,58 @@ public interface ConfiguredFeatureProvider {
 			Direction.DOWN, all(), true
 		)));
 
+		context.register(FLESH_TUNDRA_NETHERRACK_BOTTOM, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_END_STONE, block(NETHERRACK),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+				List.of(new BlockColumnConfiguration.Layer(ValueUtil.weightedInts(1, 1, 0, 14), block(NETHERRACK)), new BlockColumnConfiguration.Layer(num(1), block(NETHERRACK))),
+				Direction.DOWN, matchBlocks(AIR), true
+			))), List.of(envScan(Direction.UP, solid(), all(), 32)))),
+			CaveSurface.CEILING, num(4), 0, 25, 1, num(2, 4), 0.5f
+		)));
+		context.register(FLESH_TUNDRA_CRIMSON_DELTAS, new ConfiguredFeature<>(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(from(CRIMSON_NYLIUM), from(NETHER_WART_BLOCK), num(6, 7), num(0, 6))));
+		context.register(FLESH_TUNDRA_BONE_CEILING, new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+			List.of(new BlockColumnConfiguration.Layer(num(9, 24), block(BONE_BLOCK)), new BlockColumnConfiguration.Layer(ValueUtil.weightedInts(0, 40, 1, 1), block(property(SOUL_LANTERN, BlockStateProperties.HANGING, true)))),
+			Direction.DOWN, matchBlocks(AIR), true
+		)));
+		var fleshTundraTree = context.register(FLESH_TUNDRA_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(BONE_BLOCK), new FancyTrunkPlacer(12, 8, 6),
+			block(AIR), new DarkOakFoliagePlacer(num(0), num(0)),
+			Optional.empty(), threeLayersSize(3, 1, 4, 5, 3), List.of(), true, block(BONE_BLOCK)
+		)));
+		var fleshTundraRib = context.register(FLESH_TUNDRA_RIB, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(BONE_BLOCK), new BendingTrunkPlacer(4, 3, 0, 1, num(1, 3)),
+			block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
+			Optional.empty(), threeLayersSize(1, 1, 0, 1, 2), List.of(), true, block(BONE_BLOCK)
+		)));
+		context.register(FLESH_TUNDRA_TREE_PATCH, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_FLESH_TUNDRA_SURFACE, block(BONE_BLOCK),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
+				new WeightedPlacedFeature(direct(new PlacedFeature(fleshTundraRib, List.of())), 0.66f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(fleshTundraTree, List.of())), 0.44f)
+			), nothing))), List.of())), CaveSurface.FLOOR, num(1), 0, 1, 1, num(0), 0
+		)));
+		context.register(FLESH_TUNDRA_VEGETATION, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			new BlockState[]{property(OAK_LEAVES, BlockStateProperties.PERSISTENT, true), from(NETHER_WART_BLOCK)}, new int[]{1, 6}
+		))));
+		var vines = new ArrayList<>(Stream.of(VineBlock.NORTH, VineBlock.SOUTH, VineBlock.EAST, VineBlock.WEST)
+			.map(b -> {
+				var vine = block(property(VINE, b, true));
+				return new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+					List.of(new BlockColumnConfiguration.Layer(num(1), vine), new BlockColumnConfiguration.Layer(num(12, 33), vine)),
+					Direction.DOWN, matchBlocks(vec(0, 1, 0), AIR), true
+				))), List.of())), 0.1f);
+			}).toList());
+		vines.add(new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(List.of(
+			new BlockColumnConfiguration.Layer(weightedInts(
+				new IntProvider[]{num(1, 3), num(4, 7), num(8, 15), num(16, 25)}, new int[]{10, 7, 3, 1}
+			), block(WEEPING_VINES_PLANT)),
+			new BlockColumnConfiguration.Layer(num(1), randIntState(WEEPING_VINES, WeepingVinesBlock.AGE, num(23, 25)))
+		), Direction.DOWN, matchBlocks(AIR), true))), List.of())), 0.44f));
+		context.register(FLESH_TUNDRA_VINES, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			vines, nothing
+		)));
+		context.register(FLESH_TUNDRA_ROOTS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			new Block[]{CRIMSON_ROOTS, CRIMSON_FUNGUS}, new int[]{5, 1}
+		))));
 	}
 }

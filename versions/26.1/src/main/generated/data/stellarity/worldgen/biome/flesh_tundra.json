@@ -2,55 +2,99 @@
   "attributes": {
     "minecraft:audio/ambient_sounds": {
       "additions": {
-        "sound": "minecraft:ambient.soul_sand_valley.additions",
+        "sound": "minecraft:ambient.warped_forest.additions",
         "tick_chance": 0.00111
       },
-      "loop": "stellarity:ambient.the_end.dark_calm",
+      "loop": "stellarity:ambient.the_end.dark",
       "mood": {
         "block_search_extent": 10,
         "offset": 100.0,
-        "sound": "minecraft:ambient.soul_sand_valley.mood",
+        "sound": "minecraft:ambient.crimson_forest.mood",
         "tick_delay": 3000
       }
     },
     "minecraft:visual/ambient_light_color": "#3f472f",
-    "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/sky_color": "#78a7ff",
-    "minecraft:visual/water_fog_color": "#041f33"
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:crimson_spore"
+        },
+        "probability": 0.0056
+      }
+    ],
+    "minecraft:visual/fog_color": "#000000",
+    "minecraft:visual/sky_color": "#000000",
+    "minecraft:visual/water_fog_color": "#ff0000"
   },
   "carvers": [],
   "downfall": 0.4,
   "effects": {
-    "foliage_color": "#75ae1c",
-    "grass_color": "#91bf4a",
-    "water_color": "#43d5ee"
+    "foliage_color": "#c43b3b",
+    "grass_color": "#c43b3b",
+    "water_color": "#ff0000"
   },
   "features": [
     [
-      "stellarity:global/stalactites"
+      "stellarity:flesh_tundra/stalactites",
+      "stellarity:flesh_tundra/netherrack_bottom"
+    ],
+    [
+      "stellarity:flesh_tundra/crimson_deltas"
+    ],
+    [
+      "minecraft:basalt_pillar",
+      "stellarity:flesh_tundra/bone_ceiling"
     ],
     [],
     [],
     [],
     [],
-    [],
-    [],
-    [],
-    [],
+    [
+      "stellarity:flesh_tundra/trees"
+    ],
     [],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
+      "stellarity:flesh_tundra/vegetation",
+      "stellarity:flesh_tundra/vines",
+      "stellarity:flesh_tundra/roots"
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "stellarity:voided_silverfish": {
+      "charge": 1.0,
+      "energy_budget": 0.5
+    },
+    "stellarity:voided_skeleton": {
+      "charge": 1.0,
+      "energy_budget": 0.800000011920929
+    }
+  },
   "spawners": {
     "ambient": [],
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "stellarity:voided_silverfish",
+        "maxCount": 2,
+        "minCount": 2,
+        "weight": 7
+      },
+      {
+        "type": "stellarity:voided_skeleton",
+        "maxCount": 2,
+        "minCount": 2,
+        "weight": 15
+      },
+      {
+        "type": "stellarity:flesh_piglin",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 40
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

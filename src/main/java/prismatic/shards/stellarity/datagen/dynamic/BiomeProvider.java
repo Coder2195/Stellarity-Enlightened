@@ -12,7 +12,6 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityConfiguredCarvers;
 import prismatic.shards.stellarity.registry.StellarityEntities;
 import prismatic.shards.stellarity.registry.StellaritySounds;
@@ -22,6 +21,7 @@ import java.util.List;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static net.minecraft.core.Holder.direct;
+import static net.minecraft.data.worldgen.placement.NetherPlacements.BASALT_PILLAR;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_BUSH;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_DRY_GRASS_DESERT;
 import static prismatic.shards.stellarity.key.StellarityBiomes.*;
@@ -63,7 +63,7 @@ public interface BiomeProvider {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_CRYSTAL_GRASS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_FLOWERS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_ROOTS)
-				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Stellarity.mcKey(Registries.PLACED_FEATURE, "patch_bush"))
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PATCH_BUSH)
 				.build()
 			).build()
 		);
@@ -324,11 +324,19 @@ public interface BiomeProvider {
 				.addSpawn(MobCategory.MONSTER, 7, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
 				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 2, 2))
 				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntities.FLESH_PIGLIN, 4, 4))
+				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.8f)
+				.addMobCharge(StellarityEntities.VOIDED_SILVERFISH, 1, 0.5f)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
-				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
-				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS)
-				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FLESH_TUNDRA_STALACTITES)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FLESH_TUNDRA_NETHERRACK_BOTTOM)
+				.addFeature(GenerationStep.Decoration.LAKES, FLESH_TUNDRA_CRIMSON_DELTAS)
+				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, BASALT_PILLAR)
+				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, FLESH_TUNDRA_BONE_CEILING)
+				.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, FLESH_TUNDRA_TREES)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLESH_TUNDRA_VEGETATION)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLESH_TUNDRA_VINES)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FLESH_TUNDRA_ROOTS)
 				.build()
 			).build()
 		);

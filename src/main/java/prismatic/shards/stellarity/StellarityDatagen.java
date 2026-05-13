@@ -11,6 +11,7 @@ import prismatic.shards.stellarity.datagen.*;
 import prismatic.shards.stellarity.datagen.book.EndonomiconBookProvider;
 import prismatic.shards.stellarity.datagen.loot_table.BlockLootTableProvider;
 import prismatic.shards.stellarity.datagen.loot_table.ChestLootTableProvider;
+import prismatic.shards.stellarity.datagen.loot_table.EntityLootTableProvider;
 import prismatic.shards.stellarity.datagen.loot_table.FishingLootTableProvider;
 import prismatic.shards.stellarity.datagen.tags.*;
 
@@ -33,6 +34,7 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(BlockLootTableProvider::new);
 		pack.addProvider(BlockTagProvider::new);
 		pack.addProvider(FishingLootTableProvider::new);
+		pack.addProvider(EntityLootTableProvider::new);
 		pack.addProvider(DamageTagProvider::new);
 		pack.addProvider(EntityTagProvider::new);
 		pack.addProvider(BiomeTagProvider::new);

@@ -99,6 +99,16 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> FIERY_HILLS_TREES = id("fiery_hills/trees");
 	ResourceKey<PlacedFeature> FIERY_HILLS_VEGETATION = id("fiery_hills/vegetation");
 
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_STALACTITES = id("flesh_tundra/stalactites");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_NETHERRACK_BOTTOM = id("flesh_tundra/netherrack_bottom");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_CRIMSON_DELTAS = id("flesh_tundra/crimson_deltas");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_BONE_CEILING = id("flesh_tundra/bone_ceiling");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_TREES = id("flesh_tundra/trees");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_VEGETATION = id("flesh_tundra/vegetation");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_VINES = id("flesh_tundra/vines");
+	ResourceKey<PlacedFeature> FLESH_TUNDRA_ROOTS = id("flesh_tundra/roots");
+
+
 	static ResourceKey<PlacedFeature> id(String name) {
 		return Stellarity.key(Registries.PLACED_FEATURE, name);
 	}

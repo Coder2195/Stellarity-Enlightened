@@ -93,6 +93,16 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_TREE = id("fiery_hills/tree");
 	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_VEGETATION = id("fiery_hills/vegetation");
 
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_NETHERRACK_BOTTOM = id("flesh_tundra/netherrack_bottom");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_CRIMSON_DELTAS = id("flesh_tundra/crimson_deltas");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_BONE_CEILING = id("flesh_tundra/bone_ceiling");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_TREE = id("flesh_tundra/tree");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_RIB = id("flesh_tundra/rib");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_TREE_PATCH = id("flesh_tundra/tree_patch");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_VEGETATION = id("flesh_tundra/vegetation");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_VINES = id("flesh_tundra/vines");
+	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_ROOTS = id("flesh_tundra/roots");
+
 
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {
 		return Stellarity.key(Registries.CONFIGURED_FEATURE, name);
