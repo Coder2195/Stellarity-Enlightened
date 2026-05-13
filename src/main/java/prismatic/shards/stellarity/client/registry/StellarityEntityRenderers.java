@@ -18,5 +18,6 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntities.VOIDED_SILVERFISH, VoidedSilverfishRenderer::new);
 		EntityRenderers.register(StellarityEntities.VOIDED_SKELETON, VoidedSkeletonRenderer::new);
 		EntityRenderers.register(StellarityEntities.VOIDED_SLIME, VoidedSlimeRenderer::new);
+		EntityRenderers.register(StellarityEntities.FLESH_PIGLIN, FleshPiglinRenderer::new);
 	}
 }

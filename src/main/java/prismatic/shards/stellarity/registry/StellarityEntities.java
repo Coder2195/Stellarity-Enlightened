@@ -28,6 +28,8 @@ public interface StellarityEntities {
 
 	EntityType<VoidedSlime> VOIDED_SLIME = register(StellarityEntityIds.VOIDED_SLIME, EntityType.Builder.<VoidedSlime>of(VoidedSlime::new, MobCategory.MONSTER).sized(0.52F, 0.52F).eyeHeight(0.325F).spawnDimensionsScale(4.0F).clientTrackingRange(10).notInPeaceful());
 
+	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityIds.FLESH_PIGLIN, EntityType.Builder.<FleshPiglin>of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
 	}
@@ -39,9 +41,12 @@ public interface StellarityEntities {
 		FabricDefaultAttributeRegistry.register(VOIDED_SKELETON, VoidedSkeleton.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SILVERFISH, VoidedSilverfish.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SLIME, VoidedSlime.createAttributes());
-		SpawnPlacements.register(VOIDED_ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(VOIDED_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-		SpawnPlacements.register(VOIDED_SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+		FabricDefaultAttributeRegistry.register(FLESH_PIGLIN, FleshPiglin.createAttributes());
+
+		SpawnPlacements.register(VOIDED_ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedZombie::checkMonsterSpawnRules);
+		SpawnPlacements.register(VOIDED_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSkeleton::checkMonsterSpawnRules);
+		SpawnPlacements.register(VOIDED_SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSilverfish::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SLIME, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSlime::checkSpawnRules);
+		SpawnPlacements.register(FLESH_PIGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FleshPiglin::checkMonsterSpawnRules);
 	}
 }

@@ -244,8 +244,16 @@ public interface BiomeProvider {
 				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_CAVE, 1000, 4, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CAVE, 0.001))
-			)).specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
+			))
+			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.0011f)))
+			.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_ZOMBIE, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
+				.addMobCharge(EntityType.ENDERMAN, 1, 0.3)
+				.addMobCharge(StellarityEntities.VOIDED_ZOMBIE, 1, 0.14)
+				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.15)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addCarver(StellarityConfiguredCarvers.RAVINE)
@@ -262,28 +270,84 @@ public interface BiomeProvider {
 			).build()
 		);
 
+		context.register(FIERY_HILLS, new Biome.BiomeBuilder()
+			.temperature(0.5f).downfall(0.5f).hasPrecipitation(false)
+			.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
+			.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x000000)
+			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
+			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
+			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(new AmbientMoodSettings(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 820, 8, 2)),
+				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.005))
+			))
+			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.0055f)))
+			.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0xff772e), empty(), of(0xff772e), BiomeSpecialEffects.GrassColorModifier.NONE))
+			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(EntityType.MAGMA_CUBE, 1, 2))
+				.addMobCharge(EntityType.MAGMA_CUBE, 1, 0.18)
+				.build()
+			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FIERY_HILLS_HILLS)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FIERY_HILLS_BLACKSTONE_HILLS)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FIERY_HILLS_BASALT_HILLS)
+				.addFeature(GenerationStep.Decoration.LAKES, FIERY_HILLS_LAVA_DELTAS)
+				.addFeature(GenerationStep.Decoration.LAKES, FIERY_HILLS_SAND_DELTAS)
+				.addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, FIERY_HILLS_GOLD_ORE)
+				.addFeature(GenerationStep.Decoration.UNDERGROUND_STRUCTURES, FIERY_HILLS_MAGMA_ORE)
+				.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, FIERY_HILLS_SAND)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FIERY_HILLS_VENTS)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FIERY_HILLS_FIRE)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FIERY_HILLS_TREES)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, FIERY_HILLS_VEGETATION)
+				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS)
+				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS)
+				.build()
+			).build()
+		);
 
-		for (var biome : List.of(FIERY_HILLS, FLESH_TUNDRA, FROSTED_VALLEY, FROZEN_MARSH, FROZEN_SHRUBLAND, FROZEN_SPIKES, HALLOWED_TUNDRA, PRISMARINE_FOREST, PRISMATIC_DUNES, THE_HALLOW, THE_NEST, WARPED_MARSH)) {
+		context.register(FLESH_TUNDRA, new Biome.BiomeBuilder()
+			.temperature(0.8f).downfall(0.4f).hasPrecipitation(false)
+			.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
+			.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x000000)
+			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
+			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xff0000)
+			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(new AmbientMoodSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_MOOD, 3000, 10, 100)),
+				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.00111))
+			))
+			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CRIMSON_SPORE, 0.0056f)))
+			.specialEffects(new BiomeSpecialEffects(0xff0000, of(0xc43b3b), empty(), of(0xc43b3b), BiomeSpecialEffects.GrassColorModifier.NONE))
+			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.addSpawn(MobCategory.MONSTER, 7, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntities.FLESH_PIGLIN, 4, 4))
+				.build()
+			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
+				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS)
+				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS)
+				.build()
+			).build()
+		);
+
+
+		for (var biome : List.of(FROSTED_VALLEY, FROZEN_MARSH, FROZEN_SHRUBLAND, FROZEN_SPIKES, HALLOWED_TUNDRA, PRISMARINE_FOREST, PRISMATIC_DUNES, THE_HALLOW, THE_NEST, WARPED_MARSH)) {
 			context.register(biome, new Biome.BiomeBuilder()
 				.temperature(0.8f).downfall(0.4f).hasPrecipitation(false)
 				.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
-				.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x78a7ff)
-				.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
+				.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x000000)
+				.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 				.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
 				.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
 					of(StellaritySounds.AMBIENT_THE_END_DARK_CALM),
 					of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 3000, 10, 100)),
 					List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.00111))
 				))
-				.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.0011f)))
 				.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
 				.mobSpawnSettings(new MobSpawnSettings.Builder()
-					.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-					.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_ZOMBIE, 4, 4))
-					.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
-					.addMobCharge(EntityType.ENDERMAN, 1, 0.3)
-					.addMobCharge(StellarityEntities.VOIDED_ZOMBIE, 1, 0.14)
-					.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.15)
 					.build()
 				).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 					.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)

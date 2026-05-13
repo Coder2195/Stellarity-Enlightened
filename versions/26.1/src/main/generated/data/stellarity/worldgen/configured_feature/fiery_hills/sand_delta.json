@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:delta_feature",
+  "config": {
+    "contents": {
+      "Name": "minecraft:red_sand"
+    },
+    "rim": {
+      "Name": "minecraft:nether_wart_block"
+    },
+    "rim_size": 0,
+    "size": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 9,
+      "min_inclusive": 5
+    }
+  }
+}

@@ -14,6 +14,14 @@
       }
     },
     "minecraft:visual/ambient_light_color": "#3f472f",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.0011
+      }
+    ],
     "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:visual/sky_color": "#78a7ff",
     "minecraft:visual/water_fog_color": "#041f33"
@@ -54,13 +62,45 @@
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "minecraft:enderman": {
+      "charge": 1.0,
+      "energy_budget": 0.3
+    },
+    "stellarity:voided_skeleton": {
+      "charge": 1.0,
+      "energy_budget": 0.15
+    },
+    "stellarity:voided_zombie": {
+      "charge": 1.0,
+      "energy_budget": 0.14
+    }
+  },
   "spawners": {
     "ambient": [],
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 80
+      },
+      {
+        "type": "stellarity:voided_zombie",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 30
+      },
+      {
+        "type": "stellarity:voided_skeleton",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 15
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

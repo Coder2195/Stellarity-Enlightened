@@ -36,6 +36,7 @@ import prismatic.shards.stellarity.key.StellarityPlacedFeatures;
 import prismatic.shards.stellarity.registry.StellarityFeatures;
 import prismatic.shards.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
 import prismatic.shards.stellarity.util.Constants;
+import prismatic.shards.stellarity.util.tuple.Tuple3;
 
 import java.util.Arrays;
 import java.util.List;
@@ -72,6 +73,10 @@ public interface ConfiguredFeatureProvider {
 		final var upAmethystCluster = property(AMETHYST_CLUSTER, BlockStateProperties.FACING, Direction.UP);
 		final var amethystCrystalsUp = Stream.of(AMETHYST_CLUSTER, LARGE_AMETHYST_BUD, MEDIUM_AMETHYST_BUD, SMALL_AMETHYST_BUD).map(b -> property(b, BlockStateProperties.FACING, Direction.UP)).toArray(BlockState[]::new);
 		final var persistAzaleaLeaves = property(AZALEA_LEAVES, BlockStateProperties.PERSISTENT, true);
+		final var muddyBlocks = HolderSet.direct(
+			blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "mud")),
+			blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "muddy_mangrove_roots"))
+		);
 
 		context.register(GLOBAL_STALACTITES, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
 			WORLDGEN_STALACTITE, block(END_STONE),
@@ -259,10 +264,7 @@ public interface ConfiguredFeatureProvider {
 			block(property(OAK_LEAVES, BlockStateProperties.WATERLOGGED, false)), new CherryFoliagePlacer(num(4), num(0), num(5), 0.25f, 0.25f, 0.16666667f, 0.33333334f),
 			Optional.of(new MangroveRootPlacer(num(0, 5), block(ACACIA_WOOD), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)), new MangroveRootPlacement(
 				blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
-				HolderSet.direct(
-					blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "mud")),
-					blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "muddy_mangrove_roots"))
-				), block(ACACIA_WOOD), 8, 15, 0.2f
+				muddyBlocks, block(ACACIA_WOOD), 8, 15, 0.2f
 			))),
 			twoLayersSize(3, 0, 2), List.of(new LeaveVineDecorator(0.125f)), true, block(ACACIA_WOOD)
 		)));
@@ -477,6 +479,58 @@ public interface ConfiguredFeatureProvider {
 			direct(new PlacedFeature(endlessDunesOasisRock, List.of(
 					countPlace(1), rarity(3), randOffset(trapezoid(-11, 11, 0), trapezoid(-4, 4, 0)), blockFilter(matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK))
 				))
-			)))));
+			)
+		))));
+
+		for (var hill : List.of(
+			new Tuple3<>(FIERY_HILLS_HILLS, WORLDGEN_FIERY_HILLS_END_STONE, END_STONE),
+			new Tuple3<>(FIERY_HILLS_BASALT_HILLS, WORLDGEN_FIERY_HILLS_BASALT, BASALT),
+			new Tuple3<>(FIERY_HILLS_BLACKSTONE_HILLS, WORLDGEN_FIERY_HILLS_BLACKSTONE, BLACKSTONE)
+		))
+			context.register(hill._1(), new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+				hill._2(), block(hill._3()), direct(new PlacedFeature(direct(
+				new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(hill._3()))
+				)), List.of())), CaveSurface.FLOOR, num(1), 0, 15, 1, num(5, 6), 0.5f
+			)));
+		for (var delta : List.of(
+			new Tuple3<>(FIERY_HILLS_LAVA_DELTA, LAVA, MAGMA_BLOCK),
+			new Tuple3<>(FIERY_HILLS_SAND_DELTA, RED_SAND, NETHER_WART_BLOCK)
+		))
+			context.register(delta._1(), new ConfiguredFeature<>(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(from(delta._2()), from(delta._3()), num(5, 9), num(0))));
+		context.register(FIERY_HILLS_GOLD_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(
+			List.of(OreConfiguration.target(new BlockMatchTest(BLACKSTONE), from(GILDED_BLACKSTONE))),
+			10, 0
+		)));
+		context.register(FIERY_HILLS_MAGMA_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(
+			Stream.of(END_STONE, RED_SAND, BASALT, SMOOTH_BASALT, BLACKSTONE).map(b -> OreConfiguration.target(new BlockMatchTest(b), from(MAGMA_BLOCK))).toList(),
+			33, 0
+		)));
+		context.register(FIERY_HILLS_SAND, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_FIERY_HILLS_END_STONE, block(SAND), nothing, CaveSurface.FLOOR, num(7), 0.15f, 15, 0, num(4, 5), 0.15f
+		)));
+		context.register(FIERY_HILLS_VENT, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			Stream.of(false, true).map(b -> property(CAMPFIRE, BlockStateProperties.SIGNAL_FIRE, b)).toArray(BlockState[]::new), new int[]{6, 1}
+		))));
+		context.register(FIERY_HILLS_FIRE, new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+			List.of(
+				new BlockColumnConfiguration.Layer(num(1), blocks(NETHERRACK, MAGMA_BLOCK, OBSIDIAN, CRYING_OBSIDIAN)),
+				new BlockColumnConfiguration.Layer(num(1), block(FIRE))
+			), Direction.UP, all(), false
+		)));
+		context.register(FIERY_HILLS_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(CRIMSON_HYPHAE), new ForkingTrunkPlacer(5, 2, 0),
+			block(OAK_LEAVES), new CherryFoliagePlacer(num(4), num(0), num(5), 0.25f, 0.8f, 0.16666667f, 0.33333334f),
+			Optional.of(new MangroveRootPlacer(
+				num(3, 7), block(CRIMSON_HYPHAE), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)),
+				new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), muddyBlocks, block(CRIMSON_HYPHAE), 8, 15, 0.2f)
+			)),
+			twoLayersSize(3, 0, 2), List.of(new AttachedToLeavesDecorator(0.1f, 3, 2, block(SHROOMLIGHT), 1, List.of(Direction.DOWN))),
+			true, block(CRIMSON_HYPHAE)
+		)));
+		context.register(FIERY_HILLS_VEGETATION, new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+			List.of(new BlockColumnConfiguration.Layer(num(1), blocks(CRIMSON_ROOTS, CRIMSON_FUNGUS)), new BlockColumnConfiguration.Layer(num(1), block(CRIMSON_NYLIUM))),
+			Direction.DOWN, all(), true
+		)));
+
 	}
 }

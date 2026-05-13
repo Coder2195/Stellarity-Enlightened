@@ -86,6 +86,18 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> ENDLESS_DUNES_GRASS = id("endless_dunes/grass");
 	ResourceKey<PlacedFeature> ENDLESS_DUNES_OASIS = id("endless_dunes/oasis");
 
+	ResourceKey<PlacedFeature> FIERY_HILLS_HILLS = id("fiery_hills/hills");
+	ResourceKey<PlacedFeature> FIERY_HILLS_BLACKSTONE_HILLS = id("fiery_hills/blackstone_hills");
+	ResourceKey<PlacedFeature> FIERY_HILLS_BASALT_HILLS = id("fiery_hills/basalt_hills");
+	ResourceKey<PlacedFeature> FIERY_HILLS_LAVA_DELTAS = id("fiery_hills/lava_deltas");
+	ResourceKey<PlacedFeature> FIERY_HILLS_SAND_DELTAS = id("fiery_hills/sand_deltas");
+	ResourceKey<PlacedFeature> FIERY_HILLS_GOLD_ORE = id("fiery_hills/gold_ore");
+	ResourceKey<PlacedFeature> FIERY_HILLS_MAGMA_ORE = id("fiery_hills/magma_ore");
+	ResourceKey<PlacedFeature> FIERY_HILLS_SAND = id("fiery_hills/sand");
+	ResourceKey<PlacedFeature> FIERY_HILLS_VENTS = id("fiery_hills/vents");
+	ResourceKey<PlacedFeature> FIERY_HILLS_FIRE = id("fiery_hills/fire");
+	ResourceKey<PlacedFeature> FIERY_HILLS_TREES = id("fiery_hills/trees");
+	ResourceKey<PlacedFeature> FIERY_HILLS_VEGETATION = id("fiery_hills/vegetation");
 
 	static ResourceKey<PlacedFeature> id(String name) {
 		return Stellarity.key(Registries.PLACED_FEATURE, name);

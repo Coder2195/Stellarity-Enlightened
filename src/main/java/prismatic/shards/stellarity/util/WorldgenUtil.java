@@ -86,6 +86,10 @@ public interface WorldgenUtil {
 		return BlockPredicate.solid();
 	}
 
+	static BlockPredicate solid(Vec3i offset) {
+		return BlockPredicate.solid(offset);
+	}
+
 	static BiomeFilter biome() {
 		return BiomeFilter.biome();
 	}

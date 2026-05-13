@@ -80,6 +80,19 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_DIRT = id("endless_dunes/oasis/dirt");
 	ResourceKey<ConfiguredFeature<?, ?>> ENDLESS_DUNES_OASIS_VEGETATION = id("endless_dunes/oasis/vegetation");
 
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_HILLS = id("fiery_hills/hills");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_BLACKSTONE_HILLS = id("fiery_hills/blackstone_hills");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_BASALT_HILLS = id("fiery_hills/basalt_hills");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_SAND_DELTA = id("fiery_hills/sand_delta");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_LAVA_DELTA = id("fiery_hills/lava_delta");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_GOLD_ORE = id("fiery_hills/gold_ore");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_MAGMA_ORE = id("fiery_hills/magma_ore");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_SAND = id("fiery_hills/sand");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_VENT = id("fiery_hills/vent");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_FIRE = id("fiery_hills/fire");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_TREE = id("fiery_hills/tree");
+	ResourceKey<ConfiguredFeature<?, ?>> FIERY_HILLS_VEGETATION = id("fiery_hills/vegetation");
+
 
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {
 		return Stellarity.key(Registries.CONFIGURED_FEATURE, name);

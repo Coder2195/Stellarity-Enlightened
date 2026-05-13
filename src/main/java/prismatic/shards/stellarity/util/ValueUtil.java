@@ -31,6 +31,10 @@ public interface ValueUtil {
 			weights[i] = new Weighted<>(num(values[2 * i]), values[2 * i + 1]);
 		}
 
+		return weighted(weights);
+	}
+
+	static WeightedListInt weighted(Weighted<IntProvider>... weights) {
 		return new WeightedListInt(WeightedList.of(weights));
 	}
 

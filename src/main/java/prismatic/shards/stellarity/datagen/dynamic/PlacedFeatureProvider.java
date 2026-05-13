@@ -6,6 +6,8 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.random.Weighted;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -18,6 +20,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConf
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityConfiguredFeatures;
+import prismatic.shards.stellarity.util.tuple.Tuple2;
+import prismatic.shards.stellarity.util.tuple.Tuple3;
 
 import java.util.List;
 
@@ -38,6 +42,7 @@ public interface PlacedFeatureProvider {
 		context.register(NOTHING, new PlacedFeature(Holder.direct(new ConfiguredFeature<>(Feature.NO_OP, NoneFeatureConfiguration.INSTANCE)), List.of()));
 	}
 
+	@SuppressWarnings("unchecked")
 	static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
 		HolderGetter<PlacedFeature> placed = context.lookup(Registries.PLACED_FEATURE);
@@ -275,6 +280,49 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(ENDLESS_DUNES_OASIS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.ENDLESS_DUNES_OASIS), List.of(
 			noiseCount(7, 130, -0.8), countPlace(64), heightmap(Heightmap.Types.WORLD_SURFACE), biome()
+		)));
+
+		for (var hill : List.of(
+			new Tuple2<>(FIERY_HILLS_HILLS, StellarityConfiguredFeatures.FIERY_HILLS_HILLS),
+			new Tuple2<>(FIERY_HILLS_BASALT_HILLS, StellarityConfiguredFeatures.FIERY_HILLS_BASALT_HILLS),
+			new Tuple2<>(FIERY_HILLS_BLACKSTONE_HILLS, StellarityConfiguredFeatures.FIERY_HILLS_BLACKSTONE_HILLS)
+		))
+			context.register(hill._1(), new PlacedFeature(configured.getOrThrow(hill._2()), List.of(
+				countPlace(30), inSquare(), noiseCount(25, 130, 0), heightRange(height(aboveBottom(0), belowTop(0))),
+				envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+			)));
+		for (var delta : List.of(
+			new Tuple3<>(FIERY_HILLS_LAVA_DELTAS, StellarityConfiguredFeatures.FIERY_HILLS_LAVA_DELTA, new Block[]{END_STONE, BLACKSTONE, SMOOTH_BASALT, BASALT}),
+			new Tuple3<>(FIERY_HILLS_SAND_DELTAS, StellarityConfiguredFeatures.FIERY_HILLS_SAND_DELTA, new Block[]{END_STONE})
+		))
+			context.register(delta._1(), new PlacedFeature(configured.getOrThrow(delta._2()), List.of(
+				everyLayer(weighted(new Weighted<>(num(20), 1), new Weighted<>(num(10, 15), 2), new Weighted<>(num(5), 3))),
+				blockFilter(matchBlocks(vec(0, -1, 0), delta._3())), biome()
+			)));
+		for (var ore : List.of(
+			new Tuple3<>(FIERY_HILLS_GOLD_ORE, StellarityConfiguredFeatures.FIERY_HILLS_GOLD_ORE, 50),
+			new Tuple3<>(FIERY_HILLS_MAGMA_ORE, StellarityConfiguredFeatures.FIERY_HILLS_MAGMA_ORE, 20)
+		))
+			context.register(ore._1(), new PlacedFeature(configured.getOrThrow(ore._2()), List.of(
+				countPlace(ore._3()), inSquare(), heightRange(height(aboveBottom(10), belowTop(10))), biome()
+			)));
+		context.register(FIERY_HILLS_SAND, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_SAND), List.of(
+			countPlace(30), inSquare(), noiseCount(25, 130, 0), heightRange(height(aboveBottom(0), belowTop(0))), envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+		)));
+		context.register(FIERY_HILLS_VENTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_VENT), List.of(
+			countPlace(50), inSquare(), heightRange(height(aboveBottom(25), belowTop(50))),
+			envScan(Direction.DOWN, all(matchBlocks(vec(0, 1, 0), LAVA), matchBlocks(vec(0, 2, 0), AIR)), all(), 32),
+			biome()
+		)));
+		context.register(FIERY_HILLS_FIRE, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_FIRE), List.of(
+			countPlace(100), inSquare(), heightRange(height(aboveBottom(15), belowTop(9))), biome(), envScan(Direction.UP, all(solid(), matchBlocks(vec(0, 1, 0), AIR)), all(), 32)
+		)));
+		context.register(FIERY_HILLS_TREES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_TREE), List.of(
+			everyLayer(3), blockFilter(matchBlocks(vec(0, -1, 0), LAVA, MAGMA_BLOCK)), biome()
+		)));
+		context.register(FIERY_HILLS_VEGETATION, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_VEGETATION), List.of(
+			everyLayer(4), biome(), countPlace(128), randOffset(trapezoid(-7, 7, 0), trapezoid(-3, 3, 0)),
+			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), NETHER_WART_BLOCK)))
 		)));
 	}
 }

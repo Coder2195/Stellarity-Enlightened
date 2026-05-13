@@ -2,15 +2,15 @@
   "attributes": {
     "minecraft:audio/ambient_sounds": {
       "additions": {
-        "sound": "minecraft:ambient.soul_sand_valley.additions",
-        "tick_chance": 0.00111
+        "sound": "minecraft:ambient.basalt_deltas.additions",
+        "tick_chance": 0.005
       },
-      "loop": "stellarity:ambient.the_end.dark_calm",
+      "loop": "stellarity:ambient.the_end.dark",
       "mood": {
-        "block_search_extent": 10,
-        "offset": 100.0,
-        "sound": "minecraft:ambient.soul_sand_valley.mood",
-        "tick_delay": 3000
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.nether_wastes.mood",
+        "tick_delay": 820
       }
     },
     "minecraft:visual/ambient_light_color": "#3f472f",
@@ -19,33 +19,49 @@
         "particle": {
           "type": "minecraft:white_ash"
         },
-        "probability": 0.0011
+        "probability": 0.0055
       }
     ],
-    "minecraft:visual/fog_color": "#c0d8ff",
-    "minecraft:visual/sky_color": "#78a7ff",
+    "minecraft:visual/fog_color": "#000000",
+    "minecraft:visual/sky_color": "#000000",
     "minecraft:visual/water_fog_color": "#041f33"
   },
   "carvers": [],
-  "downfall": 0.4,
+  "downfall": 0.5,
   "effects": {
-    "foliage_color": "#75ae1c",
-    "grass_color": "#91bf4a",
+    "foliage_color": "#ff772e",
+    "grass_color": "#ff772e",
     "water_color": "#43d5ee"
   },
   "features": [
     [
-      "stellarity:global/stalactites"
+      "stellarity:global/stalactites",
+      "stellarity:fiery_hills/hills",
+      "stellarity:fiery_hills/blackstone_hills",
+      "stellarity:fiery_hills/basalt_hills"
+    ],
+    [
+      "stellarity:fiery_hills/lava_deltas",
+      "stellarity:fiery_hills/sand_deltas"
+    ],
+    [],
+    [
+      "stellarity:fiery_hills/gold_ore",
+      "stellarity:fiery_hills/magma_ore"
     ],
     [],
     [],
     [],
     [],
-    [],
-    [],
-    [],
-    [],
-    [],
+    [
+      "stellarity:fiery_hills/sand"
+    ],
+    [
+      "stellarity:fiery_hills/vents",
+      "stellarity:fiery_hills/fire",
+      "stellarity:fiery_hills/trees",
+      "stellarity:fiery_hills/vegetation"
+    ],
     [
       "stellarity:global/dungeons",
       "stellarity:global/fossils"
@@ -53,17 +69,9 @@
   ],
   "has_precipitation": false,
   "spawn_costs": {
-    "minecraft:enderman": {
+    "minecraft:magma_cube": {
       "charge": 1.0,
-      "energy_budget": 0.3
-    },
-    "stellarity:voided_skeleton": {
-      "charge": 1.0,
-      "energy_budget": 0.15
-    },
-    "stellarity:voided_zombie": {
-      "charge": 1.0,
-      "energy_budget": 0.14
+      "energy_budget": 0.18
     }
   },
   "spawners": {
@@ -73,27 +81,15 @@
     "misc": [],
     "monster": [
       {
-        "type": "minecraft:enderman",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 80
-      },
-      {
-        "type": "stellarity:voided_zombie",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 30
-      },
-      {
-        "type": "stellarity:voided_skeleton",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 15
+        "type": "minecraft:magma_cube",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 20
       }
     ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": 0.5
 }
