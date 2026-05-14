@@ -58,258 +58,256 @@ public interface StellarityItems {
 	Item FLAREFIN_KOI = register(StellarityItemIds.FLAREFIN_KOI, foodProperties(4, 0.8f, new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 16 * 20)));
 	Item AMETHYST_BUDFISH = register(StellarityItemIds.AMETHYST_BUDFISH);
 	Item CRIMSON_TIGERFISH = register(StellarityItemIds.CRIMSON_TIGERFISH, foodProperties(1, 0.2f,
-    		new MobEffectInstance(MobEffects.HUNGER, 30 * 20),
-    		new MobEffectInstance(MobEffects.POISON, 20 * 20)));
+		new MobEffectInstance(MobEffects.HUNGER, 30 * 20),
+		new MobEffectInstance(MobEffects.POISON, 20 * 20)));
 	Item ENDER_KOI = register(StellarityItemIds.ENDER_KOI, basicFood(1, 0.6f));
 	Item FLESHY_PIRANHA = register(StellarityItemIds.FLESHY_PIRANHA, foodProperties(1, 0.2f,
-    		new MobEffectInstance(MobEffects.HUNGER, 30 * 20),
-    		new MobEffectInstance(MobEffects.POISON, 20 * 20)
-    	));
+		new MobEffectInstance(MobEffects.HUNGER, 30 * 20),
+		new MobEffectInstance(MobEffects.POISON, 20 * 20)
+	));
 	Item BUBBLEFISH = register(StellarityItemIds.BUBBLEFISH, foodProperties(0, 0, new MobEffectInstance(MobEffects.WATER_BREATHING, 20 * 20)));
 	Item PRISMITE = register(StellarityItemIds.PRISMITE, foodProperties(3, 1.8f, new MobEffectInstance(MobEffects.REGENERATION, 5 * 20)));
 	Item OVERGROWN_COD = register(StellarityItemIds.OVERGROWN_COD, Item::new,
-    		foodProperties(1, 0.2f, new MobEffectInstance(MobEffects.SLOWNESS, 3 * 20, 2)));
+		foodProperties(1, 0.2f, new MobEffectInstance(MobEffects.SLOWNESS, 3 * 20, 2)));
 	Item SHULKER_BODY = register(StellarityItemIds.SHULKER_BODY, ShulkerBody::new, ShulkerBody.PROPERTIES);
 	Item PRISMATIC_SUSHI = register(StellarityItemIds.PRISMATIC_SUSHI, foodProperties(4, 2.4f, true, new MobEffectInstance(MobEffects.HEALTH_BOOST, 40 * 20)));
 	Item SHEPHERDS_PIE = register(StellarityItemIds.SHEPHERDS_PIE, Item::new,
-    		foodProperties(20, 20f, true,
-      			new MobEffectInstance(MobEffects.HEALTH_BOOST, 20, 2),
-      			new MobEffectInstance(MobEffects.REGENERATION, 64 * 20, 1)
-      		));
+		foodProperties(20, 20f, true,
+			new MobEffectInstance(MobEffects.HEALTH_BOOST, 20, 2),
+			new MobEffectInstance(MobEffects.REGENERATION, 64 * 20, 1)
+		));
 	Item CHORUS_PIE = register(StellarityItemIds.CHORUS_PIE, foodProperties(8, 4.8f));
 	Item PHANTOM_ITEM_FRAME = register(StellarityItemIds.PHANTOM_ITEM_FRAME, PhantomItemFrameItem::new, PhantomItemFrameItem.PROPERTIES);
 	Item PHO = register(StellarityItemIds.PHO, Item::new, foodProperties(new Item.Properties().stacksTo(1).craftRemainder(Items.BOWL),
-    		new FoodProperties.Builder(), Consumables.defaultFood(), 13, 20f, true,
-    		new MobEffectInstance(MobEffects.ABSORPTION, 150 * 20),
-    		new MobEffectInstance(MobEffects.STRENGTH, 150 * 20),
-    		new MobEffectInstance(MobEffects.REGENERATION, 32 * 20)
-    	).usingConvertsTo(Items.BOWL));
+		new FoodProperties.Builder(), Consumables.defaultFood(), 13, 20f, true,
+		new MobEffectInstance(MobEffects.ABSORPTION, 150 * 20),
+		new MobEffectInstance(MobEffects.STRENGTH, 150 * 20),
+		new MobEffectInstance(MobEffects.REGENERATION, 32 * 20)
+	).usingConvertsTo(Items.BOWL));
 	Item FROST_MINNOW = register(StellarityItemIds.FROST_MINNOW, foodProperties(1, 0.2f,
-    		new MobEffectInstance(MobEffects.SLOWNESS, 20 * 20)
-    	));
+		new MobEffectInstance(MobEffects.SLOWNESS, 20 * 20)
+	));
 	Item GOOSH = register(StellarityItemIds.GOOSH, foodProperties(1, 0,
-    		new MobEffectInstance(MobEffects.OOZING, 59 * 20),
-    		new MobEffectInstance(MobEffects.JUMP_BOOST, 15 * 20),
-    		new MobEffectInstance(MobEffects.NAUSEA, 5 * 20)
-    	));
+		new MobEffectInstance(MobEffects.OOZING, 59 * 20),
+		new MobEffectInstance(MobEffects.JUMP_BOOST, 15 * 20),
+		new MobEffectInstance(MobEffects.NAUSEA, 5 * 20)
+	));
 	Item CHORUS_STEW = register(StellarityItemIds.CHORUS_STEW, Item::new, foodProperties(new Item.Properties().stacksTo(1).craftRemainder(Items.BOWL),
-    		new FoodProperties.Builder(), Consumables.defaultFood().consumeSeconds(1.6f), 13, 20f, true,
-    		new MobEffectInstance(MobEffects.ABSORPTION, 150 * 20),
-    		new MobEffectInstance(MobEffects.STRENGTH, 150 * 20),
-    		new MobEffectInstance(MobEffects.REGENERATION, 32 * 20)
-    	).usingConvertsTo(Items.BOWL));
+		new FoodProperties.Builder(), Consumables.defaultFood().consumeSeconds(1.6f), 13, 20f, true,
+		new MobEffectInstance(MobEffects.ABSORPTION, 150 * 20),
+		new MobEffectInstance(MobEffects.STRENGTH, 150 * 20),
+		new MobEffectInstance(MobEffects.REGENERATION, 32 * 20)
+	).usingConvertsTo(Items.BOWL));
 
 	Item TAMARIS = register(StellarityItemIds.TAMARIS, Tamaris::new, Tamaris.PROPERTIES);
 	Item CHORUS_PLATING = register(StellarityItemIds.CHORUS_PLATING);
 	Item ENDERITE_SHARD = register(StellarityItemIds.ENDERITE_SHARD);
 	Item ENDERITE_UPGRADE_SMITHING_TEMPLATE = register(StellarityItemIds.ENDERITE_UPGRADE_SMITHING_TEMPLATE, (properties) -> new SmithingTemplateItem(
-    		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.applies_to").withStyle(ChatFormatting.BLUE),
-    		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.stellarity.hallowed_ingot")).withStyle(ChatFormatting.BLUE),
-    		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.upgrade").withStyle(ChatFormatting.GRAY),
-    		Component.empty(),
-    		List.of(),
-    		List.of(), properties
-    	) {
+		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.applies_to").withStyle(ChatFormatting.BLUE),
+		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.stellarity.hallowed_ingot")).withStyle(ChatFormatting.BLUE),
+		Component.translatable("item.stellarity.enderite_upgrade_smithing_template.upgrade").withStyle(ChatFormatting.GRAY),
+		Component.empty(),
+		List.of(),
+		List.of(), properties
+	) {
 		@Override
-		public
+		public void appendHoverText(@NonNull ItemStack itemStack, @NonNull TooltipContext tooltipContext, @NonNull TooltipDisplay tooltipDisplay, @NonNull Consumer<Component> consumer, @NonNull TooltipFlag tooltipFlag) {
+			super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
+			consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.stellarity.chorus_plating")).withStyle(ChatFormatting.BLUE)));
+			consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.minecraft.shulker_shell")).withStyle(ChatFormatting.BLUE)));
+			consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.8"), Component.translatable("block.minecraft.cherry_leaves")).withStyle(ChatFormatting.BLUE)));
+		}
+	}, new Item.Properties());
 
-    void appendHoverText(@NonNull ItemStack itemStack, @NonNull TooltipContext tooltipContext, @NonNull TooltipDisplay tooltipDisplay, @NonNull Consumer<Component> consumer, @NonNull TooltipFlag tooltipFlag) {
-		 super.appendHoverText(itemStack, tooltipContext, tooltipDisplay, consumer, tooltipFlag);
-      consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.stellarity.chorus_plating")).withStyle(ChatFormatting.BLUE)));
-      consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.4"), Component.translatable("item.minecraft.shulker_shell")).withStyle(ChatFormatting.BLUE)));
-      consumer.accept(CommonComponents.space().append(Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients", Component.translatable("item.stellarity.enderite_upgrade_smithing_template.ingredients.count.8"), Component.translatable("block.minecraft.cherry_leaves")).withStyle(ChatFormatting.BLUE)));
-    }
-  }, new Item.Properties());
+	Item HALLOWED_INGOT = register(StellarityItemIds.HALLOWED_INGOT);
+	Item SAND_RUNE = register(StellarityItemIds.SAND_RUNE);
+	Item STARLIGHT_SOOT = register(StellarityItemIds.STARLIGHT_SOOT);
+	Item GILDED_PURPUR_KEY = register(StellarityItemIds.GILDED_PURPUR_KEY);
+	Item PURPUR_KEY = register(StellarityItemIds.PURPUR_KEY);
+	Item WINGED_KEY = register(StellarityItemIds.WINGED_KEY);
 
-  Item HALLOWED_INGOT = register(StellarityItemIds.HALLOWED_INGOT);
-  Item SAND_RUNE = register(StellarityItemIds.SAND_RUNE);
-  Item STARLIGHT_SOOT = register(StellarityItemIds.STARLIGHT_SOOT);
-  Item GILDED_PURPUR_KEY = register(StellarityItemIds.GILDED_PURPUR_KEY);
-  Item PURPUR_KEY = register(StellarityItemIds.PURPUR_KEY);
-  Item WINGED_KEY = register(StellarityItemIds.WINGED_KEY);
+	Item PRISMATIC_PEARL = register(StellarityItemIds.PRISMATIC_PEARL, PrismaticPearlItem::new, PrismaticPearlItem.PROPERTIES);
+	Item ENDONOMICON = register(StellarityItemIds.ENDONOMICON, Endonomicon::new, Endonomicon.PROPERTIES);
 
-  Item PRISMATIC_PEARL = register(StellarityItemIds.PRISMATIC_PEARL, PrismaticPearlItem::new, PrismaticPearlItem.PROPERTIES);
-  Item ENDONOMICON = register(StellarityItemIds.ENDONOMICON, Endonomicon::new, Endonomicon.PROPERTIES);
-
-  Item MUSIC_DISC_DEVIANTS_LIGHT_MUSIC_BOX = register(StellarityItemIds.MUSIC_DISC_DEVIANTS_LIGHT_MUSIC_BOX,
-    Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.DEVIANTS_LIGHT_MUSIC_BOX)
-  );
-  Item MUSIC_DISC_FIRES_OF_HOKKAI = register(StellarityItemIds.MUSIC_DISC_FIRES_OF_HOKKAI,
-    Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.FIRES_OF_HOKKAI)
-  );
-  Item MUSIC_DISC_PRECIPICE_STEREO = register(StellarityItemIds.MUSIC_DISC_PRECIPICE_STEREO,
-    Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.PRECIPICE_STEREO)
-  );
+	Item MUSIC_DISC_DEVIANTS_LIGHT_MUSIC_BOX = register(StellarityItemIds.MUSIC_DISC_DEVIANTS_LIGHT_MUSIC_BOX,
+		Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.DEVIANTS_LIGHT_MUSIC_BOX)
+	);
+	Item MUSIC_DISC_FIRES_OF_HOKKAI = register(StellarityItemIds.MUSIC_DISC_FIRES_OF_HOKKAI,
+		Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.FIRES_OF_HOKKAI)
+	);
+	Item MUSIC_DISC_PRECIPICE_STEREO = register(StellarityItemIds.MUSIC_DISC_PRECIPICE_STEREO,
+		Item::new, new Item.Properties().stacksTo(1).jukeboxPlayable(StellarityJukeboxSongs.PRECIPICE_STEREO)
+	);
 
 
-  Supplier<ItemStack> AMARENE_POTION = createPotion(StellarityPotions.AMARENE);
+	Supplier<ItemStack> AMARENE_POTION = createPotion(StellarityPotions.AMARENE);
 
-  Supplier<ItemStack> BLIND_RAGE_POTION = createPotion(StellarityPotions.BLIND_RAGE);
-  Supplier<ItemStack> LONG_BLIND_RAGE_POTION = createPotion(StellarityPotions.LONG_BLIND_RAGE);
+	Supplier<ItemStack> BLIND_RAGE_POTION = createPotion(StellarityPotions.BLIND_RAGE);
+	Supplier<ItemStack> LONG_BLIND_RAGE_POTION = createPotion(StellarityPotions.LONG_BLIND_RAGE);
 
-  Supplier<ItemStack> ENDURANCE_POTION = createPotion(StellarityPotions.ENDURANCE);
-  Supplier<ItemStack> LONG_ENDURANCE_POTION = createPotion(StellarityPotions.LONG_ENDURANCE);
-  Supplier<ItemStack> STRONG_ENDURANCE_POTION = createPotion(StellarityPotions.STRONG_ENDURANCE);
+	Supplier<ItemStack> ENDURANCE_POTION = createPotion(StellarityPotions.ENDURANCE);
+	Supplier<ItemStack> LONG_ENDURANCE_POTION = createPotion(StellarityPotions.LONG_ENDURANCE);
+	Supplier<ItemStack> STRONG_ENDURANCE_POTION = createPotion(StellarityPotions.STRONG_ENDURANCE);
 
-  Supplier<ItemStack> ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.ENTANGLEMENT);
-  Supplier<ItemStack> LONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.LONG_ENTANGLEMENT);
-  Supplier<ItemStack> STRONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.STRONG_ENTANGLEMENT);
+	Supplier<ItemStack> ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.ENTANGLEMENT);
+	Supplier<ItemStack> LONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.LONG_ENTANGLEMENT);
+	Supplier<ItemStack> STRONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.STRONG_ENTANGLEMENT);
 
-  Supplier<ItemStack> FROST_CLOUD_POTION = createLingeringPotion(StellarityPotions.FROST_CLOUD);
+	Supplier<ItemStack> FROST_CLOUD_POTION = createLingeringPotion(StellarityPotions.FROST_CLOUD);
 
-  Supplier<ItemStack> HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.HELLFIRE_TREADER);
-  Supplier<ItemStack> LONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.LONG_HELLFIRE_TREADER);
-  Supplier<ItemStack> STRONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.STRONG_HELLFIRE_TREADER);
+	Supplier<ItemStack> HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.HELLFIRE_TREADER);
+	Supplier<ItemStack> LONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.LONG_HELLFIRE_TREADER);
+	Supplier<ItemStack> STRONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.STRONG_HELLFIRE_TREADER);
 
-  Supplier<ItemStack> LIFEFORCE_POTION = createPotion(StellarityPotions.LIFEFORCE);
-  Supplier<ItemStack> LONG_LIFEFORCE_POTION = createPotion(StellarityPotions.LONG_LIFEFORCE);
-  Supplier<ItemStack> STRONG_LIFEFORCE_POTION = createPotion(StellarityPotions.STRONG_LIFEFORCE);
+	Supplier<ItemStack> LIFEFORCE_POTION = createPotion(StellarityPotions.LIFEFORCE);
+	Supplier<ItemStack> LONG_LIFEFORCE_POTION = createPotion(StellarityPotions.LONG_LIFEFORCE);
+	Supplier<ItemStack> STRONG_LIFEFORCE_POTION = createPotion(StellarityPotions.STRONG_LIFEFORCE);
 
-  Supplier<ItemStack> SPELUNKER_POTION = createPotion(StellarityPotions.SPELUNKER);
-  Supplier<ItemStack> LONG_SPELUNKER_POTION = createPotion(StellarityPotions.LONG_SPELUNKER);
-  Supplier<ItemStack> STRONG_SPELUNKER_POTION = createPotion(StellarityPotions.STRONG_SPELUNKER);
+	Supplier<ItemStack> SPELUNKER_POTION = createPotion(StellarityPotions.SPELUNKER);
+	Supplier<ItemStack> LONG_SPELUNKER_POTION = createPotion(StellarityPotions.LONG_SPELUNKER);
+	Supplier<ItemStack> STRONG_SPELUNKER_POTION = createPotion(StellarityPotions.STRONG_SPELUNKER);
 
-  Supplier<ItemStack> POSEIDONS_NECTAR_POTION = createPotion(StellarityPotions.POSEIDONS_NECTAR);
-  Supplier<ItemStack> RED_POTION = createPotion(StellarityPotions.RED);
+	Supplier<ItemStack> POSEIDONS_NECTAR_POTION = createPotion(StellarityPotions.POSEIDONS_NECTAR);
+	Supplier<ItemStack> RED_POTION = createPotion(StellarityPotions.RED);
 
-  Supplier<ItemStack> REGENERAGA_POTION = createPotion(StellarityPotions.REGENERAGA);
-  Supplier<ItemStack> LONG_REGENERAGA_POTION = createPotion(StellarityPotions.LONG_REGENERAGA);
-  Supplier<ItemStack> STRONG_REGENERAGA_POTION = createPotion(StellarityPotions.STRONG_REGENERAGA);
+	Supplier<ItemStack> REGENERAGA_POTION = createPotion(StellarityPotions.REGENERAGA);
+	Supplier<ItemStack> LONG_REGENERAGA_POTION = createPotion(StellarityPotions.LONG_REGENERAGA);
+	Supplier<ItemStack> STRONG_REGENERAGA_POTION = createPotion(StellarityPotions.STRONG_REGENERAGA);
 
-  Supplier<ItemStack> LUCK_POTION = createPotion(StellarityPotions.LUCK);
+	Supplier<ItemStack> LUCK_POTION = createPotion(StellarityPotions.LUCK);
 
-  Supplier<ItemStack> CHORUS_JUICE = createPotion(StellarityPotions.CHORUS_JUICE);
+	Supplier<ItemStack> CHORUS_JUICE = createPotion(StellarityPotions.CHORUS_JUICE);
 
-  Item ROYAL_JELLY = register(StellarityItemIds.ROYAL_JELLY, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood().sound(SoundEvents.HONEY_DRINK), 6, 3.6f, true,
-    new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20)
-  ).usingConvertsTo(Items.GLASS_BOTTLE));
+	Item ROYAL_JELLY = register(StellarityItemIds.ROYAL_JELLY, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood().sound(SoundEvents.HONEY_DRINK), 6, 3.6f, true,
+		new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20)
+	).usingConvertsTo(Items.GLASS_BOTTLE));
 
-  Item ROYAL_JELLY_II = register(StellarityItemIds.ROYAL_JELLY_II, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood(), 6, 3.6f, true,
-    new MobEffectInstance(MobEffects.ABSORPTION, 30 * 20, 2)
-  ).usingConvertsTo(Items.GLASS_BOTTLE));
+	Item ROYAL_JELLY_II = register(StellarityItemIds.ROYAL_JELLY_II, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood(), 6, 3.6f, true,
+		new MobEffectInstance(MobEffects.ABSORPTION, 30 * 20, 2)
+	).usingConvertsTo(Items.GLASS_BOTTLE));
 
-  Item SATCHEL_OF_VOIDS = register(StellarityItemIds.SATCHEL_OF_VOIDS, SatchelOfVoids::new, SatchelOfVoids.PROPERTIES);
-  Item DUSKBERRY = register(StellarityItemIds.DUSKBERRY, Duskberry::new, Duskberry.PROPERTIES);
+	Item SATCHEL_OF_VOIDS = register(StellarityItemIds.SATCHEL_OF_VOIDS, SatchelOfVoids::new, SatchelOfVoids.PROPERTIES);
+	Item DUSKBERRY = register(StellarityItemIds.DUSKBERRY, Duskberry::new, Duskberry.PROPERTIES);
 
-  Item SHULKER_HELMET = register(StellarityItemIds.SHULKER_HELMET, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.HELMET).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.HELMET)));
-  Item SHULKER_CHESTPLATE = register(StellarityItemIds.SHULKER_CHESTPLATE, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE)));
-  Item SHULKER_LEGGINGS = register(StellarityItemIds.SHULKER_LEGGINGS, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS)));
-  Item SHULKER_BOOTS = register(StellarityItemIds.SHULKER_BOOTS, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS)));
+	Item SHULKER_HELMET = register(StellarityItemIds.SHULKER_HELMET, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.HELMET).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.HELMET)));
+	Item SHULKER_CHESTPLATE = register(StellarityItemIds.SHULKER_CHESTPLATE, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE)));
+	Item SHULKER_LEGGINGS = register(StellarityItemIds.SHULKER_LEGGINGS, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS)));
+	Item SHULKER_BOOTS = register(StellarityItemIds.SHULKER_BOOTS, new Item.Properties().humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS)));
 
-  Item ENDER_EGG = register(StellarityItemIds.ENDER_EGG, EggItem::new, new Item.Properties().stacksTo(16).delayedHolderComponent(DataComponents.CHICKEN_VARIANT, StellarityMobVariants.CHICKEN_END));
+	Item ENDER_EGG = register(StellarityItemIds.ENDER_EGG, EggItem::new, new Item.Properties().stacksTo(16).delayedHolderComponent(DataComponents.CHICKEN_VARIANT, StellarityMobVariants.CHICKEN_END));
 
-  Item VOIDED_ZOMBIE_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_ZOMBIE_SPAWN_EGG, StellarityEntities.VOIDED_ZOMBIE);
-  Item VOIDED_SKELETON_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SKELETON_SPAWN_EGG, StellarityEntities.VOIDED_SKELETON);
-  Item VOIDED_SILVERFISH_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SILVERFISH_SPAWN_EGG, StellarityEntities.VOIDED_SILVERFISH);
-  Item VOIDED_SLIME_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SLIME_SPAWN_EGG, StellarityEntities.VOIDED_SLIME);
+	Item VOIDED_ZOMBIE_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_ZOMBIE_SPAWN_EGG, StellarityEntities.VOIDED_ZOMBIE);
+	Item VOIDED_SKELETON_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SKELETON_SPAWN_EGG, StellarityEntities.VOIDED_SKELETON);
+	Item VOIDED_SILVERFISH_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SILVERFISH_SPAWN_EGG, StellarityEntities.VOIDED_SILVERFISH);
+	Item VOIDED_SLIME_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SLIME_SPAWN_EGG, StellarityEntities.VOIDED_SLIME);
+	Item POTASSIFISH = register(StellarityItemIds.POTASSIFISH, foodProperties(1, 0.6f, new MobEffectInstance(MobEffects.REGENERATION, 4 * 20)));
+	
+	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
+		return () -> PotionContents.createItemStack(Items.POTION, potion);
+	}
 
+	static Supplier<ItemStack> createSplashPotion(Holder<Potion> potion) {
+		return () -> PotionContents.createItemStack(Items.SPLASH_POTION, potion);
+	}
 
-  static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
-    return () -> PotionContents.createItemStack(Items.POTION, potion);
-  }
+	static Supplier<ItemStack> createLingeringPotion(Holder<Potion> potion) {
+		return () -> PotionContents.createItemStack(Items.LINGERING_POTION, potion);
+	}
 
-  static Supplier<ItemStack> createSplashPotion(Holder<Potion> potion) {
-    return () -> PotionContents.createItemStack(Items.SPLASH_POTION, potion);
-  }
+	static Item registerBlock(ResourceKey<Item> key, Block block) {
+		return registerBlock(key, block, new Item.Properties());
+	}
 
-  static Supplier<ItemStack> createLingeringPotion(Holder<Potion> potion) {
-    return () -> PotionContents.createItemStack(Items.LINGERING_POTION, potion);
-  }
+	static Item registerBlock(ResourceKey<Item> key, Block block, Item.Properties settings) {
+		settings = settings.useBlockDescriptionPrefix().setId(key);
+		Item item = new BlockItem(block, settings);
 
-  static Item registerBlock(ResourceKey<Item> key, Block block) {
-    return registerBlock(key, block, new Item.Properties());
-  }
+		Registry.register(BuiltInRegistries.ITEM, key, item);
 
-  static Item registerBlock(ResourceKey<Item> key, Block block, Item.Properties settings) {
-    settings = settings.useBlockDescriptionPrefix().setId(key);
-    Item item = new BlockItem(block, settings);
+		return item;
+	}
 
-    Registry.register(BuiltInRegistries.ITEM, key, item);
+	private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
+		return register(key, SpawnEggItem::new, (new Item.Properties()).spawnEgg(type));
+	}
 
-    return item;
-  }
+	static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory) {
+		return register(key, itemFactory, new Item.Properties());
+	}
 
-  private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
-    return register(key, SpawnEggItem::new, (new Item.Properties()).spawnEgg(type));
-  }
+	static Item register(ResourceKey<Item> key) {
+		return register(key, Item::new);
+	}
 
-  static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory) {
-    return register(key, itemFactory, new Item.Properties());
-  }
+	static Item register(ResourceKey<Item> key, Item.Properties properties) {
+		return register(key, Item::new, properties);
+	}
 
-  static Item register(ResourceKey<Item> key) {
-    return register(key, Item::new);
-  }
+	static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
+		settings.setId(key);
 
-  static Item register(ResourceKey<Item> key, Item.Properties properties) {
-    return register(key, Item::new, properties);
-  }
+		Item item = itemFactory.apply(settings);
+		Registry.register(BuiltInRegistries.ITEM, key, item);
 
-  static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
-    settings.setId(key);
+		return item;
+	}
 
-    Item item = itemFactory.apply(settings);
-    Registry.register(BuiltInRegistries.ITEM, key, item);
-
-    return item;
-  }
-
-  record EffectChance(MobEffectInstance effect, float chance) {
-    public EffectChance(MobEffectInstance effect) {
-      this(effect, 1.0f);
-    }
-  }
-
-
-  static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties, Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
-    foodProperties = foodProperties
-      .nutrition(nutrition)
-      .saturationModifier(saturation);
-    if (alwaysEat) {
-      foodProperties = foodProperties.alwaysEdible();
-    }
-
-    for (EffectChance ec : effectChances) {
-      consumable = consumable.onConsume(new ApplyStatusEffectsConsumeEffect(ec.effect, ec.chance));
-    }
-    return properties.food(foodProperties.build(), consumable.build());
-
-  }
+	record EffectChance(MobEffectInstance effect, float chance) {
+		public EffectChance(MobEffectInstance effect) {
+			this(effect, 1.0f);
+		}
+	}
 
 
-  static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties,
-                                        int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
-    return foodProperties(properties, foodProperties, Consumables.defaultFood(), nutrition, saturation, alwaysEat, effectChances);
-  }
+	static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties, Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
+		foodProperties = foodProperties
+			.nutrition(nutrition)
+			.saturationModifier(saturation);
+		if (alwaysEat) {
+			foodProperties = foodProperties.alwaysEdible();
+		}
+
+		for (EffectChance ec : effectChances) {
+			consumable = consumable.onConsume(new ApplyStatusEffectsConsumeEffect(ec.effect, ec.chance));
+		}
+		return properties.food(foodProperties.build(), consumable.build());
+
+	}
 
 
-  static Item.Properties foodProperties(int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
-    return foodProperties(new Item.Properties(), new FoodProperties.Builder(), nutrition, saturation, alwaysEat, effectChances);
-  }
+	static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties,
+	                                      int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
+		return foodProperties(properties, foodProperties, Consumables.defaultFood(), nutrition, saturation, alwaysEat, effectChances);
+	}
 
-  static Item.Properties foodProperties(int nutrition, float saturation, EffectChance... effectChances) {
-    return foodProperties(nutrition, saturation, false, effectChances);
-  }
 
-  static Item.Properties foodProperties(int nutrition, float saturation, MobEffectInstance first, MobEffectInstance... effects) {
-    return foodProperties(nutrition, saturation, false, Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new));
-  }
+	static Item.Properties foodProperties(int nutrition, float saturation, boolean alwaysEat, EffectChance... effectChances) {
+		return foodProperties(new Item.Properties(), new FoodProperties.Builder(), nutrition, saturation, alwaysEat, effectChances);
+	}
 
-  static Item.Properties foodProperties(int nutrition, float saturation, boolean alwaysEat, MobEffectInstance first, MobEffectInstance... effects) {
-    return foodProperties(nutrition, saturation, alwaysEat, Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new));
-  }
+	static Item.Properties foodProperties(int nutrition, float saturation, EffectChance... effectChances) {
+		return foodProperties(nutrition, saturation, false, effectChances);
+	}
 
-  static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties, Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, MobEffectInstance first, MobEffectInstance... effects) {
-    return foodProperties(properties, foodProperties, consumable, nutrition, saturation, alwaysEat,
-      Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new)
-    );
-  }
+	static Item.Properties foodProperties(int nutrition, float saturation, MobEffectInstance first, MobEffectInstance... effects) {
+		return foodProperties(nutrition, saturation, false, Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new));
+	}
 
-  static Item.Properties basicFood(int nutrition, float saturation) {
-    return foodProperties(nutrition, saturation, false);
-  }
+	static Item.Properties foodProperties(int nutrition, float saturation, boolean alwaysEat, MobEffectInstance first, MobEffectInstance... effects) {
+		return foodProperties(nutrition, saturation, alwaysEat, Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new));
+	}
 
-  static void init() {
-    Stellarity.LOGGER.info("Registering Stellarity Items");
-  }
+	static Item.Properties foodProperties(Item.Properties properties, FoodProperties.Builder foodProperties, Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, MobEffectInstance first, MobEffectInstance... effects) {
+		return foodProperties(properties, foodProperties, consumable, nutrition, saturation, alwaysEat,
+			Streams.concat(Stream.of(first), Arrays.stream(effects)).map(EffectChance::new).toArray(EffectChance[]::new)
+		);
+	}
+
+	static Item.Properties basicFood(int nutrition, float saturation) {
+		return foodProperties(nutrition, saturation, false);
+	}
+
+	static void init() {
+		Stellarity.LOGGER.info("Registering Stellarity Items");
+	}
 }

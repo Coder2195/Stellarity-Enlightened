@@ -42,6 +42,7 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(tableLoot(VOID_FISHING_LOCATION_THE_HALLOW).setWeight(30).when(biome(lookup.getOrThrow(StellarityBiomes.THE_HALLOW))))
 			.add(tableLoot(VOID_FISHING_LOCATION_FLESH_TUNDRA).setWeight(30).when(biome(lookup.getOrThrow(StellarityBiomes.FLESH_TUNDRA))))
 			.add(tableLoot(VOID_FISHING_LOCATION_WARPED_MARSH).setWeight(30).when(biome(lookup.getOrThrow(StellarityBiomes.WARPED_MARSH))))
+			.add(tableLoot(VOID_FISHING_LOCATION_ENDLESS_DUNES).setWeight(30).when(biome(lookup.getOrThrow(StellarityBiomes.ENDLESS_DUNES))))
 			.add(tableLoot(VOID_FISHING_LOCATION_FROZEN_SPIKES).setWeight(30).when(biome(lookup.getOrThrow(StellarityBiomes.FROZEN_SPIKES))))
 			.add(tableLoot(VOID_FISHING_LOCATION_VANILLA_BIOMES).when(any(
 				biome(lookup.getOrThrow(Biomes.END_BARRENS)),
@@ -170,6 +171,16 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(VERDANT_FROGLIGHT).setWeight(6).apply(count(num(1, 2))))
 			// extra
 			.add(item(ASHEN_FROGLIGHT).setWeight(6).apply(count(num(1, 2))))
+		));
+
+		consumer.accept(VOID_FISHING_LOCATION_ENDLESS_DUNES, lootTable().withPool(pool()
+			.add(item(POTASSIFISH).setWeight(4))
+			.add(item(CACTUS_FLOWER).setWeight(5).apply(count(num(1, 2))))
+			.add(item(CACTUS).setWeight(5).apply(count(num(2, 3))))
+			.add(item(SAND).setWeight(3).apply(count(num(2, 3))))
+			.add(item(DEAD_BUSH).setWeight(2))
+			.add(item(DRY_SHORT_GRASS).apply(count(num(2, 3))))
+			.add(item(DRY_TALL_GRASS).apply(count(num(1, 2))))
 		));
 
 

@@ -54,6 +54,7 @@ public interface StellarityCreativeModeTabs {
 		FROST_MINNOW,
 		GOOSH,
 		CHORUS_STEW,
+		POTASSIFISH
 	};
 
 

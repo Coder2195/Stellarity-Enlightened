@@ -21,6 +21,7 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> VOID_FISHING_LOCATION_PRISMARINE_FOREST = id("void_fishing/location/prismarine_forest");
 	ResourceKey<LootTable> VOID_FISHING_LOCATION_THE_HALLOW = id("void_fishing/location/the_hallow");
 	ResourceKey<LootTable> VOID_FISHING_LOCATION_WARPED_MARSH = id("void_fishing/location/warped_marsh");
+	ResourceKey<LootTable> VOID_FISHING_LOCATION_ENDLESS_DUNES = id("void_fishing/location/endless_dunes");
 
 	static ResourceKey<LootTable> id(String id) {
 		return Stellarity.key(Registries.LOOT_TABLE, id);
