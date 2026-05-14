@@ -26,7 +26,7 @@ public interface StellarityBiomes {
 	ResourceKey<Biome> THE_NEST = id("the_nest");
 	ResourceKey<Biome> WARPED_MARSH = id("warped_marsh");
 
-	static ResourceKey<Biome> id(String string) {
-		return ResourceKey.create(Registries.BIOME, Stellarity.id(string));
+	static ResourceKey<Biome> id(String id) {
+		return ResourceKey.create(Registries.BIOME, Stellarity.id(id));
 	}
 }

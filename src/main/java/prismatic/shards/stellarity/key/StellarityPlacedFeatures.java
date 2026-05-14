@@ -107,6 +107,11 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> FLESH_TUNDRA_VEGETATION = id("flesh_tundra/vegetation");
 	ResourceKey<PlacedFeature> FLESH_TUNDRA_VINES = id("flesh_tundra/vines");
 	ResourceKey<PlacedFeature> FLESH_TUNDRA_ROOTS = id("flesh_tundra/roots");
+	
+	ResourceKey<PlacedFeature> FROSTED_VALLEY_HILLS = id("frosted_valley/hills");
+
+	ResourceKey<PlacedFeature> FROZEN_SPIKES_LARGE_DRIPSTONE = id("frozen_spikes/large_dripstone");
+	ResourceKey<PlacedFeature> FROZEN_SPIKES_BLUE_ICE_ORE = id("frozen_spikes/blue_ice_ore");
 
 
 	static ResourceKey<PlacedFeature> id(String name) {

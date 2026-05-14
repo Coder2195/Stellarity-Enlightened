@@ -7,6 +7,8 @@ inject-interface net/minecraft/world/entity/item/ItemEntity prismatic/shards/ste
 inject-interface net/minecraft/world/entity/projectile/arrow/AbstractArrow prismatic/shards/stellarity/interface_injection/ExtAbstractArrow
 inject-interface net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike prismatic/shards/stellarity/interface_injection/ExtEndSpike
 inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight prismatic/shards/stellarity/interface_injection/ExtEnderDragonFight
+inject-interface net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration prismatic/shards/stellarity/interface_injection/ExtLargeDripstoneConfiguration
+inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone prismatic/shards/stellarity/interface_injection/ExtLargeDripstone
 
 extendable method net/minecraft/world/entity/decoration/ItemFrame onItemChanged (Lnet/minecraft/world/item/ItemStack;)V
 accessible class net/minecraft/server/commands/AdvancementCommands$Action
@@ -69,3 +71,5 @@ accessible field net/minecraft/world/level/LocalMobCapCalculator playerMobCounts
 accessible field net/minecraft/client/model/geom/ModelLayers ALL_MODELS Ljava/util/Set;
 
 accessible field net/minecraft/world/level/dimension/end/EnderDragonFight respawnCrystals Ljava/util/List;
+
+accessible class net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone

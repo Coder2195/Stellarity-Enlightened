@@ -2,39 +2,51 @@
   "attributes": {
     "minecraft:audio/ambient_sounds": {
       "additions": {
-        "sound": "minecraft:ambient.soul_sand_valley.additions",
-        "tick_chance": 0.00111
+        "sound": "minecraft:ambient.nether_wastes.additions",
+        "tick_chance": 0.01111
       },
-      "loop": "stellarity:ambient.the_end.dark_calm",
+      "loop": "stellarity:ambient.the_end.dark",
       "mood": {
-        "block_search_extent": 10,
-        "offset": 100.0,
-        "sound": "minecraft:ambient.soul_sand_valley.mood",
-        "tick_delay": 3000
+        "block_search_extent": 4,
+        "offset": 4.0,
+        "sound": "minecraft:ambient.warped_forest.mood",
+        "tick_delay": 200
       }
     },
     "minecraft:visual/ambient_light_color": "#3f472f",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.0094
+      }
+    ],
     "minecraft:visual/fog_color": "#000000",
     "minecraft:visual/sky_color": "#000000",
-    "minecraft:visual/water_fog_color": "#041f33"
+    "minecraft:visual/water_fog_color": "#050533"
   },
   "carvers": [],
   "downfall": 0.4,
   "effects": {
-    "foliage_color": "#75ae1c",
-    "grass_color": "#91bf4a",
-    "water_color": "#43d5ee"
+    "foliage_color": "#ffffff",
+    "grass_color": "#ffffff",
+    "water_color": "#3d57d6"
   },
   "features": [
     [
-      "stellarity:global/stalactites"
+      "stellarity:global/stalactites",
+      "stellarity:frozen_spikes/large_dripstone",
+      "stellarity:frosted_valley/hills"
     ],
     [],
     [],
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:frozen_spikes/blue_ice_ore"
+    ],
     [],
     [],
     [],
@@ -44,16 +56,49 @@
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "minecraft:enderman": {
+      "charge": 1.0,
+      "energy_budget": 0.4
+    },
+    "stellarity:voided_silverfish": {
+      "charge": 1.0,
+      "energy_budget": 0.5
+    },
+    "stellarity:voided_skeleton": {
+      "charge": 1.0,
+      "energy_budget": 0.4
+    }
+  },
   "spawners": {
     "ambient": [],
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 50
+      },
+      {
+        "type": "stellarity:voided_skeleton",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 40
+      },
+      {
+        "type": "stellarity:voided_silverfish",
+        "maxCount": 2,
+        "minCount": 2,
+        "weight": 10
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 0.8
+  "temperature": -0.5,
+  "temperature_modifier": "frozen"
 }

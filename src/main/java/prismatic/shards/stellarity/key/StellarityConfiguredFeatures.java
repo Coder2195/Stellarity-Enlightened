@@ -103,6 +103,11 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_VINES = id("flesh_tundra/vines");
 	ResourceKey<ConfiguredFeature<?, ?>> FLESH_TUNDRA_ROOTS = id("flesh_tundra/roots");
 
+	ResourceKey<ConfiguredFeature<?, ?>> FROSTED_VALLEY_HILLS = id("frosted_valley/hills");
+
+	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_LARGE_DRIPSTONE = id("frozen_spikes/large_dripstone");
+	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_BLUE_ICE_ORE = id("frozen_spikes/blue_ice_ore");
+
 
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {
 		return Stellarity.key(Registries.CONFIGURED_FEATURE, name);

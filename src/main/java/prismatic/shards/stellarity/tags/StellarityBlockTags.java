@@ -21,6 +21,7 @@ public interface StellarityBlockTags {
 	TagKey<Block> WORLDGEN_FIERY_HILLS_END_STONE = id("worldgen/fiery_hills/end_stone");
 	TagKey<Block> WORLDGEN_FIERY_HILLS_COMMON = id("worldgen/fiery_hills/common");
 	TagKey<Block> WORLDGEN_FLESH_TUNDRA_SURFACE = id("worldgen/flesh_tundra/surface");
+	TagKey<Block> WORLDGEN_FROZEN_SPIKES_SURFACE = id("worldgen/frozen_spikes/surface");
 
 	static TagKey<Block> id(String id) {
 		return TagKey.create(Registries.BLOCK, Stellarity.id(id));

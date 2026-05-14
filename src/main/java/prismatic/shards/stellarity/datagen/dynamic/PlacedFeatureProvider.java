@@ -51,14 +51,12 @@ public interface PlacedFeatureProvider {
 		final var nothing = placed.getOrThrow(NOTHING);
 		final var stalactites = configured.getOrThrow(StellarityConfiguredFeatures.GLOBAL_STALACTITES);
 		final var aboveBelow0 = heightRange(height(aboveBottom(0), belowTop(0)));
+		final var scanDownSolidAir32 = envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32);
+		final var scanUpSolidAir32 = envScan(Direction.UP, solid(), matchBlocks(AIR), 32);
 
 		context.register(GLOBAL_STALACTITES, new PlacedFeature(stalactites, List.of(
-			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)),
-			inSquare(),
-			noiseCount(10, 55, 0),
-			aboveBelow0,
-			envScan(Direction.UP, solid(), matchBlocks(AIR), 32),
-			biome()
+			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)), inSquare(), noiseCount(10, 55, 0),
+			aboveBelow0, scanUpSolidAir32, biome()
 		)));
 		context.register(GLOBAL_FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.GLOBAL_FOSSIL), List.of(
 			rarity(40), inSquare(), heightRange(height(aboveBottom(8), absolute(140))), biome()
@@ -74,7 +72,7 @@ public interface PlacedFeatureProvider {
 			inSquare(),
 			noiseCount(3, 100, 0),
 			aboveBelow0,
-			envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32),
+			scanDownSolidAir32,
 			biome()
 		)));
 		context.register(MAIN_ISLAND_OBSIDIAN, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.MAIN_ISLAND_OBSIDIAN), List.of(
@@ -94,7 +92,7 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(END_BARRENS_STALACTITES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.GLOBAL_STALACTITES), List.of(
 			countPlace(ValueUtil.weightedInts(15, 100, 25, 50, 35, 25, 45, 1)), inSquare(), noiseCount(25, 55, 0.1), aboveBelow0,
-			envScan(Direction.UP, solid(), matchBlocks(AIR), 32), biome()
+			scanUpSolidAir32, biome()
 		)));
 
 		context.register(END_MIDLANDS_OBSIDIAN_SPIKES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.END_MIDLANDS_OBSIDIAN_SPIKE), List.of(
@@ -148,7 +146,7 @@ public interface PlacedFeatureProvider {
 
 		context.register(AMETHYST_FOREST_CALCITE_BOTTOM, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.AMETHYST_FOREST_CALCITE_BOTTOM), List.of(
 			countPlace(40), inSquare(), noiseCount(10, 20, 0), aboveBelow0,
-			envScan(Direction.UP, solid(), matchBlocks(AIR), 32), biome()
+			scanUpSolidAir32, biome()
 		)));
 		context.register(AMETHYST_FOREST_AMETHYST_GEODES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.AMETHYST_FOREST_AMETHYST_GEODE), List.of(
 			rarity(1), countPlace(1), inSquare(), heightRange(height(aboveBottom(12), belowTop(12))), biome()
@@ -212,7 +210,7 @@ public interface PlacedFeatureProvider {
 		)));
 
 		context.register(CRYSTAL_CRAGS_HILLS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.CRYSTAL_CRAGS_HILLS), List.of(
-			countPlace(num(2, 5)), inSquare(), noiseCount(65, 80, 0), aboveBelow0, envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+			countPlace(num(2, 5)), inSquare(), noiseCount(65, 80, 0), aboveBelow0, scanDownSolidAir32, biome()
 		)));
 		context.register(CRYSTAL_CRAGS_CRYSTAL_ROOTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.CRYSTAL_CRAGS_CRYSTAL_ROOTS), List.of(
 			rarity(2), inSquare(), heightRange(height(aboveBottom(0), absolute(170))), envScan(Direction.UP, all(matchBlocks(vec(0, 1, 0), END_STONE),
@@ -268,7 +266,7 @@ public interface PlacedFeatureProvider {
 		)));
 
 		context.register(ENDER_WASTES_HILLS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.ENDER_WASTES_HILLS), List.of(
-			countPlace(num(2, 5)), inSquare(), noiseCount(37, 100, 0), aboveBelow0, envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+			countPlace(num(2, 5)), inSquare(), noiseCount(37, 100, 0), aboveBelow0, scanDownSolidAir32, biome()
 		)));
 		context.register(ENDER_WASTES_CHORUS_PLANTS, new PlacedFeature(chorusPlant, List.of(everyLayer(1), biome(), rarity(2))));
 
@@ -291,7 +289,7 @@ public interface PlacedFeatureProvider {
 		))
 			context.register(hill._1(), new PlacedFeature(configured.getOrThrow(hill._2()), List.of(
 				countPlace(30), inSquare(), noiseCount(25, 130, 0), aboveBelow0,
-				envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+				scanDownSolidAir32, biome()
 			)));
 		for (var delta : List.of(
 			new Tuple3<>(FIERY_HILLS_LAVA_DELTAS, StellarityConfiguredFeatures.FIERY_HILLS_LAVA_DELTA, new Block[]{END_STONE, BLACKSTONE, SMOOTH_BASALT, BASALT}),
@@ -309,7 +307,7 @@ public interface PlacedFeatureProvider {
 				countPlace(ore._3()), inSquare(), heightRange(height(aboveBottom(10), belowTop(10))), biome()
 			)));
 		context.register(FIERY_HILLS_SAND, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_SAND), List.of(
-			countPlace(30), inSquare(), noiseCount(25, 130, 0), aboveBelow0, envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32), biome()
+			countPlace(30), inSquare(), noiseCount(25, 130, 0), aboveBelow0, scanDownSolidAir32, biome()
 		)));
 		context.register(FIERY_HILLS_VENTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FIERY_HILLS_VENT), List.of(
 			countPlace(50), inSquare(), heightRange(height(aboveBottom(25), belowTop(50))),
@@ -328,10 +326,10 @@ public interface PlacedFeatureProvider {
 		)));
 
 		context.register(FLESH_TUNDRA_STALACTITES, new PlacedFeature(stalactites, List.of(
-			countPlace(ValueUtil.weightedInts(7, 100, 14, 50, 28, 25, 40, 1)), inSquare(), noiseCount(5, 55, 0), aboveBelow0, envScan(Direction.UP, solid(), matchBlocks(AIR), 32), biome()
+			countPlace(ValueUtil.weightedInts(7, 100, 14, 50, 28, 25, 40, 1)), inSquare(), noiseCount(5, 55, 0), aboveBelow0, scanUpSolidAir32, biome()
 		)));
 		context.register(FLESH_TUNDRA_NETHERRACK_BOTTOM, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FLESH_TUNDRA_NETHERRACK_BOTTOM), List.of(
-			countPlace(90), noiseCount(50, 51, 0.08), inSquare(), aboveBelow0, envScan(Direction.UP, solid(), matchBlocks(AIR), 32), biome()
+			countPlace(90), noiseCount(50, 51, 0.08), inSquare(), aboveBelow0, scanUpSolidAir32, biome()
 		)));
 		context.register(FLESH_TUNDRA_CRIMSON_DELTAS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FLESH_TUNDRA_CRIMSON_DELTAS), List.of(
 			everyLayer(40), biome()
@@ -356,6 +354,18 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(FLESH_TUNDRA_ROOTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FLESH_TUNDRA_ROOTS), List.of(
 			everyLayer(16), biome(), countPlace(30), randOffset(trapezoid(-6, 6, 0), trapezoid(-2, 2, 0)), blockFilter(matchBlocks(AIR))
+		)));
+
+		context.register(FROSTED_VALLEY_HILLS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FROSTED_VALLEY_HILLS), List.of(
+			countPlace(num(5, 7)), inSquare(), noiseCount(25, 130, -0.4), aboveBelow0, scanDownSolidAir32, biome()
+		)));
+
+
+		context.register(FROZEN_SPIKES_LARGE_DRIPSTONE, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FROZEN_SPIKES_LARGE_DRIPSTONE), List.of(
+			countPlace(num(1, 5)), randOffset(num(6, 12), num(0)), aboveBelow0, biome()
+		)));
+		context.register(FROZEN_SPIKES_BLUE_ICE_ORE, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FROZEN_SPIKES_BLUE_ICE_ORE), List.of(
+			countPlace(45), inSquare(), aboveBelow0, biome()
 		)));
 	}
 }

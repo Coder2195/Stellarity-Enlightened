@@ -122,6 +122,7 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Has variants `stellarity:normal`, `stellarity:flesh`, `stellarity:cold` and `stellarity:ash`
 - New registry `voided_skeleton_variant` for use in datapacks. Is the exact same as a frog variant besides the texture
   differences
+- Added a placeholder miniboss. This one does not hold a harvester, but a level 60 enchanted netherite sword
 
 **[+] Voided Silverfish**
 
@@ -175,6 +176,14 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[+] End Wilds**
 
 **[+] Ender Wastes**
+
+**[+] Endless Dunes**
+
+**[+] Fiery Hills**
+
+**[+] Flesh Tundra**
+
+**[+] Frosted Valley**
 
 ## Structures
 

@@ -29,6 +29,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.interface_injection.ExtLargeDripstoneConfiguration;
 import prismatic.shards.stellarity.key.StellarityPlacedFeatures;
 import prismatic.shards.stellarity.registry.StellarityFeatures;
 import prismatic.shards.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
@@ -584,5 +585,20 @@ public interface ConfiguredFeatureProvider {
 		context.register(FLESH_TUNDRA_ROOTS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
 			new Block[]{CRIMSON_ROOTS, CRIMSON_FUNGUS}, new int[]{5, 1}
 		))));
+
+		context.register(FROSTED_VALLEY_HILLS, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
+			WORLDGEN_FROZEN_SPIKES_SURFACE, block(SNOW_BLOCK),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+				List.of(new BlockColumnConfiguration.Layer(num(1), block(SNOW_BLOCK))), Direction.UP, matchBlocks(AIR), true
+			))), List.of())),
+			CaveSurface.FLOOR, num(1), 0, 10, 1, num(4, 6), 0.5f
+		)));
+
+		context.register(FROZEN_SPIKES_LARGE_DRIPSTONE, new ConfiguredFeature<>(Feature.LARGE_DRIPSTONE, ExtLargeDripstoneConfiguration.apply(new LargeDripstoneConfiguration(
+			70, num(4, 8), numf(0.4f, 3), 0.2f, numf(0.1f, 0.4f), numf(0.1f, 0.3f), trapezoidf(0, 0.06f, 0), 0, 0.25f
+		), from(PACKED_ICE))));
+		context.register(FROZEN_SPIKES_BLUE_ICE_ORE, new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(
+			List.of(OreConfiguration.target(new BlockMatchTest(PACKED_ICE), from(BLUE_ICE))), 40, 0
+		)));
 	}
 }

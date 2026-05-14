@@ -55,14 +55,8 @@ public class EndSpikeMixin implements ExtEndSpike {
 		this.cryingObsidianTops = cryingObsidianTops;
 	}
 
-	@ModifyExpressionValue(
-		method = "<clinit>",
-		at = @At(
-			value = "INVOKE",
-			target = "Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;"
-		)
-	)
-	private static Codec<EndSpikeFeature.EndSpike> more(Codec<EndSpikeFeature.EndSpike> original) {
+	@ModifyExpressionValue(method = "<clinit>", at = @At(value = "INVOKE", target = "Lcom/mojang/serialization/codecs/RecordCodecBuilder;create(Ljava/util/function/Function;)Lcom/mojang/serialization/Codec;"))
+	private static Codec<EndSpikeFeature.EndSpike> extendCodec(Codec<EndSpikeFeature.EndSpike> original) {
 		return CodecExtender.buildExtensionCodec(original, (instance, wrapper) -> instance.group(wrapper,
 				Codec.BOOL.optionalFieldOf("stellarity:altar", false).forGetter(ExtEndSpike::stellarity$hasAltar),
 				Codec.BOOL.optionalFieldOf("stellarity:crying_obsidian_tops", false).forGetter(ExtEndSpike::stellarity$hasCryingObsidianTops),
