@@ -20,7 +20,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.StellarityMobEffects;
 
 public class VoidedSlime extends Slime {
@@ -29,7 +29,7 @@ public class VoidedSlime extends Slime {
 	}
 
 	public VoidedSlime(Level level) {
-		this(StellarityEntities.VOIDED_SLIME, level);
+		this(StellarityEntityTypes.VOIDED_SLIME, level);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

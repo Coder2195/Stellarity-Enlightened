@@ -6,6 +6,8 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,13 +20,16 @@ import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableIt
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.registry.StellarityDataAttachments;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityDataSerializers;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.StellarityItems;
 import prismatic.shards.stellarity.util.CustomCodecs;
 
@@ -36,10 +41,30 @@ public class ThrownPrismaticPearl extends ThrowableItemProjectile {
 		super(entityType, level);
 	}
 
+	private static final EntityDataAccessor<Trail> DATA_TRAIL = SynchedEntityData.defineId(ThrownPrismaticPearl.class, StellarityEntityDataSerializers.PRISMATIC_PEARL_TRAIL);
+
 	private @Nullable Vec3 oldPos = null;
 
 	public ThrownPrismaticPearl(Level level, LivingEntity livingEntity, ItemStack itemStack) {
-		super(StellarityEntities.PRISMATIC_PEARL, livingEntity, level, itemStack);
+		super(StellarityEntityTypes.PRISMATIC_PEARL, livingEntity, level, itemStack);
+	}
+
+	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder entityData) {
+		super.defineSynchedData(entityData);
+		entityData.define(DATA_TRAIL, Trail.NORMAL);
+	}
+
+	@Override
+	protected void addAdditionalSaveData(ValueOutput output) {
+		super.addAdditionalSaveData(output);
+		output.storeNullable("trail", Trail.CODEC, getTrail());
+	}
+
+	@Override
+	protected void readAdditionalSaveData(ValueInput input) {
+		super.readAdditionalSaveData(input);
+		input.read("trail", Trail.CODEC).ifPresent(this::setTrail);
 	}
 
 	@Override
@@ -49,8 +74,8 @@ public class ThrownPrismaticPearl extends ThrowableItemProjectile {
 		if (!level().isClientSide() && entity instanceof Player player) {
 
 			String name = player.getGameProfile().name();
-			if (name.equalsIgnoreCase("bush_moss")) setTrailType(Trail.BISEXUAL);
-			else if (name.equalsIgnoreCase("coder2195")) setTrailType(Trail.TRANSGENDER);
+			if (name.equalsIgnoreCase("bush_moss")) setTrail(Trail.BISEXUAL);
+			else if (name.equalsIgnoreCase("coder2195")) setTrail(Trail.TRANSGENDER);
 		}
 	}
 
@@ -121,12 +146,12 @@ public class ThrownPrismaticPearl extends ThrowableItemProjectile {
 
 	private int colorIndex = 0;
 
-	public Trail getTrailType() {
-		return this.getAttachedOrCreate(StellarityDataAttachments.PRISMATIC_PEARL_TRAIL, () -> Trail.NORMAL);
+	public Trail getTrail() {
+		return entityData.get(DATA_TRAIL);
 	}
 
-	public void setTrailType(Trail trail) {
-		this.setAttached(StellarityDataAttachments.PRISMATIC_PEARL_TRAIL, trail);
+	public void setTrail(Trail trail) {
+		entityData.set(DATA_TRAIL, trail);
 	}
 
 	@Override
@@ -139,7 +164,7 @@ public class ThrownPrismaticPearl extends ThrowableItemProjectile {
 			return;
 		}
 
-		int[] colors = getTrailType().colors;
+		int[] colors = getTrail().colors;
 
 		var position = position();
 		var x = position.x;
@@ -178,7 +203,7 @@ public class ThrownPrismaticPearl extends ThrowableItemProjectile {
 	}
 
 	public ThrownPrismaticPearl(Level level, LivingEntity livingEntity) {
-		super(StellarityEntities.PRISMATIC_PEARL, livingEntity, level, new ItemStack(StellarityItems.PRISMATIC_PEARL));
+		super(StellarityEntityTypes.PRISMATIC_PEARL, livingEntity, level, new ItemStack(StellarityItems.PRISMATIC_PEARL));
 	}
 
 	@Override

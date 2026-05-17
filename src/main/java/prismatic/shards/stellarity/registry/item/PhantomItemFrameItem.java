@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.entity.PhantomItemFrame;
 
 
@@ -26,7 +26,7 @@ public class PhantomItemFrameItem extends ItemFrameItem {
 	public static final Properties PROPERTIES = new ItemFrameItem.Properties().stacksTo(16);
 
 	public PhantomItemFrameItem(Item.Properties properties) {
-		this(StellarityEntities.PHANTOM_ITEM_FRAME, properties);
+		this(StellarityEntityTypes.PHANTOM_ITEM_FRAME, properties);
 	}
 
 	public @NonNull InteractionResult useOn(UseOnContext useOnContext) {

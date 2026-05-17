@@ -21,29 +21,29 @@ import java.util.List;
 
 public record VoidedSkeletonVariant(ClientAsset.ResourceTexture assetInfo,
                                     SpawnPrioritySelectors spawnConditions) implements PriorityProvider<SpawnContext, SpawnCondition> {
-  public VoidedSkeletonVariant(ClientAsset.ResourceTexture texture) {
-    this(texture, SpawnPrioritySelectors.EMPTY);
-  }
+	public VoidedSkeletonVariant(ClientAsset.ResourceTexture texture) {
+		this(texture, SpawnPrioritySelectors.EMPTY);
+	}
 
-  public
-  static final Codec<VoidedSkeletonVariant> DIRECT_CODEC = RecordCodecBuilder.create((i) -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(VoidedSkeletonVariant::assetInfo), SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(VoidedSkeletonVariant::spawnConditions)).apply(i, VoidedSkeletonVariant::new));
+	public
+	static final Codec<VoidedSkeletonVariant> DIRECT_CODEC = RecordCodecBuilder.create((i) -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(VoidedSkeletonVariant::assetInfo), SpawnPrioritySelectors.CODEC.fieldOf("spawn_conditions").forGetter(VoidedSkeletonVariant::spawnConditions)).apply(i, VoidedSkeletonVariant::new));
 
-  public
-  static final Codec<VoidedSkeletonVariant> NETWORK_CODEC = RecordCodecBuilder.create((i) -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(VoidedSkeletonVariant::assetInfo)).apply(i, VoidedSkeletonVariant::new));
+	public
+	static final Codec<VoidedSkeletonVariant> NETWORK_CODEC = RecordCodecBuilder.create((i) -> i.group(ClientAsset.ResourceTexture.DEFAULT_FIELD_CODEC.forGetter(VoidedSkeletonVariant::assetInfo)).apply(i, VoidedSkeletonVariant::new));
 
-  public
-  static final ResourceKey<VoidedSkeletonVariant> DEFAULT_VARIANT = StellarityMobVariants.NORMAL_VOIDED_SKELETON;
+	public
+	static final ResourceKey<VoidedSkeletonVariant> DEFAULT_VARIANT = StellarityMobVariants.NORMAL_VOIDED_SKELETON;
 
-  public
-  static final Codec<Holder<VoidedSkeletonVariant>> REFERENCE_CODEC = RegistryFixedCodec.create(StellarityRegistries.VOIDED_SKELETON_VARIANT);
-  public
-  static final StreamCodec<RegistryFriendlyByteBuf, Holder<VoidedSkeletonVariant>> REFERENCE_STREAM_CODEC = ByteBufCodecs.holderRegistry(StellarityRegistries.VOIDED_SKELETON_VARIANT);
+	public
+	static final Codec<Holder<VoidedSkeletonVariant>> CODEC = RegistryFixedCodec.create(StellarityRegistries.VOIDED_SKELETON_VARIANT);
+	public
+	static final StreamCodec<RegistryFriendlyByteBuf, Holder<VoidedSkeletonVariant>> STREAM_CODEC = ByteBufCodecs.holderRegistry(StellarityRegistries.VOIDED_SKELETON_VARIANT);
 
-  @Override
-  public @NonNull List<PriorityProvider.Selector<SpawnContext, SpawnCondition>>
+	@Override
+	public @NonNull List<PriorityProvider.Selector<SpawnContext, SpawnCondition>>
 
-  selectors() {
-    return this.spawnConditions.selectors();
+	selectors() {
+		return this.spawnConditions.selectors();
 
-  }
+	}
 }

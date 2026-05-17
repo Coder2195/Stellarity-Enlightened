@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.monster.Silverfish;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.StellarityMobEffects;
 
 public class VoidedSilverfish extends Silverfish {
@@ -18,7 +18,7 @@ public class VoidedSilverfish extends Silverfish {
 	}
 
 	public VoidedSilverfish(Level level) {
-		this(StellarityEntities.VOIDED_SILVERFISH, level);
+		this(StellarityEntityTypes.VOIDED_SILVERFISH, level);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

@@ -8,12 +8,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.storage.loot.LootContext;
 import prismatic.shards.stellarity.key.StellarityBiomes;
-import prismatic.shards.stellarity.registry.StellarityEntities;
 
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.world.item.Items.*;
-import static prismatic.shards.stellarity.registry.StellarityEntities.*;
+import static prismatic.shards.stellarity.registry.StellarityEntityTypes.*;
+import static prismatic.shards.stellarity.registry.StellarityItems.STARLIGHT_SOOT;
 import static prismatic.shards.stellarity.util.LootUtil.*;
 
 public class EntityLootTableProvider extends FabricEntityLootSubProvider {
@@ -57,6 +57,7 @@ public class EntityLootTableProvider extends FabricEntityLootSubProvider {
 				.add(item(CRIMSON_ROOTS).apply(count(num(0, 1))).apply(enchantCount(lookup, num(0, 1))))
 			)
 		);
+		add(PIXIE, lootTable().withPool(pool().add(item(STARLIGHT_SOOT).apply(count(num(0, 2))).apply(enchantCount(lookup, num(0, 1))))));
 
 	}
 }

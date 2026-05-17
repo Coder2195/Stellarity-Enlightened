@@ -63,9 +63,21 @@
     ]
   ],
   "has_precipitation": false,
-  "spawn_costs": {},
+  "spawn_costs": {
+    "stellarity:pixie": {
+      "charge": 1.0,
+      "energy_budget": 0.25
+    }
+  },
   "spawners": {
-    "ambient": [],
+    "ambient": [
+      {
+        "type": "stellarity:pixie",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 20
+      }
+    ],
     "axolotls": [],
     "creature": [],
     "misc": [],

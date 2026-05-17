@@ -136,6 +136,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Voided Silverfish**
 
+**[+] Pixie**
+
 ## Mechanics
 
 **[*] Item Tooltips**

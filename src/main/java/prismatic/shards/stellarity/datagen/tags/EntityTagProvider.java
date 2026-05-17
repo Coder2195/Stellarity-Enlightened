@@ -11,7 +11,7 @@ import prismatic.shards.stellarity.tags.StellarityEntityTags;
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.world.entity.EntityType.*;
-import static prismatic.shards.stellarity.registry.StellarityEntities.VOIDED_SLIME;
+import static prismatic.shards.stellarity.registry.StellarityEntityTypes.VOIDED_SLIME;
 
 public class EntityTagProvider extends FabricTagsProvider.EntityTypeTagsProvider {
 	public EntityTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {

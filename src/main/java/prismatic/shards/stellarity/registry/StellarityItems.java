@@ -197,10 +197,10 @@ public interface StellarityItems {
 
 	Item ENDER_EGG = register(StellarityItemIds.ENDER_EGG, EggItem::new, new Item.Properties().stacksTo(16).delayedHolderComponent(DataComponents.CHICKEN_VARIANT, StellarityMobVariants.CHICKEN_END));
 
-	Item VOIDED_ZOMBIE_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_ZOMBIE_SPAWN_EGG, StellarityEntities.VOIDED_ZOMBIE);
-	Item VOIDED_SKELETON_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SKELETON_SPAWN_EGG, StellarityEntities.VOIDED_SKELETON);
-	Item VOIDED_SILVERFISH_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SILVERFISH_SPAWN_EGG, StellarityEntities.VOIDED_SILVERFISH);
-	Item VOIDED_SLIME_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SLIME_SPAWN_EGG, StellarityEntities.VOIDED_SLIME);
+	Item VOIDED_ZOMBIE_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_ZOMBIE_SPAWN_EGG, StellarityEntityTypes.VOIDED_ZOMBIE);
+	Item VOIDED_SKELETON_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SKELETON_SPAWN_EGG, StellarityEntityTypes.VOIDED_SKELETON);
+	Item VOIDED_SILVERFISH_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SILVERFISH_SPAWN_EGG, StellarityEntityTypes.VOIDED_SILVERFISH);
+	Item VOIDED_SLIME_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SLIME_SPAWN_EGG, StellarityEntityTypes.VOIDED_SLIME);
 	Item POTASSIFISH = register(StellarityItemIds.POTASSIFISH, foodProperties(1, 0.6f, new MobEffectInstance(MobEffects.REGENERATION, 4 * 20)));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {

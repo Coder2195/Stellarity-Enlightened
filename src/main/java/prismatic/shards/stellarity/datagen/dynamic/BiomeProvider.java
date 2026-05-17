@@ -13,7 +13,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import prismatic.shards.stellarity.key.StellarityConfiguredCarvers;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.StellaritySounds;
 
 import java.util.List;
@@ -22,7 +22,6 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static net.minecraft.core.Holder.direct;
 import static net.minecraft.data.worldgen.placement.NetherPlacements.BASALT_PILLAR;
-import static net.minecraft.data.worldgen.placement.NetherPlacements.WEEPING_VINES;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_BUSH;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_DRY_GRASS_DESERT;
 import static prismatic.shards.stellarity.key.StellarityBiomes.*;
@@ -87,7 +86,7 @@ public interface BiomeProvider {
 				0xe5eeff, of(0xc2c2c2), empty(), of(0xdedede), BiomeSpecialEffects.GrassColorModifier.NONE
 			))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
-				.addSpawn(MobCategory.MONSTER, 11, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 11, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 2, 2))
 				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 4))
 				.addSpawn(MobCategory.WATER_AMBIENT, 100, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 1, 2))
 				.build())
@@ -141,7 +140,7 @@ public interface BiomeProvider {
 
 		var shrubLandWildsEntities = new MobSpawnSettings.Builder()
 			.addSpawn(MobCategory.MONSTER, 60, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-			.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_ZOMBIE, 4, 4))
+			.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_ZOMBIE, 4, 4))
 			.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 4, 4))
 			.addSpawn(MobCategory.CREATURE, 12, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 1, 4))
 			.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.PIG, 1, 4))
@@ -149,7 +148,7 @@ public interface BiomeProvider {
 			.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.COW, 1, 4))
 			.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 1, 4))
 			.addMobCharge(EntityType.ENDERMAN, 0.7, 1)
-			.addMobCharge(StellarityEntities.VOIDED_ZOMBIE, 0.7, 1)
+			.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 0.7, 1)
 			.addMobCharge(EntityType.PHANTOM, 0.7, 1)
 			.creatureGenerationProbability(0.9999f)
 			.build();
@@ -221,9 +220,9 @@ public interface BiomeProvider {
 			)).specialEffects(new BiomeSpecialEffects(0x504771, of(0x553a5f), empty(), of(0x4c3654), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 2, 3))
+				.addSpawn(MobCategory.MONSTER, 5, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 2, 3))
 				.addMobCharge(EntityType.ENDERMAN, 0.6, 1)
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 0.6, 1)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 0.6, 1)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
@@ -250,11 +249,11 @@ public interface BiomeProvider {
 			.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 80, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_ZOMBIE, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 30, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_ZOMBIE, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 4, 4))
 				.addMobCharge(EntityType.ENDERMAN, 1, 0.3)
-				.addMobCharge(StellarityEntities.VOIDED_ZOMBIE, 1, 0.14)
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.15)
+				.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 1, 0.14)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 1, 0.15)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addCarver(StellarityConfiguredCarvers.RAVINE)
@@ -322,11 +321,11 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CRIMSON_SPORE, 0.0056f)))
 			.specialEffects(new BiomeSpecialEffects(0xff0000, of(0xc43b3b), empty(), of(0xc43b3b), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
-				.addSpawn(MobCategory.MONSTER, 7, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
-				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 2, 2))
-				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntities.FLESH_PIGLIN, 4, 4))
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.8f)
-				.addMobCharge(StellarityEntities.VOIDED_SILVERFISH, 1, 0.5f)
+				.addSpawn(MobCategory.MONSTER, 7, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SILVERFISH, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.FLESH_PIGLIN, 4, 4))
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 1, 0.8f)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SILVERFISH, 1, 0.5f)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FLESH_TUNDRA_STALACTITES)
@@ -357,11 +356,11 @@ public interface BiomeProvider {
 			.specialEffects(new BiomeSpecialEffects(0x3d57d6, of(0xffffff), empty(), of(0xffffff), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 50, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SILVERFISH, 2, 2))
 				.addMobCharge(EntityType.ENDERMAN, 1, 0.4)
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.4)
-				.addMobCharge(StellarityEntities.VOIDED_SILVERFISH, 1, 0.5)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 1, 0.4)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SILVERFISH, 1, 0.5)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
@@ -419,12 +418,12 @@ public interface BiomeProvider {
 			.specialEffects(new BiomeSpecialEffects(0x3d57d6, of(0xffffff), empty(), of(0xffffff), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 45, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 35, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 35, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SILVERFISH, 2, 2))
 				.addSpawn(MobCategory.MONSTER, 15, new MobSpawnSettings.SpawnerData(EntityType.PHANTOM, 2, 2))
 				.addMobCharge(EntityType.ENDERMAN, 1, 0.6)
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.4)
-				.addMobCharge(StellarityEntities.VOIDED_SILVERFISH, 1, 0.5)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 1, 0.4)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SILVERFISH, 1, 0.5)
 				.addMobCharge(EntityType.PHANTOM, 1, 0.3)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
@@ -456,11 +455,11 @@ public interface BiomeProvider {
 			.specialEffects(new BiomeSpecialEffects(0x3d57d6, of(0xffffff), empty(), of(0xffffff), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 60, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SKELETON, 4, 4))
-				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_SILVERFISH, 2, 2))
+				.addSpawn(MobCategory.MONSTER, 40, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 4, 4))
+				.addSpawn(MobCategory.MONSTER, 10, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SILVERFISH, 2, 2))
 				.addMobCharge(EntityType.ENDERMAN, 1, 0.4)
-				.addMobCharge(StellarityEntities.VOIDED_SKELETON, 1, 0.4)
-				.addMobCharge(StellarityEntities.VOIDED_SILVERFISH, 1, 0.5)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SKELETON, 1, 0.4)
+				.addMobCharge(StellarityEntityTypes.VOIDED_SILVERFISH, 1, 0.5)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addCarver(StellarityConfiguredCarvers.RAVINE)
@@ -492,7 +491,8 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CHERRY_LEAVES, 0.0012f)))
 			.specialEffects(new BiomeSpecialEffects(0xea80ff, of(0xa6e4ff), empty(), of(0xb2e1ff), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
-				// TODO: add pixie
+				.addSpawn(MobCategory.AMBIENT, 20, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.PIXIE, 1, 2))
+				.addMobCharge(StellarityEntityTypes.PIXIE, 1, 0.25)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)

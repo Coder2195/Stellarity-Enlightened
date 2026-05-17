@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.client.registry.entity.renderer;
+package prismatic.shards.stellarity.client.registry.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

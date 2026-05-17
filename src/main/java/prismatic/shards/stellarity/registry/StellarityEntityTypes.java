@@ -3,18 +3,15 @@ package prismatic.shards.stellarity.registry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.level.levelgen.Heightmap;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityEntityIds;
 import prismatic.shards.stellarity.registry.entity.*;
 
 
-public interface StellarityEntities {
+public interface StellarityEntityTypes {
 
 	EntityType<PhantomItemFrame> PHANTOM_ITEM_FRAME = register(StellarityEntityIds.PHANTOM_ITEM_FRAME, EntityType.Builder.of(PhantomItemFrame::new, MobCategory.MISC));
 
@@ -30,23 +27,28 @@ public interface StellarityEntities {
 
 	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityIds.FLESH_PIGLIN, EntityType.Builder.<FleshPiglin>of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
+	EntityType<Pixie> PIXIE = register(StellarityEntityIds.PIXIE, EntityType.Builder.<Pixie>of(Pixie::new, MobCategory.AMBIENT).sized(0.5f, 0.5f).eyeHeight(0.25f).passengerAttachments(0.4f).clientTrackingRange(8));
+
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
 	}
 
 	static void init() {
-		Stellarity.LOGGER.info("Registering Stellarity Entities");
+		Stellarity.LOGGER.info("Registering Stellarity Entity Types");
 
+		//noinspection DataFlowIssue: fabric bug
 		FabricDefaultAttributeRegistry.register(VOIDED_ZOMBIE, VoidedZombie.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SKELETON, VoidedSkeleton.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SILVERFISH, VoidedSilverfish.createAttributes());
 		FabricDefaultAttributeRegistry.register(VOIDED_SLIME, VoidedSlime.createAttributes());
 		FabricDefaultAttributeRegistry.register(FLESH_PIGLIN, FleshPiglin.createAttributes());
+		FabricDefaultAttributeRegistry.register(PIXIE, Pixie.createAttributes());
 
 		SpawnPlacements.register(VOIDED_ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedZombie::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSkeleton::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSilverfish::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SLIME, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSlime::checkSpawnRules);
 		SpawnPlacements.register(FLESH_PIGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FleshPiglin::checkMonsterSpawnRules);
+		SpawnPlacements.register(PIXIE, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Pixie::checkPixieSpawnRules);
 	}
 }

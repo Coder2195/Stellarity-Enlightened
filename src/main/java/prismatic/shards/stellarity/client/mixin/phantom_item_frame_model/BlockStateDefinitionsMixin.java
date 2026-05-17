@@ -17,7 +17,7 @@ import prismatic.shards.stellarity.Stellarity;
 import java.util.Map;
 import java.util.function.Function;
 
-import static prismatic.shards.stellarity.client.registry.entity.renderer.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
+import static prismatic.shards.stellarity.client.registry.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
 
 @MixinEnvironment("client")
 @Mixin(BlockStateDefinitions.class)

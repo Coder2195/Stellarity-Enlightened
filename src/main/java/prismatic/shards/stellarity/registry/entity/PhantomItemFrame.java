@@ -3,13 +3,12 @@ package prismatic.shards.stellarity.registry.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellarityEntities;
+import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 import prismatic.shards.stellarity.registry.StellarityItems;
 
 public class PhantomItemFrame extends ItemFrame {
@@ -18,7 +17,7 @@ public class PhantomItemFrame extends ItemFrame {
 	}
 
 	public PhantomItemFrame(Level level, BlockPos blockPos, Direction direction) {
-		this(StellarityEntities.PHANTOM_ITEM_FRAME, level, blockPos, direction);
+		this(StellarityEntityTypes.PHANTOM_ITEM_FRAME, level, blockPos, direction);
 	}
 
 	public PhantomItemFrame(EntityType<PhantomItemFrame> entityType, Level level, BlockPos blockPos, Direction direction) {

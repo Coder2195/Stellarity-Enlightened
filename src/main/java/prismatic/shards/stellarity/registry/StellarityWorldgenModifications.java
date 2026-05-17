@@ -104,10 +104,10 @@ public interface StellarityWorldgenModifications {
 				var mobSpawns = modification.getMobSpawnSettings();
 				mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
 				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 30);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(StellarityEntities.VOIDED_ZOMBIE, 4, 4), 30);
+				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_ZOMBIE, 4, 4), 30);
 				mobSpawns.clearMobCharge(EntityType.ENDERMAN);
 				mobSpawns.addMobCharge(EntityType.ENDERMAN, 0.8, 1);
-				mobSpawns.addMobCharge(StellarityEntities.VOIDED_ZOMBIE, 0.68, 1);
+				mobSpawns.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 0.68, 1);
 			}
 		);
 
