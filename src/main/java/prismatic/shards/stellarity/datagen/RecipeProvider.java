@@ -5,10 +5,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.recipe.AltarDyeRecipe;
@@ -30,11 +32,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 	}
 
 	public static void altarOfTheAccursed(RecipeOutput output, String id, AltarRecipe recipe) {
-		output.accept(
-
-
-			ResourceKey.create(Registries.RECIPE, Stellarity.id(id)),
-			recipe, null);
+		output.accept(Stellarity.key(Registries.RECIPE, id), recipe, null);
 	}
 
 
@@ -43,6 +41,15 @@ public class RecipeProvider extends FabricRecipeProvider {
 		return new net.minecraft.data.recipes.RecipeProvider(provider, recipeOutput) {
 			@Override
 			public void buildRecipes() {
+				shapeless(RecipeCategory.BUILDING_BLOCKS, ENDERITE_BLOCK)
+					.requires(ENDERITE_SHARD, 9)
+					.unlockedBy(getHasName(ENDERITE_SHARD), has(ENDERITE_SHARD))
+					.save(output);
+
+				shapeless(RecipeCategory.BUILDING_BLOCKS, ENDERITE_SHARD, 9)
+					.requires(ENDERITE_BLOCK)
+					.unlockedBy(getHasName(ENDERITE_BLOCK), has(ENDERITE_BLOCK))
+					.save(output);
 
 				provider.allRegistriesLifecycle().add(Lifecycle.stable());
 				RecipeProvider.this.buildRecipes(provider, output);
@@ -52,8 +59,6 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 
 	public void buildRecipes(HolderLookup.Provider provider, RecipeOutput output) {
-
-
 		altarOfTheAccursed(output, "altar_of_the_accursed/lapis_to_amethyst", new AltarSimpleRecipe(
 			new LinkedHashMap<>() {{
 				put(Ingredient.of(DIAMOND), 1);

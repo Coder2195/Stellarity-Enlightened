@@ -9,7 +9,6 @@ import java.util.UUID;
 
 public interface CustomCodecs {
 	PrimitiveCodec<UUID> UUID = new PrimitiveCodec<>() {
-
 		@Override
 		public <T> DataResult<UUID> read(DynamicOps<T> ops, T input) {
 			return ops.getStringValue(input).map(java.util.UUID::fromString);

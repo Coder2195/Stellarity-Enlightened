@@ -25,6 +25,7 @@ public interface StellarityCreativeModeTabs {
 		ENDER_DIRT_PATH,
 		ALTAR_OF_THE_ACCURSED,
 		PHANTOM_ITEM_FRAME,
+		ENDERITE_BLOCK
 	};
 
 	ItemLike[] FOOD_ITEMS = new ItemLike[]{

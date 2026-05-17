@@ -35,6 +35,7 @@ import prismatic.shards.stellarity.key.StellarityPlacedFeatures;
 import prismatic.shards.stellarity.registry.StellarityFeatures;
 import prismatic.shards.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
 import prismatic.shards.stellarity.registry.feature.configuration.SpikeFeatureConfiguration;
+import prismatic.shards.stellarity.registry.tree_decorator.HangingColumnDecorator;
 import prismatic.shards.stellarity.util.Constants;
 import prismatic.shards.stellarity.util.ValueUtil;
 import prismatic.shards.stellarity.util.tuple.Tuple2;
@@ -704,13 +705,18 @@ public interface ConfiguredFeatureProvider {
 			List.of(new WeightedPlacedFeature(scatteredBush.apply(CHERRY_LEAVES), 0.15f)),
 			scatteredBush.apply(OAK_LEAVES)
 		)));
+		var hangingLanternDecor = new HangingColumnDecorator(0.1f, 2, true, false, List.of(
+			new BlockColumnConfiguration.Layer(num(4, 16), block(IRON_CHAIN)), new BlockColumnConfiguration.Layer(num(1), block(property(LANTERN, LanternBlock.HANGING, true)))
+		), true);
 		context.register(THE_HALLOW_OAK_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
 			block(STRIPPED_OAK_LOG), new FancyTrunkPlacer(15, 6, 9),
 			block(OAK_LEAVES), new FancyFoliagePlacer(num(2, 3), num(4), 4),
 			Optional.of(new MangroveRootPlacer(
 				num(0), block(STRIPPED_OAK_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_OAK_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
-			)), twoLayersSize(), List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f)), true, block(ROOTED_ENDER_DIRT)
+			)), twoLayersSize(),
+			List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f), hangingLanternDecor),
+			true, block(ROOTED_ENDER_DIRT)
 		)));
 		Function<Tuple2<Block, Block>, TreeConfiguration> regular = (leaves) -> new TreeConfiguration(
 			block(STRIPPED_BIRCH_LOG), new FancyTrunkPlacer(15, 6, 9),
@@ -718,7 +724,7 @@ public interface ConfiguredFeatureProvider {
 			Optional.of(new MangroveRootPlacer(
 				num(0), block(STRIPPED_BIRCH_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_BIRCH_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
-			)), twoLayersSize(), List.of(new BeehiveDecorator(0.06f)), true, block(ENDER_DIRT)
+			)), twoLayersSize(), List.of(new BeehiveDecorator(0.06f), hangingLanternDecor), true, block(ENDER_DIRT)
 		);
 		Function<Tuple2<Block, Block>, TreeConfiguration> pine = (leaves) -> new TreeConfiguration(
 			block(STRIPPED_SPRUCE_LOG), new StraightTrunkPlacer(17, 6, 9),

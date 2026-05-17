@@ -13,6 +13,7 @@ public interface StellarityBlockIds {
 	ResourceKey<Block> ENDER_DIRT_PATH = id("ender_dirt_path");
 	ResourceKey<Block> ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
 	ResourceKey<Block> DUSKBERRY_BUSH = id("duskberry_bush");
+	ResourceKey<Block> ENDERITE_BLOCK = id("enderite_block");
 
 	static ResourceKey<Block> id(String id) {
 		return Stellarity.key(Registries.BLOCK, id);

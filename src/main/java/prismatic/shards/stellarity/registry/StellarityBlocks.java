@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.RootedDirtBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityBlockIds;
@@ -41,12 +42,20 @@ public interface StellarityBlocks {
 	Block ENDER_DIRT_PATH = register(StellarityBlockIds.ENDER_DIRT_PATH, EnderDirtPath::new, EnderDirtPath.PROPERTIES);
 	Block ALTAR_OF_THE_ACCURSED = register(StellarityBlockIds.ALTAR_OF_THE_ACCURSED, AltarOfTheAccursed::new, AltarOfTheAccursed.PROPERTIES);
 	Block DUSKBERRY_BUSH = register(StellarityBlockIds.DUSKBERRY_BUSH, DuskberryBush::new, DuskberryBush.PROPERTIES);
+	Block ENDERITE_BLOCK = register(StellarityBlockIds.ENDERITE_BLOCK, Block::new, BlockBehaviour.Properties.of()
+		.mapColor(MapColor.COLOR_PURPLE)
+		.instrument(NoteBlockInstrument.BIT)
+		.requiresCorrectToolForDrops()
+		.strength(5.0F, 6.0F)
+		.sound(SoundType.METAL));
+
 
 	static Block register(ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
 		settings = settings.setId(key);
 
 		Block block = blockFactory.apply(settings);
 		Registry.register(BuiltInRegistries.BLOCK, key, block);
+
 
 		return block;
 	}
@@ -56,5 +65,6 @@ public interface StellarityBlocks {
 		TillableBlockRegistry.register(ROOTED_ENDER_DIRT, (unused) -> true, HoeItem.changeIntoStateAndDropItem(StellarityBlocks.ENDER_DIRT.defaultBlockState(), Items.HANGING_ROOTS));
 		FlattenableBlockRegistry.register(ENDER_DIRT, ENDER_DIRT_PATH.defaultBlockState());
 		FlattenableBlockRegistry.register(ENDER_GRASS_BLOCK, ENDER_DIRT_PATH.defaultBlockState());
+
 	}
 }

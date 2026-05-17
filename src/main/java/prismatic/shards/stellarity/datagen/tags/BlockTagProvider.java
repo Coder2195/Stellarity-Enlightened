@@ -40,7 +40,8 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 	protected void addTags(HolderLookup.@NonNull Provider provider) {
 		addTags(StellarityBlockTags.DIRT).add(ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT);
 		addTags(MINEABLE_WITH_SHOVEL).add(ENDER_DIRT_PATH, ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT);
-		addTags(MINEABLE_WITH_PICKAXE).add(ALTAR_OF_THE_ACCURSED);
+		addTags(MINEABLE_WITH_PICKAXE).add(ALTAR_OF_THE_ACCURSED, ENDERITE_BLOCK);
+		addTags(NEEDS_IRON_TOOL).add(ENDERITE_BLOCK);
 		addTags(NEEDS_DIAMOND_TOOL).add(ALTAR_OF_THE_ACCURSED);
 		addTags(DUNE_SPEED_BLOCKS, BlockTags.SAND, CONCRETE_POWDER).add(GRAVEL, SUSPICIOUS_GRAVEL);
 		addTags(SOUL_FIRE_BASE_BLOCKS).add(BEDROCK, CRYING_OBSIDIAN).setReplace(false);

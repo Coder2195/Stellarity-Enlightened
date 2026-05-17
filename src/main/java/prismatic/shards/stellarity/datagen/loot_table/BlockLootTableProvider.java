@@ -22,7 +22,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 	private static final Block[] DROP_SELF = {
 		StellarityBlocks.ASHEN_FROGLIGHT,
 		StellarityBlocks.ENDER_DIRT,
-		StellarityBlocks.ROOTED_ENDER_DIRT
+		StellarityBlocks.ROOTED_ENDER_DIRT,
+		StellarityBlocks.ENDERITE_BLOCK
 	};
 
 	@Override

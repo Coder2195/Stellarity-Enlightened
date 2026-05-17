@@ -20,6 +20,8 @@ import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
 
+import java.util.List;
+
 import static prismatic.shards.stellarity.registry.StellarityItems.*;
 
 
@@ -97,8 +99,9 @@ public class ModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateBlockStateModels(BlockModelGenerators generators) {
-		generators.createTrivialCube(StellarityBlocks.ENDER_DIRT);
-		generators.createTrivialCube(StellarityBlocks.ROOTED_ENDER_DIRT);
+		for (var block : List.of(StellarityBlocks.ENDER_DIRT, StellarityBlocks.ROOTED_ENDER_DIRT, StellarityBlocks.ENDERITE_BLOCK))
+			generators.createTrivialCube(block);
+
 		generators.createNonTemplateModelBlock(StellarityBlocks.ENDER_DIRT_PATH);
 		generators.createNonTemplateModelBlock(StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 

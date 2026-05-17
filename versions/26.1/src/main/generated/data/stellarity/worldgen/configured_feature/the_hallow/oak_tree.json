@@ -15,6 +15,46 @@
       {
         "type": "minecraft:beehive",
         "probability": 0.3
+      },
+      {
+        "type": "stellarity:hanging_column",
+        "chance": 0.1,
+        "layers": [
+          {
+            "height": {
+              "type": "minecraft:uniform",
+              "max_inclusive": 16,
+              "min_inclusive": 4
+            },
+            "provider": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:iron_chain",
+                "Properties": {
+                  "axis": "y",
+                  "waterlogged": "false"
+                }
+              }
+            }
+          },
+          {
+            "height": 1,
+            "provider": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "minecraft:lantern",
+                "Properties": {
+                  "hanging": "true",
+                  "waterlogged": "false"
+                }
+              }
+            }
+          }
+        ],
+        "min_size": 2,
+        "place_under_leaves": false,
+        "place_under_trunk": true,
+        "prioritize_tip": true
       }
     ],
     "foliage_placer": {

@@ -13,7 +13,8 @@ public interface StellarityItemIds {
 	ResourceKey<Item> ROOTED_ENDER_DIRT = id("rooted_ender_dirt");
 	ResourceKey<Item> ENDER_DIRT_PATH = id("ender_dirt_path");
 	ResourceKey<Item> ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
-	ResourceKey<Item> DUSKBERRY_BUSH = id("duskberry_bush");
+	ResourceKey<Item> ENDERITE_BLOCK = id("enderite_block");
+
 	ResourceKey<Item> CALL_OF_THE_VOID = id("call_of_the_void");
 	ResourceKey<Item> FISHER_OF_VOIDS = id("fisher_of_voids");
 	ResourceKey<Item> SUSHI = id("sushi");

@@ -51,6 +51,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Requires mineable AOTAs to now be mined with a diamond pickaxe or better
 
+**[+] Enderite Block**
+
 ## Advancements
 
 **[+] Cursed Crafting**
@@ -78,6 +80,12 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 ### AOTA
 
 **[+] Netherite Armor + 4 Shulker Shells + 1 Enderite Upgrade = Shulker Armor**
+
+### Crafting Table
+
+**[+] 9 Enderite Shards = 1 Enderite Block**
+
+**[+] 1 Enderite Block = 9 Enderite Shards**
 
 ## Entities
 
@@ -200,6 +208,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[+] Frozen Spikes**
 
 **[+] Hallowed Tundra**
+
+- Added a new `stellarity:hanging_column` decorator for block columns hanging from trees
 
 ## Structures
 
