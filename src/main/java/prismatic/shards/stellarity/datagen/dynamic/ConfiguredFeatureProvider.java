@@ -1,9 +1,11 @@
 package prismatic.shards.stellarity.datagen.dynamic;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.block.*;
@@ -19,6 +21,7 @@ import net.minecraft.world.level.levelgen.feature.rootplacers.AboveRootPlacement
 import net.minecraft.world.level.levelgen.feature.rootplacers.MangroveRootPlacement;
 import net.minecraft.world.level.levelgen.feature.rootplacers.MangroveRootPlacer;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.BeehiveDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
@@ -41,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static net.minecraft.core.Holder.direct;
@@ -77,6 +81,11 @@ public interface ConfiguredFeatureProvider {
 			blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "mud")),
 			blocksGetter.getOrThrow(Stellarity.mcKey(Registries.BLOCK, "muddy_mangrove_roots"))
 		);
+		final var crystalBlock = direct(new PlacedFeature(
+			direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(AMETHYST_BLOCK)))), List.of()
+		));
+		final var worldGenGrassBlock = blocksGetter.getOrThrow(WORLDGEN_GRASS_BLOCK);
+		final var worldGenDirt = blocksGetter.getOrThrow(WORLDGEN_DIRT);
 
 		context.register(GLOBAL_STALACTITES, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
 			WORLDGEN_STALACTITE_REPLACEABLE, block(END_STONE),
@@ -180,7 +189,7 @@ public interface ConfiguredFeatureProvider {
 			block(PEARLESCENT_FROGLIGHT), new ForkingTrunkPlacer(10, 0, 0),
 			block(AIR), new BlobFoliagePlacer(num(1), num(1), 0),
 			Optional.of(new MangroveRootPlacer(num(0), block(END_STONE), Optional.of(new AboveRootPlacement(block(END_STONE), 0.33f)), new MangroveRootPlacement(
-				blocksGetter.getOrThrow(WORLDGEN_GRASS_BLOCK), HolderSet.direct(blocksGetter.getOrThrow(Stellarity.key(Registries.BLOCK, "ender_dirt"))), block(STONE), 1, 3, 0.1f
+				worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f
 			))), twoLayersSize(), List.of(), false, block(END_STONE)
 		)));
 		context.register(END_HIGHLANDS_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
@@ -269,9 +278,7 @@ public interface ConfiguredFeatureProvider {
 				List.of(new BlockColumnConfiguration.Layer(num(1), block(BASALT))), Direction.UP, matchBlocks(AIR), true
 			))), List.of())), CaveSurface.FLOOR, num(1), 0, 10, 1, num(3, 6), 0.5f
 		)));
-		context.register(CRYSTAL_CRAGS_CRYSTAL_ROOTS, new ConfiguredFeature<>(Feature.ROOT_SYSTEM, new RootSystemConfiguration(direct(new PlacedFeature(
-			direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(AMETHYST_BLOCK)))), List.of()
-		)), 1, 3, WORLDGEN_STALACTITE_REPLACEABLE, block(AMETHYST_BLOCK), 20, 100, 3, 2, block(AMETHYST_CLUSTER), 15, 1, all())));
+		context.register(CRYSTAL_CRAGS_CRYSTAL_ROOTS, new ConfiguredFeature<>(Feature.ROOT_SYSTEM, new RootSystemConfiguration(crystalBlock, 1, 3, WORLDGEN_STALACTITE_REPLACEABLE, block(AMETHYST_BLOCK), 20, 100, 3, 2, block(AMETHYST_CLUSTER), 15, 1, all())));
 		context.register(CRYSTAL_CRAGS_AMETHYST_CRYSTAL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
 			blocks(Stream.of(AMETHYST_CLUSTER, LARGE_AMETHYST_BUD, MEDIUM_AMETHYST_BUD, SMALL_AMETHYST_BUD).flatMap(b ->
 				Stream.of(Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST).map(d -> property(b, BlockStateProperties.FACING, d))
@@ -667,6 +674,115 @@ public interface ConfiguredFeatureProvider {
 		context.register(FROZEN_SPIKES_ICE_SPIKE, new ConfiguredFeature<>(StellarityFeatures.SPIKE, new SpikeFeatureConfiguration(
 			block(PACKED_ICE), Optional.empty(), numf(3, 6), numf(15, 25), numf(-0.15f, 0.15f), numf(-0.15f, 0.15f)
 		)));
+
+
+		// FIXME: 26.2 changes
+		// var dirtSnowEndStone = any(matchTag(StellarityBlockTags.DIRT), matchBlocks(SNOW_BLOCK, END_STONE));
+		//noinspection deprecation
+		context.register(HALLOWED_TUNDRA_LAKE, new ConfiguredFeature<>(Feature.LAKE, new LakeFeature.Configuration(block(ICE), block(CALCITE))));
+
+
+		context.register(THE_HALLOW_LANTERN, new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+			List.of(new BlockColumnConfiguration.Layer(num(4, 16), block(IRON_CHAIN)), new BlockColumnConfiguration.Layer(num(1), block(property(LANTERN, LanternBlock.HANGING, true)))),
+			Direction.DOWN, matchBlocks(vec(0, -1, 0), AIR), true
+		)));
+		context.register(THE_HALLOW_CRYSTAL_ROOTS, new ConfiguredFeature<>(Feature.ROOT_SYSTEM, new RootSystemConfiguration(
+			crystalBlock, 1, 3, WORLDGEN_STALACTITE_REPLACEABLE, block(AMETHYST_BLOCK), 20, 100, 3, 2, block(AMETHYST_CLUSTER), 15, 1, all()
+		)));
+		context.register(THE_HALLOW_ROCK, new ConfiguredFeature<>(Feature.BLOCK_BLOB, new BlockBlobConfiguration(from(DIORITE), all())));
+		context.register(THE_HALLOW_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
+			block(OAK_LEAVES), new RandomSpreadFoliagePlacer(num(2), num(1), num(2), 64),
+			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
+		)));
+		Function<Block, Holder<PlacedFeature>> scatteredBush = (leaves) -> direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
+			block(property(leaves, LeavesBlock.PERSISTENT, true)), new RandomSpreadFoliagePlacer(num(3), num(0), num(2), 48),
+			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
+		))), List.of()));
+		context.register(THE_HALLOW_SCATTERED_BUSH, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			List.of(new WeightedPlacedFeature(scatteredBush.apply(CHERRY_LEAVES), 0.15f)),
+			scatteredBush.apply(OAK_LEAVES)
+		)));
+		context.register(THE_HALLOW_OAK_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(STRIPPED_OAK_LOG), new FancyTrunkPlacer(15, 6, 9),
+			block(OAK_LEAVES), new FancyFoliagePlacer(num(2, 3), num(4), 4),
+			Optional.of(new MangroveRootPlacer(
+				num(0), block(STRIPPED_OAK_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_OAK_WOOD), 0.5f)),
+				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
+			)), twoLayersSize(), List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f)), true, block(ROOTED_ENDER_DIRT)
+		)));
+		Function<Tuple2<Block, Block>, TreeConfiguration> regular = (leaves) -> new TreeConfiguration(
+			block(STRIPPED_BIRCH_LOG), new FancyTrunkPlacer(15, 6, 9),
+			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new FancyFoliagePlacer(num(2, 3), num(4), 4),
+			Optional.of(new MangroveRootPlacer(
+				num(0), block(STRIPPED_BIRCH_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_BIRCH_WOOD), 0.5f)),
+				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
+			)), twoLayersSize(), List.of(new BeehiveDecorator(0.06f)), true, block(ENDER_DIRT)
+		);
+		Function<Tuple2<Block, Block>, TreeConfiguration> pine = (leaves) -> new TreeConfiguration(
+			block(STRIPPED_SPRUCE_LOG), new StraightTrunkPlacer(17, 6, 9),
+			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new MegaPineFoliagePlacer(num(0, 1), num(0), num(12, 24)),
+			Optional.of(new MangroveRootPlacer(
+				num(0), block(STRIPPED_SPRUCE_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_SPRUCE_WOOD), 0.5f)),
+				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
+			)), twoLayersSize(), List.of(), true, block(ENDER_DIRT)
+		);
+		Function<Tuple2<Block, Block>, TreeConfiguration> jungle = (leaves) -> new TreeConfiguration(
+			block(STRIPPED_JUNGLE_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
+			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new RandomSpreadFoliagePlacer(num(3, 7), num(0, 12), num(6, 18), 256),
+			Optional.empty(), twoLayersSize(), List.of(), true, block(ENDER_DIRT)
+		);
+		for (var tree : List.of(
+			THE_HALLOW_RED_REGULAR_TREE, THE_HALLOW_RED_JUNGLE_TREE, THE_HALLOW_RED_PINE_TREE,
+			THE_HALLOW_ORANGE_REGULAR_TREE, THE_HALLOW_ORANGE_JUNGLE_TREE, THE_HALLOW_ORANGE_PINE_TREE,
+			THE_HALLOW_YELLOW_REGULAR_TREE, THE_HALLOW_YELLOW_JUNGLE_TREE, THE_HALLOW_YELLOW_PINE_TREE,
+			THE_HALLOW_LIME_REGULAR_TREE, THE_HALLOW_LIME_JUNGLE_TREE, THE_HALLOW_LIME_PINE_TREE,
+			THE_HALLOW_GREEN_REGULAR_TREE, THE_HALLOW_GREEN_JUNGLE_TREE, THE_HALLOW_GREEN_PINE_TREE,
+			THE_HALLOW_CYAN_REGULAR_TREE, THE_HALLOW_CYAN_JUNGLE_TREE, THE_HALLOW_CYAN_PINE_TREE,
+			THE_HALLOW_LIGHT_BLUE_REGULAR_TREE, THE_HALLOW_LIGHT_BLUE_JUNGLE_TREE, THE_HALLOW_LIGHT_BLUE_PINE_TREE,
+			THE_HALLOW_BLUE_REGULAR_TREE, THE_HALLOW_BLUE_JUNGLE_TREE, THE_HALLOW_BLUE_PINE_TREE,
+			THE_HALLOW_PURPLE_REGULAR_TREE, THE_HALLOW_PURPLE_JUNGLE_TREE, THE_HALLOW_PURPLE_PINE_TREE,
+			THE_HALLOW_MAGENTA_REGULAR_TREE, THE_HALLOW_MAGENTA_JUNGLE_TREE, THE_HALLOW_MAGENTA_PINE_TREE,
+			THE_HALLOW_PINK_REGULAR_TREE, THE_HALLOW_PINK_JUNGLE_TREE, THE_HALLOW_PINK_PINE_TREE,
+			THE_HALLOW_WHITE_REGULAR_TREE, THE_HALLOW_WHITE_JUNGLE_TREE, THE_HALLOW_WHITE_PINE_TREE
+		)) {
+			var string = tree.identifier().getPath();
+			Tuple2<Block, Block> leaves = string.contains("red") ? new Tuple2<>(RED_WOOL, RED_STAINED_GLASS) :
+				string.contains("orange") ? new Tuple2<>(ORANGE_WOOL, ORANGE_STAINED_GLASS) :
+				string.contains("yellow") ? new Tuple2<>(YELLOW_WOOL, YELLOW_STAINED_GLASS) :
+				string.contains("lime") ? new Tuple2<>(LIME_WOOL, LIME_STAINED_GLASS) :
+				string.contains("green") ? new Tuple2<>(GREEN_WOOL, GREEN_STAINED_GLASS) :
+				string.contains("cyan") ? new Tuple2<>(CYAN_WOOL, CYAN_STAINED_GLASS) :
+				string.contains("light_blue") ? new Tuple2<>(LIGHT_BLUE_WOOL, LIGHT_BLUE_STAINED_GLASS) :
+				string.contains("blue") ? new Tuple2<>(BLUE_WOOL, BLUE_STAINED_GLASS) :
+				string.contains("purple") ? new Tuple2<>(PURPLE_WOOL, PURPLE_STAINED_GLASS) :
+				string.contains("magenta") ? new Tuple2<>(MAGENTA_WOOL, MAGENTA_STAINED_GLASS) :
+				string.contains("pink") ? new Tuple2<>(PINK_WOOL, PINK_STAINED_GLASS) :
+				string.contains("white") ? new Tuple2<>(WHITE_WOOL, WHITE_STAINED_GLASS) : null;
+			if (leaves == null) throw new AssertionError("Must contain a color for this loop");
+			var template = string.contains("regular") ? regular :
+				string.contains("jungle") ? jungle :
+				string.contains("pine") ? pine : null;
+			if (template == null) throw new AssertionError("Must contain a type for this loop");
+			context.register(tree, new ConfiguredFeature<>(Feature.TREE, template.apply(leaves)));
+		}
+
+		context.register(HALLOWED_TUNDRA_PINE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			block(STRIPPED_OAK_LOG), new StraightTrunkPlacer(15, 6, 9),
+			block(OAK_LEAVES), new MegaPineFoliagePlacer(num(2, 3), num(4), num(11, 19)),
+			Optional.of(new MangroveRootPlacer(
+				num(0), block(STRIPPED_OAK_WOOD),
+				Optional.of(new AboveRootPlacement(block(STRIPPED_OAK_WOOD), 0.5f)),
+				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
+			)), twoLayersSize(), List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f)), true, block(ROOTED_ENDER_DIRT)
+		)));
+		context.register(HALLOWED_TUNDRA_TREE, new ConfiguredFeature<>(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(
+			Stream.of(THE_HALLOW_SCATTERED_BUSH, THE_HALLOW_RED_PINE_TREE, THE_HALLOW_ORANGE_PINE_TREE, THE_HALLOW_YELLOW_PINE_TREE, THE_HALLOW_LIME_PINE_TREE,
+				THE_HALLOW_GREEN_PINE_TREE, THE_HALLOW_LIGHT_BLUE_PINE_TREE, THE_HALLOW_CYAN_PINE_TREE, THE_HALLOW_BLUE_PINE_TREE, THE_HALLOW_PURPLE_PINE_TREE,
+				THE_HALLOW_MAGENTA_PINE_TREE, THE_HALLOW_PINK_PINE_TREE, THE_HALLOW_WHITE_PINE_TREE, HALLOWED_TUNDRA_PINE_TREE
+			).map(c -> direct(new PlacedFeature(configured.getOrThrow(c), List.of()))).toList()
+		))));
 
 
 	}

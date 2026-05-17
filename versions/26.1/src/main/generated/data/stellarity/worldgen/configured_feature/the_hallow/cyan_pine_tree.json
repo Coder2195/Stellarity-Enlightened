@@ -4,23 +4,42 @@
     "below_trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:end_stone"
+        "Name": "stellarity:ender_dirt"
       }
     },
     "decorators": [],
     "foliage_placer": {
-      "type": "minecraft:blob_foliage_placer",
-      "height": 0,
-      "offset": 1,
-      "radius": 1
-    },
-    "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:air"
+      "type": "minecraft:mega_pine_foliage_placer",
+      "crown_height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 24,
+        "min_inclusive": 12
+      },
+      "offset": 0,
+      "radius": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 1,
+        "min_inclusive": 0
       }
     },
-    "ignore_vines": false,
+    "foliage_provider": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:cyan_wool"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:cyan_stained_glass"
+          },
+          "weight": 2
+        }
+      ]
+    },
+    "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
       "limit": 1,
@@ -30,11 +49,14 @@
     "root_placer": {
       "type": "minecraft:mangrove_root_placer",
       "above_root_placement": {
-        "above_root_placement_chance": 0.33,
+        "above_root_placement_chance": 0.5,
         "above_root_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "minecraft:end_stone"
+            "Name": "minecraft:stripped_spruce_wood",
+            "Properties": {
+              "axis": "y"
+            }
           }
         }
       },
@@ -54,21 +76,24 @@
       "root_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:end_stone"
+          "Name": "minecraft:stripped_spruce_wood",
+          "Properties": {
+            "axis": "y"
+          }
         }
       },
       "trunk_offset_y": 0
     },
     "trunk_placer": {
-      "type": "minecraft:forking_trunk_placer",
-      "base_height": 10,
-      "height_rand_a": 0,
-      "height_rand_b": 0
+      "type": "minecraft:straight_trunk_placer",
+      "base_height": 17,
+      "height_rand_a": 6,
+      "height_rand_b": 9
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:pearlescent_froglight",
+        "Name": "minecraft:stripped_spruce_log",
         "Properties": {
           "axis": "y"
         }

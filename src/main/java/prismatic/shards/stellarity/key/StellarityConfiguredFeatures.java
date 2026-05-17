@@ -114,10 +114,57 @@ public interface StellarityConfiguredFeatures {
 
 	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_LARGE_DRIPSTONE = id("frozen_spikes/large_dripstone");
 	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_BLUE_ICE_ORE = id("frozen_spikes/blue_ice_ore");
-	
+
 	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_HILLS = id("frozen_spikes/hills");
 	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_POWDER_SNOW_ORE = id("frozen_spikes/powder_snow_ore");
 	ResourceKey<ConfiguredFeature<?, ?>> FROZEN_SPIKES_ICE_SPIKE = id("frozen_spikes/ice_spike");
+
+	ResourceKey<ConfiguredFeature<?, ?>> HALLOWED_TUNDRA_LAKE = id("hallowed_tundra/lake");
+	ResourceKey<ConfiguredFeature<?, ?>> HALLOWED_TUNDRA_PINE_TREE = id("hallowed_tundra/pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> HALLOWED_TUNDRA_TREE = id("hallowed_tundra/tree");
+
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_CRYSTAL_ROOTS = id("the_hallow/crystal_roots");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_ROCK = id("the_hallow/rock");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_BUSH = id("the_hallow/bush");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_SCATTERED_BUSH = id("the_hallow/scattered_bush");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_OAK_TREE = id("the_hallow/oak_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_RED_REGULAR_TREE = id("the_hallow/red_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_RED_JUNGLE_TREE = id("the_hallow/red_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_RED_PINE_TREE = id("the_hallow/red_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_ORANGE_REGULAR_TREE = id("the_hallow/orange_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_ORANGE_JUNGLE_TREE = id("the_hallow/orange_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_ORANGE_PINE_TREE = id("the_hallow/orange_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_YELLOW_REGULAR_TREE = id("the_hallow/yellow_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_YELLOW_JUNGLE_TREE = id("the_hallow/yellow_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_YELLOW_PINE_TREE = id("the_hallow/yellow_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIME_REGULAR_TREE = id("the_hallow/lime_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIME_JUNGLE_TREE = id("the_hallow/lime_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIME_PINE_TREE = id("the_hallow/lime_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_GREEN_REGULAR_TREE = id("the_hallow/green_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_GREEN_JUNGLE_TREE = id("the_hallow/green_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_GREEN_PINE_TREE = id("the_hallow/green_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_CYAN_REGULAR_TREE = id("the_hallow/cyan_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_CYAN_JUNGLE_TREE = id("the_hallow/cyan_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_CYAN_PINE_TREE = id("the_hallow/cyan_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIGHT_BLUE_REGULAR_TREE = id("the_hallow/light_blue_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIGHT_BLUE_JUNGLE_TREE = id("the_hallow/light_blue_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LIGHT_BLUE_PINE_TREE = id("the_hallow/light_blue_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_BLUE_REGULAR_TREE = id("the_hallow/blue_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_BLUE_JUNGLE_TREE = id("the_hallow/blue_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_BLUE_PINE_TREE = id("the_hallow/blue_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PURPLE_REGULAR_TREE = id("the_hallow/purple_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PURPLE_JUNGLE_TREE = id("the_hallow/purple_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PURPLE_PINE_TREE = id("the_hallow/purple_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_MAGENTA_REGULAR_TREE = id("the_hallow/magenta_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_MAGENTA_JUNGLE_TREE = id("the_hallow/magenta_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_MAGENTA_PINE_TREE = id("the_hallow/magenta_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PINK_REGULAR_TREE = id("the_hallow/pink_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PINK_JUNGLE_TREE = id("the_hallow/pink_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_PINK_PINE_TREE = id("the_hallow/pink_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_WHITE_REGULAR_TREE = id("the_hallow/white_regular_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_WHITE_JUNGLE_TREE = id("the_hallow/white_jungle_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_WHITE_PINE_TREE = id("the_hallow/white_pine_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LANTERN = id("the_hallow/lantern");
 
 
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String name) {

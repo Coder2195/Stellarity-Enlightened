@@ -193,11 +193,13 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Frozen Marsh**
 
-- Added a new `stellarity:freeze_water` feature to freeze the entire biome
+- Added a new `stellarity:freeze_water` feature to freeze cold biomes
 
 **[+] Frozen Shrubland**
 
 **[+] Frozen Spikes**
+
+**[+] Hallowed Tundra**
 
 ## Structures
 
@@ -221,4 +223,4 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 # Developers Note
 
-idk
+huge update in months

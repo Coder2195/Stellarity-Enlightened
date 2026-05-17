@@ -54,6 +54,7 @@ public interface PlacedFeatureProvider {
 		final var aboveBelow0 = heightRange(height(aboveBottom(0), belowTop(0)));
 		final var scanDownSolidAir32 = envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32);
 		final var scanUpSolidAir32 = envScan(Direction.UP, solid(), matchBlocks(AIR), 32);
+		final var crystalCragsAmethystCrystal = configured.getOrThrow(StellarityConfiguredFeatures.CRYSTAL_CRAGS_AMETHYST_CRYSTAL);
 
 		context.register(GLOBAL_STALACTITES, new PlacedFeature(stalactites, List.of(
 			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)), inSquare(), noiseCount(10, 55, 0),
@@ -218,7 +219,7 @@ public interface PlacedFeatureProvider {
 			rarity(2), inSquare(), heightRange(height(aboveBottom(0), absolute(170))), envScan(Direction.UP, all(matchBlocks(vec(0, 1, 0), END_STONE),
 				matchBlocks(AIR, CAVE_AIR)), all(), 32), biome()
 		)));
-		context.register(CRYSTAL_CRAGS_AMETHYST_CRYSTALS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.CRYSTAL_CRAGS_AMETHYST_CRYSTAL), List.of(
+		context.register(CRYSTAL_CRAGS_AMETHYST_CRYSTALS, new PlacedFeature(crystalCragsAmethystCrystal, List.of(
 			countPlace(200), inSquare(), heightmap(Heightmap.Types.OCEAN_FLOOR), biome(), countPlace(16), randOffset(trapezoid(-4, 4, 0), trapezoid(-4, 4, 0)),
 			blockFilter(all(matchBlocks(AIR), any(matchBlocks(vec(0, 1, 0), AMETHYST_BLOCK), matchBlocks(vec(1, 0, 0), AMETHYST_BLOCK),
 				matchBlocks(vec(-1, 0, 0), AMETHYST_BLOCK), matchBlocks(vec(0, 0, 1), AMETHYST_BLOCK), matchBlocks(vec(0, 0, -1), AMETHYST_BLOCK)
@@ -378,7 +379,6 @@ public interface PlacedFeatureProvider {
 			everyLayer(num(1, 3)), biome(), blockFilter(matchBlocks(vec(0, -1, 0), SNOW_BLOCK))
 		)));
 
-
 		context.register(FROZEN_SPIKES_LARGE_DRIPSTONE, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FROZEN_SPIKES_LARGE_DRIPSTONE), List.of(
 			countPlace(num(1, 5)), randOffset(num(6, 12), num(0)), aboveBelow0, biome()
 		)));
@@ -393,6 +393,26 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(FROZEN_SPIKES_ICE_SPIKES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.FROZEN_SPIKES_ICE_SPIKE), List.of(
 			countPlace(10), rarity(2), inSquare(), heightRange(height(aboveBottom(0), absolute(180))), envScan(Direction.UP, matchBlocks(AIR), solid(), 32), biome()
+		)));
+
+		context.register(HALLOWED_TUNDRA_LAKE, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.HALLOWED_TUNDRA_LAKE), List.of(
+			rarity(10), biome(), heightmap(Heightmap.Types.WORLD_SURFACE)
+		)));
+		context.register(HALLOWED_TUNDRA_TREES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.HALLOWED_TUNDRA_TREE), List.of(
+			everyLayer(weightedInts(2, 5, 3, 4, 5, 1)), blockFilter(matchBlocks(vec(0, -1, 0), SNOW_BLOCK)), biome()
+		)));
+
+		context.register(THE_HALLOW_LANTERNS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.THE_HALLOW_LANTERN), List.of(
+			countPlace(num(0, 4)), inSquare(), heightRange(height(aboveBottom(40), belowTop(170))),
+			envScan(Direction.UP, all(sturdyFace(Direction.DOWN), matchBlocks(DIORITE, CALCITE, ENDER_DIRT, ENDER_GRASS_BLOCK)), matchBlocks(AIR), 24),
+			randOffset(num(0), num(-1)), biome()
+		)));
+		context.register(THE_HALLOW_CRYSTAL_ROOTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.THE_HALLOW_CRYSTAL_ROOTS), List.of(
+			rarity(10), inSquare(), heightRange(height(aboveBottom(0), absolute(170))),
+			envScan(Direction.UP, all(matchBlocks(vec(0, 1, 0), END_STONE, DIORITE), matchBlocks(AIR, CAVE_AIR)), all(), 32), biome()
+		)));
+		context.register(THE_HALLOW_ROCKS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.THE_HALLOW_ROCK), List.of(
+			countPlace(1), inSquare(), biome(), rarity(3), aboveBelow0
 		)));
 	}
 }

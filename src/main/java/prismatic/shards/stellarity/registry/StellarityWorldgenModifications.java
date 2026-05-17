@@ -47,7 +47,6 @@ public interface StellarityWorldgenModifications {
 			dimensionType.logicalHeight = Math.max(dimensionType.logicalHeight, 384);
 			dimensionType.height = Math.max(dimensionType.height, 384);
 			dimensionType.monsterSettings().monsterSpawnBlockLightLimit = 15;
-
 		});
 
 

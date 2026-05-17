@@ -12,6 +12,7 @@ public interface StellarityBlockTags {
 	TagKey<Block> WORLDGEN_END_STONE = id("worldgen/end_stone");
 	TagKey<Block> WORLDGEN_AMETHYST_FOREST_BOTTOM = id("worldgen/amethyst_forest/bottom");
 	TagKey<Block> WORLDGEN_GRASS_BLOCK = id("worldgen/grass_block");
+	TagKey<Block> WORLDGEN_DIRT = id("worldgen/dirt");
 	TagKey<Block> WORLDGEN_AMETHYST_GEODE_INVALID = id("worldgen/amethyst_geode_invalid");
 	TagKey<Block> WORLDGEN_CARVER_REPLACEABLE = id("worldgen/carver_replaceable");
 	TagKey<Block> WORLDGEN_ENDLESS_DUNES_DUNE_REPLACEABLE = id("worldgen/endless_dunes/dune_replaceable");

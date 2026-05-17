@@ -36,93 +36,81 @@ public abstract class EnderDragonFightMixin implements ExtEnderDragonFight {
 	@Shadow
 	@Nullable
 	public BlockPos
-  exitPortalLocation;
+		exitPortalLocation;
 
 	@Shadow
 	private ServerLevel
-  level;
+		level;
 
 	@Shadow
 	public
 
-  abstract boolean hasPreviouslyKilledDragon();
+	abstract boolean hasPreviouslyKilledDragon();
 
 	@Shadow
-	private List<EntityReference<EndCrystal>>respawnCrystals;
+	private List<EntityReference<EndCrystal>> respawnCrystals;
 
 	@Redirect(method = "tryRespawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/BlockPos;relative(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;"))
 	private BlockPos
 
-  adjustPosition(BlockPos blockPos, Direction direction, int i) {
+	adjustPosition(BlockPos blockPos, Direction direction, int i) {
 		return blockPos.relative(direction, 4).above(2);
-	
-  }
+
+	}
 
 	@Inject(method = "spawnExitPortal", at = @At("TAIL"))
-	private
-
-  void placeChest(boolean bl, CallbackInfo ci) {
-		if(stellarity$portalChestGenerated() || exitPortalLocation == null) return;
+	private void placeChest(boolean bl, CallbackInfo ci) {
+		if (stellarity$portalChestGenerated() || exitPortalLocation == null) return;
 		var chestPos = exitPortalLocation.offset(7, 1, 0);
 		level.setBlock(chestPos, Blocks.CHEST.defaultBlockState().setValue(ChestBlock.FACING, Direction.EAST), Block.UPDATE_CLIENTS);
 		var entity = level.getBlockEntity(chestPos);
 
-		if(entity instanceof ChestBlockEntity chestEntity) {
+		if (entity instanceof ChestBlockEntity chestEntity) {
 			chestEntity.setLootTable(StellarityLootTables.EXIT_PORTAL, level.getSeed());
 			chestEntity.setAttached(StellarityDataAttachments.EXIT_PORTAL_CHEST, true);
 
 			stellarity$setPortalChestGenerated(true);
-		
-    }
-	
-  }
+
+		}
+
+	}
 
 	@WrapOperation(method = "abortRespawnSequence", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/dimension/end/EnderDragonFight;spawnExitPortal(Z)V"))
-	private
-
-  void dontAllowEscape(EnderDragonFight instance, boolean bl, Operation<Void> original) {
+	private void dontAllowEscape(EnderDragonFight instance, boolean bl, Operation<Void> original) {
 		original.call(instance, hasPreviouslyKilledDragon());
-	
-  }
+
+	}
 
 	@Inject(method = "resetSpikeCrystals", at = @At("HEAD"))
-	private
-
-  void resetRespawnCrystals(CallbackInfo ci) {
-		if(respawnCrystals == null) return;
-		for(EntityReference < EndCrystal > ref :respawnCrystals){
+	private void resetRespawnCrystals(CallbackInfo ci) {
+		if (respawnCrystals == null) return;
+		for (EntityReference<EndCrystal> ref : respawnCrystals) {
 			var endCrystal = ref.getEntity(level, EndCrystal.class);
-			if(endCrystal == null) continue;
+			if (endCrystal == null) continue;
 			endCrystal.setInvulnerable(false);
 			endCrystal.setBeamTarget(null);
-		
-    }
-	
-  }
+
+		}
+
+	}
 
 	@WrapMethod(method = "spawnExitPortal")
-	private
-
-  void setPortalRespawn(boolean activated, Operation<Void> original) {
+	private void setPortalRespawn(boolean activated, Operation<Void> original) {
 		original.call(activated);
-		if(exitPortalLocation == null) return;
-	
-  }
+		if (exitPortalLocation == null) return;
+
+	}
 
 	// FIXME: once this is corrected in official repos
 	@WrapOperation(method = "onCrystalDestroyed", at = @At(value = "INVOKE", target = "Ljava/util/List;contains(Ljava/lang/Object;)Z"))
-	private
-
-  boolean bugFixEndCrystalCheck(List<EntityReference<EndCrystal>> instance, Object o, Operation<Boolean> original) {
-		if(!(o instanceof EndCrystal endCrystal)) return false;
-		for(var ref :instance){
-			if(ref.matches(endCrystal)) return true;
-		
-    }
+	private boolean bugFixEndCrystalCheck(List<EntityReference<EndCrystal>> instance, Object o, Operation<Boolean> original) {
+		if (!(o instanceof EndCrystal endCrystal)) return false;
+		for (var ref : instance) {
+			if (ref.matches(endCrystal)) return true;
+		}
 
 		return false;
-	
-  }
+	}
 }
 
 

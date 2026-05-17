@@ -22,6 +22,7 @@ import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static net.minecraft.core.Holder.direct;
 import static net.minecraft.data.worldgen.placement.NetherPlacements.BASALT_PILLAR;
+import static net.minecraft.data.worldgen.placement.NetherPlacements.WEEPING_VINES;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_BUSH;
 import static net.minecraft.data.worldgen.placement.VegetationPlacements.PATCH_DRY_GRASS_DESERT;
 import static prismatic.shards.stellarity.key.StellarityBiomes.*;
@@ -477,8 +478,39 @@ public interface BiomeProvider {
 			).build()
 		);
 
+		context.register(HALLOWED_TUNDRA, new Biome.BiomeBuilder()
+			.temperature(-0.5f).downfall(0.6f).hasPrecipitation(false).temperatureAdjustment(Biome.TemperatureModifier.FROZEN)
+			.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
+			.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x7ba4ff)
+			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
+			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xe566ff)
+			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
+				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 900, 2, 2)),
+				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 0.00055))
+			))
+			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CHERRY_LEAVES, 0.0012f)))
+			.specialEffects(new BiomeSpecialEffects(0xea80ff, of(0xa6e4ff), empty(), of(0xb2e1ff), BiomeSpecialEffects.GrassColorModifier.NONE))
+			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				// TODO: add pixie
+				.build()
+			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FROZEN_SPIKES_LARGE_DRIPSTONE)
+				.addFeature(GenerationStep.Decoration.RAW_GENERATION, FROSTED_VALLEY_HILLS)
+				.addFeature(GenerationStep.Decoration.LAKES, THE_HALLOW_CRYSTAL_ROOTS)
+				.addFeature(GenerationStep.Decoration.LAKES, THE_HALLOW_ROCKS)
+				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, HALLOWED_TUNDRA_LAKE)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HALLOWED_TUNDRA_TREES)
+				// TODO: tree lanterns can use decorators
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, THE_HALLOW_LANTERNS)
+				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FREEZE_WATER)
+				.build()
+			).build()
+		);
 
-		for (var biome : List.of(HALLOWED_TUNDRA, PRISMARINE_FOREST, PRISMATIC_DUNES, THE_HALLOW, THE_NEST, WARPED_MARSH)) {
+
+		for (var biome : List.of(PRISMARINE_FOREST, PRISMATIC_DUNES, THE_HALLOW, THE_NEST, WARPED_MARSH)) {
 			context.register(biome, new Biome.BiomeBuilder()
 				.temperature(0.8f).downfall(0.4f).hasPrecipitation(false)
 				.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)

@@ -10,10 +10,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 
 import java.util.Optional;
 
-public record SpikeFeatureConfiguration(BlockStateProvider stateProvider, Optional<BlockPredicate> canReplace,
-                                        FloatProvider radius,
-                                        FloatProvider height, FloatProvider windX,
-                                        FloatProvider windZ) implements FeatureConfiguration {
+public record SpikeFeatureConfiguration(
+	BlockStateProvider stateProvider, Optional<BlockPredicate> canReplace, FloatProvider radius, FloatProvider height,
+	FloatProvider windX, FloatProvider windZ
+) implements FeatureConfiguration {
 	public static final Codec<SpikeFeatureConfiguration> CODEC = RecordCodecBuilder.create(instance -> instance.group(
 		BlockStateProvider.CODEC.fieldOf("state_provider").forGetter(SpikeFeatureConfiguration::stateProvider),
 		BlockPredicate.CODEC.optionalFieldOf("can_replace").forGetter(SpikeFeatureConfiguration::canReplace),

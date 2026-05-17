@@ -124,6 +124,13 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> FROZEN_SPIKES_POWDER_SNOW_ORE = id("frozen_spikes/powder_snow_ore");
 	ResourceKey<PlacedFeature> FROZEN_SPIKES_ICE_SPIKES = id("frozen_spikes/ice_spikes");
 
+	ResourceKey<PlacedFeature> HALLOWED_TUNDRA_LAKE = id("hallowed_tundra/lake");
+	ResourceKey<PlacedFeature> HALLOWED_TUNDRA_TREES = id("hallowed_tundra/trees");
+
+	ResourceKey<PlacedFeature> THE_HALLOW_CRYSTAL_ROOTS = id("the_hallow/crystal_roots");
+	ResourceKey<PlacedFeature> THE_HALLOW_ROCKS = id("the_hallow/rocks");
+	ResourceKey<PlacedFeature> THE_HALLOW_LANTERNS = id("the_hallow/lanterns");
+
 
 	static ResourceKey<PlacedFeature> id(String name) {
 		return Stellarity.key(Registries.PLACED_FEATURE, name);
