@@ -8,7 +8,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +18,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -48,6 +49,26 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 	@Nullable Output craft(List<ItemStack> itemStacks);
 
 	HashMap<Ingredient, Integer> ingredients();
+
+	static HashMap<Ingredient, Integer> readIngredients(RegistryFriendlyByteBuf buf) {
+		int size = buf.readInt();
+		HashMap<Ingredient, Integer> ingredients = new HashMap<>();
+		for (int i = 0; i < size; i++) {
+			Ingredient ingredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+			int count = buf.readInt();
+			ingredients.put(ingredient, count);
+		}
+		return ingredients;
+	}
+
+	default void writeIngredients(RegistryFriendlyByteBuf buf) {
+		var ingredients = ingredients();
+		buf.writeInt(ingredients.size());
+		for (var entry : ingredients.entrySet()) {
+			Ingredient.CONTENTS_STREAM_CODEC.encode(buf, entry.getKey());
+			buf.writeInt(entry.getValue());
+		}
+	}
 
 	@Override
 	default @NonNull PlacementInfo placementInfo() {

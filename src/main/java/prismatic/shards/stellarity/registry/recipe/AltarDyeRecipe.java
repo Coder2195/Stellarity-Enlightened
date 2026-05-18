@@ -23,18 +23,10 @@ import java.util.List;
 
 public record AltarDyeRecipe(Ingredient item) implements AltarRecipe {
 
-	public static final StreamCodec<RegistryFriendlyByteBuf, AltarDyeRecipe> STREAM_CODEC = StreamCodec.of(AltarDyeRecipe::toNetwork, AltarDyeRecipe::fromNetwork);
+	public static final StreamCodec<RegistryFriendlyByteBuf, AltarDyeRecipe> STREAM_CODEC = StreamCodec.composite(Ingredient.CONTENTS_STREAM_CODEC, AltarDyeRecipe::item, AltarDyeRecipe::new);
 	public static final MapCodec<AltarDyeRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Ingredient.CODEC.fieldOf("item").forGetter(AltarDyeRecipe::item)
 	).apply(instance, AltarDyeRecipe::new));
-
-	private static AltarDyeRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
-		return new AltarDyeRecipe(Ingredient.CONTENTS_STREAM_CODEC.decode(buf));
-	}
-
-	private static void toNetwork(RegistryFriendlyByteBuf buf, AltarDyeRecipe altarDyeRecipe) {
-		Ingredient.CONTENTS_STREAM_CODEC.encode(buf, altarDyeRecipe.item);
-	}
 
 	@Override
 	public @Nullable Output craft(List<ItemStack> itemStacks) {
