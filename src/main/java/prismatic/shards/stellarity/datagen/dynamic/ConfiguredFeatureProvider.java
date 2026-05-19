@@ -471,7 +471,7 @@ public interface ConfiguredFeatureProvider {
 				countPlace(8), randOffset(trapezoid(-8, 8, 0), trapezoid(-2, 2, 0))
 			))),
 			direct(new PlacedFeature(endlessDunesOasisPalmTree, List.of(
-				countPlace(1), randOffset(trapezoid(-8, 8, 0), trapezoid(-4, 4, 0)), envScan(Direction.DOWN, solid(), all(), 10)
+				countPlace(1), randOffset(trapezoid(-8, 8, 0), trapezoid(-4, 4, 0)), envScan(Direction.DOWN, any(matchTag(StellarityBlockTags.DIRT), matchBlocks(WATER)), all(), 10)
 			))),
 			direct(new PlacedFeature(endlessDunesOasisVegetationMiddle, List.of(
 				countPlace(12), randOffset(trapezoid(-8, 8, 0), trapezoid(-2, 2, 0)), blockFilter(all(matchBlocks(AIR, SHORT_GRASS), wouldSurvive(SHORT_GRASS)))

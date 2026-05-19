@@ -2,6 +2,7 @@ package prismatic.shards.stellarity;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.fabricmc.fabric.api.attachment.v1.GlobalAttachmentsProvider;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -27,7 +28,7 @@ public record StellarityConfig(
 
 	public static StreamCodec<RegistryFriendlyByteBuf, StellarityConfig> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.BOOL, StellarityConfig::joinMessage, ByteBufCodecs.BOOL, StellarityConfig::enableEndCrystalDrop, ByteBufCodecs.BOOL, StellarityConfig::enableTotemVoidSaving, ByteBufCodecs.BOOL, StellarityConfig::alwaysGenerateEgg, ByteBufCodecs.INT, StellarityConfig::dragonHealth, ByteBufCodecs.INT, StellarityConfig::empressOfLightHealth, ByteBufCodecs.INT, StellarityConfig::shulkingHealth, StellarityConfig::new);
 
-	public static StellarityConfig get(MinecraftServer server) {
-		return server.globalAttachments().getAttachedOrElse(StellarityDataAttachments.CONFIG, DEFAULT);
+	public static StellarityConfig get(GlobalAttachmentsProvider provider) {
+		return provider.globalAttachments().getAttachedOrElse(StellarityDataAttachments.CONFIG, DEFAULT);
 	}
 }
