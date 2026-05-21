@@ -22,6 +22,7 @@ import prismatic.shards.stellarity.registry.block.DuskberryBush;
 import prismatic.shards.stellarity.registry.block.EnderDirtPath;
 import prismatic.shards.stellarity.registry.block.EnderGrassBlock;
 
+import java.util.List;
 import java.util.function.Function;
 
 public interface StellarityBlocks {
@@ -70,8 +71,9 @@ public interface StellarityBlocks {
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Blocks");
 		TillableBlockRegistry.register(ROOTED_ENDER_DIRT, (unused) -> true, HoeItem.changeIntoStateAndDropItem(StellarityBlocks.ENDER_DIRT.defaultBlockState(), Items.HANGING_ROOTS));
-		FlattenableBlockRegistry.register(ENDER_DIRT, ENDER_DIRT_PATH.defaultBlockState());
-		FlattenableBlockRegistry.register(ENDER_GRASS_BLOCK, ENDER_DIRT_PATH.defaultBlockState());
+		TillableBlockRegistry.register(COARSE_ENDER_DIRT, (unused) -> true, HoeItem.changeIntoState(StellarityBlocks.ENDER_DIRT.defaultBlockState()));
+		for (var dirt : List.of(ENDER_DIRT, ENDER_GRASS_BLOCK, COARSE_ENDER_DIRT))
+			FlattenableBlockRegistry.register(dirt, ENDER_DIRT_PATH.defaultBlockState());
 
 	}
 }

@@ -53,6 +53,16 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Enderite Block**
 
+**[+] Coarse Ender Dirt**
+
+**[*] Ender Dirt**
+
+- Convertable to mud
+
+**[*] Rooted Ender Dirt**
+
+- Convertable to mud
+
 ## Advancements
 
 **[+] Cursed Crafting**

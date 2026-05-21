@@ -39,7 +39,7 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.@NonNull Provider provider) {
 		addTags(StellarityBlockTags.DIRT).add(ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT);
-		addTags(MINEABLE_WITH_SHOVEL).add(ENDER_DIRT_PATH, ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT);
+		addTags(MINEABLE_WITH_SHOVEL, StellarityBlockTags.DIRT).add(ENDER_DIRT_PATH);
 		addTags(MINEABLE_WITH_PICKAXE).add(ALTAR_OF_THE_ACCURSED, ENDERITE_BLOCK);
 		addTags(NEEDS_IRON_TOOL).add(ENDERITE_BLOCK);
 		addTags(NEEDS_DIAMOND_TOOL).add(ALTAR_OF_THE_ACCURSED);
@@ -68,5 +68,6 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 		addTags(WORLDGEN_SNOW_BLOCK).add(SNOW_BLOCK);
 		addTags(WORLDGEN_PRISMATIC_DUNES_SURFACE).add(DIORITE, WHITE_CONCRETE_POWDER, CALCITE, END_STONE, AMETHYST_BLOCK);
 		addTags(WORLDGEN_THE_NEST_SURFACE, BlockTags.TERRACOTTA, StellarityBlockTags.DIRT).add(END_STONE, BASALT, DEEPSLATE, TUFF, ANDESITE, COBBLESTONE, NETHERRACK);
+		addTags(CONVERTABLE_TO_MUD).add(ENDER_DIRT, COARSE_ENDER_DIRT, ROOTED_ENDER_DIRT);
 	}
 }

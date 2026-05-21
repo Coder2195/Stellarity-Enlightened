@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.recipe.AltarDyeRecipe;
@@ -50,6 +51,15 @@ public class RecipeProvider extends FabricRecipeProvider {
 					.requires(ENDERITE_BLOCK)
 					.unlockedBy(getHasName(ENDERITE_BLOCK), has(ENDERITE_BLOCK))
 					.save(output);
+
+				this.shaped(RecipeCategory.BUILDING_BLOCKS, COARSE_ENDER_DIRT, 4)
+					.pattern("DG")
+					.pattern("GD")
+					.define('D', ENDER_DIRT)
+					.define('G', GRAVEL)
+					.unlockedBy(getHasName(GRAVEL), this.has(GRAVEL))
+					.unlockedBy(getHasName(ENDER_DIRT), this.has(ENDER_DIRT))
+					.save(this.output);
 
 				provider.allRegistriesLifecycle().add(Lifecycle.stable());
 				RecipeProvider.this.buildRecipes(provider, output);
