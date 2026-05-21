@@ -180,6 +180,8 @@ publishMods {
 		projectId = property("publish.modrinth") as String
 		accessToken = env.fetch("MODRINTH_TOKEN", "")
 		minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
+		type = ALPHA
+		
 		requires("fabric-api")
 		requires("biolith")
 		optional("modonomicon")
