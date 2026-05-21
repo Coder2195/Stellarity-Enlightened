@@ -157,7 +157,6 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> WARPED_MARSH_PONDS = id("warped_marsh/ponds");
 	ResourceKey<PlacedFeature> WARPED_MARSH_WATER_VEGETATION = id("warped_marsh/water_vegetation");
 	ResourceKey<PlacedFeature> WARPED_MARSH_VEGETATION = id("warped_marsh/vegetation");
-	ResourceKey<PlacedFeature> WARPED_MARSH_WATER_TREES = id("warped_marsh/water_trees");
 	ResourceKey<PlacedFeature> WARPED_MARSH_TREES = id("warped_marsh/trees");
 	ResourceKey<PlacedFeature> WARPED_MARSH_SLIME = id("warped_marsh/slime");
 	ResourceKey<PlacedFeature> WARPED_MARSH_HANGING_FROGLIGHTS = id("warped_marsh/hanging_froglights");

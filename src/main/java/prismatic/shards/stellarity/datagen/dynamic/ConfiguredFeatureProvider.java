@@ -910,6 +910,63 @@ public interface ConfiguredFeatureProvider {
 			new BlockMatchTest(END_STONE), from(COBBLED_DEEPSLATE), 64
 		)));
 
-
+		BiFunction<Block, Block, Holder<PlacedFeature>> warpedForestWaterTreeFunc = (trunk, leaf) -> {
+			return direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+				List.of(new BlockColumnConfiguration.Layer(num(1, 4), block(trunk)), new BlockColumnConfiguration.Layer(num(1, 3), block(property(leaf, LeavesBlock.PERSISTENT, true)))),
+				Direction.UP, matchBlocks(AIR, WATER), false
+			))), List.of()));
+		};
+		var warpedForestWaterTree = context.register(WARPED_MARSH_WATER_TREE, new ConfiguredFeature<>(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfiguration(HolderSet.direct(warpedForestWaterTreeFunc.apply(DARK_OAK_FENCE, MANGROVE_LEAVES), warpedForestWaterTreeFunc.apply(SPRUCE_FENCE, OAK_LEAVES)
+		))));
+		context.register(WARPED_MARSH_POND, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			List.of(new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
+				StellarityBlockTags.DIRT, weightedBlocks(new Block[]{COARSE_ENDER_DIRT, ROOTED_ENDER_DIRT}, new int[]{25, 13}),
+				direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(blocks(
+					Direction.Plane.HORIZONTAL.stream().map(d -> property(SMALL_DRIPLEAF, SmallDripleafBlock.FACING, d)).toArray(BlockState[]::new)
+				)))), List.of())), CaveSurface.FLOOR, num(2, 3), 0.8f, 5, 0.4f, num(2, 4), 0.7f
+			))), List.of())), 0.06f)),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
+				WORLDGEN_WARPED_MARSH_POND_REPLACEABLE, block(MOSS_BLOCK), direct(new PlacedFeature(warpedForestWaterTree, List.of())),
+				CaveSurface.FLOOR, num(1, 2), 0.6f, 10, 0.04f, num(2, 4), 0.4f
+			))), List.of()))
+		)));
+		var warpedMarshVegetationOffset = randOffset(trapezoid(-7, 7, 0), trapezoid(-3, 3, 0));
+		var warpedMarshVegetationFilter = blockFilter(all(wouldSurvive(SHORT_GRASS), matchBlocks(AIR)));
+		context.register(WARPED_MARSH_VEGETATION, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			List.of(new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(noiseBlocks(
+				0, new NormalNoise.NoiseParameters(-7, 1, 1), 1, BLUE_ORCHID, BLUE_ORCHID, BLUE_ORCHID, PITCHER_PLANT
+			)))), List.of(countPlace(40), warpedMarshVegetationOffset, warpedMarshVegetationFilter))), 0.08f)),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+				new Block[]{NETHER_SPROUTS, WARPED_ROOTS, TALL_GRASS, SHORT_GRASS}, new int[]{1, 5, 3, 2}
+			)))), List.of(countPlace(32), warpedMarshVegetationOffset, warpedMarshVegetationFilter)))
+		)));
+		context.register(WARPED_MARSH_WATER_VEGETATION, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
+			Stream.concat(Stream.of(from(SEAGRASS)), Stream.concat(Arrays.stream(coralAndFans), Stream.of(1, 2, 3, 4).map(i -> property(SEA_PICKLE, SeaPickleBlock.PICKLES, i)))).toArray(BlockState[]::new),
+			new int[]{100, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}
+		))));
+		context.register(WARPED_MARSH_TREE, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+			List.of(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(
+					block(WARPED_WART_BLOCK), block(WARPED_STEM), 1, all()
+				))), List.of())), 0.25f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+					List.of(new BlockColumnConfiguration.Layer(weightedInts(new IntProvider[]{num(2, 3), num(1), num(2, 5)}, new int[]{4, 1, 4}), block(TWISTING_VINES_PLANT))),
+					Direction.UP, matchBlocks(AIR), true
+				))), List.of())), 0.15f)
+			),
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				block(WARPED_HYPHAE), new ForkingTrunkPlacer(5, 0, 3),
+				block(WARPED_WART_BLOCK), new FancyFoliagePlacer(num(1), num(0), 2),
+				Optional.empty(), twoLayersSize(), List.of(new LeaveVineDecorator(0.12f)), false, block(SNOW_BLOCK)
+			))), List.of()))
+		)));
+		context.register(WARPED_MARSH_SLIME, new ConfiguredFeature<>(Feature.BLOCK_BLOB, new BlockBlobConfiguration(from(SLIME_BLOCK), all())));
+		context.register(WARPED_MARSH_HANGING_FROGLIGHT, new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
+			List.of(
+				new BlockColumnConfiguration.Layer(num(3, 9), block(CAVE_VINES_PLANT)),
+				new BlockColumnConfiguration.Layer(num(1), block(property(CAVE_VINES, CaveVinesBlock.AGE, 25))),
+				new BlockColumnConfiguration.Layer(num(1), blocks(VERDANT_FROGLIGHT, ASHEN_FROGLIGHT, PEARLESCENT_FROGLIGHT, OCHRE_FROGLIGHT))
+			), Direction.DOWN, matchBlocks(vec(0, -1, 0), AIR), true
+		)));
 	}
 }

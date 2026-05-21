@@ -36,6 +36,23 @@
   "features": [
     [
       "stellarity:global/stalactites"
+    ],
+    [],
+    [
+      "stellarity:warped_marsh/ponds"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "stellarity:warped_marsh/vegetation",
+      "stellarity:warped_marsh/water_vegetation",
+      "stellarity:warped_marsh/trees",
+      "stellarity:warped_marsh/slime",
+      "stellarity:warped_marsh/hanging_froglights"
     ]
   ],
   "has_precipitation": false,

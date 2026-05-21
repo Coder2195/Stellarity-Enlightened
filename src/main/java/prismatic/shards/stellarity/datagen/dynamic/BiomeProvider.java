@@ -665,6 +665,12 @@ public interface BiomeProvider {
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
+				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, WARPED_MARSH_PONDS)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, WARPED_MARSH_VEGETATION)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, WARPED_MARSH_WATER_VEGETATION)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, WARPED_MARSH_TREES)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, WARPED_MARSH_SLIME)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, WARPED_MARSH_HANGING_FROGLIGHTS)
 				.build()
 			).build()
 		);

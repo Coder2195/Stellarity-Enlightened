@@ -484,5 +484,27 @@ public interface PlacedFeatureProvider {
 		context.register(THE_NEST_TRANSITION, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.THE_NEST_TRANSITION), List.of(
 			countPlace(256), inSquare(), aboveBelow0, scanUpSolidAir32, biome(), randOffset(num(0), num(1))
 		)));
+		context.register(WARPED_MARSH_PONDS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_POND), List.of(
+			everyLayer(20), biome()
+		)));
+		context.register(WARPED_MARSH_VEGETATION, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_VEGETATION), List.of(
+			everyLayer(20), biome()
+		)));
+		context.register(WARPED_MARSH_WATER_VEGETATION, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_WATER_VEGETATION), List.of(
+			everyLayer(10), biome(), countPlace(60), randOffset(trapezoid(-7, 7, 0), trapezoid(-3, 3, 0)),
+			blockFilter(all(matchBlocks(WATER), matchBlocks(vec(0, 1, 0), AIR)))
+		)));
+		context.register(WARPED_MARSH_TREES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_TREE), List.of(
+			everyLayer(5), biome(), countPlace(20), randOffset(trapezoid(-6, 6, 0), trapezoid(-3, 3, 0)),
+			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), MOSS_BLOCK, COARSE_ENDER_DIRT, SNOW_BLOCK)))
+		)));
+		context.register(WARPED_MARSH_SLIME, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_SLIME), List.of(
+			everyLayer(1), rarity(4), biome()
+		)));
+		context.register(WARPED_MARSH_HANGING_FROGLIGHTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.WARPED_MARSH_HANGING_FROGLIGHT), List.of(
+			countPlace(num(0, 6)), inSquare(), heightRange(height(aboveBottom(40), belowTop(170))),
+			envScan(Direction.UP, all(sturdyFace(Direction.DOWN), matchBlocks(END_STONE)), matchBlocks(AIR), 24),
+			randOffset(num(0), num(-1)), biome()
+		)));
 	}
 }

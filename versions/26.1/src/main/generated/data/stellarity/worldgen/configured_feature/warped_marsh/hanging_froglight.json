@@ -1,0 +1,91 @@
+{
+  "type": "minecraft:block_column",
+  "config": {
+    "allowed_placement": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:air",
+      "offset": [
+        0,
+        -1,
+        0
+      ]
+    },
+    "direction": "down",
+    "layers": [
+      {
+        "height": {
+          "type": "minecraft:uniform",
+          "max_inclusive": 9,
+          "min_inclusive": 3
+        },
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:cave_vines_plant",
+            "Properties": {
+              "berries": "false"
+            }
+          }
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:cave_vines",
+            "Properties": {
+              "age": "25",
+              "berries": "false"
+            }
+          }
+        }
+      },
+      {
+        "height": 1,
+        "provider": {
+          "type": "minecraft:weighted_state_provider",
+          "entries": [
+            {
+              "data": {
+                "Name": "minecraft:verdant_froglight",
+                "Properties": {
+                  "axis": "y"
+                }
+              },
+              "weight": 1
+            },
+            {
+              "data": {
+                "Name": "stellarity:ashen_froglight",
+                "Properties": {
+                  "axis": "y"
+                }
+              },
+              "weight": 1
+            },
+            {
+              "data": {
+                "Name": "minecraft:pearlescent_froglight",
+                "Properties": {
+                  "axis": "y"
+                }
+              },
+              "weight": 1
+            },
+            {
+              "data": {
+                "Name": "minecraft:ochre_froglight",
+                "Properties": {
+                  "axis": "y"
+                }
+              },
+              "weight": 1
+            }
+          ]
+        }
+      }
+    ],
+    "prioritize_tip": true
+  }
+}

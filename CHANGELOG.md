@@ -1,5 +1,8 @@
 # 0.6.0
 
+A really large update that sets down all the biomes, being able to prepare for
+structures for whenever we start adding them.
+
 # Changes
 
 Unless annotated, all changes are considered to be up to date with
@@ -96,6 +99,12 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[+] 9 Enderite Shards = 1 Enderite Block**
 
 **[+] 1 Enderite Block = 9 Enderite Shards**
+
+**[+] 2 Gravel + 2 Ender Dirt = 4 Coarse Ender Dirt**
+
+- Where D=Ender Dirt, G=Gravel  
+  DG  
+  GD
 
 ## Entities
 
@@ -256,4 +265,4 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 # Developers Note
 
-huge update in months
+Huge update in months. Next update will probably be completely implementing villager trades and equipment.

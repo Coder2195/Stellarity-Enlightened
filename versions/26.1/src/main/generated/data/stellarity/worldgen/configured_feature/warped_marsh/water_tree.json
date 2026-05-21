@@ -1,0 +1,121 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:block_column",
+          "config": {
+            "allowed_placement": {
+              "type": "minecraft:matching_blocks",
+              "blocks": [
+                "minecraft:air",
+                "minecraft:water"
+              ]
+            },
+            "direction": "up",
+            "layers": [
+              {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "max_inclusive": 4,
+                  "min_inclusive": 1
+                },
+                "provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "minecraft:dark_oak_fence",
+                    "Properties": {
+                      "east": "false",
+                      "north": "false",
+                      "south": "false",
+                      "waterlogged": "false",
+                      "west": "false"
+                    }
+                  }
+                }
+              },
+              {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "max_inclusive": 3,
+                  "min_inclusive": 1
+                },
+                "provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "minecraft:mangrove_leaves",
+                    "Properties": {
+                      "distance": "7",
+                      "persistent": "true",
+                      "waterlogged": "false"
+                    }
+                  }
+                }
+              }
+            ],
+            "prioritize_tip": false
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:block_column",
+          "config": {
+            "allowed_placement": {
+              "type": "minecraft:matching_blocks",
+              "blocks": [
+                "minecraft:air",
+                "minecraft:water"
+              ]
+            },
+            "direction": "up",
+            "layers": [
+              {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "max_inclusive": 4,
+                  "min_inclusive": 1
+                },
+                "provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "minecraft:spruce_fence",
+                    "Properties": {
+                      "east": "false",
+                      "north": "false",
+                      "south": "false",
+                      "waterlogged": "false",
+                      "west": "false"
+                    }
+                  }
+                }
+              },
+              {
+                "height": {
+                  "type": "minecraft:uniform",
+                  "max_inclusive": 3,
+                  "min_inclusive": 1
+                },
+                "provider": {
+                  "type": "minecraft:simple_state_provider",
+                  "state": {
+                    "Name": "minecraft:oak_leaves",
+                    "Properties": {
+                      "distance": "7",
+                      "persistent": "true",
+                      "waterlogged": "false"
+                    }
+                  }
+                }
+              }
+            ],
+            "prioritize_tip": false
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}
