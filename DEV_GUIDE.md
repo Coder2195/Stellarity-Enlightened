@@ -89,6 +89,16 @@ All client generally follow the same conventions mentioned above, but the "root"
 
 Utilities can go in `util`.
 
+## Commit Guides
+
+Don't write an essay, and try to use these emojis at the beginning of commit message whenever possible.
+
+- ✨ - New feature
+- 🐛 - Bug fix
+- 🧹 - Code refactor/cleanup
+- 📝 - Documentation
+- 🚑 - Hotfix
+
 ## Further Questions
 
 If you have further questions, feel free to ask Amber or any experienced dev on the team. 
