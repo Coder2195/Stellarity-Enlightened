@@ -132,7 +132,7 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> THE_HALLOW_LANTERNS = id("the_hallow/lanterns");
 	ResourceKey<PlacedFeature> THE_HALLOW_DIORITE_BOTTOM = id("the_hallow/diorite_bottom");
 
-	ResourceKey<PlacedFeature> PRISMARINE_FOREST_LAKES = id("prismarine_forest/lakes");
+	ResourceKey<PlacedFeature> PRISMARINE_FOREST_PONDS = id("prismarine_forest/ponds");
 	ResourceKey<PlacedFeature> PRISMARINE_FOREST_TREES = id("prismarine_forest/trees");
 	ResourceKey<PlacedFeature> PRISMARINE_FOREST_GRASS = id("prismarine_forest/grass");
 	ResourceKey<PlacedFeature> PRISMARINE_FOREST_FLOWERS = id("prismarine_forest/flowers");
@@ -153,6 +153,14 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> THE_NEST_DRAGON_EGGS = id("the_nest/dragon_eggs");
 	ResourceKey<PlacedFeature> THE_NEST_DEAD_CORAL = id("the_nest/dead_coral");
 	ResourceKey<PlacedFeature> THE_NEST_TRANSITION = id("the_nest/transition");
+
+	ResourceKey<PlacedFeature> WARPED_MARSH_PONDS = id("warped_marsh/ponds");
+	ResourceKey<PlacedFeature> WARPED_MARSH_WATER_VEGETATION = id("warped_marsh/water_vegetation");
+	ResourceKey<PlacedFeature> WARPED_MARSH_VEGETATION = id("warped_marsh/vegetation");
+	ResourceKey<PlacedFeature> WARPED_MARSH_WATER_TREES = id("warped_marsh/water_trees");
+	ResourceKey<PlacedFeature> WARPED_MARSH_TREES = id("warped_marsh/trees");
+	ResourceKey<PlacedFeature> WARPED_MARSH_SLIME = id("warped_marsh/slime");
+	ResourceKey<PlacedFeature> WARPED_MARSH_HANGING_FROGLIGHTS = id("warped_marsh/hanging_froglights");
 
 	static ResourceKey<PlacedFeature> id(String id) {
 		return Stellarity.key(Registries.PLACED_FEATURE, id);

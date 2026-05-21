@@ -25,7 +25,6 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.*;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.interface_injection.ExtLargeDripstoneConfiguration;
@@ -88,6 +87,10 @@ public interface ConfiguredFeatureProvider {
 		));
 		final var worldGenGrassBlock = blocksGetter.getOrThrow(WORLDGEN_GRASS_BLOCK);
 		final var worldGenDirt = blocksGetter.getOrThrow(WORLDGEN_DIRT);
+		final var coralAndFans = Stream.of(
+			DEAD_TUBE_CORAL, DEAD_HORN_CORAL, DEAD_FIRE_CORAL, DEAD_BUBBLE_CORAL, DEAD_BRAIN_CORAL,
+			DEAD_TUBE_CORAL_FAN, DEAD_HORN_CORAL_FAN, DEAD_FIRE_CORAL_FAN, DEAD_BUBBLE_CORAL_FAN, DEAD_BRAIN_CORAL_FAN
+		).map(b -> property(b, CoralFanBlock.WATERLOGGED, false)).toArray(BlockState[]::new);
 
 		context.register(GLOBAL_STALACTITES, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
 			WORLDGEN_STALACTITE_REPLACEABLE, block(END_STONE),
@@ -173,7 +176,7 @@ public interface ConfiguredFeatureProvider {
 		)));
 		context.register(END_HIGHLANDS_CHORUS_BUD, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
 			block(CHERRY_WOOD), new StraightTrunkPlacer(2, 0, 0),
-			weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, COARSE_DIRT}, new int[]{7, 4}),
+			weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT}, new int[]{7, 4}),
 			new BushFoliagePlacer(num(0), num(0), 6),
 			Optional.empty(), twoLayersSize(),
 			List.of(new LeaveVineDecorator(0.15f), new AttachedToLeavesDecorator(
@@ -379,7 +382,7 @@ public interface ConfiguredFeatureProvider {
 			)
 		));
 
-		context.register(ENDLESS_DUNES_SAND_DELTA, new ConfiguredFeature<>(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(from(SAND), from(COARSE_DIRT), num(4, 16), num(1, 4))));
+		context.register(ENDLESS_DUNES_SAND_DELTA, new ConfiguredFeature<>(Feature.DELTA_FEATURE, new DeltaFeatureConfiguration(from(SAND), from(COARSE_ENDER_DIRT), num(4, 16), num(1, 4))));
 		context.register(ENDLESS_DUNES_VEGETATION, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(
 				Feature.BLOCK_COLUMN,
@@ -401,7 +404,7 @@ public interface ConfiguredFeatureProvider {
 			CaveSurface.FLOOR, num(1), 0, 3, 0.5f, num(2, 3), 0.3f
 		)));
 		var endlessDunesOasisDirt = context.register(ENDLESS_DUNES_OASIS_DIRT, new ConfiguredFeature<>(Feature.DISK, new DiskConfiguration(
-			weightedBlocks(new Block[]{COARSE_DIRT, ROOTED_ENDER_DIRT}, new int[]{3, 2}),
+			weightedBlocks(new Block[]{COARSE_ENDER_DIRT, ROOTED_ENDER_DIRT}, new int[]{3, 2}),
 			matchTag(WORLDGEN_ENDLESS_DUNES_DUNE_REPLACEABLE), num(6, 8), 1
 		)));
 		var endlessDunesOasisVegetation = context.register(ENDLESS_DUNES_OASIS_VEGETATION, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
@@ -652,12 +655,12 @@ public interface ConfiguredFeatureProvider {
 			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
 				block(OAK_LOG), new StraightTrunkPlacer(t._1(), 0, 0),
 				block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(2 - t._1()), 3 - t._1()),
-				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_DIRT)
+				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
 			))), List.of())), t._2())).toList(),
 			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
 				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
 				block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(0), 1),
-				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_DIRT)
+				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
 			))), List.of()))
 		)));
 		context.register(FROZEN_SPIKES_HILLS, new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(
@@ -807,7 +810,7 @@ public interface ConfiguredFeatureProvider {
 		))));
 
 
-		context.register(PRISMARINE_FOREST_LAKE, new ConfiguredFeature<>(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
+		context.register(PRISMARINE_FOREST_POND, new ConfiguredFeature<>(Feature.WATERLOGGED_VEGETATION_PATCH, new VegetationPatchConfiguration(
 			StellarityBlockTags.DIRT, weightedBlocks(new Block[]{ENDER_GRASS_BLOCK, PRISMARINE}, new int[]{8, 2}),
 			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(weightedBlocks(
 				Stream.concat(
@@ -902,15 +905,11 @@ public interface ConfiguredFeatureProvider {
 		context.register(THE_NEST_DRAGON_EGG, new ConfiguredFeature<>(StellarityFeatures.DRAGON_EGG, new SimpleBlockConfiguration(weightedBlocks(
 			new Block[]{OBSIDIAN, CRYING_OBSIDIAN}, new int[]{15, 1}
 		))));
-		context.register(THE_NEST_DEAD_CORAL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(blocks(
-			Stream.of(
-				DEAD_TUBE_CORAL, DEAD_HORN_CORAL, DEAD_FIRE_CORAL, DEAD_BUBBLE_CORAL, DEAD_BRAIN_CORAL,
-				DEAD_TUBE_CORAL_FAN, DEAD_HORN_CORAL_FAN, DEAD_FIRE_CORAL_FAN, DEAD_BUBBLE_CORAL_FAN, DEAD_BRAIN_CORAL_FAN
-			).map(b -> property(b, CoralFanBlock.WATERLOGGED, false)).toArray(BlockState[]::new)
-		))));
+		context.register(THE_NEST_DEAD_CORAL, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(blocks(coralAndFans))));
 		context.register(THE_NEST_TRANSITION, new ConfiguredFeature<>(Feature.SCATTERED_ORE, new OreConfiguration(
 			new BlockMatchTest(END_STONE), from(COBBLED_DEEPSLATE), 64
 		)));
+
 
 	}
 }

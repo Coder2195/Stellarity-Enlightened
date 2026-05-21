@@ -130,7 +130,7 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(END_HIGHLANDS_PITCHER_PLANTS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.END_HIGHLANDS_PITCHER_PLANT), List.of(
 			everyLayer(1), rarity(3), biome(), countPlace(96), randOffset(trapezoid(-7, 7, 0), trapezoid(-3, 3, 0)),
-			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_DIRT, GRASS_BLOCK, DIRT)))
+			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT, GRASS_BLOCK, DIRT)))
 		)));
 		context.register(END_HIGHLANDS_GRASS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.END_HIGHLANDS_GRASS), List.of(
 			everyLayer(3), biome(), countPlace(96), randOffset(trapezoid(-7, 7, 0), trapezoid(-4, 4, 0)), blockFilter(all(wouldSurvive(SHORT_GRASS), matchBlocks(AIR)))
@@ -138,7 +138,7 @@ public interface PlacedFeatureProvider {
 		context.register(END_HIGHLANDS_ROOTS, new PlacedFeature(hangingRoots, List.of(
 			countPlace(87), inSquare(), aboveBelow0, envScan(Direction.UP, all(sturdyFace(Direction.DOWN), matchBlocks(DIRT, GRASS_BLOCK)), matchBlocks(AIR), 32),
 			randOffset(num(0), num(-1)), biome(), countPlace(24), randOffset(trapezoid(-5, 5, 0), trapezoid(-5, 5, 0)),
-			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, 1, 0), ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_DIRT)))
+			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, 1, 0), ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT)))
 		)));
 		context.register(END_HIGHLANDS_CHORUS_LEAVES, new PlacedFeature(direct(new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
 			new WeightedPlacedFeature(direct(new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.END_HIGHLANDS_CHORUS_LEAF), List.of())), 0.3f)), nothing
@@ -422,7 +422,7 @@ public interface PlacedFeatureProvider {
 			aboveBelow0, scanUpSolidAir32, biome()
 		)));
 
-		context.register(PRISMARINE_FOREST_LAKES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.PRISMARINE_FOREST_LAKE), List.of(
+		context.register(PRISMARINE_FOREST_PONDS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.PRISMARINE_FOREST_POND), List.of(
 			everyLayer(1), biome()
 		)));
 		context.register(PRISMARINE_FOREST_FLOWERS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.PRISMARINE_FOREST_FLOWER), List.of(

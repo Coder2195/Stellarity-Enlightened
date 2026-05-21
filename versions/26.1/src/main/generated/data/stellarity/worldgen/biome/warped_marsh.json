@@ -2,45 +2,40 @@
   "attributes": {
     "minecraft:audio/ambient_sounds": {
       "additions": {
-        "sound": "minecraft:ambient.soul_sand_valley.additions",
+        "sound": "minecraft:ambient.warped_forest.additions",
         "tick_chance": 0.0111
       },
-      "loop": "stellarity:ambient.the_end.dark",
+      "loop": "stellarity:ambient.the_end.heavenly_blessed",
       "mood": {
-        "block_search_extent": 10,
-        "offset": 100.0,
-        "sound": "minecraft:ambient.soul_sand_valley.mood",
-        "tick_delay": 3000
+        "block_search_extent": 4,
+        "offset": 1.0,
+        "sound": "minecraft:ambient.warped_forest.mood",
+        "tick_delay": 1200
       }
     },
     "minecraft:visual/ambient_light_color": "#3f472f",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:spore_blossom_air"
+        },
+        "probability": 0.001
+      }
+    ],
     "minecraft:visual/fog_color": "#000000",
     "minecraft:visual/sky_color": "#000000",
-    "minecraft:visual/water_fog_color": "#041f33"
+    "minecraft:visual/water_fog_color": "#67bbc1"
   },
   "carvers": [],
   "downfall": 0.4,
   "effects": {
-    "foliage_color": "#75ae1c",
-    "grass_color": "#91bf4a",
-    "water_color": "#43d5ee"
+    "foliage_color": "#00dde0",
+    "grass_color": "#01ccda",
+    "water_color": "#a2d9e7"
   },
   "features": [
     [
       "stellarity:global/stalactites"
-    ],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
     ]
   ],
   "has_precipitation": false,
@@ -48,11 +43,49 @@
   "spawners": {
     "ambient": [],
     "axolotls": [],
-    "creature": [],
+    "creature": [
+      {
+        "type": "minecraft:sheep",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 12
+      },
+      {
+        "type": "minecraft:pig",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:chicken",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 10
+      },
+      {
+        "type": "minecraft:cow",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 8
+      },
+      {
+        "type": "minecraft:wolf",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 8
+      }
+    ],
     "misc": [],
     "monster": [],
     "underground_water_creature": [],
-    "water_ambient": [],
+    "water_ambient": [
+      {
+        "type": "minecraft:tropical_fish",
+        "maxCount": 4,
+        "minCount": 2,
+        "weight": 20
+      }
+    ],
     "water_creature": []
   },
   "temperature": 0.8

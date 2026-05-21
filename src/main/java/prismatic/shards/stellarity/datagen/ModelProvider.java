@@ -80,6 +80,13 @@ public class ModelProvider extends FabricModelProvider {
 		POTASSIFISH
 	};
 
+	public final static Block[] SIMPLE_BLOCKS = new Block[]{
+		StellarityBlocks.ENDER_DIRT,
+		StellarityBlocks.ROOTED_ENDER_DIRT,
+		StellarityBlocks.ENDERITE_BLOCK,
+		StellarityBlocks.COARSE_ENDER_DIRT
+	};
+
 	public void generateBush(BlockModelGenerators generators, Block block) {
 
 
@@ -99,7 +106,7 @@ public class ModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateBlockStateModels(BlockModelGenerators generators) {
-		for (var block : List.of(StellarityBlocks.ENDER_DIRT, StellarityBlocks.ROOTED_ENDER_DIRT, StellarityBlocks.ENDERITE_BLOCK))
+		for (var block : SIMPLE_BLOCKS)
 			generators.createTrivialCube(block);
 
 		generators.createNonTemplateModelBlock(StellarityBlocks.ENDER_DIRT_PATH);

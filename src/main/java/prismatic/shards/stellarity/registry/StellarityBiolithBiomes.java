@@ -838,7 +838,7 @@ public interface StellarityBiolithBiomes {
 				ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
 					ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, -0.31, -0.3),
 						ifTrue(stoneDepthCheck(2, true, 0, CaveSurface.FLOOR),
-							state(COARSE_DIRT)
+							state(COARSE_ENDER_DIRT)
 						)
 					),
 					ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -0.5, 2), sequence(
@@ -909,7 +909,7 @@ public interface StellarityBiolithBiomes {
 						state(END_STONE)
 					),
 					ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, 0, 0.05),
-						state(COARSE_DIRT)
+						state(COARSE_ENDER_DIRT)
 					),
 					forestDirtSequence[0],
 					forestDirtSequence[1]

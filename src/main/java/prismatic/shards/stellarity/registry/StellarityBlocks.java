@@ -25,7 +25,7 @@ import prismatic.shards.stellarity.registry.block.EnderGrassBlock;
 import java.util.function.Function;
 
 public interface StellarityBlocks {
-	Block ENDER_DIRT = register(StellarityBlockIds.ENDER_DIRT, Block::new, BlockBehaviour.Properties.of()
+	Block ENDER_DIRT = register(StellarityBlockIds.ENDER_DIRT, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)
 		.sound(SoundType.ROOTED_DIRT));
@@ -42,12 +42,16 @@ public interface StellarityBlocks {
 	Block ENDER_DIRT_PATH = register(StellarityBlockIds.ENDER_DIRT_PATH, EnderDirtPath::new, EnderDirtPath.PROPERTIES);
 	Block ALTAR_OF_THE_ACCURSED = register(StellarityBlockIds.ALTAR_OF_THE_ACCURSED, AltarOfTheAccursed::new, AltarOfTheAccursed.PROPERTIES);
 	Block DUSKBERRY_BUSH = register(StellarityBlockIds.DUSKBERRY_BUSH, DuskberryBush::new, DuskberryBush.PROPERTIES);
-	Block ENDERITE_BLOCK = register(StellarityBlockIds.ENDERITE_BLOCK, Block::new, BlockBehaviour.Properties.of()
+	Block ENDERITE_BLOCK = register(StellarityBlockIds.ENDERITE_BLOCK, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.COLOR_PURPLE)
 		.instrument(NoteBlockInstrument.BIT)
 		.requiresCorrectToolForDrops()
 		.strength(5.0F, 6.0F)
 		.sound(SoundType.METAL));
+	Block COARSE_ENDER_DIRT = register(StellarityBlockIds.COARSE_ENDER_DIRT, BlockBehaviour.Properties.of()
+		.mapColor(MapColor.DIRT)
+		.strength(0.5F)
+		.sound(SoundType.GRAVEL));
 
 
 	static Block register(ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
@@ -56,8 +60,11 @@ public interface StellarityBlocks {
 		Block block = blockFactory.apply(settings);
 		Registry.register(BuiltInRegistries.BLOCK, key, block);
 
-
 		return block;
+	}
+
+	static Block register(ResourceKey<Block> key, BlockBehaviour.Properties settings) {
+		return register(key, Block::new, settings);
 	}
 
 	static void init() {

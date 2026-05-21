@@ -24,7 +24,7 @@
     ],
     "minecraft:visual/fog_color": "#000000",
     "minecraft:visual/sky_color": "#000000",
-    "minecraft:visual/water_fog_color": "#041f33"
+    "minecraft:visual/water_fog_color": "#333333"
   },
   "carvers": [
     "stellarity:ravine",
@@ -32,9 +32,9 @@
   ],
   "downfall": 0.4,
   "effects": {
-    "foliage_color": "#75ae1c",
-    "grass_color": "#91bf4a",
-    "water_color": "#43d5ee"
+    "foliage_color": "#8a8a8a",
+    "grass_color": "#878787",
+    "water_color": "#595959"
   },
   "features": [
     [

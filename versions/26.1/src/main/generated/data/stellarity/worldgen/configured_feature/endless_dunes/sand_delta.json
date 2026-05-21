@@ -5,7 +5,7 @@
       "Name": "minecraft:sand"
     },
     "rim": {
-      "Name": "minecraft:coarse_dirt"
+      "Name": "stellarity:coarse_ender_dirt"
     },
     "rim_size": {
       "type": "minecraft:uniform",

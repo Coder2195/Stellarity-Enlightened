@@ -14,6 +14,7 @@ public interface StellarityBlockIds {
 	ResourceKey<Block> ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
 	ResourceKey<Block> DUSKBERRY_BUSH = id("duskberry_bush");
 	ResourceKey<Block> ENDERITE_BLOCK = id("enderite_block");
+	ResourceKey<Block> COARSE_ENDER_DIRT = id("coarse_ender_dirt");
 
 	static ResourceKey<Block> id(String id) {
 		return Stellarity.key(Registries.BLOCK, id);

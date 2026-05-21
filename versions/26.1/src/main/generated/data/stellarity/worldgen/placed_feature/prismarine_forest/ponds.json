@@ -1,5 +1,5 @@
 {
-  "feature": "stellarity:prismarine_forest/lake",
+  "feature": "stellarity:prismarine_forest/pond",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",

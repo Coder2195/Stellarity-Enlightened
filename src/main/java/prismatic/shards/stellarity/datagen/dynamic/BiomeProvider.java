@@ -533,7 +533,7 @@ public interface BiomeProvider {
 				.addCarver(StellarityConfiguredCarvers.RAVINE)
 				.addCarver(StellarityConfiguredCarvers.CRACK)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, AMETHYST_FOREST_CALCITE_BOTTOM)
-				.addFeature(GenerationStep.Decoration.LAKES, PRISMARINE_FOREST_LAKES)
+				.addFeature(GenerationStep.Decoration.LAKES, PRISMARINE_FOREST_PONDS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PRISMARINE_FOREST_TREES)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PRISMARINE_FOREST_FLOWERS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PRISMARINE_FOREST_GRASS)
@@ -617,14 +617,14 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
 			.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
-			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
+			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x333333)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
 				of(StellaritySounds.AMBIENT_THE_END_DARK_CALM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 1600, 5, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.0033))
 			))
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.01f)))
-			.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
+			.specialEffects(new BiomeSpecialEffects(0x595959, of(0x8a8a8a), empty(), of(0x878787), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
 				.addSpawn(MobCategory.MONSTER, 90, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4))
 				.addMobCharge(EntityType.ENDERMAN, 0.8, 1)
@@ -647,19 +647,24 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x3f472f)
 			.setAttribute(EnvironmentAttributes.SKY_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
-			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
+			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x67bbc1)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
-				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 3000, 10, 100)),
-				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111))
+				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 1200, 4, 1)),
+				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111))
 			))
-			.specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0x75ae1c), empty(), of(0x91bf4a), BiomeSpecialEffects.GrassColorModifier.NONE))
+			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.SPORE_BLOSSOM_AIR, 0.001f)))
+			.specialEffects(new BiomeSpecialEffects(0xa2d9e7, of(0x00dde0), empty(), of(0x01ccda), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
+				.addSpawn(MobCategory.WATER_AMBIENT, 20, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 2, 4))
+				.addSpawn(MobCategory.CREATURE, 12, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 1, 4))
+				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.PIG, 1, 4))
+				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 1, 4))
+				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.COW, 1, 4))
+				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 1, 4))
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, GLOBAL_STALACTITES)
-				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS)
-				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS)
 				.build()
 			).build()
 		);

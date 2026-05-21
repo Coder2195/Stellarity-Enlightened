@@ -45,6 +45,7 @@ public interface StellarityItems {
 	Item ENDER_DIRT_PATH = registerBlock(StellarityItemIds.ENDER_DIRT_PATH, StellarityBlocks.ENDER_DIRT_PATH);
 	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 	Item ENDERITE_BLOCK = registerBlock(StellarityItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
+	Item COARSE_ENDER_DIRT = registerBlock(StellarityItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
 
 	Item CALL_OF_THE_VOID = register(StellarityItemIds.CALL_OF_THE_VOID, CallOfTheVoid::new, CallOfTheVoid.PROPERTIES);
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FisherOfVoids::new, FisherOfVoids.PROPERTIES);

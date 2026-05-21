@@ -45,7 +45,7 @@
             "blocks": [
               "stellarity:ender_grass_block",
               "stellarity:rooted_ender_dirt",
-              "minecraft:coarse_dirt",
+              "stellarity:coarse_ender_dirt",
               "minecraft:grass_block",
               "minecraft:dirt"
             ],

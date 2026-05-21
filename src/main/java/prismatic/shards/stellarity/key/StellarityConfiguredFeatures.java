@@ -167,7 +167,7 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_LANTERN = id("the_hallow/lantern");
 	ResourceKey<ConfiguredFeature<?, ?>> THE_HALLOW_DIORITE_BOTTOM = id("the_hallow/diorite_bottom");
 
-	ResourceKey<ConfiguredFeature<?, ?>> PRISMARINE_FOREST_LAKE = id("prismarine_forest/lake");
+	ResourceKey<ConfiguredFeature<?, ?>> PRISMARINE_FOREST_POND = id("prismarine_forest/pond");
 	ResourceKey<ConfiguredFeature<?, ?>> PRISMARINE_FOREST_FLOWER = id("prismarine_forest/flower");
 	ResourceKey<ConfiguredFeature<?, ?>> PRISMARINE_FOREST_GRASS = id("prismarine_forest/grass");
 	ResourceKey<ConfiguredFeature<?, ?>> PRISMARINE_FOREST_TREE = id("prismarine_forest/tree");
@@ -187,6 +187,14 @@ public interface StellarityConfiguredFeatures {
 	ResourceKey<ConfiguredFeature<?, ?>> THE_NEST_DRAGON_EGG = id("the_nest/dragon_egg");
 	ResourceKey<ConfiguredFeature<?, ?>> THE_NEST_DEAD_CORAL = id("the_nest/dead_coral");
 	ResourceKey<ConfiguredFeature<?, ?>> THE_NEST_TRANSITION = id("the_nest/transition");
+
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_POND = id("warped_forest/pond");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_WATER_VEGETATION = id("warped_forest/water_vegetation");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_VEGETATION = id("warped_forest/vegetation");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_TREE = id("warped_forest/tree");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_WATER_TREE = id("warped_forest/water_tree");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_SLIME = id("warped_forest/slime");
+	ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_HANGING_FROGLIGHTS = id("warped_forest/hanging_froglights");
 
 
 	static ResourceKey<ConfiguredFeature<?, ?>> id(String id) {

@@ -14,6 +14,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> ENDER_DIRT_PATH = id("ender_dirt_path");
 	ResourceKey<Item> ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
 	ResourceKey<Item> ENDERITE_BLOCK = id("enderite_block");
+	ResourceKey<Item> COARSE_ENDER_DIRT = id("coarse_ender_dirt");
 
 	ResourceKey<Item> CALL_OF_THE_VOID = id("call_of_the_void");
 	ResourceKey<Item> FISHER_OF_VOIDS = id("fisher_of_voids");

@@ -5,7 +5,7 @@
     "#stellarity:worldgen/fiery_hills/end_stone",
     "minecraft:sand",
     "minecraft:end_stone",
-    "minecraft:coarse_dirt",
+    "stellarity:coarse_ender_dirt",
     "minecraft:smooth_sandstone"
   ]
 }
