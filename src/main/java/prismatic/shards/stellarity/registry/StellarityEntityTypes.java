@@ -25,9 +25,14 @@ public interface StellarityEntityTypes {
 
 	EntityType<VoidedSlime> VOIDED_SLIME = register(StellarityEntityIds.VOIDED_SLIME, EntityType.Builder.<VoidedSlime>of(VoidedSlime::new, MobCategory.MONSTER).sized(0.52F, 0.52F).eyeHeight(0.325F).spawnDimensionsScale(4.0F).clientTrackingRange(10).notInPeaceful());
 
-	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityIds.FLESH_PIGLIN, EntityType.Builder.<FleshPiglin>of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityIds.FLESH_PIGLIN, EntityType.Builder.of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<Pixie> PIXIE = register(StellarityEntityIds.PIXIE, EntityType.Builder.<Pixie>of(Pixie::new, MobCategory.AMBIENT).sized(0.5f, 0.5f).eyeHeight(0.25f).passengerAttachments(0.4f).clientTrackingRange(8));
+	EntityType<Pixie> PIXIE = register(StellarityEntityIds.PIXIE, EntityType.Builder.of(Pixie::new, MobCategory.AMBIENT).sized(0.5f, 0.5f).eyeHeight(0.25f).passengerAttachments(0.4f).clientTrackingRange(8));
+
+	EntityType<VoidArrow> VOID_ARROW = register(StellarityEntityIds.VOID_ARROW, EntityType.Builder.<VoidArrow>of(VoidArrow::new, MobCategory.MISC).sized(0.5F, 0.5F)
+		.eyeHeight(0.13F)
+		.clientTrackingRange(4)
+		.updateInterval(20));
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));

@@ -89,6 +89,14 @@ All client generally follow the same conventions mentioned above, but the "root"
 
 Utilities can go in `util`.
 
+## Adding Translations
+
+Make sure the translation submodule is added to your project. If it is not, add it by running
+`git submodule update --init --recursive` in the root of the project.
+
+Translations should be added via the translation python script. This helps manage automatic synchronization between the
+resources folder and the git submodule.
+
 ## Commit Guides
 
 Don't write an essay, and try to use these emojis at the beginning of commit message whenever possible.

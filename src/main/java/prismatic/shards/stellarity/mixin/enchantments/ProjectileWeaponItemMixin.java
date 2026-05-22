@@ -15,8 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.key.StellarityEnchantments;
 import prismatic.shards.stellarity.registry.StellarityMobEffects;
 
-import java.util.ArrayList;
-
 @Mixin(ProjectileWeaponItem.class)
 public class ProjectileWeaponItemMixin {
 
@@ -25,7 +23,7 @@ public class ProjectileWeaponItemMixin {
 		var projectileEntity = original.call(instance, level, shooter, weapon, projectile, isCrit);
 
 		if (projectileEntity instanceof AbstractArrow arrow) {
-			ArrayList<MobEffectInstance> effects = new ArrayList<>(arrow.stellarity$mobEffects());
+			var effects = arrow.stellarity$mobEffectsMutable();
 			for (var entry : weapon.getEnchantments().entrySet()) {
 				var enchant = entry.getKey();
 				int enchantLevel = entry.getIntValue();

@@ -14,6 +14,7 @@ public interface StellarityEntityIds {
 	ResourceKey<EntityType<?>> VOIDED_SLIME = id("voided_slime");
 	ResourceKey<EntityType<?>> FLESH_PIGLIN = id("flesh_piglin");
 	ResourceKey<EntityType<?>> PIXIE = id("pixie");
+	ResourceKey<EntityType<?>> VOID_ARROW = id("void_arrow");
 
 	static ResourceKey<EntityType<?>> id(String id) {
 		return Stellarity.key(Registries.ENTITY_TYPE, id);
