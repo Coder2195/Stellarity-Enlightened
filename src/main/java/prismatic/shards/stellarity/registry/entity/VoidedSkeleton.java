@@ -52,9 +52,7 @@ public class VoidedSkeleton extends Skeleton {
 
 	private static final EntityDataAccessor<Boolean> DATA_MINIBOSS = SynchedEntityData.defineId(VoidedSkeleton.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Holder<VoidedSkeletonVariant>> DATA_VARIANT = SynchedEntityData.defineId(VoidedSkeleton.class, StellarityEntityDataSerializers.VOIDED_SKELETON_VARIANT);
-
-	// turns out Minecraft doesn't actually use this much, but go check out AbstractSkeletonMixin and RangedBowAttackGoalMixin
-
+	
 	public boolean isMiniboss() {
 		return this.entityData.get(DATA_MINIBOSS);
 	}
