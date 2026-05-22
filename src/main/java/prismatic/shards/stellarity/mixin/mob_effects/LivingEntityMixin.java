@@ -39,18 +39,16 @@ public abstract class LivingEntityMixin extends Entity {
 		super(entityType, level);
 	}
 
-
 	@WrapMethod(method = "hurtServer")
-	private boolean applyBrittleEffect(ServerLevel serverLevel, DamageSource damageSource, float f, Operation<Boolean> original) {
-		boolean hurt = original.call(serverLevel, damageSource, f);
+	private boolean applyBrittleEffect(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
+		boolean hurt = original.call(level, source, damage);
 
-		if (!activeEffects.containsKey(StellarityMobEffects.BRITTLE) || !hurt || appliedBrittle || damageSource.is(StellarityDamageTypes.BRITTLE))
+		if (!activeEffects.containsKey(StellarityMobEffects.BRITTLE) || !hurt || appliedBrittle || source.is(StellarityDamageTypes.BRITTLE))
 			return hurt;
 
 		int amplifier = activeEffects.get(StellarityMobEffects.BRITTLE).getAmplifier();
 
 		var sources = this.damageSources();
-
 
 		if (damageUtility == null) damageUtility = DamageUtility.builder()
 			.setDamageSource(sources.source(StellarityDamageTypes.BRITTLE))
@@ -65,7 +63,6 @@ public abstract class LivingEntityMixin extends Entity {
 		damageUtility.damageEntity((LivingEntity) (Object) this, (float) amplifier + 1);
 
 		appliedBrittle = false;
-
 
 		return true;
 	}

@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.Arrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
@@ -21,14 +21,15 @@ import java.util.ArrayList;
 public class ProjectileWeaponItemMixin {
 
 	@WrapOperation(method = "shoot", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ProjectileWeaponItem;createProjectile(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;Z)Lnet/minecraft/world/entity/projectile/Projectile;"))
-	private Projectile levitationShot(ProjectileWeaponItem instance, Level level, LivingEntity livingEntity, ItemStack itemStack, ItemStack itemStack2, boolean b, Operation<Projectile> original) {
-		var projectile = original.call(instance, level, livingEntity, itemStack, itemStack2, b);
+	private Projectile levitationShot(ProjectileWeaponItem instance, Level level, LivingEntity shooter, ItemStack weapon, ItemStack projectile, boolean isCrit, Operation<Projectile> original) {
+		var projectileEntity = original.call(instance, level, shooter, weapon, projectile, isCrit);
 
-		if (projectile instanceof Arrow arrow) {
-			ArrayList<MobEffectInstance> effects = new ArrayList<>();
-			for (var entry : itemStack.getEnchantments().entrySet()) {
+		if (projectileEntity instanceof AbstractArrow arrow) {
+			ArrayList<MobEffectInstance> effects = new ArrayList<>(arrow.stellarity$mobEffects());
+			for (var entry : weapon.getEnchantments().entrySet()) {
+				var enchant = entry.getKey();
 				int enchantLevel = entry.getIntValue();
-				if (entry.getKey().is(StellarityEnchantments.LEVITATION_SHOT)) {
+				if (enchant.is(StellarityEnchantments.LEVITATION_SHOT)) {
 					var random = level.getRandom();
 					var offsetLevel = enchantLevel - 1;
 
@@ -36,13 +37,13 @@ public class ProjectileWeaponItemMixin {
 						effects.add(new MobEffectInstance(MobEffects.LEVITATION, random.nextIntBetweenInclusive(20 * 4, 20 * 7) + 10 * offsetLevel));
 					}
 				}
-				if (entry.getKey().is(StellarityEnchantments.VOID_SHOT)) {
+				if (enchant.is(StellarityEnchantments.VOID_SHOT)) {
 					effects.add(new MobEffectInstance(StellarityMobEffects.VOIDED, 160));
 				}
 			}
 			arrow.stellarity$setMobEffects(effects);
 		}
 
-		return projectile;
+		return projectileEntity;
 	}
 }

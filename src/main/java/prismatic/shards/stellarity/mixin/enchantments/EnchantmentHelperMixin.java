@@ -24,18 +24,16 @@ public class EnchantmentHelperMixin {
 
 
 	@WrapMethod(method = "lambda$doPostAttackEffectsWithItemSourceOnBreak$0")
-	private static void stellarityPostEnchantments(ServerLevel serverLevel, Entity entity, DamageSource damageSource, Holder<Enchantment> holder, int i, EnchantedItemInUse enchantedItemInUse, Operation<Void> original) {
-
-
-		if (holder.is(StellarityEnchantments.CRITICAL_STRIKE) && entity instanceof LivingEntity target && target.level() instanceof ServerLevel level && random.nextFloat() < i * 0.1f && target.getLastDamageSource() != null) {
+	private static void stellarityPostEnchantments(ServerLevel serverLevel, Entity victim, DamageSource damageSource, Holder<Enchantment> enchantment, int level, EnchantedItemInUse item, Operation<Void> original) {
+		if (enchantment.is(StellarityEnchantments.CRITICAL_STRIKE) && victim instanceof LivingEntity target && target.level() instanceof ServerLevel server && random.nextFloat() < level * 0.1f && target.getLastDamageSource() != null) {
 			target.hurtServer(serverLevel, target.getLastDamageSource(), target.lastHurt * 2);
 			target.playSound(StellaritySounds.CRITICAL_STRIKE);
 			float height = target.getBbHeight() * 0.7f;
 			float width = target.getBbWidth() * 0.7f;
-			level.sendParticles(StellarityParticleTypes.CRITICAL_STRIKE, target.getX(), target.getY(0.5), target.getZ(), 50, width, height, width, 0.3);
+			server.sendParticles(StellarityParticleTypes.CRITICAL_STRIKE, target.getX(), target.getY(0.5), target.getZ(), 50, width, height, width, 0.3);
 			return;
 		}
 
-		original.call(serverLevel, entity, damageSource, holder, i, enchantedItemInUse);
+		original.call(serverLevel, victim, damageSource, enchantment, level, item);
 	}
 }

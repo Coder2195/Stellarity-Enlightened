@@ -24,7 +24,8 @@ public abstract class AbstractArrowMixin extends Projectile implements ExtAbstra
 
 	@Inject(method = "doPostHurtEffects", at = @At("TAIL"))
 	private void applyEffects(CallbackInfo ci, @Local(argsOnly = true, name = "mob") LivingEntity mob) {
-		for (var effect : stellarity$mobEffects()) {
+		var effects = stellarity$mobEffects();
+		for (var effect : effects) {
 			mob.addEffect(effect, getOwner());
 		}
 	}

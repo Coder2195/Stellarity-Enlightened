@@ -11,7 +11,7 @@ import java.util.List;
 @SuppressWarnings("NonExtendableApiUsage")
 public interface ExtAbstractArrow extends AttachmentTarget {
 	default List<MobEffectInstance> stellarity$mobEffects() {
-		return getAttached(StellarityDataAttachments.MOB_EFFECTS);
+		return getAttachedOrElse(StellarityDataAttachments.MOB_EFFECTS, List.of());
 	}
 
 	default void stellarity$setMobEffects(List<MobEffectInstance> effects) {
