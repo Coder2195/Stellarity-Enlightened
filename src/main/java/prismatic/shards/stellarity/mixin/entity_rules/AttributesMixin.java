@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.mixin.entity_ai;
+package prismatic.shards.stellarity.mixin.entity_rules;
 
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;

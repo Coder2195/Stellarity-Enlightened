@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.mixin.entity_ai;
+package prismatic.shards.stellarity.mixin.call_of_the_void;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;

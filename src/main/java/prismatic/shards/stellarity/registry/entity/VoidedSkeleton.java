@@ -54,10 +54,6 @@ public class VoidedSkeleton extends Skeleton {
 	private static final EntityDataAccessor<Holder<VoidedSkeletonVariant>> DATA_VARIANT = SynchedEntityData.defineId(VoidedSkeleton.class, StellarityEntityDataSerializers.VOIDED_SKELETON_VARIANT);
 
 	// turns out Minecraft doesn't actually use this much, but go check out AbstractSkeletonMixin and RangedBowAttackGoalMixin
-	@Override
-	public boolean canUseNonMeleeWeapon(@NonNull ItemStack item) {
-		return item.is(StellarityItems.CALL_OF_THE_VOID) || super.canUseNonMeleeWeapon(item);
-	}
 
 	public boolean isMiniboss() {
 		return this.entityData.get(DATA_MINIBOSS);
@@ -78,33 +74,6 @@ public class VoidedSkeleton extends Skeleton {
 
 	public void setVariant(ResourceKey<VoidedSkeletonVariant> variant) {
 		setVariant(level().registryAccess().getOrThrow(variant));
-	}
-
-	@Override
-	public void performRangedAttack(@NonNull LivingEntity target, float power) {
-
-		ItemStack bowItem = this.getItemInHand(isLeftHanded() ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND);
-		if (!bowItem.is(StellarityItems.CALL_OF_THE_VOID)) {
-			bowItem = this.getItemInHand(isLeftHanded() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND);
-		}
-		if (!bowItem.is(StellarityItems.CALL_OF_THE_VOID)) {
-			super.performRangedAttack(target, power);
-			return;
-		}
-
-		ItemStack projectile = this.getProjectile(bowItem);
-		AbstractArrow arrow = new VoidArrow(this.level(), this, projectile, bowItem);
-		double xd = target.getX() - this.getX();
-		double yd = target.getY(0.3333333333333333) - arrow.getY();
-		double zd = target.getZ() - this.getZ();
-		double distanceToTarget = Math.sqrt(xd * xd + zd * zd);
-		if (this.level() instanceof ServerLevel serverLevel) {
-			Projectile.spawnProjectileUsingShoot(
-				arrow, serverLevel, projectile, xd, yd + distanceToTarget * 0.2F, zd, 1.6F, 14 - serverLevel.getDifficulty().getId() * 4
-			);
-		}
-
-		this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 	}
 
 	@Override
