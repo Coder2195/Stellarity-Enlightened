@@ -22,17 +22,10 @@ public abstract class AbstractArrowMixin extends Projectile implements ExtAbstra
 		super(entityType, level);
 	}
 
-
 	@Inject(method = "doPostHurtEffects", at = @At("TAIL"))
 	private void applyEffects(CallbackInfo ci, @Local(argsOnly = true, name = "mob") LivingEntity mob) {
-		int levitationShot = stellarity$levitationShot();
-		boolean voidShot = stellarity$voidShot();
-		if (levitationShot > 0 && random.nextFloat() < 0.1 * levitationShot) {
-			int time = random.nextIntBetweenInclusive(70 + 10 * levitationShot, 130 + 10 * levitationShot);
-			mob.addEffect(new MobEffectInstance(MobEffects.LEVITATION, time));
-		}
-		if (voidShot) {
-			mob.addEffect(new MobEffectInstance(StellarityMobEffects.VOIDED, 160));
+		for (var effect : stellarity$mobEffects()) {
+			mob.addEffect(effect, getOwner());
 		}
 	}
 }

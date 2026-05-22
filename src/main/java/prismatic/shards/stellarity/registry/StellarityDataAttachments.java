@@ -4,14 +4,17 @@ import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
+import net.minecraft.core.Holder;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.GameType;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.StellarityConfig;
 import prismatic.shards.stellarity.interface_injection.ExtEndCrystal;
 import prismatic.shards.stellarity.interface_injection.ExtItemEntity;
 
+import java.util.List;
 import java.util.Map;
 
 public interface StellarityDataAttachments {
@@ -19,8 +22,7 @@ public interface StellarityDataAttachments {
 		syncWith(ByteBufCodecs.VAR_INT, AttachmentSyncPredicate.all()).persistent(Codec.INT)
 	);
 
-	AttachmentType<Map<Identifier, Integer>> ENCHANTMENTS = AttachmentRegistry.create(Stellarity.id("enchantments"), builder -> builder.persistent(Codec.unboundedMap(Identifier.CODEC, Codec.INT))
-	);
+	AttachmentType<List<MobEffectInstance>> MOB_EFFECTS = AttachmentRegistry.create(Stellarity.id("mob_effects"), builder -> builder.persistent(MobEffectInstance.CODEC.listOf()));
 
 	AttachmentType<ExtEndCrystal.Type> END_CRYSTAL_TYPE = AttachmentRegistry.create(Stellarity.id("end_crystal_type"), builder -> builder.persistent(ExtEndCrystal.Type.CODEC).syncWith(ExtEndCrystal.Type.STREAM_CODEC, AttachmentSyncPredicate.all())
 	);
