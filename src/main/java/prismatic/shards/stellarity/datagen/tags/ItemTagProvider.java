@@ -29,7 +29,13 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 			CRIMSON_TIGERFISH,
 			ENDER_KOI,
 			FLAREFIN_KOI,
-			CRYSTAL_HEARTFISH
+			CRYSTAL_HEARTFISH,
+			GOOSH,
+			FLESHY_PIRANHA,
+			OVERGROWN_COD,
+			FROST_MINNOW,
+			POTASSIFISH,
+			PRISMITE
 		);
 
 		valueLookupBuilder(ItemTags.HEAD_ARMOR).add(SHULKER_HELMET);
