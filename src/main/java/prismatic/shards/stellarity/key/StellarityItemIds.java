@@ -66,10 +66,13 @@ public interface StellarityItemIds {
 	ResourceKey<Item> SHULKER_LEGGINGS = id("shulker_leggings");
 	ResourceKey<Item> SHULKER_BOOTS = id("shulker_boots");
 	ResourceKey<Item> ENDER_EGG = id("ender_egg");
+
 	ResourceKey<Item> VOIDED_ZOMBIE_SPAWN_EGG = id(StellarityEntityIds.VOIDED_ZOMBIE);
 	ResourceKey<Item> VOIDED_SKELETON_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SKELETON);
 	ResourceKey<Item> VOIDED_SILVERFISH_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SILVERFISH);
 	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SLIME);
+	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityIds.FLESH_PIGLIN);
+
 	ResourceKey<Item> POTASSIFISH = id("potassifish");
 
 	static ResourceKey<Item> id(String id) {

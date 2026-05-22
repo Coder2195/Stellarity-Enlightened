@@ -202,6 +202,8 @@ public interface StellarityItems {
 	Item VOIDED_SKELETON_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SKELETON_SPAWN_EGG, StellarityEntityTypes.VOIDED_SKELETON);
 	Item VOIDED_SILVERFISH_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SILVERFISH_SPAWN_EGG, StellarityEntityTypes.VOIDED_SILVERFISH);
 	Item VOIDED_SLIME_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.VOIDED_SLIME_SPAWN_EGG, StellarityEntityTypes.VOIDED_SLIME);
+	Item FLESH_PIGLIN_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.FLESH_PIGLIN_SPAWN_EGG, StellarityEntityTypes.FLESH_PIGLIN);
+
 	Item POTASSIFISH = register(StellarityItemIds.POTASSIFISH, foodProperties(1, 0.6f, new MobEffectInstance(MobEffects.REGENERATION, 4 * 20)));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {

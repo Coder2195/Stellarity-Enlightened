@@ -128,7 +128,8 @@ public interface StellarityCreativeModeTabs {
 		VOIDED_SILVERFISH_SPAWN_EGG,
 		VOIDED_SKELETON_SPAWN_EGG,
 		VOIDED_SLIME_SPAWN_EGG,
-		VOIDED_ZOMBIE_SPAWN_EGG
+		VOIDED_ZOMBIE_SPAWN_EGG,
+		FLESH_PIGLIN_SPAWN_EGG
 	};
 
 	static ResourceKey<CreativeModeTab> key(String key) {

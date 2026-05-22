@@ -29,7 +29,6 @@ public class VoidedEffect extends MobEffect {
 			livingEntity.setHealth(livingEntity.getMaxHealth());
 		}
 
-
 		return super.applyEffectTick(level, livingEntity, i);
 	}
 
