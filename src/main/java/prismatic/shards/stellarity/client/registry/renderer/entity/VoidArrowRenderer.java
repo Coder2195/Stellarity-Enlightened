@@ -12,7 +12,7 @@ import prismatic.shards.stellarity.registry.entity.VoidArrow;
 
 @Environment(EnvType.CLIENT)
 public class VoidArrowRenderer extends ArrowRenderer<VoidArrow, ArrowRenderState> {
-	public static final Identifier SPECTRAL_ARROW_LOCATION = Stellarity.mcId("textures/entity/projectiles/arrow_spectral.png");
+	public static final Identifier SPECTRAL_ARROW_LOCATION = Stellarity.id("textures/entity/projectiles/void_arrow.png");
 
 	public VoidArrowRenderer(final EntityRendererProvider.Context context) {
 		super(context);

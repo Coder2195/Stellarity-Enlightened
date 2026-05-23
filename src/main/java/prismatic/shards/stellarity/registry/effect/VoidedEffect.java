@@ -23,7 +23,7 @@ public class VoidedEffect extends MobEffect {
 	public static final ParticleOptions PARTICLE = PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 0);
 
 	@Override
-	public ParticleOptions createParticleOptions(MobEffectInstance mobEffectInstance) {
+	public @NonNull ParticleOptions createParticleOptions(@NonNull MobEffectInstance mobEffectInstance) {
 		return super.createParticleOptions(mobEffectInstance);
 	}
 
