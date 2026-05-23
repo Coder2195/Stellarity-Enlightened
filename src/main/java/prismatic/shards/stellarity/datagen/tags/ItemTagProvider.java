@@ -49,11 +49,12 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 			PRISMITE
 		);
 
+		addTags(StellarityItemTags.BOWS).add(CALL_OF_THE_VOID);
+
 		addTags(ItemTags.HEAD_ARMOR).add(SHULKER_HELMET);
 		addTags(ItemTags.CHEST_ARMOR).add(SHULKER_CHESTPLATE);
 		addTags(ItemTags.LEG_ARMOR).add(SHULKER_LEGGINGS);
 		addTags(ItemTags.FOOT_ARMOR).add(SHULKER_BOOTS);
-
 
 		addTags(ItemTags.FISHES, StellarityItemTags.FISHES);
 		addTags(StellarityItemTags.ELYTRA_ENCHANTABLE).add(Items.ELYTRA);

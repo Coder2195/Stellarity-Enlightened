@@ -7,6 +7,7 @@ import prismatic.shards.stellarity.Stellarity;
 
 public interface StellarityItemTags {
 	TagKey<Item> FISHES = id("fishes");
+	TagKey<Item> BOWS = id("bows");
 	TagKey<Item> ELYTRA_ENCHANTABLE = id("enchantable/elytra");
 	TagKey<Item> RANGED_ENCHANTABLE = id("enchantable/ranged");
 

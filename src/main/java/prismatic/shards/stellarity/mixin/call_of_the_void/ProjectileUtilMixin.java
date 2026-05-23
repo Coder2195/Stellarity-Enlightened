@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.registry.StellarityItems;
 import prismatic.shards.stellarity.registry.entity.VoidArrow;
+import prismatic.shards.stellarity.tags.StellarityItemTags;
 
 @Mixin(ProjectileUtil.class)
 public class ProjectileUtilMixin {
@@ -20,6 +21,8 @@ public class ProjectileUtilMixin {
 	private static AbstractArrow createVoidedArrow(ArrowItem instance, Level level, ItemStack itemStack, LivingEntity owner, ItemStack firedFromWeapon, Operation<AbstractArrow> original) {
 		if (firedFromWeapon.is(StellarityItems.CALL_OF_THE_VOID))
 			return new VoidArrow(level, owner, itemStack, firedFromWeapon);
+		if (firedFromWeapon.is(StellarityItemTags.BOWS))
+			throw new AssertionError("Please add your functionality for custom bow here");
 		return original.call(instance, level, itemStack, owner, firedFromWeapon);
 	}
 }

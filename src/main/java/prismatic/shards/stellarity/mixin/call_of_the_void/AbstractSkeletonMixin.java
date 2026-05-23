@@ -13,7 +13,7 @@ import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import prismatic.shards.stellarity.registry.StellarityItems;
+import prismatic.shards.stellarity.tags.StellarityItemTags;
 
 @Mixin(AbstractSkeleton.class)
 public abstract class AbstractSkeletonMixin extends Monster {
@@ -40,8 +40,8 @@ public abstract class AbstractSkeletonMixin extends Monster {
 	}
 
 	@WrapMethod(method = "canUseNonMeleeWeapon")
-	public boolean canUseCallOfTheVoid(ItemStack item, Operation<Boolean> original) {
-		return item.is(StellarityItems.CALL_OF_THE_VOID) || original.call(item);
+	public boolean canUseStellarityBows(ItemStack item, Operation<Boolean> original) {
+		return item.is(StellarityItemTags.BOWS) || original.call(item);
 	}
 
 }
