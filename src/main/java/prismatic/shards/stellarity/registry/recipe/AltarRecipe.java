@@ -10,7 +10,6 @@ import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,6 +29,7 @@ import prismatic.shards.stellarity.registry.StellarityRecipeTypes;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 
 public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
@@ -92,12 +92,17 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 		return craft(container.items) == null;
 	}
 
-	static void handleItems(ServerLevel serverLevel, double x, double y, double z, boolean locked) {
 
-		List<ItemEntity> itemEntities = serverLevel.getEntitiesOfClass(ItemEntity.class, new AABB(
+	static void handleItems(ServerLevel serverLevel, double x, double y, double z, boolean locked) {
+		handleItems(serverLevel, x, y, z, locked, new AABB(
 			x - 0.5, y + 0.75d - 0.5, z - 0.5,
 			x + 0.5, y + 0.75d + 0.5, z + 0.5
-		), entity -> entity.stellarity$getItemMode() != ExtItemEntity.ItemMode.RESULT);
+		), (unused) -> true);
+	}
+
+	static void handleItems(ServerLevel serverLevel, double x, double y, double z, boolean locked, AABB bounding, Predicate<ItemEntity> predicate) {
+
+		List<ItemEntity> itemEntities = serverLevel.getEntitiesOfClass(ItemEntity.class, bounding, entity -> entity.stellarity$getItemMode() != ExtItemEntity.ItemMode.RESULT && predicate.test(entity));
 
 		Player player = serverLevel.getNearestPlayer(x, y, z, 10, false);
 

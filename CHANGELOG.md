@@ -13,6 +13,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Fully implemented
 
+**[*] Satchel of Voids**
+
+- Fully implemented and acts as a temporary altar of the accursed, summoning a sigil when used
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**
@@ -24,6 +28,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[+] Voided Arrow**
 
 - Shot from the Call of the Void and has no corresponding item, because it shatters
+
+**[+] Satchel Sigil**
 
 Unless annotated, all changes are considered to be up to date with
 the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](https://modrinth.com/datapack/stellarity)

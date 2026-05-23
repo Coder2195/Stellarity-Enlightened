@@ -19,7 +19,7 @@ public interface StellarityEntityTypes {
 
 	EntityType<VoidedZombie> VOIDED_ZOMBIE = register(StellarityEntityIds.VOIDED_ZOMBIE, EntityType.Builder.<VoidedZombie>of(VoidedZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<VoidedSkeleton> VOIDED_SKELETON = register(StellarityEntityIds.VOIDED_SKELETON, EntityType.Builder.<VoidedSkeleton>of(VoidedSkeleton::new, MobCategory.MONSTER).sized(0.6F, 1.99F).eyeHeight(1.74F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+	EntityType<VoidedSkeleton> VOIDED_SKELETON = register(StellarityEntityIds.VOIDED_SKELETON, EntityType.Builder.of(VoidedSkeleton::new, MobCategory.MONSTER).sized(0.6F, 1.99F).eyeHeight(1.74F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
 	EntityType<VoidedSilverfish> VOIDED_SILVERFISH = register(StellarityEntityIds.VOIDED_SILVERFISH, EntityType.Builder.<VoidedSilverfish>of(VoidedSilverfish::new, MobCategory.MONSTER).sized(0.4F, 0.3F).eyeHeight(0.13F).passengerAttachments(0.2375F).clientTrackingRange(8).notInPeaceful());
 
@@ -32,7 +32,9 @@ public interface StellarityEntityTypes {
 	EntityType<VoidArrow> VOID_ARROW = register(StellarityEntityIds.VOID_ARROW, EntityType.Builder.<VoidArrow>of(VoidArrow::new, MobCategory.MISC).sized(0.5F, 0.5F)
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
-		.updateInterval(20));
+		.updateInterval(20).noLootTable());
+
+	EntityType<SatchelSigil> SATCHEL_SIGIL = register(StellarityEntityIds.SATCHEL_SIGIL, EntityType.Builder.<SatchelSigil>of(SatchelSigil::new, MobCategory.MISC).sized(2, 0.125F).noLootTable());
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));

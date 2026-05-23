@@ -1,15 +1,11 @@
 package prismatic.shards.stellarity.mixin.exit_portal;
 
-import com.llamalad7.mixinextras.expression.Definition;
-import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.level.block.Block;
@@ -48,7 +44,7 @@ public abstract class EnderDragonFightMixin implements ExtEnderDragonFight {
 	abstract boolean hasPreviouslyKilledDragon();
 
 	@Shadow
-	private List<EntityReference<EndCrystal>> respawnCrystals;
+	public List<EntityReference<EndCrystal>> respawnCrystals;
 
 	@Redirect(method = "tryRespawn", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/BlockPos;relative(Lnet/minecraft/core/Direction;I)Lnet/minecraft/core/BlockPos;"))
 	private BlockPos
@@ -98,7 +94,6 @@ public abstract class EnderDragonFightMixin implements ExtEnderDragonFight {
 	private void setPortalRespawn(boolean activated, Operation<Void> original) {
 		original.call(activated);
 		if (exitPortalLocation == null) return;
-
 	}
 
 	// FIXME: once this is corrected in official repos

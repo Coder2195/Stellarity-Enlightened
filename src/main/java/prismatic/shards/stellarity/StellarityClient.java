@@ -11,10 +11,12 @@ public class StellarityClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		Stellarity.LOGGER.info("Stellarity Client Initializing");
 
+		StellarityEntityModelLayers.init();
 		StellarityModels.init();
 		StellarityClientParticles.init();
 		StellarityEntityRenderers.init();
 		StellarityTooltips.init();
 		StellarityClientNetworking.init();
+
 	}
 }

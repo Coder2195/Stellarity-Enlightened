@@ -2,9 +2,7 @@ package prismatic.shards.stellarity.client.registry;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.SpectralArrowRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.client.registry.renderer.entity.*;
@@ -23,5 +21,6 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntityTypes.FLESH_PIGLIN, FleshPiglinRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.PIXIE, PixieRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.VOID_ARROW, VoidArrowRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.SATCHEL_SIGIL, SatchelSigilRenderer::new);
 	}
 }

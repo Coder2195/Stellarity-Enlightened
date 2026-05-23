@@ -20,7 +20,7 @@ public abstract class DragonHoldingPatternPhaseMixin extends AbstractDragonPhase
 	@Definition(id = "getRandom", method = "Lnet/minecraft/world/entity/boss/enderdragon/EnderDragon;getRandom()Lnet/minecraft/util/RandomSource;")
 	@Expression("this.dragon.getRandom().?(?) == 0")
 	@ModifyExpressionValue(method = "findNewTarget", at = @At(value = "MIXINEXTRAS:EXPRESSION", ordinal = 0))
-	private boolean landWhenCrystalsGone(boolean original, @Local int i) {
+	private boolean landWhenCrystalsGone(boolean original, @Local(name = "crystals") int i) {
 		return i == 0 && original;
 	}
 }

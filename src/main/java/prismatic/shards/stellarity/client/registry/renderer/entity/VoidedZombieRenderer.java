@@ -11,8 +11,6 @@ import prismatic.shards.stellarity.Stellarity;
 
 @Environment(EnvType.CLIENT)
 public class VoidedZombieRenderer extends ZombieRenderer {
-
-
 	public VoidedZombieRenderer(EntityRendererProvider.Context context) {
 		super(context);
 	}

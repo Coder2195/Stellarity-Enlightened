@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import prismatic.shards.stellarity.interface_injection.ExtItemEntity;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.registry.block.AltarOfTheAccursed;
+import prismatic.shards.stellarity.registry.entity.SatchelSigil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +78,8 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 					return;
 			}
 
-			stellarity$setItemMode(ItemMode.DEFAULT);
+			if (level.getEntitiesOfClass(SatchelSigil.class, this.getBoundingBox()).isEmpty())
+				stellarity$setItemMode(ItemMode.DEFAULT);
 		}
 	}
 }

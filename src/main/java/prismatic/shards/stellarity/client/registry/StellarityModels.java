@@ -12,11 +12,6 @@ import static prismatic.shards.stellarity.registry.StellarityBlocks.ENDER_GRASS_
 
 @Environment(EnvType.CLIENT)
 public interface StellarityModels {
-	static void initModelPredicates() {
-
-
-	}
-
 	static void initBlockColors() {
 		BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ENDER_GRASS_BLOCK);
 
@@ -28,7 +23,6 @@ public interface StellarityModels {
 	}
 
 	static void init() {
-		initModelPredicates();
 		initBlockColors();
 		initItemColors();
 	}
