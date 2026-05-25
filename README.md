@@ -9,6 +9,8 @@
 [![Code Size](https://img.shields.io/github/languages/code-size/koharas-Basement/stellarity-fabric?style=for-the-badge&color=purple&logoColor=white)](https://github.com/koharas-Basement/stellarity-fabric)
 [![Repo Size](https://img.shields.io/github/repo-size/koharas-Basement/stellarity-fabric?logo=dropbox&style=for-the-badge&color=red)](https://github.com/koharas-Basement/stellarity-fabric)
 
+---
+
 > [!WARNING]
 > This project is under active development. We are not
 > responsible for data loss, and recommend using this on worlds you
@@ -28,6 +30,7 @@
 >
 > As per a vote in our Discord server, the results prioritize latest version, as consistent with our download counts.
 
+---
 Stellarity Enlightened is a mod version of the total rehaul of The End including biome and structure overhauls, new
 items, weapons, mechanics, mobs and more.
 
