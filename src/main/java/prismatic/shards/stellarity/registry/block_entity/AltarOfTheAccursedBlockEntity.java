@@ -54,7 +54,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 				double dz = Mth.sin(angle);
 
 
-				var purpleParticle = new DustColorTransitionOptions(12255487, 1769509, 1.4f);
+				var purpleParticle = new DustColorTransitionOptions(0xbb00ff, 0x1b0025, 1.4f);
 
 
 				level.addParticle(

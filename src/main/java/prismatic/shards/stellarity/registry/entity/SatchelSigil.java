@@ -2,6 +2,8 @@ package prismatic.shards.stellarity.registry.entity;
 
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.core.particles.DustColorTransitionOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -25,6 +27,7 @@ import java.util.function.IntFunction;
 
 public class SatchelSigil extends Entity {
 	private int localElapsedTime = 0;
+	public static final int DEFAULT_ACTIVE_TIME = 60 * 20;
 	public static final int TRANSITION_DURATION = 10;
 
 	public enum State {
@@ -80,6 +83,53 @@ public class SatchelSigil extends Entity {
 			if (localElapsedTime == TRANSITION_DURATION) setState(State.ACTIVE);
 			else if (localElapsedTime == TRANSITION_DURATION + getLiveTime()) setState(State.CLOSING);
 			else if (localElapsedTime > 2 * TRANSITION_DURATION + getLiveTime()) discard();
+		} else if (getState().equals(State.ACTIVE)) {
+			float angle = localElapsedTime / 20f;
+			double dx = Mth.cos(angle) * 2;
+			double dz = Mth.sin(angle) * 2;
+
+			var purpleParticle = new DustColorTransitionOptions(0xff00ff, 0xff00ff, 1.4f);
+
+			level.addParticle(
+				purpleParticle,
+				x + dx, y, z + dz,
+				0, 0, 0
+			);
+
+
+			level.addParticle(
+				purpleParticle,
+				x - dx, y, z - dz,
+				0, 0, 0
+			);
+
+
+			dx = Mth.cos(-angle) * 1.5;
+			dz = Mth.sin(-angle) * 1.5;
+
+
+			level.addParticle(
+				purpleParticle,
+				x + dx, y, z + dz,
+				0, 0, 0
+			);
+
+			level.addParticle(
+				purpleParticle,
+				x - dx, y, z - dz,
+				0, 0, 0
+			);
+
+
+			if (localElapsedTime % 3 == 0) {
+				dx = level.getRandom().nextGaussian() * 0.5;
+				dz = level.getRandom().nextGaussian() * 0.5;
+				level.addParticle(
+					ParticleTypes.ENCHANT,
+					x + dx, y + 1.5, z + dz,
+					dx * 2, -1.5, dz * 2
+				);
+			}
 		}
 
 		localElapsedTime++;
@@ -127,7 +177,7 @@ public class SatchelSigil extends Entity {
 	protected void defineSynchedData(SynchedEntityData.@NonNull Builder entityData) {
 		entityData.define(DATA_STATE, State.OPENING);
 		entityData.define(DATA_ELAPSED_TIME, 0);
-		entityData.define(DATA_LIVE_TIME, 20 * 20);
+		entityData.define(DATA_LIVE_TIME, DEFAULT_ACTIVE_TIME);
 	}
 
 	@Override

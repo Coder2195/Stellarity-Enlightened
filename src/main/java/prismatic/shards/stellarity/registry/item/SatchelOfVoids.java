@@ -25,7 +25,7 @@ public class SatchelOfVoids extends Item {
 		var sigil = new SatchelSigil(level);
 		sigil.setPos(useOnContext.getClickedPos().relative(useOnContext.getClickedFace()).getBottomCenter());
 		level.addFreshEntity(sigil);
-		player.getCooldowns().addCooldown(useOnContext.getItemInHand(), 70 * 20);
+		player.getCooldowns().addCooldown(useOnContext.getItemInHand(), SatchelSigil.DEFAULT_ACTIVE_TIME + 10 * 20);
 
 		return InteractionResult.SUCCESS;
 	}

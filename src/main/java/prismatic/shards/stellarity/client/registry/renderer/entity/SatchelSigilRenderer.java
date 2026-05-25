@@ -28,7 +28,7 @@ public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSi
 	@Override
 	public void submit(@NonNull SatchelSigilRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, @NonNull CameraRenderState camera) {
 		poseStack.pushPose();
-		submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor, null);
+		submitNodeCollector.submitModel(this.model, state, poseStack, model.renderType(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, 0xffbb00ff, null, state.outlineColor, null);
 		poseStack.popPose();
 		super.submit(state, poseStack, submitNodeCollector, camera);
 	}
@@ -53,10 +53,12 @@ public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSi
 		super.extractRenderState(entity, state, partialTicks);
 		state.elapsedTime = entity.getLocalElapsedTime() + partialTicks;
 		state.liveTime = entity.getLiveTime();
+		state.state = entity.getState();
 	}
 
 	public static class SatchelSigilRenderState extends EntityRenderState {
 		public float elapsedTime;
 		public int liveTime;
+		public SatchelSigil.State state;
 	}
 }
