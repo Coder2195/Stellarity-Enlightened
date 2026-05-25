@@ -78,7 +78,7 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 					return;
 			}
 
-			if (level.getEntitiesOfClass(SatchelSigil.class, this.getBoundingBox()).isEmpty())
+			if (level.getEntitiesOfClass(SatchelSigil.class, this.getBoundingBox()).stream().noneMatch(SatchelSigil::isActive))
 				stellarity$setItemMode(ItemMode.DEFAULT);
 		}
 	}
