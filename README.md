@@ -9,6 +9,13 @@
 [![Code Size](https://img.shields.io/github/languages/code-size/koharas-Basement/stellarity-fabric?style=for-the-badge&color=purple&logoColor=white)](https://github.com/koharas-Basement/stellarity-fabric)
 [![Repo Size](https://img.shields.io/github/repo-size/koharas-Basement/stellarity-fabric?logo=dropbox&style=for-the-badge&color=red)](https://github.com/koharas-Basement/stellarity-fabric)
 
+> [!WARNING]
+> This project is under active development. We are not
+> responsible for data loss, and recommend using this on worlds you
+> are okay with breaking changes on.
+>
+> Please report all bugs you find!
+
 > [!IMPORTANT]
 > This project is no longer multiversion due to factors such as
 > - Minecraft completely rewriting ItemStacks
