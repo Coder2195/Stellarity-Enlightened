@@ -51,7 +51,8 @@ public interface BiomeProvider {
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.COW, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 1, 4))
-				.creatureGenerationProbability(.5f)
+				.creatureGenerationProbability(.4f)
+
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addFeature(GenerationStep.Decoration.RAW_GENERATION, AMETHYST_FOREST_CALCITE_BOTTOM)
@@ -150,7 +151,8 @@ public interface BiomeProvider {
 			.addMobCharge(EntityType.ENDERMAN, 0.7, 1)
 			.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 0.7, 1)
 			.addMobCharge(EntityType.PHANTOM, 0.7, 1)
-			.creatureGenerationProbability(.5f)
+			.creatureGenerationProbability(.4f)
+
 			.build();
 		context.register(END_SHRUBLAND, new Biome.BiomeBuilder()
 			.temperature(0.8f).downfall(0.4f).hasPrecipitation(false)
@@ -522,7 +524,8 @@ public interface BiomeProvider {
 			)).setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.DRIPPING_DRIPSTONE_WATER, 0.001f)))
 			.specialEffects(new BiomeSpecialEffects(0x58c9ee, of(0xadfeff), empty(), of(0x94fff8), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
-				.creatureGenerationProbability(.5f)
+				.creatureGenerationProbability(.4f)
+
 				.addSpawn(MobCategory.CREATURE, 12, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.PIG, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 1, 4))
@@ -588,7 +591,8 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.CHERRY_LEAVES, 0.0012f)))
 			.specialEffects(new BiomeSpecialEffects(0xea80ff, of(0x58ccfe), empty(), of(0x5cc0ff), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
-				.creatureGenerationProbability(.5f)
+				.creatureGenerationProbability(.4f)
+
 				.addSpawn(MobCategory.AMBIENT, 20, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.PIXIE, 1, 2))
 				.addSpawn(MobCategory.CREATURE, 12, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.PIG, 1, 4))
