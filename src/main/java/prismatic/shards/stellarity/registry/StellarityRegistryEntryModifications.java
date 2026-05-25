@@ -62,6 +62,7 @@ public class StellarityRegistryEntryModifications {
 
 					checkMerge();
 				}
+				noiseSettings.disableMobGeneration = false;
 			});
 		});
 	}
