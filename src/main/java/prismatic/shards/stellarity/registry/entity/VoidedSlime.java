@@ -50,28 +50,27 @@ public class VoidedSlime extends Slime {
 	public static boolean checkSpawnRules(
 		EntityType<? extends VoidedSlime> type, LevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random
 	) {
-		if (level.getDifficulty() != Difficulty.PEACEFUL) {
-			if (EntitySpawnReason.isSpawner(spawnReason)) {
-				return checkMobSpawnRules(type, level, spawnReason, pos, random);
-			}
+		if (level.getDifficulty() == Difficulty.PEACEFUL) return false;
 
-			if (level.getBiome(pos).is(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS) && pos.getY() > 50 && pos.getY() < 70) {
-				float surfaceSlimeSpawnChance = level.environmentAttributes().getValue(EnvironmentAttributes.SURFACE_SLIME_SPAWN_CHANCE, pos);
-				if (random.nextFloat() < surfaceSlimeSpawnChance && level.getMaxLocalRawBrightness(pos) <= random.nextInt(8)) {
-					return checkMobSpawnRules(type, level, spawnReason, pos, random);
-				}
-			}
+		if (EntitySpawnReason.isSpawner(spawnReason)) {
+			return checkMobSpawnRules(type, level, spawnReason, pos, random);
+		}
 
-			if (!(level instanceof WorldGenLevel)) {
-				return false;
-			}
-
-			ChunkPos chunkPos = ChunkPos.containing(pos);
-			boolean slimeChunk = WorldgenRandom.seedSlimeChunk(chunkPos.x(), chunkPos.z(), ((WorldGenLevel) level).getSeed(), 987234911L).nextInt(10) == 0;
-			if (random.nextInt(10) == 0 && slimeChunk && pos.getY() < 40) {
+		if (level.getBiome(pos).is(BiomeTags.ALLOWS_SURFACE_SLIME_SPAWNS)) {
+			float surfaceSlimeSpawnChance = level.environmentAttributes().getValue(EnvironmentAttributes.SURFACE_SLIME_SPAWN_CHANCE, pos);
+			if (random.nextFloat() < surfaceSlimeSpawnChance && level.getMaxLocalRawBrightness(pos) <= 7) {
 				return checkMobSpawnRules(type, level, spawnReason, pos, random);
 			}
 		}
+
+		if (!(level instanceof WorldGenLevel)) return false;
+
+		ChunkPos chunkPos = ChunkPos.containing(pos);
+		boolean slimeChunk = WorldgenRandom.seedSlimeChunk(chunkPos.x(), chunkPos.z(), ((WorldGenLevel) level).getSeed(), 987234911L).nextInt(10) == 0;
+		if (random.nextInt(10) == 0 && slimeChunk && pos.getY() < 40) {
+			return checkMobSpawnRules(type, level, spawnReason, pos, random);
+		}
+
 
 		return false;
 	}

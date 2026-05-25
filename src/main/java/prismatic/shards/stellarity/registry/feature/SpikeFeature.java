@@ -39,7 +39,7 @@ public class SpikeFeature extends Feature<SpikeFeatureConfiguration> {
 			var radiusSquared = Mth.square(currentRadius);
 			int xCap = Mth.ceil(currentRadius);
 			for (int dx = -xCap; dx <= xCap; dx++) {
-				int zCap = Mth.ceil(currentZ + currentRadius);
+				int zCap = Mth.ceil(currentRadius);
 				for (int dz = -zCap; dz <= zCap; dz++) {
 					int distanceSquared = Mth.square(dx) + Mth.square(dz);
 					if (distanceSquared > radiusSquared)

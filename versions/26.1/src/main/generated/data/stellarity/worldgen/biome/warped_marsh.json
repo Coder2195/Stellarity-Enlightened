@@ -13,6 +13,7 @@
         "tick_delay": 1200
       }
     },
+    "minecraft:gameplay/surface_slime_spawn_chance": 0.4,
     "minecraft:visual/ambient_light_color": "#3f472f",
     "minecraft:visual/ambient_particles": [
       {
@@ -100,7 +101,14 @@
       }
     ],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "stellarity:voided_slime",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 20
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

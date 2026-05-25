@@ -54,7 +54,7 @@ public interface StellarityEntityTypes {
 		SpawnPlacements.register(VOIDED_ZOMBIE, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedZombie::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SKELETON, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSkeleton::checkMonsterSpawnRules);
 		SpawnPlacements.register(VOIDED_SILVERFISH, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSilverfish::checkMonsterSpawnRules);
-		SpawnPlacements.register(VOIDED_SLIME, SpawnPlacementTypes.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSlime::checkSpawnRules);
+		SpawnPlacements.register(VOIDED_SLIME, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, VoidedSlime::checkSpawnRules);
 		SpawnPlacements.register(FLESH_PIGLIN, SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, FleshPiglin::checkMonsterSpawnRules);
 		SpawnPlacements.register(PIXIE, SpawnPlacementTypes.NO_RESTRICTIONS, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Pixie::checkPixieSpawnRules);
 	}

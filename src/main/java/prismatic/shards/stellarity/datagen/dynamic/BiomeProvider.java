@@ -79,6 +79,7 @@ public interface BiomeProvider {
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 1250, 3, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0033))
 			))
+			.setAttribute(EnvironmentAttributes.SURFACE_SLIME_SPAWN_CHANCE, 0.4f)
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(
 				ParticleTypes.WHITE_ASH, 0.01f
 			)))
@@ -86,9 +87,10 @@ public interface BiomeProvider {
 			.specialEffects(new BiomeSpecialEffects(
 				0xe5eeff, of(0xc2c2c2), empty(), of(0xdedede), BiomeSpecialEffects.GrassColorModifier.NONE
 			))
-			.mobSpawnSettings(new MobSpawnSettings.Builder()
+			.mobSpawnSettings(new MobSpawnSettings.Builder().creatureGenerationProbability(0.4f)
 				.addSpawn(MobCategory.MONSTER, 11, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SKELETON, 2, 2))
 				.addSpawn(MobCategory.CREATURE, 100, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 4))
+				.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SLIME, 1, 2))
 				.creatureGenerationProbability(0.2f)
 				.build())
 			.generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
@@ -530,6 +532,7 @@ public interface BiomeProvider {
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.COW, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 1, 4))
+				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.FROG, 1, 4))
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
 				.addCarver(StellarityConfiguredCarvers.RAVINE)
@@ -654,6 +657,7 @@ public interface BiomeProvider {
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 1200, 4, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111))
 			))
+			.setAttribute(EnvironmentAttributes.SURFACE_SLIME_SPAWN_CHANCE, 0.4f)
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.SPORE_BLOSSOM_AIR, 0.001f)))
 			.specialEffects(new BiomeSpecialEffects(0xa2d9e7, of(0x00dde0), empty(), of(0x01ccda), BiomeSpecialEffects.GrassColorModifier.NONE))
 			.mobSpawnSettings(new MobSpawnSettings.Builder()
@@ -663,6 +667,7 @@ public interface BiomeProvider {
 				.addSpawn(MobCategory.CREATURE, 10, new MobSpawnSettings.SpawnerData(EntityType.CHICKEN, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.COW, 1, 4))
 				.addSpawn(MobCategory.CREATURE, 8, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 1, 4))
+				.addSpawn(MobCategory.MONSTER, 20, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_SLIME, 1, 2))
 				.creatureGenerationProbability(0.4f)
 				.build()
 			).generationSettings(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)

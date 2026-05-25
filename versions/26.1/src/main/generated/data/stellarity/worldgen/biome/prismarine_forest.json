@@ -100,6 +100,12 @@
         "maxCount": 4,
         "minCount": 1,
         "weight": 8
+      },
+      {
+        "type": "minecraft:frog",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 8
       }
     ],
     "misc": [],
