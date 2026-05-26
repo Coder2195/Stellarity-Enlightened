@@ -222,13 +222,11 @@ public interface StellarityItems {
 		return registerBlock(key, block, new Item.Properties());
 	}
 
-	static Item registerBlock(ResourceKey<Item> key, Block block, Item.Properties settings) {
-		settings = settings.useBlockDescriptionPrefix().setId(key);
-		Item item = new BlockItem(block, settings);
+	static Item registerBlock(ResourceKey<Item> key, Block block, Item.Properties properties) {
+		properties.useBlockDescriptionPrefix().setId(key);
+		Item item = new BlockItem(block, properties);
 
-		Registry.register(BuiltInRegistries.ITEM, key, item);
-
-		return item;
+		return Registry.register(BuiltInRegistries.ITEM, key, item);
 	}
 
 	private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
@@ -244,13 +242,14 @@ public interface StellarityItems {
 	}
 
 	static Item register(ResourceKey<Item> key, Item.Properties properties) {
+
 		return register(key, Item::new, properties);
 	}
 
-	static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
-		settings.setId(key);
+	static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory, Item.Properties properties) {
+		properties.setId(key);
+		Item item = itemFactory.apply(properties);
 
-		Item item = itemFactory.apply(settings);
 		Registry.register(BuiltInRegistries.ITEM, key, item);
 
 		return item;

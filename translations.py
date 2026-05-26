@@ -51,7 +51,7 @@ for lang in translations:
 
 
 	with open("translations/enlightened/en_us.json", "w", encoding="utf-8") as f:
-	 json.dump(translations["en_us.json"], f, ensure_ascii=False, indent=4)
+	 json.dump(dict(natsorted(translations["en_us.json"].items())), f, ensure_ascii=False, indent=4)
 
 	
 
@@ -64,6 +64,5 @@ for lang in translations:
 	#			 final[key] = data[key]
 
 	with open(f"src/main/resources/assets/stellarity/lang/{lang}", "w+", encoding="utf-8") as f:
-
 		json.dump(final, f, ensure_ascii=False, indent=4)
 
