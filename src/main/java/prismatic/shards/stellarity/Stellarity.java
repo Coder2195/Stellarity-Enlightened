@@ -51,6 +51,7 @@ public class Stellarity implements ModInitializer {
 		StellarityDataAttachments.init();
 		StellarityDataComponents.init();
 		StellarityItems.init();
+		StellarityTooltips.init();
 		StellarityParticleTypes.init();
 		StellarityNetworking.init();
 		StellarityPotions.init();

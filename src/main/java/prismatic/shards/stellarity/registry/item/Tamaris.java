@@ -23,10 +23,7 @@ import java.util.Comparator;
 
 public class Tamaris extends Item {
 	public Tamaris(Properties properties) {
-
-
 		super(properties.sword(ToolMaterial.NETHERITE, 2, -2.4F));
-
 	}
 
 
@@ -41,9 +38,7 @@ public class Tamaris extends Item {
 	}
 
 
-	public void inventoryTick(
-		ItemStack itemStack, Level level, Entity entity, @Nullable EquipmentSlot equipmentSlot
-	) {
+	public void inventoryTick(ItemStack itemStack, Level level, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		boolean isClient = level.isClientSide();
 		Vec3 position = entity.position();
 
@@ -78,8 +73,7 @@ public class Tamaris extends Item {
 
 					if (!nearby.hurtServer((ServerLevel) level, nearby.damageSources().source(StellarityDamageTypes.TAMARIS_EXECUTE, player), 999f))
 						continue;
-
-
+					
 					var nearestPos = nearby.position();
 
 					player.teleportTo(nearestPos.x, nearestPos.y, nearestPos.z);
@@ -87,15 +81,11 @@ public class Tamaris extends Item {
 
 					nearby.playSound(StellaritySounds.TAMARIS_EXECUTE);
 
-					if (failed) {
-						player.getCooldowns().addCooldown(itemStack, 11 * 20);
-					}
+					if (failed) player.getCooldowns().addCooldown(itemStack, 11 * 20);
 
 					break;
 				}
 			}
-
-
 		}
 	}
 }
