@@ -4,10 +4,10 @@
 [![Wiki](https://img.shields.io/badge/wiki-Work_in_progress!-orange?style=for-the-badge&logo=ReadMe&logoColor=white)](https://koharasbasement.wiki.gg/wiki/Stellarity)
 [![Modrinth](https://img.shields.io/modrinth/dt/stellarity-enlightened?label=Modrinth&logo=modrinth&style=for-the-badge)](https://modrinth.com/mod/stellarity-enlightened)
 [![CurseForge](https://img.shields.io/curseforge/dt/1393906?style=for-the-badge&logo=curseforge&logoColor=FF5103&label=CurseForge&color=FF5103)](https://www.curseforge.com/minecraft/mc-mods/stellarity-enlightened)
-[![Forks](https://img.shields.io/github/forks/koharas-Basement/stellarity-fabric?style=for-the-badge&logo=github&color=green)](https://github.com/koharas-Basement/stellarity-fabric/members)
-[![Stars](https://img.shields.io/github/stars/koharas-Basement/stellarity-fabric?style=for-the-badge&logo=github&color=yellow)](https://github.com/koharas-Basement/stellarity-fabric/stargazers)
-[![Code Size](https://img.shields.io/github/languages/code-size/koharas-Basement/stellarity-fabric?style=for-the-badge&color=purple&logoColor=white)](https://github.com/koharas-Basement/stellarity-fabric)
-[![Repo Size](https://img.shields.io/github/repo-size/koharas-Basement/stellarity-fabric?logo=dropbox&style=for-the-badge&color=red)](https://github.com/koharas-Basement/stellarity-fabric)
+[![Forks](https://img.shields.io/github/forks/Prismatic-Shards/Stellarity-Enlightened?style=for-the-badge&logo=github&color=green)](https://github.com/Prismatic-Shards/Stellarity-Enlightened/forks)
+[![Stars](https://img.shields.io/github/stars/Prismatic-Shards/Stellarity-Enlightened?style=for-the-badge&logo=github&color=yellow)](https://github.com/Prismatic-Shards/Stellarity-Enlightened/stargazers)
+[![Code Size](https://img.shields.io/github/languages/code-size/Prismatic-Shards/Stellarity-Enlightened?style=for-the-badge&color=purple&logoColor=white)](https://github.com/Prismatic-Shards/Stellarity-Enlightened)
+[![Repo Size](https://img.shields.io/github/repo-size/Prismatic-Shards/Stellarity-Enlightened?logo=dropbox&style=for-the-badge&color=red)](https://github.com/Prismatic-Shards/Stellarity-Enlightened)
 
 ---
 

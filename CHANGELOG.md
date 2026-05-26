@@ -43,7 +43,7 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[*] Frozen Spikes**
 
-- Fixes the `spike_feature` from not generating due to an computation error
+- Fixes the `spike_feature` from not generating due to an computation error 
 
 **[*] Prismarine Forest**
 
