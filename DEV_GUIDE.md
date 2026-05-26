@@ -82,8 +82,16 @@ All providers go in the root of `datagen` except if:
 
 ## Client
 
+**IMPORTANT: Always annotate client package with
+`@Environment(EnvType.CLIENT)`**
+
+**This prevents server side crashes and all client code MUST be annotated and be inside this package**
+
 All client generally follow the same conventions mentioned above, but the "root" now is
 `prismatic.shards.stellarity.client`
+
+Are you unsure about if it should be client or not? Check the related vanilla class you are trying to build for, and if
+those are annotated, move them to client.
 
 ## Util
 
