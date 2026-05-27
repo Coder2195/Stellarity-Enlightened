@@ -1,6 +1,5 @@
-package prismatic.shards.stellarity.mixin.call_of_the_void;
+package prismatic.shards.stellarity.mixin.bow_use;
 
-import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.world.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.mixin.call_of_the_void;
+package prismatic.shards.stellarity.mixin.bow_use;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.InteractionHand;

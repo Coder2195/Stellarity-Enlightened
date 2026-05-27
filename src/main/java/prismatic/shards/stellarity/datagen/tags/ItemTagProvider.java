@@ -49,7 +49,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 			PRISMITE
 		);
 
-		addTags(StellarityItemTags.BOWS).add(CALL_OF_THE_VOID);
+		addTags(StellarityItemTags.BOWS).add(CALL_OF_THE_VOID, SHARANGA);
 
 		addTags(ItemTags.HEAD_ARMOR).add(SHULKER_HELMET);
 		addTags(ItemTags.CHEST_ARMOR).add(SHULKER_CHESTPLATE);

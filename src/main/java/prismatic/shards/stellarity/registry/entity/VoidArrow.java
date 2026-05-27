@@ -76,7 +76,7 @@ public class VoidArrow extends AbstractArrow {
 
 	@Override
 	public @NonNull ItemStack getDefaultPickupItem() {
-		return new ItemStack(Items.ARROW);
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class VoidArrow extends AbstractArrow {
 			Vec3 raycast = Vec3.directionFromRotation(random.nextFloat() * 3600, random.nextFloat() * 1500 - 750).scale(4);
 
 			var result = ProjectileUtil.getHitResult(position, this, entity -> entity instanceof LivingEntity, raycast, level, 0.05f, ClipContext.Block.COLLIDER);
-			
+
 			if (result.getType().equals(HitResult.Type.MISS)) {
 				raycasts.add(raycast);
 				continue;

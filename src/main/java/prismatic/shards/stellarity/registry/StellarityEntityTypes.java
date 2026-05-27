@@ -36,6 +36,11 @@ public interface StellarityEntityTypes {
 
 	EntityType<SatchelSigil> SATCHEL_SIGIL = register(StellarityEntityIds.SATCHEL_SIGIL, EntityType.Builder.<SatchelSigil>of(SatchelSigil::new, MobCategory.MISC).sized(2, 0.125F).noLootTable());
 
+	EntityType<SpectralBolt> SPECTRAL_BOLT = register(StellarityEntityIds.SPECTRAL_BOLT, EntityType.Builder.<SpectralBolt>of(SpectralBolt::new, MobCategory.MISC).sized(0.5F, 0.5F)
+		.eyeHeight(0.13F)
+		.clientTrackingRange(4)
+		.updateInterval(20).noLootTable());
+
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
 	}

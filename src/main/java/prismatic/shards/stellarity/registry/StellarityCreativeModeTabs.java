@@ -98,7 +98,8 @@ public interface StellarityCreativeModeTabs {
 		SHULKER_HELMET,
 		SHULKER_CHESTPLATE,
 		SHULKER_LEGGINGS,
-		SHULKER_BOOTS
+		SHULKER_BOOTS,
+		SHARANGA
 	};
 
 	ItemLike[] INGREDIENT_ITEMS = new ItemLike[]{

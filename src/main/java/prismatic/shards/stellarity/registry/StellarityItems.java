@@ -261,6 +261,7 @@ public interface StellarityItems {
 	Item FLESH_PIGLIN_SPAWN_EGG = registerSpawnEgg(StellarityItemIds.FLESH_PIGLIN_SPAWN_EGG, StellarityEntityTypes.FLESH_PIGLIN);
 
 	Item POTASSIFISH = register(StellarityItemIds.POTASSIFISH, foodProperties(1, 0.6f, new MobEffectInstance(MobEffects.REGENERATION, 4 * 20)));
+	Item SHARANGA = register(StellarityItemIds.SHARANGA, Sharanga::new, Sharanga.PROPERTIES);
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);

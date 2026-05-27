@@ -8,20 +8,24 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
 
-import java.util.List;
+import java.util.Optional;
 
+import static net.minecraft.client.data.models.BlockModelGenerators.*;
+import static net.minecraft.client.data.models.model.TextureMapping.getBlockTexture;
 import static prismatic.shards.stellarity.registry.StellarityItems.*;
 
 
@@ -92,46 +96,81 @@ public class ModelProvider extends FabricModelProvider {
 
 
 		generators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
-
 			.with(PropertyDispatch.initial(BlockStateProperties.AGE_3)
-				.select(0, BlockModelGenerators.plainVariant(generators.createSuffixedVariant(block, "_stage0", ModelTemplates.CROSS, TextureMapping::cross)))
-				.select(1, BlockModelGenerators.plainVariant(generators.createSuffixedVariant(block, "_stage1", ModelTemplates.CROSS, TextureMapping::cross)))
-				.select(2, BlockModelGenerators.plainVariant(generators.createSuffixedVariant(block, "_stage2", ModelTemplates.CROSS, TextureMapping::cross)))
-				.select(3, BlockModelGenerators.plainVariant(generators.createSuffixedVariant(block, "_stage3", ModelTemplates.CROSS, TextureMapping::cross)))
+				.select(0, plainVariant(generators.createSuffixedVariant(block, "_stage0", ModelTemplates.CROSS, TextureMapping::cross)))
+				.select(1, plainVariant(generators.createSuffixedVariant(block, "_stage1", ModelTemplates.CROSS, TextureMapping::cross)))
+				.select(2, plainVariant(generators.createSuffixedVariant(block, "_stage2", ModelTemplates.CROSS, TextureMapping::cross)))
+				.select(3, plainVariant(generators.createSuffixedVariant(block, "_stage3", ModelTemplates.CROSS, TextureMapping::cross)))
 			)
 		);
-
-
 	}
 
 
 	@Override
-	public void generateBlockStateModels(BlockModelGenerators generators) {
+	public void generateBlockStateModels(@NonNull BlockModelGenerators generators) {
 		for (var block : SIMPLE_BLOCKS)
 			generators.createTrivialCube(block);
 
-		generators.createNonTemplateModelBlock(StellarityBlocks.ENDER_DIRT_PATH);
 		generators.createNonTemplateModelBlock(StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 
-		generateBush(generators, StellarityBlocks.DUSKBERRY_BUSH);
-
-		generators.createAxisAlignedPillarBlock(StellarityBlocks.ASHEN_FROGLIGHT, TexturedModel.COLUMN);
-		generators.registerSimpleItemModel(StellarityBlocks.ASHEN_FROGLIGHT, Stellarity.id("block/ashen_froglight"));
-		generators.createGrassLikeBlock(StellarityBlocks.ENDER_GRASS_BLOCK, new MultiVariant(WeightedList.<Variant>builder()
-			.add(new Variant(Stellarity.id("block/ender_grass_block")))
-			.add(new Variant(Stellarity.id("block/ender_grass_block")), 90)
-			.add(new Variant(Stellarity.id("block/ender_grass_block")), 180)
-			.add(new Variant(Stellarity.id("block/ender_grass_block")), 270)
-			.build()), new MultiVariant(WeightedList.<Variant>builder().add(new Variant(Stellarity.id("block/ender_grass_block_snowy"))).build()));
+		var grass = plainModel(GRASS_BLOCK_TEMPLATE.create(StellarityBlocks.ENDER_GRASS_BLOCK, new TextureMapping()
+				.put(TextureSlot.BOTTOM, getBlockTexture(StellarityBlocks.ENDER_DIRT))
+				.put(TextureSlot.PARTICLE, getBlockTexture(StellarityBlocks.ENDER_DIRT))
+				.put(TextureSlot.TOP, getBlockTexture(StellarityBlocks.ENDER_GRASS_BLOCK, "_top"))
+				.put(TextureSlot.SIDE, getBlockTexture(StellarityBlocks.ENDER_GRASS_BLOCK, "_side"))
+				.put(TEXTURE_SLOT_OVERLAY, getBlockTexture(StellarityBlocks.ENDER_GRASS_BLOCK, "_side_overlay")),
+			generators.modelOutput
+		));
+		var grassSnow = ModelTemplates.CUBE_BOTTOM_TOP.createWithSuffix(StellarityBlocks.ENDER_GRASS_BLOCK, "_snow", new TextureMapping()
+				.put(TextureSlot.BOTTOM, getBlockTexture(StellarityBlocks.ENDER_DIRT))
+				.copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+				.put(TextureSlot.TOP, getBlockTexture(StellarityBlocks.ENDER_GRASS_BLOCK, "_top"))
+				.put(TextureSlot.SIDE, getBlockTexture(StellarityBlocks.ENDER_GRASS_BLOCK, "_side"))
+			, generators.modelOutput);
+		generators.createGrassLikeBlock(StellarityBlocks.ENDER_GRASS_BLOCK,
+			createRotatedVariants(grass),
+			plainVariant(grassSnow)
+		);
 		generators.registerSimpleTintedItemModel(StellarityBlocks.ENDER_GRASS_BLOCK, Stellarity.id("block/ender_grass_block"), new GrassColorSource(1.0f, 0.5f));
+
+
+		Variant model = plainModel(DIRT_PATH_TEMPLATE.create(StellarityBlocks.ENDER_DIRT_PATH, new TextureMapping()
+				.put(TextureSlot.BOTTOM, getBlockTexture(StellarityBlocks.ENDER_DIRT))
+				.copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+				.put(TextureSlot.TOP, getBlockTexture(StellarityBlocks.ENDER_DIRT_PATH, "_top"))
+				.put(TextureSlot.SIDE, getBlockTexture(StellarityBlocks.ENDER_DIRT_PATH, "_side")),
+			generators.modelOutput
+		));
+		generators.blockStateOutput.accept(MultiVariantGenerator.dispatch(StellarityBlocks.ENDER_DIRT_PATH, createRotatedVariants(model)));
+
+		ModelTemplates.CUBE_ALL.create(Stellarity.id("block/purpur_block_alt1"), new TextureMapping()
+				.put(TextureSlot.ALL, new Material(Stellarity.id("block/purpur_block_alt1"))),
+			generators.modelOutput
+		);
+		ModelTemplates.CUBE_ALL.create(Stellarity.id("block/purpur_block_alt2"), new TextureMapping()
+				.put(TextureSlot.ALL, new Material(Stellarity.id("block/purpur_block_alt2"))),
+			generators.modelOutput
+		);
+		ITEM_FRAME_TEMPLATE.create(Stellarity.id("block/phantom_item_frame"), new TextureMapping()
+				.put(TEXTURE_SLOT_WOOD, getBlockTexture(Blocks.PURPUR_PILLAR, "_top"))
+				.copyForced(TEXTURE_SLOT_WOOD, TextureSlot.PARTICLE)
+				.put(TextureSlot.BACK, getBlockTexture(Blocks.QUARTZ_PILLAR, "_top")),
+			generators.modelOutput
+		);
+
+		generateBush(generators, StellarityBlocks.DUSKBERRY_BUSH);
+		generators.createAxisAlignedPillarBlock(StellarityBlocks.ASHEN_FROGLIGHT, TexturedModel.COLUMN);
 
 
 	}
 
 	@Override
 	public void generateItemModels(ItemModelGenerators generators) {
-
 		generators.generateBow(CALL_OF_THE_VOID);
+		generators.createFlatItemModel(CALL_OF_THE_VOID, ModelTemplates.BOW);
+		generators.generateBow(SHARANGA);
+		generators.createFlatItemModel(SHARANGA, ModelTemplates.BOW);
+
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);
 
@@ -147,5 +186,31 @@ public class ModelProvider extends FabricModelProvider {
 		generators.generateTrimmableItem(SHULKER_BOOTS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
 
+	}
+
+	public static final TextureSlot TEXTURE_SLOT_OVERLAY = TextureSlot.create("overlay");
+	public static final TextureSlot TEXTURE_SLOT_WOOD = TextureSlot.create("wood");
+	public static final ModelTemplate GRASS_BLOCK_TEMPLATE = create("grass_block", TEXTURE_SLOT_OVERLAY, TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
+	public static final ModelTemplate DIRT_PATH_TEMPLATE = create("dirt_path", TextureSlot.BOTTOM, TextureSlot.SIDE, TextureSlot.TOP);
+	public static final ModelTemplate ITEM_FRAME_TEMPLATE = create("template_item_frame", TEXTURE_SLOT_WOOD, TextureSlot.BACK);
+
+	private static ModelTemplate create(final TextureSlot... slots) {
+		return new ModelTemplate(Optional.empty(), Optional.empty(), slots);
+	}
+
+	private static ModelTemplate create(final String id, final TextureSlot... slots) {
+		return new ModelTemplate(Optional.of(Identifier.withDefaultNamespace("block/" + id)), Optional.empty(), slots);
+	}
+
+	private static ModelTemplate createItem(final String id, final TextureSlot... slots) {
+		return new ModelTemplate(Optional.of(Identifier.withDefaultNamespace("item/" + id)), Optional.empty(), slots);
+	}
+
+	private static ModelTemplate createItem(final String id, final String suffix, final TextureSlot... slots) {
+		return new ModelTemplate(Optional.of(Identifier.withDefaultNamespace("item/" + id)), Optional.of(suffix), slots);
+	}
+
+	private static ModelTemplate create(final String id, final String suffix, final TextureSlot... slots) {
+		return new ModelTemplate(Optional.of(Identifier.withDefaultNamespace("block/" + id)), Optional.of(suffix), slots);
 	}
 }

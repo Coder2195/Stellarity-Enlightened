@@ -6,19 +6,19 @@
       },
       {
         "model": "stellarity:block/ender_grass_block",
-        "weight": 90
+        "y": 90
       },
       {
         "model": "stellarity:block/ender_grass_block",
-        "weight": 180
+        "y": 180
       },
       {
         "model": "stellarity:block/ender_grass_block",
-        "weight": 270
+        "y": 270
       }
     ],
     "snowy=true": {
-      "model": "stellarity:block/ender_grass_block_snowy"
+      "model": "stellarity:block/ender_grass_block_snow"
     }
   }
 }

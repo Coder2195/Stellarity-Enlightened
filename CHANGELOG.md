@@ -17,6 +17,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Fully implemented and acts as a temporary altar of the accursed, summoning a sigil when used
 
+**[*] Sharanga**
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**
