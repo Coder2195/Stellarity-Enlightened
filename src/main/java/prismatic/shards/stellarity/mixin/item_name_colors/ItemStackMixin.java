@@ -10,10 +10,12 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.registry.StellarityItems;
+import prismatic.shards.stellarity.registry.StellarityPotions;
 
 import java.util.function.Predicate;
 
@@ -22,13 +24,6 @@ import java.util.function.Predicate;
 public abstract class ItemStackMixin implements DataComponentHolder, ItemInstance, FabricItemStack {
 	@Shadow
 	public abstract Item getItem();
-
-
-	@Shadow
-	public abstract boolean is(Predicate<Holder<Item>> item);
-
-	@Shadow
-	public abstract boolean hasNonDefault(DataComponentType<?> type);
 
 
 	@ModifyExpressionValue(method = "getStyledHoverName", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/chat/MutableComponent;withStyle(Lnet/minecraft/ChatFormatting;)Lnet/minecraft/network/chat/MutableComponent;"))
@@ -40,7 +35,12 @@ public abstract class ItemStackMixin implements DataComponentHolder, ItemInstanc
 		var itemColor = StellarityItems.NAME_COLORS.get(getItem());
 		if (itemColor != null) {
 			original.withColor(itemColor);
+		}
 
+		if (is(Items.POTION)) {
+			var potionContents = get(DataComponents.POTION_CONTENTS);
+			if (potionContents == null) return original;
+			potionContents.potion().map(StellarityPotions.NAME_COLORS::get).ifPresent(original::withColor);
 		}
 
 		return original;

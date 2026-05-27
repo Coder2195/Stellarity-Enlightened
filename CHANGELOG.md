@@ -43,7 +43,7 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[*] Frozen Spikes**
 
-- Fixes the `spike_feature` from not generating due to an computation error 
+- Fixes the `spike_feature` from not generating due to an computation error
 
 **[*] Prismarine Forest**
 
@@ -61,5 +61,9 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Fixed bug where animals would not spawn on chunk generation in the end
 - Fixed bug where frogs and wolves would not spawn at all in the end
+
+**[*] Item Tooltips**
+
+- Sychronizes most of the item tooltips and item name colors from the datapack. Report any missing or incorrect tooltips
 
 # Developer's Note

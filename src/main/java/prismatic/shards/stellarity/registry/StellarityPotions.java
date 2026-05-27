@@ -1,5 +1,6 @@
 package prismatic.shards.stellarity.registry;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 
 public interface StellarityPotions {
 	HashMap<Holder<Potion>, Integer> COLORS = new HashMap<>();
+	HashMap<Holder<Potion>, Integer> NAME_COLORS = new HashMap<>();
 
 	Holder<Potion> BLIND_RAGE = register("blind_rage", "blind_rage",
 		new MobEffectInstance(MobEffects.DARKNESS, 15 * 20, 0),
@@ -154,5 +156,15 @@ public interface StellarityPotions {
 		COLORS.put(STRONG_REGENERAGA, 0xf60077);
 		COLORS.put(LUCK, 0x59c106);
 		COLORS.put(CHORUS_JUICE, 0x631969);
+
+		NAME_COLORS.put(SPELUNKER, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(RED, 0xFF5454);
+		NAME_COLORS.put(REGENERAGA, ChatFormatting.YELLOW.getColor());
+		NAME_COLORS.put(ENDURANCE, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(ENTANGLEMENT, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(LIFEFORCE, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(AMARENE, 0xC90D17);
+		NAME_COLORS.put(FROST_CLOUD, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(POSEIDONS_NECTAR, ChatFormatting.YELLOW.getColor());
 	}
 }
