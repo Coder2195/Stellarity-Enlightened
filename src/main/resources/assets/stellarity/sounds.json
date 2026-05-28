@@ -300,9 +300,9 @@
 		],
 		"subtitle": "subtitles.block.end_portal_frame.fill"
 	},
-	"block.altar_of_light.bless": {
+	"block.altar_of_the_sacred.bless": {
 		"sounds": [
-			"stellarity:block/altar_of_light/blood_sacrifice"
+			"stellarity:block/altar_of_the_sacred/blood_sacrifice"
 		]
 	},
 	"enchantment.ambush.level_1": {

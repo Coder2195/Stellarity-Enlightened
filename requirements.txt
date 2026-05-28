@@ -1,2 +1,4 @@
 natsort
 amulet-nbt
+pydub
+audioop-lts

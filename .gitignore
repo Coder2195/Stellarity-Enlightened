@@ -110,3 +110,6 @@ kotlin-ide/
 **/.junie/memory/
 .claude/local.md
 .claude/CLAUDE.md
+
+input_audio/
+output_audio/

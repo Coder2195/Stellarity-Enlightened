@@ -73,7 +73,12 @@ public class SpectralBolt extends AbstractArrow {
 
 			return;
 		}
-		var delta = position().subtract(posOld);
+		drawTrail(position());
+	}
+
+	private void drawTrail(Vec3 target) {
+		var level = level();
+		var delta = target.subtract(posOld);
 		var steps = delta.length() / 0.25;
 		var stepVec = delta.scale(1 / steps);
 
@@ -102,5 +107,16 @@ public class SpectralBolt extends AbstractArrow {
 	protected void onHitBlock(@NonNull BlockHitResult hitResult) {
 		super.onHitBlock(hitResult);
 		this.discard();
+	}
+
+	@Override
+	public void onClientRemoval() {
+		drawTrail(position().add(getDeltaMovement()));
+		var level = level();
+		var random = getRandom();
+		for (int i = 0; i < 20; i++) {
+			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, getX(), getY(), getZ(), (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5);
+		}
+		super.onClientRemoval();
 	}
 }
