@@ -20,8 +20,6 @@ public class ProjectileUtilMixin {
 	private static AbstractArrow createVoidedArrow(ArrowItem instance, Level level, ItemStack itemStack, LivingEntity owner, ItemStack firedFromWeapon, Operation<AbstractArrow> original) {
 		if (firedFromWeapon.is(StellarityItems.CALL_OF_THE_VOID))
 			return new VoidArrow(level, owner, itemStack, firedFromWeapon);
-		if (firedFromWeapon.is(StellarityItemTags.BOWS))
-			throw new AssertionError("Please add your functionality for custom bow here");
 		return original.call(instance, level, itemStack, owner, firedFromWeapon);
 	}
 }

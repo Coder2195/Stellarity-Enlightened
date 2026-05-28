@@ -59,7 +59,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(ItemTags.FISHES, StellarityItemTags.FISHES);
 		addTags(StellarityItemTags.ELYTRA_ENCHANTABLE).add(Items.ELYTRA);
 
-		addTags(ItemTags.BOW_ENCHANTABLE).add(CALL_OF_THE_VOID);
+		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
 	}
 }

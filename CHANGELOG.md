@@ -36,6 +36,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 Unless annotated, all changes are considered to be up to date with
 the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](https://modrinth.com/datapack/stellarity)
 
+**[+] Spectral Bolt**
+
+- Shot from the Sharanga and has no corresponding item, because it shatters
+
 ## Biomes
 
 **[*] Ashfall Deltas**
