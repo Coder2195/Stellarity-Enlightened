@@ -17,7 +17,9 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Fully implemented and acts as a temporary altar of the accursed, summoning a sigil when used
 
-**[*] Sharanga**
+**[+] Sharanga**
+
+**[+] Spectral Fury**
 
 ## Blocks
 
@@ -43,6 +45,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[+] Spectral Bolt**
 
 - Shot from the Sharanga and has no corresponding item, because it shatters
+
+**[+] Spectral Wisp**
+
+- Shot from the Spectral Fury and has no corresponding item, because it disappears
 
 ## Biomes
 

@@ -2,6 +2,7 @@ package prismatic.shards.stellarity.registry.entity;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -111,9 +112,11 @@ public class SpectralBolt extends AbstractArrow {
 
 	@Override
 	public void onClientRemoval() {
+
+		if (posOld == null) posOld = position();
 		drawTrail(position().add(getDeltaMovement()));
 		var level = level();
-		var random = getRandom();
+		var random = RandomSource.create();
 		for (int i = 0; i < 20; i++) {
 			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, getX(), getY(), getZ(), (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5);
 		}
