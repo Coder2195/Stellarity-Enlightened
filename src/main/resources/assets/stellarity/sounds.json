@@ -264,9 +264,24 @@
 		"sounds": [
 			"stellarity:item/spectral_fury/shoot_1",
 			"stellarity:item/spectral_fury/shoot_2",
-			"stellarity:item/spectral_fury/shoot_3"
+			"stellarity:item/spectral_fury/shoot_3",
+			"stellarity:item/spectral_fury/shoot_4",
+			"stellarity:item/spectral_fury/shoot_5",
+			"stellarity:item/spectral_fury/shoot_6",
+			"stellarity:item/spectral_fury/shoot_7",
+			"stellarity:item/spectral_fury/shoot_8",
+			"stellarity:item/spectral_fury/shoot_9",
+			"stellarity:item/spectral_fury/shoot_10"
 		],
 		"subtitle": "subtitles.entity.arrow.shoot"
+	},
+	"item.spectral_fury.shoot_wisp": {
+		"sounds": [
+			"stellarity:item/spectral_fury/shoot_wisp_1",
+			"stellarity:item/spectral_fury/shoot_wisp_2",
+			"stellarity:item/spectral_fury/shoot_wisp_3"
+		],
+		"subtitle": "subtitles.stellarity.item.spectral_fury.shoot_wisp"
 	},
 	"item.starless_scythe.swing": {
 		"sounds": [
@@ -556,6 +571,7 @@
 			"stellarity:block/altar_of_the_accursed/craft_6",
 			"stellarity:block/altar_of_the_accursed/craft_7",
 			"stellarity:block/altar_of_the_accursed/craft_8"
-		]
+		],
+		"subtitle": "subtitles.stellarity.block.altar_of_the_accursed.craft"
 	}
 }

@@ -1,24 +1,63 @@
 import pathlib
+from random import randrange
 
 from pydub import AudioSegment
+from pydub.effects import speedup
+from pydub.playback import play
+from pydub.utils import ratio_to_db
 
 pathlib.Path("input_audio").mkdir(exist_ok=True)
-pathlib.Path("output_audio/altar_of_the_accursed").mkdir(exist_ok=True, parents=True)
+pathlib.Path("output_audio/spectral_fury").mkdir(exist_ok=True, parents=True)
+
+"""
+Resources
+https://github.com/jiaaro/pydub/issues/496 for Minecraft volume
+"""
+
+
+# https://batulaiko.medium.com/how-to-pitch-shift-in-python-c59b53a84b6d
+# noinspection PyProtectedMember
+def pitch_modulate(sound: AudioSegment, octaves: float):
+	new_sample_rate = int(sound.frame_rate * (2.0 ** octaves))
+	hipitch_sound = sound._spawn(sound.raw_data, overrides={'frame_rate': new_sample_rate})
+	hipitch_sound = hipitch_sound.set_frame_rate(44100)
+	return hipitch_sound
+
 
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
 
-tridents = ["trident/thunder1.ogg", "trident/thunder2.ogg"]
-wardens = ["warden/heartbeat_1.ogg", "warden/heartbeat_2.ogg", "warden/heartbeat_3.ogg", "warden/heartbeat_4.ogg"]
+booms = ["warden/sonic_boom1.ogg", "warden/sonic_boom2.ogg", "warden/sonic_boom3.ogg", "warden/sonic_boom4.ogg"]
+souls = ["soul_speed/soulspeed1.ogg", "soul_speed/soulspeed2.ogg", "soul_speed/soulspeed3.ogg",
+         "soul_speed/soulspeed4.ogg", "soul_speed/soulspeed5.ogg", "soul_speed/soulspeed6.ogg",
+         "soul_speed/soulspeed7.ogg", "soul_speed/soulspeed8.ogg"]
 
-index = 1
+combo = [(boom, soul) for boom in booms for soul in souls]
+print(combo)
+for i in range(10):
+	boom, soul = combo.pop(randrange(len(combo)))
+	soul_sound = AudioSegment.from_ogg(f"input_audio/{soul}")
+	soul_sound = soul_sound.set_frame_rate(int(soul_sound.frame_rate * 0.9))
+	boom_sound = AudioSegment.from_ogg(f"input_audio/{boom}")
+	boom_sound = boom_sound.apply_gain(ratio_to_db(0.2))
+	boom_sound = pitch_modulate(boom_sound, 0.8)
 
-for trident in tridents:
-	for warden in wardens:
-		print(trident, warden)
-		trident_sound = AudioSegment.from_ogg(f"input_audio/{trident}")
-		warden_sound = AudioSegment.from_ogg(f"input_audio/{warden}")
-		if len(trident_sound) > len(warden_sound):
-			new_sound = trident_sound.overlay(warden_sound)[:3000]
-			new_sound.export(f"output_audio/altar_of_the_accursed/craft_{index}.ogg", format="ogg")
-		index += 1
+	new_sound = boom_sound.overlay(soul_sound)
+	play(new_sound)
+	new_sound.export(f"output_audio/spectral_fury/shoot_{i + 1}.ogg", format="ogg")
+
+# altar of the accursed
+# tridents = ["trident/thunder1.ogg", "trident/thunder2.ogg"]
+# wardens = ["warden/heartbeat_1.ogg", "warden/heartbeat_2.ogg", "warden/heartbeat_3.ogg", "warden/heartbeat_4.ogg"]
+#
+# index = 1
+#
+# for trident in tridents:
+# 	for warden in wardens:
+# 		print(trident, warden)
+# 		trident_sound = AudioSegment.from_ogg(f"input_audio/{trident}").apply_gain(ratio_to_db(0.88))
+# 		warden_sound = AudioSegment.from_ogg(f"input_audio/{warden}")
+# 		if len(trident_sound) > len(warden_sound):
+# 			new_sound = trident_sound.overlay(warden_sound)[:3000]
+# 			new_sound.export(f"output_audio/altar_of_the_accursed/craft_{index}.ogg", format="ogg")
+# 		index += 1

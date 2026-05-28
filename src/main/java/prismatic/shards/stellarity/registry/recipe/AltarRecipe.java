@@ -114,10 +114,8 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 					new ClientboundSetActionBarTextPacket(Component.translatable("message.stellarity.altar_of_the_accursed_locked").withStyle(ChatFormatting.DARK_PURPLE))
 				);
 			}
-
 			return;
 		}
-
 
 		List<ItemStack> itemStacks = itemEntities.stream().map(ItemEntity::getItem).toList();
 		ExtItemEntity.ItemMode itemMode = player != null && player.isCrouching() ? ExtItemEntity.ItemMode.DEFAULT : ExtItemEntity.ItemMode.CRAFTING;
@@ -125,21 +123,15 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 		for (var entity : itemEntities) {
 			if (!entity.stellarity$getItemMode().equals(itemMode)) entity.stellarity$setItemMode(itemMode);
 		}
-
 		if (itemEntities.isEmpty()) return;
-
 
 		AltarRecipe.Output output = null;
 
-
 		if (itemMode == ExtItemEntity.ItemMode.CRAFTING) {
-
-
 			var allRecipes = serverLevel.getServer().getRecipeManager().getAllOfType(StellarityRecipeTypes.ALTAR_RECIPE);
 
 			for (var recipeHolder : allRecipes) {
 				var recipe = recipeHolder.value();
-
 
 				output = recipe.craft(itemStacks);
 				if (output != null) {
@@ -167,6 +159,7 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 			serverLevel.getEntitiesOfClass(ServerPlayer.class, new AABB(x - 5, y - 5, z - 5, x + 5, y + 5, z + 5)).forEach(p -> StellarityCriteriaTriggers.SPECIAL_CRAFT.trigger(p, BlockPos.containing(x, y, z), stack));
 		}
 	}
+
 
 	@Override
 	default boolean showNotification() {

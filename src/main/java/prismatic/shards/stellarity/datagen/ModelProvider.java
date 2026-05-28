@@ -22,6 +22,7 @@ import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
 
+import java.util.List;
 import java.util.Optional;
 
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
@@ -166,11 +167,11 @@ public class ModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateItemModels(ItemModelGenerators generators) {
-		generators.generateBow(CALL_OF_THE_VOID);
-		generators.createFlatItemModel(CALL_OF_THE_VOID, ModelTemplates.BOW);
-		generators.generateBow(SHARANGA);
-		generators.createFlatItemModel(SHARANGA, ModelTemplates.BOW);
-
+		for (var bow : List.of(CALL_OF_THE_VOID, SHARANGA, SPECTRAL_FURY)) {
+			generators.generateBow(bow);
+			generators.createFlatItemModel(bow, ModelTemplates.BOW);
+		}
+		
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);
 
