@@ -4,9 +4,7 @@ import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
-import net.minecraft.core.Holder;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.GameType;
 import prismatic.shards.stellarity.Stellarity;
@@ -15,7 +13,6 @@ import prismatic.shards.stellarity.interface_injection.ExtEndCrystal;
 import prismatic.shards.stellarity.interface_injection.ExtItemEntity;
 
 import java.util.List;
-import java.util.Map;
 
 public interface StellarityDataAttachments {
 	AttachmentType<Integer> GLOW_COLOR = AttachmentRegistry.create(Stellarity.id("glow_color"), builder -> builder.
@@ -40,6 +37,8 @@ public interface StellarityDataAttachments {
 	);
 
 	AttachmentType<GameType> LAST_GAMEMODE = AttachmentRegistry.create(Stellarity.id("last_gamemode"), builder -> builder.persistent(GameType.CODEC).syncWith(GameType.STREAM_CODEC, AttachmentSyncPredicate.all()));
+
+	AttachmentType<Boolean> SPECTRAL_FURY_CHARGED = AttachmentRegistry.create(Stellarity.id("spectral_fury_charged"), builder -> builder.persistent(Codec.BOOL));
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");

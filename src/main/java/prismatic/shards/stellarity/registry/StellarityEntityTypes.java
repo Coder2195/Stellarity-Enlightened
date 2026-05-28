@@ -41,6 +41,11 @@ public interface StellarityEntityTypes {
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());
 
+	EntityType<SpectralWisp> SPECTRAL_WISP = register(StellarityEntityIds.SPECTRAL_WISP, EntityType.Builder.<SpectralWisp>of(SpectralWisp::new, MobCategory.MISC).sized(0.5F, 0.5F)
+		.eyeHeight(0.13F)
+		.clientTrackingRange(4)
+		.updateInterval(20).noLootTable());
+
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
 	}
