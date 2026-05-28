@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.dimension.v1.DimensionEvents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.EntityType;
@@ -15,7 +14,6 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import prismatic.shards.stellarity.Stellarity;
 
 import java.util.List;
@@ -28,13 +26,9 @@ import static prismatic.shards.stellarity.key.StellarityPlacedFeatures.*;
 
 public interface StellarityWorldgenModifications {
 
-	static ResourceKey<PlacedFeature> mc(String id) {
-		return Stellarity.mcKey(Registries.PLACED_FEATURE, id);
-	}
-
 	@SuppressWarnings("DuplicatedCode")
 	static void init() {
-		DimensionEvents.MODIFY_ATTRIBUTES.register((dimension, attributes, registries) -> {
+		DimensionEvents.MODIFY_ATTRIBUTES.register((dimension, attributes, _) -> {
 			if (!dimension.is(BuiltinDimensionTypes.END)) return;
 
 			attributes.set(BED_RULE, new BedRule(BedRule.Rule.ALWAYS, BedRule.Rule.ALWAYS, false, Optional.empty()));

@@ -99,7 +99,7 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 		handleItems(serverLevel, x, y, z, locked, new AABB(
 			x - 0.5, y + 0.75d - 0.5, z - 0.5,
 			x + 0.5, y + 0.75d + 0.5, z + 0.5
-		), (unused) -> true);
+		), (_) -> true);
 	}
 
 	static void handleItems(ServerLevel serverLevel, double x, double y, double z, boolean locked, AABB bounding, Predicate<ItemEntity> predicate) {
