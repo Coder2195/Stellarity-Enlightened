@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import prismatic.shards.stellarity.key.StellarityEnchantments;
 import prismatic.shards.stellarity.registry.StellarityParticleTypes;
-import prismatic.shards.stellarity.registry.StellaritySounds;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
@@ -27,7 +27,7 @@ public class EnchantmentHelperMixin {
 	private static void stellarityPostEnchantments(ServerLevel serverLevel, Entity victim, DamageSource damageSource, Holder<Enchantment> enchantment, int level, EnchantedItemInUse item, Operation<Void> original) {
 		if (enchantment.is(StellarityEnchantments.CRITICAL_STRIKE) && victim instanceof LivingEntity target && target.level() instanceof ServerLevel server && random.nextFloat() < level * 0.1f && target.getLastDamageSource() != null) {
 			target.hurtServer(serverLevel, target.getLastDamageSource(), target.lastHurt * 2);
-			target.playSound(StellaritySounds.CRITICAL_STRIKE);
+			target.playSound(StellaritySoundEvents.CRITICAL_STRIKE);
 			float height = target.getBbHeight() * 0.7f;
 			float width = target.getBbWidth() * 0.7f;
 			server.sendParticles(StellarityParticleTypes.CRITICAL_STRIKE, target.getX(), target.getY(0.5), target.getZ(), 50, width, height, width, 0.3);

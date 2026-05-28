@@ -64,7 +64,7 @@ public class Stellarity implements ModInitializer {
 		StellarityRecipeTypes.init();
 		StellarityRecipeSerializers.init();
 		StellarityMobEffects.init();
-		StellaritySounds.init();
+		StellaritySoundEvents.init();
 		StellarityVillagerTypes.init();
 		StellarityVillagerProfessions.init();
 

@@ -6,12 +6,11 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellaritySounds;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 import prismatic.shards.stellarity.registry.entity.ThrownPrismaticPearl;
 
 
@@ -33,7 +32,7 @@ public class PrismaticPearlItem extends Item {
 			var pearl = Projectile.spawnProjectileFromRotation(ThrownPrismaticPearl::new, serverLevel, itemStack, player, 0.0F, 1.5F * 1.25F, 1.0F);
 			pearl.setItem(itemStack);
 
-			serverLevel.playSound(null, player.blockPosition(), StellaritySounds.PRISMATIC_PEARL_THROW, SoundSource.NEUTRAL);
+			serverLevel.playSound(null, player.blockPosition(), StellaritySoundEvents.PRISMATIC_PEARL_THROW, SoundSource.NEUTRAL);
 		}
 
 

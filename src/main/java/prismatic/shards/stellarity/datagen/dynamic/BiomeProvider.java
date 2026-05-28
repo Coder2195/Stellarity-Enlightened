@@ -14,7 +14,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import prismatic.shards.stellarity.key.StellarityConfiguredCarvers;
 import prismatic.shards.stellarity.registry.StellarityEntityTypes;
-import prismatic.shards.stellarity.registry.StellaritySounds;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM),
 				of(new AmbientMoodSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 1000, 4, 2)),
 				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE), 0.001))
 			)).specialEffects(new BiomeSpecialEffects(0xf3d1ff, of(0xd494ff), empty(), of(0xdeadff), BiomeSpecialEffects.GrassColorModifier.NONE))
@@ -75,7 +75,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xc4c4cf)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 1250, 3, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0033))
 			))
@@ -114,7 +114,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x5d2a6f)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 1100, 6, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.0111))
 			))
@@ -164,7 +164,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
 			.setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.SPORE_BLOSSOM_AIR, 0.002f)))
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 1000, 2, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111))
 			)).specialEffects(new BiomeSpecialEffects(0x43d5ee, of(0xffed75), empty(), of(0xfaf389), BiomeSpecialEffects.GrassColorModifier.NONE))
@@ -191,7 +191,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 1000, 2, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, 0.0111))
 			)).setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.SPORE_BLOSSOM_AIR, 0.001f)))
@@ -218,7 +218,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x302947)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_CAVE, 1000, 4, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111))
 			)).specialEffects(new BiomeSpecialEffects(0x504771, of(0x553a5f), empty(), of(0x4c3654), BiomeSpecialEffects.GrassColorModifier.NONE))
@@ -245,7 +245,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_CAVE, 1000, 4, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CAVE, 0.001))
 			))
@@ -281,7 +281,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x041f33)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 820, 8, 2)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.005))
 			))
@@ -318,7 +318,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xff0000)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_MOOD, 3000, 10, 100)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.00111))
 			))
@@ -352,7 +352,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 200, 4, 4)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.01111))
 			))
@@ -385,7 +385,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 800, 4, 4)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.01111))
 			))
@@ -414,7 +414,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 200, 4, 4)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.011111))
 			))
@@ -451,7 +451,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 200, 4, 4)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.011111))
 			))
@@ -488,7 +488,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xe566ff)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_BLESSED),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 900, 2, 2)),
 				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 0.00055))
 			))
@@ -520,7 +520,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x16395a)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_BLESSED),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 800, 4, 4)),
 				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 0.0111))
 			)).setAttribute(EnvironmentAttributes.AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.DRIPPING_DRIPSTONE_WATER, 0.001f)))
@@ -557,7 +557,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xe566ff)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_BLESSED),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 900, 2, 2)),
 				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 0.00055f))
 			))
@@ -586,7 +586,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0xc0d8ff)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0xe566ff)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_BLESSED),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, 900, 2, 2)),
 				List.of(new AmbientAdditionsSettings(direct(SoundEvents.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE), 0.000055))
 			))
@@ -623,7 +623,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x333333)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_DARK_CALM),
+				of(StellaritySoundEvents.AMBIENT_THE_END_DARK_CALM),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 1600, 5, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.0033))
 			))
@@ -653,7 +653,7 @@ public interface BiomeProvider {
 			.setAttribute(EnvironmentAttributes.FOG_COLOR, 0x000000)
 			.setAttribute(EnvironmentAttributes.WATER_FOG_COLOR, 0x67bbc1)
 			.setAttribute(EnvironmentAttributes.AMBIENT_SOUNDS, new AmbientSounds(
-				of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_BLESSED),
+				of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_BLESSED),
 				of(new AmbientMoodSettings(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 1200, 4, 1)),
 				List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111))
 			))

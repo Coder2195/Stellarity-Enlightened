@@ -91,7 +91,7 @@ public interface StellarityWorldgenModifications {
 				attributes.set(FOG_COLOR, 0x000000);
 				attributes.set(WATER_FOG_COLOR, 0x302947);
 				attributes.set(AMBIENT_LIGHT_COLOR, 0x3f473f);
-				attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySounds.AMBIENT_THE_END_DARK), Optional.of(new AmbientMoodSettings(
+				attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySoundEvents.AMBIENT_THE_END_DARK), Optional.of(new AmbientMoodSettings(
 					SoundEvents.AMBIENT_CAVE, 800, 8, 2
 				)), List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.005))));
 				attributes.set(AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.ASH, 0.0111f)));
@@ -124,7 +124,7 @@ public interface StellarityWorldgenModifications {
 			attributes.set(FOG_COLOR, 0x000000);
 			attributes.set(WATER_FOG_COLOR, 0x6c519e);
 			attributes.set(AMBIENT_LIGHT_COLOR, 0x3f473f);
-			attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM), Optional.of(new AmbientMoodSettings(
+			attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM), Optional.of(new AmbientMoodSettings(
 				SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 900, 8, 2
 			)), List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.001))));
 
@@ -159,7 +159,7 @@ public interface StellarityWorldgenModifications {
 			attributes.set(FOG_COLOR, 0x000000);
 			attributes.set(WATER_FOG_COLOR, 0x5c79f0);
 			attributes.set(AMBIENT_LIGHT_COLOR, 0x3f473f);
-			attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySounds.AMBIENT_THE_END_HEAVENLY_GRIM), Optional.of(new AmbientMoodSettings(
+			attributes.set(AMBIENT_SOUNDS, new AmbientSounds(Optional.of(StellaritySoundEvents.AMBIENT_THE_END_HEAVENLY_GRIM), Optional.of(new AmbientMoodSettings(
 				SoundEvents.AMBIENT_CRIMSON_FOREST_MOOD, 850, 2, 2
 			)), List.of(new AmbientAdditionsSettings(SoundEvents.AMBIENT_CRIMSON_FOREST_ADDITIONS, 0.0013))));
 			attributes.set(AMBIENT_PARTICLES, List.of(new AmbientParticle(ParticleTypes.WHITE_ASH, 0.003f)));

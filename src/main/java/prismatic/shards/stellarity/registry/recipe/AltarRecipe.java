@@ -13,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -25,6 +26,7 @@ import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.interface_injection.ExtItemEntity;
 import prismatic.shards.stellarity.registry.StellarityCriteriaTriggers;
 import prismatic.shards.stellarity.registry.StellarityRecipeTypes;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 import java.util.HashMap;
 import java.util.List;
@@ -160,6 +162,7 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 
 			serverLevel.sendParticles(ColorParticleOption.create(ParticleTypes.FLASH, -1), x, y + 1, z, 1, 0, 0, 0, 0);
 			serverLevel.sendParticles(ParticleTypes.END_ROD, x, y + 1, z, 17, 0, 0, 0, 0.13);
+			serverLevel.playSound(null, x, y, z, StellaritySoundEvents.ALTAR_OF_THE_ACCURSED_CRAFT, SoundSource.BLOCKS);
 
 			serverLevel.getEntitiesOfClass(ServerPlayer.class, new AABB(x - 5, y - 5, z - 5, x + 5, y + 5, z + 5)).forEach(p -> StellarityCriteriaTriggers.SPECIAL_CRAFT.trigger(p, BlockPos.containing(x, y, z), stack));
 		}

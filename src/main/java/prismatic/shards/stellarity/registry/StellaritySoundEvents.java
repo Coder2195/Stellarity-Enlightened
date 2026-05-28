@@ -6,7 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import prismatic.shards.stellarity.Stellarity;
 
-public interface StellaritySounds {
+public interface StellaritySoundEvents {
 	SoundEvent TAMARIS_EXECUTE = register("item.tamaris.execute");
 	SoundEvent TAMARIS_EXECUTE_SPECIAL = register("item.tamaris.execute_special");
 	SoundEvent TAMARIS_CHIME = register("item.tamaris.chime");
@@ -18,6 +18,8 @@ public interface StellaritySounds {
 	SoundEvent AMBUSH_LEVEL_1 = register("enchantment.ambush.level_1");
 	SoundEvent AMBUSH_LEVEL_2 = register("enchantment.ambush.level_2");
 	SoundEvent AMBUSH_LEVEL_3 = register("enchantment.ambush.level_3");
+	
+	SoundEvent ALTAR_OF_THE_ACCURSED_CRAFT = register("block.altar_of_the_accursed.craft");
 
 	SoundEvent PRISMATIC_PEARL_THROW = register("item.prismatic_pearl.throw");
 

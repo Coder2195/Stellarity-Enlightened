@@ -25,6 +25,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Applied correct textures to the block and translations
 
+**[*] Altar of the Accursed**
+
+- Added proper crafting noise for the altar
+
 ## Entities
 
 **[+] Voided Arrow**

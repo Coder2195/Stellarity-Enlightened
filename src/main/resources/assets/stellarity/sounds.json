@@ -545,5 +545,17 @@
 				"volume": 0.15
 			}
 		]
+	},
+	"block.altar_of_the_accursed.craft": {
+		"sounds": [
+			"stellarity:block/altar_of_the_accursed/craft_1",
+			"stellarity:block/altar_of_the_accursed/craft_2",
+			"stellarity:block/altar_of_the_accursed/craft_3",
+			"stellarity:block/altar_of_the_accursed/craft_4",
+			"stellarity:block/altar_of_the_accursed/craft_5",
+			"stellarity:block/altar_of_the_accursed/craft_6",
+			"stellarity:block/altar_of_the_accursed/craft_7",
+			"stellarity:block/altar_of_the_accursed/craft_8"
+		]
 	}
 }

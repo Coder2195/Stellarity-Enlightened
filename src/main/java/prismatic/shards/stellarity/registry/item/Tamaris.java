@@ -14,7 +14,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.key.StellarityDamageTypes;
-import prismatic.shards.stellarity.registry.StellaritySounds;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 import java.util.Comparator;
 
@@ -76,7 +76,7 @@ public class Tamaris extends Item {
 					player.teleportTo(nearestPos.x, nearestPos.y, nearestPos.z);
 					itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
 
-					nearby.playSound(StellaritySounds.TAMARIS_EXECUTE);
+					nearby.playSound(StellaritySoundEvents.TAMARIS_EXECUTE);
 
 					if (failed) player.getCooldowns().addCooldown(itemStack, 11 * 20);
 
