@@ -38,11 +38,11 @@ should be in this format instead
 
 ```java
 public interface StellarityExampleTypes {
-  ResourceKey<Type> AN_EXAMPLE = id("an_example");
+	ResourceKey<Type> AN_EXAMPLE = id("an_example");
 
-  static ResourceKey<Type> id(String id) {
-    return Stellarity.key(Registries.TYPE, id);
-  }
+	static ResourceKey<Type> id(String id) {
+		return Stellarity.key(Registries.TYPE, id);
+	}
 }
 ```
 
@@ -96,6 +96,41 @@ those are annotated, move them to client.
 ## Util
 
 Utilities can go in `util`.
+
+## Data Handling
+
+### Is the thing I'm targetting an entity we own?
+
+**Does the client need the data?**
+
+Do NOT create a private field, and use `EntityDataAccessor`s and `defineSynchedData`. Create getters and setters to
+interact with `SynchedEntityData entityData` present on all entities.
+
+**The client does not need the data?**
+
+Create a private field and use normal getters and setters.
+
+**Does the data need to be saved across world loads?**
+
+Use `addAdditionalSaveData` and `readAdditionalSaveData` to save and load the data. **Use Codecs to load and save the
+data. DO NOT USE putInt, putFloat, putBool, putJSON, etc**
+
+### Does the thing I'm targetting include the server, a level, chunk access, not our (block) entity?
+
+Use data attachments, in `registries/StellarityDataAttachments.java` and beware of the following:
+
+**Does the data need to be saved across world loads?**
+
+Use `persistent` for anything that should be saved and loaded
+
+**Does the client need the data?**
+
+- Make data attachments `syncWith` if they need to be synchronized to the client. Use with discretion, as unnessecary
+  networking should be avoided.
+
+### No data attachments available and needs modification?
+
+Use interface injections, mixins, and optionally the Codec extension helper we have. Ask the lead dev for more details
 
 ## Adding Translations
 
