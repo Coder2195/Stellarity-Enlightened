@@ -2,8 +2,10 @@ package prismatic.shards.stellarity.registry;
 
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.NoiseRouter;
+import net.minecraft.world.level.levelgen.SurfaceRules;
 import prismatic.shards.stellarity.Stellarity;
 
 import static prismatic.shards.stellarity.key.StellarityDensityFunctions.*;
@@ -39,7 +41,7 @@ public class StellarityRegistryEntryModifications {
 
 	public static void init() {
 		DynamicRegistrySetupCallback.EVENT.register(registryView -> {
-			registryView.registerEntryAdded(Registries.DENSITY_FUNCTION, (rawId, id, densityFunction) -> {
+			registryView.registerEntryAdded(Registries.DENSITY_FUNCTION, (unused, id, densityFunction) -> {
 				if (!id.getNamespace().equals(Stellarity.MOD_ID)) return;
 				if (id.equals(CLIMATE_TEMPERATURE.identifier())) temperature = densityFunction;
 				else if (id.equals(CLIMATE_HUMIDITY.identifier())) vegetation = densityFunction;
@@ -53,17 +55,32 @@ public class StellarityRegistryEntryModifications {
 				checkMerge();
 			});
 
-			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (rawId, id, noiseSettings) -> {
-				if (id.equals(Stellarity.mcId("end"))) {
-					var noise = noiseSettings.noiseSettings();
-					endNoiseRouter = noiseSettings.noiseRouter();
+			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (unused, id, noiseSettings) -> {
+				if (!id.equals(Stellarity.mcId("end"))) return;
 
-					noise.height = Math.max(noise.height(), 384);
+				var noise = noiseSettings.noiseSettings();
+				endNoiseRouter = noiseSettings.noiseRouter();
+				noise.height = Math.max(noise.height(), 384);
 
-					checkMerge();
-				}
+				if (!Stellarity.hasBiolith())
+					noiseSettings.surfaceRule = SurfaceRules.sequence(
+						StellarityWorldgenData.STELLARITY_SURFACE_RULES,
+						StellarityWorldgenData.VANILLA_SURFACE_RULES,
+						noiseSettings.surfaceRule
+					);
+
+				checkMerge();
+
 				noiseSettings.disableMobGeneration = false;
+
 			});
+
+			registryView.registerEntryAdded(Registries.LEVEL_STEM, (unused, id, unused2) -> {
+				if (id.equals(LevelStem.END.identifier())) return;
+				Stellarity.LOGGER.warn("UNEXPECTED LEVEL STEM LOADED. Please use biolith for biome compat. {}", id);
+			});
+
+
 		});
 	}
 }

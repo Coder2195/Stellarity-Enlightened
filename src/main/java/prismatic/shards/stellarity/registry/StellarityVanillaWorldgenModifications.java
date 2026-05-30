@@ -4,8 +4,12 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.dimension.v1.DimensionEvents;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
+import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.RegistryDataLoader;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.EntityType;
@@ -14,6 +18,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.dimension.LevelStem;
 import prismatic.shards.stellarity.Stellarity;
 
 import java.util.List;
@@ -21,11 +26,12 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import static net.minecraft.world.attribute.EnvironmentAttributes.*;
+import static net.minecraft.world.level.biome.Biomes.*;
+import static net.minecraft.world.level.biome.Climate.Parameter.span;
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.*;
 import static prismatic.shards.stellarity.key.StellarityPlacedFeatures.*;
 
-public interface StellarityWorldgenModifications {
-
+public interface StellarityVanillaWorldgenModifications {
 	@SuppressWarnings("DuplicatedCode")
 	static void init() {
 		DimensionEvents.MODIFY_ATTRIBUTES.register((dimension, attributes, _) -> {
@@ -44,8 +50,8 @@ public interface StellarityWorldgenModifications {
 		});
 
 
-		Predicate<BiomeSelectionContext> outerVanilla = context -> context.getBiomeHolder().is(Biomes.END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS);
-		BiomeModifications.addFeature(context -> context.getBiomeHolder().is(Biomes.THE_END) || context.getBiomeHolder().is(Biomes.END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS), RAW_GENERATION, GLOBAL_STALACTITES);
+		Predicate<BiomeSelectionContext> outerVanilla = context -> context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS);
+		BiomeModifications.addFeature(context -> context.getBiomeHolder().is(Biomes.THE_END) || context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS), RAW_GENERATION, GLOBAL_STALACTITES);
 		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS);
 		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS);
 
@@ -76,7 +82,7 @@ public interface StellarityWorldgenModifications {
 			}
 		);
 
-		Predicate<BiomeSelectionContext> endBarrens = context -> context.getBiomeHolder().is(Biomes.END_BARRENS);
+		Predicate<BiomeSelectionContext> endBarrens = context -> context.getBiomeHolder().is(END_BARRENS);
 		BiomeModifications.addFeature(endBarrens, RAW_GENERATION, END_BARRENS_STALACTITES);
 		BiomeModifications.addFeature(endBarrens, UNDERGROUND_DECORATION, END_BARRENS_HILLS);
 		BiomeModifications.create(Stellarity.id("end_barrens_replacements")).add(ModificationPhase.REPLACEMENTS, endBarrens, (_, modification) -> {
@@ -167,7 +173,5 @@ public interface StellarityWorldgenModifications {
 			mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
 			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 20);
 		});
-
-
 	}
 }

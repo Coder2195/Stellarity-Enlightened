@@ -35,10 +35,10 @@
 	"depends": {
 		"fabricloader": ">=0.19.2",
 		"fabric-api": ">=${fabric_api}",
-		"minecraft": "${minecraft}",
-		"biolith": ">=${biolith}"
+		"minecraft": "${minecraft}"
 	},
 	"recommends": {
-		"modonomicon": "*"
+		"modonomicon": "*",
+		"biolith": ">=${biolith}"
 	}
 }

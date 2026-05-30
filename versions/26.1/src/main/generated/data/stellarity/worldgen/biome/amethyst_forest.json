@@ -51,8 +51,8 @@
       "stellarity:amethyst_forest/trees",
       "stellarity:amethyst_forest/crystal_grass",
       "stellarity:amethyst_forest/flowers",
-      "stellarity:amethyst_forest/roots",
-      "minecraft:patch_bush"
+      "minecraft:patch_bush",
+      "stellarity:amethyst_forest/roots"
     ]
   ],
   "has_precipitation": false,

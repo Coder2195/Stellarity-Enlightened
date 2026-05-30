@@ -78,3 +78,12 @@ accessible method net/minecraft/world/entity/projectile/ProjectileUtil getHitRes
 
 accessible field net/minecraft/world/level/levelgen/NoiseGeneratorSettings disableMobGeneration Z
 mutable field net/minecraft/world/level/levelgen/NoiseGeneratorSettings disableMobGeneration Z
+
+accessible field net/minecraft/world/level/chunk/ChunkGenerator biomeSource Lnet/minecraft/world/level/biome/BiomeSource;
+mutable field net/minecraft/world/level/chunk/ChunkGenerator biomeSource Lnet/minecraft/world/level/biome/BiomeSource;
+accessible class net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap
+
+accessible method net/minecraft/world/level/biome/MultiNoiseBiomeSource collectPossibleBiomes ()Ljava/util/stream/Stream;
+
+mutable field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceRule Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
+accessible field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceRule Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;

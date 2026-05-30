@@ -41,8 +41,8 @@ dependencies {
 	minecraft("com.mojang:minecraft:${stonecutter.current.version}")
 	implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
 	implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
-	implementation("com.terraformersmc:biolith-fabric:${property("deps.biolith")}")
 
+	compileOnly("com.terraformersmc:biolith-fabric:${property("deps.biolith")}")
 	val modonomicon = property("deps.modonomicon").toString().split('-')
 	implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
 
@@ -181,7 +181,7 @@ publishMods {
 		accessToken = env.fetch("MODRINTH_TOKEN", "")
 		minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
 		type = ALPHA
-		
+
 		requires("fabric-api")
 		requires("biolith")
 		optional("modonomicon")

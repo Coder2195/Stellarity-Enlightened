@@ -63,8 +63,8 @@ public interface BiomeProvider {
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_TREES)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_CRYSTAL_GRASS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_FLOWERS)
-				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_ROOTS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PATCH_BUSH)
+				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_ROOTS)
 				.build()
 			).build()
 		);

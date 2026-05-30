@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 import prismatic.shards.stellarity.registry.*;
-import prismatic.shards.stellarity.registry.StellarityBiolithBiomes;
 
 public class Stellarity implements ModInitializer {
 	public static final String VERSION = /*$ minecraft*/ "26.2-snapshot-5";
@@ -40,14 +39,18 @@ public class Stellarity implements ModInitializer {
 		return FabricLoader.getInstance().isModLoaded("modonomicon");
 	}
 
+	public static boolean hasBiolith() {
+		return FabricLoader.getInstance().isModLoaded("biolith");
+	}
+
 	@Override
 	public void onInitialize() {
 		StellarityRegistries.init();
 		StellarityRegistryEntryModifications.init();
 		StellarityFeatures.init();
-		StellarityWorldgenModifications.init();
+		StellarityVanillaWorldgenModifications.init();
 		StellarityTreeDecorators.init();
-		StellarityBiolithBiomes.init();
+		if (hasBiolith()) StellarityBiolithBiomes.init();
 		StellarityDataAttachments.init();
 		StellarityDataComponents.init();
 		StellarityItems.init();

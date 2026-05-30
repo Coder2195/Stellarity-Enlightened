@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.worldgen.DimensionTypes;
+import net.minecraft.world.level.dimension.DimensionType;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.datagen.dynamic.*;
 
