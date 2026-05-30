@@ -36,13 +36,17 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 		builder.add(PLACED_FEATURE, PlacedFeatureProvider::bootstrapEarly);
 		builder.add(CONFIGURED_FEATURE, ConfiguredFeatureProvider::bootstrap);
 		builder.add(PLACED_FEATURE, PlacedFeatureProvider::bootstrap);
+		builder.add(PROCESSOR_LIST, ProcessorListProvider::bootstrap);
+		builder.add(TEMPLATE_POOL, TemplatePoolProvider::bootstrap);
+		builder.add(STRUCTURE, StructureProvider::bootstrap);
+		builder.add(STRUCTURE_SET, StructureSetProvider::bootstrap);
 		builder.add(VILLAGER_TRADE, VillagerTradeProvider::bootstrap);
 		builder.add(TRADE_SET, TradeSetProvider::bootstrap);
 	}
 
 	@Override
 	public void configure(HolderLookup.@NonNull Provider provider, @NonNull Entries entries) {
-		for (var registry : List.of(JUKEBOX_SONG, NOISE, PAINTING_VARIANT, COW_VARIANT, FROG_VARIANT, CAT_VARIANT, WOLF_VARIANT, PIG_VARIANT, CHICKEN_VARIANT, VOIDED_SKELETON_VARIANT, CONFIGURED_CARVER, CONFIGURED_FEATURE, PLACED_FEATURE, BIOME, VILLAGER_TRADE, TRADE_SET, DAMAGE_TYPE)) {
+		for (var registry : List.of(JUKEBOX_SONG, NOISE, PAINTING_VARIANT, COW_VARIANT, FROG_VARIANT, CAT_VARIANT, WOLF_VARIANT, PIG_VARIANT, CHICKEN_VARIANT, VOIDED_SKELETON_VARIANT, CONFIGURED_CARVER, CONFIGURED_FEATURE, PLACED_FEATURE, BIOME, VILLAGER_TRADE, PROCESSOR_LIST, TEMPLATE_POOL, STRUCTURE, STRUCTURE_SET, TRADE_SET, DAMAGE_TYPE)) {
 			entries.addAll(provider.lookupOrThrow(registry));
 		}
 	}
