@@ -2,8 +2,8 @@ package prismatic.shards.stellarity.datagen.loot_table;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricEntityLootSubProvider;
-import net.minecraft.advancements.criterion.EntityPredicate;
-import net.minecraft.advancements.criterion.MobEffectsPredicate;
+import net.minecraft.advancements.predicates.entity.EntityPredicate;
+import net.minecraft.advancements.predicates.MobEffectsPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.storage.loot.LootContext;

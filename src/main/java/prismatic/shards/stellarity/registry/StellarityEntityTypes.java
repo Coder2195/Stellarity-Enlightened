@@ -7,41 +7,41 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.key.StellarityEntityIds;
+import prismatic.shards.stellarity.key.StellarityEntityTypeIds;
 import prismatic.shards.stellarity.registry.entity.*;
 
 
 public interface StellarityEntityTypes {
 
-	EntityType<PhantomItemFrame> PHANTOM_ITEM_FRAME = register(StellarityEntityIds.PHANTOM_ITEM_FRAME, EntityType.Builder.of(PhantomItemFrame::new, MobCategory.MISC));
+	EntityType<PhantomItemFrame> PHANTOM_ITEM_FRAME = register(StellarityEntityTypeIds.PHANTOM_ITEM_FRAME, EntityType.Builder.of(PhantomItemFrame::new, MobCategory.MISC));
 
-	EntityType<ThrownPrismaticPearl> PRISMATIC_PEARL = register(StellarityEntityIds.PRISMATIC_PEARL, EntityType.Builder.<ThrownPrismaticPearl>of(ThrownPrismaticPearl::new, MobCategory.MISC).noLootTable().sized(0.25F, 0.25F));
+	EntityType<ThrownPrismaticPearl> PRISMATIC_PEARL = register(StellarityEntityTypeIds.PRISMATIC_PEARL, EntityType.Builder.<ThrownPrismaticPearl>of(ThrownPrismaticPearl::new, MobCategory.MISC).noLootTable().sized(0.25F, 0.25F));
 
-	EntityType<VoidedZombie> VOIDED_ZOMBIE = register(StellarityEntityIds.VOIDED_ZOMBIE, EntityType.Builder.<VoidedZombie>of(VoidedZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+	EntityType<VoidedZombie> VOIDED_ZOMBIE = register(StellarityEntityTypeIds.VOIDED_ZOMBIE, EntityType.Builder.<VoidedZombie>of(VoidedZombie::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<VoidedSkeleton> VOIDED_SKELETON = register(StellarityEntityIds.VOIDED_SKELETON, EntityType.Builder.of(VoidedSkeleton::new, MobCategory.MONSTER).sized(0.6F, 1.99F).eyeHeight(1.74F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+	EntityType<VoidedSkeleton> VOIDED_SKELETON = register(StellarityEntityTypeIds.VOIDED_SKELETON, EntityType.Builder.of(VoidedSkeleton::new, MobCategory.MONSTER).sized(0.6F, 1.99F).eyeHeight(1.74F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<VoidedSilverfish> VOIDED_SILVERFISH = register(StellarityEntityIds.VOIDED_SILVERFISH, EntityType.Builder.<VoidedSilverfish>of(VoidedSilverfish::new, MobCategory.MONSTER).sized(0.4F, 0.3F).eyeHeight(0.13F).passengerAttachments(0.2375F).clientTrackingRange(8).notInPeaceful());
+	EntityType<VoidedSilverfish> VOIDED_SILVERFISH = register(StellarityEntityTypeIds.VOIDED_SILVERFISH, EntityType.Builder.<VoidedSilverfish>of(VoidedSilverfish::new, MobCategory.MONSTER).sized(0.4F, 0.3F).eyeHeight(0.13F).passengerAttachments(0.2375F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<VoidedSlime> VOIDED_SLIME = register(StellarityEntityIds.VOIDED_SLIME, EntityType.Builder.<VoidedSlime>of(VoidedSlime::new, MobCategory.MONSTER).sized(0.52F, 0.52F).eyeHeight(0.325F).spawnDimensionsScale(4.0F).clientTrackingRange(10).notInPeaceful());
+	EntityType<VoidedSlime> VOIDED_SLIME = register(StellarityEntityTypeIds.VOIDED_SLIME, EntityType.Builder.<VoidedSlime>of(VoidedSlime::new, MobCategory.MONSTER).sized(0.52F, 0.52F).eyeHeight(0.325F).spawnDimensionsScale(4.0F).clientTrackingRange(10).notInPeaceful());
 
-	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityIds.FLESH_PIGLIN, EntityType.Builder.of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
+	EntityType<FleshPiglin> FLESH_PIGLIN = register(StellarityEntityTypeIds.FLESH_PIGLIN, EntityType.Builder.of(FleshPiglin::new, MobCategory.MONSTER).sized(0.6F, 1.95F).eyeHeight(1.74F).passengerAttachments(2.0125F).ridingOffset(-0.7F).clientTrackingRange(8).notInPeaceful());
 
-	EntityType<Pixie> PIXIE = register(StellarityEntityIds.PIXIE, EntityType.Builder.of(Pixie::new, MobCategory.AMBIENT).sized(0.5f, 0.5f).eyeHeight(0.25f).passengerAttachments(0.4f).clientTrackingRange(8));
+	EntityType<Pixie> PIXIE = register(StellarityEntityTypeIds.PIXIE, EntityType.Builder.of(Pixie::new, MobCategory.AMBIENT).sized(0.5f, 0.5f).eyeHeight(0.25f).passengerAttachments(0.4f).clientTrackingRange(8));
 
-	EntityType<VoidArrow> VOID_ARROW = register(StellarityEntityIds.VOID_ARROW, EntityType.Builder.<VoidArrow>of(VoidArrow::new, MobCategory.MISC).sized(0.5F, 0.5F)
+	EntityType<VoidArrow> VOID_ARROW = register(StellarityEntityTypeIds.VOID_ARROW, EntityType.Builder.<VoidArrow>of(VoidArrow::new, MobCategory.MISC).sized(0.5F, 0.5F)
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());
 
-	EntityType<SatchelSigil> SATCHEL_SIGIL = register(StellarityEntityIds.SATCHEL_SIGIL, EntityType.Builder.<SatchelSigil>of(SatchelSigil::new, MobCategory.MISC).sized(2, 0.125F).noLootTable());
+	EntityType<SatchelSigil> SATCHEL_SIGIL = register(StellarityEntityTypeIds.SATCHEL_SIGIL, EntityType.Builder.<SatchelSigil>of(SatchelSigil::new, MobCategory.MISC).sized(2, 0.125F).noLootTable());
 
-	EntityType<SpectralBolt> SPECTRAL_BOLT = register(StellarityEntityIds.SPECTRAL_BOLT, EntityType.Builder.<SpectralBolt>of(SpectralBolt::new, MobCategory.MISC).sized(0.5F, 0.5F)
+	EntityType<SpectralBolt> SPECTRAL_BOLT = register(StellarityEntityTypeIds.SPECTRAL_BOLT, EntityType.Builder.<SpectralBolt>of(SpectralBolt::new, MobCategory.MISC).sized(0.5F, 0.5F)
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());
 
-	EntityType<SpectralWisp> SPECTRAL_WISP = register(StellarityEntityIds.SPECTRAL_WISP, EntityType.Builder.<SpectralWisp>of(SpectralWisp::new, MobCategory.MISC).sized(0.5F, 0.5F)
+	EntityType<SpectralWisp> SPECTRAL_WISP = register(StellarityEntityTypeIds.SPECTRAL_WISP, EntityType.Builder.<SpectralWisp>of(SpectralWisp::new, MobCategory.MISC).sized(0.5F, 0.5F)
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());

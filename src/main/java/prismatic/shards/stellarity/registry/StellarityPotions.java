@@ -1,9 +1,9 @@
 package prismatic.shards.stellarity.registry;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.alchemy.Potion;
@@ -157,14 +157,14 @@ public interface StellarityPotions {
 		COLORS.put(LUCK, 0x59c106);
 		COLORS.put(CHORUS_JUICE, 0x631969);
 
-		NAME_COLORS.put(SPELUNKER, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(SPELUNKER, TextColor.WHITE.getValue());
 		NAME_COLORS.put(RED, 0xFF5454);
-		NAME_COLORS.put(REGENERAGA, ChatFormatting.YELLOW.getColor());
-		NAME_COLORS.put(ENDURANCE, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(ENTANGLEMENT, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(LIFEFORCE, ChatFormatting.WHITE.getColor());
+		NAME_COLORS.put(REGENERAGA, TextColor.YELLOW.getValue());
+		NAME_COLORS.put(ENDURANCE, TextColor.WHITE.getValue());
+		NAME_COLORS.put(ENTANGLEMENT, TextColor.WHITE.getValue());
+		NAME_COLORS.put(LIFEFORCE, TextColor.WHITE.getValue());
 		NAME_COLORS.put(AMARENE, 0xC90D17);
-		NAME_COLORS.put(FROST_CLOUD, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(POSEIDONS_NECTAR, ChatFormatting.YELLOW.getColor());
+		NAME_COLORS.put(FROST_CLOUD, TextColor.WHITE.getValue());
+		NAME_COLORS.put(POSEIDONS_NECTAR, TextColor.YELLOW.getValue());
 	}
 }

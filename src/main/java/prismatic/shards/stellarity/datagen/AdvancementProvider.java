@@ -2,13 +2,22 @@ package prismatic.shards.stellarity.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
-import net.minecraft.advancements.*;
-import net.minecraft.advancements.criterion.*;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.predicates.ContextAwarePredicate;
+import net.minecraft.advancements.predicates.ItemPredicate;
+import net.minecraft.advancements.predicates.entity.EntityPredicate;
+import net.minecraft.advancements.predicates.entity.EntityTypePredicate;
+import net.minecraft.advancements.predicates.entity.PlayerPredicate;
+import net.minecraft.advancements.triggers.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -129,7 +138,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.addCriterion("eat", ConsumeItemTrigger.TriggerInstance.usedItem(items, StellarityItems.DUSKBERRY))
 			.addCriterion("feed", PlayerInteractTrigger.TriggerInstance.itemUsedOnEntity(ItemPredicate.Builder.item().of(items, StellarityItems.DUSKBERRY),
 
-				Optional.of(ContextAwarePredicate.create(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(entities, EntityType.FOX).build()).build())
+				Optional.of(ContextAwarePredicate.create(LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(entities, EntityTypes.FOX).build()).build())
 				)
 			))
 			.addCriterion("place", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(StellarityBlocks.DUSKBERRY_BUSH))
@@ -147,7 +156,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 				true,
 				false
 			).parent(END_ROOT)
-			.addCriterion("summon", SummonedEntityTrigger.TriggerInstance.summonedEntity(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityType.ENDER_DRAGON))))
+			.addCriterion("summon", SummonedEntityTrigger.TriggerInstance.summonedEntity(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityTypes.ENDER_DRAGON))))
 			.requirements(
 				requires(new String[][]{{"summon"}})
 			).build(Stellarity.id("ender_dragon/sacrificial_ritual"));
@@ -164,10 +173,10 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			).parent(KILL_DRAGON)
 			.addCriterion("summon", CriteriaTriggers.SUMMONED_ENTITY.createCriterion(new SummonedEntityTrigger.TriggerInstance(
 					Optional.of(
-						EntityPredicate.wrap(new EntityPredicate.Builder().subPredicate(PlayerPredicate.Builder.player().checkAdvancementDone(Stellarity.id("ender_dragon/sacrificial_ritual"), true).build()))
+						EntityPredicate.wrap(new EntityPredicate.Builder().player(PlayerPredicate.Builder.player().checkAdvancementDone(Stellarity.id("ender_dragon/sacrificial_ritual"), true).build()))
 					),
 					Optional.of(
-						EntityPredicate.wrap(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityType.ENDER_DRAGON))))
+						EntityPredicate.wrap(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityTypes.ENDER_DRAGON))))
 				)
 			))
 			.requirements(

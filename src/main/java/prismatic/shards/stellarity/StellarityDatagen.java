@@ -1,14 +1,11 @@
 package prismatic.shards.stellarity;
 
-import com.klikli_dev.modonomicon.api.datagen.FabricBookProvider;
-import com.klikli_dev.modonomicon.api.datagen.LanguageProviderCache;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.datagen.*;
-import prismatic.shards.stellarity.datagen.book.EndonomiconBookProvider;
 import prismatic.shards.stellarity.datagen.loot_table.BlockLootTableProvider;
 import prismatic.shards.stellarity.datagen.loot_table.ChestLootTableProvider;
 import prismatic.shards.stellarity.datagen.loot_table.EntityLootTableProvider;
@@ -36,16 +33,18 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
 		pack.addProvider(DamageTagProvider::new);
-		pack.addProvider(EntityTagProvider::new);
+		pack.addProvider(EntityTypeTagProvider::new);
 		pack.addProvider(BiomeTagProvider::new);
 		pack.addProvider(ChestLootTableProvider::new);
 		pack.addProvider(DynamicRegistriesProvider::new);
 		pack.addProvider((FabricDataGenerator.Pack.Factory<EquipmentAssetProvider>) EquipmentAssetProvider::new);
 		pack.addProvider(VillageTradeTagProvider::new);
 
-		if (!Stellarity.hasModonomicon()) return;
-		var englishCache = new LanguageProviderCache("en_us");
-		pack.addProvider(FabricBookProvider.of(new EndonomiconBookProvider(englishCache)));
+		// FIXME: once released
+//		if (Stellarity.hasModonomicon()) {
+//			var englishCache = new LanguageProviderCache("en_us");
+//			pack.addProvider(FabricBookProvider.of(new EndonomiconBookProvider(englishCache)));
+//		}
 	}
 
 	@Override

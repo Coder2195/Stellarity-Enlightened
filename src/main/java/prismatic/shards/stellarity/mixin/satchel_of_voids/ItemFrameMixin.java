@@ -10,6 +10,7 @@ import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -35,7 +36,7 @@ public abstract class ItemFrameMixin extends HangingEntity {
 
 		level.setBlockAndUpdate(targetPos, StellarityBlocks.ALTAR_OF_THE_ACCURSED.defaultBlockState().setValue(AltarOfTheAccursed.PLACE_TYPE, AltarOfTheAccursed.PlaceType.SATCHEL).setValue(AltarOfTheAccursed.LOCKED, false));
 
-		var center = targetPos.getCenter();
+		var center = Vec3.atCenterOf(targetPos);
 		level.sendParticles(ColorParticleOption.create(ParticleTypes.FLASH, -1), center.x, center.y, center.z, 1, 0, 0, 0, 0);
 
 		this.discard();

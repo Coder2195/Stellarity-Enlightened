@@ -1,6 +1,7 @@
 package prismatic.shards.stellarity.util;
 
-import net.minecraft.advancements.criterion.*;
+import net.minecraft.advancements.predicates.*;
+import net.minecraft.advancements.predicates.entity.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
@@ -54,12 +55,8 @@ public interface LootUtil {
 	}
 
 	static EntityTypePredicate entityType(EntityType<?> type) {
-
-
 		return EntityTypePredicate.of(BuiltInRegistries.ENTITY_TYPE, type);
-
 	}
-
 
 	static NbtPredicate nbt(CompoundTag tag) {
 		return new NbtPredicate(tag);

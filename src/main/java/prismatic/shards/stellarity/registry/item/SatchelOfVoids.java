@@ -3,6 +3,7 @@ package prismatic.shards.stellarity.registry.item;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.registry.entity.SatchelSigil;
 
@@ -23,7 +24,7 @@ public class SatchelOfVoids extends Item {
 		if (player == null || level.isClientSide()) return prev;
 
 		var sigil = new SatchelSigil(level);
-		sigil.setPos(useOnContext.getClickedPos().relative(useOnContext.getClickedFace()).getBottomCenter());
+		sigil.setPos(Vec3.atBottomCenterOf(useOnContext.getClickedPos().relative(useOnContext.getClickedFace())));
 		level.addFreshEntity(sigil);
 		player.getCooldowns().addCooldown(useOnContext.getItemInHand(), SatchelSigil.DEFAULT_ACTIVE_TIME + 10 * 20);
 

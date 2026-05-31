@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -51,7 +52,7 @@ public abstract class EndPodiumFeatureMixin extends Feature<NoneFeatureConfigura
 			}
 		}
 
-		for (EndCrystal crystal : level.getEntitiesOfClass(EndCrystal.class, new AABB(blockPos.getCenter().add(-2, 1, -2), blockPos.getCenter().add(2, 5, 2)))) {
+		for (EndCrystal crystal : level.getEntitiesOfClass(EndCrystal.class, new AABB(Vec3.atCenterOf(blockPos).add(-2, 1, -2), Vec3.atCenterOf(blockPos).add(2, 5, 2)))) {
 			crystal.discard();
 		}
 
@@ -62,84 +63,84 @@ public abstract class EndPodiumFeatureMixin extends Feature<NoneFeatureConfigura
 				Blocks.CRYING_OBSIDIAN.defaultBlockState().getBlock().defaultBlockState(),
 				Blocks.BEDROCK.defaultBlockState(),
 				Blocks.END_PORTAL.defaultBlockState(),
-	      Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
-      }, new int[][]{
-        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-        {0, 1, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0},
-        {0, 0, 2, 1, 3, 3, 3, 3, 3, 1, 2, 0, 0},
-        {0, 0, 1, 5, p, p, 3, p, p, 5, 1, 0, 0},
-        {0, 1, 3, p, p, p, 3, p, p, p, 3, 1, 0},
-        {0, 1, 3, p, p, 5, 3, 5, p, p, 3, 1, 0},
-        {1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1},
-        {0, 1, 3, p, p, 5, 3, 5, p, p, 3, 1, 0},
-        {0, 1, 3, p, p, p, 3, p, p, p, 3, 1, 0},
-        {0, 0, 1, 5, p, p, 3, p, p, 5, 1, 0, 0},
-        {0, 0, 2, 1, 3, 3, 3, 3, 3, 1, 2, 0, 0},
-        {0, 1, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0},
-        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-      }, blockPos.offset(-6, 1, -6)
-    );
+				Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
+			}, new int[][]{
+				{0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+				{0, 1, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0},
+				{0, 0, 2, 1, 3, 3, 3, 3, 3, 1, 2, 0, 0},
+				{0, 0, 1, 5, p, p, 3, p, p, 5, 1, 0, 0},
+				{0, 1, 3, p, p, p, 3, p, p, p, 3, 1, 0},
+				{0, 1, 3, p, p, 5, 3, 5, p, p, 3, 1, 0},
+				{1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1},
+				{0, 1, 3, p, p, 5, 3, 5, p, p, 3, 1, 0},
+				{0, 1, 3, p, p, p, 3, p, p, p, 3, 1, 0},
+				{0, 0, 1, 5, p, p, 3, p, p, 5, 1, 0, 0},
+				{0, 0, 2, 1, 3, 3, 3, 3, 3, 1, 2, 0, 0},
+				{0, 1, 0, 0, 1, 1, 2, 1, 1, 0, 0, 1, 0},
+				{0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+			}, blockPos.offset(-6, 1, -6)
+		);
 
 
-    printRow(level, new BlockState[]{
-        Blocks.AIR.defaultBlockState(),
-        Blocks.BEDROCK.defaultBlockState(),
-        Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
-        Blocks.COBBLED_DEEPSLATE_SLAB.defaultBlockState(),
-        Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH),
-        Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH),
-        Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST),
-        Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST),
-      }, new int[][]{
+		printRow(level, new BlockState[]{
+				Blocks.AIR.defaultBlockState(),
+				Blocks.BEDROCK.defaultBlockState(),
+				Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
+				Blocks.COBBLED_DEEPSLATE_SLAB.defaultBlockState(),
+				Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH),
+				Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH),
+				Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST),
+				Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST),
+			}, new int[][]{
 
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 3, 5, 1, 4, 3, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0},
-        {0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0},
-        {0, 0, 6, 0, 0, 2, 1, 2, 0, 0, 6, 0, 0},
-        {0, 5, 1, 4, 3, 1, 1, 1, 3, 5, 1, 4, 0},
-        {0, 0, 7, 0, 0, 2, 1, 2, 0, 0, 7, 0, 0},
-        {0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0},
-        {0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 3, 5, 1, 4, 3, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-      }, blockPos.offset(-6, 2, -6)
-    );
+				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 3, 5, 1, 4, 3, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0},
+				{0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0},
+				{0, 0, 6, 0, 0, 2, 1, 2, 0, 0, 6, 0, 0},
+				{0, 5, 1, 4, 3, 1, 1, 1, 3, 5, 1, 4, 0},
+				{0, 0, 7, 0, 0, 2, 1, 2, 0, 0, 7, 0, 0},
+				{0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0},
+				{0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 3, 5, 1, 4, 3, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			}, blockPos.offset(-6, 2, -6)
+		);
 
-    for (int dy = 3; dy <= 6; dy++)
-      for (int dx = -6; dx <= 6; dx++) {
-        for (int dz = -6; dz <= 6; dz++) {
-          setBlock(level, blockPos.offset(dx, dy, dz), Blocks.AIR.defaultBlockState());
-        }
-      }
+		for (int dy = 3; dy <= 6; dy++)
+			for (int dx = -6; dx <= 6; dx++) {
+				for (int dz = -6; dz <= 6; dz++) {
+					setBlock(level, blockPos.offset(dx, dy, dz), Blocks.AIR.defaultBlockState());
+				}
+			}
 
-    printRow(level, new BlockState[]{
-      Blocks.BEDROCK.defaultBlockState(),
-      Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
-    }, new int[][]{
-      {1, 0, 1},
-      {0, 0, 0},
-      {1, 0, 1}
-    }, blockPos.offset(-1, 3, -1));
+		printRow(level, new BlockState[]{
+			Blocks.BEDROCK.defaultBlockState(),
+			Blocks.REINFORCED_DEEPSLATE.defaultBlockState(),
+		}, new int[][]{
+			{1, 0, 1},
+			{0, 0, 0},
+			{1, 0, 1}
+		}, blockPos.offset(-1, 3, -1));
 
-    printRow(level, new BlockState[]{
-      Blocks.BEDROCK.defaultBlockState(),
-      Blocks.AIR.defaultBlockState(),
-      Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH),
-      Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH),
-      Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST),
-      Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST),
-    }, new int[][]{
-      {1, 4, 1},
-      {3, 0, 2},
-      {1, 5, 1}
-    }, blockPos.offset(-1, 4, -1));
+		printRow(level, new BlockState[]{
+			Blocks.BEDROCK.defaultBlockState(),
+			Blocks.AIR.defaultBlockState(),
+			Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH),
+			Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.SOUTH),
+			Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.EAST),
+			Blocks.COBBLED_DEEPSLATE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.WEST),
+		}, new int[][]{
+			{1, 4, 1},
+			{3, 0, 2},
+			{1, 5, 1}
+		}, blockPos.offset(-1, 4, -1));
 
-    setBlock(level, blockPos.above(5), Blocks.BEDROCK.defaultBlockState());
-    setBlock(level, blockPos.above(6), Blocks.BEDROCK.defaultBlockState());
+		setBlock(level, blockPos.above(5), Blocks.BEDROCK.defaultBlockState());
+		setBlock(level, blockPos.above(6), Blocks.BEDROCK.defaultBlockState());
 
-    return true;
-  }
+		return true;
+	}
 }

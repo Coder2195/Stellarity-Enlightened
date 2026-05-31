@@ -71,6 +71,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Added frog to spawn settings
 - Removed tropical fish from spawn settings
 
+## Versions
+
+**[*] 26.1.x -> 26.2**
+
 ## Mechanics
 
 **[*] Animal Spawning**

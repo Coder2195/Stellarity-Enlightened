@@ -2,7 +2,7 @@ package prismatic.shards.stellarity.registry;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import prismatic.shards.stellarity.Stellarity;
 
 import static prismatic.shards.stellarity.util.LootUtil.*;
@@ -23,7 +23,7 @@ public interface StellarityLootTableModifications {
 
 				builder.withPool(pool().when(
 					onDamage(damage().source(
-						entity().entityType(entityType(EntityType.FROG)).nbt(nbt(endVariant))
+						entity().entityType(entityType(EntityTypes.FROG)).nbt(nbt(endVariant))
 					))).add(item(StellarityItems.ASHEN_FROGLIGHT)
 				));
 			} else if (id.equals(Stellarity.mcId("gameplay/chicken_lay"))) {

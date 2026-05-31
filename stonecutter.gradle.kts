@@ -5,7 +5,7 @@ plugins {
 	id("co.uzzu.dotenv.gradle") version "4.0.0"
 }
 
-stonecutter active "26.1"
+stonecutter active "26.2"
 
 /*
 // Make newer versions be published last

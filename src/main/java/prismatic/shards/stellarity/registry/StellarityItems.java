@@ -8,6 +8,8 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -26,9 +28,10 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.key.StellarityMobVariants;
+import prismatic.shards.stellarity.key.StellarityBlockItemIds;
 import prismatic.shards.stellarity.key.StellarityItemIds;
 import prismatic.shards.stellarity.key.StellarityJukeboxSongs;
+import prismatic.shards.stellarity.key.StellarityMobVariants;
 import prismatic.shards.stellarity.registry.item.*;
 
 import java.util.Arrays;
@@ -94,14 +97,14 @@ public interface StellarityItems {
 	 * THE_BEGINNING uncommon
 	 * THE_END uncommon
 	 */
-	Item ENDER_DIRT = registerBlock(StellarityItemIds.ENDER_DIRT, StellarityBlocks.ENDER_DIRT);
-	Item ENDER_GRASS_BLOCK = registerBlock(StellarityItemIds.ENDER_GRASS_BLOCK, StellarityBlocks.ENDER_GRASS_BLOCK);
-	Item ASHEN_FROGLIGHT = registerBlock(StellarityItemIds.ASHEN_FROGLIGHT, StellarityBlocks.ASHEN_FROGLIGHT);
-	Item ROOTED_ENDER_DIRT = registerBlock(StellarityItemIds.ROOTED_ENDER_DIRT, StellarityBlocks.ROOTED_ENDER_DIRT);
-	Item ENDER_DIRT_PATH = registerBlock(StellarityItemIds.ENDER_DIRT_PATH, StellarityBlocks.ENDER_DIRT_PATH);
-	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
-	Item ENDERITE_BLOCK = registerBlock(StellarityItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
-	Item COARSE_ENDER_DIRT = registerBlock(StellarityItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
+	Item ENDER_DIRT = registerBlock(StellarityBlockItemIds.ENDER_DIRT, StellarityBlocks.ENDER_DIRT);
+	Item ENDER_GRASS_BLOCK = registerBlock(StellarityBlockItemIds.ENDER_GRASS_BLOCK, StellarityBlocks.ENDER_GRASS_BLOCK);
+	Item ASHEN_FROGLIGHT = registerBlock(StellarityBlockItemIds.ASHEN_FROGLIGHT, StellarityBlocks.ASHEN_FROGLIGHT);
+	Item ROOTED_ENDER_DIRT = registerBlock(StellarityBlockItemIds.ROOTED_ENDER_DIRT, StellarityBlocks.ROOTED_ENDER_DIRT);
+	Item ENDER_DIRT_PATH = registerBlock(StellarityBlockItemIds.ENDER_DIRT_PATH, StellarityBlocks.ENDER_DIRT_PATH);
+	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityBlockItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
+	Item ENDERITE_BLOCK = registerBlock(StellarityBlockItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
+	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
 
 	Item CALL_OF_THE_VOID = register(StellarityItemIds.CALL_OF_THE_VOID, CallOfTheVoid::new, CallOfTheVoid.PROPERTIES);
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FishingRodItem::new, new Item.Properties().stacksTo(1).durability(100).rarity(Rarity.UNCOMMON));
@@ -276,15 +279,16 @@ public interface StellarityItems {
 		return () -> PotionContents.createItemStack(Items.LINGERING_POTION, potion);
 	}
 
-	static Item registerBlock(ResourceKey<Item> key, Block block) {
+	static Item registerBlock(BlockItemId key, Block block) {
 		return registerBlock(key, block, new Item.Properties());
 	}
 
-	static Item registerBlock(ResourceKey<Item> key, Block block, Item.Properties properties) {
-		properties.useBlockDescriptionPrefix().setId(key);
+	static Item registerBlock(BlockItemId key, Block block, Item.Properties properties) {
+		var itemKey = key.item();
+		properties.useBlockDescriptionPrefix().setId(itemKey);
 		Item item = new BlockItem(block, properties);
 
-		return Registry.register(BuiltInRegistries.ITEM, key, item);
+		return Registry.register(BuiltInRegistries.ITEM, itemKey, item);
 	}
 
 	private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
@@ -407,7 +411,7 @@ public interface StellarityItems {
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Items");
 
-		NAME_COLORS.put(ENDERITE_UPGRADE_SMITHING_TEMPLATE, ChatFormatting.LIGHT_PURPLE.getColor());
+		NAME_COLORS.put(ENDERITE_UPGRADE_SMITHING_TEMPLATE, TextColor.LIGHT_PURPLE.getValue());
 		NAME_COLORS.put(HALLOWED_INGOT, 0xD9E3ED);
 		NAME_COLORS.put(CHORUS_PLATING, 0xA372C3);
 //		NAME_COLORS.put(BOOK_OF_RETURN, 0x9C369F);
@@ -416,19 +420,19 @@ public interface StellarityItems {
 //		NAME_COLORS.put(BOOK_OF_OBSTRUCT, 0xF816FF);
 //		NAME_COLORS.put(BOOK_OF_JINX, 0xF816FF);
 //		NAME_COLORS.put(BOOK_OF_LIGHT, 0xFFF300);
-		NAME_COLORS.put(CHORUS_PIE, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(FROZEN_CARPACCIO, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(SUSHI, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(PHO, ChatFormatting.AQUA.getColor());
-		NAME_COLORS.put(PRISMATIC_SUSHI, ChatFormatting.YELLOW.getColor());
+		NAME_COLORS.put(CHORUS_PIE, TextColor.WHITE.getValue());
+		NAME_COLORS.put(FROZEN_CARPACCIO, TextColor.WHITE.getValue());
+		NAME_COLORS.put(SUSHI, TextColor.WHITE.getValue());
+		NAME_COLORS.put(PHO, TextColor.AQUA.getValue());
+		NAME_COLORS.put(PRISMATIC_SUSHI, TextColor.YELLOW.getValue());
 		NAME_COLORS.put(GOLDEN_CHORUS_FRUIT, 0x55FFFF);
-		NAME_COLORS.put(GRILLED_ENDERMAN_FLESH, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(CHORUS_STEW, ChatFormatting.WHITE.getColor());
-//		NAME_COLORS.put(CANDIED_CHORUS_FRUIT, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(ENDERMAN_FLESH, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(SHULKER_BODY, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(FRIED_CHORUS_FRUIT, ChatFormatting.WHITE.getColor());
-		NAME_COLORS.put(PRISMITE, ChatFormatting.YELLOW.getColor());
+		NAME_COLORS.put(GRILLED_ENDERMAN_FLESH, TextColor.WHITE.getValue());
+		NAME_COLORS.put(CHORUS_STEW, TextColor.WHITE.getValue());
+//		NAME_COLORS.put(CANDIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
+		NAME_COLORS.put(ENDERMAN_FLESH, TextColor.WHITE.getValue());
+		NAME_COLORS.put(SHULKER_BODY, TextColor.WHITE.getValue());
+		NAME_COLORS.put(FRIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
+		NAME_COLORS.put(PRISMITE, TextColor.YELLOW.getValue());
 //		NAME_COLORS.put(ENDERMANS_HAND, 0xed8cff);
 		NAME_COLORS.put(DUSKBERRY, 0xAB6AD1);
 //		NAME_COLORS.put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
@@ -445,15 +449,15 @@ public interface StellarityItems {
 //		NAME_COLORS.put(SHULKER_PICKAXE, 0x976A97);
 //		NAME_COLORS.put(SHULKER_SPEAR, 0x976A97);
 		NAME_COLORS.put(FISHER_OF_VOIDS, 0x8865AF);
-		NAME_COLORS.put(ROYAL_JELLY, ChatFormatting.YELLOW.getColor());
-		NAME_COLORS.put(ROYAL_JELLY_II, ChatFormatting.YELLOW.getColor());
+		NAME_COLORS.put(ROYAL_JELLY, TextColor.YELLOW.getValue());
+		NAME_COLORS.put(ROYAL_JELLY_II, TextColor.YELLOW.getValue());
 //		NAME_COLORS.put(REINFORCED_HORSE_ARMOR, 0x976A97);
 		NAME_COLORS.put(SHULKER_HELMET, 0x976A97);
 		NAME_COLORS.put(SHULKER_BOOTS, 0x976A97);
 		NAME_COLORS.put(SHULKER_CHESTPLATE, 0x976A97);
 		NAME_COLORS.put(SHULKER_LEGGINGS, 0x976A97);
 //		NAME_COLORS.put(DRAGON_WINGS, 0x9936D6);
-//		NAME_COLORS.put(PHANTOM_WINGS, ChatFormatting.YELLOW.getColor());
+//		NAME_COLORS.put(PHANTOM_WINGS, TextColor.YELLOW.getValue());
 //		NAME_COLORS.put(EMPRESS_WINGS, 0xFF76D0);
 //		NAME_COLORS.put(HALLOWED_HELMET, 0xFFDD52);
 //		NAME_COLORS.put(HALLOWED_BOOTS, 0xFFDD52);
@@ -470,16 +474,16 @@ public interface StellarityItems {
 //		NAME_COLORS.put(PRISMEMBER, 0xFF76D0);
 //		NAME_COLORS.put(STELLAR_STRIKER, 0xFFF593);
 //		NAME_COLORS.put(STARLESS_SCYTHE, 0xFFD70C);
-//		NAME_COLORS.put(SLAYER_CROSSBOW, ChatFormatting.GOLD.getColor());
+//		NAME_COLORS.put(SLAYER_CROSSBOW, TextColor.GOLD.getValue());
 //		NAME_COLORS.put(HARVESTER, 0x4BC6FF);
-//		NAME_COLORS.put(ANCIENT_WOODEN_SWORD, ChatFormatting.WHITE.getColor());
+//		NAME_COLORS.put(ANCIENT_WOODEN_SWORD, TextColor.WHITE.getValue());
 //		NAME_COLORS.put(PRISMATIC_PUNCH, 0xFF76D0);
 //		NAME_COLORS.put(DRAGONBLADE, 0xCD6AFF);
 		NAME_COLORS.put(SPECTRAL_FURY, 0xBDF1FF);
 //		NAME_COLORS.put(KALEIDOSCOPE, 0xFFCF37);
 //		NAME_COLORS.put(THE_BEGINNING, 0xF5DC68);
 //		NAME_COLORS.put(THE_END, 0xF5DC68);
-		NAME_COLORS.put(CALL_OF_THE_VOID, ChatFormatting.DARK_PURPLE.getColor());
+		NAME_COLORS.put(CALL_OF_THE_VOID, TextColor.DARK_PURPLE.getValue());
 		NAME_COLORS.put(SHARANGA, 0xFF6B6B);
 		NAME_COLORS.put(TAMARIS, 0x9936D6);
 //		NAME_COLORS.put(FLUFFY_HAMMER, 0x9936D6);

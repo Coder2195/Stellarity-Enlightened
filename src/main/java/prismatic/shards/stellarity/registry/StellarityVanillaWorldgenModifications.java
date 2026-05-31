@@ -4,21 +4,16 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
 import net.fabricmc.fabric.api.dimension.v1.DimensionEvents;
-import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
-import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
-import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.RegistryDataLoader;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.*;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.dimension.LevelStem;
 import prismatic.shards.stellarity.Stellarity;
 
 import java.util.List;
@@ -26,8 +21,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import static net.minecraft.world.attribute.EnvironmentAttributes.*;
-import static net.minecraft.world.level.biome.Biomes.*;
-import static net.minecraft.world.level.biome.Climate.Parameter.span;
+import static net.minecraft.world.level.biome.Biomes.END_BARRENS;
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.*;
 import static prismatic.shards.stellarity.key.StellarityPlacedFeatures.*;
 
@@ -75,10 +69,10 @@ public interface StellarityVanillaWorldgenModifications {
 				effects.setFoliageColorOverride(0xc2c2c2);
 
 				var mobSpawns = modification.getMobSpawnSettings();
-				mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 10);
-				mobSpawns.clearMobCharge(EntityType.ENDERMAN);
-				mobSpawns.addMobCharge(EntityType.ENDERMAN, 0.75, 1);
+				mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
+				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 4, 4), 10);
+				mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
+				mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.75, 1);
 			}
 		);
 
@@ -102,11 +96,11 @@ public interface StellarityVanillaWorldgenModifications {
 				effects.setFoliageColorOverride(0x553a5f);
 
 				var mobSpawns = modification.getMobSpawnSettings();
-				mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 30);
+				mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
+				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 4, 4), 30);
 				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_ZOMBIE, 4, 4), 30);
-				mobSpawns.clearMobCharge(EntityType.ENDERMAN);
-				mobSpawns.addMobCharge(EntityType.ENDERMAN, 0.8, 1);
+				mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
+				mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.8, 1);
 				mobSpawns.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 0.68, 1);
 			}
 		);
@@ -134,10 +128,10 @@ public interface StellarityVanillaWorldgenModifications {
 			effects.setFoliageColorOverride(0xc161db);
 
 			var mobSpawns = modification.getMobSpawnSettings();
-			mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
-			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 10);
-			mobSpawns.clearMobCharge(EntityType.ENDERMAN);
-			mobSpawns.addMobCharge(EntityType.ENDERMAN, 0.7, 1);
+			mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
+			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 4, 4), 10);
+			mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
+			mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.7, 1);
 		});
 
 		Predicate<BiomeSelectionContext> endHighlands = context -> context.getBiomeHolder().is(Biomes.END_HIGHLANDS);
@@ -170,8 +164,8 @@ public interface StellarityVanillaWorldgenModifications {
 			effects.setFoliageColorOverride(0xeed6ee);
 
 			var mobSpawns = modification.getMobSpawnSettings();
-			mobSpawns.removeSpawnsOfEntityType(EntityType.ENDERMAN);
-			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 4, 4), 20);
+			mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
+			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 4, 4), 20);
 		});
 	}
 }

@@ -723,7 +723,7 @@ public interface StellarityWorldgenData {
 
 	RuleSource WILDS_DIRT_SEQUENCE = sequence(
 		ifTrue(stoneDepthCheck(1, false, 0, CaveSurface.FLOOR),
-			ifTrue(noiseCondition(StellarityNoises.SURFACE, -1, 0.197555555),
+			ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -1, 0.197555555),
 				sequence(
 					ifTrue(stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), state(ENDER_GRASS_BLOCK)),
 					state(ENDER_DIRT)
@@ -738,184 +738,189 @@ public interface StellarityWorldgenData {
 		state(ENDER_DIRT)
 	};
 
-	RuleSource STELLARITY_SURFACE_RULES = sequence(
-		ifTrue(isBiome(END_WILDS, END_SHRUBLAND), WILDS_DIRT_SEQUENCE),
-		ifTrue(isBiome(FROZEN_SHRUBLAND),
-			ifTrue(stoneDepthCheck(1, false, 0, CaveSurface.FLOOR),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -1, 0.197555555), sequence(
-					state(SNOW_BLOCK)
+	static RuleSource stellaritySurfaceRules(HolderGetter<Biome> biomes) {
+		return sequence(
+			ifTrue(isBiome(biomes, END_WILDS, END_SHRUBLAND), WILDS_DIRT_SEQUENCE),
+			ifTrue(isBiome(biomes, FROZEN_SHRUBLAND),
+				ifTrue(stoneDepthCheck(1, false, 0, CaveSurface.FLOOR),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -1, 0.197555555), sequence(
+						state(SNOW_BLOCK)
+					))
+				)
+			),
+			ifTrue(isBiome(biomes, AMETHYST_FOREST),
+				ifTrue(stoneDepthCheck(1, false, 6, CaveSurface.FLOOR),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, 0.3, 0.37),
+						state(AMETHYST_BLOCK)
+					)
+				)
+			),
+			ifTrue(isBiome(biomes, FIERY_HILLS), sequence(
+				ifTrue(noiseCondition2d(StellarityNoises.SURFACE_4X, 0.1, 0.125),
+					ifTrue(stoneDepthCheck(4, true, 1, CaveSurface.FLOOR),
+						state(NETHER_WART_BLOCK)
+					)
+				),
+				ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, -0.25, -0.175),
+					ifTrue(stoneDepthCheck(4, true, 1, CaveSurface.FLOOR),
+						state(NETHER_WART_BLOCK)
+					)
+				),
+				ifTrue(noiseCondition2d(StellarityNoises.SURFACE, 0.2, 0.4),
+					ifTrue(stoneDepthCheck(4, true, 2, CaveSurface.FLOOR), sequence(
+						ifTrue(noiseCondition2d(StellarityNoises.SURFACE, 0.25, 0.35),
+							SurfaceRules.state(from(BASALT))
+						),
+						state(SMOOTH_BASALT)
+					))
+				),
+				ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.15, 0.25),
+					ifTrue(stoneDepthCheck(0, true, 2, CaveSurface.FLOOR),
+						state(BLACKSTONE)
+					)
+				)
+			)),
+			ifTrue(isBiome(biomes, WARPED_MARSH),
+				ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.037, 0.025),
+						state(WARPED_WART_BLOCK)
+					),
+					state(MOSS_BLOCK)
 				))
-			)
-		),
-		ifTrue(isBiome(AMETHYST_FOREST),
-			ifTrue(stoneDepthCheck(1, false, 6, CaveSurface.FLOOR),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, 0.3, 0.37),
-					state(AMETHYST_BLOCK)
-				)
-			)
-		),
-		ifTrue(isBiome(FIERY_HILLS), sequence(
-			ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, 0.1, 0.125),
-				ifTrue(stoneDepthCheck(4, true, 1, CaveSurface.FLOOR),
-					state(NETHER_WART_BLOCK)
+			),
+			ifTrue(isBiome(biomes, ASHFALL_DELTAS),
+				ifTrue(stoneDepthCheck(2, true, 6, CaveSurface.FLOOR),
+					state(BLACKSTONE)
 				)
 			),
-			ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -0.25, -0.175),
-				ifTrue(stoneDepthCheck(4, true, 1, CaveSurface.FLOOR),
-					state(NETHER_WART_BLOCK)
-				)
+			ifTrue(isBiome(biomes, AMETHYST_FOREST, PRISMARINE_FOREST, THE_HALLOW, HALLOWED_TUNDRA),
+				ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(isBiome(biomes, HALLOWED_TUNDRA),
+						state(SNOW_BLOCK)
+					),
+					FOREST_DIRT_SEQUENCE[0],
+					FOREST_DIRT_SEQUENCE[1]
+				))
 			),
-			ifTrue(noiseCondition(StellarityNoises.SURFACE, 0.2, 0.4),
-				ifTrue(stoneDepthCheck(4, true, 2, CaveSurface.FLOOR), sequence(
-					ifTrue(noiseCondition(StellarityNoises.SURFACE, 0.25, 0.35),
+			ifTrue(isBiome(biomes, FLESH_TUNDRA),
+				ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.03, 0.02),
 						SurfaceRules.state(from(BASALT))
 					),
-					state(SMOOTH_BASALT)
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.05, 0.04),
+						state(SMOOTH_BASALT)
+					)
 				))
 			),
-			ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.15, 0.25),
-				ifTrue(stoneDepthCheck(0, true, 2, CaveSurface.FLOOR),
-					state(BLACKSTONE)
-				)
-			)
-		)),
-		ifTrue(isBiome(WARPED_MARSH),
-			ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.037, 0.025),
-					state(WARPED_WART_BLOCK)
-				),
-				state(MOSS_BLOCK)
-			))
-		),
-		ifTrue(isBiome(ASHFALL_DELTAS),
-			ifTrue(stoneDepthCheck(2, true, 6, CaveSurface.FLOOR),
-				state(BLACKSTONE)
-			)
-		),
-		ifTrue(isBiome(AMETHYST_FOREST, PRISMARINE_FOREST, THE_HALLOW, HALLOWED_TUNDRA),
-			ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(isBiome(HALLOWED_TUNDRA),
-					state(SNOW_BLOCK)
-				),
-				FOREST_DIRT_SEQUENCE[0],
-				FOREST_DIRT_SEQUENCE[1]
-			))
-		),
-		ifTrue(isBiome(FLESH_TUNDRA),
-			ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.03, 0.02),
-					SurfaceRules.state(from(BASALT))
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.05, 0.04),
-					state(SMOOTH_BASALT)
-				)
-			))
-		),
-		ifTrue(isBiome(FROZEN_SPIKES, FROZEN_MARSH, FROSTED_VALLEY),
-			ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR), sequence(
-				ifTrue(isBiome(FROZEN_MARSH),
-					ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR),
-						ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.037, 0.025),
-							state(WARPED_WART_BLOCK)
+			ifTrue(isBiome(biomes, FROZEN_SPIKES, FROZEN_MARSH, FROSTED_VALLEY),
+				ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR), sequence(
+					ifTrue(isBiome(biomes, FROZEN_MARSH),
+						ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR),
+							ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.037, 0.025),
+								state(WARPED_WART_BLOCK)
+							)
 						)
-					)
-				),
-				ifTrue(stoneDepthCheck(2, false, 0, CaveSurface.FLOOR), sequence(
-					ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -0.4, -0.3),
-						state(ICE)
 					),
-					ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, 0.8, 2),
-						state(END_STONE)
-					)
-				)),
-				state(SNOW_BLOCK)
-			))
-		),
-		ifTrue(isBiome(ENDLESS_DUNES),
-			ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, -0.31, -0.3),
-					ifTrue(stoneDepthCheck(2, true, 0, CaveSurface.FLOOR),
-						state(COARSE_ENDER_DIRT)
-					)
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -0.5, 2), sequence(
-					ifTrue(stoneDepthCheck(0, false, 0, CaveSurface.CEILING),
-						state(SMOOTH_SANDSTONE)
-					),
-					ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR),
-						state(SAND)
-					)
+					ifTrue(stoneDepthCheck(2, false, 0, CaveSurface.FLOOR), sequence(
+						ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, -0.4, -0.3),
+							state(ICE)
+						),
+						ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, 0.8, 2),
+							state(END_STONE)
+						)
+					)),
+					state(SNOW_BLOCK)
 				))
-			))
-		),
-		ifTrue(isBiome(PRISMATIC_DUNES),
-			ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, -0.305, -0.3),
-					ifTrue(stoneDepthCheck(2, true, 0, CaveSurface.FLOOR),
+			),
+			ifTrue(isBiome(biomes, ENDLESS_DUNES),
+				ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_4X, -0.31, -0.3),
+						ifTrue(stoneDepthCheck(2, true, 0, CaveSurface.FLOOR),
+							state(COARSE_ENDER_DIRT)
+						)
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, -0.5, 2), sequence(
+						ifTrue(stoneDepthCheck(0, false, 0, CaveSurface.CEILING),
+							state(SMOOTH_SANDSTONE)
+						),
+						ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR),
+							state(SAND)
+						)
+					))
+				))
+			),
+			ifTrue(isBiome(biomes, PRISMATIC_DUNES),
+				ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_4X, -0.305, -0.3),
+						ifTrue(stoneDepthCheck(2, true, 0, CaveSurface.FLOOR),
+							state(AMETHYST_BLOCK)
+						)
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, -0.5, 2), sequence(
+						ifTrue(stoneDepthCheck(0, false, 0, CaveSurface.CEILING),
+							state(CALCITE)
+						),
+						ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR),
+							state(CONCRETE_POWDER.white())
+						)
+					))
+				))
+			),
+			ifTrue(isBiome(biomes, CRYSTAL_CRAGS),
+				ifTrue(stoneDepthCheck(1, true, 0, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, -2, -0.05),
+						ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.037, 0.015),
+							state(AMETHYST_BLOCK)
+						)
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.05, 0.5),
+						state(BLACKSTONE)
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_2X, 0.05, 0.1),
 						state(AMETHYST_BLOCK)
 					)
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -0.5, 2), sequence(
-					ifTrue(stoneDepthCheck(0, false, 0, CaveSurface.CEILING),
-						state(CALCITE)
-					),
-					ifTrue(stoneDepthCheck(0, true, 4, CaveSurface.FLOOR),
-						state(WHITE_CONCRETE_POWDER)
-					)
 				))
-			))
-		),
-		ifTrue(isBiome(CRYSTAL_CRAGS),
-			ifTrue(stoneDepthCheck(1, true, 0, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, -2, -0.05),
-					ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.037, 0.015),
-						state(AMETHYST_BLOCK)
-					)
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.05, 0.5),
-					state(BLACKSTONE)
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_2X, 0.05, 0.1),
-					state(AMETHYST_BLOCK)
-				)
-			))
-		),
-		ifTrue(isBiome(THE_HALLOW, PRISMATIC_DUNES, HALLOWED_TUNDRA),
-			state(DIORITE)
-		),
-		ifTrue(isBiome(AMETHYST_FOREST, PRISMARINE_FOREST),
-			state(CALCITE)
-		)
-	);
+			),
+			ifTrue(isBiome(biomes, THE_HALLOW, PRISMATIC_DUNES, HALLOWED_TUNDRA),
+				state(DIORITE)
+			),
+			ifTrue(isBiome(biomes, AMETHYST_FOREST, PRISMARINE_FOREST),
+				state(CALCITE)
+			)
+		);
+	}
 
-	RuleSource VANILLA_SURFACE_RULES = sequence(
-		ifTrue(isBiome(END_MIDLANDS), WILDS_DIRT_SEQUENCE),
-		ifTrue(isBiome(THE_END),
-			ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.03, 0.02),
-					SurfaceRules.state(from(BASALT))
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, -0.05, 0.04),
-					state(SMOOTH_BASALT)
-				)
-			))
-		),
-		ifTrue(isBiome(END_HIGHLANDS),
-			ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
-				ifTrue(noiseCondition(StellarityNoises.SURFACE, 0.2, 1),
-					state(END_STONE)
-				),
-				ifTrue(noiseCondition(StellarityNoises.SURFACE_4X, 0, 0.05),
-					state(COARSE_ENDER_DIRT)
-				),
-				FOREST_DIRT_SEQUENCE[0],
-				FOREST_DIRT_SEQUENCE[1]
-			))
-		)
-	);
+
+	static RuleSource vanillaSurfaceRules(HolderGetter<Biome> biomes) {
+		return sequence(
+			ifTrue(isBiome(biomes, END_MIDLANDS), StellarityWorldgenData.WILDS_DIRT_SEQUENCE),
+			ifTrue(isBiome(biomes, THE_END),
+				ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.03, 0.02),
+						SurfaceRules.state(from(BASALT))
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.05, 0.04),
+						state(SMOOTH_BASALT)
+					)
+				))
+			),
+			ifTrue(isBiome(biomes, END_HIGHLANDS),
+				ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), sequence(
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, 0.2, 1),
+						state(END_STONE)
+					),
+					ifTrue(noiseCondition2d(StellarityNoises.SURFACE_4X, 0, 0.05),
+						state(COARSE_ENDER_DIRT)
+					),
+					FOREST_DIRT_SEQUENCE[0],
+					FOREST_DIRT_SEQUENCE[1]
+				))
+			)
+		);
+	}
 
 	static MultiNoiseBiomeSource stellarityBiomeSource(HolderGetter<Biome> biomes) {
-		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(StellarityWorldgenData.PARAMETER_POINTS.stream().map(
+		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(PARAMETER_POINTS.stream().map(
 			point -> new Pair<Climate.ParameterPoint, Holder<Biome>>(point._2(), biomes.getOrThrow(point._1()))
 		).toList()));
 	}

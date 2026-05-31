@@ -14,9 +14,9 @@ import static prismatic.shards.stellarity.util.WorldgenUtil.*;
 public interface ConfiguredCarverProvider {
 	static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> context) {
 		var blocks = context.lookup(Registries.BLOCK);
-		final var orangeGlass = from(ORANGE_STAINED_GLASS);
+		final var orangeGlass = from(STAINED_GLASS.orange());
 		final var candle = property(property(CANDLE, BlockStateProperties.LIT, false), BlockStateProperties.CANDLES, 1);
-		final var whiteGlass = from(WHITE_STAINED_GLASS);
+		final var whiteGlass = from(STAINED_GLASS.white());
 		final var glass = from(GLASS);
 		final var carverDebug = CarverDebugSettings.of(whiteGlass, candle, orangeGlass, glass);
 		final var replaceable = blocks.getOrThrow(StellarityBlockTags.WORLDGEN_CARVER_REPLACEABLE);

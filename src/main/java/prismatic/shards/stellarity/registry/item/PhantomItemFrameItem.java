@@ -29,7 +29,7 @@ public class PhantomItemFrameItem extends ItemFrameItem {
 		this(StellarityEntityTypes.PHANTOM_ITEM_FRAME, properties);
 	}
 
-	public @NonNull InteractionResult useOn(UseOnContext useOnContext) {
+	public @NonNull InteractionResult interact(UseOnContext useOnContext) {
 		BlockPos blockPos = useOnContext.getClickedPos();
 		Direction direction = useOnContext.getClickedFace();
 		BlockPos blockPos2 = blockPos.relative(direction);
@@ -41,7 +41,7 @@ public class PhantomItemFrameItem extends ItemFrameItem {
 			HangingEntity hangingEntity = new PhantomItemFrame(level, blockPos2, direction);
 
 
-			EntityType.createDefaultStackConfig(level, itemStack, player).accept(hangingEntity);
+			EntityType.createDefaultStackConfig(level, itemStack, player).apply(hangingEntity);
 			if (hangingEntity.survives()) {
 				if (!level.isClientSide()) {
 					hangingEntity.playPlacementSound();

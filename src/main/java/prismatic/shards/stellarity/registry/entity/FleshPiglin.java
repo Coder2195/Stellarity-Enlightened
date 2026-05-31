@@ -23,7 +23,7 @@ public class FleshPiglin extends ZombifiedPiglin {
 
 	@Override
 	public boolean isAngryAt(@NonNull LivingEntity entity, @NonNull ServerLevel level) {
-		return canAttack(entity) && entity.is(EntityType.PLAYER) || super.isAngryAt(entity, level);
+		return canAttack(entity) && entity.is(EntityTypes.PLAYER) || super.isAngryAt(entity, level);
 	}
 
 	@Override

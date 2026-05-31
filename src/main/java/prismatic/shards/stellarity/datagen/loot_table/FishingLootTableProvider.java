@@ -81,9 +81,9 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 			))))
 			.add(item(PAPER).setWeight(3).apply(count(num(1, 5))))
 			.add(item(END_ROD).setWeight(3).apply(count(num(1, 5))))
-			.add(item(MAGENTA_DYE))
-			.add(item(PURPLE_DYE))
-			.add(item(BLACK_DYE))
+			.add(item(DYE.magenta()))
+			.add(item(DYE.purple()))
+			.add(item(DYE.black()))
 		));
 
 		consumer.accept(VOID_FISHING_TREASURE, lootTable().withPool(pool()

@@ -61,7 +61,7 @@ public class EnderGrassBlock extends GrassBlock {
 		} else {
 
 
-			int i = LightEngine.getLightBlockInto(blockState, state, Direction.UP, blockState.getLightDampening());
+			int i = LightEngine.getLightDampeningInto(blockState, state, Direction.UP, blockState.getLightDampening());
 			return i < 15;
 
 		}

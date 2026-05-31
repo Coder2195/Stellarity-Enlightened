@@ -3,18 +3,18 @@ package prismatic.shards.stellarity.datagen.tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.data.tags.BlockItemTagAppender;
 import net.minecraft.data.tags.TagAppender;
+import net.minecraft.references.ItemIds;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import org.jspecify.annotations.NonNull;
-import prismatic.shards.stellarity.registry.StellarityItems;
 import prismatic.shards.stellarity.tags.StellarityItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static prismatic.shards.stellarity.registry.StellarityItems.*;
+import static prismatic.shards.stellarity.key.StellarityItemIds.*;
 
 
 public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
@@ -24,14 +24,15 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 	}
 
 	@SafeVarargs
-	public final TagAppender<Item, Item> addTags(TagKey<Item> tagKey, TagKey<Item>... tags) {
-		var appender = valueLookupBuilder(tagKey);
+	public final BlockItemTagAppender<Item> addTags(TagKey<Item> tagKey, TagKey<Item>... tags) {
+		var appender = builder(tagKey);
 		for (var tag : tags) {
 			appender.forceAddTag(tag);
 		}
 		return appender;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void addTags(HolderLookup.@NonNull Provider provider) {
 		addTags(StellarityItemTags.FISHES).add(
@@ -57,7 +58,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(ItemTags.FOOT_ARMOR).add(SHULKER_BOOTS);
 
 		addTags(ItemTags.FISHES, StellarityItemTags.FISHES);
-		addTags(StellarityItemTags.ELYTRA_ENCHANTABLE).add(Items.ELYTRA);
+		addTags(StellarityItemTags.ELYTRA_ENCHANTABLE).add(ItemIds.ELYTRA);
 
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);

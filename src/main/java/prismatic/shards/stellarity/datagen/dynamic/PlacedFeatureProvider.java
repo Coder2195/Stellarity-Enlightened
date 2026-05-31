@@ -440,7 +440,7 @@ public interface PlacedFeatureProvider {
 		)));
 		context.register(PRISMATIC_DUNES_CRYSTAL_GRASS, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.CRYSTAL_CRAGS_CRYSTAL_GRASS), List.of(
 			everyLayer(num(1, 4)), rarity(3), biome(), countPlace(24), randOffset(trapezoid(-7, 7, 0), trapezoid(-4, 4, 0)),
-			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), WHITE_CONCRETE_POWDER, DIORITE, CALCITE)))
+			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), CONCRETE_POWDER.white(), DIORITE, CALCITE)))
 		)));
 		context.register(PRISMATIC_DUNES_GLASS_SPIKES, new PlacedFeature(configured.getOrThrow(StellarityConfiguredFeatures.PRISMATIC_DUNES_GLASS_SPIKE), List.of(
 			countPlace(3), inSquare(), aboveBelow0,

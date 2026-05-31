@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.end.EnderDragonFight;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import prismatic.shards.stellarity.registry.StellarityBlockEntityTypes;
 import prismatic.shards.stellarity.registry.block.AltarOfTheAccursed;
@@ -41,7 +42,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 		var placeType = blockState.getValue(AltarOfTheAccursed.PLACE_TYPE);
 		if (blockEntity instanceof AltarOfTheAccursedBlockEntity entity) {
 			entity.ticksPassed++;
-			var centerPos = blockPos.getCenter();
+			var centerPos = Vec3.atCenterOf(blockPos);
 			double x = centerPos.x;
 			double y = centerPos.y;
 			double z = centerPos.z;

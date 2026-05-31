@@ -30,7 +30,7 @@ public abstract class ChestBlockMixin extends AbstractChestBlock<ChestBlockEntit
 		return (level1, pos, state, entity) -> {
 			if (level1.isClientSide() && entity.getAttachedOrElse(StellarityDataAttachments.EXIT_PORTAL_CHEST, false)) {
 				for (int i = 0; i < 3; i++) {
-					Vec3 position = entity.getBlockPos().getCenter();
+					Vec3 position = Vec3.atCenterOf(entity.getBlockPos());
 
 					var random = level.getRandom();
 
@@ -40,7 +40,7 @@ public abstract class ChestBlockMixin extends AbstractChestBlock<ChestBlockEntit
 					double xa = random.nextGaussian() * 0.8;
 					double ya = random.nextGaussian() * 0.8;
 					double za = random.nextGaussian() * 0.8;
-					
+
 					level.addParticle(ParticleTypes.PORTAL, true, true, position.x + xv, position.y + yv, position.z + zv, xa, ya, za);
 				}
 			}

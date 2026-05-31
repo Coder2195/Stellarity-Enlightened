@@ -20,6 +20,7 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
+import static prismatic.shards.stellarity.key.StellarityBlockItemIds.ALTAR_OF_THE_SACRED;
 import static prismatic.shards.stellarity.key.StellarityItemIds.*;
 
 
@@ -99,7 +100,7 @@ public interface StellarityTooltips {
 			super();
 
 			Stream.of(
-				desc(ALTAR_OF_THE_SACRED, 4).block().flavorText(),
+				desc(ALTAR_OF_THE_SACRED.item(), 4).block().flavorText(),
 				desc(ANCIENT_WOODEN_SWORD, 0).flavorText(),
 				desc(BOOK_OF_CONVEYANCE, 3),
 				desc(BOOK_OF_JINX, 3),

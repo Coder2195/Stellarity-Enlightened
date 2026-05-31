@@ -7,15 +7,6 @@ import net.minecraft.world.item.Item;
 import prismatic.shards.stellarity.Stellarity;
 
 public interface StellarityItemIds {
-	ResourceKey<Item> ENDER_DIRT = id("ender_dirt");
-	ResourceKey<Item> ENDER_GRASS_BLOCK = id("ender_grass_block");
-	ResourceKey<Item> ASHEN_FROGLIGHT = id("ashen_froglight");
-	ResourceKey<Item> ROOTED_ENDER_DIRT = id("rooted_ender_dirt");
-	ResourceKey<Item> ENDER_DIRT_PATH = id("ender_dirt_path");
-	ResourceKey<Item> ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
-	ResourceKey<Item> ENDERITE_BLOCK = id("enderite_block");
-	ResourceKey<Item> COARSE_ENDER_DIRT = id("coarse_ender_dirt");
-	ResourceKey<Item> ALTAR_OF_THE_SACRED = id("altar_of_the_sacred");
 
 	ResourceKey<Item> AMETHYST_BUDFISH = id("amethyst_budfish");
 	ResourceKey<Item> ANCIENT_WOODEN_SWORD = id("ancient_wooden_sword");
@@ -122,11 +113,11 @@ public interface StellarityItemIds {
 	ResourceKey<Item> WINGED_KEY = id("winged_key");
 	ResourceKey<Item> POTASSIFISH = id("potassifish");
 
-	ResourceKey<Item> VOIDED_ZOMBIE_SPAWN_EGG = id(StellarityEntityIds.VOIDED_ZOMBIE);
-	ResourceKey<Item> VOIDED_SKELETON_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SKELETON);
-	ResourceKey<Item> VOIDED_SILVERFISH_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SILVERFISH);
-	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityIds.VOIDED_SLIME);
-	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityIds.FLESH_PIGLIN);
+	ResourceKey<Item> VOIDED_ZOMBIE_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_ZOMBIE);
+	ResourceKey<Item> VOIDED_SKELETON_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SKELETON);
+	ResourceKey<Item> VOIDED_SILVERFISH_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SILVERFISH);
+	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SLIME);
+	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityTypeIds.FLESH_PIGLIN);
 
 	static ResourceKey<Item> id(String id) {
 		return Stellarity.key(Registries.ITEM, id);

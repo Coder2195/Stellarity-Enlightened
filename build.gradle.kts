@@ -44,7 +44,7 @@ dependencies {
 
 	compileOnly("com.terraformersmc:biolith-fabric:${property("deps.biolith")}")
 	val modonomicon = property("deps.modonomicon").toString().split('-')
-	implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
+	compileOnly("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
 
 }
 

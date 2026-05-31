@@ -97,15 +97,15 @@ public abstract class EnderDragonFightMixin implements ExtEnderDragonFight {
 	}
 
 	// FIXME: once this is corrected in official repos
-	@WrapOperation(method = "onCrystalDestroyed", at = @At(value = "INVOKE", target = "Ljava/util/List;contains(Ljava/lang/Object;)Z"))
-	private boolean bugFixEndCrystalCheck(List<EntityReference<EndCrystal>> instance, Object o, Operation<Boolean> original) {
-		if (!(o instanceof EndCrystal endCrystal)) return false;
-		for (var ref : instance) {
-			if (ref.matches(endCrystal)) return true;
-		}
-
-		return false;
-	}
+//	@WrapOperation(method = "onCrystalDestroyed", at = @At(value = "INVOKE", target = "Ljava/util/List;contains(Ljava/lang/Object;)Z"))
+//	private boolean bugFixEndCrystalCheck(List<EntityReference<EndCrystal>> instance, Object o, Operation<Boolean> original) {
+//		if (!(o instanceof EndCrystal endCrystal)) return false;
+//		for (var ref : instance) {
+//			if (ref.matches(endCrystal)) return true;
+//		}
+//
+//		return false;
+//	}
 }
 
 
