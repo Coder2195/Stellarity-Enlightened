@@ -62,7 +62,6 @@ fletchingTable {
 		mixin("default", "stellarity.client.mixins.json") {
 			env("CLIENT")
 		}
-
 	}
 }
 

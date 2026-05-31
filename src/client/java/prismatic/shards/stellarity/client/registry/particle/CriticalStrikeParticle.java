@@ -1,7 +1,5 @@
 package prismatic.shards.stellarity.client.registry.particle;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
@@ -13,7 +11,6 @@ import net.minecraft.util.RandomSource;
 import org.jspecify.annotations.NonNull;
 
 
-@Environment(EnvType.CLIENT)
 public class CriticalStrikeParticle extends SingleQuadParticle {
 	private float scale = 1f;
 
@@ -50,7 +47,6 @@ public class CriticalStrikeParticle extends SingleQuadParticle {
 	}
 
 
-	@Environment(EnvType.CLIENT)
 	public static class Provider implements ParticleProvider<SimpleParticleType> {
 
 
@@ -62,7 +58,7 @@ public class CriticalStrikeParticle extends SingleQuadParticle {
 
 
 		@Override
-		public Particle createParticle(SimpleParticleType simpleParticleType, @NonNull ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, @NonNull RandomSource randomSource) {
+		public Particle createParticle(@NonNull SimpleParticleType simpleParticleType, @NonNull ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, @NonNull RandomSource randomSource) {
 			return new CriticalStrikeParticle(clientLevel, d, e, f, this.sprite.get(randomSource));
 		}
 	}

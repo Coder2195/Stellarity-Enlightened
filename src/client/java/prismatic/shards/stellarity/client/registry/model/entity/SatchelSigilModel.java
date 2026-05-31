@@ -1,8 +1,6 @@
 
 package prismatic.shards.stellarity.client.registry.model.entity;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -13,7 +11,6 @@ import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.client.registry.renderer.entity.SatchelSigilRenderer;
 import prismatic.shards.stellarity.registry.entity.SatchelSigil;
 
-@Environment(EnvType.CLIENT)
 public class SatchelSigilModel extends EntityModel<SatchelSigilRenderer.SatchelSigilRenderState> {
 	private final ModelPart top;
 	private final ModelPart bottom;

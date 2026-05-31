@@ -1,7 +1,5 @@
 package prismatic.shards.stellarity.client.registry.renderer.entity;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.AbstractSkeletonRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -10,13 +8,11 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.registry.entity.VoidedSkeleton;
 
-@Environment(EnvType.CLIENT)
 public class VoidedSkeletonRenderer extends AbstractSkeletonRenderer<VoidedSkeleton, VoidedSkeletonRenderer.VoidedSkeletonRenderState> {
 	public VoidedSkeletonRenderer(final EntityRendererProvider.Context context) {
 		super(context, ModelLayers.SKELETON, ModelLayers.SKELETON_ARMOR);
 	}
 
-	@Environment(EnvType.CLIENT)
 	public static class VoidedSkeletonRenderState extends SkeletonRenderState {
 		public Identifier texture;
 	}

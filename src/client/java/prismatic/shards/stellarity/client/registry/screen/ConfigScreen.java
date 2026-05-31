@@ -1,7 +1,5 @@
 package prismatic.shards.stellarity.client.registry.screen;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.ScrollableLayout;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
@@ -11,11 +9,10 @@ import net.minecraft.network.chat.Component;
 import org.jspecify.annotations.Nullable;
 import prismatic.shards.stellarity.StellarityConfig;
 
-@Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
 	private HeaderAndFooterLayout layout;
 	private ScrollableLayout bodyScroll;
-	private @Nullable Screen previousScreen;
+	private final @Nullable Screen previousScreen;
 	private StellarityConfig config;
 	private LinearLayout body;
 

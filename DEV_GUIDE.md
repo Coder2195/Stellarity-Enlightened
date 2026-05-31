@@ -70,20 +70,10 @@ Methods MUST be `default`, `throw AssertionError("Not transformed!")`, and be pr
 They should then be implemented in mixins in `mixin.interface_injections`. Injection mixins should NOT contain anything
 else and must be defined there and there only.
 
-## Datagen
-
-All providers go in the root of `datagen` except if:
-
-- If you are generating tags, they must go in `datagen.tags`
-- If you are generating modnomicon book related assets, they must go in `datagen.book`
-- If you are generating loot table related assets, they must go in `datagen.loot_table`
-- If you are generating any other data-driven registry, they can go inside `datagen.dynamic` and should have relevant
-  methods added to `DynamicRegistryProvider.buildRegistry` and `DynamicRegistryProvider.configure`
-
 ## Client
 
-**IMPORTANT: Always annotate client package with
-`@Environment(EnvType.CLIENT)`**
+**IMPORTANT: Always put client files in src/client, and make sure it is in the `prismatic.shards.stellarity.client`
+package. DO NOT put client code in the main source set. (It shouldn't even let you)**
 
 **This prevents server side crashes and all client code MUST be annotated and be inside this package**
 
@@ -92,6 +82,21 @@ All client generally follow the same conventions mentioned above, but the "root"
 
 Are you unsure about if it should be client or not? Check the related vanilla class you are trying to build for, and if
 those are annotated, move them to client.
+
+## Datagen
+
+All providers go in the **src/client** source set just like client, except its in `prismatic.shards.stellarity.datagen`.
+
+All providers should be in the root of the package, and should be named `[Type]Provider` such as `ModelProvider` for
+models.
+
+The following exceptions apply:
+
+- If you are generating tags, they must go in `datagen.tags`
+- If you are generating modnomicon book related assets, they must go in `datagen.book`
+- If you are generating loot table related assets, they must go in `datagen.loot_table`
+- If you are generating any other data-driven registry, they can go inside `datagen.dynamic` and should have relevant
+  methods added to `DynamicRegistryProvider.buildRegistry` and `DynamicRegistryProvider.configure`
 
 ## Util
 

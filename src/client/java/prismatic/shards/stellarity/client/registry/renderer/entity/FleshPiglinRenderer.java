@@ -1,7 +1,5 @@
 package prismatic.shards.stellarity.client.registry.renderer.entity;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.model.monster.piglin.AdultZombifiedPiglinModel;
 import net.minecraft.client.model.monster.piglin.BabyZombifiedPiglinModel;
@@ -17,7 +15,6 @@ import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.entity.FleshPiglin;
 
-@Environment(EnvType.CLIENT)
 public class FleshPiglinRenderer extends HumanoidMobRenderer<FleshPiglin, ZombifiedPiglinRenderState, ZombifiedPiglinModel> {
 	private static final Identifier FLESH_PIGLIN_LOCATION = Stellarity.id("textures/entity/flesh_piglin/flesh_piglin.png");
 	private static final Identifier BABY_FLESH_PIGLIN_LOCATION = Stellarity.id("textures/entity/flesh_piglin/baby_flesh_piglin.png");
