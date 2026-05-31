@@ -1,6 +1,7 @@
 package prismatic.shards.stellarity.client.registry.screen;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ScrollableLayout;
 import net.minecraft.client.gui.layouts.HeaderAndFooterLayout;
 import net.minecraft.client.gui.layouts.LinearLayout;
@@ -15,6 +16,9 @@ public class ConfigScreen extends Screen {
 	private final @Nullable Screen previousScreen;
 	private StellarityConfig config;
 	private LinearLayout body;
+	private Button closeButton = Button.builder(Component.literal("Close"), (_) -> {
+		this.close();
+	}).build();
 
 	public ConfigScreen(@Nullable Screen previousScreen, StellarityConfig config) {
 		super(Component.translatable("stellarity.config.title"));
@@ -28,6 +32,7 @@ public class ConfigScreen extends Screen {
 		body = new LinearLayout(0, 0, LinearLayout.Orientation.VERTICAL);
 		bodyScroll = new ScrollableLayout(this.minecraft, body, layout.getContentHeight());
 		layout.addToContents(bodyScroll);
+		layout.addToFooter(closeButton);
 	}
 
 	@Override
@@ -41,7 +46,7 @@ public class ConfigScreen extends Screen {
 		minecraft.gui.setScreen(new ConfigScreen(minecraft.gui.screen(), config));
 	}
 
-	public void hide() {
+	public void close() {
 		minecraft.gui.setScreen(previousScreen);
 	}
 }

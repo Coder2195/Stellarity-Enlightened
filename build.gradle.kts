@@ -52,6 +52,7 @@ stonecutter {
 
 }
 
+
 fletchingTable {
 	mixins.create("main") { // Name should match an existing source set
 		// Default matches the default value in the annotation
@@ -60,10 +61,11 @@ fletchingTable {
 	mixins.create("client") { // Name should match an existing source set
 		// Default matches the default value in the annotation
 		mixin("default", "stellarity.client.mixins.json") {
-			env("CLIENT")
+			env("CLIENT", "prismatic.shards.stellarity.client.mixin")
 		}
 	}
 }
+
 
 
 loom {
@@ -102,9 +104,9 @@ loom {
 		ideConfigGenerated(true)
 		vmArgs("-Dmixin.debug.export=true -XX:+AllowEnhancedClassRedefinition")
 	}
-
-
 }
+
+
 
 fabricApi {
 	configureDataGeneration {
@@ -114,7 +116,6 @@ fabricApi {
 }
 
 tasks.withType<ProcessResources> {
-	duplicatesStrategy = DuplicatesStrategy.INCLUDE
 	inputs.property("id", project.property("mod.id"))
 	inputs.property("name", project.property("mod.name"))
 	inputs.property("version", project.property("mod.version"))

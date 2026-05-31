@@ -45,6 +45,7 @@ public class Stellarity implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
 		StellarityRegistries.init();
 		StellarityRegistryEntryModifications.init();
 		StellarityFeatures.init();
@@ -70,6 +71,7 @@ public class Stellarity implements ModInitializer {
 		StellaritySoundEvents.init();
 		StellarityVillagerTypes.init();
 		StellarityVillagerProfessions.init();
+		StellarityCommands.init();
 
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) MixinEnvironment.getCurrentEnvironment().audit();
 	}

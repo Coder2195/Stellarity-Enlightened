@@ -30,7 +30,10 @@
 	},
 	"mixins": [
 		"stellarity.mixins.json",
-		"stellarity.client.mixins.json"
+		{
+			"config": "stellarity.client.mixins.json",
+			"environment": "client"
+		}
 	],
 	"accessWidener": "stellarity.accesswidener",
 	"depends": {

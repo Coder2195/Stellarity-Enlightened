@@ -3,8 +3,7 @@
 	"package": "prismatic.shards.stellarity.client.mixin",
 	"compatibilityLevel": "${java}",
 	"mixins": [],
-	"client": [
-	],
+	"client": [],
 	"injectors": {
 		"defaultRequire": 1
 	},
