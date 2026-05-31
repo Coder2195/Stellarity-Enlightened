@@ -21,8 +21,9 @@ class.
 
 If you know that a class will mostly be an initialize one, never write class, we will implement it as a `record`.
 
-Use explicit types, implicit `var` idgaf tbh cuz at the end of the day we all have IDEs. And plus, multiversion works
-better with vars (if we get versions worth multiversioning)
+Idgaf if you use explicit types or implicit `var` for method variables cuz at the end of the day we all have IDEs.
+However, personal choice wise as the lead dev, do recommend `var` because multiversion
+works better with vars (if we get versions worth multiversioning). We all have IDEs with inlay hints so yea.
 
 ## Registries
 
