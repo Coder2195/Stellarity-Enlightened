@@ -75,9 +75,12 @@ public class StellarityRegistryEntryModifications {
 
 			});
 
-			registryView.registerEntryAdded(Registries.LEVEL_STEM, (unused, id, unused2) -> {
-				if (id.equals(LevelStem.END.identifier()))
-					Stellarity.LOGGER.warn("UNEXPECTED LEVEL STEM LOADED. Please use biolith for biome compat. {}", id);
+			registryView.registerEntryAdded(Registries.LEVEL_STEM, (unused, id, levelStem) -> {
+				if (!id.equals(LevelStem.END.identifier())) return;
+
+				Stellarity.LOGGER.warn("UNEXPECTED LEVEL STEM LOADED. Please use biolith for biome compat. {}", id);
+				levelStem.generator().biomeSource = StellarityWorldgenData.stellarityBiomeSource(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME));
+
 			});
 
 

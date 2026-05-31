@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 278609929,
+    "separation": 15,
+    "spacing": 20
+  },
+  "structures": [
+    {
+      "structure": "stellarity:campsite",
+      "weight": 1
+    }
+  ]
+}

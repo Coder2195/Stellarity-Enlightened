@@ -6,7 +6,7 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import prismatic.shards.stellarity.Stellarity;
 
 public interface StellarityStructureSets {
-	ResourceKey<StructureSet> CAMPSITE = id("campsite");
+	ResourceKey<StructureSet> SMALL_STRUCTURES = id("small_structures");
 
 	static ResourceKey<StructureSet> id(String id) {
 		return Stellarity.key(Registries.STRUCTURE_SET, id);

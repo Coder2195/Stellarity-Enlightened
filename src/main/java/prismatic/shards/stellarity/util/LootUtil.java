@@ -15,6 +15,7 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.ItemLike;
@@ -110,6 +111,10 @@ public interface LootUtil {
 
 	static EnchantWithLevelsFunction.Builder enchant(HolderGetter<Enchantment> enchantments, int min, int max) {
 		return new EnchantWithLevelsFunction.Builder(num(min, max)).withOptions(enchantments.getOrThrow(EnchantmentTags.ON_RANDOM_LOOT));
+	}
+
+	static LootItemConditionalFunction.Builder<?> potion(Holder<Potion> potion) {
+		return SetPotionFunction.setPotion(potion);
 	}
 
 	static LootItemConditionalFunction.Builder<?> damage(float damage) {

@@ -183,7 +183,7 @@ publishMods {
 		type = ALPHA
 
 		requires("fabric-api")
-		requires("biolith")
+		optional("biolith")
 		optional("modonomicon")
 	}
 
@@ -192,7 +192,7 @@ publishMods {
 		accessToken = env.fetch("CURSEFORGE_TOKEN", "")
 		minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
 		requires("fabric-api")
-		requires("biolith")
+		optional("biolith")
 		optional("modonomicon")
 	}
 }

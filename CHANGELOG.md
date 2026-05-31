@@ -75,6 +75,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[*] 26.1.x -> 26.2**
 
+## Structures
+
+**[+] Campsite**
+
 ## Mechanics
 
 **[*] Animal Spawning**

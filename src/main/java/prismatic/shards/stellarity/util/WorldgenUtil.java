@@ -18,6 +18,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConf
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
+import net.minecraft.world.level.levelgen.heightproviders.ConstantHeight;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -65,6 +66,11 @@ public interface WorldgenUtil {
 	static UniformHeight height(VerticalAnchor min, VerticalAnchor max) {
 		return UniformHeight.of(min, max);
 	}
+
+	static ConstantHeight height(VerticalAnchor anchor) {
+		return ConstantHeight.of(anchor);
+	}
+
 
 	static VerticalAnchor aboveBottom(int offset) {
 		return VerticalAnchor.aboveBottom(offset);
@@ -134,6 +140,7 @@ public interface WorldgenUtil {
 		return HeightmapPlacement.onHeightmap(heightmap);
 	}
 
+	@SuppressWarnings("deprecation")
 	static WeightedPlacedFeature weightedPlaced(PlacedFeature placedFeature, float chance) {
 		return new WeightedPlacedFeature(Holder.direct(placedFeature), chance);
 	}
@@ -228,6 +235,7 @@ public interface WorldgenUtil {
 	static VerticalAnchor.Absolute absolute(int y) {
 		return new VerticalAnchor.Absolute(y);
 	}
+
 
 	static BlockPredicate not(BlockPredicate predicate) {
 		return BlockPredicate.not(predicate);

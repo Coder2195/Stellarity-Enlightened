@@ -14,10 +14,12 @@ public interface StellarityBiomeTags {
 	TagKey<Biome> SPAWNS_COLD_VOIDED_SKELETON = id("spawns_cold_voided_skeleton");
 	TagKey<Biome> SPAWNS_FLESH_VOIDED_SKELETON = id("spawns_flesh_voided_skeleton");
 
+	TagKey<Biome> HAS_STRUCTURE_CAMPSITE = id("has_structure/campsite");
+
 	static TagKey
 
-  <Biome> id(String id) {
+		<Biome> id(String id) {
 		return TagKey.create(Registries.BIOME, Stellarity.id(id));
-	
-  }
+
+	}
 }
