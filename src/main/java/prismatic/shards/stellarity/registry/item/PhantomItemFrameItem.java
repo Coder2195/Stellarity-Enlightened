@@ -29,7 +29,9 @@ public class PhantomItemFrameItem extends ItemFrameItem {
 		this(StellarityEntityTypes.PHANTOM_ITEM_FRAME, properties);
 	}
 
-	public @NonNull InteractionResult interact(UseOnContext useOnContext) {
+
+	@Override
+	public @NonNull InteractionResult useOn(UseOnContext useOnContext) {
 		BlockPos blockPos = useOnContext.getClickedPos();
 		Direction direction = useOnContext.getClickedFace();
 		BlockPos blockPos2 = blockPos.relative(direction);
