@@ -2,10 +2,10 @@ package prismatic.shards.stellarity.mixin.potions;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import net.minecraft.client.color.item.Potion;
 import net.minecraft.core.Holder;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.alchemy.Potion;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(CreativeModeTabs.class)

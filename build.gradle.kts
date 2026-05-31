@@ -65,11 +65,17 @@ fletchingTable {
 
 
 loom {
+
+
+	splitEnvironmentSourceSets()
+
 	mods {
 		create(project.property("mod.id") as String) {
 			sourceSet(sourceSets["main"])
+			sourceSet(sourceSets["client"])
 		}
 	}
+
 
 	fabricModJsonPath = rootProject.file("src/main/resources/fabric.mod.json") // Useful for interface injection
 	accessWidenerPath = sc.process(rootProject.file("src/main/resources/stellarity.accesswidener"), "build/dev.aw")
