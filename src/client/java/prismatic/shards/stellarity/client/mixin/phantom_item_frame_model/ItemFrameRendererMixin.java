@@ -19,7 +19,6 @@ import prismatic.shards.stellarity.registry.StellarityEntityTypes;
 
 import static prismatic.shards.stellarity.client.registry.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
 
-@MixinEnvironment("client")
 @Mixin(ItemFrameRenderer.class)
 public class ItemFrameRendererMixin {
 	@Shadow

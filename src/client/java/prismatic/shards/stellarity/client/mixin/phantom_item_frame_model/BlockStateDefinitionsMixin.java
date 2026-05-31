@@ -19,7 +19,6 @@ import java.util.function.Function;
 
 import static prismatic.shards.stellarity.client.registry.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
 
-@MixinEnvironment("client")
 @Mixin(BlockStateDefinitions.class)
 public class BlockStateDefinitionsMixin {
 	@Inject(method = "definitionLocationToBlockStateMapper", at = @At(value = "INVOKE", target = "Ljava/util/Objects;requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;"))

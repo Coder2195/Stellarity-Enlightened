@@ -53,13 +53,16 @@ stonecutter {
 }
 
 fletchingTable {
-	mixins.register("main") {
-		mixin("default", "stellarity.mixins.json") {
-			env("DEFAULT")
-		}
-		mixin("client", "stellarity.client.mixins.json") {
+	mixins.create("main") { // Name should match an existing source set
+		// Default matches the default value in the annotation
+		mixin("default", "stellarity.mixins.json")
+	}
+	mixins.create("client") { // Name should match an existing source set
+		// Default matches the default value in the annotation
+		mixin("default", "stellarity.client.mixins.json") {
 			env("CLIENT")
 		}
+
 	}
 }
 

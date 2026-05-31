@@ -29,7 +29,8 @@
 		]
 	},
 	"mixins": [
-		"stellarity.mixins.json"
+		"stellarity.mixins.json",
+		"stellarity.client.mixins.json"
 	],
 	"accessWidener": "stellarity.accesswidener",
 	"depends": {
