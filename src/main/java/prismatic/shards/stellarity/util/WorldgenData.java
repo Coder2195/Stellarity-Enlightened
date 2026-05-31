@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.registry;
+package prismatic.shards.stellarity.util;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
@@ -25,7 +25,7 @@ import static prismatic.shards.stellarity.registry.StellarityBlocks.*;
 import static prismatic.shards.stellarity.util.ValueUtil.from;
 import static prismatic.shards.stellarity.util.WorldgenUtil.state;
 
-public interface StellarityWorldgenData {
+public interface WorldgenData {
 	List<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>> PARAMETER_POINTS = List.<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>>of(new Tuple2<>(HALLOWED_TUNDRA, new Climate.ParameterPoint(
 			span(-1f, -0.405f),
 			span(-1f, 1f),
@@ -739,6 +739,9 @@ public interface StellarityWorldgenData {
 	};
 
 	static RuleSource stellaritySurfaceRules(HolderGetter<Biome> biomes) {
+		// for when biolith doesn't have support
+		if (biomes == null) return sequence();
+
 		return sequence(
 			ifTrue(isBiome(biomes, END_WILDS, END_SHRUBLAND), WILDS_DIRT_SEQUENCE),
 			ifTrue(isBiome(biomes, FROZEN_SHRUBLAND),
@@ -893,7 +896,7 @@ public interface StellarityWorldgenData {
 
 	static RuleSource vanillaSurfaceRules(HolderGetter<Biome> biomes) {
 		return sequence(
-			ifTrue(isBiome(biomes, END_MIDLANDS), StellarityWorldgenData.WILDS_DIRT_SEQUENCE),
+			ifTrue(isBiome(biomes, END_MIDLANDS), WorldgenData.WILDS_DIRT_SEQUENCE),
 			ifTrue(isBiome(biomes, THE_END),
 				ifTrue(stoneDepthCheck(2, false, 6, CaveSurface.FLOOR), sequence(
 					ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -0.03, 0.02),

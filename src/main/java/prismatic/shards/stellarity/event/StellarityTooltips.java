@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.registry;
+package prismatic.shards.stellarity.event;
 
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;

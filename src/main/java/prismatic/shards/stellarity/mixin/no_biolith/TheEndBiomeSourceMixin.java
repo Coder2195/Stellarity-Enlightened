@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.registry.StellarityWorldgenData;
+import prismatic.shards.stellarity.util.WorldgenData;
 
 import java.util.stream.Stream;
 
@@ -24,7 +24,7 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource {
 	@ModifyExpressionValue(method = "create", at = @At(value = "NEW", target = "(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/TheEndBiomeSource;"))
 	private static TheEndBiomeSource editBiomeSource(TheEndBiomeSource original, @Local(argsOnly = true, name = "biomes") HolderGetter<Biome> biomes) {
 		if (!Stellarity.hasBiolith())
-			((TheEndBiomeSourceMixin) (Object) original).biomeSource = StellarityWorldgenData.stellarityBiomeSource(biomes);
+			((TheEndBiomeSourceMixin) (Object) original).biomeSource = WorldgenData.stellarityBiomeSource(biomes);
 
 		return original;
 	}

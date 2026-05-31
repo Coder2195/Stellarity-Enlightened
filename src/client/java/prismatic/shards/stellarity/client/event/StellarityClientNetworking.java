@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.client.registry;
+package prismatic.shards.stellarity.client.event;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.ParticleTypes;

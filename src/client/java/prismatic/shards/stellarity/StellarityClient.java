@@ -1,6 +1,7 @@
 package prismatic.shards.stellarity;
 
 import net.fabricmc.api.ClientModInitializer;
+import prismatic.shards.stellarity.client.event.StellarityClientNetworking;
 import prismatic.shards.stellarity.client.registry.*;
 
 public class StellarityClient implements ClientModInitializer {

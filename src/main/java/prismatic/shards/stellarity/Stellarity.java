@@ -8,6 +8,10 @@ import net.minecraft.resources.ResourceKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.MixinEnvironment;
+import prismatic.shards.stellarity.event.StellarityCommands;
+import prismatic.shards.stellarity.event.StellarityLootTableModifications;
+import prismatic.shards.stellarity.event.StellarityRegistryEntryModifications;
+import prismatic.shards.stellarity.event.StellarityTooltips;
 import prismatic.shards.stellarity.registry.*;
 
 public class Stellarity implements ModInitializer {

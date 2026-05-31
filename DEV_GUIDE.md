@@ -32,6 +32,15 @@ package.
 
 For custom Stellarity definitions for registries, use `block.CustomBlock` for example. Note the package is singular.
 
+## Events
+
+Events are like registries, but instead we hook up usually to event listeners through APIs. You can tell very easily if
+something is an event where you will have `Something.EVENT` and you hook it up to a lambda or method reference.
+
+They go in `events` package and can be more named for their purpose like `StellarityTooltips` for tooltip related stuff.
+
+If in doubt, drop them into Registries, and someone will move them later.
+
 ## Resource Keys
 
 We track resource keys for data driven definitions in `key` package. Name formatting is mostly the same, except they

@@ -3,15 +3,14 @@ package prismatic.shards.stellarity.registry;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import prismatic.shards.stellarity.Stellarity;
-
-import static net.minecraft.world.level.biome.Climate.Parameter.span;
+import prismatic.shards.stellarity.util.WorldgenData;
 
 public interface StellarityBiolithBiomes {
 	static void init() {
-		for (var placement : StellarityWorldgenData.PARAMETER_POINTS)
+		for (var placement : WorldgenData.PARAMETER_POINTS)
 			BiomePlacement.addEnd(placement._1(), placement._2());
 
-		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), StellarityWorldgenData.stellaritySurfaceRules(null));
-		SurfaceGeneration.addEndSurfaceRules(Stellarity.mcId("rules/stellarity_end"), StellarityWorldgenData.vanillaSurfaceRules(null));
+		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), WorldgenData.stellaritySurfaceRules(null));
+		SurfaceGeneration.addEndSurfaceRules(Stellarity.mcId("rules/stellarity_end"), WorldgenData.vanillaSurfaceRules(null));
 	}
 }

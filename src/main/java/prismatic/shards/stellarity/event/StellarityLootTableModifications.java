@@ -1,16 +1,17 @@
-package prismatic.shards.stellarity.registry;
+package prismatic.shards.stellarity.event;
 
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EntityTypes;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.registry.StellarityItems;
 
 import static prismatic.shards.stellarity.util.LootUtil.*;
 
 
 public interface StellarityLootTableModifications {
 	static void init() {
-		LootTableEvents.MODIFY.register((key, builder, source, provider) -> {
+		LootTableEvents.MODIFY.register((key, builder, _, _) -> {
 			var id = key.identifier();
 
 			var endVariant = new CompoundTag();

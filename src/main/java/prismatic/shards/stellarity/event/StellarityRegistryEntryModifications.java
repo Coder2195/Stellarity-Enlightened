@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.registry;
+package prismatic.shards.stellarity.event;
 
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.registries.Registries;
@@ -7,6 +7,7 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.util.WorldgenData;
 
 import static prismatic.shards.stellarity.key.StellarityDensityFunctions.*;
 
@@ -41,7 +42,7 @@ public class StellarityRegistryEntryModifications {
 
 	public static void init() {
 		DynamicRegistrySetupCallback.EVENT.register(registryView -> {
-			registryView.registerEntryAdded(Registries.DENSITY_FUNCTION, (unused, id, densityFunction) -> {
+			registryView.registerEntryAdded(Registries.DENSITY_FUNCTION, (_, id, densityFunction) -> {
 				if (!id.getNamespace().equals(Stellarity.MOD_ID)) return;
 				if (id.equals(CLIMATE_TEMPERATURE.identifier())) temperature = densityFunction;
 				else if (id.equals(CLIMATE_HUMIDITY.identifier())) vegetation = densityFunction;
@@ -55,7 +56,7 @@ public class StellarityRegistryEntryModifications {
 				checkMerge();
 			});
 
-			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (unused, id, noiseSettings) -> {
+			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (_, id, noiseSettings) -> {
 				if (!id.equals(Stellarity.mcId("end"))) return;
 
 				var noise = noiseSettings.noiseSettings();
@@ -64,8 +65,8 @@ public class StellarityRegistryEntryModifications {
 
 				if (!Stellarity.hasBiolith())
 					noiseSettings.surfaceRule = SurfaceRules.sequence(
-						StellarityWorldgenData.stellaritySurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
-						StellarityWorldgenData.vanillaSurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
+						WorldgenData.stellaritySurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
+						WorldgenData.vanillaSurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
 						noiseSettings.surfaceRule
 					);
 
@@ -75,12 +76,11 @@ public class StellarityRegistryEntryModifications {
 
 			});
 
-			registryView.registerEntryAdded(Registries.LEVEL_STEM, (unused, id, levelStem) -> {
+			registryView.registerEntryAdded(Registries.LEVEL_STEM, (_, id, levelStem) -> {
 				if (!id.equals(LevelStem.END.identifier())) return;
 
 				Stellarity.LOGGER.warn("UNEXPECTED LEVEL STEM LOADED. Please use biolith for biome compat. {}", id);
-				levelStem.generator().biomeSource = StellarityWorldgenData.stellarityBiomeSource(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME));
-
+				levelStem.generator().biomeSource = WorldgenData.stellarityBiomeSource(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME));
 			});
 
 
