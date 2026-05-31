@@ -23,7 +23,7 @@ public class DamageTagProvider extends FabricTagsProvider<DamageType> {
 	@Override
 	protected void addTags(HolderLookup.@NonNull Provider provider) {
 		builder(DamageTypeTags.BYPASSES_COOLDOWN).add(StellarityDamageTypes.BRITTLE);
-		builder(StellarityDamageTypeTags.MELEE).add(DamageTypes.PLAYER_ATTACK, DamageTypes.MOB_ATTACK, DamageTypes.MOB_ATTACK);
+		builder(StellarityDamageTypeTags.MELEE).add(DamageTypes.PLAYER_ATTACK, DamageTypes.MOB_ATTACK, DamageTypes.MOB_ATTACK, StellarityDamageTypes.PRISMEMBER);
 		builder(DamageTypeTags.NO_KNOCKBACK).add(StellarityDamageTypes.BRITTLE);
 	}
 }

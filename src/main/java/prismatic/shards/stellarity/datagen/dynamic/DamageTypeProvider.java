@@ -12,5 +12,6 @@ public interface DamageTypeProvider {
 		context.register(StellarityDamageTypes.FROSTBURN, new DamageType("stellarity.frostburn", DamageScaling.NEVER, 0.1f, DamageEffects.FREEZING));
 		context.register(StellarityDamageTypes.TAMARIS_EXECUTE, new DamageType("stellarity.tamaris_execute", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.VOID_ARROW_SHRAPNEL, new DamageType("stellarity.void_arrow_shrapnel", DamageScaling.NEVER, 0.1f));
+		context.register(StellarityDamageTypes.PRISMEMBER, new DamageType("player", DamageScaling.NEVER, 0.1f));
 	}
 }

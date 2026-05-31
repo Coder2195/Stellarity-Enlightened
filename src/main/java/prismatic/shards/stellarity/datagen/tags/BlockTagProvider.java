@@ -4,12 +4,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.BlockItemTagAppender;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.references.BlockItemIds;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.tags.StellarityBlockTags;
 

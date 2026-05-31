@@ -11,6 +11,7 @@ public interface StellarityDamageTypes {
 	ResourceKey<DamageType> FROSTBURN = id("frostburn");
 	ResourceKey<DamageType> TAMARIS_EXECUTE = id("tamaris_execute");
 	ResourceKey<DamageType> VOID_ARROW_SHRAPNEL = id("void_arrow_shrapnel");
+	ResourceKey<DamageType> PRISMEMBER = id("prismember");
 
 	static ResourceKey<DamageType> id(String id) {
 		return Stellarity.key(Registries.DAMAGE_TYPE, id);

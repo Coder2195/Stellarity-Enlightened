@@ -23,12 +23,12 @@ public interface StellarityLootTableModifications {
 
 				builder.withPool(pool().when(
 					onDamage(damage().source(
-						entity().entityType(entityType(EntityTypes.FROG)).nbt(nbt(endVariant))
+						predicate().entityType(entityType(EntityTypes.FROG)).nbt(nbt(endVariant))
 					))).add(item(StellarityItems.ASHEN_FROGLIGHT)
 				));
 			} else if (id.equals(Stellarity.mcId("gameplay/chicken_lay"))) {
 
-				var nbtCheck = entityProperty(entity().nbt(nbt(endVariant)));
+				var nbtCheck = entityProperty(predicate().nbt(nbt(endVariant)));
 
 				builder.withPool(pool().add(item(StellarityItems.ENDER_EGG)).when(nbtCheck));
 			}

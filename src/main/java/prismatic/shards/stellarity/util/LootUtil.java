@@ -12,6 +12,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -27,6 +29,7 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jspecify.annotations.NonNull;
@@ -46,16 +49,24 @@ public interface LootUtil {
 		return new InvertedLootItemCondition(term);
 	}
 
+	static LootItemCondition.Builder not(LootItemCondition.Builder term) {
+		return InvertedLootItemCondition.invert(term);
+	}
+
 	static DamageSourcePredicate.Builder damage() {
 		return new DamageSourcePredicate.Builder();
 	}
 
-	static EntityPredicate.Builder entity() {
+	static EntityPredicate.Builder predicate() {
 		return new EntityPredicate.Builder();
 	}
 
 	static EntityTypePredicate entityType(EntityType<?> type) {
 		return EntityTypePredicate.of(BuiltInRegistries.ENTITY_TYPE, type);
+	}
+
+	static EntityTypePredicate entityType(HolderGetter<EntityType<?>> lookup, TagKey<EntityType<?>> tag) {
+		return EntityTypePredicate.of(lookup, tag);
 	}
 
 	static NbtPredicate nbt(CompoundTag tag) {
@@ -127,6 +138,55 @@ public interface LootUtil {
 		return new LootItemBlockStatePropertyCondition.Builder(block);
 	}
 
+	static BlockPredicate.Builder blockPredicate() {
+		return BlockPredicate.Builder.block();
+	}
+
+	static ValueCheckCondition valueCheck(NumberProvider value, IntRange range) {
+		return new ValueCheckCondition(value, range);
+	}
+
+	static EnchantmentLevelProvider enchantNum(LevelBasedValue amount) {
+		return EnchantmentLevelProvider.forEnchantmentLevel(amount);
+	}
+
+	static LootItemCondition.Builder enchantInactive() {
+		return EnchantmentActiveCheck.enchantmentInactiveCheck();
+	}
+
+	static LootItemCondition.Builder enchantActive() {
+		return EnchantmentActiveCheck.enchantmentActiveCheck();
+	}
+
+	static LevelBasedValue.Linear levelBasedLinear(float base, float perLevelAboveFirst) {
+		return new LevelBasedValue.Linear(base, perLevelAboveFirst);
+	}
+
+	static LevelBasedValue.Lookup levelBasedLookup(LevelBasedValue fallback, Float... values) {
+		return LevelBasedValue.lookup(List.of(values), fallback);
+	}
+
+	static LevelBasedValue.Constant levelBasedConstant(float level) {
+		return new LevelBasedValue.Constant(level);
+	}
+
+	static LootItemCondition.Builder randomChance(NumberProvider numberProvider) {
+		return LootItemRandomChanceCondition.randomChance(numberProvider);
+	}
+
+	static LootItemCondition.Builder randomChance(float chance) {
+		return LootItemRandomChanceCondition.randomChance(chance);
+	}
+
+
+	static IntRange intRange(int min, int max) {
+		return IntRange.range(min, max);
+	}
+
+	static IntRange intRange(int constant) {
+		return IntRange.exact(constant);
+	}
+
 	static <T extends Comparable<T> & StringRepresentable> StatePropertiesPredicate.Builder hasProperty(Property<@NonNull T> property, T value) {
 		return StatePropertiesPredicate.Builder.properties().hasProperty(property, value);
 	}
@@ -169,6 +229,18 @@ public interface LootUtil {
 
 	static LootItemCondition.Builder entityProperty(LootContext.EntityTarget target, EntityPredicate.Builder predicate) {
 		return LootItemEntityPropertyCondition.hasProperties(target, predicate.build());
+	}
+
+	static LootItemCondition.Builder damageSource(DamageSourcePredicate.Builder sourcePredicate) {
+		return DamageSourceCondition.hasDamageSource(sourcePredicate);
+	}
+
+	static <T> TagPredicate<T> isTag(TagKey<T> tagKey) {
+		return TagPredicate.is(tagKey);
+	}
+
+	static <T> TagPredicate<T> notTag(TagKey<T> tagKey) {
+		return TagPredicate.isNot(tagKey);
 	}
 
 	static LootItemCondition.Builder entityProperty(EntityPredicate.Builder predicate) {
@@ -217,6 +289,14 @@ public interface LootUtil {
 
 	static AlternativesEntry.Builder alternatives(LootPoolEntryContainer.Builder<?>... entries) {
 		return new AlternativesEntry.Builder(entries);
+	}
+
+	static LocationPredicate.Builder location() {
+		return LocationPredicate.Builder.location();
+	}
+
+	static EntityFlagsPredicate.Builder flags() {
+		return EntityFlagsPredicate.Builder.flags();
 	}
 
 
