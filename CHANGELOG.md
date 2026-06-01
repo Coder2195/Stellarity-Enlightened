@@ -50,6 +50,12 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Shot from the Spectral Fury and has no corresponding item, because it disappears
 
+## Recipes
+
+### AOTA
+
+**[+] Sharanga + 3 Diamond + 8 Phantom Membrane + Enderite Upgrade = Spectral Fury**
+
 ## Biomes
 
 **[*] Ashfall Deltas**

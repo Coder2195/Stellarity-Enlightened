@@ -3,15 +3,18 @@ package prismatic.shards.stellarity.util;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.biome.MultiNoiseBiomeSource;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityNoises;
 import prismatic.shards.stellarity.util.tuple.Tuple2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.minecraft.world.level.biome.Biomes.*;
@@ -26,6 +29,10 @@ import static prismatic.shards.stellarity.util.ValueUtil.from;
 import static prismatic.shards.stellarity.util.WorldgenUtil.state;
 
 public interface WorldgenData {
+	static ResourceKey<Biome> nullscapeBiome(String id) {
+		return ResourceKey.create(Registries.BIOME, Stellarity.id("nullscape", id));
+	}
+
 	List<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>> PARAMETER_POINTS = List.<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>>of(new Tuple2<>(HALLOWED_TUNDRA, new Climate.ParameterPoint(
 			span(-1f, -0.405f),
 			span(-1f, 1f),
@@ -923,8 +930,22 @@ public interface WorldgenData {
 	}
 
 	static MultiNoiseBiomeSource stellarityBiomeSource(HolderGetter<Biome> biomes) {
-		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(PARAMETER_POINTS.stream().map(
-			point -> new Pair<Climate.ParameterPoint, Holder<Biome>>(point._2(), biomes.getOrThrow(point._1()))
-		).toList()));
+
+		List<Pair<Climate.ParameterPoint, Holder<Biome>>> biomePoints = new ArrayList<>();
+
+//		var crystalPeaks = biomes.get(nullscapeBiome("crystal_peaks"));
+//		var shadowlands = biomes.get(nullscapeBiome("shadowlands"));
+//		var voidBarrens = biomes.get(nullscapeBiome("void_barrens"));
+
+//		boolean hasNullscape = crystalPeaks.isPresent() || shadowlands.isPresent() || voidBarrens.isPresent();
+
+		for (var point : PARAMETER_POINTS) {
+			var biome = biomes.get(point._1());
+			if (biome.isEmpty()) continue;
+
+			biomePoints.add(new Pair<>(point._2(), biome.get()));
+		}
+
+		return MultiNoiseBiomeSource.createFromList(new Climate.ParameterList<>(biomePoints));
 	}
 }

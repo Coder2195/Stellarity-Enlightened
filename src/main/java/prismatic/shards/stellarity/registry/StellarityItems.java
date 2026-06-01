@@ -266,6 +266,7 @@ public interface StellarityItems {
 	Item POTASSIFISH = register(StellarityItemIds.POTASSIFISH, foodProperties(1, 0.6f, new MobEffectInstance(MobEffects.REGENERATION, 4 * 20)));
 	Item SHARANGA = register(StellarityItemIds.SHARANGA, Sharanga::new, Sharanga.PROPERTIES);
 	Item SPECTRAL_FURY = register(StellarityItemIds.SPECTRAL_FURY, SpectralFury::new, SpectralFury.PROPERTIES);
+	Item COPPER_ELEKTRA_SHIELD = register(StellarityItemIds.COPPER_ELEKTRA_SHIELD, CopperElektraShield::new, CopperElektraShield.PROPERTIES);
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -435,7 +436,7 @@ public interface StellarityItems {
 		NAME_COLORS.put(PRISMITE, TextColor.YELLOW.getValue());
 //		NAME_COLORS.put(ENDERMANS_HAND, 0xed8cff);
 		NAME_COLORS.put(DUSKBERRY, 0xAB6AD1);
-//		NAME_COLORS.put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
+		NAME_COLORS.put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
 //		NAME_COLORS.put(SOARING_INSIGNIA, 0xFF76D0);
 //		NAME_COLORS.put(LIFE_CRYSTAL, 0x9936D6);
 //		NAME_COLORS.put(STARSTRUCK_SHIELD, 0xFF76D0);

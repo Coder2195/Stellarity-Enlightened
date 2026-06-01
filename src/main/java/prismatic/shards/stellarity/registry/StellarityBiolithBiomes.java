@@ -12,5 +12,6 @@ public interface StellarityBiolithBiomes {
 
 		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), WorldgenData.stellaritySurfaceRules(null));
 		SurfaceGeneration.addEndSurfaceRules(Stellarity.mcId("rules/stellarity_end"), WorldgenData.vanillaSurfaceRules(null));
+
 	}
 }

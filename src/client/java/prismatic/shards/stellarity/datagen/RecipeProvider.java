@@ -158,6 +158,16 @@ public class RecipeProvider extends FabricRecipeProvider {
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/dye_elytra", new AltarDyeRecipe(Ingredient.of(ELYTRA)));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/spectral_fury", new AltarUpgradeRecipe(
+			Ingredient.of(SHARANGA),
+			new LinkedHashMap<>() {{
+				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
+				put(Ingredient.of(PHANTOM_MEMBRANE), 8);
+				put(Ingredient.of(DIAMOND), 3);
+			}},
+			new ItemStackTemplate(SPECTRAL_FURY)
+		));
 	}
 
 	@Override
