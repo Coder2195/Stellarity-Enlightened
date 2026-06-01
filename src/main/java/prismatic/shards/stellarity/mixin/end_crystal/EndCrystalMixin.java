@@ -21,13 +21,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.end.EnderDragonFight;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.StellarityConfig;
 import prismatic.shards.stellarity.interface_injection.ExtEndCrystal;
@@ -108,6 +106,7 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 				for (Direction direction : Direction.Plane.HORIZONTAL) {
 					if (portalLocation.above(3).relative(direction, 4).equals(blockPos) && dragonFight.dragonKilled) {
 						stellarity$setType(Type.RESPAWN);
+						this.playSound(SoundEvents.END_PORTAL_FRAME_FILL, 1, 0.5f);
 						Stellarity.LOGGER.info("Found respawn crystal");
 						break;
 					}
