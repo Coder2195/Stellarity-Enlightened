@@ -37,6 +37,9 @@ For custom Stellarity definitions for registries, use `block.CustomBlock` for ex
 Events are like registries, but instead we hook up usually to event listeners through APIs. You can tell very easily if
 something is an event where you will have `Something.EVENT` and you hook it up to a lambda or method reference.
 
+**IMPORTANT: Registries supercede events. If there is something you are registering and need some form of event to add
+with it, put it in Registries**
+
 They go in `events` package and can be more named for their purpose like `StellarityTooltips` for tooltip related stuff.
 
 If in doubt, drop them into Registries, and someone will move them later.

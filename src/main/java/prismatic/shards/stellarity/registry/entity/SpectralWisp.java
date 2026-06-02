@@ -54,6 +54,7 @@ public class SpectralWisp extends AbstractArrow {
 		if (!(level instanceof ServerLevel serverLevel)) return;
 		var entity = hitResult.getEntity();
 		if (!entity.canBeHitByProjectile()) return;
+		//noinspection DataFlowIssue: it does accept null
 		if (entity instanceof LivingEntity livingEntity && !livingEntity.hurtServer(serverLevel, this.damageSources().mobAttack(this.getOwner() instanceof LivingEntity attacker ? attacker : null), damage))
 			return;
 

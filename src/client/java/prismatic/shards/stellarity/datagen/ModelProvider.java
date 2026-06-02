@@ -171,7 +171,7 @@ public class ModelProvider extends FabricModelProvider {
 			generators.generateBow(bow);
 			generators.createFlatItemModel(bow, ModelTemplates.BOW);
 		}
-		
+
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);
 
@@ -186,6 +186,15 @@ public class ModelProvider extends FabricModelProvider {
 		generators.generateTrimmableItem(SHULKER_LEGGINGS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
 		generators.generateTrimmableItem(SHULKER_BOOTS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
+		generators.generateShield(COPPER_ELEKTRA_SHIELD);
+		SHIELD_TEMPLATE.create(Stellarity.id("item/copper_elektra_shield"), new TextureMapping()
+				.put(TextureSlot.PARTICLE, getBlockTexture(Blocks.DARK_OAK_PLANKS)),
+			generators.modelOutput
+		);
+		SHIELD_BLOCKING_TEMPLATE.create(Stellarity.id("item/copper_elektra_shield_blocking"), new TextureMapping()
+				.put(TextureSlot.PARTICLE, getBlockTexture(Blocks.DARK_OAK_PLANKS)),
+			generators.modelOutput
+		);
 
 	}
 
@@ -194,6 +203,9 @@ public class ModelProvider extends FabricModelProvider {
 	public static final ModelTemplate GRASS_BLOCK_TEMPLATE = create("grass_block", TEXTURE_SLOT_OVERLAY, TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
 	public static final ModelTemplate DIRT_PATH_TEMPLATE = create("dirt_path", TextureSlot.BOTTOM, TextureSlot.SIDE, TextureSlot.TOP);
 	public static final ModelTemplate ITEM_FRAME_TEMPLATE = create("template_item_frame", TEXTURE_SLOT_WOOD, TextureSlot.BACK);
+	public static final ModelTemplate SHIELD_TEMPLATE = createItem("shield");
+	public static final ModelTemplate SHIELD_BLOCKING_TEMPLATE = createItem("shield_blocking");
+
 
 	private static ModelTemplate create(final TextureSlot... slots) {
 		return new ModelTemplate(Optional.empty(), Optional.empty(), slots);

@@ -31,12 +31,6 @@ public class Tamaris extends Item {
 	public void inventoryTick(@NonNull ItemStack itemStack, @NonNull ServerLevel level, @NonNull Entity entity, @Nullable EquipmentSlot equipmentSlot) {
 		super.inventoryTick(itemStack, level, entity, equipmentSlot);
 
-		inventoryTick(itemStack, (Level) level, entity, equipmentSlot);
-	}
-
-
-	public void inventoryTick(ItemStack itemStack, Level level, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
-		boolean isClient = level.isClientSide();
 		Vec3 position = entity.position();
 
 		if (entity instanceof Player player) {
@@ -49,40 +43,35 @@ public class Tamaris extends Item {
 				e -> !e.is(player) && e.isAlive() && e.getHealth() / e.getMaxHealth() < 0.25f
 			);
 
-			if (isClient) {
-				for (var nearbyEntity : nearbyEntities) {
-					var particlePos = nearbyEntity.position().add(0, nearbyEntity.getBbHeight() + 0.5, 0);
-					level.addParticle(ParticleTypes.SMOKE, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
-				}
-			} else {
-				if (!player.isCrouching()) return;
-				nearbyEntities.sort(Comparator.comparingDouble((e) -> e.distanceTo(player)));
 
-				for (var nearby : nearbyEntities) {
-					boolean failed = false;
-					for (InteractionHand interactionHand : InteractionHand.values()) {
-						ItemStack itemStack2 = nearby.getItemInHand(interactionHand);
-						if (itemStack2.is(Items.TOTEM_OF_UNDYING)) {
-							failed = true;
-							break;
-						}
+			if (!player.isCrouching()) return;
+			nearbyEntities.sort(Comparator.comparingDouble((e) -> e.distanceTo(player)));
+
+			for (var nearby : nearbyEntities) {
+				boolean failed = false;
+				for (InteractionHand interactionHand : InteractionHand.values()) {
+					ItemStack itemStack2 = nearby.getItemInHand(interactionHand);
+					if (itemStack2.is(Items.TOTEM_OF_UNDYING)) {
+						failed = true;
+						break;
 					}
-
-					if (!nearby.hurtServer((ServerLevel) level, nearby.damageSources().source(StellarityDamageTypes.TAMARIS_EXECUTE, player), 999f))
-						continue;
-
-					var nearestPos = nearby.position();
-
-					player.teleportTo(nearestPos.x, nearestPos.y, nearestPos.z);
-					itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-
-					nearby.playSound(StellaritySoundEvents.TAMARIS_EXECUTE);
-
-					if (failed) player.getCooldowns().addCooldown(itemStack, 11 * 20);
-
-					break;
 				}
+
+				if (!nearby.hurtServer((ServerLevel) level, nearby.damageSources().source(StellarityDamageTypes.TAMARIS_EXECUTE, player), 999f))
+					continue;
+
+				var nearestPos = nearby.position();
+
+				player.teleportTo(nearestPos.x, nearestPos.y, nearestPos.z);
+				itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+
+				nearby.playSound(StellaritySoundEvents.TAMARIS_EXECUTE);
+
+				if (failed) player.getCooldowns().addCooldown(itemStack, 11 * 20);
+
+				break;
 			}
 		}
 	}
+
 }
