@@ -89,3 +89,5 @@ mutable field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceR
 accessible field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceRule Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
 
 accessible method net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement <init> (Lcom/mojang/datafixers/util/Either;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;Ljava/util/Optional;)V
+
+accessible field net/minecraft/world/entity/monster/Creeper DATA_IS_POWERED Lnet/minecraft/network/syncher/EntityDataAccessor;

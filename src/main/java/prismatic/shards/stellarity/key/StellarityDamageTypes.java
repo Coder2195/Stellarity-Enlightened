@@ -8,6 +8,7 @@ import prismatic.shards.stellarity.Stellarity;
 
 public interface StellarityDamageTypes {
 	ResourceKey<DamageType> BRITTLE = id("brittle");
+	ResourceKey<DamageType> ELECTRIC = id("electric");
 	ResourceKey<DamageType> FROSTBURN = id("frostburn");
 	ResourceKey<DamageType> TAMARIS_EXECUTE = id("tamaris_execute");
 	ResourceKey<DamageType> VOID_ARROW_SHRAPNEL = id("void_arrow_shrapnel");

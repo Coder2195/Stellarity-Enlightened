@@ -32,7 +32,7 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(BlockTagProvider::new);
 		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
-		pack.addProvider(DamageTagProvider::new);
+		pack.addProvider(DamageTypeTagProvider::new);
 		pack.addProvider(EntityTypeTagProvider::new);
 		pack.addProvider(BiomeTagProvider::new);
 		pack.addProvider(ChestLootTableProvider::new);

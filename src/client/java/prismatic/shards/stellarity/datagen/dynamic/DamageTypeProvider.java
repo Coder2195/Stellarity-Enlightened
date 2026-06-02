@@ -13,5 +13,6 @@ public interface DamageTypeProvider {
 		context.register(StellarityDamageTypes.TAMARIS_EXECUTE, new DamageType("stellarity.tamaris_execute", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.VOID_ARROW_SHRAPNEL, new DamageType("stellarity.void_arrow_shrapnel", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.PRISMEMBER, new DamageType("player", DamageScaling.NEVER, 0.1f));
+		context.register(StellarityDamageTypes.ELECTRIC, new DamageType("lightningBolt", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.1f));
 	}
 }

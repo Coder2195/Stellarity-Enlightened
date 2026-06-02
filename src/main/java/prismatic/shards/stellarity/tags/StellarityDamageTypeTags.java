@@ -8,6 +8,7 @@ import prismatic.shards.stellarity.Stellarity;
 public interface StellarityDamageTypeTags {
 	TagKey<DamageType> MELEE = id("melee");
 	TagKey<DamageType> RANGED = id("ranged");
+	TagKey<DamageType> TRIGGERS_FLESH_SPEED_BOOST = id("triggers_flesh_speed_boost");
 
 	static TagKey<DamageType> id(String id) {
 		return TagKey.create(Registries.DAMAGE_TYPE, Stellarity.id(id));

@@ -21,6 +21,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Spectral Fury**
 
+**[+] Copper Elektra Shield**
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**
