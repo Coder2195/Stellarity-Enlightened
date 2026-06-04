@@ -10,12 +10,13 @@ import prismatic.shards.stellarity.Stellarity;
 
 import java.util.List;
 
-public record ClientboundElectricDashPayload(Vec3 from, Vec3 to)
+public record ClientboundElectricDashPayload(Vec3 from, Vec3 to, List<Vec3> creeperPositions)
 	implements CustomPacketPayload {
 	public static final Type<ClientboundElectricDashPayload> TYPE = new Type<>(Stellarity.id("electric_dash"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, ClientboundElectricDashPayload> STREAM_CODEC = StreamCodec.composite(
 		Vec3.STREAM_CODEC, ClientboundElectricDashPayload::from,
 		Vec3.STREAM_CODEC, ClientboundElectricDashPayload::to,
+		Vec3.STREAM_CODEC.apply(ByteBufCodecs.list()), ClientboundElectricDashPayload::creeperPositions,
 		ClientboundElectricDashPayload::new
 	);
 

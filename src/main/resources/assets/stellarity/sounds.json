@@ -573,5 +573,16 @@
 			"stellarity:block/altar_of_the_accursed/craft_8"
 		],
 		"subtitle": "subtitles.stellarity.block.altar_of_the_accursed.craft"
+	},
+	"item.copper_elektra_shield.dash": {
+		"sounds": [
+			"stellarity:item/copper_elektra_shield/dash_1",
+			"stellarity:item/copper_elektra_shield/dash_2",
+			"stellarity:item/copper_elektra_shield/dash_3",
+			"stellarity:item/copper_elektra_shield/dash_4",
+			"stellarity:item/copper_elektra_shield/dash_5",
+			"stellarity:item/copper_elektra_shield/dash_6"
+		],
+		"subtitle": "subtitles.stellarity.item.copper_elektra_shield.dash"
 	}
 }

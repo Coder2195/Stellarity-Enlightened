@@ -97,18 +97,20 @@ public class CopperElektraShield extends ShieldItem {
 		var entitiesHit = ProjectileUtil.getManyEntityHitResult(level, player, ownerPosition, endLocation, new AABB(ownerPosition, endLocation).inflate(2), (entity) -> entity instanceof LivingEntity target && player.canAttack(target), false);
 
 		var electric = level.damageSources().source(StellarityDamageTypes.ELECTRIC, owner, owner);
+		List<Vec3> creeperLocations = new ArrayList<>();
 		for (var hitEntity : entitiesHit) {
 			var hit = hitEntity.getEntity();
 			hit.hurtServer(level, electric, 4);
-			if (hit instanceof Creeper creeper) {
+			if (hit instanceof Creeper creeper && creeper.getRandom().nextFloat() < 0.25F) {
 				creeper.getEntityData().set(Creeper.DATA_IS_POWERED, true);
+				creeperLocations.add(creeper.position());
 			}
 		}
 
 
 		var simulationDistance = (level.getServer().getPlayerList().getSimulationDistance() + 1) * 16;
 		for (var networkPlayer : level.getPlayers(networkPlayer -> networkPlayer.position().distanceTo(endLocation) < simulationDistance)) {
-			ServerPlayNetworking.send(networkPlayer, new ClientboundElectricDashPayload(ownerPosition, endLocation));
+			ServerPlayNetworking.send(networkPlayer, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
 		}
 
 		owner.teleport(new TeleportTransition(level, endLocation, player.getDeltaMovement(), player.getYRot(), player.getXRot(), TeleportTransition.DO_NOTHING));

@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -14,6 +16,7 @@ import prismatic.shards.stellarity.client.registry.screen.ConfigScreen;
 import prismatic.shards.stellarity.networking.ClientboundConfigPayload;
 import prismatic.shards.stellarity.networking.ClientboundElectricDashPayload;
 import prismatic.shards.stellarity.networking.ClientboundVoidArrowHitPayload;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 public interface StellarityClientNetworking {
 	static void init() {
@@ -45,8 +48,10 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundElectricDashPayload.TYPE, (packet, context) -> {
 			var from = packet.from();
 			var to = packet.to();
+			var creeperPositions = packet.creeperPositions();
 
 			var level = context.player().level();
+
 
 			var displacement = to.subtract(from);
 			var particles = Math.floor(displacement.length() / 0.05);
@@ -75,9 +80,14 @@ public interface StellarityClientNetworking {
 					from.z + displacement.z * progress + random.nextGaussian() * 0.4,
 					random.nextGaussian() * 1.1, random.nextGaussian() * 1.1, random.nextGaussian() * 1.1
 				);
-
-
 			}
+
+			for (var creeperPosition : creeperPositions) {
+				level.playLocalSound(creeperPosition.x, creeperPosition.y, creeperPosition.z, SoundEvents.TRIDENT_THUNDER.value(), SoundSource.PLAYERS, 2, 1, false);
+			}
+
+			level.playLocalSound(to.x, to.y, to.z, StellaritySoundEvents.COPPER_ELEKTRA_SHIELD_DASH, SoundSource.PLAYERS, 1, 1, false);
+
 		});
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
