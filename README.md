@@ -10,7 +10,6 @@
 [![Repo Size](https://img.shields.io/github/repo-size/Prismatic-Shards/Stellarity-Enlightened?logo=dropbox&style=for-the-badge&color=red)](https://github.com/Prismatic-Shards/Stellarity-Enlightened)
 
 ---
-
 > [!WARNING]
 > This project is under active development. We are not
 > responsible for data loss, and recommend using this on worlds you

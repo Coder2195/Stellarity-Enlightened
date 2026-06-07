@@ -14,7 +14,7 @@ import prismatic.shards.stellarity.tags.StellarityEntityTypeTags;
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.world.entity.EntityTypeIds.*;
-import static prismatic.shards.stellarity.key.StellarityEntityTypeIds.VOIDED_SLIME;
+import static prismatic.shards.stellarity.key.StellarityEntityTypeIds.*;
 
 public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProvider {
 	public EntityTypeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
@@ -37,6 +37,9 @@ public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProv
 			AREA_EFFECT_CLOUD, ENDER_PEARL, END_CRYSTAL, EVOKER_FANGS, EXPERIENCE_BOTTLE, EXPERIENCE_ORB, EYE_OF_ENDER,
 			FALLING_BLOCK, FISHING_BOBBER, FIREWORK_ROCKET, FIREBALL, ITEM, LLAMA_SPIT, SHULKER_BULLET, SPLASH_POTION, LINGERING_POTION
 		);
+
+		addTags(EntityTypeTags.INVERTED_HEALING_AND_HARM).add(VOIDED_SKELETON, VOIDED_ZOMBIE, FLESH_PIGLIN);
+		addTags(EntityTypeTags.BURN_IN_DAYLIGHT).add(VOIDED_SKELETON, VOIDED_ZOMBIE);
 
 		addTags(EntityTypeTags.FROG_FOOD).add(VOIDED_SLIME);
 	}

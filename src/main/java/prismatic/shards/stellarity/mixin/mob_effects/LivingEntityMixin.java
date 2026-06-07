@@ -2,8 +2,10 @@ package prismatic.shards.stellarity.mixin.mob_effects;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -15,10 +17,15 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import prismatic.shards.stellarity.key.StellarityDamageTypes;
 import prismatic.shards.stellarity.registry.StellarityMobEffects;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 import prismatic.shards.stellarity.util.DamageUtility;
 
+import java.util.Collection;
 import java.util.Map;
 
 
@@ -67,5 +74,10 @@ public abstract class LivingEntityMixin extends Entity {
 		return true;
 	}
 
-
+	@Inject(method = "onEffectsRemoved", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffect;removeAttributeModifiers(Lnet/minecraft/world/entity/ai/attributes/AttributeMap;)V"))
+	private void voidedRemoveSound(Collection<MobEffectInstance> effects, CallbackInfo ci, @Local(name = "effect") MobEffectInstance effect) {
+		if (effect.is(StellarityMobEffects.VOIDED)) {
+			level().playSound(null, blockPosition(), StellaritySoundEvents.VOIDED_DEACTIVATE, SoundSource.NEUTRAL);
+		}
+	}
 }

@@ -21,7 +21,7 @@ public abstract class VillagerMixin extends AbstractVillager {
 
 	@Inject(method = "updateTrades", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/npc/villager/Villager;addOffersFromTradeSet(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/trading/MerchantOffers;Lnet/minecraft/resources/ResourceKey;)V", shift = At.Shift.AFTER))
 	private void additionalTrades(ServerLevel level, CallbackInfo ci, @Local(name = "data") VillagerData data) {
-		var extra = StellarityVillagerProfessions.extraTradeSets(data);
+		var extra = StellarityVillagerProfessions.getExtraTradeSets(data);
 		if (extra == null) return;
 
 		for (var set : extra) {

@@ -1,6 +1,5 @@
 package prismatic.shards.stellarity.registry;
 
-import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
@@ -128,7 +127,7 @@ public interface StellarityVillagerProfessions {
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, WEAPONSMITH_LEVEL_1), Int2ObjectMap.entry(2, WEAPONSMITH_LEVEL_2), Int2ObjectMap.entry(3, WEAPONSMITH_LEVEL_3), Int2ObjectMap.entry(4, WEAPONSMITH_LEVEL_4), Int2ObjectMap.entry(5, WEAPONSMITH_LEVEL_5))
 	);
 
-	HashMap<String, Holder.Reference<VillagerProfession>> professionMap = new HashMap<>() {{
+	HashMap<String, Holder.Reference<VillagerProfession>> PROFESSION_MAP = new HashMap<>() {{
 		put("armorer", ARMORER);
 		put("butcher", BUTCHER);
 		put("cartographer", CARTOGRAPHER);
@@ -149,20 +148,20 @@ public interface StellarityVillagerProfessions {
 		if (!id.getNamespace().equals("minecraft")) {
 			return original;
 		}
-		return professionMap.getOrDefault(id.getPath(), original);
+		return PROFESSION_MAP.getOrDefault(id.getPath(), original);
 	}
 
-	static @Nullable List<ResourceKey<TradeSet>> extraTradeSets(VillagerData data) {
+	static @Nullable List<ResourceKey<TradeSet>> getExtraTradeSets(VillagerData data) {
 		var profession = data.profession();
 		var level = data.level();
 		if (profession.is(ARMORER.key())) {
-			if (level > 2) return null;
 			if (level == 1) return List.of(ARMORER_LEVEL_1_2);
-			return List.of(ARMORER_LEVEL_2_2);
+			if (level == 2) return List.of(ARMORER_LEVEL_2_2);
+			return null;
 		}
 		if (profession.is(BUTCHER.key())) {
-			if (level != 2) return null;
-			return List.of(BUTCHER_LEVEL_2_2);
+			if (level == 2) return List.of(BUTCHER_LEVEL_2_2);
+			return null;
 		}
 
 		return null;

@@ -3,7 +3,7 @@
     "id": "stellarity:enderite_shard"
   },
   "gives": {
-    "id": "minecraft:shield"
+    "id": "stellarity:copper_elektra_shield"
   },
   "max_uses": 2.0,
   "reputation_discount": 0.2,

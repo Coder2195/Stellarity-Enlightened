@@ -49,10 +49,8 @@ public interface VillagerTradeProvider {
 		context.register(ARMORER_2_ENDERITE_SHARD_SPECIAL_IRON_BOOTS, shardToModifierItem(6, IRON_BOOTS, ironArmorModifier, 1, 8, 6, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT, shardToSimple(5, HALLOWED_INGOT, 1, 10, 8, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_CHROUS_PLATING, shardToSimple(5, CHORUS_PLATING, 1, 10, 8, 0.2f));
-		// TODO: update with correct shard based on vote
 		context.register(ARMORER_3_DIAMOND_ENDERITE_SHARD, simpleToShard(DIAMOND, 1, 2, 12, 8, 0.05f));
-		// TODO: update with elektra shield when done
-		context.register(ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD, simpleShardToSimple(SHIELD, 1, 1, SHIELD, 1, 40, 2, 0.2f));
+		context.register(ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD, simpleShardToSimple(SHIELD, 1, 1, COPPER_ELEKTRA_SHIELD, 1, 40, 2, 0.2f));
 		context.register(ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, simpleShardToSimple(PURPUR_BLOCK, 24, 32, ENDERITE_UPGRADE_SMITHING_TEMPLATE, 1, 10, 2, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_SPECIAL_DIAMOND_LEGGINGS, shardToModifierItem(27, DIAMOND_LEGGINGS, diamondArmorModifier, 1, 15, 3, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_SPECIAL_DIAMOND_BOOTS, shardToModifierItem(21, DIAMOND_BOOTS, diamondArmorModifier, 1, 15, 3, 0.2f));

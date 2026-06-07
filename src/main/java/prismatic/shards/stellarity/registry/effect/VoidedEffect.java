@@ -12,12 +12,15 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.registry.StellarityMobEffects;
+import prismatic.shards.stellarity.registry.StellaritySoundEvents;
 
 
 public class VoidedEffect extends MobEffect {
 	public VoidedEffect() {
 		super(MobEffectCategory.HARMFUL, 0x6a3885, PARTICLE);
 		addAttributeModifier(Attributes.MAX_HEALTH, Stellarity.id("voided_effect"), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+		withSoundOnAdded(StellaritySoundEvents.VOIDED_ACTIVATE);
 	}
 
 	public static final ParticleOptions PARTICLE = PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 0);
@@ -36,6 +39,11 @@ public class VoidedEffect extends MobEffect {
 	public boolean applyEffectTick(@NonNull ServerLevel level, LivingEntity livingEntity, int i) {
 		if (livingEntity.getHealth() > livingEntity.getMaxHealth()) {
 			livingEntity.setHealth(livingEntity.getMaxHealth());
+		}
+
+		var voided = livingEntity.getEffect(StellarityMobEffects.VOIDED);
+		if (voided != null && voided.getDuration() == 1) {
+			level.playSound(null, livingEntity.blockPosition(), StellaritySoundEvents.VOIDED_DEACTIVATE, livingEntity.getSoundSource(), 1, 1);
 		}
 
 		return super.applyEffectTick(level, livingEntity, i);

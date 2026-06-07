@@ -52,6 +52,21 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Shot from the Spectral Fury and has no corresponding item, because it disappears
 
+**[*] Voided Skeleton**
+
+- Fixes bug where it takes damage from harming effect
+- Wields the Call of the Void instead of a bow
+- Now can burn in daylight
+
+**[*] Flesh Piglin**
+
+- Fixes bug where it takes damage from harming effect
+
+**[*] Voided Zombie**
+
+- Fixes bug where it takes damage from harming effect
+- Now can burn in daylight
+
 ## Recipes
 
 ### AOTA
@@ -78,6 +93,12 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Added voided slime to spawn settings
 - Added frog to spawn settings
 - Removed tropical fish from spawn settings
+
+## Mob Effects
+
+**[*] Voided**
+
+- Add sound effect for when the effect is applied and removed
 
 ## Versions
 
