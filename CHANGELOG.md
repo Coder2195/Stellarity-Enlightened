@@ -67,11 +67,23 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Fixes bug where it takes damage from harming effect
 - Now can burn in daylight
 
+## Advancements
+
+**[*] Topped Off**
+
+- Uses item attributes now
+
+**[+] Electrified**
+
+- Added a new trigger `stellarity:dash` available for use in datapacks
+
 ## Recipes
 
 ### AOTA
 
 **[+] Sharanga + 3 Diamond + 8 Phantom Membrane + Enderite Upgrade = Spectral Fury**
+
+**[+] Netherite Sword + Enderite Upgrade + 8 Enderite Shard + Wither Skull = Tamaris**
 
 ## Biomes
 

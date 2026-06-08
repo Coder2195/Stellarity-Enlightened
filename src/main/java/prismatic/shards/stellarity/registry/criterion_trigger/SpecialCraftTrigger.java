@@ -1,4 +1,4 @@
-package prismatic.shards.stellarity.registry.advancement_criterion;
+package prismatic.shards.stellarity.registry.criterion_trigger;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

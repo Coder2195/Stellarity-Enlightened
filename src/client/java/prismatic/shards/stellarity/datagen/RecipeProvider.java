@@ -168,6 +168,17 @@ public class RecipeProvider extends FabricRecipeProvider {
 			}},
 			new ItemStackTemplate(SPECTRAL_FURY)
 		));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/tamaris", new AltarUpgradeRecipe(
+			Ingredient.of(NETHERITE_SWORD),
+			new LinkedHashMap<>() {{
+				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
+				put(Ingredient.of(ENDERITE_SHARD), 8);
+				put(Ingredient.of(WITHER_SKELETON_SKULL), 1);
+				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
+			}},
+			new ItemStackTemplate(TAMARIS)
+		));
 	}
 
 	@Override

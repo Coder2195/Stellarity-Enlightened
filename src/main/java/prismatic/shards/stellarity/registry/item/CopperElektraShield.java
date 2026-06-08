@@ -3,11 +3,13 @@ package prismatic.shards.stellarity.registry.item;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Creeper;
@@ -28,6 +30,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.key.StellarityDamageTypes;
 import prismatic.shards.stellarity.networking.ClientboundElectricDashPayload;
+import prismatic.shards.stellarity.registry.StellarityCriteriaTriggers;
 import prismatic.shards.stellarity.registry.StellarityDataComponents;
 import prismatic.shards.stellarity.util.tuple.Tuple2;
 
@@ -94,8 +97,10 @@ public class CopperElektraShield extends ShieldItem {
 
 		var electric = serverLevel.damageSources().source(StellarityDamageTypes.ELECTRIC, player, player);
 		List<Vec3> creeperLocations = new ArrayList<>();
+		List<Entity> victims = new ArrayList<>();
 		for (var hitEntity : entitiesHit) {
 			var hit = hitEntity.getEntity();
+			victims.add(hit);
 			hit.hurtServer(serverLevel, electric, 4);
 			if (hit instanceof Creeper creeper && creeper.getRandom().nextFloat() < 0.25F) {
 				creeper.getEntityData().set(Creeper.DATA_IS_POWERED, true);
@@ -109,6 +114,10 @@ public class CopperElektraShield extends ShieldItem {
 		var simulationDistance = (serverLevel.getServer().getPlayerList().getSimulationDistance() + 1) * 16;
 		for (var networkPlayer : serverLevel.getPlayers(networkPlayer -> networkPlayer.position().distanceTo(endLocation) < simulationDistance)) {
 			ServerPlayNetworking.send(networkPlayer, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
+		}
+
+		if (player instanceof ServerPlayer serverPlayer) {
+			StellarityCriteriaTriggers.DASH.trigger(serverPlayer, victims, itemStack);
 		}
 
 		player.teleport(new TeleportTransition(serverLevel, endLocation, player.getDeltaMovement(), player.getYRot(), player.getXRot(), TeleportTransition.DO_NOTHING));
