@@ -8,10 +8,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.block_entity.AltarOfTheAccursedBlockEntity;
+import prismatic.shards.stellarity.registry.block_entity.ColoredBlockEntity;
 
 
 public interface StellarityBlockEntityTypes {
 	BlockEntityType<AltarOfTheAccursedBlockEntity> ALTAR_OF_THE_ACCURSED = register("altar_of_the_accursed", AltarOfTheAccursedBlockEntity::new, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
+	BlockEntityType<ColoredBlockEntity> COLORED_BLOCK = register("colored_block", ColoredBlockEntity::new, StellarityBlocks.COLORED_LEAVES);
 
 	static <T extends BlockEntity> BlockEntityType<T> register(String id, FabricBlockEntityTypeBuilder.Factory<T> entityFactory, Block... blocks) {
 		return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Stellarity.id(id), FabricBlockEntityTypeBuilder.create(entityFactory, blocks).build());

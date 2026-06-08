@@ -4,12 +4,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.BlockItemTagAppender;
-import net.minecraft.data.tags.TagAppender;
 import net.minecraft.references.ItemIds;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import org.jspecify.annotations.NonNull;
+import prismatic.shards.stellarity.key.StellarityBlockItemIds;
 import prismatic.shards.stellarity.tags.StellarityItemTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -62,5 +62,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
+
+		addTags(StellarityItemTags.COLORED_BLOCKS).add(StellarityBlockItemIds.COLORED_LEAVES);
 	}
 }

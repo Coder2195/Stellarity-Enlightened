@@ -6,10 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -26,7 +23,7 @@ import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.registry.StellarityBlockEntityTypes;
 import prismatic.shards.stellarity.registry.block_entity.AltarOfTheAccursedBlockEntity;
 
-public class AltarOfTheAccursed extends BaseEntityBlock {
+public class AltarOfTheAccursed extends Block implements EntityBlock {
 	public enum PlaceType implements StringRepresentable {
 		NORMAL,
 		CREATIVE,
@@ -78,10 +75,10 @@ public class AltarOfTheAccursed extends BaseEntityBlock {
 		return SHAPE;
 	}
 
-	public static final MapCodec<? extends BaseEntityBlock> CODEC = simpleCodec(AltarOfTheAccursed::new);
+	public static final MapCodec<AltarOfTheAccursed> CODEC = BaseEntityBlock.simpleCodec(AltarOfTheAccursed::new);
 
 	@Override
-	public @NonNull MapCodec<? extends BaseEntityBlock> codec() {
+	public @NonNull MapCodec<AltarOfTheAccursed> codec() {
 		return CODEC;
 	}
 

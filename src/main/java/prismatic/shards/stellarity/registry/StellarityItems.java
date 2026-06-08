@@ -105,6 +105,7 @@ public interface StellarityItems {
 	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityBlockItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 	Item ENDERITE_BLOCK = registerBlock(StellarityBlockItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
 	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
+	Item COLORED_LEAVES = registerBlock(StellarityBlockItemIds.COLORED_LEAVES, StellarityBlocks.COLORED_LEAVES);
 
 	Item CALL_OF_THE_VOID = register(StellarityItemIds.CALL_OF_THE_VOID, CallOfTheVoid::new, CallOfTheVoid.PROPERTIES);
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FishingRodItem::new, new Item.Properties().stacksTo(1).durability(100).rarity(Rarity.UNCOMMON));

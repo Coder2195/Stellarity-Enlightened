@@ -22,26 +22,26 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-public record DyedColor(int rgb) implements TooltipProvider {
-	public static final Codec<DyedColor> CODEC;
-	public static final StreamCodec<ByteBuf, DyedColor> STREAM_CODEC;
+public record Color(int rgb) implements TooltipProvider {
+	public static final Codec<Color> CODEC;
+	public static final StreamCodec<ByteBuf, Color> STREAM_CODEC;
 	public static final int LEATHER_COLOR = -6265536;
 
 	public static int getOrDefault(final ItemStack itemStack, final int defaultColor) {
-		DyedColor color = itemStack.get(StellarityDataComponents.DYED_COLOR);
+		Color color = itemStack.get(StellarityDataComponents.COLOR);
 		return color != null ? ARGB.opaque(color.rgb()) : defaultColor;
 	}
 
 	public static ItemStack applyDyes(final ItemStack itemStack, final List<DyeColor> dyes) {
-		DyedColor currentDye = itemStack.get(StellarityDataComponents.DYED_COLOR);
-		DyedColor newDyedColor = applyDyes(currentDye, dyes);
+		Color currentDye = itemStack.get(StellarityDataComponents.COLOR);
+		Color newColor = applyDyes(currentDye, dyes);
 		ItemStack result = itemStack.copyWithCount(1);
-		result.set(StellarityDataComponents.DYED_COLOR, newDyedColor);
+		result.set(StellarityDataComponents.COLOR, newColor);
 		return result;
 	}
 
 
-	public static DyedColor applyDyes(final DyedColor currentDye, final List<DyeColor> dyes) {
+	public static Color applyDyes(final Color currentDye, final List<DyeColor> dyes) {
 		int redTotal = 0;
 		int greenTotal = 0;
 		int blueTotal = 0;
@@ -79,7 +79,7 @@ public record DyedColor(int rgb) implements TooltipProvider {
 		green = (int) ((float) green * averageIntensity / resultIntensity);
 		blue = (int) ((float) blue * averageIntensity / resultIntensity);
 		int rgb = ARGB.color(0, red, green, blue);
-		return new DyedColor(rgb);
+		return new Color(rgb);
 	}
 
 	public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final @NonNull TooltipFlag flag, final @NonNull DataComponentGetter components) {
@@ -100,7 +100,7 @@ public record DyedColor(int rgb) implements TooltipProvider {
 	}
 
 	static {
-		CODEC = ExtraCodecs.RGB_COLOR_CODEC.xmap(DyedColor::new, DyedColor::rgb);
-		STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.INT, DyedColor::rgb, DyedColor::new);
+		CODEC = ExtraCodecs.RGB_COLOR_CODEC.xmap(Color::new, Color::rgb);
+		STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.INT, Color::rgb, Color::new);
 	}
 }

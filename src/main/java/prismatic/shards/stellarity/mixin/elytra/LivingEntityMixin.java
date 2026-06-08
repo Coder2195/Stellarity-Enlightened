@@ -1,7 +1,6 @@
 package prismatic.shards.stellarity.mixin.elytra;
 
 import net.minecraft.core.particles.DustColorTransitionOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -33,7 +32,7 @@ public abstract class LivingEntityMixin extends Entity {
 		var level = level();
 		if (!level.isClientSide() || !isFallFlying()) return;
 
-		var dyedColor = getItemBySlot(EquipmentSlot.CHEST).get(StellarityDataComponents.DYED_COLOR);
+		var dyedColor = getItemBySlot(EquipmentSlot.CHEST).get(StellarityDataComponents.COLOR);
 		if (dyedColor == null) return;
 		int rgb = dyedColor.rgb();
 		level.addAlwaysVisibleParticle(new DustColorTransitionOptions(rgb, ARGB.average(rgb, 0xFFFFFF), 1.0f), true, getX(), getY(), getZ(), 0, 0, 0);

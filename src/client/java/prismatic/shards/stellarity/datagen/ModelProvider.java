@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.client.registry.item_tint_source.ColorTintSource;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
 
@@ -160,9 +161,11 @@ public class ModelProvider extends FabricModelProvider {
 		);
 
 		generateBush(generators, StellarityBlocks.DUSKBERRY_BUSH);
+
 		generators.createAxisAlignedPillarBlock(StellarityBlocks.ASHEN_FROGLIGHT, TexturedModel.COLUMN);
 
-
+		generators.blockStateOutput.accept(createSimpleBlock(StellarityBlocks.COLORED_LEAVES, plainVariant(TexturedModel.LEAVES.create(StellarityBlocks.COLORED_LEAVES, generators.modelOutput))));
+		generators.registerSimpleTintedItemModel(StellarityBlocks.COLORED_LEAVES, Stellarity.id("block/colored_leaves"), new ColorTintSource());
 	}
 
 	@Override
@@ -181,6 +184,7 @@ public class ModelProvider extends FabricModelProvider {
 			generators.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
 		}
 
+
 		generators.generateTrimmableItem(SHULKER_HELMET, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
 		generators.generateTrimmableItem(SHULKER_CHESTPLATE, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
 		generators.generateTrimmableItem(SHULKER_LEGGINGS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
@@ -195,6 +199,7 @@ public class ModelProvider extends FabricModelProvider {
 				.put(TextureSlot.PARTICLE, getBlockTexture(Blocks.DARK_OAK_PLANKS)),
 			generators.modelOutput
 		);
+
 
 	}
 

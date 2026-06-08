@@ -3,10 +3,15 @@ package prismatic.shards.stellarity.datagen.loot_table;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
+import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.StellarityBlocks;
+import prismatic.shards.stellarity.registry.StellarityDataComponents;
 import prismatic.shards.stellarity.registry.StellarityItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -51,6 +56,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 			item(StellarityItems.DUSKBERRY).apply(count(num(1)))
 		)));
 
-
+		// todo: actual saplings
+		add(StellarityBlocks.COLORED_LEAVES, createLeavesDrops(StellarityBlocks.COLORED_LEAVES, StellarityBlocks.COLORED_LEAVES, NORMAL_LEAVES_SAPLING_CHANCES)
+			.apply(copyBlockEntity().include(StellarityDataComponents.COLOR).build()));
 	}
 }

@@ -7,19 +7,13 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RootedDirtBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.key.StellarityBlockItemIds;
-import prismatic.shards.stellarity.registry.block.AltarOfTheAccursed;
-import prismatic.shards.stellarity.registry.block.DuskberryBush;
-import prismatic.shards.stellarity.registry.block.EnderDirtPath;
-import prismatic.shards.stellarity.registry.block.EnderGrassBlock;
+import prismatic.shards.stellarity.registry.block.*;
 
 import java.util.List;
 import java.util.function.Function;
@@ -52,6 +46,7 @@ public interface StellarityBlocks {
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)
 		.sound(SoundType.GRAVEL));
+	Block COLORED_LEAVES = register(StellarityBlockItemIds.COLORED_LEAVES, ColoredLeavesBlock::new, Blocks.leavesProperties(SoundType.GRASS));
 
 
 	static Block register(BlockItemId key, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {

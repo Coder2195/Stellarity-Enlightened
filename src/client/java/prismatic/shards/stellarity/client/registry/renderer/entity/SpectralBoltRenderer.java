@@ -9,7 +9,7 @@ import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.entity.SpectralBolt;
 
 public class SpectralBoltRenderer extends ArrowRenderer<SpectralBolt, ArrowRenderState> {
-	public static final Identifier TEXTURE = Stellarity.mcId("textures/entity/projectiles/arrow_spectral.png");
+	public static final Identifier TEXTURE = Stellarity.id("textures/entity/projectiles/spectral_bolt.png");
 
 	public SpectralBoltRenderer(final EntityRendererProvider.Context context) {
 		super(context);

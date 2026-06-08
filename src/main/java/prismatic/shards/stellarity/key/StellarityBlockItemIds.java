@@ -16,6 +16,7 @@ public interface StellarityBlockItemIds {
 	BlockItemId ENDERITE_BLOCK = id("enderite_block");
 	BlockItemId COARSE_ENDER_DIRT = id("coarse_ender_dirt");
 	BlockItemId ALTAR_OF_THE_SACRED = id("altar_of_the_sacred");
+	BlockItemId COLORED_LEAVES = id("colored_leaves");
 
 	static BlockItemId id(String id) {
 		return BlockItemId.create(Stellarity.id(id), Stellarity.id(id));

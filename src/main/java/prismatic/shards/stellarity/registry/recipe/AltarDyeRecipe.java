@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.registry.StellarityDataComponents;
 import prismatic.shards.stellarity.registry.StellarityRecipeSerializers;
-import prismatic.shards.stellarity.registry.data_component.DyedColor;
+import prismatic.shards.stellarity.registry.data_component.Color;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -54,19 +54,19 @@ public record AltarDyeRecipe(Ingredient item) implements AltarRecipe {
 		}
 
 		if (waterBucket) {
-			if (!dyes.isEmpty() || target == null || !target.has(StellarityDataComponents.DYED_COLOR)) return null;
+			if (!dyes.isEmpty() || target == null || !target.has(StellarityDataComponents.COLOR)) return null;
 
-			target.remove(StellarityDataComponents.DYED_COLOR);
+			target.remove(StellarityDataComponents.COLOR);
 
 			return new Output(new HashMap<>(), target, new ItemStack(Items.BUCKET));
 		}
 
 		if (target == null || dyes.isEmpty()) return null;
 
-		DyedColor dyedItemColor = target.get(StellarityDataComponents.DYED_COLOR);
-		if (dyedItemColor == null) dyedItemColor = new DyedColor(dyes.removeFirst().getTextureDiffuseColor());
+		Color dyedItemColor = target.get(StellarityDataComponents.COLOR);
+		if (dyedItemColor == null) dyedItemColor = new Color(dyes.removeFirst().getTextureDiffuseColor());
 
-		target.set(StellarityDataComponents.DYED_COLOR, DyedColor.applyDyes(dyedItemColor, dyes));
+		target.set(StellarityDataComponents.COLOR, Color.applyDyes(dyedItemColor, dyes));
 
 		return new Output(new HashMap<>(), target);
 	}

@@ -11,7 +11,8 @@ public class StellarityClient implements ClientModInitializer {
 		Stellarity.LOGGER.info("Stellarity Client Initializing");
 
 		StellarityEntityModelLayers.init();
-		StellarityModels.init();
+		StellarityBlockTintSources.init();
+		StellarityItemTintSources.init();
 		StellarityClientParticles.init();
 		StellarityEntityRenderers.init();
 		StellarityClientNetworking.init();

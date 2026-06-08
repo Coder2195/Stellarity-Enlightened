@@ -8,10 +8,10 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.registry.data_component.DyedColor;
+import prismatic.shards.stellarity.registry.data_component.Color;
 
 public interface StellarityDataComponents {
-	DataComponentType<DyedColor> DYED_COLOR = register("dyed_color", DataComponentType.<DyedColor>builder().persistent(DyedColor.CODEC).networkSynchronized(DyedColor.STREAM_CODEC));
+	DataComponentType<Color> COLOR = register("color", DataComponentType.<Color>builder().persistent(Color.CODEC).networkSynchronized(Color.STREAM_CODEC));
 	DataComponentType<Long> RECHARGES_AT = register("recharges_at", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.LONG));
 
 
@@ -22,6 +22,6 @@ public interface StellarityDataComponents {
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Components");
 
-		ItemComponentTooltipProviderRegistry.addAfter(DataComponents.DYED_COLOR, DYED_COLOR);
+		ItemComponentTooltipProviderRegistry.addAfter(DataComponents.DYED_COLOR, COLOR);
 	}
 }
