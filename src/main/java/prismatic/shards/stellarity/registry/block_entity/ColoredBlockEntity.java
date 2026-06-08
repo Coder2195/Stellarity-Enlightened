@@ -22,7 +22,7 @@ import prismatic.shards.stellarity.registry.StellarityDataComponents;
 import prismatic.shards.stellarity.registry.data_component.Color;
 
 public class ColoredBlockEntity extends BlockEntity {
-	private int color = -1;
+	private @Nullable Integer color = null;
 	private int defaultColor;
 
 	public ColoredBlockEntity(BlockPos worldPosition, BlockState blockState) {
@@ -40,7 +40,7 @@ public class ColoredBlockEntity extends BlockEntity {
 
 
 	public int getColor() {
-		return color < 0 ? defaultColor : color;
+		return color == null ? defaultColor : color;
 	}
 
 	public void setColor(int color) {
@@ -58,7 +58,7 @@ public class ColoredBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(@NonNull ValueOutput output) {
 		super.saveAdditional(output);
-		output.store("color", Codec.INT, color);
+		output.store("color", Codec.INT, getColor());
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class ColoredBlockEntity extends BlockEntity {
 	@Override
 	protected void collectImplicitComponents(DataComponentMap.@NonNull Builder components) {
 		super.collectImplicitComponents(components);
-		components.set(StellarityDataComponents.COLOR, new Color(this.color));
+		components.set(StellarityDataComponents.COLOR, new Color(getColor()));
 	}
 
 	@Override

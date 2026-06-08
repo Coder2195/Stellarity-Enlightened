@@ -9,8 +9,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.ColorCollection;
 import prismatic.shards.stellarity.Stellarity;
+import prismatic.shards.stellarity.registry.data_component.Color;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static net.minecraft.core.registries.BuiltInRegistries.CREATIVE_MODE_TAB;
@@ -28,6 +31,7 @@ public interface StellarityCreativeModeTabs {
 		PHANTOM_ITEM_FRAME,
 		ENDERITE_BLOCK
 	};
+
 
 	ItemLike[] FOOD_ITEMS = new ItemLike[]{
 		CRYSTAL_HEARTFISH,
@@ -60,8 +64,7 @@ public interface StellarityCreativeModeTabs {
 	};
 
 
-	@SuppressWarnings("unchecked")
-	Supplier<ItemStack>[] FOOD_ITEMSTACKS = new Supplier[]{
+	List<Supplier<ItemStack>> FOOD_ITEMSTACKS = List.of(
 		AMARENE_POTION,
 		BLIND_RAGE_POTION,
 		LONG_BLIND_RAGE_POTION,
@@ -88,7 +91,7 @@ public interface StellarityCreativeModeTabs {
 		STRONG_REGENERAGA_POTION,
 		LUCK_POTION,
 		CHORUS_JUICE
-	};
+	);
 
 
 	ItemLike[] EQUIPMENT_ITEMS = new ItemLike[]{
@@ -134,6 +137,13 @@ public interface StellarityCreativeModeTabs {
 		VOIDED_ZOMBIE_SPAWN_EGG,
 		FLESH_PIGLIN_SPAWN_EGG
 	};
+	List<Supplier<List<ItemStack>>> BLOCKS_BATCH_ITEMSTACKS = List.of(
+		() -> ColorCollection.VALUES.asList().stream().map(color -> {
+			var stack = new ItemStack(StellarityBlocks.COLORED_LEAVES);
+			stack.set(StellarityDataComponents.COLOR, new Color(color.getTextureDiffuseColor() & 0x00FFFFFF));
+			return stack;
+		}).toList()
+	);
 
 	static ResourceKey<CreativeModeTab> key(String key) {
 		return Stellarity.key(CREATIVE_MODE_TAB.key(), key);
@@ -173,7 +183,7 @@ public interface StellarityCreativeModeTabs {
 
 	static void init() {
 		register(key("food"), FOOD, FOOD_ITEMS, FOOD_ITEMSTACKS);
-		register(key("blocks"), BLOCKS, BLOCKS_ITEMS);
+		register(key("blocks"), BLOCKS, BLOCKS_ITEMS, List.of(), BLOCKS_BATCH_ITEMSTACKS);
 		register(key("equipment"), EQUIPMENT, EQUIPMENT_ITEMS);
 		register(key("ingredients"), INGREDIENTS, INGREDIENT_ITEMS);
 		register(key("trinkets"), TRINKETS, TRINKET_ITEMS);
@@ -184,7 +194,7 @@ public interface StellarityCreativeModeTabs {
 
 	}
 
-	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, Supplier<ItemStack>[] stacks) {
+	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<Supplier<ItemStack>> stacks, List<Supplier<List<ItemStack>>> batchStacks) {
 		if (key.identifier().getNamespace().equals(Stellarity.MOD_ID))
 			Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, key, tab);
 
@@ -196,13 +206,21 @@ public interface StellarityCreativeModeTabs {
 			for (Supplier<ItemStack> stack : stacks) {
 				itemGroup.accept(stack.get());
 			}
+
+			for (Supplier<List<ItemStack>> batch : batchStacks) {
+				itemGroup.acceptAll(batch.get());
+			}
 		});
 
 
 	}
 
+	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<Supplier<ItemStack>> stacks) {
+		register(key, tab, items, stacks, List.of());
+	}
+
 	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items) {
-		register(key, tab, items, new Supplier[0]);
+		register(key, tab, items, List.of(), List.of());
 	}
 
 }
