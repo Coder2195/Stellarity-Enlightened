@@ -42,7 +42,6 @@ public interface StellarityClientTick {
 
 				if ((rechargesAt - gameTime) % CopperElektraShield.DASH_CHARGE_TIME == 1)
 					player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 1.0f, 0f);
-				player.sendOverlayMessage(Component.literal("Recharges in: " + ((rechargesAt - gameTime) / 20 + 1) + "s"));
 			}
 		});
 	}
