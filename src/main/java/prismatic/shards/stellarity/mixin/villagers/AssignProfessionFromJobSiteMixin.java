@@ -19,7 +19,7 @@ public class AssignProfessionFromJobSiteMixin {
 	@Expression("profession")
 	@ModifyExpressionValue(method = "lambda$create$6", at = @At("MIXINEXTRAS:EXPRESSION"))
 	private static Holder.Reference<VillagerProfession> mapToStellarity(Holder.Reference<VillagerProfession> original, @Local(name = "body", argsOnly = true) Villager body) {
-		if (body.getVillagerData().type().is(StellarityVillagerTypes.END))
+		if (body.getVillagerData().type().is(StellarityVillagerTypes.END.key()))
 			return StellarityVillagerProfessions.mapVanilla(original);
 		return original;
 	}

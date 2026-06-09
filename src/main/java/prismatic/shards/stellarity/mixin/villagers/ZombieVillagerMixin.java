@@ -2,6 +2,7 @@ package prismatic.shards.stellarity.mixin.villagers;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -9,12 +10,15 @@ import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.entity.monster.zombie.ZombieVillager;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.npc.villager.VillagerData;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import prismatic.shards.stellarity.registry.StellarityVillagerProfessions;
+import prismatic.shards.stellarity.registry.StellarityVillagerTypes;
 import prismatic.shards.stellarity.tags.StellarityVillagerProfessionTags;
 
 import java.util.function.Supplier;
@@ -40,7 +44,10 @@ public abstract class ZombieVillagerMixin extends Zombie {
 
 	@Unique
 	private VillagerData preventStellarityVillager(VillagerData original) {
-		if (level().dimensionTypeRegistration().is(BuiltinDimensionTypes.END)) return original;
+		if (level().dimensionTypeRegistration().is(BuiltinDimensionTypes.END)) {
+			if (!(original.profession() instanceof Holder.Reference<VillagerProfession> professionReference)) return original;
+			return original.withProfession(StellarityVillagerProfessions.mapVanilla(professionReference));
+		}
 
 
 		var old = original;

@@ -71,6 +71,11 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Fixes bug where it takes damage from harming effect
 - Now can burn in daylight
 
+**[+] Zombie Villager**
+
+- Corrected Stellarity professions from spawning in non end biomes
+- Added proper textures for Stellarity professions
+
 ## Advancements
 
 **[*] Topped Off**

@@ -19,7 +19,7 @@ public class VillagerTypeMixin {
 	@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 	@ModifyExpressionValue(method = "byBiome", at = @At(value = "INVOKE", target = "Ljava/util/Optional;map(Ljava/util/function/Function;)Ljava/util/Optional;"))
 	private static Optional<ResourceKey<VillagerType>> byStellarityBiome(Optional<ResourceKey<VillagerType>> original, @Local(argsOnly = true, name = "biome") Holder<Biome> biome) {
-		if (biome.is(BiomeTags.IS_END)) return Optional.of(StellarityVillagerTypes.END);
+		if (biome.is(BiomeTags.IS_END)) return Optional.of(StellarityVillagerTypes.END.key());
 
 		return original;
 	}

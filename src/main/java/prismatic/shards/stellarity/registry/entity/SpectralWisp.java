@@ -175,6 +175,7 @@ public class SpectralWisp extends AbstractArrow {
 		output.storeNullable("last_hit_entity", EntityReference.codec(), lastHitEntity);
 		output.storeNullable("current_target", EntityReference.codec(), currentTarget);
 		output.store("speed", Codec.DOUBLE, speed);
+		output.store("live_time", Codec.INT, liveTime);
 	}
 
 
@@ -186,6 +187,7 @@ public class SpectralWisp extends AbstractArrow {
 		input.read("last_hit_entity", EntityReference.<LivingEntity>codec()).ifPresent(ref -> this.lastHitEntity = ref);
 		input.read("current_target", EntityReference.<LivingEntity>codec()).ifPresent(ref -> this.currentTarget = ref);
 		input.read("speed", Codec.DOUBLE).ifPresent(value -> this.speed = value);
+		input.read("live_time", Codec.INT).ifPresent(value -> this.liveTime = value);
 	}
 
 
