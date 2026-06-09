@@ -33,6 +33,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Added proper crafting noise for the altar
 
+**[+] Colored Leaves**
+
+- Experimental, may be removed. Used as proof of concept for future trees.
+
 ## Entities
 
 **[+] Voided Arrow**
