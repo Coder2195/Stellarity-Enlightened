@@ -23,6 +23,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Copper Elektra Shield**
 
+**[+] Enderman's Hand**
+
+**[+] Dragon's Eye**
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**

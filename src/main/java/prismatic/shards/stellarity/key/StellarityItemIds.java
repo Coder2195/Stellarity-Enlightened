@@ -119,6 +119,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SLIME);
 	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityTypeIds.FLESH_PIGLIN);
 
+
 	static ResourceKey<Item> id(String id) {
 		return Stellarity.key(Registries.ITEM, id);
 	}

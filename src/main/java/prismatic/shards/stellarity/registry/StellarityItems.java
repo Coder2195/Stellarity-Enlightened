@@ -15,12 +15,16 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
@@ -268,6 +272,13 @@ public interface StellarityItems {
 	Item SHARANGA = register(StellarityItemIds.SHARANGA, Sharanga::new, Sharanga.PROPERTIES);
 	Item SPECTRAL_FURY = register(StellarityItemIds.SPECTRAL_FURY, SpectralFury::new, SpectralFury.PROPERTIES);
 	Item COPPER_ELEKTRA_SHIELD = register(StellarityItemIds.COPPER_ELEKTRA_SHIELD, CopperElektraShield::new, CopperElektraShield.PROPERTIES);
+	Item ENDERMANS_HAND = register(StellarityItemIds.ENDERMANS_HAND, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)
+		.attributes(ItemAttributeModifiers.builder()
+			.add(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(Stellarity.id("endermans_hand"), 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
+			.build())
+		.component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
+	);
+	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -435,7 +446,7 @@ public interface StellarityItems {
 		NAME_COLORS.put(SHULKER_BODY, TextColor.WHITE.getValue());
 		NAME_COLORS.put(FRIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
 		NAME_COLORS.put(PRISMITE, TextColor.YELLOW.getValue());
-//		NAME_COLORS.put(ENDERMANS_HAND, 0xed8cff);
+		NAME_COLORS.put(ENDERMANS_HAND, 0xed8cff);
 		NAME_COLORS.put(DUSKBERRY, 0xAB6AD1);
 		NAME_COLORS.put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
 //		NAME_COLORS.put(SOARING_INSIGNIA, 0xFF76D0);

@@ -152,6 +152,8 @@ public interface StellarityTooltips {
 				desc(VOID_LOCKET, 2),
 				desc(WINGED_KEY, 1)
 			).forEach(b -> b.build(this::put));
+
+
 		}
 
 		public DescriptionBuilder desc(ResourceKey<Item> item, int lines) {

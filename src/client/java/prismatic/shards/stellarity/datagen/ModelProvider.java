@@ -5,14 +5,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.random.WeightedList;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -20,8 +18,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.client.registry.item_tint_source.ColorTintSource;
-import prismatic.shards.stellarity.registry.StellarityBlocks;
 import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
+import prismatic.shards.stellarity.registry.StellarityBlocks;
 
 import java.util.List;
 import java.util.Optional;
@@ -84,7 +82,9 @@ public class ModelProvider extends FabricModelProvider {
 		FROST_MINNOW,
 		GOOSH,
 		CHORUS_STEW,
-		POTASSIFISH
+		POTASSIFISH,
+		ENDERMANS_HAND,
+		DRAGONS_EYE,
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{

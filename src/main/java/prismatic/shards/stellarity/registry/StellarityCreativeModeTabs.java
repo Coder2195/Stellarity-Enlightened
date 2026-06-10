@@ -127,16 +127,21 @@ public interface StellarityCreativeModeTabs {
 		PRISMATIC_PEARL,
 		ENDONOMICON,
 		SATCHEL_OF_VOIDS,
-		DUSKBERRY
+		DUSKBERRY,
+		ENDERMANS_HAND,
+		DRAGONS_EYE,
 	};
 
 	ItemLike[] SPAWN_EGGS_ITEMS = new ItemLike[]{
+		// running mc now
 		VOIDED_SILVERFISH_SPAWN_EGG,
 		VOIDED_SKELETON_SPAWN_EGG,
 		VOIDED_SLIME_SPAWN_EGG,
 		VOIDED_ZOMBIE_SPAWN_EGG,
 		FLESH_PIGLIN_SPAWN_EGG
 	};
+
+
 	List<Supplier<List<ItemStack>>> BLOCKS_BATCH_ITEMSTACKS = List.of(
 		() -> ColorCollection.VALUES.asList().stream().map(color -> {
 			var stack = new ItemStack(StellarityBlocks.COLORED_LEAVES);
