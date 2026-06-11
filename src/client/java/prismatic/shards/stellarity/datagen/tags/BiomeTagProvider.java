@@ -10,8 +10,6 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import org.jspecify.annotations.NonNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
@@ -30,7 +28,7 @@ public class BiomeTagProvider extends FabricTagsProvider<Biome> {
 	}
 
 	public static Stream<ResourceKey<Biome>> outerVanilla() {
-		return Stream.of(END_BARRENS, END_HIGHLANDS, END_MIDLANDS, SMALL_END_ISLANDS);
+		return Stream.of(END_BARRENS, END_HIGHLANDS, END_MIDLANDS);
 	}
 
 

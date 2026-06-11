@@ -3,7 +3,6 @@
     "#stellarity:all",
     "minecraft:end_barrens",
     "minecraft:end_highlands",
-    "minecraft:end_midlands",
-    "minecraft:small_end_islands"
+    "minecraft:end_midlands"
   ]
 }

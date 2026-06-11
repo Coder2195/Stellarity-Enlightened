@@ -270,13 +270,13 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			biomes.add(name);
 			DISCOVER_ALL_BIOMES_BUILDER.addCriterion(name, PlayerTrigger.TriggerInstance.located(new LocationPredicate.Builder().setBiomes(HolderSet.direct(registryLookup.getOrThrow(biome)))));
 		}
-		DISCOVER_ALL_BIOMES_BUILDER.requirements(requires(biomes.toArray(String[]::new)));
+		var DISCOVER_ALL_BIOMES = DISCOVER_ALL_BIOMES_BUILDER.requirements(requires(biomes.toArray(String[]::new))).build(Stellarity.id("exploration/discover_all_biomes"));
 
 
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
-			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM
+			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES
 		)) {
 			consumer.accept(advancement);
 		}
