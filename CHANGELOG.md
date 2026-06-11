@@ -80,6 +80,15 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - Corrected Stellarity professions from spawning in non end biomes
 - Added proper textures for Stellarity professions
 
+**[*] Shulker**
+
+- Modified loot table to Stellarity's loot table
+
+**[*] Phantom**
+
+- Modified loot table to Stellarity's loot table
+- Placeholder for phantom wing is present
+
 ## Advancements
 
 **[*] Topped Off**

@@ -19,6 +19,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
@@ -32,10 +33,7 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.*;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.*;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
@@ -153,6 +151,7 @@ public interface LootUtil {
 	static ValueCheckCondition valueCheck(NumberProvider value, IntRange range) {
 		return new ValueCheckCondition(value, range);
 	}
+
 
 	static EnchantmentLevelProvider enchantNum(LevelBasedValue amount) {
 		return EnchantmentLevelProvider.forEnchantmentLevel(amount);
@@ -290,6 +289,7 @@ public interface LootUtil {
 	static LootItemCondition.Builder chanceEnchanted(HolderLookup.Provider provider, float chance, float perLevel) {
 		return LootItemRandomChanceWithEnchantedBonusCondition.randomChanceAndLootingBoost(provider, chance, perLevel);
 	}
+
 
 	static LootItemCondition.Builder chanceEnchanted(Holder<Enchantment> enchantment, float chance, LevelBasedValue perLevel) {
 		return () -> new LootItemRandomChanceWithEnchantedBonusCondition(chance, perLevel, enchantment);
