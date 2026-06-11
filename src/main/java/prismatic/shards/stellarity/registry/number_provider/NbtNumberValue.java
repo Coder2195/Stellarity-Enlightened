@@ -11,14 +11,14 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import prismatic.shards.stellarity.Stellarity;
 
-public record EntityNbtValue(
+public record NbtNumberValue(
 	LootContext.EntityTarget entityTarget, NbtPathArgument.NbtPath path, float defaultValue
 ) implements NumberProvider {
-	public static final MapCodec<EntityNbtValue> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
-		LootContext.EntityTarget.CODEC.fieldOf("target").forGetter(EntityNbtValue::entityTarget),
-		NbtPathArgument.NbtPath.CODEC.fieldOf("path").forGetter(EntityNbtValue::path),
-		Codec.FLOAT.optionalFieldOf("default_value", 0f).forGetter(EntityNbtValue::defaultValue)
-	).apply(builder, EntityNbtValue::new));
+	public static final MapCodec<NbtNumberValue> CODEC = RecordCodecBuilder.mapCodec(builder -> builder.group(
+		LootContext.EntityTarget.CODEC.fieldOf("target").forGetter(NbtNumberValue::entityTarget),
+		NbtPathArgument.NbtPath.CODEC.fieldOf("path").forGetter(NbtNumberValue::path),
+		Codec.FLOAT.optionalFieldOf("default_value", 0f).forGetter(NbtNumberValue::defaultValue)
+	).apply(builder, NbtNumberValue::new));
 
 	@Override
 	public float getFloat(LootContext context) {
@@ -33,7 +33,7 @@ public record EntityNbtValue(
 				if (tag instanceof NumericTag numericTag) return numericTag.floatValue();
 			}
 		} catch (CommandSyntaxException e) {
-			Stellarity.LOGGER.info("The path in one of the NBT Value Providers was invalid. {}, {}, {}", entityTarget, path, defaultValue);
+			Stellarity.LOGGER.info("The path in one of the NBT Value Providers was invalid. {}, {}, {} \nException: {}", entityTarget, path, defaultValue, e.toString());
 			return defaultValue;
 		}
 

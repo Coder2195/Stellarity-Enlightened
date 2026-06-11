@@ -12,9 +12,11 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,13 +31,12 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.key.StellarityBlockItemIds;
-import prismatic.shards.stellarity.key.StellarityItemIds;
-import prismatic.shards.stellarity.key.StellarityJukeboxSongs;
-import prismatic.shards.stellarity.key.StellarityMobVariants;
+import prismatic.shards.stellarity.key.*;
 import prismatic.shards.stellarity.registry.item.*;
 
 import java.util.Arrays;
@@ -279,6 +280,15 @@ public interface StellarityItems {
 		.component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
 	);
 	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1));
+	Item PHANTOM_WINGS = register(StellarityItemIds.PHANTOM_WINGS, new Item.Properties().stacksTo(1).durability(70).rarity(Rarity.UNCOMMON)
+		.component(DataComponents.GLIDER, Unit.INSTANCE)
+		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.PHANTOM_WINGS).setDamageOnHurt(false).build())
+		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
+			.add(Attributes.GRAVITY, new AttributeModifier(Stellarity.id("phantom_wings"), 0.65, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.add(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(Stellarity.id("phantom_wings"), 8, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("phantom_wings"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.build())
+	);
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -470,7 +480,7 @@ public interface StellarityItems {
 		NAME_COLORS.put(SHULKER_CHESTPLATE, 0x976A97);
 		NAME_COLORS.put(SHULKER_LEGGINGS, 0x976A97);
 //		NAME_COLORS.put(DRAGON_WINGS, 0x9936D6);
-//		NAME_COLORS.put(PHANTOM_WINGS, TextColor.YELLOW.getValue());
+		NAME_COLORS.put(PHANTOM_WINGS, TextColor.YELLOW.getValue());
 //		NAME_COLORS.put(EMPRESS_WINGS, 0xFF76D0);
 //		NAME_COLORS.put(HALLOWED_HELMET, 0xFFDD52);
 //		NAME_COLORS.put(HALLOWED_BOOTS, 0xFFDD52);

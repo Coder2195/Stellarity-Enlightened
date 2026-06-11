@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:altar_of_the_accursed/altar_of_the_accursed_intro",
+  "parent": "stellarity:altar_of_the_accursed/altar_of_the_accursed_intro",
   "criteria": {
     "craft": {
       "conditions": {

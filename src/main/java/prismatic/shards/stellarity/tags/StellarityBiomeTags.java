@@ -8,7 +8,7 @@ import prismatic.shards.stellarity.Stellarity;
 public interface StellarityBiomeTags {
 	TagKey<Biome> SNOWY = id("snowy");
 	TagKey<Biome> ALL_STELLARITY = id("all");
-	TagKey<Biome> ALL_OUTER = id("all_with_mc");
+	TagKey<Biome> ALL_OUTER = id("all_outer");
 
 	TagKey<Biome> SPAWNS_ASH_VOIDED_SKELETON = id("spawns_ash_voided_skeleton");
 	TagKey<Biome> SPAWNS_COLD_VOIDED_SKELETON = id("spawns_cold_voided_skeleton");

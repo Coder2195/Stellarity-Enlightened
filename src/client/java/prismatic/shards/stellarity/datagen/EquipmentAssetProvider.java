@@ -4,7 +4,6 @@ import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import org.jspecify.annotations.NonNull;
@@ -13,6 +12,7 @@ import prismatic.shards.stellarity.key.StellarityEquipmentAssets;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
@@ -25,20 +25,24 @@ public class EquipmentAssetProvider extends net.minecraft.client.data.models.Equ
 	}
 
 	private static void bootstrap(final BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {
-		consumer.accept(StellarityEquipmentAssets.SHULKER, onlyHumanoid("shulker"));
+		consumer.accept(StellarityEquipmentAssets.SHULKER, armor("shulker"));
+		consumer.accept(StellarityEquipmentAssets.PHANTOM_WINGS, wings("phantom"));
+		consumer.accept(StellarityEquipmentAssets.DRAGON_WINGS, wings("dragon"));
+		consumer.accept(StellarityEquipmentAssets.EMPRESS_WINGS, wings("empress"));
+		consumer.accept(StellarityEquipmentAssets.FLORAL, armor("floral"));
+		consumer.accept(StellarityEquipmentAssets.CHAMPION, armor("champion"));
+		consumer.accept(StellarityEquipmentAssets.HALLOWED, armor("hallowed"));
 	}
 
-	private static EquipmentClientInfo onlyHumanoid(final String name) {
+	private static EquipmentClientInfo armor(final String name) {
 		return EquipmentClientInfo.builder().addHumanoidLayers(Stellarity.id(name)).build();
 	}
 
-	private static EquipmentClientInfo humanoidAndMountArmor(final String name) {
-		return EquipmentClientInfo.builder()
-			.addHumanoidLayers(Identifier.withDefaultNamespace(name))
-			.addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace(name), false))
-			.addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.withDefaultNamespace(name), false))
-			.build();
+
+	private static EquipmentClientInfo wings(final String name) {
+		return EquipmentClientInfo.builder().addLayers(EquipmentClientInfo.LayerType.WINGS, new EquipmentClientInfo.Layer[]{new EquipmentClientInfo.Layer(Stellarity.id(name), Optional.empty(), false)}).build();
 	}
+
 
 	@Override
 	public @NonNull CompletableFuture<?> run(final @NonNull CachedOutput cache) {

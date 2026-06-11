@@ -27,6 +27,8 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Dragon's Eye**
 
+**[+] Phantom Wings**
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**
@@ -87,7 +89,9 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 **[*] Phantom**
 
 - Modified loot table to Stellarity's loot table
-- Placeholder for phantom wing is present
+- New entity sub predicate `stellarity:nbt_number` is available for use in datapacks
+- New number provider `stellarity:nbt_number` is available for use in datapacks
+- New number provider `stellarity:multiply` is available for use in datapacks
 
 ## Advancements
 
@@ -97,7 +101,17 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Electrified**
 
-- Added a new trigger `stellarity:dash` available for use in datapacks
+- New trigger `stellarity:dash` is available for use in datapacks
+
+**[+] Night Sky Stalkers**
+
+**[+] Worsening Nightmares**
+
+**[+] Timeless Traveler**
+
+**[*] Topped Off**
+
+- New entity sub predicate `stellarity:entity_attribute_modifiers` is available for use in datapacks
 
 ## Recipes
 

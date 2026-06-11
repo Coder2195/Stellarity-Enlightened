@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:altar_of_the_accursed/cursed_crafting",
+  "parent": "stellarity:altar_of_the_accursed/cursed_crafting",
   "criteria": {
     "kill": {
       "conditions": {

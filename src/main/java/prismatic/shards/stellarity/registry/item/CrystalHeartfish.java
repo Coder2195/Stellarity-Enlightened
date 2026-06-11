@@ -38,30 +38,20 @@ public class CrystalHeartfish extends Item {
 			this.addHealth(livingEntity);
 		}
 		return super.finishUsingItem(itemStack, level, livingEntity);
-
 	}
 
 	public void addHealth(LivingEntity entity) {
 		AttributeInstance maxHPAttribute = entity.getAttributes().getInstance(Attributes.MAX_HEALTH);
 		if (maxHPAttribute == null) return;
 
-		AttributeModifier oldModifier = maxHPAttribute.getModifier(Stellarity.id("crystal_heartfish_health_bonus"));
+		AttributeModifier oldModifier = maxHPAttribute.getModifier(Stellarity.id("crystal_heartfish"));
 
 		double amount = oldModifier == null ? 1 : oldModifier.amount() + 1;
-
-		if (amount >= 10) {
-			if (entity instanceof ServerPlayer player) {
-				MinecraftServer server = Objects.requireNonNull(player.level().getServer());
-				var location = Stellarity.id("void_fishing/topped_off");
-				AdvancementHolder advancement = Objects.requireNonNull(server.getAdvancements().get(location));
-				AdvancementCommands.Action.GRANT.perform(player, List.of(advancement), true);
-			}
-		}
 
 		if (amount > 10) return;
 
 		AttributeModifier newModifier = new AttributeModifier(
-			Stellarity.id("crystal_heartfish_health_bonus"),
+			Stellarity.id("crystal_heartfish"),
 			amount,
 			AttributeModifier.Operation.ADD_VALUE
 		);

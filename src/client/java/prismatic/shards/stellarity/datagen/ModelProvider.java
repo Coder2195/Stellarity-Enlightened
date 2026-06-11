@@ -95,8 +95,6 @@ public class ModelProvider extends FabricModelProvider {
 	};
 
 	public void generateBush(BlockModelGenerators generators, Block block) {
-
-
 		generators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
 			.with(PropertyDispatch.initial(BlockStateProperties.AGE_3)
 				.select(0, plainVariant(generators.createSuffixedVariant(block, "_stage0", ModelTemplates.CROSS, TextureMapping::cross)))
@@ -184,6 +182,7 @@ public class ModelProvider extends FabricModelProvider {
 			generators.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
 		}
 
+		generators.generateElytra(PHANTOM_WINGS);
 
 		generators.generateTrimmableItem(SHULKER_HELMET, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
 		generators.generateTrimmableItem(SHULKER_CHESTPLATE, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);

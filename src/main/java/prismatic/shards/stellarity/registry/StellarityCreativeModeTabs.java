@@ -104,7 +104,8 @@ public interface StellarityCreativeModeTabs {
 		SHULKER_BOOTS,
 		SHARANGA,
 		SPECTRAL_FURY,
-		COPPER_ELEKTRA_SHIELD
+		COPPER_ELEKTRA_SHIELD,
+		PHANTOM_WINGS
 	};
 
 	ItemLike[] INGREDIENT_ITEMS = new ItemLike[]{

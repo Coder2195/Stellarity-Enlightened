@@ -15,7 +15,8 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.providers.number.Sum;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.registry.StellarityItems;
-import prismatic.shards.stellarity.registry.number_provider.EntityNbtValue;
+import prismatic.shards.stellarity.registry.number_provider.Multiply;
+import prismatic.shards.stellarity.registry.number_provider.NbtNumberValue;
 
 import java.util.HashMap;
 
@@ -48,15 +49,14 @@ public interface StellarityLootTableModifications {
 		});
 		modifications.put(Stellarity.mcId("entities/phantom"), (_, builder, _, provider) -> {
 			try {
-				var sizeValue = new EntityNbtValue(LootContext.EntityTarget.THIS, NbtPathArgument.NbtPath.of("size"), 0);
+				var sizeValue = new NbtNumberValue(LootContext.EntityTarget.THIS, NbtPathArgument.NbtPath.of("size"), 0);
 				builder
 					.modifyPools(pool -> pool.setRolls(sizeValue))
 					.withPool(pool().setRolls(sizeValue).add(item(Items.GUNPOWDER)
 						.apply(count(num(0, 1)))
 						.when(damageSource(new DamageSourcePredicate.Builder().tag(new TagPredicate<>(DamageTypeTags.IS_FIRE, true))))
 					))
-					// TODO: Phantom wings
-					.withPool(pool().add(item(StellarityItems.SHULKER_BODY)).when(randomChance(Sum.sum(num(3), sizeValue))));
+					.withPool(pool().add(item(StellarityItems.PHANTOM_WINGS)).when(randomChance(Multiply.multiply(Sum.sum(num(3), sizeValue), num(0.01f)))));
 			} catch (CommandSyntaxException e) {
 				Stellarity.LOGGER.error("Failed to initialize NBT path argument {}", e.toString());
 			}
