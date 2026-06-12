@@ -16,6 +16,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#stellarity:enchantable/ranged",
+  "supported_items": "#stellarity:enchantable.ranged",
   "weight": 1
 }

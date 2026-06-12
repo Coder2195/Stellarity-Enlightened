@@ -29,6 +29,6 @@
   "slots": [
     "body"
   ],
-  "supported_items": "#stellarity:enchantable/elytra",
+  "supported_items": "#stellarity:enchantable.elytra",
   "weight": 2
 }

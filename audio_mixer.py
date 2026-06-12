@@ -1,9 +1,7 @@
+import os
 import pathlib
-from random import randrange
 
 from pydub import AudioSegment
-from pydub.effects import speedup
-from pydub.playback import play
 from pydub.utils import ratio_to_db
 
 pathlib.Path("input_audio").mkdir(exist_ok=True)
@@ -31,20 +29,29 @@ def mc(path: str):
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
 
-thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]
-illusioner = ["mob/illusion_illager/mirror_move1", "mob/illusion_illager/mirror_move2"]
+for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
+	for name in files:
+		pathJoined = os.path.join(root, name)
+		if not pathJoined.endswith(".ogg"): continue
+		channels = AudioSegment.from_ogg(pathJoined).channels
+		if channels == 1: continue
 
-combo = [(thun, i) for thun in thunder for i in illusioner]
-num = 0
-for (thun, i) in combo:
-	num += 1
-	thunder_sound = mc(thun)
-	thunder_sound = pitch_modulate(thunder_sound, 1).apply_gain(ratio_to_db(0.8))
-	illusioner = mc(i)
-	bat = mc("mob/bat/takeoff")
+		print(pathJoined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in pathJoined else "")
 
-	new_sound = thunder_sound.overlay(illusioner).overlay(bat)[:4000].set_channels(1)
-	new_sound.export(f"output_audio/copper_elektra_shield/dash_{num}.ogg", format="ogg")
+# thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]
+# illusioner = ["mob/illusion_illager/mirror_move1", "mob/illusion_illager/mirror_move2"]
+#
+# combo = [(thun, i) for thun in thunder for i in illusioner]
+# num = 0
+# for (thun, i) in combo:
+# 	num += 1
+# 	thunder_sound = mc(thun)
+# 	thunder_sound = pitch_modulate(thunder_sound, 1).apply_gain(ratio_to_db(0.8))
+# 	illusioner = mc(i)
+# 	bat = mc("mob/bat/takeoff")
+#
+# 	new_sound = thunder_sound.overlay(illusioner).overlay(bat)[:4000].set_channels(1)
+# 	new_sound.export(f"output_audio/copper_elektra_shield/dash_{num}.ogg", format="ogg")
 
 # booms = ["warden/sonic_boom1.ogg", "warden/sonic_boom2.ogg", "warden/sonic_boom3.ogg", "warden/sonic_boom4.ogg"]
 # souls = ["soul_speed/soulspeed1.ogg", "soul_speed/soulspeed2.ogg", "soul_speed/soulspeed3.ogg",

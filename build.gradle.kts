@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
 	id("net.fabricmc.fabric-loom")
 	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
@@ -124,7 +127,6 @@ tasks.withType<ProcessResources> {
 	inputs.property("biolith", project.property("deps.biolith"))
 	inputs.property("modonomicon", project.property("deps.modonomicon"))
 
-
 	val props = mapOf(
 		"id" to project.property("mod.id"),
 		"name" to project.property("mod.name"),
@@ -140,6 +142,14 @@ tasks.withType<ProcessResources> {
 
 	val mixinJava = "JAVA_${requiredJava.majorVersion}"
 	filesMatching("*.mixins.json") { expand("java" to mixinJava) }
+
+	doLast {
+		fileTree("${layout.buildDirectory.get()}/resources/main")
+			.matching { include("**/*.json", "**/*.mcmeta") }
+			.forEach {
+				it.writeText(JsonOutput.toJson(JsonSlurper().parse(it)))
+			}
+	}
 }
 
 

@@ -63,6 +63,5 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
 
-		addTags(StellarityItemTags.COLORED_BLOCKS).add(StellarityBlockItemIds.COLORED_LEAVES);
 	}
 }

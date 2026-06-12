@@ -643,9 +643,7 @@
 	"subtitles.stellarity.item.living_flesh.boost": "Living Flesh hurts",
 	"subtitles.stellarity.item.spectral_fury.shoot_wisp": "Spectral Wisp fired",
 	"tag.item.stellarity.bows": "Stellarity Bows",
-	"tag.item.stellarity.enchantable.elytra": "Elytra Enchantable",
-	"tag.item.stellarity.enchantable.ranged": "Ranged Weapon Enchantable",
-	"tag.item.stellarity.enchantable/elytra": "Stellarity Elytra Enchantables",
-	"tag.item.stellarity.enchantable/ranged": "Stellarity Ranged Weapon Enchantables",
+	"tag.item.stellarity.enchantable.elytra": "Stellarity Elytra Enchantables",
+	"tag.item.stellarity.enchantable.ranged": "Stellarity Ranged Weapon Enchantables",
 	"tag.item.stellarity.fishes": "Stellarity Fishes"
 }
