@@ -14,6 +14,6 @@ public class AttributesMixin {
 	@Expression("MAX_HEALTH = ?(?, new ?(?,?,?,@(1024.0)).?(?))")
 	@ModifyExpressionValue(method = "<clinit>", at = @At("MIXINEXTRAS:EXPRESSION"))
 	private static double alterMaxHealth(double original) {
-		return Math.max(original, 11000.0);
+		return Math.max(original, 100000);
 	}
 }
