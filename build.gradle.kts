@@ -67,6 +67,9 @@ fletchingTable {
 			env("CLIENT", "prismatic.shards.stellarity.client.mixin")
 		}
 	}
+	fabric /* or neoforge { } */ {
+		applyMixinConfig = false
+	}
 }
 
 
@@ -144,8 +147,8 @@ tasks.withType<ProcessResources> {
 	filesMatching("*.mixins.json") { expand("java" to mixinJava) }
 
 	doLast {
-		fileTree("${layout.buildDirectory.get()}/resources/main")
-			.matching { include("**/*.json", "**/*.mcmeta") }
+		fileTree("${layout.buildDirectory.get()}/resources/")
+			.matching { include("**/*.json", "**/*.mcmeta", "*.json") }
 			.forEach {
 				it.writeText(JsonOutput.toJson(JsonSlurper().parse(it)))
 			}
