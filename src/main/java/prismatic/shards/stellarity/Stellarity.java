@@ -75,6 +75,7 @@ public class Stellarity implements ModInitializer {
 		StellarityVillagerProfessions.init();
 		StellarityCommands.init();
 		StellarityPlayerPickItemModifications.init();
+		StellarityServerNetworking.init();
 
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) MixinEnvironment.getCurrentEnvironment().audit();
 	}

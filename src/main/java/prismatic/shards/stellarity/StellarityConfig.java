@@ -11,8 +11,6 @@ import prismatic.shards.stellarity.util.tuple.Tuple2;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public record StellarityConfig(
 	boolean joinMessage, boolean alwaysGenerateEgg, boolean enableEndCrystalDrop, boolean enableTotemVoidSaving,
@@ -36,7 +34,7 @@ public record StellarityConfig(
 		new Tuple2<>("boss_status_messages", StellarityConfig::bossStatusMessages)
 	);
 
-	public static final List<Tuple2<String, Function<StellarityConfig, Integer>>> INTEGER_INPUTS = List.of(
+	public static final List<Tuple2<String, Function<StellarityConfig, Integer>>> HEALTH_INPUTS = List.of(
 		new Tuple2<>("dragon_health", StellarityConfig::dragonHealth),
 		new Tuple2<>("empress_of_light_health", StellarityConfig::empressOfLightHealth),
 		new Tuple2<>("shulking_health", StellarityConfig::shulkingHealth)
@@ -56,20 +54,26 @@ public record StellarityConfig(
 		Codec.INT.optionalFieldOf("shulking_health", DEFAULT.shulkingHealth).forGetter(StellarityConfig::shulkingHealth)
 	).apply(instance, StellarityConfig::new));
 
-	public static StreamCodec<RegistryFriendlyByteBuf, StellarityConfig> STREAM_CODEC = StreamCodec.composite(ByteBufCodecs.BOOL, StellarityConfig::joinMessage, ByteBufCodecs.BOOL,
-		StellarityConfig::enableEndCrystalDrop, ByteBufCodecs.BOOL,
-		StellarityConfig::enableTotemVoidSaving, ByteBufCodecs.BOOL,
-		StellarityConfig::allowDisenchanting, ByteBufCodecs.BOOL,
-		StellarityConfig::enableCreativeShock, ByteBufCodecs.BOOL,
-		StellarityConfig::nerfElytra, ByteBufCodecs.BOOL,
-		StellarityConfig::bossStatusMessages, ByteBufCodecs.BOOL,
-		StellarityConfig::alwaysGenerateEgg, ByteBufCodecs.INT,
-		StellarityConfig::dragonHealth, ByteBufCodecs.INT,
-		StellarityConfig::empressOfLightHealth, ByteBufCodecs.INT,
-		StellarityConfig::shulkingHealth, StellarityConfig::new
+	public static StreamCodec<RegistryFriendlyByteBuf, StellarityConfig> STREAM_CODEC = StreamCodec.composite(
+		ByteBufCodecs.BOOL, StellarityConfig::joinMessage,
+		ByteBufCodecs.BOOL, StellarityConfig::alwaysGenerateEgg,
+		ByteBufCodecs.BOOL, StellarityConfig::enableEndCrystalDrop,
+		ByteBufCodecs.BOOL, StellarityConfig::enableTotemVoidSaving,
+		ByteBufCodecs.BOOL, StellarityConfig::allowDisenchanting,
+		ByteBufCodecs.BOOL, StellarityConfig::enableCreativeShock,
+		ByteBufCodecs.BOOL, StellarityConfig::nerfElytra,
+		ByteBufCodecs.BOOL, StellarityConfig::bossStatusMessages,
+		ByteBufCodecs.INT, StellarityConfig::dragonHealth,
+		ByteBufCodecs.INT, StellarityConfig::empressOfLightHealth,
+		ByteBufCodecs.INT, StellarityConfig::shulkingHealth,
+		StellarityConfig::new
 	);
 
 	public static StellarityConfig get(GlobalAttachmentsProvider provider) {
 		return provider.globalAttachments().getAttachedOrElse(StellarityDataAttachments.CONFIG, DEFAULT);
+	}
+
+	public void set(GlobalAttachmentsProvider provider) {
+		provider.globalAttachments().setAttached(StellarityDataAttachments.CONFIG, this);
 	}
 }

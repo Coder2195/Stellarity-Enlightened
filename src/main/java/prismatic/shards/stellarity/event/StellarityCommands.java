@@ -3,19 +3,28 @@ package prismatic.shards.stellarity.event;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.commands.Commands;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.Permissions;
 import prismatic.shards.stellarity.Stellarity;
 import prismatic.shards.stellarity.StellarityConfig;
-import prismatic.shards.stellarity.networking.ClientboundConfigPayload;
+import prismatic.shards.stellarity.networking.ClientboundConfigScreenPayload;
+
+import java.util.function.BiPredicate;
 
 public interface StellarityCommands {
+	BiPredicate<MinecraftServer, ServerPlayer> CAN_CONFIG = (server, player) ->
+		(!server.isDedicatedServer() && server.isSingleplayerOwner(player.nameAndId())) || player.permissions().hasPermission(Permissions.COMMANDS_ADMIN);
+
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity commands");
 		CommandRegistrationCallback.EVENT.register((dispatcher, _, _) -> {
 			dispatcher.register(Commands.literal("stellarity_config").executes(context -> {
-				var level = context.getSource().getServer();
-				var config = StellarityConfig.get(level);
+				var server = context.getSource().getServer();
+				var config = StellarityConfig.get(server);
 				var player = context.getSource().getPlayer();
-				if (player != null) ServerPlayNetworking.send(player, new ClientboundConfigPayload(config));
+				if (player != null)
+					ServerPlayNetworking.send(player, new ClientboundConfigScreenPayload(config, CAN_CONFIG.test(server, player)));
 				return 1;
 			}));
 		});

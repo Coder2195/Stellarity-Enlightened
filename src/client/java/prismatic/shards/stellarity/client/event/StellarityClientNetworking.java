@@ -1,19 +1,14 @@
 package prismatic.shards.stellarity.client.event;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.LightningBolt;
 import prismatic.shards.stellarity.Stellarity;
-import prismatic.shards.stellarity.client.registry.screen.ConfigScreen;
-import prismatic.shards.stellarity.networking.ClientboundConfigPayload;
+import prismatic.shards.stellarity.client.gui.screen.ConfigScreen;
+import prismatic.shards.stellarity.networking.ClientboundConfigScreenPayload;
 import prismatic.shards.stellarity.networking.ClientboundElectricDashPayload;
 import prismatic.shards.stellarity.networking.ClientboundVoidArrowHitPayload;
 import prismatic.shards.stellarity.registry.StellaritySoundEvents;
@@ -38,11 +33,11 @@ public interface StellarityClientNetworking {
 			});
 		});
 
-		ClientPlayNetworking.registerGlobalReceiver(ClientboundConfigPayload.TYPE, (packet, context) -> {
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundConfigScreenPayload.TYPE, (packet, context) -> {
 			var minecraft = context.client();
 			var config = packet.config();
 
-			ConfigScreen.show(minecraft, config);
+			ConfigScreen.show(minecraft, config, packet.canEdit());
 		});
 
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundElectricDashPayload.TYPE, (packet, context) -> {

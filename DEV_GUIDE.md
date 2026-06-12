@@ -83,6 +83,13 @@ Methods MUST be `default`, `throw AssertionError("Not transformed!")`, and be pr
 They should then be implemented in mixins in `mixin.interface_injections`. Injection mixins should NOT contain anything
 else and must be defined there and there only.
 
+## Gui Elements/Screens
+
+All gui elements and screen must be in `prismatic.shards.stellarity.client.gui`.
+
+Those will then be placed accordingly to categories, widgets go in `widget`, screens go in `screen`, and so on.
+Ask if you are unsure.
+
 ## Client
 
 **IMPORTANT: Always put client files in src/client, and make sure it is in the `prismatic.shards.stellarity.client`

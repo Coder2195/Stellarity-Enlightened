@@ -18,8 +18,6 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import prismatic.shards.stellarity.StellarityConfig;
 
 @Mixin(LivingEntity.class)
@@ -40,11 +38,14 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@WrapOperation(method = "checkTotemDeathProtection", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/component/DeathProtection;applyEffects(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;)V"))
 	private void executeVoidSave(DeathProtection instance, ItemStack itemStack, LivingEntity entity, Operation<Void> original, @Local(name = "killingDamage", argsOnly = true) DamageSource killingDamage) {
+		var level = entity.level();
+		if (!StellarityConfig.get(level).enableTotemVoidSaving()) return;
+
 		if (!killingDamage.is(DamageTypes.FELL_OUT_OF_WORLD)) {
 			original.call(instance, itemStack, entity);
 			return;
 		}
-		
+
 		teleportTo(getX(), level().getMaxY(), getZ());
 		resetFallDistance();
 		addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 60 * 20));

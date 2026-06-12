@@ -167,4 +167,16 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Sychronizes most of the item tooltips and item name colors from the datapack. Report any missing or incorrect tooltips
 
+**[*] Configuration**
+
+- Use `/stellarity_config` to open the configuration menu
+- Added a configuration menu and proper packets
+- Permissions are now handled correctly
+
+**[*] Totem Saving**
+
+- Obeys configuration
+
 # Developer's Note
+
+A large update, but the next one will be even larger with villager and end villages. Stay tuned!

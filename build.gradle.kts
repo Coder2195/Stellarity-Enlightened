@@ -44,6 +44,7 @@ dependencies {
 	minecraft("com.mojang:minecraft:${stonecutter.current.version}")
 	implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
 	implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+	include(implementation("com.moulberry:mixinconstraints:1.0.9")!!)
 
 	compileOnly("com.terraformersmc:biolith-fabric:${property("deps.biolith")}")
 	val modonomicon = property("deps.modonomicon").toString().split('-')
@@ -98,7 +99,6 @@ loom {
 	}
 
 	runConfigs["client"].apply {
-		programArgs("--username=StellarityDev")
 	}
 
 	runConfigs["server"].apply {
