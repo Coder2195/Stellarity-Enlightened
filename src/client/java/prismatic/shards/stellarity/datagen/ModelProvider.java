@@ -85,6 +85,7 @@ public class ModelProvider extends FabricModelProvider {
 		POTASSIFISH,
 		ENDERMANS_HAND,
 		DRAGONS_EYE,
+		LIFE_CRYSTAL
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{
@@ -167,7 +168,7 @@ public class ModelProvider extends FabricModelProvider {
 	}
 
 	@Override
-	public void generateItemModels(ItemModelGenerators generators) {
+	public void generateItemModels(@NonNull ItemModelGenerators generators) {
 		for (var bow : List.of(CALL_OF_THE_VOID, SHARANGA, SPECTRAL_FURY)) {
 			generators.generateBow(bow);
 			generators.createFlatItemModel(bow, ModelTemplates.BOW);

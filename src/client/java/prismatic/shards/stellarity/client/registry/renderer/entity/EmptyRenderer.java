@@ -6,17 +6,15 @@ import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.world.entity.Entity;
 import org.jspecify.annotations.NonNull;
 
-public class EmptyRenderer<T extends Entity> extends EntityRenderer<T, EmptyRenderer.RenderState> {
+public class EmptyRenderer<T extends Entity> extends EntityRenderer<T, EntityRenderState> {
 
 	public EmptyRenderer(EntityRendererProvider.Context context) {
 		super(context);
 	}
 
 	@Override
-	public EmptyRenderer.@NonNull RenderState createRenderState() {
-		return new RenderState();
+	public @NonNull EntityRenderState createRenderState() {
+		return new EntityRenderState();
 	}
 
-	public static class RenderState extends EntityRenderState {
-	}
 }

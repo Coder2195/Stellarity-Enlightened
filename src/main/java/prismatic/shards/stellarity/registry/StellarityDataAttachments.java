@@ -40,6 +40,9 @@ public interface StellarityDataAttachments {
 
 	AttachmentType<Boolean> SPECTRAL_FURY_CHARGED = AttachmentRegistry.create(Stellarity.id("spectral_fury_charged"), builder -> builder.persistent(Codec.BOOL));
 
+	AttachmentType<Long> LAST_MOVE_ITEM_CHANGE = AttachmentRegistry.create(Stellarity.id("last_move_item_change"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
+	);
+
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");
 

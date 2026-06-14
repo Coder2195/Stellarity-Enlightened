@@ -131,6 +131,7 @@ public interface StellarityCreativeModeTabs {
 		DUSKBERRY,
 		ENDERMANS_HAND,
 		DRAGONS_EYE,
+		LIFE_CRYSTAL
 	};
 
 	ItemLike[] SPAWN_EGGS_ITEMS = new ItemLike[]{

@@ -3,7 +3,6 @@ package prismatic.shards.stellarity.registry.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -17,12 +16,12 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
+import prismatic.shards.stellarity.util.ColorUtil;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -35,7 +34,7 @@ public class Pixie extends PathfinderMob {
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.FLYING_SPEED, 0.1F).add(Attributes.MOVEMENT_SPEED, 0.1F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
+		return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 20.0F).add(Attributes.FLYING_SPEED, 0.1F).add(Attributes.MOVEMENT_SPEED, 0.1F).add(Attributes.ATTACK_DAMAGE, 2.0F);
 	}
 
 	private @Nullable Holder<Biome> originBiome;
@@ -44,9 +43,6 @@ public class Pixie extends PathfinderMob {
 		return originBiome;
 	}
 
-	public static final int[] COLORS = new int[]{
-		0xff0000, 0xff7f00, 0xffff00, 0x7fff00, 0x00ff00, 0x00ff7f, 0x00ffff, 0x007fff, 0x0000ff, 0x7f00ff, 0xff00ff, 0xff007f
-	};
 
 	@Override
 	public void baseTick() {
@@ -54,7 +50,7 @@ public class Pixie extends PathfinderMob {
 
 		var level = level();
 		if (level.isClientSide()) {
-			level.addAlwaysVisibleParticle(new DustParticleOptions(COLORS[random.nextInt(COLORS.length)], 3f), true, getX(), getY(), getZ(), 0, 0, 0);
+			level.addAlwaysVisibleParticle(new DustParticleOptions(ColorUtil.hsvToRgb(random.nextFloat() * 360, 1 - random.nextFloat() * 0.2f, 1 - random.nextFloat() * 0.2f), 3f), true, getX(), getY(), getZ(), 0, 0, 0);
 		}
 	}
 
@@ -80,7 +76,7 @@ public class Pixie extends PathfinderMob {
 	}
 
 	@Override
-	public boolean teleportTo(ServerLevel level, double x, double y, double z, Set<Relative> relatives, float newYRot, float newXRot, boolean resetCamera) {
+	public boolean teleportTo(@NonNull ServerLevel level, double x, double y, double z, @NonNull Set<Relative> relatives, float newYRot, float newXRot, boolean resetCamera) {
 		if (!super.teleportTo(level, x, y, z, relatives, newYRot, newXRot, resetCamera)) return false;
 		moveControl.setWantedPosition(x, y, z, 0.25);
 		return true;
@@ -154,9 +150,9 @@ public class Pixie extends PathfinderMob {
 		}
 	}
 
-	private class PixieMoveControl extends MoveControl {
-		public PixieMoveControl(final Pixie vex) {
-			super(vex);
+	private class PixieMoveControl extends MoveControl<Pixie> {
+		public PixieMoveControl(final Pixie pixie) {
+			super(pixie);
 		}
 
 		@Override
@@ -182,4 +178,6 @@ public class Pixie extends PathfinderMob {
 			}
 		}
 	}
+
+
 }

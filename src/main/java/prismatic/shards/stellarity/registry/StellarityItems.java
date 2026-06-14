@@ -31,7 +31,6 @@ import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
@@ -64,6 +63,7 @@ public interface StellarityItems {
 	 * COPPER_ELEKTRA_SHIELD uncommon
 	 * CREST_OF_THE_END rare
 	 * DRAGONBLADE epic
+	 * DRAGONS_EYE rare
 	 * DRAGON_WINGS rare
 	 * DUSKBERRY epic
 	 * EMPRESS_WINGS epic
@@ -279,7 +279,7 @@ public interface StellarityItems {
 			.build())
 		.component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
 	);
-	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1));
+	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 	Item PHANTOM_WINGS = register(StellarityItemIds.PHANTOM_WINGS, new Item.Properties().stacksTo(1).durability(70).rarity(Rarity.UNCOMMON)
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
 		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.PHANTOM_WINGS).setDamageOnHurt(false).build())
@@ -289,6 +289,7 @@ public interface StellarityItems {
 			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("phantom_wings"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
 			.build())
 	);
+	Item LIFE_CRYSTAL = register(StellarityItemIds.LIFE_CRYSTAL, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -457,10 +458,11 @@ public interface StellarityItems {
 		NAME_COLORS.put(FRIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
 		NAME_COLORS.put(PRISMITE, TextColor.YELLOW.getValue());
 		NAME_COLORS.put(ENDERMANS_HAND, 0xed8cff);
+		NAME_COLORS.put(DRAGONS_EYE, 0x9936D6);
 		NAME_COLORS.put(DUSKBERRY, 0xAB6AD1);
 		NAME_COLORS.put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
 //		NAME_COLORS.put(SOARING_INSIGNIA, 0xFF76D0);
-//		NAME_COLORS.put(LIFE_CRYSTAL, 0x9936D6);
+		NAME_COLORS.put(LIFE_CRYSTAL, 0x9936D6);
 //		NAME_COLORS.put(STARSTRUCK_SHIELD, 0xFF76D0);
 //		NAME_COLORS.put(RADIANT_JEWEL, 0xff5555);
 //		NAME_COLORS.put(PRISMATIC_SHIELD, 0xFF76D0);
