@@ -12,7 +12,7 @@ import prismatic.shards.stellarity.event.*;
 import prismatic.shards.stellarity.registry.*;
 
 public class Stellarity implements ModInitializer {
-	public static final String VERSION = /*$ minecraft*/ "26.2-snapshot-5";
+	public static final String VERSION = /*$ minecraft*/ "26.2";
 	public static final String MOD_ID = "stellarity";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 

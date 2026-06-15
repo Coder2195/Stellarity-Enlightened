@@ -29,6 +29,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 **[+] Phantom Wings**
 
+**[+] Life Crystal**
+
+- Does nothing at the moment
+
 ## Blocks
 
 **[*] Coarse Ender Dirt**
@@ -92,6 +96,10 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 - New entity sub predicate `stellarity:nbt_number` is available for use in datapacks
 - New number provider `stellarity:nbt_number` is available for use in datapacks
 - New number provider `stellarity:multiply` is available for use in datapacks
+
+**[*] Pixie**
+
+- Proper Item Model
 
 ## Advancements
 
