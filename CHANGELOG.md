@@ -185,6 +185,13 @@ the [wiki](https://koharasbasement.wiki.gg/wiki/Stellarity) and the [datapack](h
 
 - Obeys configuration
 
+## Dependencies
+
+**[*] Biolith**
+
+- Is an optional dependency now
+- Not working because of [issue 59](https://github.com/TerraformersMC/Biolith/issues/59)
+
 # Developer's Note
 
 A large update, but the next one will be even larger with villager and end villages. Stay tuned!
