@@ -94,3 +94,7 @@ accessible field net/minecraft/world/entity/monster/Creeper DATA_IS_POWERED Lnet
 accessible method net/minecraft/server/network/ServerGamePacketListenerImpl addBlockDataToItem (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V
 
 accessible field net/minecraft/client/gui/components/EditBox value Ljava/lang/String;
+accessible	method	net/minecraft/world/level/levelgen/SurfaceRules$Context	getBiome	()Lnet/minecraft/core/Holder;
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Context
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Condition
+accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$LazyYCondition

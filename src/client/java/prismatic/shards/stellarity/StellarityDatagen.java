@@ -40,7 +40,6 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider((FabricDataGenerator.Pack.Factory<EquipmentAssetProvider>) EquipmentAssetProvider::new);
 		pack.addProvider(VillageTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
-
 		// FIXME: once released
 //		if (Stellarity.hasModonomicon()) {
 //			var englishCache = new LanguageProviderCache("en_us");

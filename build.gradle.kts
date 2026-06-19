@@ -48,7 +48,7 @@ dependencies {
 
 	compileOnly("com.terraformersmc:biolith-fabric:${property("deps.biolith")}")
 	val modonomicon = property("deps.modonomicon").toString().split('-')
-	compileOnly("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
+	compileOnly("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}")
 
 }
 
@@ -118,6 +118,10 @@ fabricApi {
 	configureDataGeneration {
 		client = true
 		modId = "stellarity"
+
+		dependencies {
+//			implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
+		}
 	}
 }
 
