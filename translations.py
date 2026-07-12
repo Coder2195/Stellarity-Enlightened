@@ -42,8 +42,11 @@ while not done:
 
 for lang in translations:
 	for key in translations["en_us.json"]:
-		if key not in translations[lang]:
-			translations[lang][key] = translations["en_us.json"][key]
+		if key not in translations[lang] or translations[lang][key] == key:
+			if "en_us" in lang:
+				print("Warning: Key " + key + " is missing")
+			else:
+				translations[lang][key] = translations["en_us.json"][key]
 
 	final = dict(natsorted(translations[lang].items()))
 
