@@ -1,17 +1,22 @@
-package dev.coder2195.stellarity.datagen.dynamic;
+package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.carver.*;
-import dev.coder2195.stellarity.tags.StellarityBlockTags;
 
-import static net.minecraft.world.level.block.Blocks.*;
-import static dev.coder2195.stellarity.key.StellarityConfiguredCarvers.*;
 import static dev.coder2195.stellarity.util.ValueUtil.*;
 import static dev.coder2195.stellarity.util.WorldgenUtil.*;
+import static net.minecraft.world.level.block.Blocks.*;
 
-public interface ConfiguredCarverProvider {
+public interface StellarityConfiguredCarvers {
+	ResourceKey<ConfiguredWorldCarver<?>> RAVINE = id("ravine");
+	ResourceKey<ConfiguredWorldCarver<?>> CAVE = id("cave");
+	ResourceKey<ConfiguredWorldCarver<?>> CRACK = id("crack");
+
 	static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> context) {
 		var blocks = context.lookup(Registries.BLOCK);
 		final var orangeGlass = from(STAINED_GLASS.orange());
@@ -32,5 +37,9 @@ public interface ConfiguredCarverProvider {
 		context.register(RAVINE, new ConfiguredWorldCarver<>(WorldCarver.CANYON, new CanyonCarverConfiguration(0.02f, height(aboveBottom(16), belowTop(16)), numf(4), absolute(0), carverDebug, replaceable, numf(-0.125f, 0.125f), new CanyonCarverConfiguration.CanyonShapeConfiguration(
 			numf(0.75f, 1), trapezoidf(0f, 4f, 2f), 3, numf(0.5f, 0.75f), 1, 0
 		))));
+	}
+
+	private static ResourceKey<ConfiguredWorldCarver<?>> id(String id) {
+		return Stellarity.key(Registries.CONFIGURED_CARVER, id);
 	}
 }

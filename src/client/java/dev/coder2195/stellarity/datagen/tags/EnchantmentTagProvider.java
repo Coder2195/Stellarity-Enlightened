@@ -10,7 +10,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
-import static dev.coder2195.stellarity.key.StellarityEnchantments.CRITICAL_STRIKE;
+import static dev.coder2195.stellarity.registry.StellarityEnchantments.CRITICAL_STRIKE;
 
 public class EnchantmentTagProvider extends FabricTagsProvider<Enchantment> {
 

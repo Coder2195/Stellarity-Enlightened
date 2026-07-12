@@ -13,7 +13,7 @@ import net.minecraft.world.damagesource.DamageType;
 import org.jspecify.annotations.NonNull;
 
 import static net.minecraft.world.damagesource.DamageTypes.*;
-import static dev.coder2195.stellarity.key.StellarityDamageTypes.*;
+import static dev.coder2195.stellarity.registry.StellarityDamageTypes.*;
 import static dev.coder2195.stellarity.tags.StellarityDamageTypeTags.*;
 import static net.minecraft.tags.DamageTypeTags.*;
 

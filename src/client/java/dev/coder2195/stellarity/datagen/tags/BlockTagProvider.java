@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import static net.minecraft.references.BlockItemIds.*;
 import static net.minecraft.references.BlockItemIds.DIRT;
 import static net.minecraft.tags.BlockTags.*;
-import static dev.coder2195.stellarity.key.StellarityBlockItemIds.*;
+import static dev.coder2195.stellarity.registry.StellarityBlockItemIds.*;
 import static dev.coder2195.stellarity.tags.StellarityBlockTags.*;
 
 

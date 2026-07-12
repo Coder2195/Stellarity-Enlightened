@@ -8,8 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityEntityTypeIds;
-import dev.coder2195.stellarity.registry.entity.*;
 
 
 public interface StellarityEntityTypes {

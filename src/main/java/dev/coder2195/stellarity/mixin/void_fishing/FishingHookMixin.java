@@ -41,7 +41,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import dev.coder2195.stellarity.interface_injection.ExtFishingHook;
-import dev.coder2195.stellarity.key.StellarityLootTables;
+import dev.coder2195.stellarity.registry.StellarityLootTables;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityItems;
 

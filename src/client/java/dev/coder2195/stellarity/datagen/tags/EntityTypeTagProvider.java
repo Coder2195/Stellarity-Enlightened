@@ -14,7 +14,7 @@ import dev.coder2195.stellarity.tags.StellarityEntityTypeTags;
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.world.entity.EntityTypeIds.*;
-import static dev.coder2195.stellarity.key.StellarityEntityTypeIds.*;
+import static dev.coder2195.stellarity.registry.StellarityEntityTypeIds.*;
 
 public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProvider {
 	public EntityTypeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {

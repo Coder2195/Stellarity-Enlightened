@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.key;
+package dev.coder2195.stellarity.registry;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;

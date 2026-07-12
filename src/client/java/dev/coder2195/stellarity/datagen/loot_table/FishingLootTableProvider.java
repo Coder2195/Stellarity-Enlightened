@@ -13,13 +13,13 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.key.StellarityBiomes;
+import dev.coder2195.stellarity.registry.StellarityBiomes;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 import static net.minecraft.world.item.Items.*;
-import static dev.coder2195.stellarity.key.StellarityLootTables.*;
+import static dev.coder2195.stellarity.registry.StellarityLootTables.*;
 import static dev.coder2195.stellarity.registry.StellarityItems.*;
 import static dev.coder2195.stellarity.util.LootUtil.*;
 

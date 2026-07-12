@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityEquipmentAssets;
+import dev.coder2195.stellarity.registry.StellarityEquipmentAssets;
 
 import java.util.HashMap;
 import java.util.Map;

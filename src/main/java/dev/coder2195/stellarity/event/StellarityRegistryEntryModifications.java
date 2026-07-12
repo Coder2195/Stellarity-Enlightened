@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.util.WorldgenData;
 
-import static dev.coder2195.stellarity.key.StellarityDensityFunctions.*;
+import static dev.coder2195.stellarity.registry.StellarityDensityFunctions.*;
 
 public class StellarityRegistryEntryModifications {
 	private static DensityFunction temperature;

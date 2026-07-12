@@ -1,7 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.Streams;
-import dev.coder2195.stellarity.key.*;
 import dev.coder2195.stellarity.registry.item.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -37,8 +36,6 @@ import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.*;
-import dev.coder2195.stellarity.registry.item.*;
 
 import java.util.Arrays;
 import java.util.HashMap;

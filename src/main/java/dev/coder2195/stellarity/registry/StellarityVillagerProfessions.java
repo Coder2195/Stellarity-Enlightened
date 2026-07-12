@@ -20,7 +20,7 @@ import dev.coder2195.stellarity.Stellarity;
 import java.util.HashMap;
 import java.util.List;
 
-import static dev.coder2195.stellarity.key.StellarityVillagerTradeSets.*;
+import static dev.coder2195.stellarity.registry.StellarityVillagerTradeSets.*;
 
 public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> ARMORER = register(

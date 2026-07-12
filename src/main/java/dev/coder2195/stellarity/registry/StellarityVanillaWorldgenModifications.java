@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 import static net.minecraft.world.attribute.EnvironmentAttributes.*;
 import static net.minecraft.world.level.biome.Biomes.END_BARRENS;
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.*;
-import static dev.coder2195.stellarity.key.StellarityPlacedFeatures.*;
+import static dev.coder2195.stellarity.registry.StellarityPlacedFeatures.*;
 
 public interface StellarityVanillaWorldgenModifications {
 	@SuppressWarnings("DuplicatedCode")

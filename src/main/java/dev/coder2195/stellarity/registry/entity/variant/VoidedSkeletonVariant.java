@@ -14,7 +14,7 @@ import net.minecraft.world.entity.variant.SpawnCondition;
 import net.minecraft.world.entity.variant.SpawnContext;
 import net.minecraft.world.entity.variant.SpawnPrioritySelectors;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.key.StellarityMobVariants;
+import dev.coder2195.stellarity.registry.StellarityMobVariants;
 import dev.coder2195.stellarity.registry.StellarityRegistries;
 
 import java.util.List;

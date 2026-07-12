@@ -9,7 +9,6 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityEquipmentAssets;
 
 import static net.minecraft.world.item.equipment.ArmorMaterials.makeDefense;
 

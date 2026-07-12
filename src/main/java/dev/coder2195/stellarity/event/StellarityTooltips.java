@@ -20,8 +20,8 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-import static dev.coder2195.stellarity.key.StellarityBlockItemIds.ALTAR_OF_THE_SACRED;
-import static dev.coder2195.stellarity.key.StellarityItemIds.*;
+import static dev.coder2195.stellarity.registry.StellarityBlockItemIds.ALTAR_OF_THE_SACRED;
+import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
 
 
 public interface StellarityTooltips {

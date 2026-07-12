@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 import static net.minecraft.world.item.Items.*;
-import static dev.coder2195.stellarity.key.StellarityLootTables.*;
+import static dev.coder2195.stellarity.registry.StellarityLootTables.*;
 import static dev.coder2195.stellarity.registry.StellarityItems.*;
 import static dev.coder2195.stellarity.util.LootUtil.*;
 

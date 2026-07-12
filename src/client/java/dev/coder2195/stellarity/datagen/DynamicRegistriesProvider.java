@@ -1,18 +1,17 @@
 package dev.coder2195.stellarity.datagen;
 
-import dev.coder2195.stellarity.datagen.dynamic.*;
+import dev.coder2195.stellarity.registry.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.datagen.dynamic.*;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static net.minecraft.core.registries.Registries.*;
 import static dev.coder2195.stellarity.registry.StellarityRegistries.VOIDED_SKELETON_VARIANT;
+import static net.minecraft.core.registries.Registries.*;
 
 public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 	public DynamicRegistriesProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
@@ -21,29 +20,29 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 
 	@SuppressWarnings("DuplicatedCode")
 	public static void buildRegistry(RegistrySetBuilder builder) {
-		builder.add(DAMAGE_TYPE, DamageTypeProvider::boostrap);
-		builder.add(JUKEBOX_SONG, JukeboxSongProvider::bootstrap);
-		builder.add(NOISE, NoiseProvider::bootstrap);
-		builder.add(PAINTING_VARIANT, PaintingProvider::bootstrap);
-		builder.add(CHICKEN_VARIANT, MobVariantProvider::bootstrapChicken);
-		builder.add(CAT_VARIANT, MobVariantProvider::bootstrapCat);
-		builder.add(WOLF_VARIANT, MobVariantProvider::bootstrapWolf);
-		builder.add(COW_VARIANT, MobVariantProvider::bootstrapCow);
-		builder.add(FROG_VARIANT, MobVariantProvider::bootstrapFrog);
-		builder.add(PIG_VARIANT, MobVariantProvider::bootstrapPig);
-		builder.add(VOIDED_SKELETON_VARIANT, MobVariantProvider::bootstrapVoidedSkeleton);
-		builder.add(CONFIGURED_CARVER, ConfiguredCarverProvider::bootstrap);
-		builder.add(BIOME, BiomeProvider::bootstrap);
-		builder.add(PLACED_FEATURE, PlacedFeatureProvider::bootstrapEarly);
-		builder.add(CONFIGURED_FEATURE, ConfiguredFeatureProvider::bootstrap);
-		builder.add(PLACED_FEATURE, PlacedFeatureProvider::bootstrap);
-		builder.add(PROCESSOR_LIST, ProcessorListProvider::bootstrap);
-		builder.add(TEMPLATE_POOL, TemplatePoolProvider::bootstrap);
-		builder.add(ENCHANTMENT, EnchantmentProvider::bootstrap);
-		builder.add(STRUCTURE, StructureProvider::bootstrap);
-		builder.add(STRUCTURE_SET, StructureSetProvider::bootstrap);
-		builder.add(VILLAGER_TRADE, VillagerTradeProvider::bootstrap);
-		builder.add(TRADE_SET, TradeSetProvider::bootstrap);
+		builder.add(DAMAGE_TYPE, StellarityDamageTypes::boostrap);
+		builder.add(JUKEBOX_SONG, StellarityJukeboxSongs::bootstrap);
+		builder.add(NOISE, StellarityNoises::bootstrap);
+		builder.add(PAINTING_VARIANT, StellarityPaintings::bootstrap);
+		builder.add(CHICKEN_VARIANT, StellarityMobVariants::bootstrapChicken);
+		builder.add(CAT_VARIANT, StellarityMobVariants::bootstrapCat);
+		builder.add(WOLF_VARIANT, StellarityMobVariants::bootstrapWolf);
+		builder.add(COW_VARIANT, StellarityMobVariants::bootstrapCow);
+		builder.add(FROG_VARIANT, StellarityMobVariants::bootstrapFrog);
+		builder.add(PIG_VARIANT, StellarityMobVariants::bootstrapPig);
+		builder.add(VOIDED_SKELETON_VARIANT, StellarityMobVariants::bootstrapVoidedSkeleton);
+		builder.add(CONFIGURED_CARVER, StellarityConfiguredCarvers::bootstrap);
+		builder.add(BIOME, StellarityBiomes::bootstrap);
+		builder.add(PLACED_FEATURE, StellarityPlacedFeatures::bootstrapEarly);
+		builder.add(CONFIGURED_FEATURE, StellarityConfiguredFeatures::bootstrap);
+		builder.add(PLACED_FEATURE, StellarityPlacedFeatures::bootstrap);
+		builder.add(PROCESSOR_LIST, StellarityProcessorLists::bootstrap);
+		builder.add(TEMPLATE_POOL, StellarityTemplatePools::bootstrap);
+		builder.add(ENCHANTMENT, StellarityEnchantments::bootstrap);
+		builder.add(STRUCTURE, StellarityStructures::bootstrap);
+		builder.add(STRUCTURE_SET, StellarityStructureSets::bootstrap);
+		builder.add(VILLAGER_TRADE, StellarityVillagerTrades::bootstrap);
+		builder.add(TRADE_SET, StellarityVillagerTradeSets::bootstrap);
 	}
 
 	@Override

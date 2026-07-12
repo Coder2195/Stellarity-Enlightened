@@ -20,7 +20,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import dev.coder2195.stellarity.key.StellarityDamageTypes;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.networking.ClientboundVoidArrowHitPayload;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;

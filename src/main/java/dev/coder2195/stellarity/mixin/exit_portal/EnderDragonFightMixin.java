@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import dev.coder2195.stellarity.interface_injection.ExtEnderDragonFight;
-import dev.coder2195.stellarity.key.StellarityLootTables;
+import dev.coder2195.stellarity.registry.StellarityLootTables;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 
 import java.util.List;

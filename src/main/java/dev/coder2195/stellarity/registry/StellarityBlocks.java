@@ -13,8 +13,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityBlockItemIds;
-import dev.coder2195.stellarity.registry.block.*;
 
 import java.util.List;
 import java.util.function.Function;

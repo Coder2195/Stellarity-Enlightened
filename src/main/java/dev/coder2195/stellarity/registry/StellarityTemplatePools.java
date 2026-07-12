@@ -1,23 +1,23 @@
-package dev.coder2195.stellarity.datagen.dynamic;
+package dev.coder2195.stellarity.registry;
 
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityProcessorLists;
-import dev.coder2195.stellarity.util.tuple.Tuple2;
 
 import java.util.Optional;
 import java.util.stream.Stream;
 
-import static dev.coder2195.stellarity.key.StellarityTemplatePools.CAMPSITE;
+public interface StellarityTemplatePools {
+	ResourceKey<StructureTemplatePool> CAMPSITE = id("campsite");
 
-public interface TemplatePoolProvider {
 	static void bootstrap(BootstrapContext<StructureTemplatePool> context) {
 		final var templatePools = context.lookup(Registries.TEMPLATE_POOL);
 		final var processorLists = context.lookup(Registries.PROCESSOR_LIST);
@@ -31,5 +31,9 @@ public interface TemplatePoolProvider {
 				Either.left(Stellarity.id(tuple._1())), campsiteProcessor, StructureTemplatePool.Projection.RIGID, Optional.empty()
 			), tuple._2())).toList()
 		));
+	}
+
+	private static ResourceKey<StructureTemplatePool> id(String id) {
+		return Stellarity.key(Registries.TEMPLATE_POOL, id);
 	}
 }

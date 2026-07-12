@@ -13,7 +13,7 @@ import dev.coder2195.stellarity.tags.StellarityItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static dev.coder2195.stellarity.key.StellarityItemIds.*;
+import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
 
 
 public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {

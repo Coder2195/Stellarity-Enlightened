@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.item_tint_source.ColorTintSource;
-import dev.coder2195.stellarity.key.StellarityEquipmentAssets;
+import dev.coder2195.stellarity.registry.StellarityEquipmentAssets;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 
 import java.util.List;

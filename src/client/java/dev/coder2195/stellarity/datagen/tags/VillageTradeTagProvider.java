@@ -14,7 +14,7 @@ import static dev.coder2195.stellarity.tags.StellarityVillagerTradeTags.*;
 
 import java.util.concurrent.CompletableFuture;
 
-import static dev.coder2195.stellarity.key.StellarityVillagerTrades.*;
+import static dev.coder2195.stellarity.registry.StellarityVillagerTrades.*;
 
 public class VillageTradeTagProvider extends FabricTagsProvider<VillagerTrade> {
 	public VillageTradeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {

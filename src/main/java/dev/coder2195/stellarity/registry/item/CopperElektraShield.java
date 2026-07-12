@@ -28,7 +28,7 @@ import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.key.StellarityDamageTypes;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.networking.ClientboundElectricDashPayload;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;

@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.key;
+package dev.coder2195.stellarity.registry;
 
 import net.minecraft.references.BlockItemId;
 import dev.coder2195.stellarity.Stellarity;
@@ -16,11 +16,11 @@ public interface StellarityBlockItemIds {
 	BlockItemId ALTAR_OF_THE_SACRED = id("altar_of_the_sacred");
 	BlockItemId COLORED_LEAVES = id("colored_leaves");
 
-	static BlockItemId id(String id) {
+	private static BlockItemId id(String id) {
 		return BlockItemId.create(Stellarity.id(id), Stellarity.id(id));
 	}
 
-	static BlockItemId id(String blockId, String itemId) {
+	private static BlockItemId id(String blockId, String itemId) {
 		return BlockItemId.create(Stellarity.id(blockId), Stellarity.id(itemId));
 	}
 }

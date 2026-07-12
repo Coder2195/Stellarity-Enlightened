@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import org.jetbrains.annotations.Nullable;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.key.StellarityNoises;
+import dev.coder2195.stellarity.registry.StellarityNoises;
 import dev.coder2195.stellarity.registry.material_condition.LegacyBiomeConditionSource;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 
@@ -24,7 +24,7 @@ import static net.minecraft.world.level.biome.Climate.Parameter.point;
 import static net.minecraft.world.level.biome.Climate.Parameter.span;
 import static net.minecraft.world.level.block.Blocks.*;
 import static net.minecraft.world.level.levelgen.SurfaceRules.*;
-import static dev.coder2195.stellarity.key.StellarityBiomes.*;
+import static dev.coder2195.stellarity.registry.StellarityBiomes.*;
 import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
 import static dev.coder2195.stellarity.util.ValueUtil.from;
 import static dev.coder2195.stellarity.util.WorldgenUtil.state;

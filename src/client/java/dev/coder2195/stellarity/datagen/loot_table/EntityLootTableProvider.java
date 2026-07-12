@@ -7,7 +7,7 @@ import net.minecraft.advancements.predicates.MobEffectsPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.storage.loot.LootContext;
-import dev.coder2195.stellarity.key.StellarityBiomes;
+import dev.coder2195.stellarity.registry.StellarityBiomes;
 
 import java.util.concurrent.CompletableFuture;
 

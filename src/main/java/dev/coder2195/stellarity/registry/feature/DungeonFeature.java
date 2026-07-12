@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import dev.coder2195.stellarity.key.StellarityLootTables;
+import dev.coder2195.stellarity.registry.StellarityLootTables;
 import dev.coder2195.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
 
 import java.util.ArrayList;

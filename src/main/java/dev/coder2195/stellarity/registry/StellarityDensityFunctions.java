@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.key;
+package dev.coder2195.stellarity.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;

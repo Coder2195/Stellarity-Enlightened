@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 import static net.minecraft.world.level.biome.Biomes.*;
-import static dev.coder2195.stellarity.key.StellarityBiomes.*;
+import static dev.coder2195.stellarity.registry.StellarityBiomes.*;
 import static dev.coder2195.stellarity.tags.StellarityBiomeTags.*;
 
 public class BiomeTagProvider extends FabricTagsProvider<Biome> {

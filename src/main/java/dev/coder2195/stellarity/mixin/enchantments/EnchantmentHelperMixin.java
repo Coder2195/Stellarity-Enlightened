@@ -13,7 +13,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import dev.coder2195.stellarity.key.StellarityEnchantments;
+import dev.coder2195.stellarity.registry.StellarityEnchantments;
 import dev.coder2195.stellarity.registry.StellarityParticleTypes;
 import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 
