@@ -4,15 +4,15 @@ import groovy.json.JsonSlurper
 plugins {
 	id("net.fabricmc.fabric-loom")
 	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
-	id("me.modmuss50.mod-publish-plugin") version "1.1.0"
+	id("me.modmuss50.mod-publish-plugin") version "2.1.1"
 	// `maven-publish`
 	kotlin("jvm") version "2.2.20"
 	id("com.google.devtools.ksp") version "2.2.20-2.0.4"
 }
 
-version = "${property("mod.version")}+${stonecutter.current.version}"
-base.archivesName = property("mod.id") as String
-
+val modId = property("mod.id") as String
+version = "${property("mod.version")}"
+base.archivesName = modId
 val requiredJava = JavaVersion.VERSION_25
 
 repositories {
@@ -36,7 +36,6 @@ repositories {
 			includeGroup("com.klikli_dev")
 		}
 	}
-
 }
 
 dependencies {
@@ -65,7 +64,7 @@ fletchingTable {
 	mixins.create("client") { // Name should match an existing source set
 		// Default matches the default value in the annotation
 		mixin("default", "stellarity.client.mixins.json") {
-			env("CLIENT", "prismatic.shards.stellarity.client.mixin")
+			env("CLIENT", "dev.coder2195.stellarity.client.mixin")
 		}
 	}
 	fabric /* or neoforge { } */ {
@@ -89,8 +88,8 @@ loom {
 
 
 	fabricModJsonPath = rootProject.file("src/main/resources/fabric.mod.json") // Useful for interface injection
-	accessWidenerPath = sc.process(rootProject.file("src/main/resources/stellarity.accesswidener"), "build/dev.aw")
-	file("build/generated/stonecutter/main/resources/stellarity.accesswidener").let {
+	accessWidenerPath = sc.process(rootProject.file("src/main/resources/${modId}.accesswidener"), "build/dev.aw")
+	file("build/generated/stonecutter/main/resources/${modId}.accesswidener").let {
 		if (it.exists()) accessWidenerPath = it
 	}
 
@@ -220,6 +219,7 @@ publishMods {
 		requires("fabric-api")
 		optional("biolith")
 		optional("modonomicon")
+
 	}
 }
 

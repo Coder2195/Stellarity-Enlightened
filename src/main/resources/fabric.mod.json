@@ -16,16 +16,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"prismatic.shards.stellarity.Stellarity"
+      "dev.coder2195.stellarity.Stellarity"
 		],
 		"client": [
-			"prismatic.shards.stellarity.StellarityClient"
+      "dev.coder2195.stellarity.StellarityClient"
 		],
 		"fabric-datagen": [
-			"prismatic.shards.stellarity.StellarityDatagen"
+      "dev.coder2195.stellarity.StellarityDatagen"
 		],
 		"biolith": [
-			"prismatic.shards.stellarity.Stellarity"
+      "dev.coder2195.stellarity.Stellarity"
 		]
 	},
 	"mixins": [

@@ -14,7 +14,7 @@ use this file unless upgrading versions. `stonecutter.gradle.kts` SHOULD NOT BE 
 
 ## General Project Structure
 
-Use `prismatic.shards.stellarity.snake_case_for_packages.PascalCaseForClasses`
+Use `dev.coder2195.stellarity.snake_case_for_packages.PascalCaseForClasses`
 
 If you know a class will only contain `static final` fields and `static` methods, we use an `interface` to implement the
 class.
@@ -85,27 +85,27 @@ else and must be defined there and there only.
 
 ## Gui Elements/Screens
 
-All gui elements and screen must be in `prismatic.shards.stellarity.client.gui`.
+All gui elements and screen must be in `dev.coder2195.stellarity.client.gui`.
 
 Those will then be placed accordingly to categories, widgets go in `widget`, screens go in `screen`, and so on.
 Ask if you are unsure.
 
 ## Client
 
-**IMPORTANT: Always put client files in src/client, and make sure it is in the `prismatic.shards.stellarity.client`
+**IMPORTANT: Always put client files in src/client, and make sure it is in the `dev.coder2195.stellarity.client`
 package. DO NOT put client code in the main source set. (It shouldn't even let you)**
 
 **This prevents server side crashes and all client code MUST be annotated and be inside this package**
 
 All client generally follow the same conventions mentioned above, but the "root" now is
-`prismatic.shards.stellarity.client`
+`dev.coder2195.stellarity.client`
 
 Are you unsure about if it should be client or not? Check the related vanilla class you are trying to build for, and if
 those are annotated, move them to client.
 
 ## Datagen
 
-All providers go in the **src/client** source set just like client, except its in `prismatic.shards.stellarity.datagen`.
+All providers go in the **src/client** source set just like client, except its in `dev.coder2195.stellarity.datagen`.
 
 All providers should be in the root of the package, and should be named `[Type]Provider` such as `ModelProvider` for
 models.

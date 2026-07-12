@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "prismatic.shards.stellarity.client.mixin",
+	"package": "dev.coder2195.stellarity.client.mixin",
 	"compatibilityLevel": "${java}",
 	"mixins": [],
 	"client": [],

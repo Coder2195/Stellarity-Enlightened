@@ -1,14 +1,14 @@
 classTweaker v1 official
 
-inject-interface net/minecraft/world/entity/boss/enderdragon/EndCrystal prismatic/shards/stellarity/interface_injection/ExtEndCrystal
-inject-interface net/minecraft/world/entity/Entity prismatic/shards/stellarity/interface_injection/ExtEntity
-inject-interface net/minecraft/world/entity/projectile/FishingHook prismatic/shards/stellarity/interface_injection/ExtFishingHook
-inject-interface net/minecraft/world/entity/item/ItemEntity prismatic/shards/stellarity/interface_injection/ExtItemEntity
-inject-interface net/minecraft/world/entity/projectile/arrow/AbstractArrow prismatic/shards/stellarity/interface_injection/ExtAbstractArrow
-inject-interface net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike prismatic/shards/stellarity/interface_injection/ExtEndSpike
-inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight prismatic/shards/stellarity/interface_injection/ExtEnderDragonFight
-inject-interface net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration prismatic/shards/stellarity/interface_injection/ExtLargeDripstoneConfiguration
-inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone prismatic/shards/stellarity/interface_injection/ExtLargeDripstone
+inject-interface net/minecraft/world/entity/boss/enderdragon/EndCrystal dev/coder2195/stellarity/interface_injection/ExtEndCrystal
+inject-interface net/minecraft/world/entity/Entity dev/coder2195/stellarity/interface_injection/ExtEntity
+inject-interface net/minecraft/world/entity/projectile/FishingHook dev/coder2195/stellarity/interface_injection/ExtFishingHook
+inject-interface net/minecraft/world/entity/item/ItemEntity dev/coder2195/stellarity/interface_injection/ExtItemEntity
+inject-interface net/minecraft/world/entity/projectile/arrow/AbstractArrow dev/coder2195/stellarity/interface_injection/ExtAbstractArrow
+inject-interface net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike dev/coder2195/stellarity/interface_injection/ExtEndSpike
+inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight dev/coder2195/stellarity/interface_injection/ExtEnderDragonFight
+inject-interface net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration dev/coder2195/stellarity/interface_injection/ExtLargeDripstoneConfiguration
+inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone dev/coder2195/stellarity/interface_injection/ExtLargeDripstone
 
 extendable method net/minecraft/world/entity/decoration/ItemFrame onItemChanged (Lnet/minecraft/world/item/ItemStack;)V
 accessible class net/minecraft/server/commands/AdvancementCommands$Action
