@@ -207,6 +207,8 @@ publishMods {
 		minecraftVersions.addAll(property("mod.mc_targets").toString().split(' '))
 		type = ALPHA
 
+		environment = CLIENT_AND_SERVER
+
 		requires("fabric-api")
 		optional("biolith")
 		optional("modonomicon")
@@ -220,6 +222,7 @@ publishMods {
 		optional("biolith")
 		optional("modonomicon")
 
+		changelogType = "markdown"
 	}
 }
 

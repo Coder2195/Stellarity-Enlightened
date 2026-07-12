@@ -182,7 +182,6 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.requirements(requires("craft"))
 			.build(Stellarity.id("altar_of_the_accursed/altar_of_the_accursed_intro"));
 
-		// TODO: reparent to intro to dark magic
 		final var CURSED_CRAFTING = advancement().display(
 				StellarityItems.ALTAR_OF_THE_ACCURSED,
 				Component.translatable("advancements.stellarity.cursed_crafting"), Component.translatable("advancements.stellarity.cursed_crafting.description"),

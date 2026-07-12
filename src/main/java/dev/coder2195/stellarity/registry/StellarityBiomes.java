@@ -523,7 +523,6 @@ public interface StellarityBiomes {
 				.addFeature(GenerationStep.Decoration.LAKES, THE_HALLOW_ROCKS)
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, HALLOWED_TUNDRA_LAKE)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HALLOWED_TUNDRA_TREES)
-				// TODO: tree lanterns can use decorators
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, THE_HALLOW_LANTERNS)
 				.addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, GLOBAL_FREEZE_WATER)
 				.build()
