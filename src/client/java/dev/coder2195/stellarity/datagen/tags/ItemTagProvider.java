@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
@@ -61,6 +62,14 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
+
+		// TODO: add shulker spear, and ensure all implementations complete
+		var donator = addTags(StellarityItemTags.DONATOR);
+		List.of(BELL_FLOWER, LOAF_OF_PLENTY, FLUFFY_HAMMER, SANDSTORM_TRIDENT, SHULKER_PICKAXE, SHULKER_SHOVEL, SHULKER_SWORD, SHULKER_AXE, LOAF_OF_PLENTY).forEach(donator::addOptional);
+
+		// TODO: add beginning and the end, and ensure all implementations complete
+		var developer = addTags(StellarityItemTags.DEVELOPER);
+		List.of(TAMARIS, HARVESTER, STELLAR_STRIKER, POTASSIFISH).forEach(developer::addOptional);
 
 	}
 }

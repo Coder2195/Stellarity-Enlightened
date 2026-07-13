@@ -10,6 +10,8 @@ public interface StellarityItemTags {
 	TagKey<Item> BOWS = id("bows");
 	TagKey<Item> ELYTRA_ENCHANTABLE = id("enchantable.elytra");
 	TagKey<Item> RANGED_ENCHANTABLE = id("enchantable.ranged");
+	TagKey<Item> DONATOR = id("donator");
+	TagKey<Item> DEVELOPER = id("developer");
 
 	static TagKey<Item> id(String id) {
 		return TagKey.create(Registries.ITEM, Stellarity.id(id));

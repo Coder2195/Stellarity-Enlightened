@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.event;
 
+import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -164,6 +165,8 @@ public interface StellarityTooltips {
 
 	Component EMPTY_LINE = Component.empty();
 	Component STELLARITY = Component.translatable("Stellarity").withStyle(ChatFormatting.ITALIC).withStyle(Style.EMPTY.withColor(0xCC26FF));
+	Component DEVELOPER_ITEM = Component.translatable("items.stellarity.developer").withStyle(Style.EMPTY.withColor(0xBA02D7));
+	Component DONATOR_ITEM = Component.translatable("items.stellarity.donator").withStyle(Style.EMPTY.withColor(0xF96854));
 
 
 	static void init() {
@@ -187,6 +190,16 @@ public interface StellarityTooltips {
 					list.add(index, line);
 					index++;
 				}
+			}
+
+			if (itemStack.is(StellarityItemTags.DEVELOPER)) {
+				list.add(EMPTY_LINE);
+				list.add(DEVELOPER_ITEM);
+			}
+
+			if (itemStack.is(StellarityItemTags.DONATOR)) {
+				list.add(EMPTY_LINE);
+				list.add(DONATOR_ITEM);
 			}
 
 			list.add(EMPTY_LINE);
