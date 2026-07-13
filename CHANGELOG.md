@@ -1,10 +1,11 @@
-# 0.7.1
+# 0.8.0
 
-## Dependencies
+## Entities
+**[*] Pixie**
+- Has a much contained spawn area, preventing pixies spawning underground
 
-**[*] Biolith**
-
-- Implements the preliminary fix by using 26.1 biome conditions
+## Items
+**[+] Loaf of Plenty**
 
 # Developer's Note
 

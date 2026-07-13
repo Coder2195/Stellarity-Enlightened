@@ -85,7 +85,8 @@ public class ModelProvider extends FabricModelProvider {
 		POTASSIFISH,
 		ENDERMANS_HAND,
 		DRAGONS_EYE,
-		LIFE_CRYSTAL
+		LIFE_CRYSTAL,
+		LOAF_OF_PLENTY
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{

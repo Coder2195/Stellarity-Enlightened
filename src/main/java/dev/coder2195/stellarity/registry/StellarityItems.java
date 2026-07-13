@@ -1,6 +1,8 @@
 package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.Streams;
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.registry.consume_effect.LoafOfPlentyConsumeEffect;
 import dev.coder2195.stellarity.registry.item.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -35,7 +37,6 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.Stellarity;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -289,6 +290,10 @@ public interface StellarityItems {
 			.build())
 	);
 	Item LIFE_CRYSTAL = register(StellarityItemIds.LIFE_CRYSTAL, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+	Item LOAF_OF_PLENTY = register(StellarityItemIds.LOAF_OF_PLENTY, foodProperties(
+		new Item.Properties().stacksTo(1).useCooldown(10).rarity(Rarity.EPIC),
+		new FoodProperties.Builder(), Consumables.defaultFood().onConsume(LoafOfPlentyConsumeEffect.INSTANCE), 5, 6, true
+	));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);

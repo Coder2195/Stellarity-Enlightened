@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
@@ -107,8 +108,9 @@ public class Pixie extends PathfinderMob {
 		this.goalSelector.addGoal(1, new RandomMoveGoal());
 	}
 
-	public static boolean checkPixieSpawnRules(EntityType<Pixie> ignored1, ServerLevelAccessor ignored2, EntitySpawnReason ignored3, BlockPos ignored4, RandomSource ignored5) {
-		return true;
+	public static boolean checkPixieSpawnRules(EntityType<Pixie> ignored1, ServerLevelAccessor serverLevelAccessor, EntitySpawnReason ignored3, BlockPos pos, RandomSource ignored5) {
+		int y = pos.getY();
+		return y <= serverLevelAccessor.getHeight(Heightmap.Types.MOTION_BLOCKING, pos.getX(), pos.getZ()) + 40 && y >= serverLevelAccessor.getHeight(Heightmap.Types.WORLD_SURFACE, pos.getX(), pos.getZ()) - 15;
 	}
 
 	private class RandomMoveGoal extends Goal {
