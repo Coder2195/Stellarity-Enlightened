@@ -51,7 +51,7 @@ for lang in translations:
 	final = dict(natsorted(translations[lang].items()))
 
 	with open("translations/enlightened/en_us.json", "w", encoding="utf-8") as f:
-		json.dump(dict(natsorted(translations["en_us.json"].items())), f, ensure_ascii=False, indent=4)
+		json.dump(dict(natsorted(translations["en_us.json"].items())), f, ensure_ascii=False, indent="\t")
 
 	# final["LEGACY_TRANSLATIONS_THIS_IS_NOT_A_KEY"] = "ALL LEGACY TRANSLATIONS BELOW, TRY NOT TO EDIT."
 
@@ -62,4 +62,4 @@ for lang in translations:
 	#			 final[key] = data[key]
 
 	with open(f"src/main/resources/assets/stellarity/lang/{lang}", "w+", encoding="utf-8") as f:
-		json.dump(final, f, ensure_ascii=False, indent=4)
+		json.dump(final, f, ensure_ascii=False, indent="\t")
