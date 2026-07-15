@@ -1,0 +1,406 @@
+Type	Lvl	Trade Group - Pick Count	Status	Buy	Buy #		Buy B	Buy B #		Sell	Sell # 		XP	Max Uses	Rep Discount / Price Modifier		Predicate
+Armorer	1	1 - 1		coal	[17,20]					enderite shard	1		2	12	0.05		
+				charcoal	[20,24]					enderite shard	1		2	10	0.05		
+				blaze rod	[2,4]					enderite shard	1		1	10	0.05		
+		2 - 1		enderite shard	[9,13]					iron chestplate; 50% emerald spire trim; 50% enchant randomly	1		2	6	0.2		
+				enderite shard	[7,11]					iron helmet; 50% emerald spire trim; 50% enchant randomly	1		2	6	0.2		
+																	
+Armorer	2	1 - 1		enderite shard	[8,12]					iron leggings; 50% emerald spire trim; 50% enchant randomly	1		8	6	0.2		
+				enderite shard	[5,8]					iron boots; 50% emerald spire trim; 50% enchant randomly	1		8	6	0.2		
+		2 - 1		enderite shard	[4,6]					hallowed ingot	1		10	8	0.2		
+				enderite shard	[4,6]					chorus plating	1		10	8	0.2		
+																	
+Armorer	3	1 - 2		diamond	1					enderite shard	2		12	8	0.05		
+				shield	1		enderite shard	[45,64]		copper elektra shield	1		40	2	0.2		
+																	
+Armorer	4	1 - 3		purpur block	[20,30]		enderite shard	[28,40]		enderite upgrade smithing template	1		10	2	0.2		
+				enderite shard	[28,35]					diamond leggings; 50% emerald eye trim; 50% amethyst eye trim; 50% enderite eye trim; 50% chorus eye trim; enchant level 15-32	1		15	3	0.2		
+				enderite shard	[21,24]					diamond boots; 50% emerald eye trim; 50% amethyst eye trim; 50% enderite eye trim; 50% chorus eye trim; enchant level 15-32	1		15	3	0.2		
+																	
+Armorer	5	1 - 2		enderite shard	[23,32]					diamond helmet; 50% emerald eye trim; 50% amethyst eye trim; 50% enderite eye trim; 50% chorus eye trim; enchant level 15-32	1		15	3	0.2		
+				enderite shard	[32,41]					diamond chestplate; 50% emerald eye trim; 50% amethyst eye trim; 50% enderite eye trim; 50% chorus eye trim; enchant level 15-32	1		15	3	0.2		
+																	
+Butcher	1	1 - 2		enderman flesh	[20,30]					enderite shard	1		1	14	0.05		
+			NEW	phantom membrane	[8,16]					enderite shard	1		1	14	0.05		
+																	
+Butcher	2	1 - 1		coal	[17,20]					enderite shard	1		3	12	0.05		
+				charcoal	[20,24]					enderite shard	1		3	12	0.05		
+		2 - 1		enderman flesh	2		enderite shard	2		grilled enderman flesh	3		5	8	0.05		
+				enderman flesh	2		enderite shard	2		frozen carpaccio	3		5	8	0.05		
+																	
+Butcher	3	1 - 1		shulker body	2					enderite shard	1		12	14	0.05		
+			NEW	enderite shard	1					shulker body	1		12	14	0.05		
+		2 - 1	NEW	enderite shard	[16,24]					iron axe; enchanted with looting 2	1		15	3	0.2		
+																	
+Butcher	4	1 - 1	EDIT	beef	[5, 10]		leather	[5, 10]		enderite shard	1		20	8	0.05		
+			NEW	mutton	[5, 10]		wool	[5, 10]		enderite shard	1		20	8	0.05		
+			NEW	chicken	[5, 10]		feather	[5, 10]		enderite shard	1		20	8	0.05		
+			NEW	pork	[8,15]					enderite shard	1		20	8	0.05		
+		2 - 1	NEW	enderite shard	[16,23]					pho	1		25	3	0.05		
+																	
+Butcher	5	1 - 1		enderite shard	[38,50]					shepherds pie	1		50	2	0.2		
+			NEW	enderite shard	[3,6]					dried kelp block	1		20	12	0.05		
+																	
+Cartographer	1	1 - 2		paper	[24, 30]					enderite shard	1		2	12	0.05		
+				enderite shard	[6, 8]					map	1		1	10	0.05		
+																	
+Cartographer	2	1 - 2		glass pane	[14,20]					enderite shard	1		8	14	0.05		
+				map	1		enderite shard	40		end city explorer map	1		40	1	0.2		
+																	
+Cartographer	3	1 - 2		enderite shard	2					item frame	4		12	8	0.05		
+				map	1		enderite shard	50		chapel of light map	4		50	1	0.2		
+																	
+Cartographer	4	1 - 2		enderite shard	3					glow item frame	2		18	8	0.05		
+				enderite shard	[4,6]					phantom item frame	3		20	4	0.05		
+																	
+Cartographer	5	1 - 1		enderite shard	[15,23]					mojang banner pattern	1		30	8	0.05		
+																	
+Cleric	1	1 - 1		phantom membrane	[12,18]					enderite shard	1		3	8	0.05		
+				bone	[24,33]					enderite shard	1		2	12	0.05		
+			EDIT	enderman hand	1					enderite shard	2		3	12	0.05		
+		2 - 1		enderite shard	1					redstone	4		1	16	0.05		
+				enderite shard	2					blaze rod	1		2	8	0.05		
+																	
+Cleric	2	1 - 1		gold ingot	3					enderite shard	1		5	10	0.05		
+		2 - 1		enderite shard	1					lapis lazuli	3		5	10	0.05		
+				enderite shard	1					nether wart	2		3	12	0.05		
+																	
+Cleric	3	1 - 2		enderite shard	[7,11]					potion; healing, swiftness, or leaping	1		10	3	0.05		
+				enderite shard	1					glowstone	1		5	12	0.05		
+																	
+Cleric	4	1 - 2		ender pearl	16		ender pearl	[1,16]		enderite shard	1		6	12	0.05		
+				enderite shard	[7, 11]					potion; strength or endurance	1		15	3	0.2		
+																	
+Cleric	5	1 - 2		enderite shard	[11, 18]					potion; lifeforce or red	1		25	2	0.2		
+			NEW	dragon's breath	1					enderite shard	1						
+																	
+Farmer	1	1 - 1		wheat	[15, 30]					enderite shard	1		2	8	0.05		
+				potato	[20, 35]					enderite shard	1		3	8	0.05		
+				carrot	[20, 35]					enderite shard	1		3	8	0.05		
+				beetroot	[15, 25]					enderite shard	1		2	10	0.05		
+		2 - 1		enderite shard	1					bread	6		2	12	0.05		
+			NEW	enderite shard	1					cake	1		2	10	0.05		
+																	
+Farmer	2	1 - 1		chorus fruit	[20, 28]					enderite shard	1		5	6	0.05		
+				chorus flower	[5, 7]					enderite shard	1		8	12	0.05		
+		2 - 1		enderite shard	1					chorus pie	2		15	6	0.2		
+				enderite shard	1					shroomlight	2		4	8	0.05		
+																	
+Farmer	3	1 - 1		enderite shard	2					candied chorus fruit	1		20	3	0.2		
+		2 - 1		wheat seeds	[12, 16]		enderite shard	1		torchflower seeds	4		5	12	0.05		
+				wheat seeds	8		enderite shard	1		pitcher pod	3		5	8	0.05		
+																	
+Farmer	4	1 - 1		enderite shard	3					chorus juice	1		15	8	0.2		
+				enderite shard	4					chorus stew	1		15	6	0.2		
+		2 - 1		enderite shard	[5,6]					fried chorus fruit	2		15	8	0.2		
+																	
+Farmer	5	1 - 2		enderite shard	[12, 18]					pho	1		25	3	0.2		
+				bread	10		enderite shard	64		loaf of plenty	1		50	2	0.2		chance of 20%
+																	
+Fisherman	1	1 - 1		fishing rod	1					enderite shard	2		10	1	0.05		
+				enderite shard	3					fishing rod	1		4	2	0.05		
+		2 - 1		string	[20, 32]					enderite shard	1		5	6	0.05		
+				coal	[20,26]					enderite shard	1		5	8	0.05		
+																	
+Fisherman	2	1 - 1		ender koi	[4,6]					enderite shard	1		4	8	0.05		
+				overgrown cod	[4,6]					enderite shard	1		4	8	0.05		
+				frost minnow	[4,6]					enderite shard	1		4	8	0.05		
+				goosh	[4,6]					enderite shard	1		4	8	0.05		
+		2 - 1		enderite shard	1					campfire	1		5	8	0.05		
+				enderite shard	2					soul campfire	1		8	6	0.05		
+																	
+Fisherman	3	1 - 1		enderite shard	[5,8]					fishing rod; enchant level 15-29	1		4	2	0.05		
+		2 - 1		crimson tigerfish	[4,6]					enderite shard	1		4	8	0.05		
+				fleshy piranha	[4,6]					enderite shard	1		4	8	0.05		
+				flarefin koi	[4,6]					enderite shard	1		4	8	0.05		
+				potassifish	[4,6]					enderite shard	1		4	8	0.05		
+																	
+Fisherman	4	1 - 1		enderite shard	[10,14]					lure book	1		10	2	0.2		
+				enderite shard	[10,14]					luck of the sea book	1		10	2	0.2		
+		2 - 1		enderite shard	[14,20]					fisher of voids	1		15	6	0.2		
+																	
+Fisherman	5	1 - 2		crystal heartfish	1					enderite shard	5		15	3	0.2		
+			NEW	enderite shard	[14,20]					prismatic sushi	1		15	4	0.2		
+																	
+Fletcher	1	1 - 1		enderite shard	2					spectral arrow	10		8	12	0.05		
+				enderite shard	1					arrow	16		6	8	0.05		
+		2 - 1		stick	[24,36]					enderite shard	1		2	12	0.05		
+																	
+Fletcher	2	1 - 2		flint	[10,20]					enderite shard	1		2	12	0.05		
+				enderite shard	[8,15]					bow; enchant level 15-29	1		10	8	0.05		
+																	
+Fletcher	3	1 - 2		string	[12,20]					enderite shard	1		4	12	0.05		
+				feather	[7,15]					enderite shard	1		6	6	0.05		
+				enderite shard	[10,17]					crossbow; enchant level 15-29	1		12	2	0.2		
+																	
+Fletcher	4	1 - 2		arrow	8		enderite shard	[9,17]		levitation tipped arrow	8		8	6	0.05		
+			EDIT	arrow	8		enderite shard	64		luck tipped arrow	1		8	5	0.05		
+																	
+Fletcher	5	1 - 1		bow	1		enderite shard	64		sharanga	1		25	2	0.2		
+																	
+Leatherworker	1	1 - 2		leather	[8,15]					enderite shard	1		3	8	0.05		
+				flint	[10,20]					enderite shard	1		3	6	0.05		
+																	
+Leatherworker	2	1 - 2		enderite shard	[5,10]					saddle	1		5	3	0.05		
+				enderite shard	1					leather	3		4	6	0.05		
+																	
+Leatherworker	3	1 - 2		enderite shard	1					cauldron	1		8	6	0.05		
+				rabbit hide	[4,6]					enderite shard	1		6	8	0.05		
+																	
+Leatherworker	4	1 - 1		item frame	2		enderite shard	1		glow item frame	2		8	4	0.05		
+		2 - 1		enderite shard	[5,10]					turtle scute	1		6	8	0.05		
+				enderite shard	[7,12]					armadillo scute	1		6	8	0.05		
+																	
+Leatherworker	5	1 - 1		diamond horse armor	1		enderite shard	24		reinforced horse armor	1		20	2	0.2		
+																	
+Librarian	1	1 - 1		paper	[24,36]					enderite shard	1		2	6	0.05		
+				book	3					enderite shard	1		3	8	0.05		
+		2 - 1		enderite shard	[4,6]					bookshelf	1		4	8	0.05		
+				book	1		enderite shard	15		book; enchanted with fire aspect, flame, knockback or aqua affinity	1		8	3	0.2		
+																	
+Librarian	2	1 - 2		enderite shard	1					lantern	3		4	8	0.05		
+				book	1		enderite shard	25		book; enchanted with protection, fire protection, blast protection, projectile protection, silk touch, feather falling, or unbreaking	1		15	3	0.2		
+																	
+Librarian	3	1 - 1		enderite shard	1					ink sac	2		4	8	0.05		
+				enderite shard	1					glow ink sac	1		5	6	0.05		
+		2 - 1		enderite shard	1					glass	6		3	8	0.05		
+																	
+Librarian	4	1 - 1		book	1		enderite shard	40		book; enchanted with mending, fortune, knockback, depth strider, breach, density, or sharpness	1		20	2	0.2		
+				enderite shard	1					writeable book	1		6	6	0.05		
+		2 - 1		enderite shard	[7,15]					name tag	1		6	3	0.05		
+																	
+Librarian	5	1 - 1		book	1		enderite shard	64		book of updraft	1		20	1	0.2		
+				book	1		enderite shard	64		book of light	1		20	1	0.2		
+				book	1		enderite shard	64		book of obstruct	1		20	1	0.2		
+																	
+Mason	1	1 - 2		enderite shard	1					purpur block	4		2	8	0.05		
+				enderite shard	1					end stone bricks	4		3	8	0.05		
+																	
+Mason	2	1 - 1		amethyst budfish	1					amethyst shard	4		4	6	0.05		
+				amethyst budfish	1					quartz	8		5	6	0.05		
+		2 - 1		enderite shard	2					obsidian	3		6	8	0.05		
+				enderite shard	2					smooth quartz	4		6	6	0.05		
+																	
+Mason	3	1 - 1		enderite shard	1					polished blackstone	4		6	8	0.05		
+				enderite shard	1					polished deepslate	4		6	8	0.05		
+				cobbled deepslate	[15,25]					enderite shard	1		6	6	0.05		
+				blackstone	[15,25]					enderite shard	1		6	6	0.05		
+		2 - 1		enderite shard	1					quartz block	4		8	6	0.05		
+				enderite shard	1					quartz pillar	3		8	6	0.05		
+																	
+Mason	4	1 - 1		enderite shard	1					magenta glazed terracota	2		12	6	0.05		
+				enderite shard	1					white glazed terracota	2		12	6	0.05		
+				enderite shard	1					purple glazed terracota	2		12	6	0.05		
+				enderite shard	1					black glazed terracota	2		12	6	0.05		
+				enderite shard	1					light gray glazed terracota	2		12	6	0.05		
+				enderite shard	1					pink glazed terracota	2		12	6	0.05		
+				enderite shard	1					yellow glazed terracota	2		12	6	0.05		
+				enderite shard	1					red glazed terracota	2		12	6	0.05		
+				enderite shard	1					lime glazed terracota	2		12	6	0.05		
+				enderite shard	1					light blue glazed terracota	2		12	6	0.05		
+				enderite shard	1					orange glazed terracota	2		12	6	0.05		
+		2 - 1		enderite shard	1					magenta terracota	2		12	6	0.05		
+				enderite shard	1					white terracota	2		12	6	0.05		
+				enderite shard	1					purple terracota	2		12	6	0.05		
+				enderite shard	1					black terracota	2		12	6	0.05		
+				enderite shard	1					light gray terracota	2		12	6	0.05		
+				enderite shard	1					pink terracota	2		12	6	0.05		
+				enderite shard	1					yellow terracota	2		12	6	0.05		
+				enderite shard	1					red terracota	2		12	6	0.05		
+				enderite shard	1					lime terracota	2		12	6	0.05		
+				enderite shard	1					light blue terracota	2		12	6	0.05		
+				enderite shard	1					orange terracota	2		12	6	0.05		
+		3 - 1		enderite shard	9					enderite block	1		6	12	0.05		
+																	
+Mason	5	1 - 1		enderite shard	[4,6]					crying obsidian	2		16	4	0.05		
+		2 - 1		enderite shard	1					purpur pillar	4		12	6	0.05		
+				enderite shard	1					chiseled quartz block	2		12	6	0.05		
+																	
+Shepherd	1	1 - 2		enderite shard	1					shears	1		2	4	0.05		
+				white wool	[8,16]					enderite shard	1		3	6	0.05		
+																	
+Shepherd	2	1 - 1		enderite shard	1					red dye	3		4	8	0.05		
+				enderite shard	1					orange dye	3		4	8	0.05		
+				enderite shard	1					yellow dye	3		4	8	0.05		
+				enderite shard	1					lime dye	3		4	8	0.05		
+				enderite shard	1					green dye	3		4	8	0.05		
+				enderite shard	1					cyan dye	3		4	8	0.05		
+				enderite shard	1					light blue dye	3		4	8	0.05		
+				enderite shard	1					blue dye	3		4	8	0.05		
+				enderite shard	1					purple dye	3		4	8	0.05		
+				enderite shard	1					magenta dye	3		4	8	0.05		
+				enderite shard	1					white dye	3		4	8	0.05		
+				enderite shard	1					light gray dye	3		4	8	0.05		
+				enderite shard	1					gray dye	3		4	8	0.05		
+				enderite shard	1					brown dye	3		4	8	0.05		
+				enderite shard	1					black dye	3		4	8	0.05		
+				enderite shard	1					pink dye	3		4	8	0.05		
+		2 - 1		enderite shard	1					red wool	2		4	8	0.05		
+				enderite shard	1					orange wool	2		4	8	0.05		
+				enderite shard	1					yellow wool	2		4	8	0.05		
+				enderite shard	1					lime wool	2		4	8	0.05		
+				enderite shard	1					green wool	2		4	8	0.05		
+				enderite shard	1					cyan wool	2		4	8	0.05		
+				enderite shard	1					light blue wool	2		4	8	0.05		
+				enderite shard	1					blue wool	2		4	8	0.05		
+				enderite shard	1					purple wool	2		4	8	0.05		
+				enderite shard	1					magenta wool	2		4	8	0.05		
+				enderite shard	1					white wool	2		4	8	0.05		
+				enderite shard	1					light gray wool	2		4	8	0.05		
+				enderite shard	1					gray wool	2		4	8	0.05		
+				enderite shard	1					brown wool	2		4	8	0.05		
+				enderite shard	1					black wool	2		4	8	0.05		
+				enderite shard	1					pink wool	2		4	8	0.05		
+																	
+Shepherd	3	1 - 1		enderite shard	1					red carpet	5		6	6	0.05		
+				enderite shard	1					orange carpet	5		6	6	0.05		
+				enderite shard	1					yellow carpet	5		6	6	0.05		
+				enderite shard	1					lime carpet	5		6	6	0.05		
+				enderite shard	1					green carpet	5		6	6	0.05		
+				enderite shard	1					cyan carpet	5		6	6	0.05		
+				enderite shard	1					light blue carpet	5		6	6	0.05		
+				enderite shard	1					blue carpet	5		6	6	0.05		
+				enderite shard	1					purple carpet	5		6	6	0.05		
+				enderite shard	1					magenta carpet	5		6	6	0.05		
+				enderite shard	1					white carpet	5		6	6	0.05		
+				enderite shard	1					light gray carpet	5		6	6	0.05		
+				enderite shard	1					gray carpet	5		6	6	0.05		
+				enderite shard	1					brown carpet	5		6	6	0.05		
+				enderite shard	1					black carpet	5		6	6	0.05		
+				enderite shard	1					pink carpet	5		6	6	0.05		
+		2 - 1		enderite shard	1					red wool	2		6	8	0.05		
+				enderite shard	1					orange wool	2		6	8	0.05		
+				enderite shard	1					yellow wool	2		6	8	0.05		
+				enderite shard	1					lime wool	2		6	8	0.05		
+				enderite shard	1					green wool	2		6	8	0.05		
+				enderite shard	1					cyan wool	2		6	8	0.05		
+				enderite shard	1					light blue wool	2		6	8	0.05		
+				enderite shard	1					blue wool	2		6	8	0.05		
+				enderite shard	1					purple wool	2		6	8	0.05		
+				enderite shard	1					magenta wool	2		6	8	0.05		
+				enderite shard	1					white wool	2		6	8	0.05		
+				enderite shard	1					light gray wool	2		6	8	0.05		
+				enderite shard	1					gray wool	2		6	8	0.05		
+				enderite shard	1					brown wool	2		6	8	0.05		
+				enderite shard	1					black wool	2		6	8	0.05		
+				enderite shard	1					pink wool	2		6	8	0.05		
+		3 - 1		enderite shard	1					red bed	1		10	4	0.05		
+				enderite shard	1					orange bed	1		10	4	0.05		
+				enderite shard	1					yellow bed	1		10	4	0.05		
+				enderite shard	1					lime bed	1		10	4	0.05		
+				enderite shard	1					green bed	1		10	4	0.05		
+				enderite shard	1					cyan bed	1		10	4	0.05		
+				enderite shard	1					light blue bed	1		10	4	0.05		
+				enderite shard	1					blue bed	1		10	4	0.05		
+				enderite shard	1					purple bed	1		10	4	0.05		
+				enderite shard	1					magenta bed	1		10	4	0.05		
+				enderite shard	1					white bed	1		10	4	0.05		
+				enderite shard	1					light gray bed	1		10	4	0.05		
+				enderite shard	1					gray bed	1		10	4	0.05		
+				enderite shard	1					brown bed	1		10	4	0.05		
+				enderite shard	1					black bed	1		10	4	0.05		
+				enderite shard	1					pink bed	1		10	4	0.05		
+																	
+Shepherd	4	1 - 1		enderite shard	1					red banner	1		8	6	0.05		
+				enderite shard	1					orange banner	1		8	6	0.05		
+				enderite shard	1					yellow banner	1		8	6	0.05		
+				enderite shard	1					lime banner	1		8	6	0.05		
+				enderite shard	1					green banner	1		8	6	0.05		
+				enderite shard	1					cyan banner	1		8	6	0.05		
+				enderite shard	1					light blue banner	1		8	6	0.05		
+				enderite shard	1					blue banner	1		8	6	0.05		
+				enderite shard	1					purple banner	1		8	6	0.05		
+				enderite shard	1					magenta banner	1		8	6	0.05		
+				enderite shard	1					white banner	1		8	6	0.05		
+				enderite shard	1					light gray banner	1		8	6	0.05		
+				enderite shard	1					gray banner	1		8	6	0.05		
+				enderite shard	1					brown banner	1		8	6	0.05		
+				enderite shard	1					black banner	1		8	6	0.05		
+				enderite shard	1					pink banner	1		8	6	0.05		
+		2 - 1		enderite shard	1					red wool	2		6	6	0.05		
+				enderite shard	1					orange wool	2		6	6	0.05		
+				enderite shard	1					yellow wool	2		6	6	0.05		
+				enderite shard	1					lime wool	2		6	6	0.05		
+				enderite shard	1					green wool	2		6	6	0.05		
+				enderite shard	1					cyan wool	2		6	6	0.05		
+				enderite shard	1					light blue wool	2		6	6	0.05		
+				enderite shard	1					blue wool	2		6	6	0.05		
+				enderite shard	1					purple wool	2		6	6	0.05		
+				enderite shard	1					magenta wool	2		6	6	0.05		
+				enderite shard	1					white wool	2		6	6	0.05		
+				enderite shard	1					light gray wool	2		6	6	0.05		
+				enderite shard	1					gray wool	2		6	6	0.05		
+				enderite shard	1					brown wool	2		6	6	0.05		
+				enderite shard	1					black wool	2		6	6	0.05		
+				enderite shard	1					pink wool	2		6	6	0.05		
+		3 - 1		enderite shard	1					red dye	3		6	6	0.05		
+				enderite shard	1					orange dye	3		6	6	0.05		
+				enderite shard	1					yellow dye	3		6	6	0.05		
+				enderite shard	1					lime dye	3		6	6	0.05		
+				enderite shard	1					green dye	3		6	6	0.05		
+				enderite shard	1					cyan dye	3		6	6	0.05		
+				enderite shard	1					light blue dye	3		6	6	0.05		
+				enderite shard	1					blue dye	3		6	6	0.05		
+				enderite shard	1					purple dye	3		6	6	0.05		
+				enderite shard	1					magenta dye	3		6	6	0.05		
+				enderite shard	1					white dye	3		6	6	0.05		
+				enderite shard	1					light gray dye	3		6	6	0.05		
+				enderite shard	1					gray dye	3		6	6	0.05		
+				enderite shard	1					brown dye	3		6	6	0.05		
+				enderite shard	1					black dye	3		6	6	0.05		
+				enderite shard	1					pink dye	3		6	6	0.05		
+																	
+Shepherd	5	1 - 1		enderite shard	[4, 6]					fire painting	1		20	2	0.2		
+				enderite shard	[4, 6]					air painting	1		20	2	0.2		
+				enderite shard	[4, 6]					earth painting	1		20	2	0.2		
+				enderite shard	[4, 6]					painting painting	1		20	2	0.2		
+		2 - 1	NEW	enderite shard	[4, 6]					a hop and a skip away painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					dragonblade painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					end painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					end blossom painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					hourglass painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					majestical brew painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					scheme painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					shepherds feast painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					snare painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					snatch painting	1		20	2	0.2		
+			NEW	enderite shard	[4, 6]					the obsidian reliquary painting	1		20	2	0.2		
+																	
+Toolsmith	1	1 - 1		coal	[17,20]					enderite shard	1		2	12	0.05		
+				charcoal	[20,24]					enderite shard	1		3	12	0.05		
+				blaze rod	[2,4]					enderite shard	1		4	6	0.05		
+		2 - 1		enderite shard	[4,7]					iron hoe; enchant level 15-29	1		8	3	0.05		
+				enderite shard	[4,7]					iron shovel; enchant level 15-29	1		8	3	0.05		
+																	
+Toolsmith	2	1 - 1		enderite shard	[6,10]					iron axe; enchant level 15-29	1		10	3	0.05		
+				enderite shard	[6,10]					iron pickaxe; enchant level 15-29	1		10	3	0.05		
+		2 - 1		enderite shard	3					hallowed ingot	1		10	6	0.2		
+				enderite shard	3					chorus plating	1		10	8	0.2		
+																	
+Toolsmith	3	1 - 2		diamond	1					enderite shard	2		6	12	0.05		
+				book	1		enderite shard	20		book; enchanted with efficiency, silk touch, or unbreaking	1		12	4	0.05		
+																	
+Toolsmith	4	1 - 1		purpur block	[20,30]		enderite shard	[28,40]		enderite upgrade smithing template	1		10	2	0.2		
+		2 - 1		enderite shard	[11,18]					diamond hoe; enchant level 21-35	1		20	2	0.2		
+				enderite shard	[13,20]					diamond shovel; enchant level 21-35	1		20	2	0.2		
+																	
+Toolsmith	5	1 - 2		enderite shard	[15,22]					diamond axe; enchant level 21-35	1		25	2	0.2		
+				enderite shard	[15,22]					diamond pickaxe; enchant level 21-35	1		25	2	0.2		
+																	
+Weaponsmith	1	1 - 1		coal	[17,20]					enderite shard	1		2	12	0.05		
+				charcoal	[20,24]					enderite shard	1		3	12	0.05		
+				blaze rod	[2,4]					enderite shard	1		4	6	0.05		
+		2 - 1		enderite shard	[10,17]					iron sword; enchant level 15-29	1		8	3	0.05		
+																	
+Weaponsmith	2	1 - 1		enderite shard	[6,10]					iron axe; enchant level 15-29	1		8	3	0.05		
+		2 - 1		enderite shard	3					hallowed ingot	1		10	6	0.2		
+				enderite shard	3					chorus plating	1		10	8	0.2		
+																	
+Weaponsmith	3	1 - 2		diamond	1					enderite shard	2		6	12	0.05		
+				book	1		enderite shard	20		book; enchanted with sharpness, knockback or fire aspect	1		12	4	0.05		
+																	
+Weaponsmith	4	1 - 2		purpur block	[20,30]		enderite shard	[28,40]		enderite upgrade smithing template	1		10	2	0.2		
+				enderite shard	[20,25]					diamond sword; enchant level 21-35	1		20	2	0.2		
+																	
+Weaponsmith	5	1 - 2		enderite shard	[20,25]					diamond axe; enchant level 21-35	1		20	2	0.2		chance of 50%
+				golden sword	1		enderite shard	64		stellar striker	1		25	1	0.2		

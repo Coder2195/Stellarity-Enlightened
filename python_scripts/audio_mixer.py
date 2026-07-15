@@ -2,10 +2,9 @@ import os
 import pathlib
 
 from pydub import AudioSegment
-from pydub.utils import ratio_to_db
 
-pathlib.Path("input_audio").mkdir(exist_ok=True)
-pathlib.Path("output_audio/copper_elektra_shield").mkdir(exist_ok=True, parents=True)
+pathlib.Path("../input_audio").mkdir(exist_ok=True)
+pathlib.Path("../output_audio/copper_elektra_shield").mkdir(exist_ok=True, parents=True)
 
 """
 Resources
@@ -23,7 +22,7 @@ def pitch_modulate(sound: AudioSegment, octaves: float):
 
 
 def mc(path: str):
-	return AudioSegment.from_ogg(f"input_audio/{path}.ogg")
+	return AudioSegment.from_ogg(f"../input_audio/{path}.ogg")
 
 
 # everything below here is good for experimentation

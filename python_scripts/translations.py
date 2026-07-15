@@ -5,9 +5,9 @@ from natsort import natsorted
 translations = {}
 
 # in translations/enlightened
-for file in os.listdir("translations/enlightened"):
+for file in os.listdir("../translations/enlightened"):
 	print(file)
-	with open(f"translations/enlightened/{file}", "r", encoding="utf-8") as f:
+	with open(f"../translations/enlightened/{file}", "r", encoding="utf-8") as f:
 		data = json.load(f)
 		translations[file] = data
 
@@ -50,7 +50,7 @@ for lang in translations:
 
 	final = dict(natsorted(translations[lang].items()))
 
-	with open("translations/enlightened/en_us.json", "w", encoding="utf-8") as f:
+	with open("../translations/enlightened/en_us.json", "w", encoding="utf-8") as f:
 		json.dump(dict(natsorted(translations["en_us.json"].items())), f, ensure_ascii=False, indent="\t")
 
 	# final["LEGACY_TRANSLATIONS_THIS_IS_NOT_A_KEY"] = "ALL LEGACY TRANSLATIONS BELOW, TRY NOT TO EDIT."
@@ -61,5 +61,5 @@ for lang in translations:
 	#		 if key not in final:
 	#			 final[key] = data[key]
 
-	with open(f"src/main/resources/assets/stellarity/lang/{lang}", "w+", encoding="utf-8") as f:
+	with open(f"../src/main/resources/assets/stellarity/lang/{lang}", "w+", encoding="utf-8") as f:
 		json.dump(final, f, ensure_ascii=False, indent="\t")

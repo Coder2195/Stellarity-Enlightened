@@ -12,8 +12,6 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> CAMPSITE_FOOD = id("campsite/food");
 	ResourceKey<LootTable> CAMPSITE_TENT = id("campsite/tent");
 	ResourceKey<LootTable> CAMPSITE_TENT_2 = id("campsite/tent_2");
-
-
 	ResourceKey<LootTable> VOID_FISHING_FISH = id("void_fishing/fish");
 	ResourceKey<LootTable> VOID_FISHING_JUNK = id("void_fishing/junk");
 	ResourceKey<LootTable> VOID_FISHING_TREASURE = id("void_fishing/treasure");
