@@ -1,0 +1,16 @@
+{
+  "gives": {
+    "id": "stellarity:enderite_shard"
+  },
+  "max_uses": 8.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 26.0,
+      "min": 20.0
+    },
+    "id": "minecraft:coal"
+  },
+  "xp": 5.0
+}

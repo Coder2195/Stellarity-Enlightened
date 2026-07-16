@@ -1,0 +1,22 @@
+{
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:enchant_randomly",
+      "options": "minecraft:lure"
+    }
+  ],
+  "gives": {
+    "id": "minecraft:book"
+  },
+  "max_uses": 2.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 14.0,
+      "min": 10.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 10.0
+}

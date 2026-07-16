@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.tags.StellarityStructureTags;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -111,6 +112,27 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> FARMER_5_ENDERITE_SHARD_PHO = id("farmer/5/enderite_shard_pho");
 	ResourceKey<VillagerTrade> FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY = id("farmer/5/bread_enderite_shard_loaf_of_plenty");
 
+	ResourceKey<VillagerTrade> FISHERMAN_1_FISHING_ROD_ENDERITE_SHARD = id("fisherman/1/fishing_rod_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_1_ENDERITE_SHARD_FISHING_ROD = id("fisherman/1/enderite_shard_fishing_rod");
+	ResourceKey<VillagerTrade> FISHERMAN_1_STRING_ENDERITE_SHARD = id("fisherman/1/string_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_1_COAL_ENDERITE_SHARD = id("fisherman/1/coal_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_2_ENDER_KOI_ENDERITE_SHARD = id("fisherman/2/ender_koi_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_2_OVERGROWN_COD_ENDERITE_SHARD = id("fisherman/2/overgrown_cod_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_2_FROST_MINNOW_ENDERITE_SHARD = id("fisherman/2/frost_minnow_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_2_GOOSH_ENDERITE_SHARD = id("fisherman/2/goosh_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_2_ENDERITE_SHARD_CAMPFIRE = id("fisherman/2/enderite_shard_campfire");
+	ResourceKey<VillagerTrade> FISHERMAN_2_ENDERITE_SHARD_SOUL_CAMPFIRE = id("fisherman/2/enderite_shard_soul_campfire");
+	ResourceKey<VillagerTrade> FISHERMAN_3_ENDERITE_SHARD_FISHING_ROD = id("fisherman/3/enderite_shard_fishing_rod");
+	ResourceKey<VillagerTrade> FISHERMAN_3_CRIMSON_TIGERFISH_ENDERITE_SHARD = id("fisherman/3/crimson_tigerfish_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_3_FLESHY_PIRANHA_ENDERITE_SHARD = id("fisherman/3/fleshy_piranha_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_3_FLAREFIN_KOI_ENDERITE_SHARD = id("fisherman/3/flarefin_koi_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_3_POTASSIFISH_ENDERITE_SHARD = id("fisherman/3/potassifish_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_4_ENDERITE_SHARD_LURE_BOOK = id("fisherman/4/enderite_shard_lure_book");
+	ResourceKey<VillagerTrade> FISHERMAN_4_ENDERITE_SHARD_LUCK_OF_THE_SEA_BOOK = id("fisherman/4/enderite_shard_luck_of_the_sea_book");
+	ResourceKey<VillagerTrade> FISHERMAN_4_ENDERITE_SHARD_FISHER_OF_VOIDS = id("fisherman/4/enderite_shard_fisher_of_voids");
+	ResourceKey<VillagerTrade> FISHERMAN_5_CRYSTAL_HEARTFISH_ENDERITE_SHARD = id("fisherman/5/crystal_heartfish_enderite_shard");
+	ResourceKey<VillagerTrade> FISHERMAN_5_ENDERITE_SHARD_PRISMATIC_SUSHI = id("fisherman/5/enderite_shard_prismatic_sushi");
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
@@ -132,19 +154,16 @@ public interface StellarityVillagerTrades {
 		context.register(ARMORER_1_BLAZE_ROD_ENDERITE_SHARD, simpleToShard(BLAZE_ROD, num(2, 4), 1, 1, 10, 0.05f));
 		context.register(ARMORER_1_ENDERITE_SHARD_IRON_CHESTPLATE, shardToModifierItem(num(8, 12), IRON_CHESTPLATE, ironArmorModifier, 1, 2, 6, 0.2f));
 		context.register(ARMORER_1_ENDERITE_SHARD_IRON_HELMET, shardToModifierItem(num(7, 11), IRON_HELMET, ironArmorModifier, 1, 2, 6, 0.2f));
-
 		context.register(ARMORER_2_ENDERITE_SHARD_IRON_LEGGINGS, shardToModifierItem(num(8, 12), IRON_LEGGINGS, ironArmorModifier, 1, 8, 6, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_IRON_BOOTS, shardToModifierItem(num(5, 8), IRON_BOOTS, ironArmorModifier, 1, 8, 6, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT, shardToSimple(num(4, 6), HALLOWED_INGOT, 1, 10, 8, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_CHROUS_PLATING, shardToSimple(num(4, 6), CHORUS_PLATING, 1, 10, 8, 0.2f));
-
 		context.register(ARMORER_3_DIAMOND_ENDERITE_SHARD, simpleToShard(DIAMOND, 1, 2, 12, 8, 0.05f));
 		context.register(ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD, simpleShardToSimple(SHIELD, num(1), num(45, 64), COPPER_ELEKTRA_SHIELD, 1, 40, 2, 0.2f));
 
 		context.register(ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, simpleShardToSimple(PURPUR_BLOCK, num(20, 30), num(28, 40), ENDERITE_UPGRADE_SMITHING_TEMPLATE, 1, 10, 2, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_DIAMOND_LEGGINGS, shardToModifierItem(num(28, 35), DIAMOND_LEGGINGS, diamondArmorModifier, 1, 15, 3, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_DIAMOND_BOOTS, shardToModifierItem(num(21, 24), DIAMOND_BOOTS, diamondArmorModifier, 1, 15, 3, 0.2f));
-
 		context.register(ARMORER_5_ENDERITE_SHARD_DIAMOND_HELMET, shardToModifierItem(num(23, 32), DIAMOND_HELMET, diamondArmorModifier, 1, 15, 3, 0.2f));
 		context.register(ARMORER_5_ENDERITE_SHARD_DIAMOND_CHESTPLATE, shardToModifierItem(num(32, 41), DIAMOND_CHESTPLATE, diamondArmorModifier, 1, 15, 3, 0.2f));
 
@@ -156,33 +175,28 @@ public interface StellarityVillagerTrades {
 		context.register(BUTCHER_2_CHARCOAL_ENDERITE_SHARD, simpleToShard(CHARCOAL, 24, 1, 3, 12, 0.05f));
 		context.register(BUTCHER_2_ENDERMAN_FLESH_ENDERITE_SHARD_GRILLED_ENDERMAN_FLESH, simpleShardToSimple(ENDERMAN_FLESH, 2, 2, GRILLED_ENDERMAN_FLESH, 2, 5, 8, 0.05f));
 		context.register(BUTCHER_2_ENDERMAN_FLESH_ENDERITE_SHARD_FROZEN_CARPACCIO, simpleShardToSimple(ENDERMAN_FLESH, 2, 2, FROZEN_CARPACCIO, 2, 5, 8, 0.05f));
-
 		context.register(BUTCHER_3_SHULKER_BODY_ENDERITE_SHARD, simpleToShard(SHULKER_BODY, 2, 1, 12, 14, 0.05f));
 		context.register(BUTCHER_3_ENDERITE_SHARD_SHULKER_BODY, shardToSimple(1, SHULKER_BODY, 1, 12, 14, 0.05f));
 		context.register(BUTCHER_3_ENDERITE_SHARD_IRON_AXE, shardToModifierItem(num(16, 24), IRON_AXE, List.of(
 			new SetEnchantmentsFunction.Builder().withEnchantment(enchants.getOrThrow(Enchantments.LOOTING), num(2)).build()
 		), 1, 15, 3, 0.2f));
-
 		context.register(BUTCHER_4_BEEF_LEATHER_ENDERITE_SHARD, simpleSimpleToShard(BEEF, num(5, 10), LEATHER, num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_MUTTON_WOOL_ENDERITE_SHARD, simpleSimpleToShard(MUTTON, num(5, 10), WOOL.white(), num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_CHICKEN_FEATHER_ENDERITE_SHARD, simpleSimpleToShard(CHICKEN, num(5, 10), FEATHER, num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_PORKCHOP_ENDERITE_SHARD, simpleToShard(PORKCHOP, num(8, 15), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_ENDERITE_SHARD_PHO, shardToSimple(num(16, 23), PHO, 1, 25, 3, 0.05f));
-
 		context.register(BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE, shardToSimple(44, SHEPHERDS_PIE, 1, 50, 2, 0.2f));
 		context.register(BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK, shardToSimple(5, DRIED_KELP_BLOCK, 2, 20, 8, 0.05f));
 
 
 		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
-
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
 		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), MAP, List.of(
 			ExplorationMapFunction.makeExplorationMap().setMapDecoration(MapDecorationTypes.PURPLE_BANNER).setZoom((byte) 3).setSearchRadius(96).setSkipKnownStructures(true).setDestination(StellarityStructureTags.EXPLORATION_MAP_END_CITY).build(),
 			SetNameFunction.setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
 			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		), 1, 40, 1, 0.2f));
-
 		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
 		//TODO: Update with actual chapel of light
 		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), MAP, List.of(
@@ -190,10 +204,8 @@ public interface StellarityVillagerTrades {
 			SetNameFunction.setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
 			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		), 1, 40, 1, 0.2f));
-
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, shardToSimple(3, GLOW_ITEM_FRAME, 2, 18, 8, 0.05f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME, shardToSimple(num(4, 6), PHANTOM_ITEM_FRAME, 3, 20, 4, 0.05f));
-
 		context.register(CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN, shardToSimple(num(15, 23), MOJANG_BANNER_PATTERN, 1, 30, 8, 0.05f));
 
 
@@ -202,21 +214,17 @@ public interface StellarityVillagerTrades {
 		context.register(CLERIC_1_ENDERMANS_HAND_ENDERITE_SHARD, simpleToShard(ENDERMANS_HAND, 1, 2, 3, 12, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_REDSTONE, shardToSimple(1, REDSTONE, 4, 1, 16, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_BLAZE_ROD, shardToSimple(2, BLAZE_ROD, 1, 2, 8, 0.05f));
-
 		context.register(CLERIC_2_GOLD_INGOT_ENDERITE_SHARD, simpleToShard(GOLD_INGOT, 3, 1, 5, 10,0.05f));
 		context.register(CLERIC_2_ENDERITE_SHARD_LAPIS_LAZULI, shardToSimple(1, LAPIS_LAZULI, 3, 5, 10, 0.05f));
 		context.register(CLERIC_2_ENDERITE_SHARD_NETHER_WART, shardToSimple(1, NETHER_WART, 2, 3, 12, 0.05f));
-
 		context.register(CLERIC_3_ENDERITE_SHARD_LEVEL_3_POTION, shardToModifierItem(num(7, 11), POTION, List.of(
 			SetRandomPotionFunction.fromTagKey(HolderSet.direct(Potions.HEALING, Potions.SWIFTNESS, Potions.LEAPING)).build()
 		), 1, 10, 3, 0.05f));
 		context.register(CLERIC_3_ENDERITE_SHARD_GLOWSTONE, shardToSimple(1, GLOWSTONE, 1, 5, 12, 0.05f));
-
 		context.register(CLERIC_4_ENDER_PEARL_ENDERITE_SHARD, simpleSimpleToShard(ENDER_PEARL, num(16), ENDER_PEARL, num(1, 16), 1, 6, 12, 0.05f));
 		context.register(CLERIC_4_ENDERITE_SHARD_LEVEL_4_POTION, shardToModifierItem(num(7, 11), POTION, List.of(
 			SetRandomPotionFunction.fromTagKey(HolderSet.direct(Potions.STRENGTH, StellarityPotions.ENDURANCE)).build()
 		), 1, 15, 3, 0.2f));
-
 		context.register(CLERIC_5_ENDERITE_SHARD_LEVEL_5_POTION, shardToModifierItem(num(11, 18), POTION, List.of(
 			SetRandomPotionFunction.fromTagKey(HolderSet.direct(StellarityPotions.RED, StellarityPotions.LIFEFORCE)).build()
 		), 1, 25, 2, 0.2f));
@@ -229,24 +237,51 @@ public interface StellarityVillagerTrades {
 		context.register(FARMER_1_BEETROOT_ENDERITE_SHARD, simpleToShard(BEETROOT, num(15, 25), 1, 2, 10, 0.05f));
 		context.register(FARMER_1_ENDERITE_SHARD_BREAD, shardToSimple(1, BREAD, 6, 2, 12, 0.05f));
 		context.register(FARMER_1_ENDERITE_SHARD_CAKE, shardToSimple(1, CAKE, 1, 2, 10, 0.05f));
-
 		context.register(FARMER_2_CHORUS_FRUIT_ENDERITE_SHARD, simpleToShard(CHORUS_FRUIT, num(20, 28), 1, 5, 6, 0.05f));
 		context.register(FARMER_2_CHORUS_FLOWER_ENDERITE_SHARD, simpleToShard(CHORUS_FLOWER, num(5, 7), 1, 8, 12, 0.05f));
 		context.register(FARMER_2_ENDERITE_SHARD_CHORUS_PIE, shardToSimple(1, CHORUS_PIE, 2, 15, 6, 0.2f));
 		context.register(FARMER_2_ENDERITE_SHARD_SHROOMLIGHT, shardToSimple(1, SHROOMLIGHT, 2, 4, 8, 0.05f));
-
 		context.register(FARMER_3_ENDERITE_SHARD_CANDIED_CHORUS_FRUIT, shardToSimple(2, CANDIED_CHORUS_FRUIT, 1, 20, 3, 0.2f));
 		context.register(FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_TORCHFLOWER_SEEDS, simpleShardToSimple(WHEAT_SEEDS, num(12, 16), num(1), TORCHFLOWER_SEEDS, 4, 5, 12, 0.05f));
 		context.register(FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_PITCHER_POD, simpleShardToSimple(WHEAT_SEEDS, num(8, 11), num(1), PITCHER_POD, 3, 5, 8, 0.05f));
-
 		context.register(FARMER_4_ENDERITE_SHARD_CHORUS_JUICE, shardToModifierItem(3, POTION, List.of(
 			SetPotionFunction.setPotion(StellarityPotions.CHORUS_JUICE).build()
 		), 1, 15, 8, 0.2f));
 		context.register(FARMER_4_ENDERITE_SHARD_CHORUS_STEW, shardToSimple(4, CHORUS_STEW, 1, 15, 6, 0.2f));
 		context.register(FARMER_4_ENDERITE_SHARD_FRIED_CHORUS_FRUIT, shardToSimple(num(5, 6), FRIED_CHORUS_FRUIT, 2, 15, 8, 0.2f));
-
 		context.register(FARMER_5_ENDERITE_SHARD_PHO, shardToSimple(num(12, 18), PHO, 1, 25, 3, 0.2f));
 		context.register(FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY, simpleShardToSimple(BREAD, 10, 64, LOAF_OF_PLENTY, 1, 50, 2, 0.2f));
+
+		context.register(FISHERMAN_1_FISHING_ROD_ENDERITE_SHARD, simpleToShard(FISHING_ROD, 1, 2, 10, 1, 0.05f));
+		context.register(FISHERMAN_1_ENDERITE_SHARD_FISHING_ROD, shardToSimple(3, FISHING_ROD, 1, 4, 2, 0.05f));
+		context.register(FISHERMAN_1_STRING_ENDERITE_SHARD, simpleToShard(STRING, num(20, 32), 1, 5, 6, 0.05f));
+		context.register(FISHERMAN_1_COAL_ENDERITE_SHARD, simpleToShard(COAL, num(20, 26), 1, 5, 8, 0.05f));
+		context.register(FISHERMAN_2_ENDERITE_SHARD_CAMPFIRE, shardToSimple(1, CAMPFIRE, 1, 5, 8, 0.05f));
+		context.register(FISHERMAN_2_ENDERITE_SHARD_SOUL_CAMPFIRE, shardToSimple(2, SOUL_CAMPFIRE, 1, 8, 6, 0.05f));
+		for (var fishTrade: List.of(
+			new Tuple2<>(FISHERMAN_2_ENDER_KOI_ENDERITE_SHARD, ENDER_KOI),
+			new Tuple2<>(FISHERMAN_2_OVERGROWN_COD_ENDERITE_SHARD, OVERGROWN_COD),
+			new Tuple2<>(FISHERMAN_2_FROST_MINNOW_ENDERITE_SHARD, FROST_MINNOW),
+			new Tuple2<>(FISHERMAN_2_GOOSH_ENDERITE_SHARD, GOOSH),
+			new Tuple2<>(FISHERMAN_3_CRIMSON_TIGERFISH_ENDERITE_SHARD, CRIMSON_TIGERFISH),
+			new Tuple2<>(FISHERMAN_3_FLESHY_PIRANHA_ENDERITE_SHARD, FLESHY_PIRANHA),
+			new Tuple2<>(FISHERMAN_3_FLAREFIN_KOI_ENDERITE_SHARD, FLAREFIN_KOI),
+			new Tuple2<>(FISHERMAN_3_POTASSIFISH_ENDERITE_SHARD, POTASSIFISH)
+		))
+			context.register(fishTrade._1(), simpleToShard(fishTrade._2(), num(4, 6), 1, 4, 8, 0.05f));
+		context.register(FISHERMAN_3_ENDERITE_SHARD_FISHING_ROD, shardToModifierItem(num(5, 8), FISHING_ROD, List.of(
+			enchant(enchants, 15, 29).build()
+		), 1, 4, 2, 0.05f));
+		context.register(FISHERMAN_4_ENDERITE_SHARD_LURE_BOOK, shardToModifierItem(num(10, 14), BOOK, List.of(
+			enchant().withEnchantment(enchants.getOrThrow(Enchantments.LURE)).build()
+		), 1, 10, 2, 0.2f));
+		context.register(FISHERMAN_4_ENDERITE_SHARD_LUCK_OF_THE_SEA_BOOK, shardToModifierItem(num(10, 14), BOOK, List.of(
+			enchant().withEnchantment(enchants.getOrThrow(Enchantments.LUCK_OF_THE_SEA)).build()
+		), 1, 10, 2, 0.2f));
+		context.register(FISHERMAN_4_ENDERITE_SHARD_FISHER_OF_VOIDS, shardToSimple(num(14, 20), FISHER_OF_VOIDS, 1, 15, 6, 0.2f));
+		context.register(FISHERMAN_5_CRYSTAL_HEARTFISH_ENDERITE_SHARD, simpleToShard(CRYSTAL_HEARTFISH, 1, 5, 15, 3, 0.2f));
+		context.register(FISHERMAN_5_ENDERITE_SHARD_PRISMATIC_SUSHI, shardToSimple(num(14, 20), PRISMATIC_SUSHI, 1, 15, 4, 0.2f));
+
 
 	}
 

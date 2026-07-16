@@ -1,0 +1,12 @@
+{
+  "gives": {
+    "id": "minecraft:fishing_rod"
+  },
+  "max_uses": 2.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 3.0,
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 4.0
+}
