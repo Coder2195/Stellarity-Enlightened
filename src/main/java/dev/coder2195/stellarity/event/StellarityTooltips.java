@@ -1,5 +1,7 @@
 package dev.coder2195.stellarity.event;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.ChatFormatting;
@@ -12,7 +14,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.PotionContents;
-import dev.coder2195.stellarity.Stellarity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -172,14 +173,15 @@ public interface StellarityTooltips {
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Tooltips");
 		ItemTooltipCallback.EVENT.register((
-			itemStack, unused, unused2, list
+			itemStack, _, _, list
 		) -> {
 			Item item = itemStack.getItem();
+			boolean isMarked = itemStack.get(StellarityDataComponents.MARKED_ITEM) != null;
 			boolean isStellarityPotion = item instanceof PotionItem &&
 				Optional.ofNullable(itemStack.get(DataComponents.POTION_CONTENTS)).flatMap(PotionContents::potion).map(holder -> BuiltInRegistries.POTION.getKey(holder.value())).map((location) -> location.getNamespace().equals(Stellarity.MOD_ID)).orElse(false);
 			var id = BuiltInRegistries.ITEM.getKey(item);
 
-			if (!(id.getNamespace().equals(Stellarity.MOD_ID) || isStellarityPotion)) {
+			if (!(id.getNamespace().equals(Stellarity.MOD_ID) || isStellarityPotion || isMarked)) {
 				return;
 			}
 

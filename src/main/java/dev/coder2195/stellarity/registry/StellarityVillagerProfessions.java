@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.ImmutableSet;
+import dev.coder2195.stellarity.Stellarity;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -15,7 +16,6 @@ import net.minecraft.world.entity.npc.villager.VillagerData;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.trading.TradeSet;
 import org.jspecify.annotations.Nullable;
-import dev.coder2195.stellarity.Stellarity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -161,6 +161,69 @@ public interface StellarityVillagerProfessions {
 		}
 		if (profession.is(BUTCHER.key())) {
 			if (level == 2) return List.of(BUTCHER_LEVEL_2_2);
+			if (level == 3) return List.of(BUTCHER_LEVEL_3_2);
+			if (level == 4) return List.of(BUTCHER_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(CARTOGRAPHER.key())) {
+			return null;
+		}
+		if (profession.is(CLERIC.key())) {
+			if (level == 1) return List.of(CLERIC_LEVEL_1_2);
+			if (level == 2) return List.of(CLERIC_LEVEL_2_2);
+			return null;
+		}
+		if (profession.is(FARMER.key())) {
+			if (level == 1) return List.of(FARMER_LEVEL_1_2);
+			if (level == 2) return List.of(FARMER_LEVEL_2_2);
+			if (level == 3) return List.of(FARMER_LEVEL_3_2);
+			if (level == 4) return List.of(FARMER_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(FISHERMAN.key())) {
+			if (level == 1) return List.of(FISHERMAN_LEVEL_1_2);
+			if (level == 2) return List.of(FISHERMAN_LEVEL_2_2);
+			if (level == 3) return List.of(FISHERMAN_LEVEL_3_2);
+			if (level == 4) return List.of(FISHERMAN_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(FLETCHER.key())) {
+			if (level == 1) return List.of(FLETCHER_LEVEL_1_2);
+			return null;
+		}
+		if (profession.is(LEATHERWORKER.key())) {
+			if (level == 4) return List.of(LEATHERWORKER_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(LIBRARIAN.key())) {
+			if (level == 1) return List.of(LIBRARIAN_LEVEL_1_2);
+			if (level == 3) return List.of(LIBRARIAN_LEVEL_3_2);
+			if (level == 4) return List.of(LIBRARIAN_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(MASON.key())) {
+			if (level == 2) return List.of(MASON_LEVEL_2_2);
+			if (level == 3) return List.of(MASON_LEVEL_3_2);
+			if (level == 4) return List.of(MASON_LEVEL_4_2, MASON_LEVEL_4_3);
+			if (level == 5) return List.of(MASON_LEVEL_5_2);
+			return null;
+		}
+		if (profession.is(SHEPHERD.key())) {
+			if (level == 2) return List.of(SHEPHERD_LEVEL_2_2);
+			if (level == 3) return List.of(SHEPHERD_LEVEL_3_2, SHEPHERD_LEVEL_3_3);
+			if (level == 4) return List.of(SHEPHERD_LEVEL_4_2, SHEPHERD_LEVEL_4_3);
+			if (level == 5) return List.of(SHEPHERD_LEVEL_5_2);
+			return null;
+		}
+		if (profession.is(TOOLSMITH.key())) {
+			if (level == 1) return List.of(TOOLSMITH_LEVEL_1_2);
+			if (level == 2) return List.of(TOOLSMITH_LEVEL_2_2);
+			if (level == 4) return List.of(TOOLSMITH_LEVEL_4_2);
+			return null;
+		}
+		if (profession.is(WEAPONSMITH.key())) {
+			if (level == 1) return List.of(WEAPONSMITH_LEVEL_1_2);
+			if (level == 2) return List.of(WEAPONSMITH_LEVEL_2_2);
 			return null;
 		}
 

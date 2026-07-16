@@ -98,6 +98,7 @@ loom {
 	}
 
 	runConfigs["client"].apply {
+		programArgs += listOf("--username", "Coder2195", "--uuid", "12f1e56e-9fad-4371-9d1f-a18bf67f6f13")
 	}
 
 	runConfigs["server"].apply {
@@ -110,7 +111,6 @@ loom {
 		vmArgs("-Dmixin.debug.export=true -XX:+AllowEnhancedClassRedefinition")
 	}
 }
-
 
 
 fabricApi {

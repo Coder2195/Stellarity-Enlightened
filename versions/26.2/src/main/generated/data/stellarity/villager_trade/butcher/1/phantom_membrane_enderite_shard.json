@@ -1,0 +1,15 @@
+{
+  "gives": {
+    "id": "stellarity:enderite_shard"
+  },
+  "max_uses": 14.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 16.0,
+      "min": 8.0
+    },
+    "id": "minecraft:phantom_membrane"
+  }
+}

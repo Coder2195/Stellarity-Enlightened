@@ -1,0 +1,42 @@
+{
+  "given_item_modifiers": [
+    {
+      "components": {
+        "minecraft:trim": {
+          "material": "minecraft:emerald",
+          "pattern": "minecraft:spire"
+        }
+      },
+      "conditions": [
+        {
+          "chance": 0.5,
+          "condition": "minecraft:random_chance"
+        }
+      ],
+      "function": "minecraft:set_components"
+    },
+    {
+      "conditions": [
+        {
+          "chance": 0.5,
+          "condition": "minecraft:random_chance"
+        }
+      ],
+      "function": "minecraft:enchant_randomly"
+    }
+  ],
+  "gives": {
+    "id": "minecraft:iron_leggings"
+  },
+  "max_uses": 6.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 12.0,
+      "min": 8.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 8.0
+}

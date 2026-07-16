@@ -5,7 +5,11 @@
   "max_uses": 14.0,
   "reputation_discount": 0.05,
   "wants": {
-    "count": 12.0,
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 30.0,
+      "min": 20.0
+    },
     "id": "stellarity:enderman_flesh"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "gives": {
+    "id": "minecraft:mojang_banner_pattern"
+  },
+  "max_uses": 8.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 23.0,
+      "min": 15.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 30.0
+}

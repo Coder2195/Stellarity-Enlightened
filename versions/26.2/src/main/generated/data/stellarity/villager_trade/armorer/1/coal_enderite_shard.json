@@ -5,7 +5,11 @@
   "max_uses": 12.0,
   "reputation_discount": 0.05,
   "wants": {
-    "count": 19.0,
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 20.0,
+      "min": 17.0
+    },
     "id": "minecraft:coal"
   },
   "xp": 2.0

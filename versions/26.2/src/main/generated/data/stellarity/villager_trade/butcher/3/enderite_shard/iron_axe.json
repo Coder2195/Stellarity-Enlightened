@@ -1,0 +1,24 @@
+{
+  "given_item_modifiers": [
+    {
+      "enchantments": {
+        "minecraft:looting": 2.0
+      },
+      "function": "minecraft:set_enchantments"
+    }
+  ],
+  "gives": {
+    "id": "minecraft:iron_axe"
+  },
+  "max_uses": 3.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 24.0,
+      "min": 16.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 15.0
+}

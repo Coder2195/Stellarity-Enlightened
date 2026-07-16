@@ -1,0 +1,150 @@
+package dev.coder2195.stellarity.datagen.tags;
+
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagBuilder;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.trading.VillagerTrade;
+import org.jspecify.annotations.NonNull;
+
+import static dev.coder2195.stellarity.tags.StellarityVillagerTradeTags.*;
+
+import java.util.concurrent.CompletableFuture;
+
+import static dev.coder2195.stellarity.registry.StellarityVillagerTrades.*;
+
+public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> {
+	public VillagerTradeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+		super(output, Registries.VILLAGER_TRADE, registryLookupFuture);
+	}
+
+	@SafeVarargs
+	private TagBuilder addTags(TagKey<VillagerTrade> tag, ResourceKey<VillagerTrade>... trades) {
+		var builder = getOrCreateRawBuilder(tag);
+		for (var trade : trades) {
+			builder.addElement(trade.identifier());
+		}
+		return builder;
+	}
+
+	@SuppressWarnings("DuplicatedCode")
+	@Override
+	protected void addTags(HolderLookup.@NonNull Provider provider) {
+		addTags(ARMORER_LEVEL_1, ARMORER_1_COAL_ENDERITE_SHARD, ARMORER_1_CHARCOAL_ENDERITE_SHARD, ARMORER_1_BLAZE_ROD_ENDERITE_SHARD);
+		addTags(ARMORER_LEVEL_1_2, ARMORER_1_ENDERITE_SHARD_IRON_CHESTPLATE, ARMORER_1_ENDERITE_SHARD_IRON_HELMET);
+		addTags(ARMORER_LEVEL_2, ARMORER_2_ENDERITE_SHARD_IRON_LEGGINGS, ARMORER_2_ENDERITE_SHARD_IRON_BOOTS);
+		addTags(ARMORER_LEVEL_2_2, ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT, ARMORER_2_ENDERITE_SHARD_CHROUS_PLATING);
+		addTags(ARMORER_LEVEL_3, ARMORER_3_DIAMOND_ENDERITE_SHARD, ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD);
+		addTags(ARMORER_LEVEL_4, ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, ARMORER_4_ENDERITE_SHARD_DIAMOND_LEGGINGS, ARMORER_4_ENDERITE_SHARD_DIAMOND_BOOTS);
+		addTags(ARMORER_LEVEL_5, ARMORER_5_ENDERITE_SHARD_DIAMOND_CHESTPLATE, ARMORER_5_ENDERITE_SHARD_DIAMOND_HELMET);
+
+		addTags(BUTCHER_LEVEL_1, BUTCHER_1_ENDERMAN_FLESH_ENDERITE_SHARD, BUTCHER_1_PHANTOM_MEMBRANE_ENDERITE_SHARD);
+		addTags(BUTCHER_LEVEL_2, BUTCHER_2_COAL_ENDERITE_SHARD, BUTCHER_2_CHARCOAL_ENDERITE_SHARD);
+		addTags(BUTCHER_LEVEL_2_2, BUTCHER_2_ENDERMAN_FLESH_ENDERITE_SHARD_FROZEN_CARPACCIO, BUTCHER_2_ENDERMAN_FLESH_ENDERITE_SHARD_GRILLED_ENDERMAN_FLESH);
+		addTags(BUTCHER_LEVEL_3, BUTCHER_3_SHULKER_BODY_ENDERITE_SHARD, BUTCHER_3_ENDERITE_SHARD_SHULKER_BODY);
+		addTags(BUTCHER_LEVEL_3_2, BUTCHER_3_ENDERITE_SHARD_IRON_AXE);
+		addTags(BUTCHER_LEVEL_4, BUTCHER_4_BEEF_LEATHER_ENDERITE_SHARD, BUTCHER_4_MUTTON_WOOL_ENDERITE_SHARD, BUTCHER_4_CHICKEN_FEATHER_ENDERITE_SHARD, BUTCHER_4_PORKCHOP_ENDERITE_SHARD);
+		addTags(BUTCHER_LEVEL_4_2, BUTCHER_4_ENDERITE_SHARD_PHO);
+		addTags(BUTCHER_LEVEL_5, BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE, BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK);
+
+		addTags(CARTOGRAPHER_LEVEL_1, CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, CARTOGRAPHER_1_ENDERITE_SHARD_MAP);
+		addTags(CARTOGRAPHER_LEVEL_2, CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP);
+		addTags(CARTOGRAPHER_LEVEL_3, CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP);
+		addTags(CARTOGRAPHER_LEVEL_4, CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME);
+		addTags(CARTOGRAPHER_LEVEL_5, CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN);
+
+		addTags(CLERIC_LEVEL_1);
+		addTags(CLERIC_LEVEL_1_2);
+		addTags(CLERIC_LEVEL_2);
+		addTags(CLERIC_LEVEL_2_2);
+		addTags(CLERIC_LEVEL_3);
+		addTags(CLERIC_LEVEL_4);
+		addTags(CLERIC_LEVEL_5);
+
+		addTags(FARMER_LEVEL_1);
+		addTags(FARMER_LEVEL_1_2);
+		addTags(FARMER_LEVEL_2);
+		addTags(FARMER_LEVEL_2_2);
+		addTags(FARMER_LEVEL_3);
+		addTags(FARMER_LEVEL_3_2);
+		addTags(FARMER_LEVEL_4);
+		addTags(FARMER_LEVEL_4_2);
+		addTags(FARMER_LEVEL_5);
+
+		addTags(FISHERMAN_LEVEL_1);
+		addTags(FISHERMAN_LEVEL_1_2);
+		addTags(FISHERMAN_LEVEL_2);
+		addTags(FISHERMAN_LEVEL_2_2);
+		addTags(FISHERMAN_LEVEL_3);
+		addTags(FISHERMAN_LEVEL_3_2);
+		addTags(FISHERMAN_LEVEL_4);
+		addTags(FISHERMAN_LEVEL_4_2);
+		addTags(FISHERMAN_LEVEL_5);
+
+		addTags(FLETCHER_LEVEL_1);
+		addTags(FLETCHER_LEVEL_1_2);
+		addTags(FLETCHER_LEVEL_2);
+		addTags(FLETCHER_LEVEL_3);
+		addTags(FLETCHER_LEVEL_4);
+		addTags(FLETCHER_LEVEL_5);
+
+		addTags(LEATHERWORKER_LEVEL_1);
+		addTags(LEATHERWORKER_LEVEL_2);
+		addTags(LEATHERWORKER_LEVEL_3);
+		addTags(LEATHERWORKER_LEVEL_4);
+		addTags(LEATHERWORKER_LEVEL_4_2);
+		addTags(LEATHERWORKER_LEVEL_5);
+
+		addTags(LIBRARIAN_LEVEL_1);
+		addTags(LIBRARIAN_LEVEL_1_2);
+		addTags(LIBRARIAN_LEVEL_2);
+		addTags(LIBRARIAN_LEVEL_3);
+		addTags(LIBRARIAN_LEVEL_3_2);
+		addTags(LIBRARIAN_LEVEL_4);
+		addTags(LIBRARIAN_LEVEL_4_2);
+		addTags(LIBRARIAN_LEVEL_5);
+
+		addTags(MASON_LEVEL_1);
+		addTags(MASON_LEVEL_2);
+		addTags(MASON_LEVEL_2_2);
+		addTags(MASON_LEVEL_3);
+		addTags(MASON_LEVEL_3_2);
+		addTags(MASON_LEVEL_4);
+		addTags(MASON_LEVEL_4_2);
+		addTags(MASON_LEVEL_4_3);
+		addTags(MASON_LEVEL_5);
+		addTags(MASON_LEVEL_5_2);
+
+		addTags(SHEPHERD_LEVEL_1);
+		addTags(SHEPHERD_LEVEL_2);
+		addTags(SHEPHERD_LEVEL_2_2);
+		addTags(SHEPHERD_LEVEL_3);
+		addTags(SHEPHERD_LEVEL_3_2);
+		addTags(SHEPHERD_LEVEL_3_3);
+		addTags(SHEPHERD_LEVEL_4);
+		addTags(SHEPHERD_LEVEL_4_2);
+		addTags(SHEPHERD_LEVEL_4_3);
+		addTags(SHEPHERD_LEVEL_5);
+		addTags(SHEPHERD_LEVEL_5_2);
+
+		addTags(TOOLSMITH_LEVEL_1);
+		addTags(TOOLSMITH_LEVEL_1_2);
+		addTags(TOOLSMITH_LEVEL_2);
+		addTags(TOOLSMITH_LEVEL_2_2);
+		addTags(TOOLSMITH_LEVEL_3);
+		addTags(TOOLSMITH_LEVEL_4);
+		addTags(TOOLSMITH_LEVEL_4_2);
+		addTags(TOOLSMITH_LEVEL_5);
+
+		addTags(WEAPONSMITH_LEVEL_1);
+		addTags(WEAPONSMITH_LEVEL_1_2);
+		addTags(WEAPONSMITH_LEVEL_2);
+		addTags(WEAPONSMITH_LEVEL_2_2);
+		addTags(WEAPONSMITH_LEVEL_3);
+		addTags(WEAPONSMITH_LEVEL_4);
+		addTags(WEAPONSMITH_LEVEL_5);
+	}
+}

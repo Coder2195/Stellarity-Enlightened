@@ -7,13 +7,10 @@ import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.trading.TradeSet;
 import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +30,7 @@ public interface StellarityVillagerTradeSets {
 	ResourceKey<TradeSet> BUTCHER_LEVEL_3 = id("butcher/level_3");
 	ResourceKey<TradeSet> BUTCHER_LEVEL_3_2 = id("butcher/level_3_2");
 	ResourceKey<TradeSet> BUTCHER_LEVEL_4 = id("butcher/level_4");
-	ResourceKey<TradeSet> BUTCHER_LEVEL_4_2 = id("butcher/level_4");
+	ResourceKey<TradeSet> BUTCHER_LEVEL_4_2 = id("butcher/level_4_2");
 	ResourceKey<TradeSet> BUTCHER_LEVEL_5 = id("butcher/level_5");
 
 	ResourceKey<TradeSet> CARTOGRAPHER_LEVEL_1 = id("cartographer/level_1");
@@ -136,8 +133,120 @@ public interface StellarityVillagerTradeSets {
 	static void bootstrap(BootstrapContext<TradeSet> context) {
 		HolderGetter<VillagerTrade> tradeTags = context.lookup(Registries.VILLAGER_TRADE);
 
-		for (var entry : List.of(
-			new Tuple3<>(ARMORER_LEVEL_1, StellarityVillagerTradeTags.ARMORER_LEVEL_1, 1)
+		for (var entry : List.<Tuple3<ResourceKey<TradeSet>, TagKey<VillagerTrade>, Integer>>of(
+			new Tuple3<>(ARMORER_LEVEL_1, StellarityVillagerTradeTags.ARMORER_LEVEL_1, 1),
+			new Tuple3<>(ARMORER_LEVEL_1_2, StellarityVillagerTradeTags.ARMORER_LEVEL_1_2, 1),
+			new Tuple3<>(ARMORER_LEVEL_2, StellarityVillagerTradeTags.ARMORER_LEVEL_2, 1),
+			new Tuple3<>(ARMORER_LEVEL_2_2, StellarityVillagerTradeTags.ARMORER_LEVEL_2_2, 1),
+			new Tuple3<>(ARMORER_LEVEL_3, StellarityVillagerTradeTags.ARMORER_LEVEL_3, 2),
+			new Tuple3<>(ARMORER_LEVEL_4, StellarityVillagerTradeTags.ARMORER_LEVEL_4, 3),
+			new Tuple3<>(ARMORER_LEVEL_5, StellarityVillagerTradeTags.ARMORER_LEVEL_5, 2),
+
+			new Tuple3<>(BUTCHER_LEVEL_1, StellarityVillagerTradeTags.BUTCHER_LEVEL_1, 2),
+			new Tuple3<>(BUTCHER_LEVEL_2, StellarityVillagerTradeTags.BUTCHER_LEVEL_2, 1),
+			new Tuple3<>(BUTCHER_LEVEL_2_2, StellarityVillagerTradeTags.BUTCHER_LEVEL_2_2, 1),
+			new Tuple3<>(BUTCHER_LEVEL_3, StellarityVillagerTradeTags.BUTCHER_LEVEL_3, 1),
+			new Tuple3<>(BUTCHER_LEVEL_3_2, StellarityVillagerTradeTags.BUTCHER_LEVEL_3_2, 1),
+			new Tuple3<>(BUTCHER_LEVEL_4, StellarityVillagerTradeTags.BUTCHER_LEVEL_4, 1),
+			new Tuple3<>(BUTCHER_LEVEL_4_2, StellarityVillagerTradeTags.BUTCHER_LEVEL_4_2, 1),
+			new Tuple3<>(BUTCHER_LEVEL_5, StellarityVillagerTradeTags.BUTCHER_LEVEL_5, 2),
+
+			new Tuple3<>(CARTOGRAPHER_LEVEL_1, StellarityVillagerTradeTags.CARTOGRAPHER_LEVEL_1, 2),
+			new Tuple3<>(CARTOGRAPHER_LEVEL_2, StellarityVillagerTradeTags.CARTOGRAPHER_LEVEL_2, 2),
+			new Tuple3<>(CARTOGRAPHER_LEVEL_3, StellarityVillagerTradeTags.CARTOGRAPHER_LEVEL_3, 2),
+			new Tuple3<>(CARTOGRAPHER_LEVEL_4, StellarityVillagerTradeTags.CARTOGRAPHER_LEVEL_4, 2),
+			new Tuple3<>(CARTOGRAPHER_LEVEL_5, StellarityVillagerTradeTags.CARTOGRAPHER_LEVEL_5, 1),
+
+			new Tuple3<>(CLERIC_LEVEL_1, StellarityVillagerTradeTags.CLERIC_LEVEL_1, 1),
+			new Tuple3<>(CLERIC_LEVEL_1_2, StellarityVillagerTradeTags.CLERIC_LEVEL_1_2, 1),
+			new Tuple3<>(CLERIC_LEVEL_2, StellarityVillagerTradeTags.CLERIC_LEVEL_2, 1),
+			new Tuple3<>(CLERIC_LEVEL_2_2, StellarityVillagerTradeTags.CLERIC_LEVEL_2_2, 1),
+			new Tuple3<>(CLERIC_LEVEL_3, StellarityVillagerTradeTags.CLERIC_LEVEL_3, 2),
+			new Tuple3<>(CLERIC_LEVEL_4, StellarityVillagerTradeTags.CLERIC_LEVEL_4, 2),
+			new Tuple3<>(CLERIC_LEVEL_5, StellarityVillagerTradeTags.CLERIC_LEVEL_5, 2),
+
+			new Tuple3<>(FARMER_LEVEL_1, StellarityVillagerTradeTags.FARMER_LEVEL_1, 1),
+			new Tuple3<>(FARMER_LEVEL_1_2, StellarityVillagerTradeTags.FARMER_LEVEL_1_2, 1),
+			new Tuple3<>(FARMER_LEVEL_2, StellarityVillagerTradeTags.FARMER_LEVEL_2, 1),
+			new Tuple3<>(FARMER_LEVEL_2_2, StellarityVillagerTradeTags.FARMER_LEVEL_2_2, 1),
+			new Tuple3<>(FARMER_LEVEL_3, StellarityVillagerTradeTags.FARMER_LEVEL_3, 1),
+			new Tuple3<>(FARMER_LEVEL_3_2, StellarityVillagerTradeTags.FARMER_LEVEL_3_2, 1),
+			new Tuple3<>(FARMER_LEVEL_4, StellarityVillagerTradeTags.FARMER_LEVEL_4, 1),
+			new Tuple3<>(FARMER_LEVEL_4_2, StellarityVillagerTradeTags.FARMER_LEVEL_4_2, 1),
+			new Tuple3<>(FARMER_LEVEL_5, StellarityVillagerTradeTags.FARMER_LEVEL_5, 2),
+
+			new Tuple3<>(FISHERMAN_LEVEL_1, StellarityVillagerTradeTags.FISHERMAN_LEVEL_1, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_1_2, StellarityVillagerTradeTags.FISHERMAN_LEVEL_1_2, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_2, StellarityVillagerTradeTags.FISHERMAN_LEVEL_2, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_2_2, StellarityVillagerTradeTags.FISHERMAN_LEVEL_2_2, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_3, StellarityVillagerTradeTags.FISHERMAN_LEVEL_3, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_3_2, StellarityVillagerTradeTags.FISHERMAN_LEVEL_3_2, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_4, StellarityVillagerTradeTags.FISHERMAN_LEVEL_4, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_4_2, StellarityVillagerTradeTags.FISHERMAN_LEVEL_4_2, 1),
+			new Tuple3<>(FISHERMAN_LEVEL_5, StellarityVillagerTradeTags.FISHERMAN_LEVEL_5, 2),
+
+			new Tuple3<>(FLETCHER_LEVEL_1, StellarityVillagerTradeTags.FLETCHER_LEVEL_1, 1),
+			new Tuple3<>(FLETCHER_LEVEL_1_2, StellarityVillagerTradeTags.FLETCHER_LEVEL_1_2, 1),
+			new Tuple3<>(FLETCHER_LEVEL_2, StellarityVillagerTradeTags.FLETCHER_LEVEL_2, 2),
+			new Tuple3<>(FLETCHER_LEVEL_3, StellarityVillagerTradeTags.FLETCHER_LEVEL_3, 2),
+			new Tuple3<>(FLETCHER_LEVEL_4, StellarityVillagerTradeTags.FLETCHER_LEVEL_4, 2),
+			new Tuple3<>(FLETCHER_LEVEL_5, StellarityVillagerTradeTags.FLETCHER_LEVEL_5, 1),
+
+			new Tuple3<>(LEATHERWORKER_LEVEL_1, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_1, 2),
+			new Tuple3<>(LEATHERWORKER_LEVEL_2, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_2, 2),
+			new Tuple3<>(LEATHERWORKER_LEVEL_3, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_3, 2),
+			new Tuple3<>(LEATHERWORKER_LEVEL_4, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_4, 1),
+			new Tuple3<>(LEATHERWORKER_LEVEL_4_2, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_4_2, 1),
+			new Tuple3<>(LEATHERWORKER_LEVEL_5, StellarityVillagerTradeTags.LEATHERWORKER_LEVEL_5, 1),
+
+			new Tuple3<>(LIBRARIAN_LEVEL_1, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_1, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_1_2, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_1_2, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_2, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_2, 2),
+			new Tuple3<>(LIBRARIAN_LEVEL_3, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_3, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_3_2, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_3_2, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_4, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_4, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_4_2, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_4_2, 1),
+			new Tuple3<>(LIBRARIAN_LEVEL_5, StellarityVillagerTradeTags.LIBRARIAN_LEVEL_5, 1),
+
+			new Tuple3<>(MASON_LEVEL_1, StellarityVillagerTradeTags.MASON_LEVEL_1, 2),
+			new Tuple3<>(MASON_LEVEL_2, StellarityVillagerTradeTags.MASON_LEVEL_2, 1),
+			new Tuple3<>(MASON_LEVEL_2_2, StellarityVillagerTradeTags.MASON_LEVEL_2_2, 1),
+			new Tuple3<>(MASON_LEVEL_3, StellarityVillagerTradeTags.MASON_LEVEL_3, 1),
+			new Tuple3<>(MASON_LEVEL_3_2, StellarityVillagerTradeTags.MASON_LEVEL_3_2, 1),
+			new Tuple3<>(MASON_LEVEL_4, StellarityVillagerTradeTags.MASON_LEVEL_4, 1),
+			new Tuple3<>(MASON_LEVEL_4_2, StellarityVillagerTradeTags.MASON_LEVEL_4_2, 1),
+			new Tuple3<>(MASON_LEVEL_4_3, StellarityVillagerTradeTags.MASON_LEVEL_4_3, 1),
+			new Tuple3<>(MASON_LEVEL_5, StellarityVillagerTradeTags.MASON_LEVEL_5, 1),
+			new Tuple3<>(MASON_LEVEL_5_2, StellarityVillagerTradeTags.MASON_LEVEL_5_2, 1),
+
+			new Tuple3<>(SHEPHERD_LEVEL_1, StellarityVillagerTradeTags.SHEPHERD_LEVEL_1, 2),
+			new Tuple3<>(SHEPHERD_LEVEL_2, StellarityVillagerTradeTags.SHEPHERD_LEVEL_2, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_2_2, StellarityVillagerTradeTags.SHEPHERD_LEVEL_2_2, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_3, StellarityVillagerTradeTags.SHEPHERD_LEVEL_3, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_3_2, StellarityVillagerTradeTags.SHEPHERD_LEVEL_3_2, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_3_3, StellarityVillagerTradeTags.SHEPHERD_LEVEL_3_3, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_4, StellarityVillagerTradeTags.SHEPHERD_LEVEL_4, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_4_2, StellarityVillagerTradeTags.SHEPHERD_LEVEL_4_2, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_4_3, StellarityVillagerTradeTags.SHEPHERD_LEVEL_4_3, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_5, StellarityVillagerTradeTags.SHEPHERD_LEVEL_5, 1),
+			new Tuple3<>(SHEPHERD_LEVEL_5_2, StellarityVillagerTradeTags.SHEPHERD_LEVEL_5_2, 1),
+
+			new Tuple3<>(TOOLSMITH_LEVEL_1, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_1, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_1_2, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_1_2, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_2, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_2, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_2_2, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_2_2, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_3, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_3, 2),
+			new Tuple3<>(TOOLSMITH_LEVEL_4, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_4, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_4_2, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_4_2, 1),
+			new Tuple3<>(TOOLSMITH_LEVEL_5, StellarityVillagerTradeTags.TOOLSMITH_LEVEL_5, 2),
+
+			new Tuple3<>(WEAPONSMITH_LEVEL_1, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_1, 1),
+			new Tuple3<>(WEAPONSMITH_LEVEL_1_2, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_1_2, 1),
+			new Tuple3<>(WEAPONSMITH_LEVEL_2, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_2, 1),
+			new Tuple3<>(WEAPONSMITH_LEVEL_2_2, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_2_2, 1),
+			new Tuple3<>(WEAPONSMITH_LEVEL_3, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_3, 2),
+			new Tuple3<>(WEAPONSMITH_LEVEL_4, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_4, 2),
+			new Tuple3<>(WEAPONSMITH_LEVEL_5, StellarityVillagerTradeTags.WEAPONSMITH_LEVEL_5, 2)
 		)) {
 			context.register(entry._1(), new TradeSet(
 				tradeTags.getOrThrow(entry._2()),

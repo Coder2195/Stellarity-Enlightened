@@ -1,6 +1,10 @@
 {
   "additional_wants": {
-    "count": 32.0,
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 40.0,
+      "min": 28.0
+    },
     "id": "stellarity:enderite_shard"
   },
   "gives": {
@@ -9,7 +13,11 @@
   "max_uses": 2.0,
   "reputation_discount": 0.2,
   "wants": {
-    "count": 24.0,
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 30.0,
+      "min": 20.0
+    },
     "id": "minecraft:purpur_block"
   },
   "xp": 10.0

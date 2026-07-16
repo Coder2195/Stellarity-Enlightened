@@ -1,20 +1,26 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.tags.StellarityStructureTags;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.item.equipment.trim.TrimPatterns;
 import net.minecraft.world.item.trading.TradeCost;
 import net.minecraft.world.item.trading.VillagerTrade;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
-import net.minecraft.world.level.storage.loot.functions.SetEnchantmentsFunction;
+import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
+import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 
 import java.util.List;
@@ -58,6 +64,17 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> BUTCHER_4_ENDERITE_SHARD_PHO = id("butcher/4/enderite_shard_pho");
 	ResourceKey<VillagerTrade> BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE = id("butcher/5/enderite_shard_shepherds_pie");
 	ResourceKey<VillagerTrade> BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK = id("butcher/5/enderite_shard_dried_kelp_block");
+
+	ResourceKey<VillagerTrade> CARTOGRAPHER_1_PAPER_ENDERITE_SHARD = id("cartographer/1/paper_enderite_shard");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_1_ENDERITE_SHARD_MAP = id("cartographer/1/enderite_shard_map");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD = id("cartographer/2/glass_pane_enderite_shard");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP = id("cartographer/2/map_enderite_shard_end_city_explorer_map");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME = id("cartographer/3/enderite_shard_item_frame");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP = id("cartographer/3/map_enderite_shard_chapel_of_light_map");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME = id("cartographer/4/enderite_shard_glow_item_frame");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME = id("cartographer/4/enderite_shard_phantom_item_frame");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN = id("cartographer/5/enderite_shard_mojang_banner_pattern");
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
@@ -113,11 +130,35 @@ public interface StellarityVillagerTrades {
 		context.register(BUTCHER_4_BEEF_LEATHER_ENDERITE_SHARD, simpleSimpleToShard(BEEF, num(5, 10), LEATHER, num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_MUTTON_WOOL_ENDERITE_SHARD, simpleSimpleToShard(MUTTON, num(5, 10), WOOL.white(), num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_CHICKEN_FEATHER_ENDERITE_SHARD, simpleSimpleToShard(CHICKEN, num(5, 10), FEATHER, num(5, 10), 1, 20, 8, 0.05f));
-		context.register(BUTCHER_4_MUTTON_WOOL_ENDERITE_SHARD, simpleToShard(MUTTON, num(8, 15), 1, 20, 8, 0.05f));
+		context.register(BUTCHER_4_PORKCHOP_ENDERITE_SHARD, simpleToShard(PORKCHOP, num(8, 15), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_ENDERITE_SHARD_PHO, shardToSimple(num(16, 23), PHO, 1, 25, 3, 0.05f));
 
 		context.register(BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE, shardToSimple(44, SHEPHERDS_PIE, 1, 50, 2, 0.2f));
 		context.register(BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK, shardToSimple(5, DRIED_KELP_BLOCK, 2, 20, 8, 0.05f));
+
+
+		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
+		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
+
+		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
+		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), MAP, List.of(
+			ExplorationMapFunction.makeExplorationMap().setMapDecoration(MapDecorationTypes.PURPLE_BANNER).setZoom((byte) 3).setSearchRadius(96).setSkipKnownStructures(true).setDestination(StellarityStructureTags.EXPLORATION_MAP_END_CITY).build(),
+			SetNameFunction.setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
+			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
+		), 1, 40, 1, 0.2f));
+
+		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
+		//TODO: Update with actual chapel of light
+		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), MAP, List.of(
+			ExplorationMapFunction.makeExplorationMap().setMapDecoration(MapDecorationTypes.PURPLE_BANNER).setZoom((byte) 3).setSearchRadius(96).setSkipKnownStructures(false).setDestination(StellarityStructureTags.EXPLORATION_MAP_END_CITY).build(),
+			SetNameFunction.setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
+			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
+		), 1, 40, 1, 0.2f));
+
+		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, shardToSimple(3, GLOW_ITEM_FRAME, 2, 18, 8, 0.05f));
+		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME, shardToSimple(num(4, 6), PHANTOM_ITEM_FRAME, 3, 20, 4, 0.05f));
+
+		context.register(CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN, shardToSimple(num(15, 23), MOJANG_BANNER_PATTERN, 1, 30, 8, 0.05f));
 	}
 
 	static VillagerTrade simpleToShard(Item item, int count, int shards, int xp, int maxUses, float repDiscount) {
@@ -160,6 +201,20 @@ public interface StellarityVillagerTrades {
 		return new VillagerTrade(
 			new TradeCost(ENDERITE_SHARD, shards),
 			new ItemStackTemplate(item, count),
+			maxUses,
+			xp,
+			repDiscount,
+			Optional.empty(),
+			modifiers
+		);
+	}
+
+	static VillagerTrade simpleShardToModifierItem(Item buy, NumberProvider buyCount, NumberProvider shards, Item item, List<LootItemFunction> modifiers, int count, int xp, int maxUses, float repDiscount) {
+		return new VillagerTrade(
+			new TradeCost(buy, buyCount),
+			Optional.of(new TradeCost(ENDERITE_SHARD, shards)),
+			new ItemStackTemplate(item, count),
+
 			maxUses,
 			xp,
 			repDiscount,

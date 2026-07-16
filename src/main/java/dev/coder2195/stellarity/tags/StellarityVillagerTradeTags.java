@@ -20,7 +20,7 @@ public interface StellarityVillagerTradeTags {
 	TagKey<VillagerTrade> BUTCHER_LEVEL_3 = id("butcher/level_3");
 	TagKey<VillagerTrade> BUTCHER_LEVEL_3_2 = id("butcher/level_3_2");
 	TagKey<VillagerTrade> BUTCHER_LEVEL_4 = id("butcher/level_4");
-	TagKey<VillagerTrade> BUTCHER_LEVEL_4_2 = id("butcher/level_4");
+	TagKey<VillagerTrade> BUTCHER_LEVEL_4_2 = id("butcher/level_4_2");
 	TagKey<VillagerTrade> BUTCHER_LEVEL_5 = id("butcher/level_5");
 
 	TagKey<VillagerTrade> CARTOGRAPHER_LEVEL_1 = id("cartographer/level_1");

@@ -38,17 +38,17 @@ Butcher	4	1 - 1	EDIT	beef	[5, 10]		leather	[5, 10]		enderite shard	1		20	8	0.05
 			NEW	pork	[8,15]					enderite shard	1		20	8	0.05		
 		2 - 1	NEW	enderite shard	[16,23]					pho	1		25	3	0.05		
 																	
-Butcher	5	1 - 1		enderite shard	[38,50]					shepherds pie	1		50	2	0.2		
+Butcher	5	1 - 2		enderite shard	[38,50]					shepherds pie	1		50	2	0.2
 			NEW	enderite shard	[3,6]					dried kelp block	1		20	12	0.05		
 																	
 Cartographer	1	1 - 2		paper	[24, 30]					enderite shard	1		2	12	0.05		
 				enderite shard	[6, 8]					map	1		1	10	0.05		
 																	
 Cartographer	2	1 - 2		glass pane	[14,20]					enderite shard	1		8	14	0.05		
-				map	1		enderite shard	40		end city explorer map	1		40	1	0.2		
+				map	1		enderite shard	[40,50]		end city explorer map	1		40	1	0.2
 																	
 Cartographer	3	1 - 2		enderite shard	2					item frame	4		12	8	0.05		
-				map	1		enderite shard	50		chapel of light map	4		50	1	0.2		
+				map	1		enderite shard	[50,60]		chapel of light map	4		50	1	0.2
 																	
 Cartographer	4	1 - 2		enderite shard	3					glow item frame	2		18	8	0.05		
 				enderite shard	[4,6]					phantom item frame	3		20	4	0.05		

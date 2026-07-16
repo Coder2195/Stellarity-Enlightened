@@ -10,11 +10,13 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.data_component.Color;
+import net.minecraft.util.Unit;
 
 public interface StellarityDataComponents {
 	DataComponentType<Color> COLOR = register("color", DataComponentType.<Color>builder().persistent(Color.CODEC).networkSynchronized(Color.STREAM_CODEC));
 	DataComponentType<Long> RECHARGES_AT = register("recharges_at", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.LONG));
 	DataComponentType<LoafOfPlentyEats> LOAF_OF_PLENTY_EATS = register("loaf_of_plenty_eats", DataComponentType.<LoafOfPlentyEats>builder().persistent(LoafOfPlentyEats.CODEC).networkSynchronized(LoafOfPlentyEats.STREAM_CODEC));
+	DataComponentType<Unit> MARKED_ITEM = register("marked_item", DataComponentType.<Unit>builder().persistent(Unit.CODEC).networkSynchronized(Unit.STREAM_CODEC));
 
 
 	static <T> DataComponentType<T> register(String id, DataComponentType.Builder<T> component) {

@@ -7,12 +7,10 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.core.RegistrySetBuilder;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.datagen.*;
 import dev.coder2195.stellarity.datagen.loot_table.BlockLootTableProvider;
 import dev.coder2195.stellarity.datagen.loot_table.ChestLootTableProvider;
 import dev.coder2195.stellarity.datagen.loot_table.EntityLootTableProvider;
 import dev.coder2195.stellarity.datagen.loot_table.FishingLootTableProvider;
-import dev.coder2195.stellarity.datagen.tags.*;
 
 public class StellarityDatagen implements DataGeneratorEntrypoint {
 	@Override
@@ -40,7 +38,8 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(ChestLootTableProvider::new);
 		pack.addProvider(DynamicRegistriesProvider::new);
 		pack.addProvider((FabricDataGenerator.Pack.Factory<EquipmentAssetProvider>) EquipmentAssetProvider::new);
-		pack.addProvider(VillageTradeTagProvider::new);
+		pack.addProvider(StructureTagProvider::new);
+		pack.addProvider(VillagerTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
 		// FIXME: once released
 //		if (Stellarity.hasModonomicon()) {
