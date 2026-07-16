@@ -2,6 +2,10 @@
 
 This update finalizes End Villages.
 
+## Blocks
+**[*] Altar of the Accursed**
+- Fixes up the block model's missing faces
+
 ## Entities
 **[*] Pixie**
 - Has a much contained spawn area, preventing pixies spawning underground
