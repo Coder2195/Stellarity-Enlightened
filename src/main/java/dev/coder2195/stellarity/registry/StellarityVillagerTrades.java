@@ -77,25 +77,39 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME = id("cartographer/4/enderite_shard_phantom_item_frame");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN = id("cartographer/5/enderite_shard_mojang_banner_pattern");
 
-
 	ResourceKey<VillagerTrade> CLERIC_1_PHANTOM_MEMBRANE_ENDERITE_SHARD = id("cleric/phantom_membrane_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_1_BONE_ENDERITE_SHARD = id("cleric/bone_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_1_ENDERMANS_HAND_ENDERITE_SHARD = id("cleric/endermans_hand_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_1_ENDERITE_SHARD_REDSTONE = id("cleric/enderite_shard_redstone");
 	ResourceKey<VillagerTrade> CLERIC_1_ENDERITE_SHARD_BLAZE_ROD = id("cleric/enderite_shard_blaze_rod");
-
 	ResourceKey<VillagerTrade> CLERIC_2_GOLD_INGOT_ENDERITE_SHARD = id("cleric/gold_ingot_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_2_ENDERITE_SHARD_LAPIS_LAZULI = id("cleric/enderite_shard_lapis_lazuli");
 	ResourceKey<VillagerTrade> CLERIC_2_ENDERITE_SHARD_NETHER_WART = id("cleric/enderite_shard_nether_wart");
-
 	ResourceKey<VillagerTrade> CLERIC_3_ENDERITE_SHARD_LEVEL_3_POTION = id("cleric/enderite_shard_level_3_potion");
 	ResourceKey<VillagerTrade> CLERIC_3_ENDERITE_SHARD_GLOWSTONE = id("cleric/enderite_shard_glowstone");
-
 	ResourceKey<VillagerTrade> CLERIC_4_ENDER_PEARL_ENDERITE_SHARD = id("cleric/ender_pearl_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_4_ENDERITE_SHARD_LEVEL_4_POTION = id("cleric/enderite_shard_level_4_potion");
-
 	ResourceKey<VillagerTrade> CLERIC_5_ENDERITE_SHARD_LEVEL_5_POTION = id("cleric/enderite_shard_level_5_potion");
 	ResourceKey<VillagerTrade> CLERIC_5_DRAGONS_BREATH_ENDERITE_SHARD = id("cleric/dragons_breath_enderite_shard");
+
+	ResourceKey<VillagerTrade> FARMER_1_WHEAT_ENDERITE_SHARD = id("farmer/1/wheat_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_1_POTATO_ENDERITE_SHARD = id("farmer/1/potato_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_1_CARROT_ENDERITE_SHARD = id("farmer/1/carrot_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_1_BEETROOT_ENDERITE_SHARD = id("farmer/1/beetroot_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_1_ENDERITE_SHARD_BREAD = id("farmer/1/enderite_shard_bread");
+	ResourceKey<VillagerTrade> FARMER_1_ENDERITE_SHARD_CAKE = id("farmer/1/enderite_shard_cake");
+	ResourceKey<VillagerTrade> FARMER_2_CHORUS_FRUIT_ENDERITE_SHARD = id("farmer/2/chorus_fruit_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_2_CHORUS_FLOWER_ENDERITE_SHARD = id("farmer/2/chorus_flower_enderite_shard");
+	ResourceKey<VillagerTrade> FARMER_2_ENDERITE_SHARD_CHORUS_PIE = id("farmer/2/enderite_shard_chorus_pie");
+	ResourceKey<VillagerTrade> FARMER_2_ENDERITE_SHARD_SHROOMLIGHT = id("farmer/2/enderite_shard_shroomlight");
+	ResourceKey<VillagerTrade> FARMER_3_ENDERITE_SHARD_CANDIED_CHORUS_FRUIT = id("farmer/3/enderite_shard_candied_chorus_fruit");
+	ResourceKey<VillagerTrade> FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_TORCHFLOWER_SEEDS = id("farmer/3/wheat_seeds_enderite_shard_torchflower_seeds");
+	ResourceKey<VillagerTrade> FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_PITCHER_POD = id("farmer/3/wheat_seeds_enderite_shard_pitcher_pod");
+	ResourceKey<VillagerTrade> FARMER_4_ENDERITE_SHARD_CHORUS_JUICE = id("farmer/4/enderite_shard_chorus_juice");
+	ResourceKey<VillagerTrade> FARMER_4_ENDERITE_SHARD_CHORUS_STEW = id("farmer/4/enderite_shard_chorus_stew");
+	ResourceKey<VillagerTrade> FARMER_4_ENDERITE_SHARD_FRIED_CHORUS_FRUIT = id("farmer/4/enderite_shard_fried_chorus_fruit");
+	ResourceKey<VillagerTrade> FARMER_5_ENDERITE_SHARD_PHO = id("farmer/5/enderite_shard_pho");
+	ResourceKey<VillagerTrade> FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY = id("farmer/5/bread_enderite_shard_loaf_of_plenty");
 
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
@@ -207,6 +221,21 @@ public interface StellarityVillagerTrades {
 			SetRandomPotionFunction.fromTagKey(HolderSet.direct(StellarityPotions.RED, StellarityPotions.LIFEFORCE)).build()
 		), 1, 25, 2, 0.2f));
 		context.register(CLERIC_5_DRAGONS_BREATH_ENDERITE_SHARD, simpleToShard(DRAGON_BREATH, 3, 1, 15, 10, 0.05f));
+
+
+		context.register(FARMER_1_WHEAT_ENDERITE_SHARD, simpleToShard(WHEAT, num(15, 30), 1, 2, 8, 0.05f));
+		context.register(FARMER_1_POTATO_ENDERITE_SHARD, simpleToShard(POTATO, num(20, 35), 1, 3, 8, 0.05f));
+		context.register(FARMER_1_CARROT_ENDERITE_SHARD, simpleToShard(CARROT, num(20, 35), 1, 3, 8, 0.05f));
+		context.register(FARMER_1_BEETROOT_ENDERITE_SHARD, simpleToShard(BEETROOT, num(15, 25), 1, 2, 10, 0.05f));
+		context.register(FARMER_1_ENDERITE_SHARD_BREAD, shardToSimple(1, BREAD, 6, 2, 12, 0.05f));
+		context.register(FARMER_1_ENDERITE_SHARD_CAKE, shardToSimple(1, CAKE, 1, 2, 10, 0.05f));
+
+		context.register(FARMER_2_CHORUS_FRUIT_ENDERITE_SHARD, simpleToShard(CHORUS_FRUIT, num(20, 28), 1, 5, 6, 0.05f));
+		context.register(FARMER_2_CHORUS_FLOWER_ENDERITE_SHARD, simpleToShard(CHORUS_FLOWER, num(5, 7), 1, 8, 12, 0.05f));
+		context.register(FARMER_2_ENDERITE_SHARD_CHORUS_PIE, shardToSimple(1, CHORUS_PIE, 2, 15, 6, 0.2f));
+		context.register(FARMER_2_ENDERITE_SHARD_SHROOMLIGHT, shardToSimple(1, SHROOMLIGHT, 2, 4, 8, 0.05f));
+
+		context.register(FARMER_3_ENDERITE_SHARD_CANDIED_CHORUS_FRUIT, shardToSimple(2, CANDIED_CHORUS_FRUIT, 1, 20, 3, 0.2f));
 	}
 
 	static VillagerTrade simpleToShard(Item item, int count, int shards, int xp, int maxUses, float repDiscount) {

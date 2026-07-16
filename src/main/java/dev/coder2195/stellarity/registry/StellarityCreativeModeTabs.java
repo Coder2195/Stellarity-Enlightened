@@ -61,7 +61,8 @@ public interface StellarityCreativeModeTabs {
 		GOOSH,
 		CHORUS_STEW,
 		POTASSIFISH,
-		LOAF_OF_PLENTY
+		LOAF_OF_PLENTY,
+		CANDIED_CHORUS_FRUIT
 	};
 
 

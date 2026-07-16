@@ -116,8 +116,8 @@ public interface StellarityItems {
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FishingRodItem::new, new Item.Properties().stacksTo(1).durability(100).rarity(Rarity.UNCOMMON));
 
 	Item SUSHI = register(StellarityItemIds.SUSHI, basicFood(4, 2.4f));
-	Item GOLDEN_CHORUS_FRUIT = register(StellarityItemIds.GOLDEN_CHORUS_FRUIT, tpFoodProperties(6, 14.4f, true, 300).rarity(Rarity.RARE));
-	Item FRIED_CHORUS_FRUIT = register(StellarityItemIds.FRIED_CHORUS_FRUIT, tpFoodProperties(7, 11.2f, 32));
+	Item GOLDEN_CHORUS_FRUIT = register(StellarityItemIds.GOLDEN_CHORUS_FRUIT, tpFoodProperties(6, 14.4f, true, 300).rarity(Rarity.RARE).useCooldown(1.0F));
+	Item FRIED_CHORUS_FRUIT = register(StellarityItemIds.FRIED_CHORUS_FRUIT, tpFoodProperties(7, 11.2f, 32).useCooldown(1.0F));
 	Item FROZEN_CARPACCIO = register(StellarityItemIds.FROZEN_CARPACCIO, FrozenCarpaccio::new, FrozenCarpaccio.PROPERTIES);
 	Item ENDERMAN_FLESH = register(StellarityItemIds.ENDERMAN_FLESH, tpFoodProperties(4, 0.8f, 16, new StellarityItems.EffectChance(new MobEffectInstance(MobEffects.HUNGER, 40 * 20, 0), 0.8f)));
 	Item CRYSTAL_HEARTFISH = register(StellarityItemIds.CRYSTAL_HEARTFISH, CrystalHeartfish::new, CrystalHeartfish.PROPERTIES);
@@ -136,7 +136,7 @@ public interface StellarityItems {
 	Item PRISMITE = register(StellarityItemIds.PRISMITE, foodProperties(3, 1.8f, new MobEffectInstance(MobEffects.REGENERATION, 5 * 20)).rarity(Rarity.UNCOMMON));
 	Item OVERGROWN_COD = register(StellarityItemIds.OVERGROWN_COD, Item::new,
 		foodProperties(1, 0.2f, new MobEffectInstance(MobEffects.SLOWNESS, 3 * 20, 2)));
-	Item SHULKER_BODY = register(StellarityItemIds.SHULKER_BODY, tpFoodProperties(4, 0.8f, true, 16, new StellarityItems.EffectChance(new MobEffectInstance(MobEffects.HUNGER, 40 * 20, 0), 0.3f)));
+	Item SHULKER_BODY = register(StellarityItemIds.SHULKER_BODY, tpFoodProperties(4, 0.8f, true, 16, new StellarityItems.EffectChance(new MobEffectInstance(MobEffects.HUNGER, 40 * 20, 0), 0.3f)).useCooldown(1.0F));
 	Item PRISMATIC_SUSHI = register(StellarityItemIds.PRISMATIC_SUSHI, foodProperties(4, 2.4f, true, new MobEffectInstance(MobEffects.HEALTH_BOOST, 40 * 20)).rarity(Rarity.UNCOMMON));
 	Item SHEPHERDS_PIE = register(StellarityItemIds.SHEPHERDS_PIE, Item::new,
 		foodProperties(20, 20f, true,
@@ -294,6 +294,7 @@ public interface StellarityItems {
 		new Item.Properties().stacksTo(1).useCooldown(10).rarity(Rarity.EPIC),
 		new FoodProperties.Builder(), Consumables.defaultFood().onConsume(LoafOfPlentyConsumeEffect.INSTANCE), 5, 6, true
 	));
+	Item CANDIED_CHORUS_FRUIT = register(StellarityItemIds.CANDIED_CHORUS_FRUIT, tpFoodProperties(4, 2.4f, true, 16, new EffectChance(new MobEffectInstance(MobEffects.SPEED, 14 * 20))).useCooldown(1.0F));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -456,7 +457,7 @@ public interface StellarityItems {
 		NAME_COLORS.put(GOLDEN_CHORUS_FRUIT, 0x55FFFF);
 		NAME_COLORS.put(GRILLED_ENDERMAN_FLESH, TextColor.WHITE.getValue());
 		NAME_COLORS.put(CHORUS_STEW, TextColor.WHITE.getValue());
-//		NAME_COLORS.put(CANDIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
+		NAME_COLORS.put(CANDIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
 		NAME_COLORS.put(ENDERMAN_FLESH, TextColor.WHITE.getValue());
 		NAME_COLORS.put(SHULKER_BODY, TextColor.WHITE.getValue());
 		NAME_COLORS.put(FRIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
