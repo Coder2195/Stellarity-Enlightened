@@ -1,0 +1,18 @@
+{
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:set_potion",
+      "id": "stellarity:chorus_juice"
+    }
+  ],
+  "gives": {
+    "id": "minecraft:potion"
+  },
+  "max_uses": 8.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "count": 3.0,
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 15.0
+}

@@ -236,6 +236,18 @@ public interface StellarityVillagerTrades {
 		context.register(FARMER_2_ENDERITE_SHARD_SHROOMLIGHT, shardToSimple(1, SHROOMLIGHT, 2, 4, 8, 0.05f));
 
 		context.register(FARMER_3_ENDERITE_SHARD_CANDIED_CHORUS_FRUIT, shardToSimple(2, CANDIED_CHORUS_FRUIT, 1, 20, 3, 0.2f));
+		context.register(FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_TORCHFLOWER_SEEDS, simpleShardToSimple(WHEAT_SEEDS, num(12, 16), num(1), TORCHFLOWER_SEEDS, 4, 5, 12, 0.05f));
+		context.register(FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_PITCHER_POD, simpleShardToSimple(WHEAT_SEEDS, num(8, 11), num(1), PITCHER_POD, 3, 5, 8, 0.05f));
+
+		context.register(FARMER_4_ENDERITE_SHARD_CHORUS_JUICE, shardToModifierItem(3, POTION, List.of(
+			SetPotionFunction.setPotion(StellarityPotions.CHORUS_JUICE).build()
+		), 1, 15, 8, 0.2f));
+		context.register(FARMER_4_ENDERITE_SHARD_CHORUS_STEW, shardToSimple(4, CHORUS_STEW, 1, 15, 6, 0.2f));
+		context.register(FARMER_4_ENDERITE_SHARD_FRIED_CHORUS_FRUIT, shardToSimple(num(5, 6), FRIED_CHORUS_FRUIT, 2, 15, 8, 0.2f));
+
+		context.register(FARMER_5_ENDERITE_SHARD_PHO, shardToSimple(num(12, 18), PHO, 1, 25, 3, 0.2f));
+		context.register(FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY, simpleShardToSimple(BREAD, 10, 64, LOAF_OF_PLENTY, 1, 50, 2, 0.2f));
+
 	}
 
 	static VillagerTrade simpleToShard(Item item, int count, int shards, int xp, int maxUses, float repDiscount) {

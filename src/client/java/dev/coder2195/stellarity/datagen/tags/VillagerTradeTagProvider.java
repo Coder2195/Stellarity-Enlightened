@@ -5,16 +5,14 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.trading.VillagerTrade;
 import org.jspecify.annotations.NonNull;
 
-import static dev.coder2195.stellarity.tags.StellarityVillagerTradeTags.*;
-
 import java.util.concurrent.CompletableFuture;
 
 import static dev.coder2195.stellarity.registry.StellarityVillagerTrades.*;
+import static dev.coder2195.stellarity.tags.StellarityVillagerTradeTags.*;
 
 public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> {
 	public VillagerTradeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
@@ -22,12 +20,11 @@ public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> 
 	}
 
 	@SafeVarargs
-	private TagBuilder addTags(TagKey<VillagerTrade> tag, ResourceKey<VillagerTrade>... trades) {
+	private void addTags(TagKey<VillagerTrade> tag, ResourceKey<VillagerTrade>... trades) {
 		var builder = getOrCreateRawBuilder(tag);
 		for (var trade : trades) {
 			builder.addElement(trade.identifier());
 		}
-		return builder;
 	}
 
 	@SuppressWarnings("DuplicatedCode")
@@ -64,15 +61,15 @@ public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> 
 		addTags(CLERIC_LEVEL_4, CLERIC_4_ENDER_PEARL_ENDERITE_SHARD, CLERIC_4_ENDERITE_SHARD_LEVEL_4_POTION);
 		addTags(CLERIC_LEVEL_5, CLERIC_5_ENDERITE_SHARD_LEVEL_5_POTION, CLERIC_5_DRAGONS_BREATH_ENDERITE_SHARD);
 
-		addTags(FARMER_LEVEL_1);
-		addTags(FARMER_LEVEL_1_2);
-		addTags(FARMER_LEVEL_2);
-		addTags(FARMER_LEVEL_2_2);
-		addTags(FARMER_LEVEL_3);
-		addTags(FARMER_LEVEL_3_2);
-		addTags(FARMER_LEVEL_4);
-		addTags(FARMER_LEVEL_4_2);
-		addTags(FARMER_LEVEL_5);
+		addTags(FARMER_LEVEL_1, FARMER_1_WHEAT_ENDERITE_SHARD, FARMER_1_POTATO_ENDERITE_SHARD, FARMER_1_CARROT_ENDERITE_SHARD, FARMER_1_BEETROOT_ENDERITE_SHARD);
+		addTags(FARMER_LEVEL_1_2, FARMER_1_ENDERITE_SHARD_BREAD, FARMER_1_ENDERITE_SHARD_CAKE);
+		addTags(FARMER_LEVEL_2, FARMER_2_CHORUS_FRUIT_ENDERITE_SHARD, FARMER_2_CHORUS_FLOWER_ENDERITE_SHARD);
+		addTags(FARMER_LEVEL_2_2, FARMER_2_ENDERITE_SHARD_CHORUS_PIE, FARMER_2_ENDERITE_SHARD_SHROOMLIGHT);
+		addTags(FARMER_LEVEL_3, FARMER_3_ENDERITE_SHARD_CANDIED_CHORUS_FRUIT);
+		addTags(FARMER_LEVEL_3_2, FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_TORCHFLOWER_SEEDS, FARMER_3_WHEAT_SEEDS_ENDERITE_SHARD_PITCHER_POD);
+		addTags(FARMER_LEVEL_4, FARMER_4_ENDERITE_SHARD_CHORUS_JUICE, FARMER_4_ENDERITE_SHARD_CHORUS_STEW);
+		addTags(FARMER_LEVEL_4_2, FARMER_4_ENDERITE_SHARD_FRIED_CHORUS_FRUIT);
+		addTags(FARMER_LEVEL_5, FARMER_5_ENDERITE_SHARD_PHO, FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY);
 
 		addTags(FISHERMAN_LEVEL_1);
 		addTags(FISHERMAN_LEVEL_1_2);

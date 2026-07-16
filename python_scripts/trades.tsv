@@ -88,7 +88,7 @@ Farmer	2	1 - 1		chorus fruit	[20, 28]					enderite shard	1		5	6	0.05
 																	
 Farmer	3	1 - 1		enderite shard	2					candied chorus fruit	1		20	3	0.2		
 		2 - 1		wheat seeds	[12, 16]		enderite shard	1		torchflower seeds	4		5	12	0.05		
-				wheat seeds	8		enderite shard	1		pitcher pod	3		5	8	0.05		
+				wheat seeds	[8,11]		enderite shard	1		pitcher pod	3		5	8	0.05
 																	
 Farmer	4	1 - 1		enderite shard	3					chorus juice	1		15	8	0.2		
 				enderite shard	4					chorus stew	1		15	6	0.2		
