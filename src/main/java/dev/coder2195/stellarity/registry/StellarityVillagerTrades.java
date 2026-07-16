@@ -12,9 +12,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.equipment.trim.ArmorTrim;
@@ -132,6 +135,18 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> FISHERMAN_4_ENDERITE_SHARD_FISHER_OF_VOIDS = id("fisherman/4/enderite_shard_fisher_of_voids");
 	ResourceKey<VillagerTrade> FISHERMAN_5_CRYSTAL_HEARTFISH_ENDERITE_SHARD = id("fisherman/5/crystal_heartfish_enderite_shard");
 	ResourceKey<VillagerTrade> FISHERMAN_5_ENDERITE_SHARD_PRISMATIC_SUSHI = id("fisherman/5/enderite_shard_prismatic_sushi");
+
+	ResourceKey<VillagerTrade> FLETCHER_1_ENDERITE_SHARD_SPECTRAL_ARROW = id("fletcher/1/enderite_shard_spectral_arrow");
+	ResourceKey<VillagerTrade> FLETCHER_1_ENDERITE_SHARD_ARROW = id("fletcher/1/enderite_shard_arrow");
+	ResourceKey<VillagerTrade> FLETCHER_1_STICK_ENDERITE_SHARD = id("fletcher/1/stick_enderite_shard");
+	ResourceKey<VillagerTrade> FLETCHER_2_FLINT_ENDERITE_SHARD = id("fletcher/2/flint_enderite_shard");
+	ResourceKey<VillagerTrade> FLETCHER_2_ENDERITE_SHARD_BOW = id("fletcher/2/enderite_shard_bow");
+	ResourceKey<VillagerTrade> FLETCHER_3_STRING_ENDERITE_SHARD = id("fletcher/3/string_enderite_shard");
+	ResourceKey<VillagerTrade> FLETCHER_3_FEATHER_ENDERITE_SHARD = id("fletcher/3/feather_enderite_shard");
+	ResourceKey<VillagerTrade> FLETCHER_3_ENDERITE_SHARD_CROSSBOW = id("fletcher/3/enderite_shard_crossbow");
+	ResourceKey<VillagerTrade> FLETCHER_4_ARROW_ENDERITE_SHARD_LEVITATION_TIPPED_ARROW = id("fletcher/4/arrow_enderite_shard_levitation_tipped_arrow");
+	ResourceKey<VillagerTrade> FLETCHER_4_ARROW_ENDERITE_SHARD_LUCK_TIPPED_ARROW = id("fletcher/4/arrow_enderite_shard_luck_tipped_arrow");
+	ResourceKey<VillagerTrade> FLETCHER_5_BOW_ENDERITE_SHARD_SHARANGA = id("fletcher/5/bow_enderite_shard_sharanga");
 
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
@@ -283,6 +298,27 @@ public interface StellarityVillagerTrades {
 		context.register(FISHERMAN_5_ENDERITE_SHARD_PRISMATIC_SUSHI, shardToSimple(num(14, 20), PRISMATIC_SUSHI, 1, 15, 4, 0.2f));
 
 
+		context.register(FLETCHER_1_ENDERITE_SHARD_SPECTRAL_ARROW, shardToSimple(2, SPECTRAL_ARROW, 10, 8, 12, 0.05f));
+		context.register(FLETCHER_1_ENDERITE_SHARD_ARROW, shardToSimple(1, ARROW, 16, 6, 8, 0.05f));
+		context.register(FLETCHER_1_STICK_ENDERITE_SHARD, simpleToShard(STICK, num(24, 36), 1, 2, 12, 0.05f));
+		context.register(FLETCHER_2_FLINT_ENDERITE_SHARD, simpleToShard(FLINT, num(10, 20), 1, 2, 12, 0.05f));
+		context.register(FLETCHER_2_ENDERITE_SHARD_BOW, shardToModifierItem(num(8, 15), BOW, List.of(
+			enchant(enchants, 15, 29).build()
+		), 1, 10, 8, 0.05f));
+		context.register(FLETCHER_3_STRING_ENDERITE_SHARD, simpleToShard(STRING, num(12, 20), 1, 4, 12, 0.05f));
+		context.register(FLETCHER_3_FEATHER_ENDERITE_SHARD, simpleToShard(FEATHER, num(7, 15), 1, 6, 6, 0.05f));
+		context.register(FLETCHER_3_ENDERITE_SHARD_CROSSBOW, shardToModifierItem(num(10, 17), CROSSBOW, List.of(
+			enchant(enchants, 15, 29).build()
+		), 1, 12, 2, 0.2f));
+		context.register(FLETCHER_4_ARROW_ENDERITE_SHARD_LEVITATION_TIPPED_ARROW, simpleShardToModifierItem(ARROW, num(8), num(9, 17), TIPPED_ARROW, List.of(
+			component(DataComponents.POTION_CONTENTS, new PotionContents(Optional.empty(), Optional.empty(), List.of(new MobEffectInstance(MobEffects.LEVITATION, 90 * 20)), Optional.empty())).build()
+		), 8, 8, 6, 0.05f));
+		context.register(FLETCHER_4_ARROW_ENDERITE_SHARD_LUCK_TIPPED_ARROW, simpleShardToModifierItem(ARROW, 8, 64, TIPPED_ARROW, List.of(
+			potion(Potions.LUCK).build()
+		), 8, 8, 5, 0.05f));
+		context.register(FLETCHER_5_BOW_ENDERITE_SHARD_SHARANGA, simpleShardToSimple(BOW, 1, 64, SHARANGA, 1, 25, 2, 0.2f));
+
+
 	}
 
 	static VillagerTrade simpleToShard(Item item, int count, int shards, int xp, int maxUses, float repDiscount) {
@@ -333,6 +369,9 @@ public interface StellarityVillagerTrades {
 		);
 	}
 
+	static VillagerTrade simpleShardToModifierItem(Item buy, int buyCount, int shards, Item item, List<LootItemFunction> modifiers, int count, int xp, int maxUses, float repDiscount) {
+		return simpleShardToModifierItem(buy, num(buyCount), num(shards), item, modifiers, count, xp, maxUses, repDiscount);
+	}
 	static VillagerTrade simpleShardToModifierItem(Item buy, NumberProvider buyCount, NumberProvider shards, Item item, List<LootItemFunction> modifiers, int count, int xp, int maxUses, float repDiscount) {
 		return new VillagerTrade(
 			new TradeCost(buy, buyCount),

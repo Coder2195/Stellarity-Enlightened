@@ -115,8 +115,8 @@ Fisherman	3	1 - 1		enderite shard	[5,8]					fishing rod; enchant level 15-29	1		
 				flarefin koi	[4,6]					enderite shard	1		4	8	0.05		
 				potassifish	[4,6]					enderite shard	1		4	8	0.05		
 																	
-Fisherman	4	1 - 1		enderite shard	[10,14]					lure book	1		10	2	0.2		
-				enderite shard	[10,14]					luck of the sea book	1		10	2	0.2		
+Fisherman	4	1 - 1		enderite shard	[10,14]					lure book	1		10	2	0.2
+				enderite shard	[10,14]					luck of the sea book	1		10	2	0.2
 		2 - 1		enderite shard	[14,20]					fisher of voids	1		15	6	0.2		
 																	
 Fisherman	5	1 - 2		crystal heartfish	1					enderite shard	5		15	3	0.2		
@@ -134,7 +134,7 @@ Fletcher	3	1 - 2		string	[12,20]					enderite shard	1		4	12	0.05
 				enderite shard	[10,17]					crossbow; enchant level 15-29	1		12	2	0.2		
 																	
 Fletcher	4	1 - 2		arrow	8		enderite shard	[9,17]		levitation tipped arrow	8		8	6	0.05		
-			EDIT	arrow	8		enderite shard	64		luck tipped arrow	1		8	5	0.05		
+			EDIT	arrow	8		enderite shard	64		luck tipped arrow	8		8	5	0.05
 																	
 Fletcher	5	1 - 1		bow	1		enderite shard	64		sharanga	1		25	2	0.2		
 																	
