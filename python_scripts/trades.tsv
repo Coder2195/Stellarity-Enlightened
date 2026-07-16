@@ -72,7 +72,7 @@ Cleric	4	1 - 2		ender pearl	16		ender pearl	[1,16]		enderite shard	1		6	12	0.05
 				enderite shard	[7, 11]					potion; strength or endurance	1		15	3	0.2		
 																	
 Cleric	5	1 - 2		enderite shard	[11, 18]					potion; lifeforce or red	1		25	2	0.2		
-			NEW	dragon's breath	1					enderite shard	1						
+			NEW	dragon's breath	3					enderite shard	1		15	10	0.05
 																	
 Farmer	1	1 - 1		wheat	[15, 30]					enderite shard	1		2	8	0.05		
 				potato	[20, 35]					enderite shard	1		3	8	0.05		
