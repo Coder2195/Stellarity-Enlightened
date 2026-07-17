@@ -35,7 +35,6 @@ public abstract class ZombieVillagerMixin extends Zombie {
 	}
 
 
-	@Unique
 	@WrapOperation(method = "defineSynchedData", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/monster/zombie/ZombieVillager;initializeZombieVillagerData(Lnet/minecraft/util/RandomSource;)Lnet/minecraft/world/entity/npc/villager/VillagerData;"))
 	private VillagerData preventStellarityVillager(RandomSource random, Operation<VillagerData> original) {
 		return preventStellarityVillager(original.call(random));

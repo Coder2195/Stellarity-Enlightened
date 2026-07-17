@@ -7,6 +7,7 @@ import net.minecraft.advancements.predicates.entity.EntityTypePredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,7 +20,6 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
@@ -33,10 +33,14 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.*;
-import net.minecraft.world.level.storage.loot.providers.number.*;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
+import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface LootUtil {
 	static LootPool.Builder pool() {
@@ -229,6 +233,12 @@ public interface LootUtil {
 	static EnchantRandomlyFunction.Builder enchant() {
 		return EnchantRandomlyFunction.randomEnchantment();
 	}
+
+	@SafeVarargs
+	static EnchantRandomlyFunction.Builder enchant(HolderGetter<Enchantment> holderGetter, ResourceKey<Enchantment>... enchantments) {
+		return enchant().withOptions(HolderSet.direct(Stream.of(enchantments).map(holderGetter::getOrThrow).toList()));
+	}
+
 
 	static LootItemFunction modifier(ResourceKey<LootItemFunction> key) {
 		return FunctionReference.functionReference(key).build();

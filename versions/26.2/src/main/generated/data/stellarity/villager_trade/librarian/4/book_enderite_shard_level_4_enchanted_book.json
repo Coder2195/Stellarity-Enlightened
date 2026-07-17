@@ -1,0 +1,33 @@
+{
+  "additional_wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 24.0,
+      "min": 15.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "given_item_modifiers": [
+    {
+      "function": "minecraft:enchant_randomly",
+      "options": [
+        "minecraft:mending",
+        "minecraft:fortune",
+        "minecraft:knockback",
+        "minecraft:depth_strider",
+        "minecraft:breach",
+        "minecraft:density",
+        "minecraft:sharpness"
+      ]
+    }
+  ],
+  "gives": {
+    "id": "minecraft:book"
+  },
+  "max_uses": 2.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "id": "minecraft:book"
+  },
+  "xp": 20.0
+}

@@ -159,13 +159,13 @@ Librarian	1	1 - 1		paper	[24,36]					enderite shard	1		2	6	0.05
 				book	1		enderite shard	[15,24]		book; enchanted with fire aspect, flame, knockback or aqua affinity	1		8	3	0.2
 																	
 Librarian	2	1 - 2		enderite shard	1					lantern	3		4	8	0.05		
-				book	1		enderite shard	[25,31]		book; enchanted with protection, fire protection, blast protection, projectile protection, silk touch, feather falling, or unbreaking	1		15	3	0.2
+				book	1		enderite shard	[15, 24]		book; enchanted with protection, fire protection, blast protection, projectile protection, silk touch, feather falling, or unbreaking	1		15	3	0.2
 																	
 Librarian	3	1 - 1		enderite shard	1					ink sac	2		4	8	0.05		
 				enderite shard	1					glow ink sac	1		5	6	0.05		
 		2 - 1		enderite shard	1					glass	6		3	8	0.05		
 		
-Librarian	4	1 - 1		book	1		enderite shard	[35,43]		book; enchanted with mending, fortune, knockback, depth strider, breach, density, or sharpness	1		20	2	0.2
+Librarian	4	1 - 1		book	1		enderite shard	[15, 24]		book; enchanted with mending, fortune, knockback, depth strider, breach, density, or sharpness	1		20	2	0.2
 				enderite shard	1					writeable book	1		6	6	0.05		
 		2 - 1		enderite shard	[7,15]					name tag	1		6	3	0.05		
 																	

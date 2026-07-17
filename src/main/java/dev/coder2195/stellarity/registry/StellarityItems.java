@@ -298,6 +298,13 @@ public interface StellarityItems {
 
 	Item REINFORCED_HORSE_ARMOR = register(StellarityItemIds.REINFORCED_HORSE_ARMOR, new Item.Properties().horseArmor(StellarityArmorMaterials.REINFORCED).rarity(Rarity.UNCOMMON));
 
+	Item BOOK_OF_JINX = register(StellarityItemIds.BOOK_OF_JINX, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_LIGHT = register(StellarityItemIds.BOOK_OF_LIGHT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_RETURN = register(StellarityItemIds.BOOK_OF_RETURN, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
 	}
@@ -445,12 +452,12 @@ public interface StellarityItems {
 		NAME_COLORS.put(ENDERITE_UPGRADE_SMITHING_TEMPLATE, TextColor.LIGHT_PURPLE.getValue());
 		NAME_COLORS.put(HALLOWED_INGOT, 0xD9E3ED);
 		NAME_COLORS.put(CHORUS_PLATING, 0xA372C3);
-//		NAME_COLORS.put(BOOK_OF_RETURN, 0x9C369F);
-//		NAME_COLORS.put(BOOK_OF_UPDRAFT, 0xE0E0E0);
-//		NAME_COLORS.put(BOOK_OF_CONVEYANCE, 0xA946E7);
-//		NAME_COLORS.put(BOOK_OF_OBSTRUCT, 0xF816FF);
-//		NAME_COLORS.put(BOOK_OF_JINX, 0xF816FF);
-//		NAME_COLORS.put(BOOK_OF_LIGHT, 0xFFF300);
+		NAME_COLORS.put(BOOK_OF_RETURN, 0x9C369F);
+		NAME_COLORS.put(BOOK_OF_UPDRAFT, 0xE0E0E0);
+		NAME_COLORS.put(BOOK_OF_CONVEYANCE, 0xA946E7);
+		NAME_COLORS.put(BOOK_OF_OBSTRUCT, 0xF816FF);
+		NAME_COLORS.put(BOOK_OF_JINX, 0xF816FF);
+		NAME_COLORS.put(BOOK_OF_LIGHT, 0xFFF300);
 		NAME_COLORS.put(CHORUS_PIE, TextColor.WHITE.getValue());
 		NAME_COLORS.put(FROZEN_CARPACCIO, TextColor.WHITE.getValue());
 		NAME_COLORS.put(SUSHI, TextColor.WHITE.getValue());

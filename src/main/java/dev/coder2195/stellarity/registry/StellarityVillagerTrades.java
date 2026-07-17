@@ -161,11 +161,28 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> LEATHERWORKER_4_ENDERITE_SHARD_ARMADILLO_SCUTE = id("leatherworker/4/enderite_shard_armadillo_scute");
 	ResourceKey<VillagerTrade> LEATHERWORKER_5_DIAMOND_HORSE_ARMOR_ENDERITE_SHARD_REINFORCED_HORSE_ARMOR = id("leatherworker/5/diamond_horse_armor_enderite_shard_reinforced_horse_armor");
 
+	ResourceKey<VillagerTrade> LIBRARIAN_1_PAPER_ENDERITE_SHARD = id("librarian/1/paper_enderite_shard");
+	ResourceKey<VillagerTrade> LIBRARIAN_1_BOOK_ENDERITE_SHARD = id("librarian/1/book_enderite_shard");
+	ResourceKey<VillagerTrade> LIBRARIAN_1_ENDERITE_SHARD_BOOKSHELF = id("librarian/1/enderite_shard_bookshelf");
+	ResourceKey<VillagerTrade> LIBRARIAN_1_BOOK_ENDERITE_SHARD_LEVEL_1_ENCHANTED_BOOK = id("librarian/1/book_enderite_shard_level_1_enchanted_book");
+	ResourceKey<VillagerTrade> LIBRARIAN_2_ENDERITE_SHARD_LANTERN = id("librarian/2/enderite_shard_lantern");
+	ResourceKey<VillagerTrade> LIBRARIAN_2_BOOK_ENDERITE_SHARD_LEVEL_2_ENCHANTED_BOOK = id("librarian/2/book_enderite_shard_level_2_enchanted_book");
+	ResourceKey<VillagerTrade> LIBRARIAN_3_ENDERITE_SHARD_INK_SAC = id("librarian/3/enderite_shard_ink_sac");
+	ResourceKey<VillagerTrade> LIBRARIAN_3_ENDERITE_SHARD_GLOW_INK_SAC = id("librarian/3/enderite_shard_glow_ink_sac");
+	ResourceKey<VillagerTrade> LIBRARIAN_3_ENDERITE_SHARD_GLASS = id("librarian/3/enderite_shard_glass");
+	ResourceKey<VillagerTrade> LIBRARIAN_4_BOOK_ENDERITE_SHARD_LEVEL_4_ENCHANTED_BOOK = id("librarian/4/book_enderite_shard_level_4_enchanted_book");
+	ResourceKey<VillagerTrade> LIBRARIAN_4_ENDERITE_SHARD_WRITABLE_BOOK = id("librarian/4/enderite_shard_writable_book");
+	ResourceKey<VillagerTrade> LIBRARIAN_4_ENDERITE_SHARD_NAME_TAG = id("librarian/4/enderite_shard_name_tag");
+	ResourceKey<VillagerTrade> LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_UPDRAFT = id("librarian/5/book_enderite_shard_book_of_updraft");
+	ResourceKey<VillagerTrade> LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_LIGHT = id("librarian/5/book_enderite_shard_of_light");
+	ResourceKey<VillagerTrade> LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_OBSTRUCT = id("librarian/5/book_enderite_shard_of_obstruct");
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
+
 
 		List<LootItemFunction> ironArmorModifier = List.of(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
@@ -301,10 +318,10 @@ public interface StellarityVillagerTrades {
 			enchant(enchants, 15, 29).build()
 		), 1, 4, 2, 0.05f));
 		context.register(FISHERMAN_4_ENDERITE_SHARD_LURE_BOOK, shardToModifierItem(num(10, 14), BOOK, List.of(
-			enchant().withEnchantment(enchants.getOrThrow(Enchantments.LURE)).build()
+			enchant(enchants, Enchantments.LURE).build()
 		), 1, 10, 2, 0.2f));
 		context.register(FISHERMAN_4_ENDERITE_SHARD_LUCK_OF_THE_SEA_BOOK, shardToModifierItem(num(10, 14), BOOK, List.of(
-			enchant().withEnchantment(enchants.getOrThrow(Enchantments.LUCK_OF_THE_SEA)).build()
+			enchant(enchants, Enchantments.LUCK_OF_THE_SEA).build()
 		), 1, 10, 2, 0.2f));
 		context.register(FISHERMAN_4_ENDERITE_SHARD_FISHER_OF_VOIDS, shardToSimple(num(14, 20), FISHER_OF_VOIDS, 1, 15, 6, 0.2f));
 		context.register(FISHERMAN_5_CRYSTAL_HEARTFISH_ENDERITE_SHARD, simpleToShard(CRYSTAL_HEARTFISH, 1, 5, 15, 3, 0.2f));
@@ -342,6 +359,28 @@ public interface StellarityVillagerTrades {
 		context.register(LEATHERWORKER_4_ENDERITE_SHARD_TURTLE_SCUTE, shardToSimple(num(5, 10), TURTLE_SCUTE, 1, 6, 8, 0.05f));
 		context.register(LEATHERWORKER_4_ENDERITE_SHARD_ARMADILLO_SCUTE, shardToSimple(num(7, 12), ARMADILLO_SCUTE, 1, 6, 8, 0.05f));
 		context.register(LEATHERWORKER_5_DIAMOND_HORSE_ARMOR_ENDERITE_SHARD_REINFORCED_HORSE_ARMOR, simpleShardToSimple(DIAMOND_HORSE_ARMOR, num(1), num(24, 32), REINFORCED_HORSE_ARMOR, 1, 20, 2, 0.2f));
+
+		context.register(LIBRARIAN_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 36), 1, 2, 6, 0.05f));
+		context.register(LIBRARIAN_1_BOOK_ENDERITE_SHARD, simpleToShard(BOOK, 3, 1, 3, 8, 0.05f));
+		context.register(LIBRARIAN_1_ENDERITE_SHARD_BOOKSHELF, shardToSimple(num(4, 6), BOOKSHELF, 1, 4, 8, 0.05f));
+		context.register(LIBRARIAN_1_BOOK_ENDERITE_SHARD_LEVEL_1_ENCHANTED_BOOK, simpleShardToModifierItem(BOOK, num(1), num(15, 24), BOOK, List.of(
+			enchant(enchants, Enchantments.FIRE_ASPECT, Enchantments.FLAME, Enchantments.KNOCKBACK, Enchantments.AQUA_AFFINITY).build()
+		), 1, 8, 3, 0.2f));
+		context.register(LIBRARIAN_2_ENDERITE_SHARD_LANTERN, shardToSimple(1, LANTERN, 3, 4, 8, 0.05f));
+		context.register(LIBRARIAN_2_BOOK_ENDERITE_SHARD_LEVEL_2_ENCHANTED_BOOK, simpleShardToModifierItem(BOOK, num(1), num(15, 24), BOOK, List.of(
+			enchant(enchants, Enchantments.PROTECTION, Enchantments.FIRE_PROTECTION, Enchantments.BLAST_PROTECTION, Enchantments.SILK_TOUCH, Enchantments.FEATHER_FALLING, Enchantments.UNBREAKING).build()
+		), 1, 15, 3, 0.2f));
+		context.register(LIBRARIAN_3_ENDERITE_SHARD_INK_SAC, shardToSimple(1, INK_SAC, 2, 4, 8, 0.05f));
+		context.register(LIBRARIAN_3_ENDERITE_SHARD_GLOW_INK_SAC, shardToSimple(1, GLOW_INK_SAC, 1, 5, 6, 0.05f));
+		context.register(LIBRARIAN_3_ENDERITE_SHARD_GLASS, shardToSimple(1, GLASS, 6, 3, 8, 0.05f));
+		context.register(LIBRARIAN_4_BOOK_ENDERITE_SHARD_LEVEL_4_ENCHANTED_BOOK, simpleShardToModifierItem(BOOK, num(1), num(15, 24), BOOK, List.of(
+			enchant(enchants, Enchantments.MENDING, Enchantments.FORTUNE, Enchantments.KNOCKBACK, Enchantments.DEPTH_STRIDER, Enchantments.BREACH, Enchantments.DENSITY, Enchantments.SHARPNESS).build()
+		), 1, 20, 2, 0.2f));
+		context.register(LIBRARIAN_4_ENDERITE_SHARD_WRITABLE_BOOK, shardToSimple(1, WRITABLE_BOOK, 1, 6, 6, 0.05f));
+		context.register(LIBRARIAN_4_ENDERITE_SHARD_NAME_TAG, shardToSimple(num(7, 15), NAME_TAG, 1, 6, 3, 0.05f));
+		context.register(LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_UPDRAFT, simpleShardToSimple(BOOK, 1, 64, BOOK_OF_UPDRAFT, 1, 20, 1, 0.2f));
+		context.register(LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_LIGHT, simpleShardToSimple(BOOK, 1, 64, BOOK_OF_LIGHT, 1, 20, 1, 0.2f));
+		context.register(LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_OBSTRUCT, simpleShardToSimple(BOOK, 1, 64, BOOK_OF_OBSTRUCT, 1, 20, 1, 0.2f));
 
 	}
 

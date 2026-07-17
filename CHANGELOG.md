@@ -30,6 +30,24 @@ This update finalizes End Villages.
 
 **[+] Reinforced Horse Armor**
 
+**[+] Book of Jinx**
+- Has no functionality yet
+
+**[+] Book of Light**
+- Has no functionality yet
+
+**[+] Book of Obstruct**
+- Has no functionality yet
+
+**[+] Book of Updraft**
+- Has no functionality yet
+
+**[+] Book of Conveyance**
+- Has no functionality yet
+
+**[+] Book of Return**
+- Has no functionality yet
+
 ## Mechanics
 
 **[+] Item Tooltips**

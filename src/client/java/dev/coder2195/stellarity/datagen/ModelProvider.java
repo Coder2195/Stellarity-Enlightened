@@ -88,7 +88,13 @@ public class ModelProvider extends FabricModelProvider {
 		LIFE_CRYSTAL,
 		LOAF_OF_PLENTY,
 		CANDIED_CHORUS_FRUIT,
-		REINFORCED_HORSE_ARMOR
+		REINFORCED_HORSE_ARMOR,
+		BOOK_OF_JINX,
+		BOOK_OF_LIGHT,
+		BOOK_OF_OBSTRUCT,
+		BOOK_OF_UPDRAFT,
+		BOOK_OF_CONVEYANCE,
+		BOOK_OF_RETURN
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{
