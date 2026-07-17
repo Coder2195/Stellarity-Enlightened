@@ -99,4 +99,5 @@ accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Context
 accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$Condition
 accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$LazyYCondition
 
+extendable class net/minecraft/world/item/equipment/ArmorMaterial
 accessible method net/minecraft/world/level/storage/loot/functions/SetComponentsFunction <init> (Ljava/util/List;Lnet/minecraft/core/component/DataComponentPatch;)V

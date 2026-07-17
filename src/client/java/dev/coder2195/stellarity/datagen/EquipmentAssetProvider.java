@@ -32,10 +32,15 @@ public class EquipmentAssetProvider extends net.minecraft.client.data.models.Equ
 		consumer.accept(StellarityEquipmentAssets.FLORAL, armor("floral"));
 		consumer.accept(StellarityEquipmentAssets.CHAMPION, armor("champion"));
 		consumer.accept(StellarityEquipmentAssets.HALLOWED, armor("hallowed"));
+		consumer.accept(StellarityEquipmentAssets.REINFORCED, horseArmor("reinforced"));
 	}
 
-	private static EquipmentClientInfo armor(final String name) {
+	private static EquipmentClientInfo armor(String name) {
 		return EquipmentClientInfo.builder().addHumanoidLayers(Stellarity.id(name)).build();
+	}
+
+	private static EquipmentClientInfo horseArmor(String name) {
+		return EquipmentClientInfo.builder().addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, new EquipmentClientInfo.Layer(Stellarity.id(name))).build();
 	}
 
 

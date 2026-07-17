@@ -13,6 +13,7 @@ public interface StellarityEquipmentAssets {
 	ResourceKey<EquipmentAsset> FLORAL = id("floral");
 	ResourceKey<EquipmentAsset> CHAMPION = id("champion");
 	ResourceKey<EquipmentAsset> HALLOWED = id("hallowed");
+	ResourceKey<EquipmentAsset> REINFORCED = id("reinforced");
 
 	static ResourceKey<EquipmentAsset> id(final String name) {
 		return ResourceKey.create(EquipmentAssets.ROOT_ID, Stellarity.id(name));

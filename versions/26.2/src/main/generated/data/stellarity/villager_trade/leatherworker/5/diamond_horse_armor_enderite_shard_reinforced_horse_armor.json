@@ -1,0 +1,19 @@
+{
+  "additional_wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 32.0,
+      "min": 24.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "gives": {
+    "id": "stellarity:reinforced_horse_armor"
+  },
+  "max_uses": 2.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "id": "minecraft:diamond_horse_armor"
+  },
+  "xp": 20.0
+}

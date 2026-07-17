@@ -151,21 +151,21 @@ Leatherworker	4	1 - 1		item frame	2		enderite shard	1		glow item frame	2		8	4	0.
 		2 - 1		enderite shard	[5,10]					turtle scute	1		6	8	0.05		
 				enderite shard	[7,12]					armadillo scute	1		6	8	0.05		
 																	
-Leatherworker	5	1 - 1		diamond horse armor	1		enderite shard	24		reinforced horse armor	1		20	2	0.2		
+Leatherworker	5	1 - 1		diamond horse armor	1		enderite shard	[24,32]		reinforced horse armor	1		20	2	0.2
 																	
 Librarian	1	1 - 1		paper	[24,36]					enderite shard	1		2	6	0.05		
 				book	3					enderite shard	1		3	8	0.05		
 		2 - 1		enderite shard	[4,6]					bookshelf	1		4	8	0.05		
-				book	1		enderite shard	15		book; enchanted with fire aspect, flame, knockback or aqua affinity	1		8	3	0.2		
+				book	1		enderite shard	[15,24]		book; enchanted with fire aspect, flame, knockback or aqua affinity	1		8	3	0.2
 																	
 Librarian	2	1 - 2		enderite shard	1					lantern	3		4	8	0.05		
-				book	1		enderite shard	25		book; enchanted with protection, fire protection, blast protection, projectile protection, silk touch, feather falling, or unbreaking	1		15	3	0.2		
+				book	1		enderite shard	[25,31]		book; enchanted with protection, fire protection, blast protection, projectile protection, silk touch, feather falling, or unbreaking	1		15	3	0.2
 																	
 Librarian	3	1 - 1		enderite shard	1					ink sac	2		4	8	0.05		
 				enderite shard	1					glow ink sac	1		5	6	0.05		
 		2 - 1		enderite shard	1					glass	6		3	8	0.05		
-																	
-Librarian	4	1 - 1		book	1		enderite shard	40		book; enchanted with mending, fortune, knockback, depth strider, breach, density, or sharpness	1		20	2	0.2		
+		
+Librarian	4	1 - 1		book	1		enderite shard	[35,43]		book; enchanted with mending, fortune, knockback, depth strider, breach, density, or sharpness	1		20	2	0.2
 				enderite shard	1					writeable book	1		6	6	0.05		
 		2 - 1		enderite shard	[7,15]					name tag	1		6	3	0.05		
 																	
@@ -378,7 +378,7 @@ Toolsmith	2	1 - 1		enderite shard	[6,10]					iron axe; enchant level 15-29	1		10
 				enderite shard	3					chorus plating	1		10	8	0.2		
 																	
 Toolsmith	3	1 - 2		diamond	1					enderite shard	2		6	12	0.05		
-				book	1		enderite shard	20		book; enchanted with efficiency, silk touch, or unbreaking	1		12	4	0.05		
+				book	1		enderite shard	[18,22]		book; enchanted with efficiency, silk touch, or unbreaking	1		12	4	0.05
 																	
 Toolsmith	4	1 - 1		purpur block	[20,30]		enderite shard	[28,40]		enderite upgrade smithing template	1		10	2	0.2		
 		2 - 1		enderite shard	[11,18]					diamond hoe; enchant level 21-35	1		20	2	0.2		
@@ -397,7 +397,7 @@ Weaponsmith	2	1 - 1		enderite shard	[6,10]					iron axe; enchant level 15-29	1		
 				enderite shard	3					chorus plating	1		10	8	0.2		
 																	
 Weaponsmith	3	1 - 2		diamond	1					enderite shard	2		6	12	0.05		
-				book	1		enderite shard	20		book; enchanted with sharpness, knockback or fire aspect	1		12	4	0.05		
+				book	1		enderite shard	[18,22]		book; enchanted with sharpness, knockback or fire aspect	1		12	4	0.05
 																	
 Weaponsmith	4	1 - 2		purpur block	[20,30]		enderite shard	[28,40]		enderite upgrade smithing template	1		10	2	0.2		
 				enderite shard	[20,25]					diamond sword; enchant level 21-35	1		20	2	0.2		

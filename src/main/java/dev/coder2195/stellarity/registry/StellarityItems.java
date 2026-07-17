@@ -256,10 +256,10 @@ public interface StellarityItems {
 	Item SATCHEL_OF_VOIDS = register(StellarityItemIds.SATCHEL_OF_VOIDS, SatchelOfVoids::new, SatchelOfVoids.PROPERTIES);
 	Item DUSKBERRY = register(StellarityItemIds.DUSKBERRY, Duskberry::new, Duskberry.PROPERTIES);
 
-	Item SHULKER_HELMET = register(StellarityItemIds.SHULKER_HELMET, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.HELMET).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.HELMET)));
-	Item SHULKER_CHESTPLATE = register(StellarityItemIds.SHULKER_CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE)));
-	Item SHULKER_LEGGINGS = register(StellarityItemIds.SHULKER_LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS)));
-	Item SHULKER_BOOTS = register(StellarityItemIds.SHULKER_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS).attributes(StellarityArmorMaterials.createShulkerAttributes(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS)));
+	Item SHULKER_HELMET = register(StellarityItemIds.SHULKER_HELMET, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.HELMET));
+	Item SHULKER_CHESTPLATE = register(StellarityItemIds.SHULKER_CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.CHESTPLATE));
+	Item SHULKER_LEGGINGS = register(StellarityItemIds.SHULKER_LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.LEGGINGS));
+	Item SHULKER_BOOTS = register(StellarityItemIds.SHULKER_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.SHULKER, ArmorType.BOOTS));
 
 	Item ENDER_EGG = register(StellarityItemIds.ENDER_EGG, EggItem::new, new Item.Properties().stacksTo(16).delayedHolderComponent(DataComponents.CHICKEN_VARIANT, StellarityMobVariants.CHICKEN_END));
 
@@ -295,6 +295,8 @@ public interface StellarityItems {
 		new FoodProperties.Builder(), Consumables.defaultFood().onConsume(LoafOfPlentyConsumeEffect.INSTANCE), 5, 6, true
 	));
 	Item CANDIED_CHORUS_FRUIT = register(StellarityItemIds.CANDIED_CHORUS_FRUIT, tpFoodProperties(4, 2.4f, true, 16, new EffectChance(new MobEffectInstance(MobEffects.SPEED, 14 * 20))).useCooldown(1.0F));
+
+	Item REINFORCED_HORSE_ARMOR = register(StellarityItemIds.REINFORCED_HORSE_ARMOR, new Item.Properties().horseArmor(StellarityArmorMaterials.REINFORCED).rarity(Rarity.UNCOMMON));
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -481,7 +483,7 @@ public interface StellarityItems {
 		NAME_COLORS.put(FISHER_OF_VOIDS, 0x8865AF);
 		NAME_COLORS.put(ROYAL_JELLY, TextColor.YELLOW.getValue());
 		NAME_COLORS.put(ROYAL_JELLY_II, TextColor.YELLOW.getValue());
-//		NAME_COLORS.put(REINFORCED_HORSE_ARMOR, 0x976A97);
+		NAME_COLORS.put(REINFORCED_HORSE_ARMOR, 0x976A97);
 		NAME_COLORS.put(SHULKER_HELMET, 0x976A97);
 		NAME_COLORS.put(SHULKER_BOOTS, 0x976A97);
 		NAME_COLORS.put(SHULKER_CHESTPLATE, 0x976A97);

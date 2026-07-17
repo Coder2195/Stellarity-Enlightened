@@ -107,7 +107,8 @@ public interface StellarityCreativeModeTabs {
 		SHARANGA,
 		SPECTRAL_FURY,
 		COPPER_ELEKTRA_SHIELD,
-		PHANTOM_WINGS
+		PHANTOM_WINGS,
+		REINFORCED_HORSE_ARMOR
 	};
 
 	ItemLike[] INGREDIENT_ITEMS = new ItemLike[]{

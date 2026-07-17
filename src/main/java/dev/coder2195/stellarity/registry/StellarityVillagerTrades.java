@@ -27,6 +27,8 @@ import net.minecraft.world.item.trading.TradeCost;
 import net.minecraft.world.item.trading.VillagerTrade;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.functions.*;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 
 import java.util.List;
@@ -148,6 +150,17 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> FLETCHER_4_ARROW_ENDERITE_SHARD_LUCK_TIPPED_ARROW = id("fletcher/4/arrow_enderite_shard_luck_tipped_arrow");
 	ResourceKey<VillagerTrade> FLETCHER_5_BOW_ENDERITE_SHARD_SHARANGA = id("fletcher/5/bow_enderite_shard_sharanga");
 
+	ResourceKey<VillagerTrade> LEATHERWORKER_1_LEATHER_ENDERITE_SHARD = id("leatherworker/1/leather_enderite_shard");
+	ResourceKey<VillagerTrade> LEATHERWORKER_1_FLINT_ENDERITE_SHARD = id("leatherworker/1/flint_enderite_shard");
+	ResourceKey<VillagerTrade> LEATHERWORKER_2_ENDERITE_SHARD_SADDLE = id("leatherworker/2/enderite_shard_saddle");
+	ResourceKey<VillagerTrade> LEATHERWORKER_2_ENDERITE_SHARD_LEATHER = id("leatherworker/2/enderite_shard_leather");
+	ResourceKey<VillagerTrade> LEATHERWORKER_3_ENDERITE_SHARD_CAULDRON = id("leatherworker/3/enderite_shard_cauldron");
+	ResourceKey<VillagerTrade> LEATHERWORKER_3_RABBIT_HIDE_ENDERITE_SHARD = id("leatherworker/3/rabbit_hide_enderite_shard");
+	ResourceKey<VillagerTrade> LEATHERWORKER_4_ITEM_FRAME_ENDERITE_SHARD_GLOW_ITEM_FRAME = id("leatherworker/4/item_frame_enderite_shard_glow_item_frame");
+	ResourceKey<VillagerTrade> LEATHERWORKER_4_ENDERITE_SHARD_TURTLE_SCUTE = id("leatherworker/4/enderite_shard_turtle_scute");
+	ResourceKey<VillagerTrade> LEATHERWORKER_4_ENDERITE_SHARD_ARMADILLO_SCUTE = id("leatherworker/4/enderite_shard_armadillo_scute");
+	ResourceKey<VillagerTrade> LEATHERWORKER_5_DIAMOND_HORSE_ARMOR_ENDERITE_SHARD_REINFORCED_HORSE_ARMOR = id("leatherworker/5/diamond_horse_armor_enderite_shard_reinforced_horse_armor");
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
@@ -265,7 +278,7 @@ public interface StellarityVillagerTrades {
 		context.register(FARMER_4_ENDERITE_SHARD_CHORUS_STEW, shardToSimple(4, CHORUS_STEW, 1, 15, 6, 0.2f));
 		context.register(FARMER_4_ENDERITE_SHARD_FRIED_CHORUS_FRUIT, shardToSimple(num(5, 6), FRIED_CHORUS_FRUIT, 2, 15, 8, 0.2f));
 		context.register(FARMER_5_ENDERITE_SHARD_PHO, shardToSimple(num(12, 18), PHO, 1, 25, 3, 0.2f));
-		context.register(FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY, simpleShardToSimple(BREAD, 10, 64, LOAF_OF_PLENTY, 1, 50, 2, 0.2f));
+		context.register(FARMER_5_BREAD_ENDERITE_SHARD_LOAF_OF_PLENTY, simpleShardToSimplePredicate(BREAD, 10, 64, LOAF_OF_PLENTY, 1, 50, 2, 0.2f, LootItemRandomChanceCondition.randomChance(0.2f).build()));
 
 		context.register(FISHERMAN_1_FISHING_ROD_ENDERITE_SHARD, simpleToShard(FISHING_ROD, 1, 2, 10, 1, 0.05f));
 		context.register(FISHERMAN_1_ENDERITE_SHARD_FISHING_ROD, shardToSimple(3, FISHING_ROD, 1, 4, 2, 0.05f));
@@ -318,6 +331,17 @@ public interface StellarityVillagerTrades {
 		), 8, 8, 5, 0.05f));
 		context.register(FLETCHER_5_BOW_ENDERITE_SHARD_SHARANGA, simpleShardToSimple(BOW, 1, 64, SHARANGA, 1, 25, 2, 0.2f));
 
+
+		context.register(LEATHERWORKER_1_LEATHER_ENDERITE_SHARD, simpleToShard(LEATHER, num(8, 15), 1, 3, 8, 0.05f));
+		context.register(LEATHERWORKER_1_FLINT_ENDERITE_SHARD, simpleToShard(FLINT, num(10, 20), 1, 3, 6, 0.05f));
+		context.register(LEATHERWORKER_2_ENDERITE_SHARD_SADDLE, shardToSimple(num(5, 10), SADDLE, 1, 5, 3, 0.05f));
+		context.register(LEATHERWORKER_2_ENDERITE_SHARD_LEATHER, shardToSimple(1, LEATHER, 3, 4, 6, 0.05f));
+		context.register(LEATHERWORKER_3_ENDERITE_SHARD_CAULDRON, shardToSimple(1, CAULDRON, 1, 8, 6, 0.05f));
+		context.register(LEATHERWORKER_3_RABBIT_HIDE_ENDERITE_SHARD, simpleToShard(RABBIT_HIDE, num(4, 6), 1, 6, 8, 0.05f));
+		context.register(LEATHERWORKER_4_ITEM_FRAME_ENDERITE_SHARD_GLOW_ITEM_FRAME, simpleShardToSimple(ITEM_FRAME, 2, 1, GLOW_ITEM_FRAME, 2, 8, 4, 0.05f));
+		context.register(LEATHERWORKER_4_ENDERITE_SHARD_TURTLE_SCUTE, shardToSimple(num(5, 10), TURTLE_SCUTE, 1, 6, 8, 0.05f));
+		context.register(LEATHERWORKER_4_ENDERITE_SHARD_ARMADILLO_SCUTE, shardToSimple(num(7, 12), ARMADILLO_SCUTE, 1, 6, 8, 0.05f));
+		context.register(LEATHERWORKER_5_DIAMOND_HORSE_ARMOR_ENDERITE_SHARD_REINFORCED_HORSE_ARMOR, simpleShardToSimple(DIAMOND_HORSE_ARMOR, num(1), num(24, 32), REINFORCED_HORSE_ARMOR, 1, 20, 2, 0.2f));
 
 	}
 
@@ -388,6 +412,23 @@ public interface StellarityVillagerTrades {
 
 	static VillagerTrade simpleShardToSimple(Item item, int count, int shards, Item result, int resultCount, int xp, int maxUses, float repDiscount) {
 		return simpleShardToSimple(item, num(count), num(shards), result, resultCount, xp, maxUses, repDiscount);
+	}
+
+	static VillagerTrade simpleShardToSimplePredicate(Item item, int count, int shards, Item result, int resultCount, int xp, int maxUses, float repDiscount, LootItemCondition predicate) {
+		return simpleShardToSimplePredicate(item, num(count), num(shards), result, resultCount, xp, maxUses, repDiscount, predicate);
+	}
+
+	static VillagerTrade simpleShardToSimplePredicate(Item item, NumberProvider count, NumberProvider shards, Item result, int resultCount, int xp, int maxUses, float repDiscount, LootItemCondition predicate) {
+		return new VillagerTrade(
+			new TradeCost(item, count),
+			Optional.of(new TradeCost(ENDERITE_SHARD, shards)),
+			new ItemStackTemplate(result, resultCount),
+			maxUses,
+			xp,
+			repDiscount,
+			Optional.of(predicate),
+			List.of()
+		);
 	}
 
 	static VillagerTrade simpleShardToSimple(Item item, NumberProvider count, NumberProvider shards, Item result, int resultCount, int xp, int maxUses, float repDiscount) {

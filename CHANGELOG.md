@@ -28,6 +28,8 @@ This update finalizes End Villages.
 **[*] Shulker Body**
 - Has a cooldown of 1s now
 
+**[+] Reinforced Horse Armor**
+
 ## Mechanics
 
 **[+] Item Tooltips**
