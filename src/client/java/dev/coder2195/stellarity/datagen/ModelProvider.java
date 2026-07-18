@@ -94,7 +94,7 @@ public class ModelProvider extends FabricModelProvider {
 		BOOK_OF_OBSTRUCT,
 		BOOK_OF_UPDRAFT,
 		BOOK_OF_CONVEYANCE,
-		BOOK_OF_RETURN
+		BOOK_OF_RETURN,
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{
@@ -186,7 +186,8 @@ public class ModelProvider extends FabricModelProvider {
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);
 
-		generators.generateFlatItem(TAMARIS, ModelTemplates.FLAT_HANDHELD_ITEM);
+		for (var handheld: List.of(TAMARIS, STELLAR_STRIKER))
+			generators.generateFlatItem(handheld, ModelTemplates.FLAT_HANDHELD_ITEM);
 
 		for (Item item : FLAT_ITEMS) {
 			generators.generateFlatItem(item, ModelTemplates.FLAT_ITEM);

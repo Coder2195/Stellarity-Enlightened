@@ -306,6 +306,8 @@ public interface StellarityItems {
 	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 
+	Item STELLAR_STRIKER = register(StellarityItemIds.STELLAR_STRIKER, new Item.Properties().stacksTo(1).durability(2031));
+
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
 	}
@@ -512,7 +514,7 @@ public interface StellarityItems {
 //		NAME_COLORS.put(CHAMPION_CHESTPLATE, 0xA87CC4);
 //		NAME_COLORS.put(CHAMPION_LEGGINGS, 0xA87CC4);
 //		NAME_COLORS.put(PRISMEMBER, 0xFF76D0);
-//		NAME_COLORS.put(STELLAR_STRIKER, 0xFFF593);
+		NAME_COLORS.put(STELLAR_STRIKER, 0xFFF593);
 //		NAME_COLORS.put(STARLESS_SCYTHE, 0xFFD70C);
 //		NAME_COLORS.put(SLAYER_CROSSBOW, TextColor.GOLD.getValue());
 //		NAME_COLORS.put(HARVESTER, 0x4BC6FF);

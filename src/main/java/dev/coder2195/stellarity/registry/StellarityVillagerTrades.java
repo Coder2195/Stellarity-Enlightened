@@ -49,7 +49,7 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> ARMORER_2_ENDERITE_SHARD_IRON_LEGGINGS = id("armorer/2/enderite_shard_iron_leggings");
 	ResourceKey<VillagerTrade> ARMORER_2_ENDERITE_SHARD_IRON_BOOTS = id("armorer/2/enderite_shard_iron_boots");
 	ResourceKey<VillagerTrade> ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT = id("armorer/2/enderite_shard_hallowed_ingot");
-	ResourceKey<VillagerTrade> ARMORER_2_ENDERITE_SHARD_CHROUS_PLATING = id("armorer/2/enderite_shard_chorus_plating");
+	ResourceKey<VillagerTrade> ARMORER_2_ENDERITE_SHARD_CHORUS_PLATING = id("armorer/2/enderite_shard_chorus_plating");
 	ResourceKey<VillagerTrade> ARMORER_3_DIAMOND_ENDERITE_SHARD = id("armorer/3/diamond_enderite_shard");
 	ResourceKey<VillagerTrade> ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD = id("armorer/3/enderite_shard_shield_copper_elektra_shield");
 	ResourceKey<VillagerTrade> ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE = id("armorer/4/purpur_block_enderite_shard_enderite_upgrade_smithing_template");
@@ -224,6 +224,40 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_SNATCH_PAINTING = id("shepherd/5/enderite_shard_snatch_painting");
 	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_THE_OBSIDIAN_RELIQUARY_PAINTING = id("shepherd/5/enderite_shard_the_obsidian_reliquary_painting");
 
+	
+	ResourceKey<VillagerTrade> TOOLSMITH_1_COAL_ENDERITE_SHARD = id("toolsmith/1/coal_enderite_shard");
+	ResourceKey<VillagerTrade> TOOLSMITH_1_CHARCOAL_ENDERITE_SHARD = id("toolsmith/1/charcoal_enderite_shard");
+	ResourceKey<VillagerTrade> TOOLSMITH_1_BLAZE_ROD_ENDERITE_SHARD = id("toolsmith/1/blaze_rod_enderite_shard");
+	ResourceKey<VillagerTrade> TOOLSMITH_1_ENDERITE_SHARD_IRON_HOE = id("toolsmith/1/enderite_shard_iron_hoe");
+	ResourceKey<VillagerTrade> TOOLSMITH_1_ENDERITE_SHARD_IRON_SHOVEL = id("toolsmith/1/enderite_shard_iron_shovel");
+	ResourceKey<VillagerTrade> TOOLSMITH_2_ENDERITE_SHARD_IRON_AXE = id("toolsmith/2/enderite_shard_iron_axe");
+	ResourceKey<VillagerTrade> TOOLSMITH_2_ENDERITE_SHARD_IRON_PICKAXE = id("toolsmith/2/enderite_shard_iron_pickaxe");
+	ResourceKey<VillagerTrade> TOOLSMITH_2_ENDERITE_SHARD_HALLOWED_INGOT = id("toolsmith/2/enderite_shard_hallowed_ingot");
+	ResourceKey<VillagerTrade> TOOLSMITH_2_ENDERITE_SHARD_CHORUS_PLATING = id("toolsmith/2/enderite_shard_chorus_plating");
+	ResourceKey<VillagerTrade> TOOLSMITH_3_DIAMOND_ENDERITE_SHARD = id("toolsmith/3/diamond_enderite_shard");
+	ResourceKey<VillagerTrade> TOOLSMITH_3_BOOK_ENDERITE_SHARD_LEVEL_3_ENCHANTED_BOOK = id("toolsmith/3/book_enderite_shard_level_3_enchanted_book");
+	ResourceKey<VillagerTrade> TOOLSMITH_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE = id("toolsmith/4/purpur_block_enderite_shard_enderite_upgrade_smithing_template");
+	ResourceKey<VillagerTrade> TOOLSMITH_4_ENDERITE_SHARD_DIAMOND_HOE = id("toolsmith/4/enderite_shard_diamond_hoe");
+	ResourceKey<VillagerTrade> TOOLSMITH_4_ENDERITE_SHARD_DIAMOND_SHOVEL = id("toolsmith/4/enderite_shard_diamond_shovel");
+	ResourceKey<VillagerTrade> TOOLSMITH_5_ENDERITE_SHARD_DIAMOND_AXE = id("toolsmith/5/enderite_shard_diamond_axe");
+	ResourceKey<VillagerTrade> TOOLSMITH_5_ENDERITE_SHARD_DIAMOND_PICKAXE = id("toolsmith/5/enderite_shard_diamond_pickaxe");
+	
+	
+	ResourceKey<VillagerTrade> WEAPONSMITH_1_COAL_ENDERITE_SHARD = id("weaponsmith/1/coal_enderite_shard");
+	ResourceKey<VillagerTrade> WEAPONSMITH_1_CHARCOAL_ENDERITE_SHARD = id("weaponsmith/1/charcoal_enderite_shard");
+	ResourceKey<VillagerTrade> WEAPONSMITH_1_BLAZE_ROD_ENDERITE_SHARD = id("weaponsmith/1/blaze_rod_enderite_shard");
+	ResourceKey<VillagerTrade> WEAPONSMITH_1_ENDERITE_SHARD_IRON_SWORD = id("weaponsmith/1/enderite_shard_iron_sword");
+	ResourceKey<VillagerTrade> WEAPONSMITH_2_ENDERITE_SHARD_IRON_AXE = id("weaponsmith/2/enderite_shard_iron_axe");
+	ResourceKey<VillagerTrade> WEAPONSMITH_2_ENDERITE_SHARD_HALLOWED_INGOT = id("weaponsmith/2/enderite_shard_hallowed_ingot");
+	ResourceKey<VillagerTrade> WEAPONSMITH_2_ENDERITE_SHARD_CHORUS_PLATING = id("weaponsmith/2/enderite_shard_chorus_plating");
+	ResourceKey<VillagerTrade> WEAPONSMITH_3_DIAMOND_ENDERITE_SHARD = id("weaponsmith/3/diamond_enderite_shard");
+	ResourceKey<VillagerTrade> WEAPONSMITH_3_BOOK_ENDERITE_SHARD_LEVEL_3_ENCHANTED_BOOK = id("weaponsmith/3/book_enderite_shard_level_3_enchanted_book");
+	ResourceKey<VillagerTrade> WEAPONSMITH_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE = id("weaponsmith/4/purpur_block_enderite_shard_enderite_upgrade_smithing_template");
+	ResourceKey<VillagerTrade> WEAPONSMITH_4_ENDERITE_SHARD_DIAMOND_SWORD = id("weaponsmith/4/enderite_shard_diamond_sword");
+	ResourceKey<VillagerTrade> WEAPONSMITH_5_ENDERITE_SHARD_DIAMOND_AXE = id("weaponsmith/5/enderite_shard_diamond_axe");
+	ResourceKey<VillagerTrade> WEAPONSMITH_5_GOLDEN_SWORD_ENDERITE_SHARD_STELLAR_STRIKER = id("weaponsmith/5/golden_sword_enderite_shard_stellar_striker");
+	
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
@@ -241,19 +275,26 @@ public interface StellarityVillagerTrades {
 			enchant(enchants, 15, 31).build()
 		);
 
-		context.register(ARMORER_1_COAL_ENDERITE_SHARD, simpleToShard(COAL, num(17, 20), 1, 2, 12, 0.05f));
-		context.register(ARMORER_1_CHARCOAL_ENDERITE_SHARD, simpleToShard(CHARCOAL, num(20, 24), 1, 2, 10, 0.05f));
-		context.register(ARMORER_1_BLAZE_ROD_ENDERITE_SHARD, simpleToShard(BLAZE_ROD, num(2, 4), 1, 1, 10, 0.05f));
+		for (var trade: List.of(ARMORER_1_COAL_ENDERITE_SHARD, WEAPONSMITH_1_COAL_ENDERITE_SHARD, TOOLSMITH_1_COAL_ENDERITE_SHARD))
+			context.register(trade, simpleToShard(COAL, num(17, 20), 1, 2, 12, 0.05f));
+		for (var trade: List.of(ARMORER_1_CHARCOAL_ENDERITE_SHARD, WEAPONSMITH_1_CHARCOAL_ENDERITE_SHARD, TOOLSMITH_1_CHARCOAL_ENDERITE_SHARD))
+			context.register(trade, simpleToShard(CHARCOAL, num(20, 24), 1, 2, 10, 0.05f));
+		for (var trade: List.of(ARMORER_1_BLAZE_ROD_ENDERITE_SHARD, WEAPONSMITH_1_BLAZE_ROD_ENDERITE_SHARD, TOOLSMITH_1_BLAZE_ROD_ENDERITE_SHARD))
+			context.register(trade, simpleToShard(BLAZE_ROD, num(2, 4), 1, 1, 10, 0.05f));
 		context.register(ARMORER_1_ENDERITE_SHARD_IRON_CHESTPLATE, shardToModifierItem(num(8, 12), IRON_CHESTPLATE, ironArmorModifier, 1, 2, 6, 0.2f));
 		context.register(ARMORER_1_ENDERITE_SHARD_IRON_HELMET, shardToModifierItem(num(7, 11), IRON_HELMET, ironArmorModifier, 1, 2, 6, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_IRON_LEGGINGS, shardToModifierItem(num(8, 12), IRON_LEGGINGS, ironArmorModifier, 1, 8, 6, 0.2f));
 		context.register(ARMORER_2_ENDERITE_SHARD_IRON_BOOTS, shardToModifierItem(num(5, 8), IRON_BOOTS, ironArmorModifier, 1, 8, 6, 0.2f));
-		context.register(ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT, shardToSimple(num(4, 6), HALLOWED_INGOT, 1, 10, 8, 0.2f));
-		context.register(ARMORER_2_ENDERITE_SHARD_CHROUS_PLATING, shardToSimple(num(4, 6), CHORUS_PLATING, 1, 10, 8, 0.2f));
-		context.register(ARMORER_3_DIAMOND_ENDERITE_SHARD, simpleToShard(DIAMOND, 1, 2, 12, 8, 0.05f));
+		for (var trade: List.of(ARMORER_2_ENDERITE_SHARD_HALLOWED_INGOT, TOOLSMITH_2_ENDERITE_SHARD_HALLOWED_INGOT, WEAPONSMITH_2_ENDERITE_SHARD_HALLOWED_INGOT))
+			context.register(trade, shardToSimple(num(4, 6), HALLOWED_INGOT, 1, 10, 8, 0.2f));
+		for (var trade: List.of(ARMORER_2_ENDERITE_SHARD_CHORUS_PLATING, TOOLSMITH_2_ENDERITE_SHARD_CHORUS_PLATING, WEAPONSMITH_2_ENDERITE_SHARD_CHORUS_PLATING))
+			context.register(trade, shardToSimple(num(4, 6), CHORUS_PLATING, 1, 10, 8, 0.2f));
+		for (var trade: List.of(ARMORER_3_DIAMOND_ENDERITE_SHARD, TOOLSMITH_3_DIAMOND_ENDERITE_SHARD, WEAPONSMITH_3_DIAMOND_ENDERITE_SHARD))
+			context.register(trade, simpleToShard(DIAMOND, 1, 2, 12, 8, 0.05f));
 		context.register(ARMORER_3_ENDERITE_SHARD_SHIELD_COPPER_ELEKTRA_SHIELD, simpleShardToSimple(SHIELD, num(1), num(45, 64), COPPER_ELEKTRA_SHIELD, 1, 40, 2, 0.2f));
 
-		context.register(ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, simpleShardToSimple(PURPUR_BLOCK, num(20, 30), num(28, 40), ENDERITE_UPGRADE_SMITHING_TEMPLATE, 1, 10, 2, 0.2f));
+		for (var trade: List.of(TOOLSMITH_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, ARMORER_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE, WEAPONSMITH_4_PURPUR_BLOCK_ENDERITE_SHARD_ENDERITE_UPGRADE_SMITHING_TEMPLATE))
+			context.register(trade, simpleShardToSimple(PURPUR_BLOCK, num(20, 30), num(28, 40), ENDERITE_UPGRADE_SMITHING_TEMPLATE, 1, 10, 2, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_DIAMOND_LEGGINGS, shardToModifierItem(num(28, 35), DIAMOND_LEGGINGS, diamondArmorModifier, 1, 15, 3, 0.2f));
 		context.register(ARMORER_4_ENDERITE_SHARD_DIAMOND_BOOTS, shardToModifierItem(num(21, 24), DIAMOND_BOOTS, diamondArmorModifier, 1, 15, 3, 0.2f));
 		context.register(ARMORER_5_ENDERITE_SHARD_DIAMOND_HELMET, shardToModifierItem(num(23, 32), DIAMOND_HELMET, diamondArmorModifier, 1, 15, 3, 0.2f));
@@ -361,9 +402,13 @@ public interface StellarityVillagerTrades {
 			new Tuple2<>(FISHERMAN_3_POTASSIFISH_ENDERITE_SHARD, POTASSIFISH)
 		))
 			context.register(fishTrade._1(), simpleToShard(fishTrade._2(), num(4, 6), 1, 4, 8, 0.05f));
-		context.register(FISHERMAN_3_ENDERITE_SHARD_FISHING_ROD, shardToModifierItem(num(5, 8), FISHING_ROD, List.of(
+		List<LootItemFunction> enchant15To29 = List.of(
 			enchant(enchants, 15, 29).build()
-		), 1, 4, 2, 0.05f));
+		);
+		List<LootItemFunction> enchant21To35 = List.of(
+			enchant(enchants, 21, 35).build()
+		);
+		context.register(FISHERMAN_3_ENDERITE_SHARD_FISHING_ROD, shardToModifierItem(num(5, 8), FISHING_ROD, enchant15To29, 1, 4, 2, 0.05f));
 		context.register(FISHERMAN_4_ENDERITE_SHARD_LURE_BOOK, shardToModifierItem(num(10, 14), BOOK, List.of(
 			enchant(enchants, Enchantments.LURE).build()
 		), 1, 10, 2, 0.2f));
@@ -379,14 +424,10 @@ public interface StellarityVillagerTrades {
 		context.register(FLETCHER_1_ENDERITE_SHARD_ARROW, shardToSimple(1, ARROW, 16, 6, 8, 0.05f));
 		context.register(FLETCHER_1_STICK_ENDERITE_SHARD, simpleToShard(STICK, num(24, 36), 1, 2, 12, 0.05f));
 		context.register(FLETCHER_2_FLINT_ENDERITE_SHARD, simpleToShard(FLINT, num(10, 20), 1, 2, 12, 0.05f));
-		context.register(FLETCHER_2_ENDERITE_SHARD_BOW, shardToModifierItem(num(8, 15), BOW, List.of(
-			enchant(enchants, 15, 29).build()
-		), 1, 10, 8, 0.05f));
+		context.register(FLETCHER_2_ENDERITE_SHARD_BOW, shardToModifierItem(num(8, 15), BOW, enchant15To29, 1, 10, 8, 0.05f));
 		context.register(FLETCHER_3_STRING_ENDERITE_SHARD, simpleToShard(STRING, num(12, 20), 1, 4, 12, 0.05f));
 		context.register(FLETCHER_3_FEATHER_ENDERITE_SHARD, simpleToShard(FEATHER, num(7, 15), 1, 6, 6, 0.05f));
-		context.register(FLETCHER_3_ENDERITE_SHARD_CROSSBOW, shardToModifierItem(num(10, 17), CROSSBOW, List.of(
-			enchant(enchants, 15, 29).build()
-		), 1, 12, 2, 0.2f));
+		context.register(FLETCHER_3_ENDERITE_SHARD_CROSSBOW, shardToModifierItem(num(10, 17), CROSSBOW, enchant15To29, 1, 12, 2, 0.2f));
 		context.register(FLETCHER_4_ARROW_ENDERITE_SHARD_LEVITATION_TIPPED_ARROW, simpleShardToModifierItem(ARROW, num(8), num(9, 17), TIPPED_ARROW, List.of(
 			component(DataComponents.POTION_CONTENTS, new PotionContents(Optional.empty(), Optional.empty(), List.of(new MobEffectInstance(MobEffects.LEVITATION, 90 * 20)), Optional.empty())).build()
 		), 8, 8, 6, 0.05f));
@@ -500,6 +541,28 @@ public interface StellarityVillagerTrades {
 				SetComponentsFunction.setComponent(DataComponents.PAINTING_VARIANT, paintings.getOrThrow(paintingTrade._2())).build()
 			), 1, 20, 2, 0.2f));
 
+
+		context.register(TOOLSMITH_1_ENDERITE_SHARD_IRON_HOE, shardToModifierItem(num(4, 7), IRON_HOE, enchant15To29, 1, 8, 3, 0.05f));
+		context.register(TOOLSMITH_1_ENDERITE_SHARD_IRON_SHOVEL, shardToModifierItem(num(4, 7), IRON_SHOVEL, enchant15To29, 1, 8, 3, 0.05f));
+		context.register(TOOLSMITH_2_ENDERITE_SHARD_IRON_AXE, shardToModifierItem(num(6, 10), IRON_AXE, enchant15To29, 1, 10, 3, 0.05f));
+		context.register(TOOLSMITH_2_ENDERITE_SHARD_IRON_PICKAXE, shardToModifierItem(num(6, 10), IRON_PICKAXE, enchant15To29, 1, 10, 3, 0.05f));
+		context.register(TOOLSMITH_3_BOOK_ENDERITE_SHARD_LEVEL_3_ENCHANTED_BOOK, simpleShardToModifierItem(BOOK, num(1), num(18, 22), BOOK, List.of(
+			enchant(enchants, Enchantments.EFFICIENCY, Enchantments.SILK_TOUCH, Enchantments.UNBREAKING).build()
+		), 1, 12, 4, 0.05f));
+		context.register(TOOLSMITH_4_ENDERITE_SHARD_DIAMOND_HOE, shardToModifierItem(num(11, 18), DIAMOND_HOE, enchant21To35, 1, 20, 2, 0.2f));
+		context.register(TOOLSMITH_4_ENDERITE_SHARD_DIAMOND_SHOVEL,  shardToModifierItem(num(13, 20), DIAMOND_SHOVEL, enchant21To35, 1, 20, 2, 0.2f));
+		context.register(TOOLSMITH_5_ENDERITE_SHARD_DIAMOND_AXE,  shardToModifierItem( num(15, 22), DIAMOND_AXE, enchant21To35, 1, 25, 2, 0.2f));
+		context.register(TOOLSMITH_5_ENDERITE_SHARD_DIAMOND_PICKAXE,  shardToModifierItem(num(15, 22), DIAMOND_PICKAXE, enchant21To35, 1, 25, 2, 0.2f));
+
+
+		context.register(WEAPONSMITH_1_ENDERITE_SHARD_IRON_SWORD, shardToModifierItem(num(10, 17), IRON_SWORD, enchant15To29, 1, 8, 3, 0.05f));
+		context.register(WEAPONSMITH_2_ENDERITE_SHARD_IRON_AXE, shardToModifierItem(num(6, 10), IRON_AXE, enchant15To29, 1, 8, 3, 0.05f));
+		context.register(WEAPONSMITH_3_BOOK_ENDERITE_SHARD_LEVEL_3_ENCHANTED_BOOK, simpleShardToModifierItem(BOOK, num(1), num(18, 22), BOOK, List.of(
+			enchant(enchants, Enchantments.SHARPNESS, Enchantments.KNOCKBACK, Enchantments.FIRE_ASPECT).build()
+		), 1, 12, 4, 0.05f));
+		context.register(WEAPONSMITH_4_ENDERITE_SHARD_DIAMOND_SWORD, shardToModifierItem(num(20, 25), DIAMOND_SWORD, enchant21To35, 1, 20, 2, 0.2f));
+		context.register(WEAPONSMITH_5_ENDERITE_SHARD_DIAMOND_AXE,  shardToModifierItem(num(20, 25), DIAMOND_AXE, enchant21To35, 1, 20, 2, 0.2f));
+		context.register(WEAPONSMITH_5_GOLDEN_SWORD_ENDERITE_SHARD_STELLAR_STRIKER, simpleShardToSimple(GOLDEN_SWORD, 1, 64, STELLAR_STRIKER, 1, 25, 1, 0.2f));
 
 	}
 
