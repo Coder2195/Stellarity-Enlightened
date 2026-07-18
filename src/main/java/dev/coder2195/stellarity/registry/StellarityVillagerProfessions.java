@@ -204,7 +204,7 @@ public interface StellarityVillagerProfessions {
 		if (profession.is(MASON.key())) {
 			if (level == 2) return List.of(MASON_LEVEL_2_2);
 			if (level == 3) return List.of(MASON_LEVEL_3_2);
-			if (level == 4) return List.of(MASON_LEVEL_4_2, MASON_LEVEL_4_3);
+			if (level == 4) return List.of(MASON_LEVEL_4_2);
 			if (level == 5) return List.of(MASON_LEVEL_5_2);
 			return null;
 		}

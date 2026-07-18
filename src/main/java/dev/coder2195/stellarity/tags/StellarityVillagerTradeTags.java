@@ -87,7 +87,6 @@ public interface StellarityVillagerTradeTags {
 	TagKey<VillagerTrade> MASON_LEVEL_3_2 = id("mason/level_3_2");
 	TagKey<VillagerTrade> MASON_LEVEL_4 = id("mason/level_4");
 	TagKey<VillagerTrade> MASON_LEVEL_4_2 = id("mason/level_4_2");
-	TagKey<VillagerTrade> MASON_LEVEL_4_3 = id("mason/level_4_3");
 	TagKey<VillagerTrade> MASON_LEVEL_5 = id("mason/level_5");
 	TagKey<VillagerTrade> MASON_LEVEL_5_2 = id("mason/level_5_2");
 

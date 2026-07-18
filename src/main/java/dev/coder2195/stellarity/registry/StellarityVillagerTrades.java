@@ -25,6 +25,7 @@ import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.item.equipment.trim.TrimPatterns;
 import net.minecraft.world.item.trading.TradeCost;
 import net.minecraft.world.item.trading.VillagerTrade;
+import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -177,6 +178,24 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_LIGHT = id("librarian/5/book_enderite_shard_of_light");
 	ResourceKey<VillagerTrade> LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_OBSTRUCT = id("librarian/5/book_enderite_shard_of_obstruct");
 
+	ResourceKey<VillagerTrade> MASON_1_ENDERITE_SHARD_PURPUR_BLOCK = id("mason/1/enderite_shard_purpur_block");
+	ResourceKey<VillagerTrade> MASON_1_ENDERITE_SHARD_END_STONE_BRICKS = id("mason/1/enderite_shard_end_stone_bricks");
+	ResourceKey<VillagerTrade> MASON_2_AMETHYST_BUDFISH_AMETHYST_SHARD = id("mason/2/amethyst_budfish_amethyst_shard");
+	ResourceKey<VillagerTrade> MASON_2_AMETHYST_BUDFISH_QUARTZ = id("mason/2/amethyst_budfish_quartz");
+	ResourceKey<VillagerTrade> MASON_2_ENDERITE_SHARD_OBSIDIAN = id("mason/2/enderite_shard_obsidian");
+	ResourceKey<VillagerTrade> MASON_2_ENDERITE_SHARD_SMOOTH_QUARTZ = id("mason/2/enderite_shard_smooth_quartz");
+	ResourceKey<VillagerTrade> MASON_3_ENDERITE_SHARD_POLISHED_BLACKSTONE = id("mason/3/enderite_shard_polished_blackstone");
+	ResourceKey<VillagerTrade> MASON_3_ENDERITE_SHARD_POLISHED_DEEPSLATE = id("mason/3/enderite_shard_polished_deepslate");
+	ResourceKey<VillagerTrade> MASON_3_COBBLED_DEEPSLATE_ENDERITE_SHARD = id("mason/3/cobbled_deepslate_enderite_shard");
+	ResourceKey<VillagerTrade> MASON_3_BLACKSTONE_ENDERITE_SHARD = id("mason/3/blackstone_enderite_shard");
+	ResourceKey<VillagerTrade> MASON_3_ENDERITE_SHARD_QUARTZ_BLOCK = id("mason/3/enderite_shard_quartz_block");
+	ResourceKey<VillagerTrade> MASON_3_ENDERITE_SHARD_QUARTZ_PILLAR = id("mason/3/enderite_shard_quartz_pillar");
+	ColorCollection<ResourceKey<VillagerTrade>> MASON_4_ENDERITE_SHARD_GLAZED_TERRACOTA = ColorCollection.NAMES.map(color -> id("mason/4/enderite_shard_" + color + "_glazed_terracota"));
+	ColorCollection<ResourceKey<VillagerTrade>> MASON_4_ENDERITE_SHARD_TERRACOTA = ColorCollection.NAMES.map(color -> id("mason/4/enderite_shard_" + color + "_terracota"));
+	ResourceKey<VillagerTrade> MASON_5_ENDERITE_SHARD_CRYING_OBSIDIAN = id("mason/5/enderite_shard_crying_obsidian");
+	ResourceKey<VillagerTrade> MASON_5_ENDERITE_SHARD_PURPUR_PILLAR = id("mason/5/enderite_shard_purpur_pillar");
+	ResourceKey<VillagerTrade> MASON_5_ENDERITE_SHARD_CHISELED_QUARTZ_BLOCK = id("mason/5/enderite_shard_chiseled_quartz_block");
+
 
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
@@ -259,7 +278,7 @@ public interface StellarityVillagerTrades {
 		context.register(CLERIC_1_ENDERMANS_HAND_ENDERITE_SHARD, simpleToShard(ENDERMANS_HAND, 1, 2, 3, 12, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_REDSTONE, shardToSimple(1, REDSTONE, 4, 1, 16, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_BLAZE_ROD, shardToSimple(2, BLAZE_ROD, 1, 2, 8, 0.05f));
-		context.register(CLERIC_2_GOLD_INGOT_ENDERITE_SHARD, simpleToShard(GOLD_INGOT, 3, 1, 5, 10,0.05f));
+		context.register(CLERIC_2_GOLD_INGOT_ENDERITE_SHARD, simpleToShard(GOLD_INGOT, 3, 1, 5, 10, 0.05f));
 		context.register(CLERIC_2_ENDERITE_SHARD_LAPIS_LAZULI, shardToSimple(1, LAPIS_LAZULI, 3, 5, 10, 0.05f));
 		context.register(CLERIC_2_ENDERITE_SHARD_NETHER_WART, shardToSimple(1, NETHER_WART, 2, 3, 12, 0.05f));
 		context.register(CLERIC_3_ENDERITE_SHARD_LEVEL_3_POTION, shardToModifierItem(num(7, 11), POTION, List.of(
@@ -303,7 +322,7 @@ public interface StellarityVillagerTrades {
 		context.register(FISHERMAN_1_COAL_ENDERITE_SHARD, simpleToShard(COAL, num(20, 26), 1, 5, 8, 0.05f));
 		context.register(FISHERMAN_2_ENDERITE_SHARD_CAMPFIRE, shardToSimple(1, CAMPFIRE, 1, 5, 8, 0.05f));
 		context.register(FISHERMAN_2_ENDERITE_SHARD_SOUL_CAMPFIRE, shardToSimple(2, SOUL_CAMPFIRE, 1, 8, 6, 0.05f));
-		for (var fishTrade: List.of(
+		for (var fishTrade : List.of(
 			new Tuple2<>(FISHERMAN_2_ENDER_KOI_ENDERITE_SHARD, ENDER_KOI),
 			new Tuple2<>(FISHERMAN_2_OVERGROWN_COD_ENDERITE_SHARD, OVERGROWN_COD),
 			new Tuple2<>(FISHERMAN_2_FROST_MINNOW_ENDERITE_SHARD, FROST_MINNOW),
@@ -382,6 +401,30 @@ public interface StellarityVillagerTrades {
 		context.register(LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_LIGHT, simpleShardToSimple(BOOK, 1, 64, BOOK_OF_LIGHT, 1, 20, 1, 0.2f));
 		context.register(LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_OBSTRUCT, simpleShardToSimple(BOOK, 1, 64, BOOK_OF_OBSTRUCT, 1, 20, 1, 0.2f));
 
+
+		context.register(MASON_1_ENDERITE_SHARD_PURPUR_BLOCK, shardToSimple(1, PURPUR_BLOCK, 4, 2, 8, 0.05f));
+		context.register(MASON_1_ENDERITE_SHARD_END_STONE_BRICKS, shardToSimple(1, END_STONE_BRICKS, 4, 3, 8, 0.05f));
+		context.register(MASON_2_AMETHYST_BUDFISH_AMETHYST_SHARD, simpleToSimple(AMETHYST_BUDFISH, 1, AMETHYST_SHARD, 4, 4, 6, 0.05f));
+		context.register(MASON_2_AMETHYST_BUDFISH_QUARTZ, simpleToSimple(AMETHYST_BUDFISH, 1, QUARTZ, 8, 5, 6, 0.05f));
+		context.register(MASON_2_ENDERITE_SHARD_OBSIDIAN, shardToSimple(2, OBSIDIAN, 3, 6, 8, 0.05f));
+		context.register(MASON_2_ENDERITE_SHARD_SMOOTH_QUARTZ, shardToSimple(2, SMOOTH_QUARTZ, 4, 6, 6, 0.05f));
+		context.register(MASON_3_ENDERITE_SHARD_POLISHED_BLACKSTONE, shardToSimple(1, POLISHED_BLACKSTONE, 4, 6, 8, 0.05f));
+		context.register(MASON_3_ENDERITE_SHARD_POLISHED_DEEPSLATE, shardToSimple(1, POLISHED_DEEPSLATE, 4, 6, 8, 0.05f));
+		context.register(MASON_3_COBBLED_DEEPSLATE_ENDERITE_SHARD, simpleToShard(COBBLED_DEEPSLATE, num(15, 25), 1, 6, 6, 0.05f));
+		context.register(MASON_3_BLACKSTONE_ENDERITE_SHARD, simpleToShard(BLACKSTONE, num(15, 25), 1, 6, 6, 0.05f));
+		context.register(MASON_3_ENDERITE_SHARD_QUARTZ_BLOCK, shardToSimple(1, QUARTZ_BLOCK, 4, 8, 6, 0.05f));
+		context.register(MASON_3_ENDERITE_SHARD_QUARTZ_PILLAR, shardToSimple(1, QUARTZ_PILLAR, 3, 8, 6, 0.05f));
+		ColorCollection.zipApply(GLAZED_TERRACOTTA, MASON_4_ENDERITE_SHARD_GLAZED_TERRACOTA, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 2, 12, 6, 0.05f))
+		);
+		ColorCollection.zipApply(DYED_TERRACOTTA, MASON_4_ENDERITE_SHARD_TERRACOTA, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 2, 12, 6, 0.05f))
+		);
+		context.register(MASON_5_ENDERITE_SHARD_CRYING_OBSIDIAN, shardToSimple(num(4, 6), CRYING_OBSIDIAN, 2, 16, 4, 0.05f));
+		context.register(MASON_5_ENDERITE_SHARD_PURPUR_PILLAR, shardToSimple(1, PURPUR_PILLAR, 4, 12, 6, 0.05f));
+		context.register(MASON_5_ENDERITE_SHARD_CHISELED_QUARTZ_BLOCK, shardToSimple(1, CHISELED_QUARTZ_BLOCK, 2, 12, 6, 0.05f));
+
+
 	}
 
 	static VillagerTrade simpleToShard(Item item, int count, int shards, int xp, int maxUses, float repDiscount) {
@@ -435,6 +478,7 @@ public interface StellarityVillagerTrades {
 	static VillagerTrade simpleShardToModifierItem(Item buy, int buyCount, int shards, Item item, List<LootItemFunction> modifiers, int count, int xp, int maxUses, float repDiscount) {
 		return simpleShardToModifierItem(buy, num(buyCount), num(shards), item, modifiers, count, xp, maxUses, repDiscount);
 	}
+
 	static VillagerTrade simpleShardToModifierItem(Item buy, NumberProvider buyCount, NumberProvider shards, Item item, List<LootItemFunction> modifiers, int count, int xp, int maxUses, float repDiscount) {
 		return new VillagerTrade(
 			new TradeCost(buy, buyCount),
@@ -474,6 +518,23 @@ public interface StellarityVillagerTrades {
 		return new VillagerTrade(
 			new TradeCost(item, count),
 			Optional.of(new TradeCost(ENDERITE_SHARD, shards)),
+			new ItemStackTemplate(result, resultCount),
+			maxUses,
+			xp,
+			repDiscount,
+			Optional.empty(),
+			List.of()
+		);
+	}
+
+	static VillagerTrade simpleToSimple(Item item, int count, Item result, int resultCount, int xp, int maxUses, float repDiscount) {
+		return simpleToSimple(item, num(count), result, resultCount, xp, maxUses, repDiscount);
+	}
+
+	static VillagerTrade simpleToSimple(Item item, NumberProvider count, Item result, int resultCount, int xp, int maxUses, float repDiscount) {
+		return new VillagerTrade(
+			new TradeCost(item, count),
+			Optional.empty(),
 			new ItemStackTemplate(result, resultCount),
 			maxUses,
 			xp,

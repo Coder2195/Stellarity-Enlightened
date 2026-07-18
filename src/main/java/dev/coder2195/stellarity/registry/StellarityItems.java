@@ -298,6 +298,7 @@ public interface StellarityItems {
 
 	Item REINFORCED_HORSE_ARMOR = register(StellarityItemIds.REINFORCED_HORSE_ARMOR, new Item.Properties().horseArmor(StellarityArmorMaterials.REINFORCED).rarity(Rarity.UNCOMMON));
 
+	//TODO: implement the spellbooks
 	Item BOOK_OF_JINX = register(StellarityItemIds.BOOK_OF_JINX, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_LIGHT = register(StellarityItemIds.BOOK_OF_LIGHT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));

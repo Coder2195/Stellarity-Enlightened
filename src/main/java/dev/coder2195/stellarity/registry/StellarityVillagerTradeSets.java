@@ -97,7 +97,6 @@ public interface StellarityVillagerTradeSets {
 	ResourceKey<TradeSet> MASON_LEVEL_3_2 = id("mason/level_3_2");
 	ResourceKey<TradeSet> MASON_LEVEL_4 = id("mason/level_4");
 	ResourceKey<TradeSet> MASON_LEVEL_4_2 = id("mason/level_4_2");
-	ResourceKey<TradeSet> MASON_LEVEL_4_3 = id("mason/level_4_3");
 	ResourceKey<TradeSet> MASON_LEVEL_5 = id("mason/level_5");
 	ResourceKey<TradeSet> MASON_LEVEL_5_2 = id("mason/level_5_2");
 
@@ -215,7 +214,6 @@ public interface StellarityVillagerTradeSets {
 			new Tuple3<>(MASON_LEVEL_3_2, StellarityVillagerTradeTags.MASON_LEVEL_3_2, 1),
 			new Tuple3<>(MASON_LEVEL_4, StellarityVillagerTradeTags.MASON_LEVEL_4, 1),
 			new Tuple3<>(MASON_LEVEL_4_2, StellarityVillagerTradeTags.MASON_LEVEL_4_2, 1),
-			new Tuple3<>(MASON_LEVEL_4_3, StellarityVillagerTradeTags.MASON_LEVEL_4_3, 1),
 			new Tuple3<>(MASON_LEVEL_5, StellarityVillagerTradeTags.MASON_LEVEL_5, 1),
 			new Tuple3<>(MASON_LEVEL_5_2, StellarityVillagerTradeTags.MASON_LEVEL_5_2, 1),
 

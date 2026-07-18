@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.trading.VillagerTrade;
 import org.jspecify.annotations.NonNull;
@@ -20,11 +21,12 @@ public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> 
 	}
 
 	@SafeVarargs
-	private void addTags(TagKey<VillagerTrade> tag, ResourceKey<VillagerTrade>... trades) {
+	private TagBuilder addTags(TagKey<VillagerTrade> tag, ResourceKey<VillagerTrade>... trades) {
 		var builder = getOrCreateRawBuilder(tag);
 		for (var trade : trades) {
 			builder.addElement(trade.identifier());
 		}
+		return builder;
 	}
 
 	@SuppressWarnings("DuplicatedCode")
@@ -104,16 +106,17 @@ public class VillagerTradeTagProvider extends FabricTagsProvider<VillagerTrade> 
 		addTags(LIBRARIAN_LEVEL_4_2, LIBRARIAN_4_ENDERITE_SHARD_NAME_TAG);
 		addTags(LIBRARIAN_LEVEL_5, LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_OBSTRUCT, LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_LIGHT, LIBRARIAN_5_BOOK_ENDERITE_SHARD_BOOK_OF_UPDRAFT);
 
-		addTags(MASON_LEVEL_1);
-		addTags(MASON_LEVEL_2);
-		addTags(MASON_LEVEL_2_2);
-		addTags(MASON_LEVEL_3);
-		addTags(MASON_LEVEL_3_2);
-		addTags(MASON_LEVEL_4);
-		addTags(MASON_LEVEL_4_2);
-		addTags(MASON_LEVEL_4_3);
-		addTags(MASON_LEVEL_5);
-		addTags(MASON_LEVEL_5_2);
+		addTags(MASON_LEVEL_1, MASON_1_ENDERITE_SHARD_PURPUR_BLOCK, MASON_1_ENDERITE_SHARD_END_STONE_BRICKS);
+		addTags(MASON_LEVEL_2, MASON_2_AMETHYST_BUDFISH_AMETHYST_SHARD, MASON_2_AMETHYST_BUDFISH_QUARTZ);
+		addTags(MASON_LEVEL_2_2, MASON_2_ENDERITE_SHARD_OBSIDIAN, MASON_2_ENDERITE_SHARD_SMOOTH_QUARTZ);
+		addTags(MASON_LEVEL_3, MASON_3_ENDERITE_SHARD_POLISHED_BLACKSTONE, MASON_3_ENDERITE_SHARD_POLISHED_DEEPSLATE, MASON_3_COBBLED_DEEPSLATE_ENDERITE_SHARD, MASON_3_BLACKSTONE_ENDERITE_SHARD);
+		addTags(MASON_LEVEL_3_2, MASON_3_ENDERITE_SHARD_QUARTZ_BLOCK, MASON_3_ENDERITE_SHARD_QUARTZ_PILLAR);
+		var mason4 = addTags(MASON_LEVEL_4);
+		MASON_4_ENDERITE_SHARD_GLAZED_TERRACOTA.forEach(trade -> mason4.addElement(trade.identifier()));
+		var mason42 = addTags(MASON_LEVEL_4_2);
+		MASON_4_ENDERITE_SHARD_TERRACOTA.forEach(trade -> mason42.addElement(trade.identifier()));
+		addTags(MASON_LEVEL_5, MASON_5_ENDERITE_SHARD_CRYING_OBSIDIAN);
+		addTags(MASON_LEVEL_5_2, MASON_5_ENDERITE_SHARD_PURPUR_PILLAR, MASON_5_ENDERITE_SHARD_CHISELED_QUARTZ_BLOCK);
 
 		addTags(SHEPHERD_LEVEL_1);
 		addTags(SHEPHERD_LEVEL_2);
