@@ -1,0 +1,24 @@
+{
+  "given_item_modifiers": [
+    {
+      "components": {
+        "minecraft:painting/variant": "stellarity:end"
+      },
+      "function": "minecraft:set_components"
+    }
+  ],
+  "gives": {
+    "id": "minecraft:painting"
+  },
+  "max_uses": 2.0,
+  "reputation_discount": 0.2,
+  "wants": {
+    "count": {
+      "type": "minecraft:uniform",
+      "max": 6.0,
+      "min": 4.0
+    },
+    "id": "stellarity:enderite_shard"
+  },
+  "xp": 20.0
+}

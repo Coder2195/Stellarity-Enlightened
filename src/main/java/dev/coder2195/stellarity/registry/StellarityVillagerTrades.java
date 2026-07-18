@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.decoration.painting.PaintingVariants;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Rarity;
@@ -197,11 +198,38 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> MASON_5_ENDERITE_SHARD_CHISELED_QUARTZ_BLOCK = id("mason/5/enderite_shard_chiseled_quartz_block");
 
 
+	ResourceKey<VillagerTrade> SHEPHERD_1_ENDERITE_SHARD_SHEARS = id("shepherd/1/enderite_shard_shears");
+	ResourceKey<VillagerTrade> SHEPHERD_1_WHITE_WOOL_ENDERITE_SHARD = id("shepherd/1/white_wool_enderite_shard");
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_2_ENDERITE_SHARD_DYE = ColorCollection.NAMES.map(color -> id("shepherd/2/enderite_shard_" + color + "_dye"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_2_ENDERITE_SHARD_WOOL = ColorCollection.NAMES.map(color -> id("shepherd/2/enderite_shard_" + color + "_wool"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_3_ENDERITE_SHARD_CARPET = ColorCollection.NAMES.map(color -> id("shepherd/3/enderite_shard_" + color + "_carpet"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_3_ENDERITE_SHARD_WOOL = ColorCollection.NAMES.map(color -> id("shepherd/3/enderite_shard_" + color + "_wool"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_3_ENDERITE_SHARD_BED = ColorCollection.NAMES.map(color -> id("shepherd/3/enderite_shard_" + color + "_bed"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_4_ENDERITE_SHARD_BANNER = ColorCollection.NAMES.map(color -> id("shepherd/4/enderite_shard_" + color + "_banner"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_4_ENDERITE_SHARD_WOOL = ColorCollection.NAMES.map(color -> id("shepherd/4/enderite_shard_" + color + "_wool"));
+	ColorCollection<ResourceKey<VillagerTrade>> SHEPHERD_4_ENDERITE_SHARD_DYE = ColorCollection.NAMES.map(color -> id("shepherd/4/enderite_shard_" + color + "_dye"));
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_FIRE_PAINTING = id("shepherd/5/enderite_shard_fire_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_WIND_PAINTING = id("shepherd/5/enderite_shard_wind_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_EARTH_PAINTING = id("shepherd/5/enderite_shard_earth_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_WATER_PAINTING = id("shepherd/5/enderite_shard_water_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_A_HOP_AND_A_SKIP_AWAY_PAINTING = id("shepherd/5/enderite_shard_a_hop_and_a_skip_away_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_DRAGONBLADE_PAINTING = id("shepherd/5/enderite_shard_dragonblade_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_END_PAINTING = id("shepherd/5/enderite_shard_end_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_END_BLOSSOM_PAINTING = id("shepherd/5/enderite_shard_end_blossom_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_HOURGLASS_PAINTING = id("shepherd/5/enderite_shard_hourglass_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_MAJESTICAL_BREW_PAINTING = id("shepherd/5/enderite_shard_majestical_brew_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_SCHEME_PAINTING = id("shepherd/5/enderite_shard_scheme_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_SHEPHERDS_FEAST_PAINTING = id("shepherd/5/enderite_shard_shepherds_feast_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_SNARE_PAINTING = id("shepherd/5/enderite_shard_snare_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_SNATCH_PAINTING = id("shepherd/5/enderite_shard_snatch_painting");
+	ResourceKey<VillagerTrade> SHEPHERD_5_ENDERITE_SHARD_THE_OBSIDIAN_RELIQUARY_PAINTING = id("shepherd/5/enderite_shard_the_obsidian_reliquary_painting");
+
+
 	static void bootstrap(BootstrapContext<VillagerTrade> context) {
 		var trimMaterials = context.lookup(Registries.TRIM_MATERIAL);
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
-
+		var paintings = context.lookup(Registries.PAINTING_VARIANT);
 
 		List<LootItemFunction> ironArmorModifier = List.of(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
@@ -423,6 +451,54 @@ public interface StellarityVillagerTrades {
 		context.register(MASON_5_ENDERITE_SHARD_CRYING_OBSIDIAN, shardToSimple(num(4, 6), CRYING_OBSIDIAN, 2, 16, 4, 0.05f));
 		context.register(MASON_5_ENDERITE_SHARD_PURPUR_PILLAR, shardToSimple(1, PURPUR_PILLAR, 4, 12, 6, 0.05f));
 		context.register(MASON_5_ENDERITE_SHARD_CHISELED_QUARTZ_BLOCK, shardToSimple(1, CHISELED_QUARTZ_BLOCK, 2, 12, 6, 0.05f));
+
+
+		context.register(SHEPHERD_1_ENDERITE_SHARD_SHEARS, shardToSimple(1, SHEARS, 1, 2, 4, 0.05f));
+		context.register(SHEPHERD_1_WHITE_WOOL_ENDERITE_SHARD, simpleToShard(WOOL.white(), num(8, 16), 1, 3, 6, 0.05f));
+		ColorCollection.zipApply(DYE, SHEPHERD_2_ENDERITE_SHARD_DYE, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 3, 4, 8, 0.05f))
+		);
+		ColorCollection.zipApply(WOOL, SHEPHERD_2_ENDERITE_SHARD_WOOL, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 2, 4, 8, 0.05f))
+		);
+		ColorCollection.zipApply(CARPET, SHEPHERD_3_ENDERITE_SHARD_CARPET, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 5, 6, 6, 0.05f))
+		);
+		ColorCollection.zipApply(WOOL, SHEPHERD_3_ENDERITE_SHARD_WOOL, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 2, 6, 8, 0.05f))
+		);
+		ColorCollection.zipApply(BED, SHEPHERD_3_ENDERITE_SHARD_BED, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 1, 10, 4, 0.05f))
+		);
+		ColorCollection.zipApply(BANNER, SHEPHERD_4_ENDERITE_SHARD_BANNER, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 1, 8, 6, 0.05f))
+		);
+		ColorCollection.zipApply(WOOL, SHEPHERD_4_ENDERITE_SHARD_WOOL, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 2, 6, 6, 0.05f))
+		);
+		ColorCollection.zipApply(DYE, SHEPHERD_4_ENDERITE_SHARD_DYE, (item, trade) ->
+			context.register(trade, shardToSimple(1, item, 3, 6, 6, 0.05f))
+		);
+		for (var paintingTrade : List.of(
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_FIRE_PAINTING, PaintingVariants.FIRE),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_WIND_PAINTING, PaintingVariants.WIND),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_EARTH_PAINTING, PaintingVariants.EARTH),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_WATER_PAINTING, PaintingVariants.WATER),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_A_HOP_AND_A_SKIP_AWAY_PAINTING, StellarityPaintings.A_HOP_AND_A_SKIP_AWAY),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_DRAGONBLADE_PAINTING, StellarityPaintings.DRAGONBLADE),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_END_PAINTING, StellarityPaintings.END),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_END_BLOSSOM_PAINTING, StellarityPaintings.END_BLOSSOM),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_HOURGLASS_PAINTING, StellarityPaintings.HOURGLASS),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_MAJESTICAL_BREW_PAINTING, StellarityPaintings.MAJESTICAL_BREW),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_SCHEME_PAINTING, StellarityPaintings.SCHEME),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_SHEPHERDS_FEAST_PAINTING, StellarityPaintings.SHEPHERDS_FEAST),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_SNARE_PAINTING, StellarityPaintings.SNARE),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_SNATCH_PAINTING, StellarityPaintings.SNATCH),
+			new Tuple2<>(SHEPHERD_5_ENDERITE_SHARD_THE_OBSIDIAN_RELIQUARY_PAINTING, StellarityPaintings.THE_OBSIDIAN_RELIQUARY)
+		))
+			context.register(paintingTrade._1(), shardToModifierItem(num(4, 6), PAINTING, List.of(
+				SetComponentsFunction.setComponent(DataComponents.PAINTING_VARIANT, paintings.getOrThrow(paintingTrade._2())).build()
+			), 1, 20, 2, 0.2f));
 
 
 	}

@@ -351,9 +351,9 @@ Shepherd	4	1 - 1		enderite shard	1					red banner	1		8	6	0.05
 				enderite shard	1					pink dye	3		6	6	0.05		
 																	
 Shepherd	5	1 - 1		enderite shard	[4, 6]					fire painting	1		20	2	0.2		
-				enderite shard	[4, 6]					air painting	1		20	2	0.2		
+				enderite shard	[4, 6]					wind painting	1		20	2	0.2
 				enderite shard	[4, 6]					earth painting	1		20	2	0.2		
-				enderite shard	[4, 6]					painting painting	1		20	2	0.2		
+				enderite shard	[4, 6]					water painting	1		20	2	0.2
 		2 - 1	NEW	enderite shard	[4, 6]					a hop and a skip away painting	1		20	2	0.2		
 			NEW	enderite shard	[4, 6]					dragonblade painting	1		20	2	0.2		
 			NEW	enderite shard	[4, 6]					end painting	1		20	2	0.2		
