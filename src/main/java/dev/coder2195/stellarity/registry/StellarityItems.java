@@ -306,7 +306,7 @@ public interface StellarityItems {
 	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 
-	Item STELLAR_STRIKER = register(StellarityItemIds.STELLAR_STRIKER, new Item.Properties().stacksTo(1).durability(2031));
+	Item STELLAR_STRIKER = register(StellarityItemIds.STELLAR_STRIKER, StellarStriker::new, StellarStriker.PROPERTIES);
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);

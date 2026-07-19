@@ -48,6 +48,11 @@ This update finalizes End Villages.
 **[+] Book of Return**
 - Has no functionality yet
 
+**[+] Stellar Striker**
+
+**[*] Tamaris**
+- Can perform sweep attacks now
+
 ## Mechanics
 
 **[+] Item Tooltips**

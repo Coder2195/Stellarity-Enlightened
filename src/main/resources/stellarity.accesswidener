@@ -101,3 +101,6 @@ accessible	class	net/minecraft/world/level/levelgen/SurfaceRules$LazyYCondition
 
 extendable class net/minecraft/world/item/equipment/ArmorMaterial
 accessible method net/minecraft/world/level/storage/loot/functions/SetComponentsFunction <init> (Ljava/util/List;Lnet/minecraft/core/component/DataComponentPatch;)V
+extendable class net/minecraft/world/item/ToolMaterial
+accessible method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;
+extendable method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;

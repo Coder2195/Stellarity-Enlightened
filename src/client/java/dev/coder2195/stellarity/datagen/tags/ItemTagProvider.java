@@ -32,7 +32,6 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		return appender;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void addTags(HolderLookup.@NonNull Provider provider) {
 		addTags(StellarityItemTags.FISHES).add(
@@ -62,6 +61,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
+
+		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER);
 
 		// TODO: add shulker spear, and ensure all implementations complete
 		var donator = addTags(StellarityItemTags.DONATOR);

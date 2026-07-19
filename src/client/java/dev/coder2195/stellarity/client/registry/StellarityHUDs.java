@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.client.registry;
 
+import dev.coder2195.stellarity.registry.item.StellarStriker;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
@@ -24,22 +25,23 @@ public interface StellarityHUDs {
 			var level = player.level();
 			var gameTime = level.getGameTime();
 
-			if (player.gameMode().equals(GameType.SPECTATOR)) return;
-			if (player.isHolding(StellarityItems.COPPER_ELEKTRA_SHIELD)) {
-				final int center = graphics.guiWidth() / 2;
-				final int width = 182;
-				final int half = width / 2;
-				final int screenBottom = graphics.guiHeight();
-				int offset = (gameMode == null || gameMode.isSurvival() ? HudStatusBarHeightRegistry.getHeight(VanillaHudElements.ARMOR_BAR) : HudStatusBarHeightRegistry.getHeight(VanillaHudElements.HEALTH_BAR)) + 20;
+			if (GameType.SPECTATOR.equals(gameMode)) return;
 
-				var item = player.getMainHandItem();
+			final int center = graphics.guiWidth() / 2;
+			final int width = 182;
+			final int half = width / 2;
+			final int screenBottom = graphics.guiHeight();
+			int offset = (gameMode == null || gameMode.isSurvival() ? HudStatusBarHeightRegistry.getHeight(VanillaHudElements.ARMOR_BAR) : HudStatusBarHeightRegistry.getHeight(VanillaHudElements.HEALTH_BAR)) + 20;
+
+			var item = player.getMainHandItem();
+			final int left = center - half;
+			final int right = center + half;
+			final int distance = (right - left);
+
+			if (player.isHolding(StellarityItems.COPPER_ELEKTRA_SHIELD)) {
 				if (!item.is(StellarityItems.COPPER_ELEKTRA_SHIELD)) item = player.getOffhandItem();
 
-				final int left = center - half;
-				final int right = center + half;
-				final int distance = (right - left);
 				final int progress = (int) (distance * ((CopperElektraShield.DASH_CHARGE_TIME * 3 - Math.max(0, item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime) - (double) gameTime - deltaTracker.getGameTimeDeltaPartialTick(false))) / (CopperElektraShield.DASH_CHARGE_TIME * 3)));
-
 
 				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
 				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
@@ -47,6 +49,15 @@ public interface StellarityHUDs {
 				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * (1d / 3) - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
 				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * (2d / 3) - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
 				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), right - 8, screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
+			} else if (player.getMainHandItem().is(StellarityItems.STELLAR_STRIKER)) {
+
+				final int progress = (int) (distance * ((StellarStriker.TOTAL_CHARGE_TIME - Math.max(0, item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME) - (double) gameTime - deltaTracker.getGameTimeDeltaPartialTick(false))) / StellarStriker.TOTAL_CHARGE_TIME));
+				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
+				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
+
+				for (double percentage: StellarStriker.STAR_PERCENTAGES) {
+					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16);
+				}
 			}
 		});
 	}
