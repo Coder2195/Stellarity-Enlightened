@@ -6,10 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +24,7 @@ public class StellarStriker extends Item {
 	public static final int HIT_CHARGE_TIME = (int) (TOTAL_CHARGE_TIME * 0.03f);
 	public static final int DISABLE_TIME = 6 * 20;
 	public static final double[] STAR_PERCENTAGES = {
-		0.1, 0.2, 0.45, 0.7, 1
+		0.1, 0.2, 0.45, 0.7, 1, 1.5
 	};
 
 	public static final Properties PROPERTIES = new Properties().stacksTo(1).sword(new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9, 6, 15, ItemTags.NETHERITE_TOOL_MATERIALS) {
@@ -52,7 +49,7 @@ public class StellarStriker extends Item {
 			return;
 		}
 
-		if (!(owner instanceof Player player && player.isShiftKeyDown())) return;
+		if (!(EquipmentSlot.MAINHAND.equals(slot) && owner instanceof Player player && player.isShiftKeyDown() && player.isCrouching())) return;
 
 		long gameTime = level.getGameTime();
 		long abilityDisabledUntil = itemStack.getOrDefault(StellarityDataComponents.ABILITY_DISABLED_UNTIL, 0L);
@@ -61,16 +58,17 @@ public class StellarStriker extends Item {
 		long timeFilled = TOTAL_CHARGE_TIME - Math.max(0, rechargesAt - gameTime);
 		double percentFilled = (double) timeFilled / TOTAL_CHARGE_TIME;
 		if (percentFilled < STAR_PERCENTAGES[0]) return;
-		double newPercentage = 0;
-		for (int i=1; i<STAR_PERCENTAGES.length; i++) {
+
+		int newPercentageIdx = 0;
+		for (int i=1; i<STAR_PERCENTAGES.length - 1; i++) {
 			if (STAR_PERCENTAGES[i] > percentFilled) break;
-			newPercentage = STAR_PERCENTAGES[i-1];
+			newPercentageIdx = i - 1;
 		}
 
-		double finalNewPercentage = newPercentage;
-		level.players().forEach(p -> p.sendSystemMessage(Component.literal("STRIKING! " + (int) (finalNewPercentage * 100) + "%"), false));
+		double newPercentage = STAR_PERCENTAGES[newPercentageIdx] + (percentFilled - STAR_PERCENTAGES[newPercentageIdx + 1]) / (STAR_PERCENTAGES[newPercentageIdx + 2] - STAR_PERCENTAGES[newPercentageIdx + 1]) * (STAR_PERCENTAGES[newPercentageIdx + 1] - STAR_PERCENTAGES[newPercentageIdx]);
+		level.players().forEach(p -> p.sendSystemMessage(Component.literal("STRIKING! " + (int) (newPercentage * 100) + "%"), false));
 
-		itemStack.set(StellarityDataComponents.RECHARGES_AT, gameTime + (long) (TOTAL_CHARGE_TIME * (1 - newPercentage)) - 5);
+		itemStack.set(StellarityDataComponents.RECHARGES_AT, gameTime + (long) (TOTAL_CHARGE_TIME * (1 - newPercentage)));
 		itemStack.set(StellarityDataComponents.ABILITY_DISABLED_UNTIL, gameTime + DISABLE_TIME);
 	}
 
