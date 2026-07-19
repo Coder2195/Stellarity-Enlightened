@@ -67,7 +67,7 @@ public interface StellarityHUDs {
 				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
 				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
 
-				for (int i=0; i < StellarStriker.STAR_PERCENTAGES.length - 1; i++) {
+				for (int i=1; i < StellarStriker.STAR_PERCENTAGES.length - 1; i++) {
 					double percentage = StellarStriker.STAR_PERCENTAGES[i];
 					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16);
 				}

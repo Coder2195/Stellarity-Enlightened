@@ -24,7 +24,7 @@ public class StellarStriker extends Item {
 	public static final int HIT_CHARGE_TIME = (int) (TOTAL_CHARGE_TIME * 0.03f);
 	public static final int DISABLE_TIME = 6 * 20;
 	public static final double[] STAR_PERCENTAGES = {
-		0.1, 0.2, 0.45, 0.7, 1, 1.5
+		0, 0.1, 0.2, 0.45, 0.7, 1, 1.5
 	};
 
 	public static final Properties PROPERTIES = new Properties().stacksTo(1).sword(new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 9, 6, 15, ItemTags.NETHERITE_TOOL_MATERIALS) {
@@ -57,10 +57,10 @@ public class StellarStriker extends Item {
 		long rechargesAt = Objects.requireNonNull(itemStack.get(StellarityDataComponents.RECHARGES_AT));
 		long timeFilled = TOTAL_CHARGE_TIME - Math.max(0, rechargesAt - gameTime);
 		double percentFilled = (double) timeFilled / TOTAL_CHARGE_TIME;
-		if (percentFilled < STAR_PERCENTAGES[0]) return;
+		if (percentFilled < STAR_PERCENTAGES[1]) return;
 
 		int newPercentageIdx = 0;
-		for (int i=1; i<STAR_PERCENTAGES.length - 1; i++) {
+		for (int i=2; i<STAR_PERCENTAGES.length - 1; i++) {
 			if (STAR_PERCENTAGES[i] > percentFilled) break;
 			newPercentageIdx = i - 1;
 		}
