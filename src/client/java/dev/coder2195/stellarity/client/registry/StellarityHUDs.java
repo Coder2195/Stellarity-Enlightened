@@ -13,6 +13,8 @@ import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
 import dev.coder2195.stellarity.registry.item.CopperElektraShield;
 
+import java.util.List;
+
 public interface StellarityHUDs {
 	Identifier ABILITIES = Stellarity.id("abilities");
 
@@ -42,34 +44,35 @@ public interface StellarityHUDs {
 				offset += 18;
 				if (!item.is(StellarityItems.COPPER_ELEKTRA_SHIELD)) item = player.getOffhandItem();
 
-				final int progress = (int) (distance * ((CopperElektraShield.DASH_CHARGE_TIME * 3 - Math.max(0, item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime) - (double) gameTime - deltaTracker.getGameTimeDeltaPartialTick(false))) / (CopperElektraShield.DASH_CHARGE_TIME * 3)));
-
-
+				final double percentageCharged = CopperElektraShield.chargePercent(item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME), gameTime);
+				final int progress = (int) (distance * percentageCharged);
 
 				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
 				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
-//				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/resistance.png"), left - 8, screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
-				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * (1d / 3) - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
-				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * (2d / 3) - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
-				graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), right - 8, screenBottom - offset - 8, 0, 0, 16, 16, 16, 16);
+				for (double percentage: List.of(1d/3, 2d/3, 1d))
+					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16, percentageCharged < percentage ? 0xff888888 : 0xffffffff);
+
 
 				graphics.item(item, left - 8, screenBottom - offset - 8);
 			}
 
 
 
-			if (player.getMainHandItem().is(StellarityItems.STELLAR_STRIKER)) {
+			if (player.isHolding(StellarityItems.STELLAR_STRIKER)) {
 				item = player.getMainHandItem();
 				if (!item.is(StellarityItems.STELLAR_STRIKER)) item = player.getOffhandItem();
+
+				boolean disabled = item.getOrDefault(StellarityDataComponents.ABILITY_DISABLED_UNTIL, 0L) > gameTime;
+
 				offset += 18;
 
-				final int progress = (int) (distance * ((StellarStriker.TOTAL_CHARGE_TIME - Math.max(0, item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME) - (double) gameTime - deltaTracker.getGameTimeDeltaPartialTick(false))) / StellarStriker.TOTAL_CHARGE_TIME));
-				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
-				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
+				double percentageCharged = StellarStriker.chargePercent(item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME), gameTime);
+				final int progress = (int) (distance * percentageCharged);
+				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, disabled ? 0x88aa4444 : 0x88888888);
+				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, disabled ? 0x88aa4444 : 0xFFE0976B);
 
-				for (int i=1; i < StellarStriker.STAR_PERCENTAGES.length - 1; i++) {
-					double percentage = StellarStriker.STAR_PERCENTAGES[i];
-					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16);
+				for (double percentage: StellarStriker.STAR_PERCENTAGES) {
+					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16, disabled ? 0xff880000 : percentageCharged < percentage ? 0xff888888 : 0xffffffff);
 				}
 
 				graphics.item(item, left - 10, screenBottom - offset - 8);

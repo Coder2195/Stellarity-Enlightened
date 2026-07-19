@@ -15,22 +15,31 @@ import java.util.Optional;
 
 public interface StellarityStructureSets {
 	ResourceKey<StructureSet> SMALL_STRUCTURES = id("small_structures");
+	ResourceKey<StructureSet> VILLAGES = id("villages");
 
+	@SuppressWarnings("deprecation")
 	static void bootstrap(BootstrapContext<StructureSet> context) {
 		var structures = context.lookup(Registries.STRUCTURE);
-		var structureSets = context.lookup(Registries.STRUCTURE_SET);
+
+		var villageStructureSet = context.register(VILLAGES, new StructureSet(List.of(
+			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.VILLAGE), 1)
+		), new RandomSpreadStructurePlacement(
+			Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 0.7f, 2343435,
+			Optional.empty(), 51, 26, RandomSpreadType.TRIANGULAR
+		)));
 
 		context.register(SMALL_STRUCTURES, new StructureSet(List.of(
 			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.CAMPSITE), 1)
 		), new RandomSpreadStructurePlacement(
 			Vec3i.ZERO, StructurePlacement.FrequencyReductionMethod.DEFAULT, 1f, 278609929,
-			// TODO: when end city sets get corrected
-			Optional.empty(),
-//			Optional.of(new ExclusionZone(
-//				structureSets.getOrThrow(BuiltinStructureSets.END_CITIES), 10
-//			)),
+
+			Optional.of(new StructurePlacement.ExclusionZone(
+				villageStructureSet, 8
+			)),
 			20, 15, RandomSpreadType.LINEAR
 		)));
+
+
 	}
 
 	static ResourceKey<StructureSet> id(String id) {

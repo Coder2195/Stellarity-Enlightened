@@ -1,6 +1,18 @@
 package dev.coder2195.stellarity.datagen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
+import dev.coder2195.stellarity.registry.StellarityBlocks;
+import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
+import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.registry.StellarityStructures;
+import dev.coder2195.stellarity.registry.criterion_trigger.DashTrigger;
+import dev.coder2195.stellarity.registry.criterion_trigger.SpecialCraftTrigger;
+import dev.coder2195.stellarity.registry.criterion_trigger.VoidFishedTrigger;
+import dev.coder2195.stellarity.registry.entity_sub_predicate.EntityAttributeModifiersPredicate;
+import dev.coder2195.stellarity.registry.entity_sub_predicate.NbtNumberPredicate;
+import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
@@ -24,17 +36,6 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
-import dev.coder2195.stellarity.registry.StellarityBlocks;
-import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
-import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.criterion_trigger.DashTrigger;
-import dev.coder2195.stellarity.registry.criterion_trigger.SpecialCraftTrigger;
-import dev.coder2195.stellarity.registry.criterion_trigger.VoidFishedTrigger;
-import dev.coder2195.stellarity.registry.entity_sub_predicate.EntityAttributeModifiersPredicate;
-import dev.coder2195.stellarity.registry.entity_sub_predicate.NbtNumberPredicate;
-import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -78,6 +79,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 	public void generateAdvancement(HolderLookup.Provider registryLookup, @NonNull Consumer<AdvancementHolder> consumer) {
 		final var items = registryLookup.lookupOrThrow(Registries.ITEM);
 		final var entities = registryLookup.lookupOrThrow(Registries.ENTITY_TYPE);
+		final var structures = registryLookup.lookupOrThrow(Registries.STRUCTURE);
 
 
 		final var ENTER_END_GATEWAY = dummy(Stellarity.mcId("end/enter_end_gateway"));
@@ -271,11 +273,19 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 		}
 		var DISCOVER_ALL_BIOMES = DISCOVER_ALL_BIOMES_BUILDER.requirements(requires(biomes.toArray(String[]::new))).build(Stellarity.id("exploration/discover_all_biomes"));
 
+		var FIND_END_VILLAGE = advancement().display(
+				StellarityItems.ENDERITE_SHARD,
+				Component.translatable("advancements.stellarity.find_end_village"), Component.translatable("advancements.stellarity.find_end_village.description"),
+				null, TASK, true, true, false
+			).parent(ENTER_END_GATEWAY)
+			.addCriterion("find_village", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(StellarityStructures.VILLAGE))))
+			.requirements(requires("find_village")).build(Stellarity.id("exploration/find_end_village"));
+
 
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
-			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES
+			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE
 		)) {
 			consumer.accept(advancement);
 		}

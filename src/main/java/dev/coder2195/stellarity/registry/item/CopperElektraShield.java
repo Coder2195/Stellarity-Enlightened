@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -42,6 +43,7 @@ import java.util.stream.Stream;
 public class CopperElektraShield extends ShieldItem {
 
 	public static final int DASH_CHARGE_TIME = 7 * 20;
+	public static final int TOTAL_CHARGE_TIME = 3 * DASH_CHARGE_TIME;
 
 	public CopperElektraShield(Properties properties) {
 		super(properties);
@@ -77,6 +79,10 @@ public class CopperElektraShield extends ShieldItem {
 			)
 		)
 		.component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK);
+
+	public static double chargePercent(long rechargesAt, long gameTime) {
+		return Mth.clamp((TOTAL_CHARGE_TIME - (rechargesAt - gameTime)) / (double) TOTAL_CHARGE_TIME, 0, 1);
+	}
 
 	@Override
 	public @NonNull InteractionResult use(@NonNull Level level, @NonNull Player player, @NonNull InteractionHand hand) {

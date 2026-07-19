@@ -326,9 +326,9 @@ public interface StellarityVillagerTrades {
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
 		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), MAP, List.of(
-			ExplorationMapFunction.makeExplorationMap().setMapDecoration(MapDecorationTypes.PURPLE_BANNER).setZoom((byte) 3).setSearchRadius(96).setSkipKnownStructures(true).setDestination(StellarityStructureTags.EXPLORATION_MAP_END_CITY).build(),
-			SetNameFunction.setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
-			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
+			explorationMap(MapDecorationTypes.PURPLE_BANNER, StellarityStructureTags.EXPLORATION_MAP_END_CITY, (byte) 3, 96, true),
+			setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
+			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
 		//TODO: Update with actual chapel of light

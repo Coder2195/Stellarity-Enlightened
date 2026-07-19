@@ -169,6 +169,28 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "destination": "stellarity:exploration_map/village",
+              "function": "minecraft:exploration_map",
+              "search_radius": 96,
+              "skip_existing_chunks": false,
+              "zoom": 3
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "translate": "filled_map.stellarity.end_village"
+              }
+            },
+            {
+              "components": {
+                "minecraft:rarity": "rare",
+                "stellarity:marked_item": {}
+              },
+              "function": "minecraft:set_components"
+            }
+          ],
           "name": "minecraft:map"
         }
       ],

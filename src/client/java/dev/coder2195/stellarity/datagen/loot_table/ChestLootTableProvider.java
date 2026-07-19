@@ -1,27 +1,35 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
+import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.registry.StellarityPotions;
+import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Unit;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.item.equipment.trim.TrimPatterns;
+import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.functions.SetNameFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.registry.StellarityPotions;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-import static net.minecraft.world.item.Items.*;
-import static dev.coder2195.stellarity.registry.StellarityLootTables.*;
 import static dev.coder2195.stellarity.registry.StellarityItems.*;
+import static dev.coder2195.stellarity.registry.StellarityLootTables.*;
 import static dev.coder2195.stellarity.util.LootUtil.*;
+import static net.minecraft.world.item.Items.*;
 
 public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
@@ -132,8 +140,11 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(pool().add(item(ENDERITE_SHARD).apply(count(num(2, 5)))))
 			.withPool(campsiteTentEmeraldBooks)
 			.withPool(campsiteTentArmor)
-			// TODO: add villager explorer map when village added
-			.withPool(pool().add(item(MAP)))
+			.withPool(pool().add(item(MAP)
+				.apply(() -> explorationMap(MapDecorationTypes.WOODLAND_MANSION, StellarityStructureTags.EXPLORATION_MAP_VILLAGE, (byte) 3, 96, false))
+				.apply(() -> setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME))
+				.apply(() -> setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build()))
+			))
 			.withPool(campsiteTentTools)
 			.withPool(campsiteTentArrows)
 			.withPool(campsiteTentFood)

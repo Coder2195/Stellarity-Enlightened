@@ -8,10 +8,12 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.EnchantmentTags;
@@ -25,6 +27,8 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -79,6 +83,13 @@ public interface LootUtil {
 		return new NbtPredicate(tag);
 	}
 
+	static LootItemFunction explorationMap(Holder<MapDecorationType> decoration, TagKey<Structure> destination, byte zoom, int searchRadius, boolean skipExisting) {
+		return ExplorationMapFunction.makeExplorationMap().setMapDecoration(decoration).setZoom(zoom).setDestination(destination).setSearchRadius(searchRadius).setSkipKnownStructures(skipExisting).build();
+	}
+
+	static LootItemFunction setName(Component text, SetNameFunction.Target target) {
+		return SetNameFunction.setName(text, target).build();
+	}
 
 	static ConstantValue num(float num) {
 		return new ConstantValue(num);
@@ -220,6 +231,10 @@ public interface LootUtil {
 
 	static SequenceFunction modifiers(LootItemFunction... functions) {
 		return SequenceFunction.of(List.of(functions));
+	}
+
+	static LootItemFunction setComponents(DataComponentPatch components) {
+		return new SetComponentsFunction(List.of(), components);
 	}
 
 	static LootItemCondition.Builder chance(float chance) {

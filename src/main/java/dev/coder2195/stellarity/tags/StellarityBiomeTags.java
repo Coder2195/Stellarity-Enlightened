@@ -15,10 +15,14 @@ public interface StellarityBiomeTags {
 	TagKey<Biome> SPAWNS_FLESH_VOIDED_SKELETON = id("spawns_flesh_voided_skeleton");
 
 	TagKey<Biome> HAS_STRUCTURE_CAMPSITE = id("has_structure/campsite");
+	TagKey<Biome> HAS_STRUCTURE_CHAPEL = id("has_structure/chapel");
+	TagKey<Biome> HAS_STRUCTURE_DESERT_RUIN = id("has_structure/desert_ruin");
+	TagKey<Biome> HAS_STRUCTURE_FISHING_HUT = id("has_structure/fishing_hut");
+	TagKey<Biome> HAS_STRUCTURE_FOSSIL = id("has_structure/fossil");
+	TagKey<Biome> HAS_STRUCTURE_OBSIDIAN_SPIKE = id("has_structure/obsidian_spike");
+	TagKey<Biome> HAS_STRUCTURE_VILLAGE = id("has_structure/village");
 
-	static TagKey
-
-		<Biome> id(String id) {
+	static TagKey<Biome> id(String id) {
 		return TagKey.create(Registries.BIOME, Stellarity.id(id));
 
 	}
