@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:beef"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:mutton"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:porkchop"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:rabbit"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 7.0,
+        "min": 5.0
+      }
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ice"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:snowball"
+        }
+      ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 2.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 7.0
+    }
+  ]
+}

@@ -37,10 +37,7 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.*;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.EnchantmentLevelProvider;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.*;
 import org.jspecify.annotations.NonNull;
 
 import java.util.List;
@@ -99,8 +96,16 @@ public interface LootUtil {
 		return new UniformGenerator(num(min), num(max));
 	}
 
+	static BinomialDistributionGenerator binomial(int n, float p) {
+		return BinomialDistributionGenerator.binomial(n, p);
+	}
+
 	static LootPoolSingletonContainer.Builder<?> item(ItemLike i) {
 		return LootItem.lootTableItem(i);
+	}
+
+	static LootItemFunction itemModifier(ResourceKey<LootItemFunction> key) {
+		return FunctionReference.functionReference(key).build();
 	}
 
 	static LootPoolSingletonContainer.Builder<?> tableLoot(ResourceKey<LootTable> key) {
@@ -111,9 +116,26 @@ public interface LootUtil {
 		return SetItemCountFunction.setCount(provider);
 	}
 
+	static LootItemConditionalFunction.Builder<?> count(float constant) {
+		return SetItemCountFunction.setCount(num(constant));
+	}
+
+	static LootItemConditionalFunction.Builder<?> count(float min, float max) {
+		return SetItemCountFunction.setCount(num(min, max));
+	}
+
 	static LootItemConditionalFunction.Builder<?> countAdd(NumberProvider provider) {
 		return SetItemCountFunction.setCount(provider, true);
 	}
+
+	static LootItemConditionalFunction.Builder<?> countAdd(float constant) {
+		return SetItemCountFunction.setCount(num(constant), true);
+	}
+
+	static LootItemConditionalFunction.Builder<?> countAdd(float min, float max) {
+		return SetItemCountFunction.setCount(num(min, max), true);
+	}
+
 
 
 	static <T> LootItemConditionalFunction.Builder<?> component(DataComponentType<T> type, T obj) {
@@ -165,6 +187,10 @@ public interface LootUtil {
 
 	static ValueCheckCondition valueCheck(NumberProvider value, IntRange range) {
 		return new ValueCheckCondition(value, range);
+	}
+	
+	static EntryGroup.Builder group(LootPoolEntryContainer.Builder<?>... entries) {
+		return EntryGroup.list(entries);
 	}
 
 

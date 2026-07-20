@@ -49,7 +49,7 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 		);
 
 		add(StellarityBlocks.DUSKBERRY_BUSH, lootTable().withPool(pool().add(
-			item(StellarityItems.DUSKBERRY).apply(count(num(1)))
+			item(StellarityItems.DUSKBERRY).apply(count(1))
 		)));
 
 		// todo: actual saplings

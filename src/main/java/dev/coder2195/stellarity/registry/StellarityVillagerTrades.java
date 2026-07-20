@@ -264,6 +264,7 @@ public interface StellarityVillagerTrades {
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
 		var paintings = context.lookup(Registries.PAINTING_VARIANT);
+		var itemModifiers = context.lookup(Registries.ITEM_MODIFIER);
 
 		List<LootItemFunction> ironArmorModifier = List.of(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
