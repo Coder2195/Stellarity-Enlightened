@@ -68,6 +68,7 @@ This update finalizes End Villages.
 - Has no functionality yet
 
 **[+] Stellar Striker**
+- **Important Change:** You shift right click instead of shift left click, because of Java jankiness with swinging (throwing an item out could potentially trigger the ability)
 
 **[*] Tamaris**
 

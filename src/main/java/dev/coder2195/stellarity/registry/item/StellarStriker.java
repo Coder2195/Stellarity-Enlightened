@@ -2,10 +2,15 @@ package dev.coder2195.stellarity.registry.item;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.util.RaycastUtil;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -17,6 +22,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -52,7 +60,6 @@ public class StellarStriker extends Item {
 
 		if (itemStack.get(StellarityDataComponents.RECHARGES_AT) == null)
 			itemStack.set(StellarityDataComponents.RECHARGES_AT, level.getGameTime() + TOTAL_CHARGE_TIME);
-
 	}
 
 	public static double chargePercent(long rechargesAt, long gameTime) {
@@ -69,6 +76,41 @@ public class StellarStriker extends Item {
 	}
 
 	@Override
+	public @NonNull InteractionResult use(@NonNull Level level, Player player, @NonNull InteractionHand hand) {
+		if (!(player.isShiftKeyDown() && player.isCrouching())) return InteractionResult.FAIL;
+		var itemStack = player.getItemInHand(hand);
+
+		long gameTime = level.getGameTime();
+		long rechargesAt = itemStack.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME);
+		double percentageCharged = StellarStriker.chargePercent(rechargesAt, gameTime);
+
+		if (percentageCharged < StellarStriker.STAR_PERCENTAGES[0]) return InteractionResult.FAIL;
+
+		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+
+		itemStack.set(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.DISABLE_TIME + StellarStriker.TOTAL_CHARGE_TIME);
+		itemStack.set(StellarityDataComponents.ABILITY_DISABLED_UNTIL, gameTime + StellarStriker.DISABLE_TIME);
+
+		int stars = StellarStriker.stars(percentageCharged);
+
+		var raycastOrigin = player.getEyePosition();
+		var targetPosition = raycastOrigin.add(player.getLookAngle().normalize().scale(100));
+	  var result = RaycastUtil.raycastLine(level, raycastOrigin, targetPosition, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity->!player.is(entity) && entity instanceof LivingEntity livingEntity);
+		if (!result.getType().equals(HitResult.Type.MISS)) targetPosition = result.getLocation();
+
+		for (int i=0; i<stars; i++) {
+			Vec3 startPos = player.position().add(STAR_POSITIONS[i].yRot((float) -Math.toRadians(player.getYRot())));
+
+			Vec3 step = targetPosition.subtract(startPos).scale(0.1);
+			for (int j=0; j<40; j++) {
+				serverLevel.sendParticles((ServerPlayer) player, ParticleTypes.FLAME, true, true, startPos.x + step.x * j, startPos.y + step.y * j, startPos.z + step.z * j, 1, 0, 0, 0, 0);
+			}
+		}
+
+		return InteractionResult.SUCCESS_SERVER;
+	}
+
+	@Override
 	public void hurtEnemy(@NonNull ItemStack itemStack, @NonNull LivingEntity mob, @NonNull LivingEntity attacker) {
 		super.hurtEnemy(itemStack, mob, attacker);
 
@@ -76,16 +118,8 @@ public class StellarStriker extends Item {
 
 		long gameTime = level.getGameTime();
 		long rechargesAt = itemStack.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + TOTAL_CHARGE_TIME);
-		if (itemStack.getOrDefault(StellarityDataComponents.ABILITY_DISABLED_UNTIL, 0L) > gameTime) return;
-		double percentageCharged = chargePercent(rechargesAt, gameTime);
 
-		if (attacker.isCrouching() && (!(attacker instanceof Player player) || player.isShiftKeyDown()) && percentageCharged >= STAR_PERCENTAGES[0]) {
-			itemStack.set(StellarityDataComponents.RECHARGES_AT, gameTime + DISABLE_TIME + TOTAL_CHARGE_TIME);
-			itemStack.set(StellarityDataComponents.ABILITY_DISABLED_UNTIL, gameTime + DISABLE_TIME);
-			return;
-		}
-		if (!mob.isDeadOrDying()) return;
-
+		if (itemStack.getOrDefault(StellarityDataComponents.ABILITY_DISABLED_UNTIL, 0L) > gameTime || !mob.isDeadOrDying()) return;
 		itemStack.set(StellarityDataComponents.RECHARGES_AT, rechargesAt - HIT_CHARGE_TIME);
 	}
 }

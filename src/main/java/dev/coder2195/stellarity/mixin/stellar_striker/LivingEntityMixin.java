@@ -51,14 +51,13 @@ public abstract class LivingEntityMixin extends Entity {
 		int stars = StellarStriker.stars(chargePercent);
 
 		var position = position();
-		var rotation = -getYHeadRot() * (float) (Math.PI / 180d);
+		var rotation = -Math.toRadians(getYHeadRot());
 
 		stars = Math.min(stars, StellarStriker.STAR_POSITIONS.length);
 
 		for (int i=0; i<stars; i++) {
-			var starPosition = position.add(StellarStriker.STAR_POSITIONS[i].yRot(rotation));
+			var starPosition = position.add(StellarStriker.STAR_POSITIONS[i].yRot((float) rotation));
 			level.addParticle(new DustColorTransitionOptions(0xffffa8, 0xec9a00, 0.7f), starPosition.x, starPosition.y, starPosition.z, 0, 0, 0);
 		}
-
 	}
 }

@@ -341,7 +341,8 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			).withPool(pool().setRolls(num(5, 7))
 				.add(item(COAL).setWeight(10).apply(count(2, 3)))
 				.add(group(item(GOLD_INGOT).setWeight(8), item(IRON_INGOT).setWeight(8)))
-			).apply(count(1, 3))
+				.apply(count(1, 3))
+			)
 		);
 		consumer.accept(VILLAGE_HOUSE_BOOKWORM, lootTable()
 			.withPool(pool().setRolls(num(3)).add(item(BOOK).apply(count(1, 2))))

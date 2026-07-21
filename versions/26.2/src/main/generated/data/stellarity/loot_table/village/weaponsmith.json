@@ -1,15 +1,5 @@
 {
   "type": "minecraft:chest",
-  "functions": [
-    {
-      "count": {
-        "type": "minecraft:uniform",
-        "max": 3.0,
-        "min": 1.0
-      },
-      "function": "minecraft:set_count"
-    }
-  ],
   "pools": [
     {
       "entries": [
@@ -141,6 +131,16 @@
               "weight": 8
             }
           ]
+        }
+      ],
+      "functions": [
+        {
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 3.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
         }
       ],
       "rolls": {

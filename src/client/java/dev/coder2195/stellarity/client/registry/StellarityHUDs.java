@@ -44,7 +44,7 @@ public interface StellarityHUDs {
 				offset += 18;
 				if (!item.is(StellarityItems.COPPER_ELEKTRA_SHIELD)) item = player.getOffhandItem();
 
-				final double percentageCharged = CopperElektraShield.chargePercent(item.getOrDefault(StellarityDataComponents.RECHARGES_AT, gameTime + StellarStriker.TOTAL_CHARGE_TIME), gameTime);
+				final double percentageCharged = CopperElektraShield.chargePercent(item.getOrDefault(StellarityDataComponents.RECHARGES_AT, 0L), gameTime);
 				final int progress = (int) (distance * percentageCharged);
 
 				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
