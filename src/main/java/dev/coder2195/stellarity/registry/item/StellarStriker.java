@@ -2,10 +2,9 @@ package dev.coder2195.stellarity.registry.item;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.registry.entity.StrikerStar;
 import dev.coder2195.stellarity.util.RaycastUtil;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
@@ -101,10 +100,12 @@ public class StellarStriker extends Item {
 		for (int i=0; i<stars; i++) {
 			Vec3 startPos = player.position().add(STAR_POSITIONS[i].yRot((float) -Math.toRadians(player.getYRot())));
 
-			Vec3 step = targetPosition.subtract(startPos).scale(0.1);
-			for (int j=0; j<40; j++) {
-				serverLevel.sendParticles((ServerPlayer) player, ParticleTypes.FLAME, true, true, startPos.x + step.x * j, startPos.y + step.y * j, startPos.z + step.z * j, 1, 0, 0, 0, 0);
-			}
+			Vec3 velocity = targetPosition.subtract(startPos).normalize().scale(0.8);
+
+			StrikerStar star = new StrikerStar(serverLevel, player, ItemStack.EMPTY, itemStack);
+			star.setPos(startPos);
+			star.setDeltaMovement(velocity);
+			serverLevel.addFreshEntity(star);
 		}
 
 		return InteractionResult.SUCCESS_SERVER;

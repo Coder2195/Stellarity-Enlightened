@@ -1,9 +1,10 @@
 package dev.coder2195.stellarity.registry.entity;
 
 import com.mojang.serialization.Codec;
+import dev.coder2195.stellarity.registry.StellarityEntityTypes;
+import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
@@ -12,22 +13,23 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 
-public class SpectralBolt extends AbstractArrow {
-	private float spin = 0;
-	private int liveTime = 3 * 20;
+public class StrikerStar extends AbstractArrow {
+	private int liveTime = 4 * 20;
 	private Vec3 posOld = null;
 
-	public SpectralBolt(EntityType<? extends AbstractArrow> type, Level level) {
+	public StrikerStar(EntityType<? extends AbstractArrow> type, Level level) {
 		super(type, level);
 	}
 
-	public SpectralBolt(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
-		super(StellarityEntityTypes.SPECTRAL_BOLT, owner, level, pickupItemStack, firedFromWeapon);
+	public StrikerStar(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
+		super(StellarityEntityTypes.STRIKER_STAR, owner, level, pickupItemStack, firedFromWeapon);
+
+		this.setNoGravity(true);
 	}
 
 	public int getLiveTime() {
@@ -51,15 +53,19 @@ public class SpectralBolt extends AbstractArrow {
 	}
 
 	@Override
-	protected @NonNull ItemStack getDefaultPickupItem() {
-		return ItemStack.EMPTY;
+	protected float getAirDrag() {
+		return 1;
 	}
 
 	@Override
-	public byte getPierceLevel() {
-		return (byte) Math.max(super.getPierceLevel(), 3);
+	protected float getWaterInertia() {
+		return 1;
 	}
 
+	@Override
+	protected @NonNull ItemStack getDefaultPickupItem() {
+		return ItemStack.EMPTY;
+	}
 
 	@Override
 	public void tick() {
@@ -69,6 +75,7 @@ public class SpectralBolt extends AbstractArrow {
 		if (!level.isClientSide()) {
 			liveTime--;
 			if (liveTime <= 0) {
+				explode();
 				this.discard();
 			}
 
@@ -80,34 +87,30 @@ public class SpectralBolt extends AbstractArrow {
 	private void drawTrail(Vec3 target) {
 		var level = level();
 		var delta = target.subtract(posOld);
-		var steps = delta.length() / 0.25;
+		var steps = delta.length() / 0.1;
 		var stepVec = delta.scale(1 / steps);
-
-		var move = delta.normalize();
-		var helper = Math.abs(move.x) > 0.9 ? new Vec3(0, 0, 100) : new Vec3(100, 0, 0);
-		var perpendicular = helper.cross(move);
 		for (int i = 0; i < steps; i++) {
-			var normal = move.cross(perpendicular).scale(Math.cos(spin)).add(perpendicular.scale(Math.sin(spin))).normalize().scale(0.5);
-			var particle1 = posOld.add(normal);
-			var particle2 = posOld.add(normal.scale(-1));
-			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, particle1.x, particle1.y, particle1.z, 0, 0, 0);
-			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, particle2.x, particle2.y, particle2.z, 0, 0, 0);
+
+			level.addAlwaysVisibleParticle(new DustColorTransitionOptions(0xffffa8, 0xec9a00, 0.7f), true, posOld.x + i * stepVec.x, posOld.y + i * stepVec.y, posOld.z + i * stepVec.z, 0, 0, 0);
 
 			posOld = posOld.add(stepVec);
-			spin += 0.2f;
 		}
 	}
 
 	@Override
-	public void shootFromRotation(@NonNull Entity source, float xRot, float yRot, float yOffset, float pow, float uncertainty) {
-		super.shootFromRotation(source, xRot, yRot, yOffset, pow * 1.3f, uncertainty);
-		this.setNoGravity(true);
+	protected void onHitBlock(@NonNull BlockHitResult hitResult) {
+		explode();
+		discard();
 	}
 
 	@Override
-	protected void onHitBlock(@NonNull BlockHitResult hitResult) {
-		super.onHitBlock(hitResult);
-		this.discard();
+	protected void onHitEntity(@NonNull EntityHitResult hitResult) {
+	  explode();
+		discard();
+	}
+
+	public void explode() {
+
 	}
 
 	@Override
@@ -117,9 +120,12 @@ public class SpectralBolt extends AbstractArrow {
 		drawTrail(position().add(getDeltaMovement()));
 		var level = level();
 		var random = RandomSource.create();
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 22; i++) {
 			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, getX(), getY(), getZ(), (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5, (random.nextDouble() - 0.5) * 0.5);
 		}
+
+		level.addAlwaysVisibleParticle(ParticleTypes.GUST, true, 0, 0, 0, 0, 0, 0);
+		level.addAlwaysVisibleParticle(ParticleTypes.POOF, true, 0, 0, 0, 0, 1, 0);
 		super.onClientRemoval();
 	}
 }

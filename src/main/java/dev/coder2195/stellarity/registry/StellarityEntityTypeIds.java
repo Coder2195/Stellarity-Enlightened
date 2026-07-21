@@ -18,6 +18,7 @@ public interface StellarityEntityTypeIds {
 	ResourceKey<EntityType<?>> SATCHEL_SIGIL = id("satchel_sigil");
 	ResourceKey<EntityType<?>> SPECTRAL_BOLT = id("spectral_bolt");
 	ResourceKey<EntityType<?>> SPECTRAL_WISP = id("spectral_wisp");
+	ResourceKey<EntityType<?>> STRIKER_STAR = id("striker_star");
 
 	static ResourceKey<EntityType<?>> id(String id) {
 		return Stellarity.key(Registries.ENTITY_TYPE, id);

@@ -1,11 +1,10 @@
 package dev.coder2195.stellarity.client.registry;
 
-import dev.coder2195.stellarity.client.registry.renderer.entity.*;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.renderer.entity.*;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
 public interface StellarityEntityRenderers {
 	static void init() {
@@ -22,5 +21,6 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntityTypes.SATCHEL_SIGIL, SatchelSigilRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.SPECTRAL_BOLT, SpectralBoltRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.SPECTRAL_WISP, EmptyRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.STRIKER_STAR, EmptyRenderer::new);
 	}
 }

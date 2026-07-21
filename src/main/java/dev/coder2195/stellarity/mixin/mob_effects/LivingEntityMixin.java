@@ -57,17 +57,11 @@ public abstract class LivingEntityMixin extends Entity {
 
 		var sources = this.damageSources();
 
-		if (damageUtility == null) damageUtility = DamageUtility.builder()
-			.setDamageSource(sources.source(StellarityDamageTypes.BRITTLE))
-			.setApDamageSource(sources.source(StellarityDamageTypes.BRITTLE))
-			.setApRatio(0.4f)
-			.build();
-
 		setTicksFrozen(150);
 
 		appliedBrittle = true;
 
-		damageUtility.damageEntity((LivingEntity) (Object) this, (float) amplifier + 1);
+		DamageUtility.damageEntity(level, (LivingEntity) (Object) this, sources.source(StellarityDamageTypes.BRITTLE), amplifier + 1, 0.4f, 0);
 
 		appliedBrittle = false;
 

@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.entity.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
@@ -7,7 +8,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
-import dev.coder2195.stellarity.Stellarity;
 
 
 public interface StellarityEntityTypes {
@@ -44,6 +44,10 @@ public interface StellarityEntityTypes {
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
 		.updateInterval(2).noLootTable());
+	EntityType<StrikerStar> STRIKER_STAR = register(StellarityEntityTypeIds.STRIKER_STAR, EntityType.Builder.<StrikerStar>of(StrikerStar::new, MobCategory.MISC).sized(0.3F, 0.3F)
+		.eyeHeight(0.13F)
+		.clientTrackingRange(4)
+		.updateInterval(20).noLootTable());
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
