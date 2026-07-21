@@ -191,6 +191,7 @@
 	"death.attack.stellarity.spirit_dagger.1": "%1$s had their spirit consumed by %2$s",
 	"death.attack.stellarity.spirit_dagger.2": "%1$s was slashed in half by %2$s",
 	"death.attack.stellarity.spirit_dagger.3": "%1$s was assasinated by %2$s",
+	"death.attack.stellarity.striker_star": "%1$s was exploded by %2$s's Striker Star",
 	"death.attack.stellarity.tamaris_execute.1": "%1$s was publicly executed by %2$s",
 	"death.attack.stellarity.tamaris_execute.2": "%1$s was forced to see what 999 damage is like by %2$s",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s had their remaning health taken away by %2$s",

@@ -191,6 +191,7 @@
 	"death.attack.stellarity.spirit_dagger.1": "%1$s віддав свою душу %2$s",
 	"death.attack.stellarity.spirit_dagger.2": "%1$s був розрубаний %2$s навпіл",
 	"death.attack.stellarity.spirit_dagger.3": "%1$s був підступно вбитий %2$s",
+	"death.attack.stellarity.striker_star": "%1$s was exploded by %2$s's Striker Star",
 	"death.attack.stellarity.tamaris_execute.1": "%1$s був прилюдно страчений %2$s",
 	"death.attack.stellarity.tamaris_execute.2": "%1$s узяв на себе 999 шкоди від катувань %2$s",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s втратив залишки свого здоровʼя, втікаючи від %2$s",

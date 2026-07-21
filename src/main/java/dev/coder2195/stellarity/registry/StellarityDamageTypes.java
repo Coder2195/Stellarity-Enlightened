@@ -16,6 +16,7 @@ public interface StellarityDamageTypes {
 	ResourceKey<DamageType> TAMARIS_EXECUTE = id("tamaris_execute");
 	ResourceKey<DamageType> VOID_ARROW_SHRAPNEL = id("void_arrow_shrapnel");
 	ResourceKey<DamageType> PRISMEMBER = id("prismember");
+	ResourceKey<DamageType> STRIKER_STAR = id("striker_star");
 
 	static void boostrap(BootstrapContext<DamageType> context) {
 		context.register(StellarityDamageTypes.BRITTLE, new DamageType("stellarity.brittle", DamageScaling.NEVER, 0.1f, DamageEffects.FREEZING));
@@ -24,6 +25,7 @@ public interface StellarityDamageTypes {
 		context.register(StellarityDamageTypes.VOID_ARROW_SHRAPNEL, new DamageType("stellarity.void_arrow_shrapnel", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.PRISMEMBER, new DamageType("player", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.ELECTRIC, new DamageType("lightningBolt", DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0.1f));
+		context.register(StellarityDamageTypes.STRIKER_STAR, new DamageType("stellarity.striker_star", DamageScaling.NEVER, 0.1f));
 	}
 
 	private static ResourceKey<DamageType> id(String id) {

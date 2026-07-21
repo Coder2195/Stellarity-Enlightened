@@ -191,6 +191,7 @@
 	"death.attack.stellarity.spirit_dagger.1": "Linh hồn của %1$s đã bị hấp thụ bởi %2$s",
 	"death.attack.stellarity.spirit_dagger.2": "%1$s đã bị chém làm đôi bởi %2$s",
 	"death.attack.stellarity.spirit_dagger.3": "%1$s đã bị ám sát bởi %2$s",
+	"death.attack.stellarity.striker_star": "%1$s was exploded by %2$s's Striker Star",
 	"death.attack.stellarity.tamaris_execute.1": "%1$s đã bị hành quyết công khai bởi %2$s",
 	"death.attack.stellarity.tamaris_execute.2": "%1$s đã bị %2$s bắt phải trải qua cảm giác nhận 999 sát thương",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s đã bị %2$s lấy đi chút sinh lực còn lại",

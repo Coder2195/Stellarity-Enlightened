@@ -191,6 +191,7 @@
 	"death.attack.stellarity.spirit_dagger.1": "%1$s 的灵魂被 %2$s 吞噬了（待更新源文本）",
 	"death.attack.stellarity.spirit_dagger.2": "%1$s 被 %2$s 切成两半（待更新源文本）",
 	"death.attack.stellarity.spirit_dagger.3": "%1$s 被 %2$s 暗杀（待更新源文本）",
+	"death.attack.stellarity.striker_star": "%1$s was exploded by %2$s's Striker Star",
 	"death.attack.stellarity.tamaris_execute.1": "%1$s 被 %2$s 公开处刑（待更新源文本）",
 	"death.attack.stellarity.tamaris_execute.2": "%1$s 被迫因 %2$s 看到999伤害是什么样的（待更新源文本）",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s 的血被 %2$s 吸干了（待更新源文本）",

@@ -1,17 +1,22 @@
 package dev.coder2195.stellarity.registry.entity;
 
 import com.mojang.serialization.Codec;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
+import dev.coder2195.stellarity.util.DamageUtility;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -75,7 +80,7 @@ public class StrikerStar extends AbstractArrow {
 		if (!level.isClientSide()) {
 			liveTime--;
 			if (liveTime <= 0) {
-				explode();
+				explode(null, position());
 				this.discard();
 			}
 
@@ -99,18 +104,28 @@ public class StrikerStar extends AbstractArrow {
 
 	@Override
 	protected void onHitBlock(@NonNull BlockHitResult hitResult) {
-		explode();
+		explode(null, hitResult.getLocation());
 		discard();
 	}
 
 	@Override
 	protected void onHitEntity(@NonNull EntityHitResult hitResult) {
-	  explode();
+		explode(hitResult.getEntity() instanceof LivingEntity living ? living : null, hitResult.getLocation());
 		discard();
 	}
 
-	public void explode() {
+	public void explode(@Nullable LivingEntity primaryHit, Vec3 impactLocation) {
+		if (!(this.level() instanceof ServerLevel serverLevel)) return;
+		var damageSource = damageSources().source(StellarityDamageTypes.STRIKER_STAR, getOwner());
+		if (primaryHit != null) DamageUtility.damageEntity(serverLevel, primaryHit, damageSource, 9, 0.5f, 0f);
 
+		for (var entity : serverLevel.getEntities(
+			EntityTypeTest.forClass(LivingEntity.class),
+			new AABB(impactLocation, impactLocation).inflate(5),
+			entity -> entity.getBoundingBox().distanceToSqr(impactLocation) < 16
+		)) {
+			DamageUtility.damageEntity(serverLevel, entity, damageSource, 6, 0.5f, 0f);
+		}
 	}
 
 	@Override

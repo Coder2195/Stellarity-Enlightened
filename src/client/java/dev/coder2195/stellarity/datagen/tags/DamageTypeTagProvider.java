@@ -33,7 +33,7 @@ public class DamageTypeTagProvider extends FabricTagsProvider<DamageType> {
 
 	@Override
 	protected void addTags(HolderLookup.@NonNull Provider provider) {
-		addTags(BYPASSES_COOLDOWN).add(BRITTLE);
+		addTags(BYPASSES_COOLDOWN).add(BRITTLE, STRIKER_STAR);
 		addTags(MELEE).add(PLAYER_ATTACK, MOB_ATTACK, MOB_ATTACK, PRISMEMBER);
 		addTags(BYPASSES_ARMOR).add(FROSTBURN, ELECTRIC);
 		addTags(AVOIDS_GUARDIAN_THORNS).add(ELECTRIC);

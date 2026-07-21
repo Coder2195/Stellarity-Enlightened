@@ -191,6 +191,7 @@
 	"death.attack.stellarity.spirit_dagger.1": "%2$s поглотил душу %1$s",
 	"death.attack.stellarity.spirit_dagger.2": "%1$s был разрезан пополам %2$s",
 	"death.attack.stellarity.spirit_dagger.3": "%1$s был предан %2$s",
+	"death.attack.stellarity.striker_star": "%1$s was exploded by %2$s's Striker Star",
 	"death.attack.stellarity.tamaris_execute.1": "%1$s был прилюдно казнён %2$s",
 	"death.attack.stellarity.tamaris_execute.2": "%2$s заставил %1$s почувствовать, что значит 999 урона",
 	"death.attack.stellarity.tamaris_execute.3": "%2$s забрал остатки здоровья %1$s",
