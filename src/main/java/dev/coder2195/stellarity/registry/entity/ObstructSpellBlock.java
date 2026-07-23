@@ -6,6 +6,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
@@ -50,6 +52,7 @@ public class ObstructSpellBlock extends Entity implements Attackable {
 
 	@Override
 	public void tick() {
+		if (level().isClientSide()) return;
 		liveTime--;
 
 		if (liveTime <= 0) discard();
@@ -147,6 +150,9 @@ public class ObstructSpellBlock extends Entity implements Attackable {
 	public void onClientRemoval() {
 		super.onClientRemoval();
 
-		level().addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, getX(), getY(), getZ(), 0, 0, 0);
+		var level = level();
+		var position = position();
+		level.playLocalSound(position.x, position.y, position.z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1, false);
+		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, position.x, position.y, position.z, 0, 0, 0);
 	}
 }

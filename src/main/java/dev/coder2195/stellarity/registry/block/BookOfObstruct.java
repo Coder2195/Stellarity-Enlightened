@@ -1,7 +1,6 @@
 package dev.coder2195.stellarity.registry.block;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -25,11 +24,10 @@ public class BookOfObstruct extends Item {
 	}
 
 	@Override
-	public @NonNull InteractionResult use(Level level, Player player, @NonNull InteractionHand hand) {
+	public @NonNull InteractionResult use(@NonNull Level level, Player player, @NonNull InteractionHand hand) {
 		var itemStack = player.getItemInHand(hand);
-		var rechargesAt = itemStack.getOrDefault(StellarityDataComponents.RECHARGES_AT, 0L);
-		var gameTime = level.getGameTime();
-		if (gameTime < rechargesAt) return super.use(level, player, hand);
+
+		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
 
 		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
 		serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 1, 0.5f);
@@ -38,7 +36,7 @@ public class BookOfObstruct extends Item {
 
 		for (int dx=-3; dx<=3; dx++) {
 			for (int dy=-1; dy<=1; dy++) {
-				Vec3 placeDistance = new Vec3(dx, dy, 3);
+				Vec3 placeDistance = new Vec3(dx, dy + Math.abs(dx / 300d), 3);
 
 
 				var obstructBlock = StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK.create(level, EntitySpawnReason.EVENT);
