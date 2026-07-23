@@ -87,9 +87,9 @@
 			"stellarity:item/cooldown_end"
 		]
 	},
-	"item.spellbook_cast": {
+	"item.spellbook.cast": {
 		"sounds": [
-			"stellarity:item/spellbook_cast"
+			"stellarity:item/spellbook/cast"
 		]
 	},
 	"item.kaleidoscope.ready": {

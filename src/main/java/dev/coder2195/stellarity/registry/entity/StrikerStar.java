@@ -6,34 +6,32 @@ import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.util.DamageUtility;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.*;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-public class StrikerStar extends AbstractArrow {
+public class StrikerStar extends Projectile {
 	private int liveTime = 4 * 20;
 	private Vec3 posOld = null;
 
-	public StrikerStar(EntityType<? extends AbstractArrow> type, Level level) {
+	public StrikerStar(EntityType<? extends StrikerStar> type, Level level) {
 		super(type, level);
 	}
 
-	public StrikerStar(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
-		super(StellarityEntityTypes.STRIKER_STAR, owner, level, pickupItemStack, firedFromWeapon);
-
+	public StrikerStar(final Level level, final LivingEntity owner) {
+		super(StellarityEntityTypes.STRIKER_STAR, level);
+		this.setOwner(owner);
 		this.setNoGravity(true);
 	}
 
@@ -58,35 +56,36 @@ public class StrikerStar extends AbstractArrow {
 	}
 
 	@Override
-	protected float getAirDrag() {
-		return 1;
-	}
-
-	@Override
-	protected float getWaterInertia() {
-		return 1;
-	}
-
-	@Override
-	protected @NonNull ItemStack getDefaultPickupItem() {
-		return ItemStack.EMPTY;
-	}
-
-	@Override
 	public void tick() {
 		var level = level();
 		if (posOld == null) posOld = position();
+		HitResult result = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
+		Vec3 newPosition;
+
+		if (result.getType() != HitResult.Type.MISS) {
+			newPosition = result.getLocation();
+		} else {
+			newPosition = this.position().add(this.getDeltaMovement());
+		}
+
+		this.setPos(newPosition);
+		this.updateRotation();
+		this.applyEffectsFromBlocks();
 		super.tick();
+		if (result.getType() != HitResult.Type.MISS && this.isAlive()) {
+			this.hitTargetOrDeflectSelf(result);
+		}
+
 		if (!level.isClientSide()) {
 			liveTime--;
 			if (liveTime <= 0) {
-				explode(null, position());
+				explode(null, newPosition);
 				this.discard();
 			}
 
 			return;
 		}
-		drawTrail(position());
+		drawTrail(newPosition);
 	}
 
 	private void drawTrail(Vec3 target) {
@@ -126,6 +125,10 @@ public class StrikerStar extends AbstractArrow {
 		)) {
 			DamageUtility.damageEntity(serverLevel, entity, damageSource, 6, 0.5f, 0f);
 		}
+	}
+
+	@Override
+	protected void defineSynchedData(SynchedEntityData.@NonNull Builder entityData) {
 	}
 
 	@Override

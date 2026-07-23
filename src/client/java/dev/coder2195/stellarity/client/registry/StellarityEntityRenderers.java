@@ -23,6 +23,7 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntityTypes.SPECTRAL_BOLT, SpectralBoltRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.SPECTRAL_WISP, NoopRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.STRIKER_STAR, NoopRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.CONVEYANCE_SPARK, NoopRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK, ObstructSpellBlockRenderer::new);
 	}
 }

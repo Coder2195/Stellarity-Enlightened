@@ -102,7 +102,7 @@ public class StellarStriker extends Item {
 
 			Vec3 velocity = targetPosition.subtract(startPos).normalize().scale(0.8);
 
-			StrikerStar star = new StrikerStar(serverLevel, player, ItemStack.EMPTY, itemStack);
+			StrikerStar star = new StrikerStar(serverLevel, player);
 			star.setPos(startPos);
 			star.setDeltaMovement(velocity);
 			serverLevel.addFreshEntity(star);

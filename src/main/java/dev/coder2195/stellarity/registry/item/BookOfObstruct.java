@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.registry.block;
+package dev.coder2195.stellarity.registry.item;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
@@ -41,7 +41,7 @@ public class BookOfObstruct extends Item {
 
 				var obstructBlock = StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK.create(level, EntitySpawnReason.EVENT);
 				if (obstructBlock == null) {
-					Stellarity.LOGGER.warn("Failed to create obstruct blocks");
+					Stellarity.LOGGER.error("Failed to create obstruct blocks");
 					continue;
 				}
 
