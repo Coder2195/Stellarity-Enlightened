@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.datagen.tags;
 
+import dev.coder2195.stellarity.tags.StellarityEntityTypeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEntityTypeTags;
@@ -9,12 +10,11 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.tags.StellarityEntityTypeTags;
 
 import java.util.concurrent.CompletableFuture;
 
-import static net.minecraft.world.entity.EntityTypeIds.*;
 import static dev.coder2195.stellarity.registry.StellarityEntityTypeIds.*;
+import static net.minecraft.world.entity.EntityTypeIds.*;
 
 public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProvider {
 	public EntityTypeTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
@@ -40,7 +40,8 @@ public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProv
 
 		addTags(EntityTypeTags.INVERTED_HEALING_AND_HARM).add(VOIDED_SKELETON, VOIDED_ZOMBIE, FLESH_PIGLIN);
 		addTags(EntityTypeTags.BURN_IN_DAYLIGHT).add(VOIDED_SKELETON, VOIDED_ZOMBIE);
-
+		addTags(EntityTypeTags.ARROWS).add(SPECTRAL_BOLT, SPECTRAL_WISP, VOID_ARROW);
 		addTags(EntityTypeTags.FROG_FOOD).add(VOIDED_SLIME);
+		addTags(EntityTypeTags.DEFLECTS_PROJECTILES).add(OBSTRUCT_SPELL_BLOCK);
 	}
 }

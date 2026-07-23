@@ -172,8 +172,9 @@ public class SpectralWisp extends AbstractArrow {
 		super.addAdditionalSaveData(output);
 		output.store("damage", Codec.FLOAT, damage);
 		output.store("mobs_remaining", Codec.INT, mobsRemaining);
-		output.storeNullable("last_hit_entity", EntityReference.codec(), lastHitEntity);
-		output.storeNullable("current_target", EntityReference.codec(), currentTarget);
+
+		if (lastHitEntity != null) lastHitEntity.store(output, "last_hit_entity");
+		if (currentTarget != null) currentTarget.store(output, "current_target");
 		output.store("speed", Codec.DOUBLE, speed);
 		output.store("live_time", Codec.INT, liveTime);
 	}
@@ -184,8 +185,8 @@ public class SpectralWisp extends AbstractArrow {
 		super.readAdditionalSaveData(input);
 		input.read("damage", Codec.FLOAT).ifPresent(this::setDamage);
 		input.read("mobs_remaining", Codec.INT).ifPresent(this::setMobsRemaining);
-		input.read("last_hit_entity", EntityReference.<LivingEntity>codec()).ifPresent(ref -> this.lastHitEntity = ref);
-		input.read("current_target", EntityReference.<LivingEntity>codec()).ifPresent(ref -> this.currentTarget = ref);
+		this.lastHitEntity = EntityReference.read(input, "last_hit_entity");
+		this.currentTarget = EntityReference.read(input, "current_target");
 		input.read("speed", Codec.DOUBLE).ifPresent(value -> this.speed = value);
 		input.read("live_time", Codec.INT).ifPresent(value -> this.liveTime = value);
 	}

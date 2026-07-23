@@ -14,10 +14,13 @@ This update finalizes End Villages.
 
 - Has a much contained spawn area, preventing pixies spawning underground
 
-**[*] End Villagers**
+**[*] End Villager**
 
 - All trades have been added, with placeholders for unimplemented items.
 - [Overview of all changed trades](https://docs.google.com/spreadsheets/d/1BkHnG_Mgk8K887Ls4g4pnAhQ7jwYTwwm9QV21W9t9uM/edit?gid=1755175231#gid=1755175231)
+
+**[+] Striker Star**
+- Fired from Stellar Striker
 
 ## Advancements
 
@@ -52,8 +55,6 @@ This update finalizes End Villages.
 - Has no functionality yet
 
 **[+] Book of Obstruct**
-
-- Has no functionality yet
 
 **[+] Book of Updraft**
 

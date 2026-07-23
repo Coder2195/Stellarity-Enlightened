@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.Streams;
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.registry.block.BookOfObstruct;
 import dev.coder2195.stellarity.registry.consume_effect.LoafOfPlentyConsumeEffect;
 import dev.coder2195.stellarity.registry.item.*;
 import net.minecraft.ChatFormatting;
@@ -301,7 +302,7 @@ public interface StellarityItems {
 	//TODO: implement the spellbooks
 	Item BOOK_OF_JINX = register(StellarityItemIds.BOOK_OF_JINX, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_LIGHT = register(StellarityItemIds.BOOK_OF_LIGHT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
-	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, BookOfObstruct::new, BookOfObstruct.PROPERTIES);
 	Item BOOK_OF_RETURN = register(StellarityItemIds.BOOK_OF_RETURN, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));

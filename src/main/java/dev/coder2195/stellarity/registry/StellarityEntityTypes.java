@@ -48,6 +48,7 @@ public interface StellarityEntityTypes {
 		.eyeHeight(0.13F)
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());
+	EntityType<ObstructSpellBlock> OBSTRUCT_SPELL_BLOCK = register(StellarityEntityTypeIds.OBSTRUCT_SPELL_BLOCK, EntityType.Builder.of(ObstructSpellBlock::new, MobCategory.MISC).sized(1, 1).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
