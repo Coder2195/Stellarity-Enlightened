@@ -3,8 +3,8 @@ import pathlib
 
 from pydub import AudioSegment
 
-pathlib.Path("../input_audio").mkdir(exist_ok=True)
-pathlib.Path("../output_audio/copper_elektra_shield").mkdir(exist_ok=True, parents=True)
+pathlib.Path("input_audio").mkdir(exist_ok=True)
+pathlib.Path("output_audio/spellbook/").mkdir(exist_ok=True, parents=True)
 
 """
 Resources
@@ -22,20 +22,35 @@ def pitch_modulate(sound: AudioSegment, octaves: float):
 
 
 def mc(path: str):
-	return AudioSegment.from_ogg(f"../input_audio/{path}.ogg")
+	return AudioSegment.from_ogg(f"input_audio/{path}.ogg")
 
+
+
+def check_stereo():
+	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
+		for name in files:
+			path_joined = os.path.join(root, name)
+			if not path_joined.endswith(".ogg"): continue
+			channels = AudioSegment.from_ogg(path_joined).channels
+			if channels == 1: continue
+
+			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
 
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
 
-for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
-	for name in files:
-		pathJoined = os.path.join(root, name)
-		if not pathJoined.endswith(".ogg"): continue
-		channels = AudioSegment.from_ogg(pathJoined).channels
-		if channels == 1: continue
+open_flip = ["book/open_flip1", "book/open_flip2", "book/open_flip3"]
+enchant = ["enchantment_table/enchant1", "enchantment_table/enchant2", "enchantment_table/enchant3"]
 
-		print(pathJoined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in pathJoined else "")
+combo = [(o, e) for o in open_flip for e in enchant]
+num = 0
+for (o, e) in combo:
+	num+=1
+	e_sound = mc(e)
+	o_sound = mc(o)
+
+	new_sound = e_sound.overlay(o_sound).set_channels(1)
+	new_sound.export(f"output_audio/spellbook/cast_{num}.ogg")
 
 # thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]
 # illusioner = ["mob/illusion_illager/mirror_move1", "mob/illusion_illager/mirror_move2"]

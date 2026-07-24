@@ -32,7 +32,7 @@ public interface StellarityVanillaWorldgenModifications {
 			if (!dimension.is(BuiltinDimensionTypes.END)) return;
 
 			attributes.set(BED_RULE, new BedRule(BedRule.Rule.ALWAYS, BedRule.Rule.ALWAYS, false, Optional.empty()));
-			attributes.set(RESPAWN_ANCHOR_WORKS, false);
+			attributes.set(RESPAWN_ANCHOR_WORKS, true);
 			attributes.set(CAN_START_RAID, true);
 			attributes.set(PIGLINS_ZOMBIFY, false);
 			attributes.set(WATER_EVAPORATES, false);
