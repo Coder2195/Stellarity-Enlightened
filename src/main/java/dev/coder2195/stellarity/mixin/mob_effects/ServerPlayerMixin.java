@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
-import dev.coder2195.stellarity.registry.effect.CreativeShockEffect;
+import dev.coder2195.stellarity.effect.CreativeShockEffect;
 
 import java.util.Collection;
 
@@ -35,10 +35,6 @@ public abstract class ServerPlayerMixin extends Player {
 
 	@Shadow
 	public abstract boolean setGameMode(GameType gameType);
-
-	@Shadow
-	@Final
-	private PlayerAdvancements advancements;
 
 
 	public ServerPlayerMixin(Level level, GameProfile gameProfile) {

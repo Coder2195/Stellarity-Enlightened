@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import com.mojang.serialization.Codec;
-import dev.coder2195.stellarity.registry.data_component.LoafOfPlentyEats;
+import dev.coder2195.stellarity.data_component.LoafOfPlentyEats;
 import net.fabricmc.fabric.api.item.v1.ItemComponentTooltipProviderRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -9,7 +9,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.data_component.Color;
+import dev.coder2195.stellarity.data_component.Color;
 import net.minecraft.util.Unit;
 
 public interface StellarityDataComponents {

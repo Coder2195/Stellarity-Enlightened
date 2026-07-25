@@ -13,7 +13,7 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import dev.coder2195.stellarity.registry.item.StellarityBow;
+import dev.coder2195.stellarity.item.StellarityBow;
 
 import java.util.Objects;
 

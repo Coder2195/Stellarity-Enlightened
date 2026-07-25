@@ -2,8 +2,8 @@ package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.Streams;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.consume_effect.*;
-import dev.coder2195.stellarity.registry.item.*;
+import dev.coder2195.stellarity.consume_effect.*;
+import dev.coder2195.stellarity.item.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;

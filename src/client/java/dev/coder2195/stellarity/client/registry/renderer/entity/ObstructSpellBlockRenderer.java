@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.client.registry.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.coder2195.stellarity.registry.entity.ObstructSpellBlock;
+import dev.coder2195.stellarity.entity.ObstructSpellBlock;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockModelRenderState;
 import net.minecraft.client.renderer.block.BlockModelResolver;

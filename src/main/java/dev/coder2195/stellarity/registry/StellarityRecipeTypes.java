@@ -5,7 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.recipe.AltarRecipe;
+import dev.coder2195.stellarity.recipe.AltarRecipe;
 
 public interface StellarityRecipeTypes {
 	RecipeType<AltarRecipe> ALTAR_RECIPE = register("altar_of_the_accursed");

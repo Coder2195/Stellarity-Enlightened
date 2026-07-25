@@ -1,13 +1,12 @@
 package dev.coder2195.stellarity.registry;
 
 
-import dev.coder2195.stellarity.registry.effect.*;
+import dev.coder2195.stellarity.effect.*;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.effect.*;
 
 public interface StellarityMobEffects {
 

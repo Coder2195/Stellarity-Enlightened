@@ -6,9 +6,9 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.SatchelSigil;
-import dev.coder2195.stellarity.registry.entity.ThrownPrismaticPearl;
-import dev.coder2195.stellarity.registry.entity.variant.VoidedSkeletonVariant;
+import dev.coder2195.stellarity.entity.SatchelSigil;
+import dev.coder2195.stellarity.entity.ThrownPrismaticPearl;
+import dev.coder2195.stellarity.entity.variant.VoidedSkeletonVariant;
 
 public interface StellarityEntityDataSerializers {
 	EntityDataSerializer<Holder<VoidedSkeletonVariant>> VOIDED_SKELETON_VARIANT = register("voided_skeleton_variant", VoidedSkeletonVariant.STREAM_CODEC);

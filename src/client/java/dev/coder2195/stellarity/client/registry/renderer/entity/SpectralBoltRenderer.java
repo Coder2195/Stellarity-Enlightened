@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.state.ArrowRenderState;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.SpectralBolt;
+import dev.coder2195.stellarity.entity.SpectralBolt;
 
 public class SpectralBoltRenderer extends ArrowRenderer<SpectralBolt, ArrowRenderState> {
 	public static final Identifier TEXTURE = Stellarity.id("textures/entity/projectiles/spectral_bolt.png");

@@ -15,8 +15,8 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.providers.number.Sum;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.number_provider.Multiply;
-import dev.coder2195.stellarity.registry.number_provider.NbtNumberValue;
+import dev.coder2195.stellarity.number_provider.Multiply;
+import dev.coder2195.stellarity.number_provider.NbtNumberValue;
 
 import java.util.HashMap;
 

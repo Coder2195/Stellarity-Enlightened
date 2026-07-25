@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.block_entity.AltarOfTheAccursedBlockEntity;
-import dev.coder2195.stellarity.registry.block_entity.ColoredBlockEntity;
+import dev.coder2195.stellarity.block_entity.AltarOfTheAccursedBlockEntity;
+import dev.coder2195.stellarity.block_entity.ColoredBlockEntity;
 
 
 public interface StellarityBlockEntityTypes {

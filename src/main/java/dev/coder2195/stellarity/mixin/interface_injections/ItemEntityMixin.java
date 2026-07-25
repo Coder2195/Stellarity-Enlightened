@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
-import dev.coder2195.stellarity.registry.block.AltarOfTheAccursed;
-import dev.coder2195.stellarity.registry.entity.SatchelSigil;
+import dev.coder2195.stellarity.block.AltarOfTheAccursed;
+import dev.coder2195.stellarity.entity.SatchelSigil;
 
 import java.util.HashMap;
 import java.util.List;

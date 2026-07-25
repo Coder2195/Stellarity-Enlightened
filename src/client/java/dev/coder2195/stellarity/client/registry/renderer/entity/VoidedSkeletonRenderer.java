@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.SkeletonRenderState;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.registry.entity.VoidedSkeleton;
+import dev.coder2195.stellarity.entity.VoidedSkeleton;
 
 public class VoidedSkeletonRenderer extends AbstractSkeletonRenderer<VoidedSkeleton, VoidedSkeletonRenderer.VoidedSkeletonRenderState> {
 	public VoidedSkeletonRenderer(final EntityRendererProvider.Context context) {

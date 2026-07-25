@@ -14,7 +14,7 @@ import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
 import dev.coder2195.stellarity.client.registry.model.entity.SatchelSigilModel;
-import dev.coder2195.stellarity.registry.entity.SatchelSigil;
+import dev.coder2195.stellarity.entity.SatchelSigil;
 
 public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSigilRenderer.SatchelSigilRenderState> {
 	public static final Identifier TEXTURE = Stellarity.id("textures/entity/satchel_sigil/satchel_sigil.png");
@@ -39,7 +39,7 @@ public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSi
 	}
 
 	@Override
-	protected int getBlockLightLevel(SatchelSigil entity, BlockPos blockPos) {
+	protected int getBlockLightLevel(@NonNull SatchelSigil entity, @NonNull BlockPos blockPos) {
 		return 15;
 	}
 
@@ -49,7 +49,7 @@ public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSi
 	}
 
 	@Override
-	public void extractRenderState(SatchelSigil entity, SatchelSigilRenderState state, float partialTicks) {
+	public void extractRenderState(@NonNull SatchelSigil entity, @NonNull SatchelSigilRenderState state, float partialTicks) {
 		super.extractRenderState(entity, state, partialTicks);
 		state.elapsedTime = entity.getLocalElapsedTime() + partialTicks;
 		state.liveTime = entity.getLiveTime();

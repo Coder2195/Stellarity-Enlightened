@@ -5,9 +5,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.recipe.AltarDyeRecipe;
-import dev.coder2195.stellarity.registry.recipe.AltarSimpleRecipe;
-import dev.coder2195.stellarity.registry.recipe.AltarUpgradeRecipe;
+import dev.coder2195.stellarity.recipe.AltarDyeRecipe;
+import dev.coder2195.stellarity.recipe.AltarSimpleRecipe;
+import dev.coder2195.stellarity.recipe.AltarUpgradeRecipe;
 
 public interface StellarityRecipeSerializers {
 	RecipeSerializer<AltarSimpleRecipe> ALTAR_SIMPLE = registerSerializer("altar_of_the_accursed_simple", new RecipeSerializer<>(AltarSimpleRecipe.CODEC, AltarSimpleRecipe.STREAM_CODEC));

@@ -4,9 +4,9 @@ import net.minecraft.advancements.triggers.CriterionTrigger;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.criterion_trigger.DashTrigger;
-import dev.coder2195.stellarity.registry.criterion_trigger.SpecialCraftTrigger;
-import dev.coder2195.stellarity.registry.criterion_trigger.VoidFishedTrigger;
+import dev.coder2195.stellarity.criterion_trigger.DashTrigger;
+import dev.coder2195.stellarity.criterion_trigger.SpecialCraftTrigger;
+import dev.coder2195.stellarity.criterion_trigger.VoidFishedTrigger;
 
 public interface StellarityCriteriaTriggers {
 	VoidFishedTrigger VOID_FISHED = register("void_fished", new VoidFishedTrigger());

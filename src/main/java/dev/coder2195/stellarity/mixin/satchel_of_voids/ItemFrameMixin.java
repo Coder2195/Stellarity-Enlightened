@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.block.AltarOfTheAccursed;
+import dev.coder2195.stellarity.block.AltarOfTheAccursed;
 
 
 @Mixin(ItemFrame.class)

@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.state.ArrowRenderState;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.VoidArrow;
+import dev.coder2195.stellarity.entity.VoidArrow;
 
 public class VoidArrowRenderer extends ArrowRenderer<VoidArrow, ArrowRenderState> {
 	public static final Identifier SPECTRAL_ARROW_LOCATION = Stellarity.id("textures/entity/projectiles/void_arrow.png");

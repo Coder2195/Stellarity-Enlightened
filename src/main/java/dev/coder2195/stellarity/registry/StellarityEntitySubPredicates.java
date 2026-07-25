@@ -2,8 +2,8 @@ package dev.coder2195.stellarity.registry;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import dev.coder2195.stellarity.registry.entity_sub_predicate.EntityAttributeModifiersPredicate;
-import dev.coder2195.stellarity.registry.entity_sub_predicate.NbtNumberPredicate;
+import dev.coder2195.stellarity.entity_sub_predicate.EntityAttributeModifiersPredicate;
+import dev.coder2195.stellarity.entity_sub_predicate.NbtNumberPredicate;
 
 public interface StellarityEntitySubPredicates {
 	static void init() {

@@ -13,7 +13,7 @@ import net.minecraft.world.entity.animal.feline.CatVariant;
 import net.minecraft.world.entity.animal.frog.FrogVariant;
 import net.minecraft.world.entity.animal.pig.PigVariant;
 import net.minecraft.world.entity.animal.wolf.WolfVariant;
-import dev.coder2195.stellarity.registry.entity.variant.VoidedSkeletonVariant;
+import dev.coder2195.stellarity.entity.variant.VoidedSkeletonVariant;
 import net.minecraft.world.entity.variant.BiomeCheck;
 import net.minecraft.world.entity.variant.ModelAndTexture;
 import net.minecraft.world.entity.variant.SpawnPrioritySelectors;

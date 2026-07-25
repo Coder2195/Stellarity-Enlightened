@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.*;
+import dev.coder2195.stellarity.entity.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

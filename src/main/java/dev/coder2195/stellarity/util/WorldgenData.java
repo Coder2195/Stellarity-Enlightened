@@ -13,7 +13,7 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import org.jetbrains.annotations.Nullable;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityNoises;
-import dev.coder2195.stellarity.registry.material_condition.LegacyBiomeConditionSource;
+import dev.coder2195.stellarity.material_condition.LegacyBiomeConditionSource;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
-import dev.coder2195.stellarity.registry.block.*;
+import dev.coder2195.stellarity.block.*;
 import net.fabricmc.fabric.api.registry.FlattenableBlockRegistry;
 import net.fabricmc.fabric.api.registry.TillableBlockRegistry;
 import net.minecraft.core.Registry;
@@ -26,7 +26,7 @@ public interface StellarityBlocks {
 	Block ASHEN_FROGLIGHT = register(StellarityBlockItemIds.ASHEN_FROGLIGHT, RotatedPillarBlock::new, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.SAND)
 		.strength(0.3F)
-		.lightLevel((state) -> 15)
+		.lightLevel((_) -> 15)
 		.sound(SoundType.FROGLIGHT));
 	Block ROOTED_ENDER_DIRT = register(StellarityBlockItemIds.ROOTED_ENDER_DIRT, RootedDirtBlock::new, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
@@ -64,8 +64,8 @@ public interface StellarityBlocks {
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Blocks");
-		TillableBlockRegistry.register(ROOTED_ENDER_DIRT, (unused) -> true, HoeItem.changeIntoStateAndDropItem(StellarityBlocks.ENDER_DIRT.defaultBlockState(), Items.HANGING_ROOTS));
-		TillableBlockRegistry.register(COARSE_ENDER_DIRT, (unused) -> true, HoeItem.changeIntoState(StellarityBlocks.ENDER_DIRT.defaultBlockState()));
+		TillableBlockRegistry.register(ROOTED_ENDER_DIRT, (_) -> true, HoeItem.changeIntoStateAndDropItem(StellarityBlocks.ENDER_DIRT.defaultBlockState(), Items.HANGING_ROOTS));
+		TillableBlockRegistry.register(COARSE_ENDER_DIRT, (_) -> true, HoeItem.changeIntoState(StellarityBlocks.ENDER_DIRT.defaultBlockState()));
 		for (var dirt : List.of(ENDER_DIRT, ENDER_GRASS_BLOCK, COARSE_ENDER_DIRT))
 			FlattenableBlockRegistry.register(dirt, ENDER_DIRT_PATH.defaultBlockState());
 

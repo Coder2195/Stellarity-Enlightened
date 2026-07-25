@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ColorCollection;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.data_component.Color;
+import dev.coder2195.stellarity.data_component.Color;
 
 import java.util.List;
 import java.util.function.Supplier;

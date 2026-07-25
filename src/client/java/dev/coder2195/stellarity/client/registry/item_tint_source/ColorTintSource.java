@@ -8,8 +8,8 @@ import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
-import dev.coder2195.stellarity.registry.block.ColoredLeavesBlock;
-import dev.coder2195.stellarity.registry.data_component.Color;
+import dev.coder2195.stellarity.block.ColoredLeavesBlock;
+import dev.coder2195.stellarity.data_component.Color;
 
 public class ColorTintSource implements ItemTintSource {
 	public static final MapCodec<ColorTintSource> MAP_CODEC = MapCodec.unit(ColorTintSource::new);

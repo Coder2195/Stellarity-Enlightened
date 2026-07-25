@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.Property;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.registry.entity.PhantomItemFrame;
+import dev.coder2195.stellarity.entity.PhantomItemFrame;
 
 
 public class PhantomItemFrameRenderer extends ItemFrameRenderer<PhantomItemFrame> {

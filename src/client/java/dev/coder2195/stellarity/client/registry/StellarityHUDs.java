@@ -1,6 +1,6 @@
 package dev.coder2195.stellarity.client.registry;
 
-import dev.coder2195.stellarity.registry.item.StellarStriker;
+import dev.coder2195.stellarity.item.StellarStriker;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.GameType;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.item.CopperElektraShield;
+import dev.coder2195.stellarity.item.CopperElektraShield;
 
 import java.util.List;
 

@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.state.ZombifiedPiglinRenderState;
 import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.FleshPiglin;
+import dev.coder2195.stellarity.entity.FleshPiglin;
 
 public class FleshPiglinRenderer extends HumanoidMobRenderer<FleshPiglin, ZombifiedPiglinRenderState, ZombifiedPiglinModel> {
 	private static final Identifier FLESH_PIGLIN_LOCATION = Stellarity.id("textures/entity/flesh_piglin/flesh_piglin.png");

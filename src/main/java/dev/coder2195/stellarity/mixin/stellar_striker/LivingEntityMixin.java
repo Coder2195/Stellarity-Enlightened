@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.mixin.stellar_striker;
 
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.item.StellarStriker;
+import dev.coder2195.stellarity.item.StellarStriker;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

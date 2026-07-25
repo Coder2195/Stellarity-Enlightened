@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
-import dev.coder2195.stellarity.registry.block_entity.ColoredBlockEntity;
+import dev.coder2195.stellarity.block_entity.ColoredBlockEntity;
 
 import java.util.List;
 

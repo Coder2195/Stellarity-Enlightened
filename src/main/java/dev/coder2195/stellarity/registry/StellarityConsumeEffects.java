@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import com.mojang.serialization.MapCodec;
-import dev.coder2195.stellarity.registry.consume_effect.*;
+import dev.coder2195.stellarity.consume_effect.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;

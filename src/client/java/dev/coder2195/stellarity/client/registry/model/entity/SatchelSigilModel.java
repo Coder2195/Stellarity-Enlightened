@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.util.Mth;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.client.registry.renderer.entity.SatchelSigilRenderer;
-import dev.coder2195.stellarity.registry.entity.SatchelSigil;
+import dev.coder2195.stellarity.entity.SatchelSigil;
 
 public class SatchelSigilModel extends EntityModel<SatchelSigilRenderer.SatchelSigilRenderState> {
 	private final ModelPart top;

@@ -2,9 +2,9 @@ package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.interface_injection.ExtLargeDripstoneConfiguration;
-import dev.coder2195.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
-import dev.coder2195.stellarity.registry.feature.configuration.SpikeFeatureConfiguration;
-import dev.coder2195.stellarity.registry.tree_decorator.HangingColumnDecorator;
+import dev.coder2195.stellarity.feature.configuration.DungeonFeatureConfiguration;
+import dev.coder2195.stellarity.feature.configuration.SpikeFeatureConfiguration;
+import dev.coder2195.stellarity.tree_decorator.HangingColumnDecorator;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import dev.coder2195.stellarity.util.Constants;
 import dev.coder2195.stellarity.util.ValueUtil;

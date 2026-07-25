@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.entity.variant.VoidedSkeletonVariant;
+import dev.coder2195.stellarity.entity.variant.VoidedSkeletonVariant;
 
 public interface StellarityRegistries {
 	ResourceKey<Registry<VoidedSkeletonVariant>> VOIDED_SKELETON_VARIANT = id("voided_skeleton_variant");

@@ -1,15 +1,14 @@
 package dev.coder2195.stellarity.registry;
 
-import dev.coder2195.stellarity.registry.feature.*;
+import dev.coder2195.stellarity.feature.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.feature.*;
-import dev.coder2195.stellarity.registry.feature.configuration.DungeonFeatureConfiguration;
-import dev.coder2195.stellarity.registry.feature.configuration.FeatureSequenceConfiguration;
-import dev.coder2195.stellarity.registry.feature.configuration.SpikeFeatureConfiguration;
+import dev.coder2195.stellarity.feature.configuration.DungeonFeatureConfiguration;
+import dev.coder2195.stellarity.feature.configuration.FeatureSequenceConfiguration;
+import dev.coder2195.stellarity.feature.configuration.SpikeFeatureConfiguration;
 
 public interface StellarityFeatures {
 	DungeonFeature DUNGEON = register("dungeon", new DungeonFeature(DungeonFeatureConfiguration.CODEC));

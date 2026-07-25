@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
-import dev.coder2195.stellarity.registry.block.AltarOfTheAccursed;
+import dev.coder2195.stellarity.block.AltarOfTheAccursed;
 
 
 @Mixin(BlockBehaviour.BlockStateBase.class)

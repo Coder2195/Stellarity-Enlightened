@@ -7,7 +7,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.item.CopperElektraShield;
+import dev.coder2195.stellarity.item.CopperElektraShield;
 
 public interface StellarityClientTick {
 	static void init() {

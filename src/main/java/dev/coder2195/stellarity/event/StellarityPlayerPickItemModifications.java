@@ -2,8 +2,8 @@ package dev.coder2195.stellarity.event;
 
 import net.fabricmc.fabric.api.event.player.PlayerPickItemEvents;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
-import dev.coder2195.stellarity.registry.block_entity.ColoredBlockEntity;
-import dev.coder2195.stellarity.registry.data_component.Color;
+import dev.coder2195.stellarity.block_entity.ColoredBlockEntity;
+import dev.coder2195.stellarity.data_component.Color;
 
 public interface StellarityPlayerPickItemModifications {
 	static void init() {

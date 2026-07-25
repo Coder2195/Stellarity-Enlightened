@@ -8,7 +8,7 @@ import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
 import dev.coder2195.stellarity.client.registry.model.entity.PixieModel;
-import dev.coder2195.stellarity.registry.entity.Pixie;
+import dev.coder2195.stellarity.entity.Pixie;
 
 public class PixieRenderer extends MobRenderer<Pixie, LivingEntityRenderState, PixieModel> {
 	public static final Identifier TEXTURE = Stellarity.id("textures/entity/pixie/pixie.png");
