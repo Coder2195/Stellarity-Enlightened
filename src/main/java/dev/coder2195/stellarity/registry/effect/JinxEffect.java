@@ -11,6 +11,4 @@ public class JinxEffect extends MobEffect {
 		super(MobEffectCategory.HARMFUL, 0x3A0052);
 		addAttributeModifier(Attributes.ARMOR, Stellarity.id("jinx_effect"), -0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
 	}
-
-
 }

@@ -112,7 +112,8 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 				Optional.of(EntityPredicate.wrap(EntityPredicate.Builder.entity().put(EntityAttributeModifiersPredicate.CODEC, new EntityAttributeModifiersPredicate(List.of(
 					new EntityAttributeModifiersPredicate.EntryPredicate(
 						HolderSet.direct(Attributes.MAX_HEALTH), Optional.of(Stellarity.id("crystal_heartfish")),
-						MinMaxBounds.Doubles.atLeast(10), Optional.empty()
+						// 9 because it checks before idk why
+						MinMaxBounds.Doubles.atLeast(9), Optional.empty()
 					)
 				))))),
 				Optional.of(ItemPredicate.Builder.item().of(items, StellarityItems.CRYSTAL_HEARTFISH).build())

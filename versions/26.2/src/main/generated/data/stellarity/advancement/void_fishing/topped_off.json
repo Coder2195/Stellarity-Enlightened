@@ -15,7 +15,7 @@
                 "entries": [
                   {
                     "amount": {
-                      "min": 10.0
+                      "min": 9.0
                     },
                     "attribute": "minecraft:max_health",
                     "id": "stellarity:crystal_heartfish"

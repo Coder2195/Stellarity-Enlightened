@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.registry;
 
 import com.google.common.collect.Streams;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.consume_effect.LoafOfPlentyConsumeEffect;
+import dev.coder2195.stellarity.registry.consume_effect.*;
 import dev.coder2195.stellarity.registry.item.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -41,6 +41,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -118,9 +119,17 @@ public interface StellarityItems {
 	Item SUSHI = register(StellarityItemIds.SUSHI, basicFood(4, 2.4f));
 	Item GOLDEN_CHORUS_FRUIT = register(StellarityItemIds.GOLDEN_CHORUS_FRUIT, tpFoodProperties(6, 14.4f, true, 300).rarity(Rarity.RARE).useCooldown(1.0F));
 	Item FRIED_CHORUS_FRUIT = register(StellarityItemIds.FRIED_CHORUS_FRUIT, tpFoodProperties(7, 11.2f, 32).useCooldown(1.0F));
-	Item FROZEN_CARPACCIO = register(StellarityItemIds.FROZEN_CARPACCIO, FrozenCarpaccio::new, FrozenCarpaccio.PROPERTIES);
+	Item FROZEN_CARPACCIO = register(StellarityItemIds.FROZEN_CARPACCIO, foodProperties(new Item.Properties(), new FoodProperties.Builder(),
+		Consumables.defaultFood().onConsume(new ChanceConsumeEffect(new RandomStatusEffectConsumeEffect(
+			Stream.of(MobEffects.ABSORPTION, MobEffects.STRENGTH, MobEffects.REGENERATION, MobEffects.RESISTANCE, MobEffects.JUMP_BOOST, MobEffects.SPEED)
+				.map(e -> new MobEffectInstance(e, 30 * 20)).toList()), 0.6))
+		, 7, 8.4f, false));
 	Item ENDERMAN_FLESH = register(StellarityItemIds.ENDERMAN_FLESH, tpFoodProperties(4, 0.8f, 16, new StellarityItems.EffectChance(new MobEffectInstance(MobEffects.HUNGER, 40 * 20, 0), 0.8f)));
-	Item CRYSTAL_HEARTFISH = register(StellarityItemIds.CRYSTAL_HEARTFISH, CrystalHeartfish::new, CrystalHeartfish.PROPERTIES);
+	Item CRYSTAL_HEARTFISH = register(StellarityItemIds.CRYSTAL_HEARTFISH, StellarityItems.foodProperties(new Item.Properties(), new FoodProperties.Builder(),
+		Consumables.defaultFood().consumeSeconds(5f).onConsume(new IncrementAttributeModifierConsumeEffect(
+			Attributes.MAX_HEALTH, Stellarity.id("crystal_heartfish"), AttributeModifier.Operation.ADD_VALUE, 1, Optional.of(10d)
+		)), 0, 0.0f, true
+	));
 	Item GRILLED_ENDERMAN_FLESH = register(StellarityItemIds.GRILLED_ENDERMAN_FLESH, basicFood(6, 9.6f));
 	Item FLAREFIN_KOI = register(StellarityItemIds.FLAREFIN_KOI, foodProperties(4, 0.8f, new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 16 * 20)));
 	Item AMETHYST_BUDFISH = register(StellarityItemIds.AMETHYST_BUDFISH);
@@ -245,11 +254,11 @@ public interface StellarityItems {
 
 	Supplier<ItemStack> CHORUS_JUICE = createPotion(StellarityPotions.CHORUS_JUICE);
 
-	Item ROYAL_JELLY = register(StellarityItemIds.ROYAL_JELLY, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood().sound(SoundEvents.HONEY_DRINK), 6, 3.6f, true,
+	Item ROYAL_JELLY = register(StellarityItemIds.ROYAL_JELLY, foodProperties(new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE), new FoodProperties.Builder(), Consumables.defaultFood().consumeSeconds(1.5f).sound(SoundEvents.HONEY_DRINK).onConsume(RemoveHarmfulStatusEffectsConsumeEffect.INSTANCE), 6, 3.6f, true,
 		new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20)
 	).usingConvertsTo(Items.GLASS_BOTTLE));
 
-	Item ROYAL_JELLY_II = register(StellarityItemIds.ROYAL_JELLY_II, RoyalJelly::new, foodProperties(RoyalJelly.PROPERTIES, new FoodProperties.Builder(), Consumables.defaultFood(), 6, 3.6f, true,
+	Item ROYAL_JELLY_II = register(StellarityItemIds.ROYAL_JELLY_II, foodProperties(new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE), new FoodProperties.Builder(), Consumables.defaultFood().consumeSeconds(1.5f).sound(SoundEvents.HONEY_DRINK).onConsume(RemoveHarmfulStatusEffectsConsumeEffect.INSTANCE), 6, 3.6f, true,
 		new MobEffectInstance(MobEffects.ABSORPTION, 30 * 20, 2)
 	).usingConvertsTo(Items.GLASS_BOTTLE));
 

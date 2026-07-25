@@ -38,7 +38,6 @@ public class BookOfObstruct extends Item {
 			for (int dy=-1; dy<=1; dy++) {
 				Vec3 placeDistance = new Vec3(dx, dy + Math.abs(dx / 300d), 3);
 
-
 				var obstructBlock = StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK.create(level, EntitySpawnReason.EVENT);
 				if (obstructBlock == null) {
 					Stellarity.LOGGER.error("Failed to create obstruct blocks");

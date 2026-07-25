@@ -28,6 +28,9 @@ This update finalizes End Villages.
 
 ## Items
 
+**[*] Royal Jelly (II)**
+- Made them more like datapack royal jelly
+
 **[+] Loaf of Plenty**
 
 **[+] Candied Chorus Fruit**
