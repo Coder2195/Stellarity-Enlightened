@@ -116,7 +116,6 @@ public class CopperElektraShield extends ShieldItem {
 
 //		player.getCooldowns().addCooldown(itemStack, 5);
 
-
 		var simulationDistance = (serverLevel.getServer().getPlayerList().getSimulationDistance() + 1) * 16;
 		for (var networkPlayer : serverLevel.getPlayers(networkPlayer -> networkPlayer.position().distanceTo(endLocation) < simulationDistance)) {
 			ServerPlayNetworking.send(networkPlayer, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));

@@ -51,25 +51,15 @@ This update finalizes End Villages.
 
 **[+] Book of Jinx**
 
-- Has no functionality yet
-
 **[+] Book of Light**
-
-- Has no functionality yet
 
 **[+] Book of Obstruct**
 
 **[+] Book of Updraft**
 
-- Has no functionality yet
-
 **[+] Book of Conveyance**
 
-- Has no functionality yet
-
 **[+] Book of Return**
-
-- Has no functionality yet
 
 **[+] Stellar Striker**
 - **Important Change:** You shift right click instead of shift left click, because of Java jankiness with swinging (throwing an item out could potentially trigger the ability)

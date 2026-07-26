@@ -1,5 +1,7 @@
 package dev.coder2195.stellarity.item;
 
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
+import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -11,18 +13,15 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.registry.StellarityDamageTypes;
-import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 
 import java.util.Comparator;
 
 public class Tamaris extends Item {
 	public Tamaris(Properties properties) {
-		super(properties.sword(ToolMaterial.NETHERITE, 2, -2.4F));
+		super(properties);
 	}
 
-
-	public static final Properties PROPERTIES = new Item.Properties().stacksTo(1).durability(1561).rarity(Rarity.RARE);
+	public static final Properties PROPERTIES = new Item.Properties().stacksTo(1).durability(1561).rarity(Rarity.RARE).sword(ToolMaterial.NETHERITE, 2, -2.4F);
 
 	@Override
 

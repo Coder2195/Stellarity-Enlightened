@@ -11,7 +11,6 @@ import net.minecraft.world.level.levelgen.Heightmap;
 
 
 public interface StellarityEntityTypes {
-
 	EntityType<PhantomItemFrame> PHANTOM_ITEM_FRAME = register(StellarityEntityTypeIds.PHANTOM_ITEM_FRAME, EntityType.Builder.of(PhantomItemFrame::new, MobCategory.MISC));
 
 	EntityType<ThrownPrismaticPearl> PRISMATIC_PEARL = register(StellarityEntityTypeIds.PRISMATIC_PEARL, EntityType.Builder.<ThrownPrismaticPearl>of(ThrownPrismaticPearl::new, MobCategory.MISC).noLootTable().sized(0.25F, 0.25F));
@@ -49,7 +48,8 @@ public interface StellarityEntityTypes {
 		.clientTrackingRange(4)
 		.updateInterval(20).noLootTable());
 	EntityType<ObstructSpellBlock> OBSTRUCT_SPELL_BLOCK = register(StellarityEntityTypeIds.OBSTRUCT_SPELL_BLOCK, EntityType.Builder.of(ObstructSpellBlock::new, MobCategory.MISC).sized(1, 1).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
-	EntityType<? extends ConveyanceSpark> CONVEYANCE_SPARK = register(StellarityEntityTypeIds.CONVEYANCE_SPARK, EntityType.Builder.<ConveyanceSpark>of(ConveyanceSpark::new, MobCategory.MISC).sized(0.3f, 0.3f).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
+	EntityType<ConveyanceSpark> CONVEYANCE_SPARK = register(StellarityEntityTypeIds.CONVEYANCE_SPARK, EntityType.Builder.<ConveyanceSpark>of(ConveyanceSpark::new, MobCategory.MISC).sized(0.3f, 0.3f).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
+	EntityType<LightAura> LIGHT_AURA = register(StellarityEntityTypeIds.LIGHT_AURA, EntityType.Builder.of(LightAura::new, MobCategory.MISC).sized(0, 0).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));

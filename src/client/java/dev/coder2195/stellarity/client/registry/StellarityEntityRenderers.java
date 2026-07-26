@@ -25,5 +25,6 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntityTypes.STRIKER_STAR, NoopRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.CONVEYANCE_SPARK, NoopRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK, ObstructSpellBlockRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.LIGHT_AURA, NoopRenderer::new);
 	}
 }
