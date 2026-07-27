@@ -24,7 +24,7 @@ import org.jspecify.annotations.Nullable;
 public class ObstructSpellBlock extends Entity implements Attackable {
 	private int liveTime = 10 * 20;
 
-	private static final EntityDataAccessor<BlockState> DATA_BLOCK_STATE_ID = SynchedEntityData.defineId(
+	private static final EntityDataAccessor<BlockState> DATA_BLOCK_STATE = SynchedEntityData.defineId(
 		ObstructSpellBlock.class, EntityDataSerializers.BLOCK_STATE
 	);
 
@@ -80,7 +80,7 @@ public class ObstructSpellBlock extends Entity implements Attackable {
 
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder entityData) {
-		entityData.define(DATA_BLOCK_STATE_ID, Blocks.SHULKER_BOX.defaultBlockState());
+		entityData.define(DATA_BLOCK_STATE, Blocks.SHULKER_BOX.defaultBlockState());
 	}
 
 	@Override
@@ -134,11 +134,11 @@ public class ObstructSpellBlock extends Entity implements Attackable {
 	}
 
 	public BlockState getBlockState() {
-		return this.entityData.get(DATA_BLOCK_STATE_ID);
+		return this.entityData.get(DATA_BLOCK_STATE);
 	}
 
 	public void setBlockState(BlockState blockState) {
-		this.entityData.set(DATA_BLOCK_STATE_ID, blockState, true);
+		this.entityData.set(DATA_BLOCK_STATE, blockState, true);
 	}
 
 	@Override

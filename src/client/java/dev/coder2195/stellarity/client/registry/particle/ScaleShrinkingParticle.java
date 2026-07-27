@@ -11,10 +11,10 @@ import net.minecraft.util.RandomSource;
 import org.jspecify.annotations.NonNull;
 
 
-public class CriticalStrikeParticle extends SingleQuadParticle {
+public class ScaleShrinkingParticle extends SingleQuadParticle {
 	private float scale = 1f;
 
-	public CriticalStrikeParticle(ClientLevel clientLevel, double d, double e, double f, TextureAtlasSprite textureAtlasSprite) {
+	public ScaleShrinkingParticle(ClientLevel clientLevel, double d, double e, double f, TextureAtlasSprite textureAtlasSprite) {
 		super(clientLevel, d, e, f, textureAtlasSprite);
 
 		this.x = d;
@@ -59,7 +59,7 @@ public class CriticalStrikeParticle extends SingleQuadParticle {
 
 		@Override
 		public Particle createParticle(@NonNull SimpleParticleType simpleParticleType, @NonNull ClientLevel clientLevel, double d, double e, double f, double g, double h, double i, @NonNull RandomSource randomSource) {
-			return new CriticalStrikeParticle(clientLevel, d, e, f, this.sprite.get(randomSource));
+			return new ScaleShrinkingParticle(clientLevel, d, e, f, this.sprite.get(randomSource));
 		}
 	}
 }

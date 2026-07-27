@@ -22,6 +22,7 @@ public interface StellarityEntityTypeIds {
 	ResourceKey<EntityType<?>> OBSTRUCT_SPELL_BLOCK = id("obstruct_spell_block");
 	ResourceKey<EntityType<?>> CONVEYANCE_SPARK = id("conveyance_spark");
 	ResourceKey<EntityType<?>> LIGHT_AURA = id("light_aura");
+	ResourceKey<EntityType<?>> POTION_CLOUD = id("potion_cloud");
 
 	static ResourceKey<EntityType<?>> id(String id) {
 		return Stellarity.key(Registries.ENTITY_TYPE, id);
