@@ -1,6 +1,6 @@
 # Stellarity Enlightened
 
-[![Discord](https://img.shields.io/discord/1439707494896373833?color=7289DA&logo=discord&style=for-the-badge&logoColor=7289DA)](https://discord.com/invite/Anfy28DN7E)
+[![Discord](https://img.shields.io/discord/1528554343509393579?color=7289DA&logo=discord&style=for-the-badge&logoColor=7289DA)](https://discord.gg/ZSwKknnFat)
 [![Wiki](https://img.shields.io/badge/wiki-Work_in_progress!-orange?style=for-the-badge&logo=ReadMe&logoColor=white)](https://koharasbasement.wiki.gg/wiki/Stellarity)
 [![Modrinth](https://img.shields.io/modrinth/dt/stellarity-enlightened?label=Modrinth&logo=modrinth&style=for-the-badge)](https://modrinth.com/mod/stellarity-enlightened)
 [![CurseForge](https://img.shields.io/curseforge/dt/1393906?style=for-the-badge&logo=curseforge&logoColor=FF5103&label=CurseForge&color=FF5103)](https://www.curseforge.com/minecraft/mc-mods/stellarity-enlightened)
