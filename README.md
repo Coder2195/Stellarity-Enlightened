@@ -20,8 +20,6 @@
 > This project is no longer multiversion due to factors such as
 > - Minecraft completely rewriting ItemStacks
 > - Yarn to deobfuscated fabric api
-> - Upcoming vulkan update
-> - Mojang AI slop bugs with a bug report response: "Does it affect vanilla"
 > - Impossible to build GUIs across 1.20.1 - 26.1+
 > - Less incompat with structure blocks
 > - Certain Fabric API's nonexistant with older versions
