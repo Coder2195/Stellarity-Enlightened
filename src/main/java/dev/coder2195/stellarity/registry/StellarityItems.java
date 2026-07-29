@@ -311,7 +311,7 @@ public interface StellarityItems {
 	Item BOOK_OF_JINX = register(StellarityItemIds.BOOK_OF_JINX, BookOfJinx::new, BookOfJinx.PROPERTIES);
 	Item BOOK_OF_LIGHT = register(StellarityItemIds.BOOK_OF_LIGHT, BookOfLight::new, BookOfLight.PROPERTIES);
 	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, BookOfObstruct::new, BookOfObstruct.PROPERTIES);
-	Item BOOK_OF_RETURN = register(StellarityItemIds.BOOK_OF_RETURN, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_RETURN = register(StellarityItemIds.BOOK_OF_RETURN, BookOfReturn::new, BookOfReturn.PROPERTIES);
 	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, BookOfConveyance::new, BookOfConveyance.PROPERTIES);
 	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 

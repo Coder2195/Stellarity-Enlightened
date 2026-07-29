@@ -3,8 +3,6 @@ package dev.coder2195.stellarity.item;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -15,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 
-public class BookOfObstruct extends Item {
+public class BookOfObstruct extends Spellbook {
 	public static final Properties PROPERTIES = new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON);
 	public static final int RECHARGE_TIME = 15 * 20;
 
@@ -29,8 +27,8 @@ public class BookOfObstruct extends Item {
 
 		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
 
+		castSpell(level, player);
 		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
-		serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 1, 0.5f);
 
 		float rot = (float) -Math.toRadians(player.getYHeadRot());
 

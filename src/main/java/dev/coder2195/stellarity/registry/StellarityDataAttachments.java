@@ -43,6 +43,9 @@ public interface StellarityDataAttachments {
 	AttachmentType<Long> LAST_MOVE_ITEM_CHANGE = AttachmentRegistry.create(Stellarity.id("last_move_item_change"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
 	);
 
+	AttachmentType<Long> RETURN_SPELL_AT = AttachmentRegistry.create(Stellarity.id("return_spell_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
+	);
+
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");
 
