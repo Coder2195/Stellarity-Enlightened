@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.client.event;
 
+import dev.coder2195.stellarity.networking.ClientboundSpellbookCastPayload;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -83,6 +84,21 @@ public interface StellarityClientNetworking {
 
 			level.playLocalSound(to.x, to.y, to.z, StellaritySoundEvents.COPPER_ELEKTRA_SHIELD_DASH, SoundSource.PLAYERS, 1, 1, false);
 
+		});
+
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpellbookCastPayload.TYPE, (packet, context) -> {
+			var position = packet.position();
+			var level = context.player().level();
+
+			var random = RandomSource.create();
+
+			double x = position.x;
+			double y = position.y;
+			double z = position.z;
+			level.playLocalSound(x, y, z, StellaritySoundEvents.SPELLBOOK_CAST, SoundSource.PLAYERS, 1, 0.5f, false);
+			for (int i=0; i<30; i++) {
+				level.addParticle(ParticleTypes.ENCHANT, x + random.nextDouble() * 0.44 - 0.22, y + random.nextDouble() * 0.56 - 0.28,  z + random.nextDouble() * 0.44 - 0.22, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+			}
 		});
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");

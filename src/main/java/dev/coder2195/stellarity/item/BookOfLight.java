@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.item;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.util.RaycastUtil;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -30,8 +31,8 @@ public class BookOfLight extends Spellbook {
 
 		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
 
-		castSpell(level, player);
-		if (level.isClientSide()) return InteractionResult.SUCCESS;
+		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+		castSpell(serverLevel, player);
 
 		var eyePos = player.getEyePosition();
 		var targetPosition = eyePos.add(player.getHeadLookAngle().normalize().scale(player.getAttributes().getValue(Attributes.BLOCK_INTERACTION_RANGE)));

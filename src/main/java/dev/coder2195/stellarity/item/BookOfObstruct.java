@@ -27,8 +27,8 @@ public class BookOfObstruct extends Spellbook {
 
 		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
 
-		castSpell(level, player);
 		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+		castSpell(serverLevel, player);
 
 		float rot = (float) -Math.toRadians(player.getYHeadRot());
 

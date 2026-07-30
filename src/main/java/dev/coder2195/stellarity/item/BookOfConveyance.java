@@ -21,10 +21,10 @@ public class BookOfConveyance extends Spellbook {
 	public @NonNull InteractionResult use(@NonNull Level level, Player player, @NonNull InteractionHand hand) {
 		var itemStack = player.getItemInHand(hand);
 
-		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
-
-		castSpell(level, player);
 		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+		castSpell(serverLevel, player);
+
+		player.getCooldowns().addCooldown(itemStack, RECHARGE_TIME);
 
 		var spark = new ConveyanceSpark(level, player);
 

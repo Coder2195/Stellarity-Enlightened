@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.item;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -84,8 +85,10 @@ public class BookOfReturn extends Spellbook {
 		if (player.getAttached(StellarityDataAttachments.RETURN_SPELL_AT) != null) return super.use(level, player, hand);
 
 		player.setAttached(StellarityDataAttachments.RETURN_SPELL_AT, level.getGameTime() + USE_DELAY);
-		castSpell(level, player);
 
-		return InteractionResult.SUCCESS;
+		if (!(level instanceof ServerLevel serverLevel)) return InteractionResult.SUCCESS;
+		castSpell(serverLevel, player);
+
+		return InteractionResult.SUCCESS_SERVER;
 	}
 }
