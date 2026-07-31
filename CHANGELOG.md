@@ -22,6 +22,18 @@ This update finalizes End Villages.
 **[+] Striker Star**
 - Fired from Stellar Striker
 
+**[+] Conveyance Spark**
+- Summoned from Book of Conveyance
+
+**[+] Light Aura**
+- Summoned from Book of Light
+
+**[+] Obstruct Spell Block**
+- Summoned from Book of Obstruct
+
+**[+] Potion Cloud**
+- Used by the Book of Updraft
+
 ## Advancements
 
 **[+] Stranded in The Sea of Eternity**
