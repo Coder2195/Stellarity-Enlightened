@@ -94,11 +94,10 @@ public class StrikerStar extends Projectile {
 		var steps = delta.length() / 0.1;
 		var stepVec = delta.scale(1 / steps);
 		for (int i = 0; i < steps; i++) {
-
 			level.addAlwaysVisibleParticle(new DustColorTransitionOptions(0xffffa8, 0xec9a00, 0.7f), true, posOld.x + i * stepVec.x, posOld.y + i * stepVec.y, posOld.z + i * stepVec.z, 0, 0, 0);
-
-			posOld = posOld.add(stepVec);
 		}
+
+		posOld = posOld.add(stepVec.scale((int) steps));
 	}
 
 	@Override

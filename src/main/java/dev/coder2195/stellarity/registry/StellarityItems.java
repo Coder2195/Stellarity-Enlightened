@@ -313,7 +313,7 @@ public interface StellarityItems {
 	Item BOOK_OF_OBSTRUCT = register(StellarityItemIds.BOOK_OF_OBSTRUCT, BookOfObstruct::new, BookOfObstruct.PROPERTIES);
 	Item BOOK_OF_RETURN = register(StellarityItemIds.BOOK_OF_RETURN, BookOfReturn::new, BookOfReturn.PROPERTIES);
 	Item BOOK_OF_CONVEYANCE = register(StellarityItemIds.BOOK_OF_CONVEYANCE, BookOfConveyance::new, BookOfConveyance.PROPERTIES);
-	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+	Item BOOK_OF_UPDRAFT = register(StellarityItemIds.BOOK_OF_UPDRAFT, BookOfUpdraft::new, BookOfUpdraft.PROPERTIES);
 
 	Item STELLAR_STRIKER = register(StellarityItemIds.STELLAR_STRIKER, StellarStriker::new, StellarStriker.PROPERTIES);
 

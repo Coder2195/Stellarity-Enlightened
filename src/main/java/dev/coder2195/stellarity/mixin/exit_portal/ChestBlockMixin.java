@@ -28,7 +28,7 @@ public abstract class ChestBlockMixin extends AbstractChestBlock<ChestBlockEntit
 	private <T extends BlockEntity> @NonNull BlockEntityTicker<T> stellarityTicking(Level level, BlockState blockState, BlockEntityType<T> type, Operation<BlockEntityTicker<T>> original) {
 		final var originalMethod = original.call(level, blockState, type);
 		return (level1, pos, state, entity) -> {
-			if (level1.isClientSide() && entity.getAttachedOrElse(StellarityDataAttachments.EXIT_PORTAL_CHEST, false)) {
+			if (level1.isClientSide() && entity.getAttached(StellarityDataAttachments.EXIT_PORTAL_CHEST) != null) {
 				for (int i = 0; i < 3; i++) {
 					Vec3 position = Vec3.atCenterOf(entity.getBlockPos());
 

@@ -115,9 +115,9 @@ public class ConveyanceSpark extends Projectile {
 		for (int i = 0; i < steps; i++) {
 
 			level.addAlwaysVisibleParticle(new DustColorTransitionOptions(0xe51fff, 0x6f00ff, 1.05f), true, posOld.x + i * stepVec.x, posOld.y + i * stepVec.y, posOld.z + i * stepVec.z, 0, 0, 0);
-
-			posOld = posOld.add(stepVec);
 		}
+
+		posOld = posOld.add(stepVec.scale((int) steps));
 	}
 
 	@Override

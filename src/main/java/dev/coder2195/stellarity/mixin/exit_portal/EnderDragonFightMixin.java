@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Unit;
 import net.minecraft.world.entity.EntityReference;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.level.block.Block;
@@ -63,7 +64,7 @@ public abstract class EnderDragonFightMixin implements ExtEnderDragonFight {
 
 		if (entity instanceof ChestBlockEntity chestEntity) {
 			chestEntity.setLootTable(StellarityLootTables.EXIT_PORTAL, level.getSeed());
-			chestEntity.setAttached(StellarityDataAttachments.EXIT_PORTAL_CHEST, true);
+			chestEntity.setAttached(StellarityDataAttachments.EXIT_PORTAL_CHEST, Unit.INSTANCE);
 
 			stellarity$setPortalChestGenerated(true);
 

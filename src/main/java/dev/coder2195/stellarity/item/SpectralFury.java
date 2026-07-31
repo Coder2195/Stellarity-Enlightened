@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Unit;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,19 +37,21 @@ public class SpectralFury extends BowItem implements StellarityBow {
 	public void inventoryTick(@NonNull ItemStack itemStack, @NonNull ServerLevel level, @NonNull Entity owner, @Nullable EquipmentSlot slot) {
 		super.inventoryTick(itemStack, level, owner, slot);
 		if (!(owner instanceof LivingEntity livingEntity)) return;
-		if (!livingEntity.isUsingItem() || !livingEntity.getUseItem().is(StellarityItems.SPECTRAL_FURY)) {
-			livingEntity.setAttached(StellarityDataAttachments.SPECTRAL_FURY_CHARGED, false);
+
+		var isCharged = livingEntity.getAttached(StellarityDataAttachments.SPECTRAL_FURY_CHARGED) != null;
+		if (livingEntity.isUsingItem() || livingEntity.getUseItem().is(StellarityItems.SPECTRAL_FURY)) {
+			if (isCharged) return;
+
+			int timeHeld = this.getUseDuration(itemStack, livingEntity) - livingEntity.getUseItemRemainingTicks();
+			float pow = getPowerForTime(timeHeld);
+			if (pow == 1.0) {
+				level.playSound(null, livingEntity.blockPosition(), SoundEvents.NOTE_BLOCK_XYLOPHONE.value(), SoundSource.PLAYERS, 1, 0);
+				livingEntity.setAttached(StellarityDataAttachments.SPECTRAL_FURY_CHARGED, Unit.INSTANCE);
+			}
 			return;
 		}
-		if (livingEntity.getAttachedOrElse(StellarityDataAttachments.SPECTRAL_FURY_CHARGED, false)) return;
-		int timeHeld = this.getUseDuration(itemStack, livingEntity) - livingEntity.getUseItemRemainingTicks();
-		float pow = getPowerForTime(timeHeld);
-		if (pow == 1.0) {
-			level.playSound(null, livingEntity.blockPosition(), SoundEvents.NOTE_BLOCK_XYLOPHONE.value(), SoundSource.PLAYERS, 1, 0);
-			livingEntity.setAttached(StellarityDataAttachments.SPECTRAL_FURY_CHARGED, true);
-		}
 
-
+		if (isCharged) livingEntity.removeAttached(StellarityDataAttachments.SPECTRAL_FURY_CHARGED);
 	}
 
 	@SuppressWarnings("DuplicatedCode")

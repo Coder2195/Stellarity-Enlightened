@@ -19,7 +19,7 @@ public class FishingRodItemMixin {
 		FishingHook hook = original.call(player, level, i, j);
 
 		if (itemStack.is(StellarityItems.FISHER_OF_VOIDS)) {
-			hook.stellarity$setVoidFishingBuff(true);
+			hook.stellarity$setBuffVoidFishing();
 		}
 
 		return hook;

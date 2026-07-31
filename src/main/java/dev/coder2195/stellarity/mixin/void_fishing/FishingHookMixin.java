@@ -6,6 +6,11 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.coder2195.stellarity.interface_injection.ExtFishingHook;
+import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
+import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.registry.StellarityLootTables;
+import dev.coder2195.stellarity.tags.StellarityBiomeTags;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -33,17 +38,12 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Opcodes;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import dev.coder2195.stellarity.interface_injection.ExtFishingHook;
-import dev.coder2195.stellarity.registry.StellarityLootTables;
-import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
-import dev.coder2195.stellarity.registry.StellarityItems;
 
 
 @Mixin(FishingHook.class)
@@ -55,24 +55,19 @@ public abstract class FishingHookMixin extends Projectile implements ExtFishingH
 	private FishingHook.FishHookState currentState;
 
 	@Unique
-	private boolean warned = false;
+	private boolean warnedYLevel = false;
 
 	@Unique
 	private boolean isVoidFishing = false;
 
 	@Unique
 	private boolean splashed = false;
+	@Unique
+	private boolean warnedBiome;
 
 	@Shadow
 	@Nullable
 	public abstract Player getPlayerOwner();
-
-	@Shadow
-	@Final
-	private int lureSpeed;
-
-	@Shadow
-	private int timeUntilLured;
 
 	public FishingHookMixin(EntityType<? extends Projectile> entityType, Level level) {
 		super(entityType, level);
@@ -100,19 +95,31 @@ public abstract class FishingHookMixin extends Projectile implements ExtFishingH
 		var owner = this.getOwner();
 		if (owner == null) return false;
 		double y = getY();
+		var level = level();
 
-		if (y < 0 && !warned) {
-			warned = true;
+		if (level.getBiome(this.blockPosition()).is(StellarityBiomeTags.NO_VOID_FISHING) && !warnedBiome) {
+			warnedBiome = true;
+			if (getPlayerOwner() instanceof ServerPlayer player) {
+				player.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("message.stellarity.no_void_fish").withStyle(ChatFormatting.DARK_PURPLE)));
+			}
+		}
+
+		if (y < 0 && !warnedYLevel) {
+			warnedYLevel = true;
 			if (getPlayerOwner() instanceof ServerPlayer player) {
 				player.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("message.stellarity.void_fishing_too_deep").withStyle(ChatFormatting.DARK_PURPLE)));
 			}
 		}
 
-		if (y > 0 && warned) {
-			warned = false;
+		if (y > 0 && warnedYLevel) {
+			warnedYLevel = false;
 		}
 
-		return !warned && isEndMidAir() && (this.currentState == FishingHook.FishHookState.BOBBING || this.distanceTo(owner) > 20.0);
+		if (!level.getBiome(this.blockPosition()).is(StellarityBiomeTags.NO_VOID_FISHING) && warnedBiome) {
+			warnedBiome = false;
+		}
+
+		return !warnedYLevel && !warnedBiome && isEndMidAir() && (this.currentState == FishingHook.FishHookState.BOBBING || this.distanceTo(owner) > 20.0);
 	}
 
 	@Definition(id = "f", local = @Local(type = float.class))
@@ -185,14 +192,14 @@ public abstract class FishingHookMixin extends Projectile implements ExtFishingH
 
 
 	@WrapOperation(method = "catchingFish", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;sendParticles(Lnet/minecraft/core/particles/ParticleOptions;DDDIDDDD)I"))
-	private int splashParticles(ServerLevel instance, ParticleOptions particleOptions, double d, double e, double f, int i, double g, double h, double j, double k, Operation<Integer> original) {
+	private int splashParticles(ServerLevel instance, ParticleOptions particle, double x, double y, double z, int count, double xDist, double yDist, double zDist, double speed, Operation<Integer> original) {
 		if (isVoidFishing) {
-			if (particleOptions == ParticleTypes.SPLASH || particleOptions == ParticleTypes.FISHING)
-				particleOptions = ParticleTypes.WITCH;
-			if (particleOptions == ParticleTypes.BUBBLE) particleOptions = DRAGON_BREATH;
+			if (particle == ParticleTypes.SPLASH || particle == ParticleTypes.FISHING)
+				particle = ParticleTypes.WITCH;
+			if (particle == ParticleTypes.BUBBLE) particle = DRAGON_BREATH;
 		}
 
-		return original.call(instance, particleOptions, d, e, f, evalVoidFishing() ? i * 2 : i, g, h, j, k);
+		return original.call(instance, particle, x, y, z, evalVoidFishing() ? count * 2 : count, xDist, yDist, zDist, speed);
 	}
 
 
@@ -206,7 +213,7 @@ public abstract class FishingHookMixin extends Projectile implements ExtFishingH
 	private int increaseLure(FishingHook instance, Operation<Integer> original) {
 		isVoidFishing = evalVoidFishing();
 		int lure = original.call(instance);
-		if (!stellarity$getVoidFishingBuff() || !isVoidFishing) {
+		if (!stellarity$isBuffVoidFishing() || !isVoidFishing) {
 			return lure;
 		}
 
