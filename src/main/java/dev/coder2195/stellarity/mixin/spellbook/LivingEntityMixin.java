@@ -181,20 +181,20 @@ public abstract class LivingEntityMixin extends Entity {
 			if (gameTime >= updraftGlidingUntil) {
 				removeAttached(StellarityDataAttachments.UPDRAFT_GLIDING_UNTIL);
 				setAttached(StellarityDataAttachments.UPDRAFT_SLOW_FALLING, Unit.INSTANCE);
-			} else if (level.isClientSide() ) {
+			} else if (level.isClientSide() && isFallFlying()) {
 				drawTrail(this.position(), ParticleTypes.END_ROD, 0.1);
 				drawedTrail = true;
 			}
 		}
 		if (updraftLevitationUntil != null) {
-			var timeLeft =  updraftLevitationUntil - gameTime;
+			var timeLeft = updraftLevitationUntil - gameTime;
 			if (timeLeft <= 0) {
 				removeAttached(StellarityDataAttachments.UPDRAFT_LEVITATION_UNTIL);
 				updateFallFlying();
 				// 7 is fall flying tag
 				setAttached(StellarityDataAttachments.UPDRAFT_GLIDING_UNTIL, gameTime + 7 * 20);
 				this.setSharedFlag(7, true);
-			} else if (level.isClientSide() && timeLeft % 2 == 1 && isFallFlying()) {
+			} else if (level.isClientSide()) {
 				drawCloudCircle(this.position());
 			}
 		}
