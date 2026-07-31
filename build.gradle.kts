@@ -223,6 +223,9 @@ publishMods {
 		optional("biolith")
 		optional("modonomicon")
 
+		client = true
+		server = true
+
 		changelogType = "markdown"
 	}
 }
