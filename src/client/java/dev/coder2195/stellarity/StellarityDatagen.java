@@ -1,6 +1,10 @@
 package dev.coder2195.stellarity;
 
+import com.klikli_dev.modonomicon.api.datagen.FabricBookProvider;
+import com.klikli_dev.modonomicon.api.datagen.LanguageProviderCache;
+import com.klikli_dev.modonomicon.api.datagen.research.ResearchCache;
 import dev.coder2195.stellarity.datagen.*;
+import dev.coder2195.stellarity.datagen.book.EndonomiconBookProvider;
 import dev.coder2195.stellarity.datagen.tags.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -41,12 +45,17 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(StructureTagProvider::new);
 		pack.addProvider(VillagerTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
-		// FIXME: once released
+
 //		if (Stellarity.hasModonomicon()) {
-//			var englishCache = new LanguageProviderCache("en_us");
-//			pack.addProvider(FabricBookProvider.of(new EndonomiconBookProvider(englishCache)));
+			var langCache = new LanguageProviderCache("en_us");
+			var researchCache = new ResearchCache();
+
+			pack.addProvider(FabricBookProvider.of(Stellarity.MOD_ID, langCache, researchCache,
+					new EndonomiconBookProvider()
+			));
 //		}
 	}
+
 
 	@Override
 	public @Nullable String getEffectiveModId() {

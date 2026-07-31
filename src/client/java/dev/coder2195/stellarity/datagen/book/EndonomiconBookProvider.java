@@ -1,14 +1,13 @@
 package dev.coder2195.stellarity.datagen.book;
 
-import com.klikli_dev.modonomicon.api.datagen.ModonomiconLanguageProvider;
 import com.klikli_dev.modonomicon.api.datagen.SingleBookSubProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.datagen.book.category.ArmorsCategory;
 
 public class EndonomiconBookProvider extends SingleBookSubProvider {
-	public EndonomiconBookProvider(ModonomiconLanguageProvider lang) {
-		super("endonomicon", Stellarity.MOD_ID, lang);
+	public EndonomiconBookProvider() {
+		super("endonomicon", Stellarity.MOD_ID);
 	}
 
 	@Override

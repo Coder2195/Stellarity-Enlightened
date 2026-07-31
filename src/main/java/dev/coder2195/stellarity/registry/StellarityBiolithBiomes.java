@@ -12,9 +12,7 @@ public interface StellarityBiolithBiomes {
 			BiomePlacement.addEnd(placement._1(), placement._2());
 		BiomePlacement.replaceEnd(Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS);
 
-		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), WorldgenData.stellaritySurfaceRules(null));
-		SurfaceGeneration.addEndSurfaceRules(Stellarity.mcId("rules/stellarity_end"), WorldgenData.vanillaSurfaceRules(null));
-
-
+		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), WorldgenData::stellaritySurfaceRules);
+		SurfaceGeneration.addEndSurfaceRules(Stellarity.mcId("rules/stellarity_end"), WorldgenData::vanillaSurfaceRules);
 	}
 }

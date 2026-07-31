@@ -94,6 +94,13 @@ This update finalizes End Villages.
 
 - Developer Item and Donator Item tooltips has been added
 
+## Dependencies
+**[*] Biolith**
+- Updated to the latest version
+
+**[*] Modonomicon**
+- Updated to the latest version
+
 # Developer's Note
 
 End villages go brrrrrrrrrrrrrrrrr

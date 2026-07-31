@@ -119,7 +119,8 @@ fabricApi {
 		modId = "stellarity"
 
 		dependencies {
-//			implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
+			val modonomicon = property("deps.modonomicon").toString().split('-')
+			implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
 		}
 	}
 }
