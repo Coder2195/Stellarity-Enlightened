@@ -1,0 +1,23 @@
+{
+	"argument1": 4,
+	"argument2": {
+		"argument": {
+			"argument1": "nullscape:base/depth",
+			"argument2": {
+				"argument": "nullscape:base/factor",
+				"type": "minecraft:cache_2d"
+			},
+			"type": "minecraft:mul"
+		},
+		"type": "minecraft:quarter_negative"
+	},
+	"type": "minecraft:mul",
+
+	"fabric:load_conditions": [
+		{
+			"condition": "fabric:registry_contains",
+			"registry": "minecraft:worldgen/noise",
+			"values": ["nullscape:math/shift_x"]
+		}
+	]
+}

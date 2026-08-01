@@ -10,8 +10,6 @@ import net.minecraft.resources.ResourceKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.MixinEnvironment;
-import dev.coder2195.stellarity.event.*;
-import dev.coder2195.stellarity.registry.*;
 
 public class Stellarity implements ModInitializer {
 	public static final String VERSION = /*$ minecraft*/ "26.2";
@@ -32,6 +30,10 @@ public class Stellarity implements ModInitializer {
 
 	public static <T extends Registry<U>, U> ResourceKey<U> key(ResourceKey<T> registry, String path) {
 		return ResourceKey.create(registry, id(path));
+	}
+
+	public static <T extends Registry<U>, U> ResourceKey<U> key(ResourceKey<T> registry, String namespace, String path) {
+		return ResourceKey.create(registry, id(namespace, path));
 	}
 
 	public static <T extends Registry<U>, U> ResourceKey<U> mcKey(ResourceKey<T> registry, String path) {

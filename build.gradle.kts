@@ -213,6 +213,7 @@ publishMods {
 		requires("fabric-api")
 		optional("biolith")
 		optional("modonomicon")
+		embeds("stellarity-x-nullscape")
 	}
 
 	curseforge {
@@ -222,7 +223,8 @@ publishMods {
 		requires("fabric-api")
 		optional("biolith")
 		optional("modonomicon")
-
+		embeds("stellarity-x-nullscape")
+		
 		client = true
 		server = true
 

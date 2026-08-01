@@ -32,7 +32,13 @@ public interface StellarityDensityFunctions {
 	ResourceKey<DensityFunction> MAIN_ISLAND_SHAPER_2 = id("main_island/shaper_2");
 	ResourceKey<DensityFunction> CAVE_NOODLE = id("cave/noodle");
 
+	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_INITIAL_DENSITY = compatId("initial_density");
+	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_FINAL_DENSITY = compatId("final_density");
+
 	static ResourceKey<DensityFunction> id(String id) {
 		return Stellarity.key(Registries.DENSITY_FUNCTION, id);
+	}
+	static ResourceKey<DensityFunction> compatId(String id) {
+		return Stellarity.key(Registries.DENSITY_FUNCTION, "nullscape_compat", id);
 	}
 }
