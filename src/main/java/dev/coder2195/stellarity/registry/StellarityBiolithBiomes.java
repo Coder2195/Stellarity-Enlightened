@@ -8,8 +8,9 @@ import dev.coder2195.stellarity.util.WorldgenData;
 
 public interface StellarityBiolithBiomes {
 	static void init() {
-		for (var placement : WorldgenData.PARAMETER_POINTS)
-			BiomePlacement.addEnd(placement._1(), placement._2());
+		var points = Stellarity.hasNullscape() ? WorldgenData.NULLSCAPE_PARAMETER_POINTS : WorldgenData.PARAMETER_POINTS;
+		for (var point : points)
+			BiomePlacement.addEnd(point._1(), point._2());
 		BiomePlacement.replaceEnd(Biomes.SMALL_END_ISLANDS, Biomes.END_HIGHLANDS);
 
 		SurfaceGeneration.addEndSurfaceRules(Stellarity.id("rules/end"), WorldgenData::stellaritySurfaceRules);

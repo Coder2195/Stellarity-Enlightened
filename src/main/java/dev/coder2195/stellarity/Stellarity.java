@@ -48,6 +48,10 @@ public class Stellarity implements ModInitializer {
 		return FabricLoader.getInstance().isModLoaded("biolith");
 	}
 
+	public static boolean hasNullscape() {
+		return FabricLoader.getInstance().isModLoaded("nullscape");
+	}
+
 	@Override
 	public void onInitialize() {
 

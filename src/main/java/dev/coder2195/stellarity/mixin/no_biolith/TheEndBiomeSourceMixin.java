@@ -24,7 +24,7 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource {
 	@ModifyExpressionValue(method = "create", at = @At(value = "NEW", target = "(Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;Lnet/minecraft/core/Holder;)Lnet/minecraft/world/level/biome/TheEndBiomeSource;"))
 	private static TheEndBiomeSource editBiomeSource(TheEndBiomeSource original, @Local(argsOnly = true, name = "biomes") HolderGetter<Biome> biomes) {
 		if (!Stellarity.hasBiolith())
-			((TheEndBiomeSourceMixin) (Object) original).biomeSource = WorldgenData.stellarityBiomeSource(biomes);
+			((TheEndBiomeSourceMixin) (Object) original).biomeSource = WorldgenData.stellarityBiomeSource(biomes, false);
 
 		return original;
 	}

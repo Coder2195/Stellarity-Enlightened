@@ -727,6 +727,97 @@ public interface WorldgenData {
 		))
 	);
 
+	List<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>> NULLSCAPE_PARAMETER_POINTS = List.<Tuple2<ResourceKey<Biome>, Climate.ParameterPoint>>of(
+		new Tuple2<>(HALLOWED_TUNDRA, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 1f), span(-1.2f, -0.725f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_HALLOW, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-1f, 1f), span(-1.2f, -0.725f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(PRISMATIC_DUNES, new Climate.ParameterPoint(span(0.48f, 1f), span(-1f, 1f), span(-1.2f, -0.725f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FROZEN_SPIKES, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(VOID_BARRENS, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(-1f, -0.19f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_BARRENS, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(-0.19f, 0.265f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.265f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(END_BARRENS, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(-1f, -0.47000000000000003f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(ENDER_WASTES, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(-0.47000000000000003f, 0.265f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(0.265f, 0.685f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(CRYSTAL_PEAKS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(0.685f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_BARRENS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-1f, -0.47000000000000003f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(ENDER_WASTES, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.47000000000000003f, -0.19f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(ENDER_WASTES, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.19f, 0.265f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(CRYSTAL_PEAKS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(0.265f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FIERY_HILLS, new Climate.ParameterPoint(span(0.48f, 1f), span(-1f, 0.265f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(0.48f, 1f), span(0.265f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FROZEN_SHRUBLAND, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 0.045f), span(-0.15f, 1f), span(-1f, 0.545f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(FROZEN_SHRUBLAND, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.045f, 0.265f), span(-0.15f, 1f), span(-1f, -0.065f), span(0f, 0f), span(-1f, -0.26666668f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.265f, 1f), span(-0.15f, 1f), span(-1f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_HIGHLANDS, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(-1f, 0.265f), span(-0.15f, 1f), span(-1f, -0.065f), span(0f, 0f), span(-1f, -0.26666668f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.265f, 1f), span(-0.15f, 1f), span(-1f, -0.065f), span(0f, 0f), span(-1f, -0.26666668f), 0)),
+		new Tuple2<>(END_HIGHLANDS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-1f, 0.045f), span(-0.15f, 1f), span(-1f, -0.065f), span(0f, 0f), span(-1f, -0.26666668f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(0.2f, 0.48f), span(0.045f, 1f), span(-0.15f, 1f), span(-1f, -0.065f), span(0f, 0f), span(-1f, -0.26666668f), 0)),
+		new Tuple2<>(ENDLESS_DUNES, new Climate.ParameterPoint(span(0.48f, 1f), span(-1f, 1f), span(-0.15f, 1f), span(-1f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.045f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(-1f, -0.19f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.045f, 0.265f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.265f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(-1f, -0.47000000000000003f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(0.265f, 0.685f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_SHRUBLAND, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FROZEN_MARSH, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 1f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(ASHFALL_DELTAS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-1f, -0.19f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(WARPED_MARSH, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-0.19f, 0.265f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(WARPED_MARSH, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.265f, 0.685f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, -0.05f), 0)),
+		new Tuple2<>(PRISMARINE_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.685f, 1f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(PRISMARINE_FOREST, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(0.265f, 1f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-1f, 1f), 0)),
+		new Tuple2<>(FROZEN_SHRUBLAND, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.045f, 0.265f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.26666668f, -0.05f), 0)),
+		new Tuple2<>(END_HIGHLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-1f, 0.045f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.26666668f, 1f), 0)),
+		new Tuple2<>(END_HIGHLANDS, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(0.045f, 0.265f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.26666668f, -0.05f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.265f, 1f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.26666668f, 1f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(0.2f, 0.48f), span(0.045f, 1f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.26666668f, 1f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.045f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 1f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(-1f, -0.19f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, -0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.045f, 0.265f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.265f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, -0.05f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(-1f, -0.47000000000000003f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(SHADOWLANDS, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, -0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(0.265f, 0.685f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.15f, 0.2f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(END_SHRUBLAND, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.26666668f, 0.05f), 0)),
+		new Tuple2<>(FLESH_TUNDRA, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, -0.19f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(FROZEN_SPIKES, new Climate.ParameterPoint(span(-1f, -0.405f), span(-0.19f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(END_BARRENS, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.265f, 0.685f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, -0.15f), span(0.685f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(CRYSTAL_PEAKS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(0.265f, 1f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(ENDER_WASTES, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-1f, -0.19f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(CRYSTAL_CRAGS, new Climate.ParameterPoint(span(0.2f, 0.48f), span(-0.19f, 0.265f), span(-0.725f, -0.15f), span(-1f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(FROZEN_SHRUBLAND, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 0.045f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(0.045f, 1f), span(-0.15f, 1f), span(-1f, 0.545f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.045f, 1f), span(-0.15f, 1f), span(-1f, -0.375f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(FLESH_TUNDRA, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, -0.19f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(-0.19f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(END_SHRUBLAND, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.265f, 0.685f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.375f, 0.545f), span(0f, 0f), span(-0.05f, 0.05f), 0)),
+		new Tuple2<>(PRISMARINE_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.265f, 1f), span(-0.15f, 1f), span(0.545f, 1f), span(0f, 0f), span(-0.05f, 1f), 0)),
+		new Tuple2<>(FROZEN_SHRUBLAND, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, 0.045f), span(-0.15f, 1f), span(-0.375f, -0.065f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(END_HIGHLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-1f, 0.045f), span(-0.15f, 1f), span(-0.375f, -0.065f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(AMETHYST_FOREST, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.045f, 1f), span(-0.15f, 1f), span(-0.375f, -0.065f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(FLESH_TUNDRA, new Climate.ParameterPoint(span(-1f, -0.405f), span(-1f, -0.19f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(FROSTED_VALLEY, new Climate.ParameterPoint(span(-1f, -0.405f), span(-0.19f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(END_SHRUBLAND, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(-0.19f, 0.045f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(END_MIDLANDS, new Climate.ParameterPoint(span(-0.405f, 0.48f), span(0.265f, 0.685f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(THE_NEST, new Climate.ParameterPoint(span(-0.405f, 0.2f), span(0.685f, 1f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(END_WILDS, new Climate.ParameterPoint(span(-0.15f, 0.48f), span(-0.47000000000000003f, -0.19f), span(-0.15f, 1f), span(-0.065f, 0.545f), span(0f, 0f), span(0.05f, 1f), 0)),
+		new Tuple2<>(THE_END, new Climate.ParameterPoint(point(0f), point(0f), point(-2f), point(-2f), span(-2f, 2f), point(0f), 0)),
+		new Tuple2<>(THE_VOID, new Climate.ParameterPoint(point(0f), point(0f), point(0f), point(0f), point(2f), point(0f), 1))
+	);
+
 	RuleSource WILDS_DIRT_SEQUENCE = sequence(
 		ifTrue(stoneDepthCheck(1, false, 0, CaveSurface.FLOOR),
 			ifTrue(noiseCondition2d(StellarityNoises.SURFACE, -1, 0.197555555),
@@ -927,17 +1018,11 @@ public interface WorldgenData {
 		);
 	}
 
-	static MultiNoiseBiomeSource stellarityBiomeSource(HolderGetter<Biome> biomes) {
-
+	static MultiNoiseBiomeSource stellarityBiomeSource(HolderGetter<Biome> biomes, boolean hasNullscape) {
 		List<Pair<Climate.ParameterPoint, Holder<Biome>>> biomePoints = new ArrayList<>();
 
-//		var crystalPeaks = biomes.get(nullscapeBiome("crystal_peaks"));
-//		var shadowlands = biomes.get(nullscapeBiome("shadowlands"));
-//		var voidBarrens = biomes.get(nullscapeBiome("void_barrens"));
-
-//		boolean hasNullscape = crystalPeaks.isPresent() || shadowlands.isPresent() || voidBarrens.isPresent();
-
-		for (var point : PARAMETER_POINTS) {
+		var points = hasNullscape ? NULLSCAPE_PARAMETER_POINTS : PARAMETER_POINTS;
+		for (var point : points) {
 			var biome = biomes.get(point._1());
 			if (biome.isEmpty()) continue;
 

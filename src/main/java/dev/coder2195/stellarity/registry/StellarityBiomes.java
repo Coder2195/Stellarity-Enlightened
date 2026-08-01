@@ -702,4 +702,10 @@ public interface StellarityBiomes {
 	private static ResourceKey<Biome> id(String id) {
 		return ResourceKey.create(Registries.BIOME, Stellarity.id(id));
 	}
+	ResourceKey<Biome> SHADOWLANDS = nullscapeId("shadowlands");
+	ResourceKey<Biome> CRYSTAL_PEAKS = nullscapeId("crystal_peaks");
+	ResourceKey<Biome> VOID_BARRENS = nullscapeId("void_barrens");
+	private static ResourceKey<Biome> nullscapeId(String id) {
+		return ResourceKey.create(Registries.BIOME, Stellarity.id("nullscape", id));
+	}
 }

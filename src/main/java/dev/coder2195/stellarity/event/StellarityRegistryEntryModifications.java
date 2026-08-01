@@ -1,5 +1,7 @@
 package dev.coder2195.stellarity.event;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.util.WorldgenData;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -10,8 +12,6 @@ import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.SurfaceRules;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.util.WorldgenData;
 
 import static dev.coder2195.stellarity.registry.StellarityDensityFunctions.*;
 
@@ -23,16 +23,19 @@ public class StellarityRegistryEntryModifications {
 	private static DensityFunction depth;
 	private static DensityFunction ridges;
 	private static DensityFunction preliminarySurfaceLevel;
+	private static DensityFunction nullscapePreliminarySurfaceLevel;
 	private static DensityFunction finalDensity;
+	private static DensityFunction nullscapeFinalDensity;
 	private static NoiseRouter endNoiseRouter;
-	private static boolean nullscapeCompatActive = false;
 	private static ChunkGenerator chunkGenerator;
 	private static Registry<Biome> biomeRegistry;
 	private static NoiseGeneratorSettings cachedNoiseSettings;
 	private static boolean surfaceRulesDone = false;
+	private static int lastBiomeAdded;
+	private static boolean nullscapeBiomes = false;
 
 	private static void checkMerge() {
-		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || preliminarySurfaceLevel == null || finalDensity == null || endNoiseRouter == null)
+		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || (preliminarySurfaceLevel == null && nullscapePreliminarySurfaceLevel == null) || (finalDensity == null && nullscapeFinalDensity == null) || endNoiseRouter == null)
 			return;
 
 		endNoiseRouter.temperature = temperature;
@@ -41,34 +44,39 @@ public class StellarityRegistryEntryModifications {
 		endNoiseRouter.erosion = erosion;
 		endNoiseRouter.depth = depth;
 		endNoiseRouter.ridges = ridges;
-		endNoiseRouter.preliminarySurfaceLevel = preliminarySurfaceLevel;
-		endNoiseRouter.finalDensity = finalDensity;
 
-		Stellarity.LOGGER.info("MERGED! This is an important checkpoint as it could corrupt worlds without it.");
+		boolean usedNullscape = nullscapeFinalDensity != null && nullscapePreliminarySurfaceLevel != null;
+		endNoiseRouter.preliminarySurfaceLevel = nullscapePreliminarySurfaceLevel == null ? preliminarySurfaceLevel : nullscapePreliminarySurfaceLevel;
+		endNoiseRouter.finalDensity = nullscapeFinalDensity == null ? finalDensity : nullscapeFinalDensity;
 
+		Stellarity.LOGGER.info("MERGED! This is an important checkpoint as it could corrupt worlds without it. Used Nullscape: {}", usedNullscape);
+	}
+
+	public static void resetState() {
+		temperature = null;
+		vegetation = null;
+		continents = null;
+		erosion = null;
+		depth = null;
+		ridges = null;
+		nullscapePreliminarySurfaceLevel = null;
+		nullscapeFinalDensity = null;
+		preliminarySurfaceLevel = null;
+		finalDensity = null;
+		endNoiseRouter = null;
+		chunkGenerator = null;
+		cachedNoiseSettings = null;
+		surfaceRulesDone = false;
 	}
 
 
 	public static void init() {
 		DynamicRegistrySetupCallback.EVENT.register(registryView -> {
-			temperature = null;
-			vegetation = null;
-			continents = null;
-			erosion = null;
-			depth = null;
-			ridges = null;
-			preliminarySurfaceLevel = null;
-			finalDensity = null;
-			endNoiseRouter = null;
-			nullscapeCompatActive = false;
-			chunkGenerator = null;
-			biomeRegistry = null;
-			cachedNoiseSettings = null;
-			surfaceRulesDone = false;
+			StellarityRegistryEntryModifications.resetState();
 
 			registryView.registerEntryAdded(Registries.DENSITY_FUNCTION, (_, id, densityFunction) -> {
 				var namespace = id.getNamespace();
-				if (!(namespace.equals(Stellarity.MOD_ID) || namespace.equals("nullscape_compat")) ) return;
+				if (!(namespace.equals(Stellarity.MOD_ID) || namespace.equals("nullscape_compat"))) return;
 				if (id.equals(CLIMATE_TEMPERATURE.identifier())) temperature = densityFunction;
 				else if (id.equals(CLIMATE_HUMIDITY.identifier())) vegetation = densityFunction;
 				else if (id.equals(CLIMATE_CONTINENTS.identifier())) continents = densityFunction;
@@ -76,17 +84,13 @@ public class StellarityRegistryEntryModifications {
 				else if (id.equals(CLIMATE_DEPTH.identifier())) depth = densityFunction;
 				else if (id.equals(CLIMATE_RIDGES.identifier())) ridges = densityFunction;
 				else if (id.equals(NULLSCAPE_COMPAT_INITIAL_DENSITY.identifier())) {
-					nullscapeCompatActive = true;
 					Stellarity.LOGGER.info("Nullscape detected, pulling nullscape initial density");
-					preliminarySurfaceLevel = densityFunction;
-				}
-				else if (id.equals(NULLSCAPE_COMPAT_FINAL_DENSITY.identifier())) {
-					nullscapeCompatActive = true;
+					nullscapePreliminarySurfaceLevel = densityFunction;
+				} else if (id.equals(NULLSCAPE_COMPAT_FINAL_DENSITY.identifier())) {
 					Stellarity.LOGGER.info("Nullscape detected, pulling nullscape final density");
-					finalDensity = densityFunction;
-				}
-				else if (id.equals(INITIAL_DENSITY.identifier()) && !nullscapeCompatActive) preliminarySurfaceLevel = densityFunction;
-				else if (id.equals(FINAL_DENSITY.identifier()) && !nullscapeCompatActive) finalDensity = densityFunction;
+					nullscapeFinalDensity = densityFunction;
+				} else if (id.equals(INITIAL_DENSITY.identifier())) preliminarySurfaceLevel = densityFunction;
+				else if (id.equals(FINAL_DENSITY.identifier())) finalDensity = densityFunction;
 
 				checkMerge();
 			});
@@ -119,7 +123,6 @@ public class StellarityRegistryEntryModifications {
 				checkMerge();
 
 				noiseSettings.disableMobGeneration = false;
-
 			});
 
 			registryView.registerEntryAdded(Registries.LEVEL_STEM, (_, id, levelStem) -> {
@@ -127,14 +130,26 @@ public class StellarityRegistryEntryModifications {
 
 				chunkGenerator = levelStem.generator();
 				if (biomeRegistry != null) {
-					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry);
+					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+					Stellarity.LOGGER.info("adding biomes (level stem)");
 				}
 			});
 
-			registryView.registerEntryAdded(Registries.BIOME, (_, id, biome) -> {
+			registryView.registerEntryAdded(Registries.BIOME, (i, id, biome) -> {
 				biomeRegistry = registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME);
+
+				if (i < lastBiomeAdded) {
+					lastBiomeAdded = i;
+					nullscapeBiomes = false;
+				}
+
+				if (id.getNamespace().equals("nullscape")) {
+					nullscapeBiomes = true;
+				}
+
 				if (chunkGenerator != null && !Stellarity.hasBiolith()) {
-					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry);
+					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+					Stellarity.LOGGER.info("adding biomes (biome registry)");
 				}
 
 				if (cachedNoiseSettings != null && !Stellarity.hasBiolith() && !surfaceRulesDone)
