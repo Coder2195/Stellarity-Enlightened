@@ -55,6 +55,7 @@ public class Stellarity implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
+		StellarityServerTick.init();
 		StellarityMaterialConditions.init();
 		StellarityNumberProviders.init();
 		StellarityEntitySubPredicates.init();

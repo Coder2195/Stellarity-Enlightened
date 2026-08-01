@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.TheEndBiomeSource;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.levelgen.DensityFunction;
@@ -16,23 +17,23 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import static dev.coder2195.stellarity.registry.StellarityDensityFunctions.*;
 
 public class StellarityRegistryEntryModifications {
-	private static DensityFunction temperature;
-	private static DensityFunction vegetation;
-	private static DensityFunction continents;
-	private static DensityFunction erosion;
-	private static DensityFunction depth;
-	private static DensityFunction ridges;
-	private static DensityFunction preliminarySurfaceLevel;
-	private static DensityFunction nullscapePreliminarySurfaceLevel;
-	private static DensityFunction finalDensity;
-	private static DensityFunction nullscapeFinalDensity;
-	private static NoiseRouter endNoiseRouter;
-	private static ChunkGenerator chunkGenerator;
-	private static Registry<Biome> biomeRegistry;
-	private static NoiseGeneratorSettings cachedNoiseSettings;
-	private static boolean surfaceRulesDone = false;
-	private static int lastBiomeAdded;
-	private static boolean nullscapeBiomes = false;
+	public static DensityFunction temperature;
+	public static DensityFunction vegetation;
+	public static DensityFunction continents;
+	public static DensityFunction erosion;
+	public static DensityFunction depth;
+	public static DensityFunction ridges;
+	public static DensityFunction preliminarySurfaceLevel;
+	public static DensityFunction nullscapePreliminarySurfaceLevel;
+	public static DensityFunction finalDensity;
+	public static DensityFunction nullscapeFinalDensity;
+	public static NoiseRouter endNoiseRouter;
+	public static ChunkGenerator chunkGenerator;
+	public static Registry<Biome> biomeRegistry;
+	public static NoiseGeneratorSettings cachedNoiseSettings;
+	public static boolean surfaceRulesDone = false;
+	public static int lastBiomeAdded = 100;
+	public static boolean nullscapeBiomes = false;
 
 	private static void checkMerge() {
 		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || (preliminarySurfaceLevel == null && nullscapePreliminarySurfaceLevel == null) || (finalDensity == null && nullscapeFinalDensity == null) || endNoiseRouter == null)
@@ -126,11 +127,11 @@ public class StellarityRegistryEntryModifications {
 			});
 
 			registryView.registerEntryAdded(Registries.LEVEL_STEM, (_, id, levelStem) -> {
-				if (!id.equals(LevelStem.END.identifier()) || Stellarity.hasBiolith()) return;
+				if (!id.equals(LevelStem.END.identifier())) return;
 
 				chunkGenerator = levelStem.generator();
 				if (biomeRegistry != null) {
-					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+					chunkGenerator.biomeSource = Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
 					Stellarity.LOGGER.info("adding biomes (level stem)");
 				}
 			});
@@ -139,16 +140,18 @@ public class StellarityRegistryEntryModifications {
 				biomeRegistry = registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME);
 
 				if (i < lastBiomeAdded) {
-					lastBiomeAdded = i;
 					nullscapeBiomes = false;
 				}
+
+				lastBiomeAdded = i;
 
 				if (id.getNamespace().equals("nullscape")) {
 					nullscapeBiomes = true;
 				}
 
-				if (chunkGenerator != null && !Stellarity.hasBiolith()) {
-					chunkGenerator.biomeSource = WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+				if (chunkGenerator != null) {
+					chunkGenerator.biomeSource = Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+
 					Stellarity.LOGGER.info("adding biomes (biome registry)");
 				}
 

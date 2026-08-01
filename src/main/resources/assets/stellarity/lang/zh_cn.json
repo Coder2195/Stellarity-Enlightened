@@ -616,6 +616,7 @@
 	"message.stellarity.altar_of_the_accursed_locked": "它的魔力被一只强大的野兽封印着",
 	"message.stellarity.missing_modonomicon": "Missing Modonomicon! This item requires the Modonomicon mod to function.",
 	"message.stellarity.no_void_fish": "没有鱼敢进入这个区域...",
+	"message.stellarity.nullscape_mod_required": "You are using the datapack version of nullscape. With mods like Biolith, you must use the datapack packaged as a mod instead.",
 	"message.stellarity.spellbook_ready": "冷却结束。",
 	"message.stellarity.void_fishing_too_deep": "直觉告诉你，你应该钓得更高一点...",
 	"painting.stellarity.a_hop_and_a_skip_away.author": "Cohara",

@@ -616,6 +616,7 @@
 	"message.stellarity.altar_of_the_accursed_locked": "Sua magia está selada por uma fera poderosa",
 	"message.stellarity.missing_modonomicon": "Missing Modonomicon! This item requires the Modonomicon mod to function.",
 	"message.stellarity.no_void_fish": "Nenhum peixe ousa entrar neste recinto...",
+	"message.stellarity.nullscape_mod_required": "You are using the datapack version of nullscape. With mods like Biolith, you must use the datapack packaged as a mod instead.",
 	"message.stellarity.spellbook_ready": "O livro está pronto.",
 	"message.stellarity.void_fishing_too_deep": "Você pressente que deveria pescar em um lugar mais alto...",
 	"painting.stellarity.a_hop_and_a_skip_away.author": "Cohara",
