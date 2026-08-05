@@ -1,5 +1,9 @@
 package dev.coder2195.stellarity.datagen;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.client.registry.item_tint_source.ColorTintSource;
+import dev.coder2195.stellarity.registry.StellarityBlocks;
+import dev.coder2195.stellarity.registry.StellarityEquipmentAssets;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.color.item.GrassColorSource;
@@ -16,17 +20,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.item_tint_source.ColorTintSource;
-import dev.coder2195.stellarity.registry.StellarityEquipmentAssets;
-import dev.coder2195.stellarity.registry.StellarityBlocks;
 
 import java.util.List;
 import java.util.Optional;
 
+import static dev.coder2195.stellarity.registry.StellarityItems.*;
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 import static net.minecraft.client.data.models.model.TextureMapping.getBlockTexture;
-import static dev.coder2195.stellarity.registry.StellarityItems.*;
 
 
 public class ModelProvider extends FabricModelProvider {
@@ -94,7 +94,7 @@ public class ModelProvider extends FabricModelProvider {
 		BOOK_OF_OBSTRUCT,
 		BOOK_OF_UPDRAFT,
 		BOOK_OF_CONVEYANCE,
-		BOOK_OF_RETURN,
+		BOOK_OF_RETURN
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{
@@ -186,7 +186,7 @@ public class ModelProvider extends FabricModelProvider {
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);
 
-		for (var handheld: List.of(TAMARIS, STELLAR_STRIKER))
+		for (var handheld : List.of(TAMARIS, STELLAR_STRIKER))
 			generators.generateFlatItem(handheld, ModelTemplates.FLAT_HANDHELD_ITEM);
 
 		for (Item item : FLAT_ITEMS) {
@@ -195,10 +195,15 @@ public class ModelProvider extends FabricModelProvider {
 
 		generators.generateElytra(PHANTOM_WINGS);
 
-		generators.generateTrimmableItem(SHULKER_HELMET, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-		generators.generateTrimmableItem(SHULKER_CHESTPLATE, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-		generators.generateTrimmableItem(SHULKER_LEGGINGS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-		generators.generateTrimmableItem(SHULKER_BOOTS, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+		for (var helmet : List.of(CHAMPION_HELMET, SHULKER_HELMET))
+			generators.generateTrimmableItem(helmet, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+		for (var chestplate : List.of(CHAMPION_CHESTPLATE, SHULKER_CHESTPLATE))
+			generators.generateTrimmableItem(chestplate, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+		for (var leggings : List.of(CHAMPION_LEGGINGS, SHULKER_LEGGINGS))
+			generators.generateTrimmableItem(leggings, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+		for (var boots : List.of(CHAMPION_BOOTS, SHULKER_BOOTS))
+			generators.generateTrimmableItem(boots, StellarityEquipmentAssets.SHULKER, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+
 
 		generators.generateShield(COPPER_ELEKTRA_SHIELD);
 		SHIELD_TEMPLATE.create(Stellarity.id("item/copper_elektra_shield"), new TextureMapping()

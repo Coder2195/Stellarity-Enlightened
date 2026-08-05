@@ -687,6 +687,7 @@
 	"subtitles.stellarity.entity.enderman.attack": "Enderman attacks",
 	"subtitles.stellarity.entity.endermite.attack": "Endermite attacks",
 	"subtitles.stellarity.entity.prismatic_pearl.throw": "Prismatic Pearl flies",
+	"subtitles.stellarity.item.champion_armor.add_damage": "Champion Armor adds damage",
 	"subtitles.stellarity.item.copper_elektra_shield.dash": "Copper Elektra Shield dashes",
 	"subtitles.stellarity.item.fluffy_hammer.return": "Fluffy Hammer returns",
 	"subtitles.stellarity.item.fluffy_hammer.throw": "Fluffy Hammer throws",
@@ -698,5 +699,6 @@
 	"tag.item.stellarity.donator": "Stellarity Donator Items",
 	"tag.item.stellarity.enchantable.elytra": "Stellarity Elytra Enchantables",
 	"tag.item.stellarity.enchantable.ranged": "Stellarity Ranged Weapon Enchantables",
-	"tag.item.stellarity.fishes": "Stellarity Fishes"
+	"tag.item.stellarity.fishes": "Stellarity Fishes",
+	"tag.item.stellarity.repairs_champion_armor": "Repairs Champion Armor"
 }

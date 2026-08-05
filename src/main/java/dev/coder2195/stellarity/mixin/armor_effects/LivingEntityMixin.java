@@ -2,11 +2,20 @@ package dev.coder2195.stellarity.mixin.armor_effects;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
+import dev.coder2195.stellarity.registry.StellarityDataAttachments;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
@@ -14,17 +23,18 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import dev.coder2195.stellarity.registry.StellarityItems;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Predicate;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-
-
 	@Shadow
 	public abstract ItemStack getItemBySlot(EquipmentSlot slot);
 
@@ -34,25 +44,26 @@ public abstract class LivingEntityMixin extends Entity {
 	@Shadow
 	public abstract LivingEntity getLastAttacker();
 
+	@Shadow
+	@Nullable
+	public abstract AttributeInstance getAttribute(Holder<Attribute> attribute);
+
+	@Shadow
+	protected abstract AABB getHitbox();
+
 	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
 	}
 
 	@WrapMethod(method = "hurtServer")
-	private boolean fullSetEffects(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
+	private boolean fullShulkerSetEffects(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
 		if (!original.call(level, source, damage)) return false;
-
-
-		ItemStack head = this.getItemBySlot(EquipmentSlot.HEAD);
-		ItemStack chest = this.getItemBySlot(EquipmentSlot.CHEST);
-		ItemStack legs = this.getItemBySlot(EquipmentSlot.LEGS);
-		ItemStack feet = this.getItemBySlot(EquipmentSlot.FEET);
 
 		var pos = this.position();
 		var castedSelf = ((LivingEntity) (Entity) this);
 
 
-		if (head.is(StellarityItems.SHULKER_HELMET) && chest.is(StellarityItems.SHULKER_CHESTPLATE) && legs.is(StellarityItems.SHULKER_LEGGINGS) && feet.is(StellarityItems.SHULKER_BOOTS)) {
+		if (ArmorEffectsHelper.isFullChampionArmor((castedSelf))) {
 
 			Predicate<LivingEntity> filter = attackFilter(castedSelf);
 
@@ -99,14 +110,49 @@ public abstract class LivingEntityMixin extends Entity {
 		// will be for totem stuff
 		if (newEffect.is(MobEffects.LEVITATION) && source == this) return original.call(newEffect, source);
 
-		ItemStack head = this.getItemBySlot(EquipmentSlot.HEAD);
-		ItemStack chest = this.getItemBySlot(EquipmentSlot.CHEST);
-		ItemStack legs = this.getItemBySlot(EquipmentSlot.LEGS);
-		ItemStack feet = this.getItemBySlot(EquipmentSlot.FEET);
-		if (head.is(StellarityItems.SHULKER_HELMET) && chest.is(StellarityItems.SHULKER_CHESTPLATE) && legs.is(StellarityItems.SHULKER_LEGGINGS) && feet.is(StellarityItems.SHULKER_BOOTS) && (newEffect.is(MobEffects.WITHER) || newEffect.is(MobEffects.LEVITATION)))
+		if (ArmorEffectsHelper.isFullShulkerArmor((LivingEntity) (Object) this) && (newEffect.is(MobEffects.WITHER) || newEffect.is(MobEffects.LEVITATION)))
 			return false;
 
 		return original.call(newEffect, source);
+	}
+
+	@Inject(method = "tick", at=@At("HEAD"))
+	private void championTick(CallbackInfo ci) {
+		var level = level();
+		var castedSelf = (LivingEntity) (Object) this;
+		ParticleOptions particle = castedSelf instanceof Player player && player.nameAndId().name().equals("kohara_") ? ParticleTypes.CHERRY_LEAVES : PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
+
+		var hitbox = getHitbox();
+		var xDist = hitbox.getXsize();
+		var yDist = hitbox.getYsize();
+		var zDist = hitbox.getZsize();
+		var center = hitbox.getCenter().subtract(getHeadLookAngle().normalize().scale((xDist + yDist) / 4));
+
+
+		if (ArmorEffectsHelper.isFullChampionArmor(castedSelf) && level.isClientSide()) {
+			for (int i=0; i<2; i++) level.addParticle(particle, true,
+				false,
+				center.x + xDist * (random.nextDouble() - 0.5),
+				center.y + yDist * (random.nextDouble() - 0.5),
+				center.z + zDist * (random.nextDouble() - 0.5),
+				0, 0, 0
+			);
+		}
+
+		var gameTime = level().getGameTime();
+		var attachedCooldown = getAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL);
+		if (attachedCooldown == null) {
+			setAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL, gameTime + ArmorEffectsHelper.CHAMPION_BOOST_DURATION);
+			return;
+		}
+
+		if (gameTime < attachedCooldown) return;
+
+		removeAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL);
+
+		var attackDamage = getAttribute(Attributes.ATTACK_DAMAGE);
+		if (attackDamage == null || attackDamage.getModifier(ArmorEffectsHelper.CHAMPION_MODIFIER) == null) return;
+		attackDamage.removeModifier(ArmorEffectsHelper.CHAMPION_MODIFIER);
 	}
 
 

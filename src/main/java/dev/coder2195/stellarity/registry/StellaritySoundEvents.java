@@ -32,6 +32,7 @@ public interface StellaritySoundEvents {
 	SoundEvent VOIDED_DEACTIVATE = register("effect.voided.deactivate");
 
 	SoundEvent SPELLBOOK_CAST = register("item.spellbook.cast");
+	SoundEvent CHAMPION_ARMOR_ADD_DAMAGE = register("item.champion_armor.add_damage");
 
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");

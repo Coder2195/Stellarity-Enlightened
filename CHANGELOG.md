@@ -2,6 +2,20 @@
 
 Compatibility update
 
+## Items
+**[+] Champion Helmet**
+
+**[+] Champion Chestplate**
+
+**[+] Champion Leggings**
+
+**[+] Champion Boots**
+
+## Recipes
+
+### AOTA
+
+**[+] Netherite Armor + 4 Chorus Plating + 1 Enderite Upgrade = Champion Armor**
 
 ## Dependencies
 

@@ -39,6 +39,7 @@
 			}
 		]
 	},
+
 	"effect.voided.deactivate": {
 		"sounds": [
 			{
@@ -75,12 +76,25 @@
 			}
 		]
 	},
+	"item.champion_armor.add_damage": {
+		"sounds": [
+			"stellarity:item/champion_armor/add_damage_1",
+			"stellarity:item/champion_armor/add_damage_2",
+			"stellarity:item/champion_armor/add_damage_3",
+			"stellarity:item/champion_armor/add_damage_4",
+			"stellarity:item/champion_armor/add_damage_5",
+			"stellarity:item/champion_armor/add_damage_6",
+			"stellarity:item/champion_armor/add_damage_7",
+			"stellarity:item/champion_armor/add_damage_8"
+		],
+		"subtitle": "subtitles.stellarity.item.champion_armor.add_damage"
+	},
 	"item.living_flesh.boost": {
 		"sounds": [
 			"stellarity:item/living_flesh/rush_1",
 			"stellarity:item/living_flesh/rush_2"
 		],
-		"subtitle": "subtitles.item.living_flesh.boost"
+		"subtitle": "subtitles.stellarity.item.living_flesh.boost"
 	},
 	"item.cooldown_end": {
 		"sounds": [
@@ -249,7 +263,7 @@
 			"stellarity:item/prismatic_punch/shoot_2",
 			"stellarity:item/prismatic_punch/shoot_3"
 		],
-		"subtitle": "subtitles.item.crossbow.shoot"
+		"subtitle": "subtitles.stellarity.item.crossbow.shoot"
 	},
 	"item.prismatic_punch.explode": {
 		"sounds": [

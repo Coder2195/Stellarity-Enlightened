@@ -13,6 +13,8 @@ public interface StellarityItemTags {
 	TagKey<Item> DONATOR = id("donator");
 	TagKey<Item> DEVELOPER = id("developer");
 
+	TagKey<Item> REPAIRS_CHAMPION_ARMOR = id("repairs_champion_armor");
+
 	static TagKey<Item> id(String id) {
 		return TagKey.create(Registries.ITEM, Stellarity.id(id));
 	}

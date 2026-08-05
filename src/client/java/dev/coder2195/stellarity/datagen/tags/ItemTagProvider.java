@@ -51,10 +51,10 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		addTags(StellarityItemTags.BOWS).add(CALL_OF_THE_VOID, SHARANGA, SPECTRAL_FURY);
 
-		addTags(ItemTags.HEAD_ARMOR).add(SHULKER_HELMET);
-		addTags(ItemTags.CHEST_ARMOR).add(SHULKER_CHESTPLATE);
-		addTags(ItemTags.LEG_ARMOR).add(SHULKER_LEGGINGS);
-		addTags(ItemTags.FOOT_ARMOR).add(SHULKER_BOOTS);
+		addTags(ItemTags.HEAD_ARMOR).add(SHULKER_HELMET, CHAMPION_HELMET);
+		addTags(ItemTags.CHEST_ARMOR).add(SHULKER_CHESTPLATE, CHAMPION_CHESTPLATE);
+		addTags(ItemTags.LEG_ARMOR).add(SHULKER_LEGGINGS, CHAMPION_LEGGINGS);
+		addTags(ItemTags.FOOT_ARMOR).add(SHULKER_BOOTS, CHAMPION_BOOTS);
 
 		addTags(ItemTags.FISHES, StellarityItemTags.FISHES);
 		addTags(StellarityItemTags.ELYTRA_ENCHANTABLE).add(ItemIds.ELYTRA);
@@ -71,6 +71,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		// TODO: add beginning and the end, and ensure all implementations complete
 		var developer = addTags(StellarityItemTags.DEVELOPER);
 		List.of(TAMARIS, HARVESTER, STELLAR_STRIKER, POTASSIFISH).forEach(developer::addOptional);
+
+		addTags(StellarityItemTags.REPAIRS_CHAMPION_ARMOR).add(CHORUS_PLATING);
 
 	}
 }

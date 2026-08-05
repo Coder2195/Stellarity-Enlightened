@@ -56,6 +56,8 @@ public interface StellarityDataAttachments {
 	AttachmentType<Unit> UPDRAFT_SLOW_FALLING = AttachmentRegistry.create(Stellarity.id("updraft_slow_falling"), builder -> builder.persistent(Unit.CODEC).syncWith(Unit.STREAM_CODEC, AttachmentSyncPredicate.all())
 	);
 
+	AttachmentType<Long> CHAMPION_BOOST_UNTIL = AttachmentRegistry.create(Stellarity.id("champion_boost_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
+
 
 
 	static void init() {

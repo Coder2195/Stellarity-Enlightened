@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.recipe.AltarDyeRecipe;
@@ -33,9 +34,25 @@ public class RecipeProvider extends FabricRecipeProvider {
 		output.accept(Stellarity.key(Registries.RECIPE, id), recipe, null);
 	}
 
+	public static class Ingredients extends LinkedHashMap<Ingredient, Integer> {
+		public Ingredients put(ItemLike item, int count) {
+			put(Ingredient.of(item), count);
+			return this;
+		}
+
+		public Ingredients put(ItemLike item) {
+			return put(item, 1);
+		}
+
+		public Ingredients putMany(int count, ItemLike... items) {
+			put(Ingredient.of(items), count);
+			return this;
+		}
+	}
 
 	@Override
 	public net.minecraft.data.recipes.@NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider provider, @NonNull RecipeOutput recipeOutput) {
+
 		return new net.minecraft.data.recipes.RecipeProvider(provider, recipeOutput) {
 			@Override
 			public void buildRecipes() {
@@ -67,93 +84,56 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 	public void buildRecipes(HolderLookup.Provider provider, RecipeOutput output) {
 		altarOfTheAccursed(output, "altar_of_the_accursed/lapis_to_amethyst", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(DIAMOND), 1);
-				put(Ingredient.of(LAPIS_LAZULI), 1);
-			}},
+			new Ingredients().put(DIAMOND).put(LAPIS_LAZULI),
 			new ItemStackTemplate(AMETHYST_SHARD)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/chorus_plating", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(IRON_INGOT), 1);
-				put(Ingredient.of(POPPED_CHORUS_FRUIT), 2);
-			}},
+			new Ingredients().put(IRON_INGOT).put(POPPED_CHORUS_FRUIT, 2),
 			new ItemStackTemplate(CHORUS_PLATING)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/enderite_upgrade_smithing_template", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(ENDERITE_SHARD), 5);
-				put(Ingredient.of(PURPUR_BLOCK), 9);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(ENDERITE_SHARD, 5).put(PURPUR_BLOCK, 9),
 			new ItemStackTemplate(ENDERITE_UPGRADE_SMITHING_TEMPLATE, 2)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/endonomicon", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENCHANTED_BOOK), 1);
-			}},
-			new ItemStackTemplate(ENDONOMICON, 1)
+			new Ingredients().put(ENCHANTED_BOOK),
+			new ItemStackTemplate(ENDONOMICON)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/satchel_of_voids", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(BUNDLE), 1);
-				put(Ingredient.of(NETHER_STAR), 2);
-				put(Ingredient.of(NETHERITE_INGOT), 4);
-				put(Ingredient.of(ENDERITE_SHARD), 64);
-				put(Ingredient.of(STARLIGHT_SOOT), 64);
-			}},
-			new ItemStackTemplate(SATCHEL_OF_VOIDS, 1)
+			new Ingredients().put(BUNDLE).put(NETHER_STAR, 2).put(NETHERITE_INGOT, 4).put(ENDERITE_SHARD, 64).put(STARLIGHT_SOOT, 64),
+			new ItemStackTemplate(SATCHEL_OF_VOIDS)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/satchel_of_voids_alternative", new AltarSimpleRecipe(
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(LEATHER), 1);
-				put(Ingredient.of(STRING), 1);
-				put(Ingredient.of(NETHER_STAR), 2);
-				put(Ingredient.of(NETHERITE_INGOT), 4);
-				put(Ingredient.of(ENDERITE_SHARD), 64);
-				put(Ingredient.of(STARLIGHT_SOOT), 64);
-			}},
-			new ItemStackTemplate(SATCHEL_OF_VOIDS, 1)
+			new Ingredients().put(LEATHER).put(STRING).put(NETHER_STAR, 2).put(NETHERITE_INGOT, 4).put(ENDERITE_SHARD, 64).put(STARLIGHT_SOOT, 64),
+			new ItemStackTemplate(SATCHEL_OF_VOIDS)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_helmet", new AltarUpgradeRecipe(
 			Ingredient.of(NETHERITE_HELMET),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(SHULKER_SHELL), 4);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
 			new ItemStackTemplate(SHULKER_HELMET)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_chestplate", new AltarUpgradeRecipe(
 			Ingredient.of(NETHERITE_CHESTPLATE),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(SHULKER_SHELL), 4);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
 			new ItemStackTemplate(SHULKER_CHESTPLATE)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_leggings", new AltarUpgradeRecipe(
 			Ingredient.of(NETHERITE_LEGGINGS),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(SHULKER_SHELL), 4);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
 			new ItemStackTemplate(SHULKER_LEGGINGS)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_boots", new AltarUpgradeRecipe(
 			Ingredient.of(NETHERITE_BOOTS),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(SHULKER_SHELL), 4);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
 			new ItemStackTemplate(SHULKER_BOOTS)
 		));
 
@@ -161,23 +141,38 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/spectral_fury", new AltarUpgradeRecipe(
 			Ingredient.of(SHARANGA),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(PHANTOM_MEMBRANE), 8);
-				put(Ingredient.of(DIAMOND), 3);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(PHANTOM_MEMBRANE, 8).put(DIAMOND, 3),
 			new ItemStackTemplate(SPECTRAL_FURY)
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/tamaris", new AltarUpgradeRecipe(
 			Ingredient.of(NETHERITE_SWORD),
-			new LinkedHashMap<>() {{
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-				put(Ingredient.of(ENDERITE_SHARD), 8);
-				put(Ingredient.of(WITHER_SKELETON_SKULL), 1);
-				put(Ingredient.of(ENDERITE_UPGRADE_SMITHING_TEMPLATE), 1);
-			}},
+			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(ENDERITE_SHARD, 8).put(WITHER_SKELETON_SKULL).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
 			new ItemStackTemplate(TAMARIS)
+		));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/champion_helmet", new AltarUpgradeRecipe(
+			Ingredient.of(NETHERITE_HELMET),
+			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
+			new ItemStackTemplate(CHAMPION_HELMET)
+		));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/champion_chestplate", new AltarUpgradeRecipe(
+			Ingredient.of(NETHERITE_CHESTPLATE),
+			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
+			new ItemStackTemplate(CHAMPION_CHESTPLATE)
+		));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/champion_leggings", new AltarUpgradeRecipe(
+			Ingredient.of(NETHERITE_LEGGINGS),
+			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
+			new ItemStackTemplate(CHAMPION_LEGGINGS)
+		));
+
+		altarOfTheAccursed(output, "altar_of_the_accursed/champion_boots", new AltarUpgradeRecipe(
+			Ingredient.of(NETHERITE_BOOTS),
+			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
+			new ItemStackTemplate(CHAMPION_BOOTS)
 		));
 	}
 

@@ -1,10 +1,10 @@
-import os
 import pathlib
 
 from pydub import AudioSegment
+from pydub.utils import ratio_to_db
 
 pathlib.Path("input_audio").mkdir(exist_ok=True)
-pathlib.Path("output_audio/spellbook/").mkdir(exist_ok=True, parents=True)
+pathlib.Path("output_audio/item/champion_armor").mkdir(exist_ok=True, parents=True)
 
 """
 Resources
@@ -26,31 +26,33 @@ def mc(path: str):
 
 
 
-def check_stereo():
-	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
-		for name in files:
-			path_joined = os.path.join(root, name)
-			if not path_joined.endswith(".ogg"): continue
-			channels = AudioSegment.from_ogg(path_joined).channels
-			if channels == 1: continue
-
-			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
+# def check_stereo():
+# 	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
+# 		for name in files:
+# 			path_joined = os.path.join(root, name)
+# 			if not path_joined.endswith(".ogg"): continue
+# 			channels = AudioSegment.from_ogg(path_joined).channels
+# 			if channels == 1: continue
+#
+# 			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
 
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
 
-open_flip = ["book/open_flip1", "book/open_flip2", "book/open_flip3"]
-enchant = ["enchantment_table/enchant1", "enchantment_table/enchant2", "enchantment_table/enchant3"]
+first = ["mob/blaze/hit1", "mob/blaze/hit2", "mob/blaze/hit3", "mob/blaze/hit4"]
+second = ["mob/warden/attack_impact_1", "mob/warden/attack_impact_1"]
 
-combo = [(o, e) for o in open_flip for e in enchant]
-num = 0
-for (o, e) in combo:
+num=0
+combo = [(a, b) for a in first for b in second]
+for (a, b) in combo:
+
 	num+=1
-	e_sound = mc(e)
-	o_sound = mc(o)
+	a_sound = mc(a)
+	b_sound = mc(b)
 
-	new_sound = e_sound.overlay(o_sound).set_channels(1)
-	new_sound.export(f"output_audio/spellbook/cast_{num}.ogg")
+	new_sound = mc("random/anvil_break").apply_gain(ratio_to_db(1.2)).overlay(b_sound).overlay(a_sound).set_channels(1)
+	new_sound.export(f"output_audio/item/champion_armor/add_damage_{num}.ogg", format="ogg")
+
 
 # thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]
 # illusioner = ["mob/illusion_illager/mirror_move1", "mob/illusion_illager/mirror_move2"]

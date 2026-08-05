@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -44,6 +45,16 @@ public interface StellarityArmorMaterials {
 				Stellarity.id("armor." + type.getName()),
 				0.5,
 				AttributeModifier.Operation.ADD_VALUE
+			), EquipmentSlotGroup.bySlot(type.getSlot()));
+		}
+	};
+
+	// durability doesn't matter, custom durability
+	ArmorMaterial CHAMPION = new ArmorMaterial(30, makeDefense(3, 6, 8, 3, 20), 9, SoundEvents.ARMOR_EQUIP_NETHERITE, 2F, 0.08F, StellarityItemTags.REPAIRS_CHAMPION_ARMOR, StellarityEquipmentAssets.CHAMPION) {
+		@Override
+		public @NonNull ItemAttributeModifiers createAttributes(@NonNull ArmorType type) {
+			return super.createAttributes(type).withModifierAdded(Attributes.ATTACK_DAMAGE, new AttributeModifier(
+				Stellarity.id("armor." + type.getName()), 0.025, AttributeModifier.Operation.ADD_MULTIPLIED_BASE
 			), EquipmentSlotGroup.bySlot(type.getSlot()));
 		}
 	};
