@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.datagen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.criterion_trigger.HolyProtectionTrigger;
 import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
@@ -69,10 +70,6 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 
 	public static Advancement.Builder advancement() {
 		return Advancement.Builder.advancement();
-	}
-
-	public static Advancement.Builder recipe() {
-		return Advancement.Builder.recipeAdvancement();
 	}
 
 	@Override
@@ -282,17 +279,21 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.addCriterion("find_village", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(StellarityStructures.VILLAGE))))
 			.requirements(requires("find_village")).build(Stellarity.id("exploration/find_end_village"));
 
+		var HALLELUJAH = advancement().display(
+			StellarityItems.HALLOWED_CHESTPLATE,
+			Component.translatable("advancements.stellarity.hallelujah"), Component.translatable("advancements.stellarity.hallelujah.description"),
+			null, TASK, true, true, false
+		).parent(CURSED_CRAFTING)
+			.addCriterion("holy_protection", HolyProtectionTrigger.trigger())
+			.requirements(requires("holy_protection")).build(Stellarity.id("altar_of_the_accursed/hallelujah"));
+
 
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
-			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE
+			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH
 		)) {
 			consumer.accept(advancement);
 		}
-	}
-
-	private Criterion<ImpossibleTrigger.TriggerInstance> impossible() {
-		return CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance());
 	}
 }
