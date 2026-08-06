@@ -11,11 +11,21 @@ Compatibility update
 
 **[+] Champion Boots**
 
+**[+] Hallowed Helmet**
+
+**[+] Hallowed Chestplate**
+
+**[+] Hallowed Leggings**
+
+**[+] Hallowed Boots**
+
 ## Recipes
 
 ### AOTA
 
 **[+] Netherite Armor + 4 Chorus Plating + 1 Enderite Upgrade = Champion Armor**
+
+**[+] Netherite Armor + 4 Hallowed Ingot + 1 Enderite Upgrade = Hallowed Armor**
 
 ## Dependencies
 

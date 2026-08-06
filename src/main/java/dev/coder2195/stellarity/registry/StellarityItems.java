@@ -322,6 +322,11 @@ public interface StellarityItems {
 	Item CHAMPION_LEGGINGS = register(StellarityItemIds.CHAMPION_LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.CHAMPION, ArmorType.LEGGINGS).durability(495));
 	Item CHAMPION_BOOTS = register(StellarityItemIds.CHAMPION_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.CHAMPION, ArmorType.BOOTS).durability(429));
 
+	Item HALLOWED_HELMET = register(StellarityItemIds.HALLOWED_HELMET, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.HALLOWED, ArmorType.HELMET));
+	Item HALLOWED_CHESTPLATE = register(StellarityItemIds.HALLOWED_CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.HALLOWED, ArmorType.CHESTPLATE));
+	Item HALLOWED_LEGGINGS = register(StellarityItemIds.HALLOWED_LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.HALLOWED, ArmorType.LEGGINGS));
+	Item HALLOWED_BOOTS = register(StellarityItemIds.HALLOWED_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.HALLOWED, ArmorType.BOOTS));
+
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
 	}
@@ -511,10 +516,10 @@ public interface StellarityItems {
 //		put(DRAGON_WINGS, 0x9936D6);
 		put(PHANTOM_WINGS, TextColor.YELLOW.getValue());
 //		put(EMPRESS_WINGS, 0xFF76D0);
-//		put(HALLOWED_HELMET, 0xFFDD52);
-//		put(HALLOWED_BOOTS, 0xFFDD52);
-//		put(HALLOWED_CHESTPLATE, 0xFFDD52);
-//		put(HALLOWED_LEGGINGS, 0xFFDD52);
+		put(HALLOWED_HELMET, 0xFFDD52);
+		put(HALLOWED_BOOTS, 0xFFDD52);
+		put(HALLOWED_CHESTPLATE, 0xFFDD52);
+		put(HALLOWED_LEGGINGS, 0xFFDD52);
 //		put(FLORAL_HELMET, 0xFC92D3);
 //		put(FLORAL_BOOTS, 0xFC92D3);
 //		put(FLORAL_CHESTPLATE, 0xFC92D3);

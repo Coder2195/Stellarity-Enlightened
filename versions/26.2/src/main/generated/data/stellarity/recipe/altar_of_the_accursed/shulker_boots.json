@@ -3,11 +3,11 @@
   "equipment": "minecraft:netherite_boots",
   "ingredients": [
     {
-      "ingredient": "stellarity:enderite_upgrade_smithing_template"
-    },
-    {
       "count": 4,
       "ingredient": "minecraft:shulker_shell"
+    },
+    {
+      "ingredient": "stellarity:enderite_upgrade_smithing_template"
     }
   ],
   "result": {

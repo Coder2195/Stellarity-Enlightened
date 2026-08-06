@@ -1,16 +1,16 @@
 {
   "type": "stellarity:altar_of_the_accursed_upgrade",
-  "equipment": "minecraft:netherite_leggings",
+  "equipment": "minecraft:netherite_boots",
   "ingredients": [
     {
       "count": 4,
-      "ingredient": "minecraft:shulker_shell"
+      "ingredient": "stellarity:hallowed_ingot"
     },
     {
       "ingredient": "stellarity:enderite_upgrade_smithing_template"
     }
   ],
   "result": {
-    "id": "stellarity:shulker_leggings"
+    "id": "stellarity:hallowed_boots"
   }
 }

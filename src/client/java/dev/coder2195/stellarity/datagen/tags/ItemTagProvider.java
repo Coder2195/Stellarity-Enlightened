@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
+import static net.minecraft.references.ItemIds.*;
 
 
 public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
@@ -73,6 +74,10 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		List.of(TAMARIS, HARVESTER, STELLAR_STRIKER, POTASSIFISH).forEach(developer::addOptional);
 
 		addTags(StellarityItemTags.REPAIRS_CHAMPION_ARMOR).add(CHORUS_PLATING);
+		addTags(StellarityItemTags.REPAIRS_HALLOWED_ARMOR).add(HALLOWED_INGOT);
+		addTags(StellarityItemTags.REPAIRS_REINFORCED_ARMOR).add(NETHERITE_INGOT);
+		addTags(StellarityItemTags.REPAIRS_SHULKER_ARMOR).add(SHULKER_SHELL);
+		addTags(StellarityItemTags.REPAIRS_FLORAL_ARMOR).add(NETHERITE_INGOT);
 
 	}
 }

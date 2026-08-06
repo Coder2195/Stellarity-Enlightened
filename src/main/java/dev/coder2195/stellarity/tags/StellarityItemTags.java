@@ -14,6 +14,10 @@ public interface StellarityItemTags {
 	TagKey<Item> DEVELOPER = id("developer");
 
 	TagKey<Item> REPAIRS_CHAMPION_ARMOR = id("repairs_champion_armor");
+	TagKey<Item> REPAIRS_HALLOWED_ARMOR = id("repairs_hallowed_armor");
+	TagKey<Item> REPAIRS_REINFORCED_ARMOR = id("repairs_reinforced_armor");
+	TagKey<Item> REPAIRS_SHULKER_ARMOR = id("repairs_shulker_armor");
+	TagKey<Item> REPAIRS_FLORAL_ARMOR = id("repairs_floral_armor");
 
 	static TagKey<Item> id(String id) {
 		return TagKey.create(Registries.ITEM, Stellarity.id(id));

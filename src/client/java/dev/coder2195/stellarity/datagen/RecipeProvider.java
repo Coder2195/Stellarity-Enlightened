@@ -1,27 +1,32 @@
 package dev.coder2195.stellarity.datagen;
 
 import com.mojang.serialization.Lifecycle;
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.recipe.AltarDyeRecipe;
+import dev.coder2195.stellarity.recipe.AltarRecipe;
+import dev.coder2195.stellarity.recipe.AltarSimpleRecipe;
+import dev.coder2195.stellarity.recipe.AltarUpgradeRecipe;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
+import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.recipe.AltarDyeRecipe;
-import dev.coder2195.stellarity.recipe.AltarRecipe;
-import dev.coder2195.stellarity.recipe.AltarSimpleRecipe;
-import dev.coder2195.stellarity.recipe.AltarUpgradeRecipe;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
-import static net.minecraft.world.item.Items.*;
 import static dev.coder2195.stellarity.registry.StellarityItems.*;
+import static net.minecraft.world.item.Items.*;
 
 
 public class RecipeProvider extends FabricRecipeProvider {
@@ -113,30 +118,6 @@ public class RecipeProvider extends FabricRecipeProvider {
 			new ItemStackTemplate(SATCHEL_OF_VOIDS)
 		));
 
-		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_helmet", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_HELMET),
-			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
-			new ItemStackTemplate(SHULKER_HELMET)
-		));
-
-		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_chestplate", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_CHESTPLATE),
-			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
-			new ItemStackTemplate(SHULKER_CHESTPLATE)
-		));
-
-		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_leggings", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_LEGGINGS),
-			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
-			new ItemStackTemplate(SHULKER_LEGGINGS)
-		));
-
-		altarOfTheAccursed(output, "altar_of_the_accursed/shulker_boots", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_BOOTS),
-			new Ingredients().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE).put(SHULKER_SHELL, 4),
-			new ItemStackTemplate(SHULKER_BOOTS)
-		));
-
 		altarOfTheAccursed(output, "altar_of_the_accursed/dye_elytra", new AltarDyeRecipe(Ingredient.of(ELYTRA)));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/spectral_fury", new AltarUpgradeRecipe(
@@ -151,29 +132,28 @@ public class RecipeProvider extends FabricRecipeProvider {
 			new ItemStackTemplate(TAMARIS)
 		));
 
-		altarOfTheAccursed(output, "altar_of_the_accursed/champion_helmet", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_HELMET),
-			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
-			new ItemStackTemplate(CHAMPION_HELMET)
-		));
 
-		altarOfTheAccursed(output, "altar_of_the_accursed/champion_chestplate", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_CHESTPLATE),
-			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
-			new ItemStackTemplate(CHAMPION_CHESTPLATE)
-		));
+		var pieces = List.of(
+			new Tuple2<>(NETHERITE_HELMET, "helmet"),
+			new Tuple2<>(NETHERITE_CHESTPLATE, "chestplate"),
+			new Tuple2<>(NETHERITE_LEGGINGS, "leggings"),
+			new Tuple2<>(NETHERITE_BOOTS, "boots")
+		);
 
-		altarOfTheAccursed(output, "altar_of_the_accursed/champion_leggings", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_LEGGINGS),
-			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
-			new ItemStackTemplate(CHAMPION_LEGGINGS)
-		));
+		for (int i = 0; i < pieces.size(); i++) {
+			var piece = pieces.get(i);
+			for (var armorType : List.<Tuple3<String, Item[], Supplier<Ingredients>>>of(
+				new Tuple3<>("shulker", new Item[]{SHULKER_HELMET, SHULKER_CHESTPLATE, SHULKER_LEGGINGS, SHULKER_BOOTS}, () -> new Ingredients().put(SHULKER_SHELL, 4)),
+				new Tuple3<>("champion", new Item[]{CHAMPION_HELMET, CHAMPION_CHESTPLATE, CHAMPION_LEGGINGS, CHAMPION_BOOTS}, () -> new Ingredients().put(CHORUS_PLATING, 4)),
+				new Tuple3<>("hallowed", new Item[]{HALLOWED_HELMET, HALLOWED_CHESTPLATE, HALLOWED_LEGGINGS, HALLOWED_BOOTS}, () -> new Ingredients().put(HALLOWED_INGOT, 4))
+			))
+				altarOfTheAccursed(output, "altar_of_the_accursed/" + armorType._1() + "_" + piece._2(), new AltarUpgradeRecipe(
+					Ingredient.of(piece._1()),
+					armorType._3().get().put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
+					new ItemStackTemplate(armorType._2()[i])
+				));
 
-		altarOfTheAccursed(output, "altar_of_the_accursed/champion_boots", new AltarUpgradeRecipe(
-			Ingredient.of(NETHERITE_BOOTS),
-			new Ingredients().put(CHORUS_PLATING, 4).put(ENDERITE_UPGRADE_SMITHING_TEMPLATE),
-			new ItemStackTemplate(CHAMPION_BOOTS)
-		));
+		}
 	}
 
 	@Override

@@ -4,13 +4,13 @@
   "ingredients": [
     {
       "count": 4,
-      "ingredient": "minecraft:shulker_shell"
+      "ingredient": "stellarity:hallowed_ingot"
     },
     {
       "ingredient": "stellarity:enderite_upgrade_smithing_template"
     }
   ],
   "result": {
-    "id": "stellarity:shulker_leggings"
+    "id": "stellarity:hallowed_leggings"
   }
 }
