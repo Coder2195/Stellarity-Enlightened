@@ -15,6 +15,9 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public interface ArmorEffectsHelper {
 	Identifier CHAMPION_MODIFIER = Stellarity.id("champion_armor");
 	long CHAMPION_BOOST_DURATION = 3 * 20;
+	long HOLY_PROTECTION_DODGE_COOLDOWN = 25 * 20;
+	long HOLY_PROTECTION_DODGE_DURATION = 5 * 20;
+	long HOLY_PROTECTION_MOVEMENT_SPEED_DURATION = 6 * 20;
 
 	static boolean isFullShulkerArmor(LivingEntity livingEntity) {
 		return livingEntity.getItemBySlot(EquipmentSlot.HEAD).is(StellarityItems.SHULKER_HELMET) &&
@@ -28,6 +31,13 @@ public interface ArmorEffectsHelper {
 			livingEntity.getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.CHAMPION_CHESTPLATE) &&
 			livingEntity.getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.CHAMPION_LEGGINGS) &&
 			livingEntity.getItemBySlot(EquipmentSlot.FEET).is(StellarityItems.CHAMPION_BOOTS);
+	}
+
+	static boolean isFullHallowedArmor(LivingEntity livingEntity) {
+		return livingEntity.getItemBySlot(EquipmentSlot.HEAD).is(StellarityItems.HALLOWED_HELMET) &&
+			livingEntity.getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.HALLOWED_CHESTPLATE) &&
+			livingEntity.getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.HALLOWED_LEGGINGS) &&
+			livingEntity.getItemBySlot(EquipmentSlot.FEET).is(StellarityItems.HALLOWED_BOOTS);
 	}
 
 	static void championIncreaseDamage(LivingEntity livingEntity, ServerLevel serverLevel) {

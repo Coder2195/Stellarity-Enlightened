@@ -14,7 +14,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
 
-public class HolyProtectionTrigger extends SimpleCriterionTrigger<HolyProtectionTrigger.TriggerInstance> {
+public class HolyProtectionDodgeTrigger extends SimpleCriterionTrigger<HolyProtectionDodgeTrigger.TriggerInstance> {
 	@Override
 	public @NonNull Codec<TriggerInstance> codec() {
 		return TriggerInstance.CODEC;
@@ -25,7 +25,7 @@ public class HolyProtectionTrigger extends SimpleCriterionTrigger<HolyProtection
 	}
 
 	public static Criterion<?> trigger() {
-		return StellarityCriteriaTriggers.HOLY_PROTECTION.createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
+		return StellarityCriteriaTriggers.HOLY_PROTECTION_DODGE.createCriterion(new TriggerInstance(Optional.empty(), Optional.empty()));
 	}
 
 	public record TriggerInstance(Optional<ContextAwarePredicate> player, Optional<DamagePredicate> damage) implements SimpleCriterionTrigger.SimpleInstance {

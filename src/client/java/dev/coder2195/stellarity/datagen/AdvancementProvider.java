@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.datagen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.criterion_trigger.HolyProtectionTrigger;
+import dev.coder2195.stellarity.criterion_trigger.HolyProtectionDodgeTrigger;
 import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
@@ -284,7 +284,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			Component.translatable("advancements.stellarity.hallelujah"), Component.translatable("advancements.stellarity.hallelujah.description"),
 			null, TASK, true, true, false
 		).parent(CURSED_CRAFTING)
-			.addCriterion("holy_protection", HolyProtectionTrigger.trigger())
+			.addCriterion("holy_protection", HolyProtectionDodgeTrigger.trigger())
 			.requirements(requires("holy_protection")).build(Stellarity.id("altar_of_the_accursed/hallelujah"));
 
 

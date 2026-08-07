@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.mixin.armor_effects;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import net.minecraft.core.Holder;
@@ -15,6 +16,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -154,6 +156,61 @@ public abstract class LivingEntityMixin extends Entity {
 		if (attackDamage == null || attackDamage.getModifier(ArmorEffectsHelper.CHAMPION_MODIFIER) == null) return;
 		attackDamage.removeModifier(ArmorEffectsHelper.CHAMPION_MODIFIER);
 	}
+
+
+
+	@WrapMethod(method = "hurtServer")
+	private boolean holyProtectionDodge(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
+		if (!ArmorEffectsHelper.isFullHallowedArmor((LivingEntity) (Entity) this)) return original.call(level, source, damage);
+
+		var nextDodgeAt = getAttachedOrElse(StellarityDataAttachments.HOLY_PROTECTION_NEXT_DODGE_AT, 0L);
+		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT);
+		var gameTime = level.getGameTime();
+
+		if (lastDodgedAt != null && gameTime - lastDodgedAt < ArmorEffectsHelper.HOLY_PROTECTION_DODGE_DURATION) damage = 0;
+
+		var result = original.call(level, source, damage);
+
+		if (!result) return false;
+
+		var movementSpeed = getAttribute(Attributes.MOVEMENT_SPEED);
+		var movementEfficiency = getAttribute(Attributes.MOVEMENT_EFFICIENCY);
+		var knockbackResistance = getAttribute(Attributes.KNOCKBACK_RESISTANCE);
+
+		if (gameTime > nextDodgeAt) {
+			addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 8 * 20));
+			addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 8 * 20));
+			setAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT, gameTime);
+			setAttached(StellarityDataAttachments.HOLY_PROTECTION_NEXT_DODGE_AT, gameTime + ArmorEffectsHelper.HOLY_PROTECTION_DODGE_COOLDOWN);
+			if (movementSpeed != null) movementSpeed.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+			if (movementEfficiency != null) movementEfficiency.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
+			if (knockbackResistance != null) knockbackResistance.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
+		}
+
+		return true;
+	}
+
+	@Inject(method = "tick", at=@At("HEAD"))
+	private void holyProtectionTick(CallbackInfo ci) {
+		var level = level();
+		var gameTime = level.getGameTime();
+		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT);
+
+		var movementSpeed = getAttribute(Attributes.MOVEMENT_SPEED);
+		var movementEfficiency = getAttribute(Attributes.MOVEMENT_EFFICIENCY);
+		var knockbackResistance = getAttribute(Attributes.KNOCKBACK_RESISTANCE);
+
+		if (lastDodgedAt == null || (gameTime - lastDodgedAt) > ArmorEffectsHelper.HOLY_PROTECTION_DODGE_DURATION) {
+			if (knockbackResistance != null && knockbackResistance.hasModifier(Stellarity.id("holy_protection"))) knockbackResistance.removeModifier(Stellarity.id("holy_protection"));
+		}
+
+		if (lastDodgedAt == null || (gameTime - lastDodgedAt) > ArmorEffectsHelper.HOLY_PROTECTION_MOVEMENT_SPEED_DURATION) {
+			if (movementSpeed != null && movementSpeed.hasModifier(Stellarity.id("holy_protection"))) movementSpeed.removeModifier(Stellarity.id("holy_protection"));
+			if (movementEfficiency != null && movementEfficiency.hasModifier(Stellarity.id("holy_protection"))) movementEfficiency.removeModifier(Stellarity.id("holy_protection"));
+		}
+	}
+
+
 
 
 }
