@@ -17,6 +17,7 @@ public interface StellarityNetworking {
 		clientbound.register(ClientboundElectricDashPayload.TYPE, ClientboundElectricDashPayload.STREAM_CODEC);
 		serverbound.register(ServerboundConfigUpdatePayload.TYPE, ServerboundConfigUpdatePayload.STREAM_CODEC);
 		clientbound.register(ClientboundSpellbookCastPayload.TYPE, ClientboundSpellbookCastPayload.STREAM_CODEC);
+		clientbound.register(ClientboundHolyProtectionDodgePayload.TYPE, ClientboundHolyProtectionDodgePayload.STREAM_CODEC);
 
 		Stellarity.LOGGER.info("Registering Stellarity Common Networking");
 	}

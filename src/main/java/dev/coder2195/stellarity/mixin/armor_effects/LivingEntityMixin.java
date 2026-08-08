@@ -4,12 +4,17 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
+import dev.coder2195.stellarity.networking.ClientboundHolyProtectionDodgePayload;
+import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -52,6 +57,9 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@Shadow
 	protected abstract AABB getHitbox();
+
+	@Shadow
+	public float lastHurt;
 
 	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
@@ -118,7 +126,7 @@ public abstract class LivingEntityMixin extends Entity {
 		return original.call(newEffect, source);
 	}
 
-	@Inject(method = "tick", at=@At("HEAD"))
+	@Inject(method = "tick", at = @At("HEAD"))
 	private void championTick(CallbackInfo ci) {
 		var level = level();
 		var castedSelf = (LivingEntity) (Object) this;
@@ -132,13 +140,14 @@ public abstract class LivingEntityMixin extends Entity {
 
 
 		if (ArmorEffectsHelper.isFullChampionArmor(castedSelf) && level.isClientSide()) {
-			for (int i=0; i<2; i++) level.addParticle(particle, true,
-				false,
-				center.x + xDist * (random.nextDouble() - 0.5),
-				center.y + yDist * (random.nextDouble() - 0.5),
-				center.z + zDist * (random.nextDouble() - 0.5),
-				0, 0, 0
-			);
+			for (int i = 0; i < 2; i++)
+				level.addParticle(particle, true,
+					false,
+					center.x + xDist * (random.nextDouble() - 0.5),
+					center.y + yDist * (random.nextDouble() - 0.5),
+					center.z + zDist * (random.nextDouble() - 0.5),
+					0, 0, 0
+				);
 		}
 
 		var gameTime = level().getGameTime();
@@ -158,43 +167,52 @@ public abstract class LivingEntityMixin extends Entity {
 	}
 
 
-
 	@WrapMethod(method = "hurtServer")
 	private boolean holyProtectionDodge(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
-		if (!ArmorEffectsHelper.isFullHallowedArmor((LivingEntity) (Entity) this)) return original.call(level, source, damage);
+		var castedSelf = (LivingEntity) (Entity) this;
+		var position = position();
+		if (!ArmorEffectsHelper.isFullHallowedArmor(castedSelf)) return original.call(level, source, damage);
 
-		var nextDodgeAt = getAttachedOrElse(StellarityDataAttachments.HOLY_PROTECTION_NEXT_DODGE_AT, 0L);
-		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT);
+		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_DODGED_AT);
 		var gameTime = level.getGameTime();
 
-		if (lastDodgedAt != null && gameTime - lastDodgedAt < ArmorEffectsHelper.HOLY_PROTECTION_DODGE_DURATION) damage = 0;
+		if (lastDodgedAt == null || gameTime - lastDodgedAt < ArmorEffectsHelper.HOLY_PROTECTION_DODGE_DURATION) damage = 0;
 
 		var result = original.call(level, source, damage);
 
 		if (!result) return false;
 
-		var movementSpeed = getAttribute(Attributes.MOVEMENT_SPEED);
-		var movementEfficiency = getAttribute(Attributes.MOVEMENT_EFFICIENCY);
-		var knockbackResistance = getAttribute(Attributes.KNOCKBACK_RESISTANCE);
+		if (lastDodgedAt == null) {
 
-		if (gameTime > nextDodgeAt) {
+			var movementSpeed = getAttribute(Attributes.MOVEMENT_SPEED);
+			var movementEfficiency = getAttribute(Attributes.MOVEMENT_EFFICIENCY);
+			var knockbackResistance = getAttribute(Attributes.KNOCKBACK_RESISTANCE);
+
 			addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 8 * 20));
 			addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 8 * 20));
-			setAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT, gameTime);
-			setAttached(StellarityDataAttachments.HOLY_PROTECTION_NEXT_DODGE_AT, gameTime + ArmorEffectsHelper.HOLY_PROTECTION_DODGE_COOLDOWN);
-			if (movementSpeed != null) movementSpeed.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-			if (movementEfficiency != null) movementEfficiency.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
-			if (knockbackResistance != null) knockbackResistance.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
+			setAttached(StellarityDataAttachments.HOLY_PROTECTION_DODGED_AT, gameTime);
+			if (movementSpeed != null && !movementSpeed.hasModifier(Stellarity.id("holy_protection"))) movementSpeed.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 0.2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+			if (movementEfficiency != null && !movementEfficiency.hasModifier(Stellarity.id("holy_protection"))) movementEfficiency.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
+			if (knockbackResistance != null && !knockbackResistance.hasModifier(Stellarity.id("holy_protection"))) knockbackResistance.addPermanentModifier(new AttributeModifier(Stellarity.id("holy_protection"), 1, AttributeModifier.Operation.ADD_VALUE));
+
+			if (castedSelf instanceof ServerPlayer player) StellarityCriteriaTriggers.HOLY_PROTECTION_DODGE.trigger(player, source, damage, lastHurt);
+
+			if (level instanceof ServerLevel serverLevel) for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000)) ServerPlayNetworking.send(player, new ClientboundHolyProtectionDodgePayload(position));
 		}
 
 		return true;
 	}
 
-	@Inject(method = "tick", at=@At("HEAD"))
+	@Inject(method = "tick", at = @At("HEAD"))
 	private void holyProtectionTick(CallbackInfo ci) {
+		var castedSelf = (LivingEntity) (Entity) this;
 		var level = level();
 		var gameTime = level.getGameTime();
-		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_LAST_DODGED_AT);
+		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_DODGED_AT);
+
+		if (level.isClientSide()) {
+			return;
+		}
 
 		var movementSpeed = getAttribute(Attributes.MOVEMENT_SPEED);
 		var movementEfficiency = getAttribute(Attributes.MOVEMENT_EFFICIENCY);
@@ -208,9 +226,13 @@ public abstract class LivingEntityMixin extends Entity {
 			if (movementSpeed != null && movementSpeed.hasModifier(Stellarity.id("holy_protection"))) movementSpeed.removeModifier(Stellarity.id("holy_protection"));
 			if (movementEfficiency != null && movementEfficiency.hasModifier(Stellarity.id("holy_protection"))) movementEfficiency.removeModifier(Stellarity.id("holy_protection"));
 		}
+
+		if (lastDodgedAt != null && (gameTime - lastDodgedAt) > ArmorEffectsHelper.HOLY_PROTECTION_DODGE_COOLDOWN) {
+			removeAttached(StellarityDataAttachments.HOLY_PROTECTION_DODGED_AT);
+			this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_CHARGE, this.getSoundSource(), 1, 2);
+		}
+
 	}
-
-
 
 
 }

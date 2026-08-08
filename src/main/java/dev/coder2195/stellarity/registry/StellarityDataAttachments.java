@@ -58,9 +58,7 @@ public interface StellarityDataAttachments {
 
 	AttachmentType<Long> CHAMPION_BOOST_UNTIL = AttachmentRegistry.create(Stellarity.id("champion_boost_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
-	AttachmentType<Long> HOLY_PROTECTION_NEXT_DODGE_AT = AttachmentRegistry.create(Stellarity.id("holy_protection_next_dodge_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
-
-	AttachmentType<Long> HOLY_PROTECTION_LAST_DODGED_AT = AttachmentRegistry.create(Stellarity.id("holy_protection_last_dodged_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
+	AttachmentType<Long> HOLY_PROTECTION_DODGED_AT = AttachmentRegistry.create(Stellarity.id("holy_protection_dodged_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
 
 
