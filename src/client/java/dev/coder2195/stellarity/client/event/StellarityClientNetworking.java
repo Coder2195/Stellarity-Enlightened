@@ -24,12 +24,25 @@ public interface StellarityClientNetworking {
 	}
 
 	static void holyProtectionDodge(ClientboundHolyProtectionDodgePayload packet, ClientPlayNetworking.Context context) {
-		var level = context.client().level;
+		var client = context.client();
+		var player = client.player;
+		var level = client.level;
+
 		if (level == null) return;
+		var random = RandomSource.create();
 
 		var position = packet.position();
 
+		for (int i=0; i<11; i++) {
+			level.addParticle(ParticleTypes.END_ROD, true, true, position.x, position.y, position.z, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11);
+			level.addParticle(ParticleTypes.FIREWORK, true, true, position.x, position.y, position.z, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11);
+		}
+		for (int i=0; i<22; i++) {
+			level.addParticle(ParticleTypes.POOF, true, true, position.x + random.nextGaussian() * 0.3, position.y + random.nextGaussian() * 0.5, position.z + random.nextGaussian() * 0.3, 0, 0, 0);
+		}
+
 		level.addParticle(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), true, true,position.x, position.y, position.z, 0, 0, 0);
+		level.playSound(player, position.x, position.y, position.z, StellaritySoundEvents.HALLOWED_ARMOR_DODGE, packet.source());
 	}
 
 	static void voidArrowHit(ClientboundVoidArrowHitPayload packet, ClientPlayNetworking.Context context) {

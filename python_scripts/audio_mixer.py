@@ -1,10 +1,11 @@
 import pathlib
 
 from pydub import AudioSegment
+from pydub.playback import play
 from pydub.utils import ratio_to_db
 
 pathlib.Path("input_audio").mkdir(exist_ok=True)
-pathlib.Path("output_audio/item/champion_armor").mkdir(exist_ok=True, parents=True)
+pathlib.Path("output_audio/item/hallowed_armor").mkdir(exist_ok=True, parents=True)
 
 """
 Resources
@@ -21,8 +22,8 @@ def pitch_modulate(sound: AudioSegment, octaves: float):
 	return hipitch_sound
 
 
-def mc(path: str):
-	return AudioSegment.from_ogg(f"input_audio/{path}.ogg")
+def mc(path: str,  volume: float, pitch: float):
+	return pitch_modulate(AudioSegment.from_ogg(f"input_audio/{path}.ogg"), pitch).apply_gain(ratio_to_db(volume))
 
 
 
@@ -39,19 +40,21 @@ def mc(path: str):
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
 
-first = ["mob/blaze/hit1", "mob/blaze/hit2", "mob/blaze/hit3", "mob/blaze/hit4"]
-second = ["mob/warden/attack_impact_1", "mob/warden/attack_impact_1"]
+first = ["block/respawn_anchor/deplete1", "block/respawn_anchor/deplete2"]
+second = ["random/explode1", "random/explode2", "random/explode3", "random/explode4"]
+
 
 num=0
 combo = [(a, b) for a in first for b in second]
 for (a, b) in combo:
 
 	num+=1
-	a_sound = mc(a)
-	b_sound = mc(b)
+	a_sound = mc(a, 0.6, 1.3)
+	b_sound = mc(b, 0.333, 1.2)
 
-	new_sound = mc("random/anvil_break").apply_gain(ratio_to_db(1.2)).overlay(b_sound).overlay(a_sound).set_channels(1)
-	new_sound.export(f"output_audio/item/champion_armor/add_damage_{num}.ogg", format="ogg")
+	new_sound = a_sound.overlay(mc("mob/bat/takeoff", 0.88, 1.1)).overlay(b_sound).set_channels(1)
+	play(new_sound)
+	new_sound.export(f"output_audio/item/hallowed_armor/dodge_{num}.ogg", format="ogg")
 
 
 # thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]

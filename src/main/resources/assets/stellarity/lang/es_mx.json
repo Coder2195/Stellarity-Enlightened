@@ -691,6 +691,7 @@
 	"subtitles.stellarity.item.copper_elektra_shield.dash": "Copper Elektra Shield dashes",
 	"subtitles.stellarity.item.fluffy_hammer.return": "Fluffy Hammer returns",
 	"subtitles.stellarity.item.fluffy_hammer.throw": "Fluffy Hammer throws",
+	"subtitles.stellarity.item.hallowed_armor.dodge": "Hallowed Armor activates Dodge",
 	"subtitles.stellarity.item.kaleidoscope.ready": "Caleidoscopio se carga",
 	"subtitles.stellarity.item.living_flesh.boost": "Carne Viviente se lastima",
 	"subtitles.stellarity.item.spectral_fury.shoot_wisp": "Spectral Wisp fired",
@@ -700,5 +701,8 @@
 	"tag.item.stellarity.enchantable.elytra": "Stellarity Elytra Enchantables",
 	"tag.item.stellarity.enchantable.ranged": "Stellarity Ranged Weapon Enchantables",
 	"tag.item.stellarity.fishes": "Stellarity Fishes",
-	"tag.item.stellarity.repairs_champion_armor": "Repairs Champion Armor"
+	"tag.item.stellarity.repairs_champion_armor": "Repairs Champion Armor",
+	"tag.item.stellarity.repairs_floral_armor": "Repairs Floral Armor",
+	"tag.item.stellarity.repairs_hallowed_armor": "Repairs Hallowed Armor",
+	"tag.item.stellarity.repairs_shulker_armor": "Repairs Shulker Armor"
 }

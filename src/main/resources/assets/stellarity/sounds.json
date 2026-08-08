@@ -598,5 +598,18 @@
 			"stellarity:item/copper_elektra_shield/dash_6"
 		],
 		"subtitle": "subtitles.stellarity.item.copper_elektra_shield.dash"
+	},
+	"item.hallowed_armor.dodge": {
+		"sounds": [
+			"stellarity:item/hallowed_armor/dodge_1",
+			"stellarity:item/hallowed_armor/dodge_2",
+			"stellarity:item/hallowed_armor/dodge_3",
+			"stellarity:item/hallowed_armor/dodge_4",
+			"stellarity:item/hallowed_armor/dodge_5",
+			"stellarity:item/hallowed_armor/dodge_6",
+			"stellarity:item/hallowed_armor/dodge_7",
+			"stellarity:item/hallowed_armor/dodge_8"
+		],
+		"subtitle": "subtitles.stellarity.item.hallowed_armor.dodge"
 	}
 }

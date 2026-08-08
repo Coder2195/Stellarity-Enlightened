@@ -1,10 +1,10 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
-import dev.coder2195.stellarity.Stellarity;
 
 public interface StellaritySoundEvents {
 	SoundEvent TAMARIS_EXECUTE = register("item.tamaris.execute");
@@ -33,6 +33,7 @@ public interface StellaritySoundEvents {
 
 	SoundEvent SPELLBOOK_CAST = register("item.spellbook.cast");
 	SoundEvent CHAMPION_ARMOR_ADD_DAMAGE = register("item.champion_armor.add_damage");
+	SoundEvent HALLOWED_ARMOR_DODGE = register("item.hallowed_armor.dodge");
 
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");

@@ -197,7 +197,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 			if (castedSelf instanceof ServerPlayer player) StellarityCriteriaTriggers.HOLY_PROTECTION_DODGE.trigger(player, source, damage, lastHurt);
 
-			if (level instanceof ServerLevel serverLevel) for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000)) ServerPlayNetworking.send(player, new ClientboundHolyProtectionDodgePayload(position));
+			if (level instanceof ServerLevel serverLevel) for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000)) ServerPlayNetworking.send(player, new ClientboundHolyProtectionDodgePayload(position, getSoundSource()));
 		}
 
 		return true;
