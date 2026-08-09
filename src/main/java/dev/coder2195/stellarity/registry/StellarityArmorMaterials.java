@@ -74,4 +74,15 @@ public interface StellarityArmorMaterials {
 		}
 	};
 
+	ArmorMaterial FLORAL = new ArmorMaterial(37, makeDefense(3, 6, 8, 3, 20), 9, SoundEvents.ARMOR_EQUIP_NETHERITE, 3, 0.1F, StellarityItemTags.REPAIRS_FLORAL_ARMOR, StellarityEquipmentAssets.FLORAL) {
+		@Override
+		public @NonNull ItemAttributeModifiers createAttributes(@NonNull ArmorType type) {
+			var id =Stellarity.id("armor." + type.getName());
+			var attributes = super.createAttributes(type).withModifierAdded(Attributes.ATTACK_DAMAGE, new AttributeModifier(id, -0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.bySlot(type.getSlot()));
+
+			if (type.equals(ArmorType.BOOTS)) return attributes.withModifierAdded(Attributes.MOVEMENT_SPEED, new AttributeModifier(id, 0.07, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.FEET);
+
+			return attributes;
+		}
+	};
 }

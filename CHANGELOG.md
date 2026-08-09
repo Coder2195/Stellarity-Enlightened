@@ -19,6 +19,14 @@ Compatibility update
 
 **[+] Hallowed Boots**
 
+**[+] Floral Helmet**
+
+**[+] Floral Chestplate**
+
+**[+] Floral Leggings**
+
+**[+] Floral Boots**
+
 ## Recipes
 
 ### AOTA
@@ -26,6 +34,8 @@ Compatibility update
 **[+] Netherite Armor + 4 Chorus Plating + 1 Enderite Upgrade = Champion Armor**
 
 **[+] Netherite Armor + 4 Hallowed Ingot + 1 Enderite Upgrade = Hallowed Armor**
+
+**[+] Netherite Armor + 8 Cherry Leaves + 1 Enderite Upgrade = Floral Armor**
 
 ## Dependencies
 

@@ -199,25 +199,29 @@ public class ModelProvider extends FabricModelProvider {
 		for (var helmet : List.of(
 			new Tuple2<>(CHAMPION_HELMET, StellarityEquipmentAssets.CHAMPION),
 			new Tuple2<>(SHULKER_HELMET, StellarityEquipmentAssets.SHULKER),
-			new Tuple2<>(HALLOWED_HELMET, StellarityEquipmentAssets.HALLOWED)
+			new Tuple2<>(HALLOWED_HELMET, StellarityEquipmentAssets.HALLOWED),
+			new Tuple2<>(FLORAL_HELMET, StellarityEquipmentAssets.FLORAL)
 		))
 			generators.generateTrimmableItem(helmet._1(), helmet._2(), ItemModelGenerators.TRIM_PREFIX_HELMET, false);
 		for (var chestplate: List.of(
 			new Tuple2<>(CHAMPION_CHESTPLATE, StellarityEquipmentAssets.CHAMPION),
 			new Tuple2<>(SHULKER_CHESTPLATE, StellarityEquipmentAssets.SHULKER),
-			new Tuple2<>(HALLOWED_CHESTPLATE, StellarityEquipmentAssets.HALLOWED)
+			new Tuple2<>(HALLOWED_CHESTPLATE, StellarityEquipmentAssets.HALLOWED),
+			new Tuple2<>(FLORAL_CHESTPLATE, StellarityEquipmentAssets.FLORAL)
 		))
 			generators.generateTrimmableItem(chestplate._1(), chestplate._2(), ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
 		for (var leggings : List.of(
 			new Tuple2<>(CHAMPION_LEGGINGS, StellarityEquipmentAssets.CHAMPION),
 			new Tuple2<>(SHULKER_LEGGINGS, StellarityEquipmentAssets.SHULKER),
-			new Tuple2<>(HALLOWED_LEGGINGS, StellarityEquipmentAssets.HALLOWED)
+			new Tuple2<>(HALLOWED_LEGGINGS, StellarityEquipmentAssets.HALLOWED),
+			new Tuple2<>(FLORAL_LEGGINGS, StellarityEquipmentAssets.FLORAL)
 		))
 			generators.generateTrimmableItem(leggings._1(), leggings._2(), ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
 		for (var boots : List.of(
 			new Tuple2<>(CHAMPION_BOOTS, StellarityEquipmentAssets.CHAMPION),
 			new Tuple2<>(SHULKER_BOOTS, StellarityEquipmentAssets.SHULKER),
-			new Tuple2<>(HALLOWED_BOOTS, StellarityEquipmentAssets.HALLOWED)
+			new Tuple2<>(HALLOWED_BOOTS, StellarityEquipmentAssets.HALLOWED),
+			new Tuple2<>(FLORAL_BOOTS, StellarityEquipmentAssets.FLORAL)
 		))
 			generators.generateTrimmableItem(boots._1(), boots._2(), ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 

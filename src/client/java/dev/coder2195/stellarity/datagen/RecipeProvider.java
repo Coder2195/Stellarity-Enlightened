@@ -145,7 +145,8 @@ public class RecipeProvider extends FabricRecipeProvider {
 			for (var armorType : List.<Tuple3<String, Item[], Supplier<Ingredients>>>of(
 				new Tuple3<>("shulker", new Item[]{SHULKER_HELMET, SHULKER_CHESTPLATE, SHULKER_LEGGINGS, SHULKER_BOOTS}, () -> new Ingredients().put(SHULKER_SHELL, 4)),
 				new Tuple3<>("champion", new Item[]{CHAMPION_HELMET, CHAMPION_CHESTPLATE, CHAMPION_LEGGINGS, CHAMPION_BOOTS}, () -> new Ingredients().put(CHORUS_PLATING, 4)),
-				new Tuple3<>("hallowed", new Item[]{HALLOWED_HELMET, HALLOWED_CHESTPLATE, HALLOWED_LEGGINGS, HALLOWED_BOOTS}, () -> new Ingredients().put(HALLOWED_INGOT, 4))
+				new Tuple3<>("hallowed", new Item[]{HALLOWED_HELMET, HALLOWED_CHESTPLATE, HALLOWED_LEGGINGS, HALLOWED_BOOTS}, () -> new Ingredients().put(HALLOWED_INGOT, 4)),
+				new Tuple3<>("floral", new Item[]{FLORAL_HELMET, FLORAL_CHESTPLATE, FLORAL_LEGGINGS, FLORAL_BOOTS}, () -> new Ingredients().put(CHERRY_LEAVES, 8))
 			))
 				altarOfTheAccursed(output, "altar_of_the_accursed/" + armorType._1() + "_" + piece._2(), new AltarUpgradeRecipe(
 					Ingredient.of(piece._1()),
