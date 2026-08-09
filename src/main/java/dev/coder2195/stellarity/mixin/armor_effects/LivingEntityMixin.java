@@ -7,6 +7,7 @@ import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
 import dev.coder2195.stellarity.networking.ClientboundHolyProtectionDodgePayload;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
+import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
@@ -16,6 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -60,6 +62,12 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@Shadow
 	public float lastHurt;
+
+	@Shadow
+	public abstract boolean hasEffect(Holder<MobEffect> effect);
+
+	@Shadow
+	public abstract @Nullable MobEffectInstance getEffect(Holder<MobEffect> effect);
 
 	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
@@ -232,6 +240,23 @@ public abstract class LivingEntityMixin extends Entity {
 			this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.RESPAWN_ANCHOR_CHARGE, this.getSoundSource(), 1, 2);
 		}
 
+	}
+
+	@Inject(method = "tick", at=@At("HEAD"))
+	private void floralArmorTick(CallbackInfo ci) {
+		var level = level();
+
+
+		var castedSelf = (LivingEntity) (Entity) this;
+		if (!ArmorEffectsHelper.isFullFloralArmor(castedSelf)) return;
+
+		if (level.isClientSide()) return;
+
+		var blockPos = blockPosition();
+		var invis = getEffect(MobEffects.INVISIBILITY);
+		if ((invis == null || invis.endsWithin(10)) && level.getBlockState(blockPos).is(StellarityBlockTags.FLORAL_ARMOR_HIDEABLES) && level.getBlockState(blockPos.above()).is(StellarityBlockTags.FLORAL_ARMOR_HIDEABLES)) {
+			addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 30));
+		}
 	}
 
 

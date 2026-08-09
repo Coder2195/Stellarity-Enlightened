@@ -53,4 +53,11 @@ public interface ArmorEffectsHelper {
 
 		livingEntity.setAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL, serverLevel.getGameTime() + CHAMPION_BOOST_DURATION);
 	}
+
+  static boolean isFullFloralArmor(LivingEntity castedSelf) {
+		return castedSelf.getItemBySlot(EquipmentSlot.HEAD).is(StellarityItems.FLORAL_HELMET) &&
+			castedSelf.getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.FLORAL_CHESTPLATE) &&
+			castedSelf.getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.FLORAL_LEGGINGS) &&
+			castedSelf.getItemBySlot(EquipmentSlot.FEET).is(StellarityItems.FLORAL_BOOTS);
+  }
 }
