@@ -4,12 +4,15 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
+import dev.coder2195.stellarity.networking.ClientboundFloralBloomBloomPayload;
 import dev.coder2195.stellarity.networking.ClientboundHolyProtectionDodgePayload;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.PowerParticleOption;
@@ -242,7 +245,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 	}
 
-	@Inject(method = "tick", at=@At("HEAD"))
+	@Inject(method = "tick", at = @At("HEAD"))
 	private void floralArmorTick(CallbackInfo ci) {
 		var level = level();
 
@@ -259,5 +262,32 @@ public abstract class LivingEntityMixin extends Entity {
 		}
 	}
 
+	@Inject(method = "tick", at = @At("HEAD"))
+	private void floralBloom(CallbackInfo ci) {
+		var level = level();
+		var floralBloom = getAttached(StellarityDataAttachments.FLORAL_BLOOM);
+
+		if (floralBloom == null) return;
+
+		var timeUntilExplode = floralBloom.explodeAt() - level.getGameTime();
+		var position = getEyePosition();
+
+		if (!(level instanceof ServerLevel serverLevel)) {
+			for (int i = 0; i < 2; i++) level.addParticle(new DustParticleOptions(0xf9c9e4, (float) timeUntilExplode / 400f + 0.8f), position.x + random.nextGaussian() * 0.25, position.y + 0.15, position.z + random.nextGaussian() * 0.25, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+
+			level.addParticle(ParticleTypes.FALLING_NECTAR, position.x + random.nextGaussian() * 0.175, position.y, position.z + random.nextGaussian() * 0.25, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+
+			return;
+		}
+
+		if (timeUntilExplode <= 0) {
+			removeAttached(StellarityDataAttachments.FLORAL_BLOOM);
+			var damage = floralBloom.damage();
+			var packet = new ClientboundFloralBloomBloomPayload(position, damage);
+			if (hurtServer(serverLevel, damageSources().source(StellarityDamageTypes.BLOOM), damage))
+				for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000))
+					ServerPlayNetworking.send(player, packet);
+		}
+	}
 
 }

@@ -5,6 +5,7 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.StellarityConfig;
 import dev.coder2195.stellarity.interface_injection.ExtEndCrystal;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
+import dev.coder2195.stellarity.util.FloralBloom;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
@@ -41,24 +42,23 @@ public interface StellarityDataAttachments {
 
 	AttachmentType<Unit> SPECTRAL_FURY_CHARGED = AttachmentRegistry.create(Stellarity.id("spectral_fury_charged"), builder -> builder.persistent(Unit.CODEC));
 
-	AttachmentType<Long> LAST_MOVE_ITEM_CHANGE = AttachmentRegistry.create(Stellarity.id("last_move_item_change"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
-	);
-
 	AttachmentType<Long> RETURN_SPELL_AT = AttachmentRegistry.create(Stellarity.id("return_spell_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
 	);
 
 	AttachmentType<Long> UPDRAFT_LEVITATION_UNTIL = AttachmentRegistry.create(Stellarity.id("updraft_levitation_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
 	);
-
 	AttachmentType<Long> UPDRAFT_GLIDING_UNTIL = AttachmentRegistry.create(Stellarity.id("updraft_gliding_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all())
 	);
-
 	AttachmentType<Unit> UPDRAFT_SLOW_FALLING = AttachmentRegistry.create(Stellarity.id("updraft_slow_falling"), builder -> builder.persistent(Unit.CODEC).syncWith(Unit.STREAM_CODEC, AttachmentSyncPredicate.all())
 	);
 
 	AttachmentType<Long> CHAMPION_BOOST_UNTIL = AttachmentRegistry.create(Stellarity.id("champion_boost_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
 	AttachmentType<Long> HOLY_PROTECTION_DODGED_AT = AttachmentRegistry.create(Stellarity.id("holy_protection_dodged_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
+
+	AttachmentType<Double> ARROW_DAMAGE_MULTIPLIER = AttachmentRegistry.create(Stellarity.id("arrow_damage_multiplier"), builder -> builder.persistent(Codec.DOUBLE));
+	AttachmentType<FloralBloom> FLORAL_BLOOM = AttachmentRegistry.create(Stellarity.id("floral_bloom"), builder -> builder.persistent(FloralBloom.CODEC).syncWith(FloralBloom.STREAM_CODEC, AttachmentSyncPredicate.all()));
+	AttachmentType<FloralBloom.Applier> FLORAL_BLOOM_APPLIER = AttachmentRegistry.create(Stellarity.id("floral_bloom_applier"), builder -> builder.persistent(FloralBloom.Applier.CODEC));
 
 
 

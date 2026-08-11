@@ -19,9 +19,14 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundElectricDashPayload.TYPE, StellarityClientNetworking::electricDash);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpellbookCastPayload.TYPE, StellarityClientNetworking::spellbookCast);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundHolyProtectionDodgePayload.TYPE, StellarityClientNetworking::holyProtectionDodge);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundFloralBloomBloomPayload.TYPE, StellarityClientNetworking::floralBloomBloom);
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
 	}
+
+	static void floralBloomBloom(ClientboundFloralBloomBloomPayload packet, ClientPlayNetworking.Context context) {
+	}
+
 
 	static void holyProtectionDodge(ClientboundHolyProtectionDodgePayload packet, ClientPlayNetworking.Context context) {
 		var client = context.client();

@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.mixin.interface_injections;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,5 +26,10 @@ public abstract class AbstractArrowMixin extends Projectile implements ExtAbstra
 		for (var effect : effects) {
 			mob.addEffect(effect, getOwner());
 		}
+	}
+
+	@ModifyExpressionValue(method = "onHitEntity", at= @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;modifyDamage(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/damagesource/DamageSource;F)F"))
+	private float applyMultiplier(float original) {
+		return (float) (original * stellarity$getDamageMultiplier());
 	}
 }

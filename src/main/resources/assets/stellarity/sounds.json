@@ -611,5 +611,13 @@
 			"stellarity:item/hallowed_armor/dodge_8"
 		],
 		"subtitle": "subtitles.stellarity.item.hallowed_armor.dodge"
+	},
+	"event.floral_bloom.bloom": {
+		"sounds": [
+			"stellarity:event/floral_bloom/bloom_1",
+			"stellarity:event/floral_bloom/bloom_2",
+			"stellarity:event/floral_bloom/bloom_3"
+		],
+		"subtitle": "subtitles.stellarity.event.floral_bloom.bloom"
 	}
 }
