@@ -42,6 +42,12 @@ Compatibility update
 **[+] Stellarity x Nullscape**
 - Now embeded and determined at runtime, allowing for nullscape support
 
+## Mechanics
+
+**[*] Item Tooltips**
+
+- Armor Set Bonuses have been added
+
 # Developer's Note
 
 It was hard asf messing with mc registries

@@ -68,11 +68,9 @@ public abstract class LivingEntityMixin extends Entity {
 	public float lastHurt;
 
 	@Shadow
-	public abstract boolean hasEffect(Holder<MobEffect> effect);
-
-	@Shadow
 	public abstract @Nullable MobEffectInstance getEffect(Holder<MobEffect> effect);
 
+	@Unique
 	private int counter = 0;
 
 	public LivingEntityMixin(EntityType<?> type, Level level) {
@@ -80,66 +78,27 @@ public abstract class LivingEntityMixin extends Entity {
 	}
 
 	@WrapMethod(method = "hurtServer")
-	private boolean fullShulkerSetEffects(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
+	private boolean shulkerHurt(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
 		if (!original.call(level, source, damage)) return false;
 
 		var pos = this.position();
 		var castedSelf = ((LivingEntity) (Entity) this);
 
+		if (!ArmorEffectsHelper.isFullShulkerArmor((castedSelf))) return true;
 
-		if (ArmorEffectsHelper.isFullChampionArmor((castedSelf))) {
+		var hostiles = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.add(-5, -3, -5), pos.add(5, 3, 5)), attackFilter(castedSelf));
 
-			Predicate<LivingEntity> filter = attackFilter(castedSelf);
-
-			var hostiles = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.add(-5, -3, -5), pos.add(5, 3, 5)), filter);
-
-			int size = hostiles.size();
-
-			if (size >= 4) {
-				addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 30 * 20));
-			} else if (size < 3) {
-				var moreHostiles = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.add(-32, -8, -32), pos.add(32, 8, 32)), filter);
-				var moreSize = moreHostiles.size();
-				for (int i = size, j = 0; i < 3; i++, j++) {
-					if (j >= moreSize) break;
-					hostiles.add(moreHostiles.get(j));
-				}
-			}
-
-			var totalSize = hostiles.size();
-			if (totalSize > 0) for (int i = 0; i < 3; i++) {
-				if (random.nextBoolean()) break;
-				var shulkerBullet = new ShulkerBullet(level, castedSelf, hostiles.get(i % totalSize), null);
-				shulkerBullet.setPos(position().add(0, getEyeHeight() * 0.6, 0));
-				level.addFreshEntity(shulkerBullet);
-
-			}
+		var totalSize = hostiles.size();
+		if (totalSize > 0) for (int i = 0; i < 3; i++) {
+			if (random.nextBoolean()) break;
+			var shulkerBullet = new ShulkerBullet(level, castedSelf, hostiles.get(i % totalSize), null);
+			shulkerBullet.setPos(position().add(0, getEyeHeight() * 0.6, 0));
+			level.addFreshEntity(shulkerBullet);
 		}
+
 		return true;
 	}
 
-	@Unique
-	private @NonNull Predicate<LivingEntity> attackFilter(LivingEntity castedSelf) {
-		final var attacker = getLastAttacker();
-
-		return castedSelf instanceof Monster monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Player || e instanceof Mob mob && castedSelf == mob.getTarget()
-		) : castedSelf instanceof Player player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Monster || e instanceof Mob mob && castedSelf == mob.getTarget()
-		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof Mob mob && castedSelf == mob.getTarget());
-	}
-
-	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")
-	private boolean blockEffects(MobEffectInstance newEffect, Entity source, Operation<Boolean> original) {
-		// will be for totem stuff
-		var levitation = newEffect.is(MobEffects.LEVITATION);
-		var weakness = newEffect.is(MobEffects.WEAKNESS);
-
-		if ((getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.SHULKER_CHESTPLATE) && newEffect.is(MobEffects.WEAKNESS)) || (newEffect.is(MobEffects.LEVITATION) && getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.SHULKER_LEGGINGS)))
-			return false;
-
-		return original.call(newEffect, source);
-	}
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void shulkerTick(CallbackInfo ci) {
@@ -157,7 +116,25 @@ public abstract class LivingEntityMixin extends Entity {
 		addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 20 + 10, amplifier, false, false));
 
 		counter = 0;
+	}
 
+	@Unique
+	private @NonNull Predicate<LivingEntity> attackFilter(LivingEntity castedSelf) {
+		final var attacker = getLastAttacker();
+
+		return castedSelf instanceof Monster monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
+			e.is(attacker) || e instanceof Player || e instanceof Mob mob && castedSelf == mob.target
+		) : castedSelf instanceof Player player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
+			e.is(attacker) || e instanceof Monster || e instanceof Mob mob && castedSelf == mob.target
+		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof Mob mob && castedSelf == mob.target);
+	}
+
+	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")
+	private boolean blockEffects(MobEffectInstance newEffect, Entity source, Operation<Boolean> original) {
+		if ((getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.SHULKER_CHESTPLATE) && newEffect.is(MobEffects.WEAKNESS)) || (newEffect.is(MobEffects.LEVITATION) && getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.SHULKER_LEGGINGS)))
+			return false;
+
+		return original.call(newEffect, source);
 	}
 
 	@Inject(method = "tick", at = @At("HEAD"))
@@ -239,7 +216,6 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@Inject(method = "tick", at = @At("HEAD"))
 	private void holyProtectionTick(CallbackInfo ci) {
-		var castedSelf = (LivingEntity) (Entity) this;
 		var level = level();
 		var gameTime = level.getGameTime();
 		var lastDodgedAt = getAttached(StellarityDataAttachments.HOLY_PROTECTION_DODGED_AT);
