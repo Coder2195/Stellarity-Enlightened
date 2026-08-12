@@ -13,6 +13,11 @@ public interface StellarityItemTags {
 	TagKey<Item> DONATOR = id("donator");
 	TagKey<Item> DEVELOPER = id("developer");
 
+	TagKey<Item> SHULKER_ARMOR = id("shulker_armor");
+	TagKey<Item> FLORAL_ARMOR = id("floral_armor");
+	TagKey<Item> HALLOWED_ARMOR = id("hallowed_armor");
+	TagKey<Item> CHAMPION_ARMOR = id("champion_armor");
+
 	TagKey<Item> REPAIRS_CHAMPION_ARMOR = id("repairs_champion_armor");
 	TagKey<Item> REPAIRS_HALLOWED_ARMOR = id("repairs_hallowed_armor");
 	TagKey<Item> REPAIRS_REINFORCED_ARMOR = id("repairs_reinforced_armor");

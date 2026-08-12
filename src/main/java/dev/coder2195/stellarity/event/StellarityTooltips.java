@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -28,10 +29,47 @@ import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
 
 public interface StellarityTooltips {
 	Descriptions DESCRIPTIONS = new Descriptions();
+	HashMap<Identifier, List<Component>> ARMOR_BONUS_MAP = new HashMap<>() {
+		{
+			put(FLORAL_CHESTPLATE, 1);
+			put(FLORAL_LEGGINGS, 1);
+			put(SHULKER_CHESTPLATE, 1);
+			put(SHULKER_LEGGINGS, 1);
+		}
+
+		private void put(ResourceKey<Item> item, int lines) {
+			var list = new ArrayList<Component>();
+			var id = item.identifier();
+			if (lines == 1) list.add(Component.translatable("item." + id.getNamespace() + "." + id.getPath() + ".bonus").withColor(0xEEEEEE));
+			else for (int i = 1; i <= lines; i++) {
+				list.add(Component.translatable("item." + id.getNamespace() + "." + id.getPath() + ".bonus." + i).withColor(0xEEEEEE));
+			}
+
+			put(id, list);
+		}
+	};
+	HashMap<TagKey<Item>, List<Component>> ARMOR_SET_BONUS_MAP = new HashMap<>() {
+		{
+			put(StellarityItemTags.CHAMPION_ARMOR, 3);
+			put(StellarityItemTags.FLORAL_ARMOR, 3);
+			put(StellarityItemTags.SHULKER_ARMOR, 2);
+			put(StellarityItemTags.HALLOWED_ARMOR, 2);
+		}
+
+		private void put(TagKey<Item> tag, int lines) {
+			var list = new ArrayList<Component>();
+			if (lines == 1) list.add(Component.translatable("items." + Stellarity.MOD_ID + "." + tag.location().getPath() + ".bonus").withColor(0xEEEEEE));
+			else for (int i = 1; i <= lines; i++) {
+				list.add(Component.translatable("items." + Stellarity.MOD_ID + "." + tag.location().getPath() + ".bonus." + i).withColor(0xEEEEEE));
+			}
+
+			put(tag, list);
+		}
+	};
 
 	class DescriptionBuilder {
-		private Identifier id;
-		private int lines;
+		private final Identifier id;
+		private final int lines;
 		private boolean flavorText = false;
 		private boolean tip = false;
 		private Type type = Type.ITEM;
@@ -96,8 +134,6 @@ public interface StellarityTooltips {
 	}
 
 	class Descriptions extends HashMap<Identifier, List<Component>> {
-
-
 		public Descriptions() {
 			super();
 
@@ -185,6 +221,34 @@ public interface StellarityTooltips {
 				return;
 			}
 
+			// bonus starts first cuz then description goes top
+
+
+			var pieceBonus = ARMOR_BONUS_MAP.get(id);
+			if (pieceBonus != null) {
+				int index = 1;
+				for (var line : pieceBonus) {
+					list.add(index, line);
+					index++;
+				}
+				list.add(1, Component.translatable("items.stellarity.armor.piece_bonus").withColor(0xFF9952));
+
+				list.add(1, EMPTY_LINE);
+			}
+
+			var setBonusKey = ARMOR_SET_BONUS_MAP.keySet().stream().filter(itemStack::is).findFirst().orElse(null);
+			if (setBonusKey != null) {
+				var setBonus = ARMOR_SET_BONUS_MAP.get(setBonusKey);
+				int index = 1;
+				for (var line : setBonus) {
+					list.add(index, line);
+					index++;
+				}
+				list.add(1, Component.translatable("items.stellarity.armor.set_bonus").withColor(0xFF9952));
+
+				list.add(1, EMPTY_LINE);
+			}
+
 			var descriptions = DESCRIPTIONS.get(id);
 			if (descriptions != null) {
 				int index = 1;
@@ -193,6 +257,7 @@ public interface StellarityTooltips {
 					index++;
 				}
 			}
+
 
 			if (itemStack.is(StellarityItemTags.DEVELOPER)) {
 				list.add(EMPTY_LINE);

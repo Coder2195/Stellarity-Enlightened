@@ -9,6 +9,7 @@ import dev.coder2195.stellarity.networking.ClientboundHolyProtectionDodgePayload
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
+import dev.coder2195.stellarity.registry.StellarityItems;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Holder;
@@ -72,6 +73,8 @@ public abstract class LivingEntityMixin extends Entity {
 	@Shadow
 	public abstract @Nullable MobEffectInstance getEffect(Holder<MobEffect> effect);
 
+	private int counter = 0;
+
 	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
 	}
@@ -129,12 +132,32 @@ public abstract class LivingEntityMixin extends Entity {
 	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")
 	private boolean blockEffects(MobEffectInstance newEffect, Entity source, Operation<Boolean> original) {
 		// will be for totem stuff
-		if (newEffect.is(MobEffects.LEVITATION) && source == this) return original.call(newEffect, source);
+		var levitation = newEffect.is(MobEffects.LEVITATION);
+		var weakness = newEffect.is(MobEffects.WEAKNESS);
 
-		if (ArmorEffectsHelper.isFullShulkerArmor((LivingEntity) (Object) this) && (newEffect.is(MobEffects.WITHER) || newEffect.is(MobEffects.LEVITATION)))
+		if ((getItemBySlot(EquipmentSlot.CHEST).is(StellarityItems.SHULKER_CHESTPLATE) && newEffect.is(MobEffects.WEAKNESS)) || (newEffect.is(MobEffects.LEVITATION) && getItemBySlot(EquipmentSlot.LEGS).is(StellarityItems.SHULKER_LEGGINGS)))
 			return false;
 
 		return original.call(newEffect, source);
+	}
+
+	@Inject(method = "tick", at = @At("HEAD"))
+	private void shulkerTick(CallbackInfo ci) {
+		var level = level();
+		if (level.isClientSide()) return;
+		var castedSelf = (LivingEntity) (Object) this;
+		if (!ArmorEffectsHelper.isFullShulkerArmor(castedSelf) || counter++ < 10) return;
+
+		var position = position();
+		var swarmCount = level.getEntitiesOfClass(Mob.class, new AABB(position, position).inflate(5), e -> e.target != null && castedSelf.is(e.target)).size();
+
+		if (swarmCount < 3) return;
+
+		var amplifier = swarmCount <= 5 ? 0 : swarmCount <= 9 ? 1 : 2;
+		addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 20 + 10, amplifier, false, false));
+
+		counter = 0;
+
 	}
 
 	@Inject(method = "tick", at = @At("HEAD"))
