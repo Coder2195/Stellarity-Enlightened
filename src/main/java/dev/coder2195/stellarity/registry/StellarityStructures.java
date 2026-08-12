@@ -22,8 +22,7 @@ import java.util.Optional;
 
 import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_CAMPSITE;
 import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_VILLAGE;
-import static dev.coder2195.stellarity.util.WorldgenUtil.absolute;
-import static dev.coder2195.stellarity.util.WorldgenUtil.height;
+import static dev.coder2195.stellarity.util.WorldgenUtil.*;
 
 public interface StellarityStructures {
 	ResourceKey<Structure> CAMPSITE = id("campsite");
@@ -36,7 +35,7 @@ public interface StellarityStructures {
 		context.register(CAMPSITE, new JigsawStructure(
 			new Structure.StructureSettings(
 				biomes.getOrThrow(HAS_STRUCTURE_CAMPSITE), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN
-			), templatePools.getOrThrow(StellarityTemplatePools.CAMPSITE), 1, height(absolute(0)), false, Heightmap.Types.WORLD_SURFACE
+			), templatePools.getOrThrow(StellarityTemplatePools.CAMPSITE), 1, height(aboveBottom(10), belowTop(50)), false, Heightmap.Types.WORLD_SURFACE
 		));
 
 		Map<MobCategory, StructureSpawnOverride> villageSpawns = new HashMap<>();
