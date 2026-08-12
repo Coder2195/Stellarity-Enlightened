@@ -194,7 +194,8 @@ public class ModelProvider extends FabricModelProvider {
 			generators.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
 		}
 
-		generators.generateElytra(PHANTOM_WINGS);
+		for (Item elytra: List.of(PHANTOM_WINGS, DRAGON_WINGS, EMPRESS_WINGS))
+			generators.generateElytra(elytra);
 
 		for (var helmet : List.of(
 			new Tuple2<>(CHAMPION_HELMET, StellarityEquipmentAssets.CHAMPION),

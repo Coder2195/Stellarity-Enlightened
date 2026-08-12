@@ -121,7 +121,9 @@ public interface StellarityCreativeModeTabs {
 		FLORAL_HELMET,
 		FLORAL_CHESTPLATE,
 		FLORAL_LEGGINGS,
-		FLORAL_BOOTS
+		FLORAL_BOOTS,
+		DRAGON_WINGS,
+		EMPRESS_WINGS
 	};
 
 	ItemLike[] INGREDIENT_ITEMS = new ItemLike[]{

@@ -293,9 +293,9 @@ public interface StellarityItems {
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
 		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.PHANTOM_WINGS).setDamageOnHurt(false).build())
 		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
-			.add(Attributes.GRAVITY, new AttributeModifier(Stellarity.id("phantom_wings"), 0.65, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
-			.add(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(Stellarity.id("phantom_wings"), 8, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
-			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("phantom_wings"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.add(Attributes.GRAVITY, new AttributeModifier(Stellarity.id("armor.chestplate"), 0.65, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.add(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(Stellarity.id("armor.chestplate"), 8, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("armor.chestplate"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
 			.build())
 	);
 	Item LIFE_CRYSTAL = register(StellarityItemIds.LIFE_CRYSTAL, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
@@ -331,6 +331,26 @@ public interface StellarityItems {
 	Item FLORAL_CHESTPLATE = register(StellarityItemIds.FLORAL_CHESTPLATE, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.FLORAL, ArmorType.CHESTPLATE));
 	Item FLORAL_LEGGINGS = register(StellarityItemIds.FLORAL_LEGGINGS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.FLORAL, ArmorType.LEGGINGS));
 	Item FLORAL_BOOTS = register(StellarityItemIds.FLORAL_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.FLORAL, ArmorType.BOOTS));
+
+	Item DRAGON_WINGS = register(StellarityItemIds.DRAGON_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+		.component(DataComponents.GLIDER, Unit.INSTANCE)
+		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.DRAGON_WINGS).setDamageOnHurt(false).build())
+		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
+			.add(Attributes.ARMOR, new AttributeModifier(Stellarity.id("armor.chestplate"), 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.ARMOR_TOUGHNESS, new AttributeModifier(Stellarity.id("armor.chestplate"), 2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(Stellarity.id("armor.chestplate"), -0.08, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.CHEST)
+			.build())
+	);
+	Item EMPRESS_WINGS = register(StellarityItemIds.EMPRESS_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+		.component(DataComponents.GLIDER, Unit.INSTANCE)
+		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.EMPRESS_WINGS).setDamageOnHurt(false).build())
+		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
+			.add(Attributes.MOVEMENT_SPEED, new AttributeModifier(Stellarity.id("armor.chestplate"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("armor.chestplate"), -0.25, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.add(Attributes.SAFE_FALL_DISTANCE, new AttributeModifier(Stellarity.id("armor.chestplate"), 4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.CHEST)
+			.add(Attributes.GRAVITY, new AttributeModifier(Stellarity.id("armor.chestplate"), -0.35, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
+			.build())
+	);
 
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
@@ -518,9 +538,9 @@ public interface StellarityItems {
 		put(SHULKER_BOOTS, 0x976A97);
 		put(SHULKER_CHESTPLATE, 0x976A97);
 		put(SHULKER_LEGGINGS, 0x976A97);
-//		put(DRAGON_WINGS, 0x9936D6);
+		put(DRAGON_WINGS, 0x9936D6);
 		put(PHANTOM_WINGS, TextColor.YELLOW.getValue());
-//		put(EMPRESS_WINGS, 0xFF76D0);
+		put(EMPRESS_WINGS, 0xFF76D0);
 		put(HALLOWED_HELMET, 0xFFDD52);
 		put(HALLOWED_BOOTS, 0xFFDD52);
 		put(HALLOWED_CHESTPLATE, 0xFFDD52);
