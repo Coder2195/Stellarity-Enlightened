@@ -270,19 +270,23 @@ public abstract class LivingEntityMixin extends Entity {
 		if (floralBloom == null) return;
 
 		var timeUntilExplode = floralBloom.explodeAt() - level.getGameTime();
-		var position = getEyePosition();
+		var position = position();
+
+		var width = getHitbox().getXsize();
+		var height = getHitbox().getYsize();
+
+		var damage = floralBloom.damage();
 
 		if (!(level instanceof ServerLevel serverLevel)) {
-			for (int i = 0; i < 2; i++) level.addParticle(new DustParticleOptions(0xf9c9e4, (float) timeUntilExplode / 400f + 0.8f), position.x + random.nextGaussian() * 0.25, position.y + 0.15, position.z + random.nextGaussian() * 0.25, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+			for (int i = 0; i < 2; i++) level.addParticle(new DustParticleOptions(0xf9c9e4, (float) timeUntilExplode / 400f + 0.8f), position.x + random.nextGaussian() * 0.2, position.y + height + 0.15, position.z + random.nextGaussian() * 0.2, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
 
-			level.addParticle(ParticleTypes.FALLING_NECTAR, position.x + random.nextGaussian() * 0.175, position.y, position.z + random.nextGaussian() * 0.25, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+			for (int i = 0; i < damage / 2; i++) level.addParticle(ParticleTypes.FALLING_NECTAR, position.x + random.nextGaussian() * width, position.y + height / 2, position.z + random.nextGaussian() * width, 0, 0, 0);
 
 			return;
 		}
 
 		if (timeUntilExplode <= 0) {
 			removeAttached(StellarityDataAttachments.FLORAL_BLOOM);
-			var damage = floralBloom.damage();
 			var packet = new ClientboundFloralBloomBloomPayload(position, damage);
 			if (hurtServer(serverLevel, damageSources().source(StellarityDamageTypes.BLOOM), damage))
 				for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000))

@@ -2,15 +2,20 @@ package dev.coder2195.stellarity.client.event;
 
 import dev.coder2195.stellarity.networking.*;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.gui.screen.ConfigScreen;
 import dev.coder2195.stellarity.registry.StellaritySoundEvents;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 
 public interface StellarityClientNetworking {
 	static void init() {
@@ -25,6 +30,19 @@ public interface StellarityClientNetworking {
 	}
 
 	static void floralBloomBloom(ClientboundFloralBloomBloomPayload packet, ClientPlayNetworking.Context context) {
+		var level = context.client().level;
+
+		if (level == null) return;
+
+		var position = packet.position();
+		var damage = packet.damage();
+
+
+		for (int i=0; i<360; i++) {
+			float angle = i * Mth.TWO_PI / 360;
+			Vec3 baseSpeed = new Vec3(10, 0, 0).yRot(angle);
+			level.addParticle(ParticleTypes.SPORE_BLOSSOM_AIR, true, true, position.x, position.y, position.z, baseSpeed.x, 0, baseSpeed.z);
+		}
 	}
 
 

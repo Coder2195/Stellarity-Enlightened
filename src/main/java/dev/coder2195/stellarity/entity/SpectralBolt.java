@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.entity;
 
 import com.mojang.serialization.Codec;
+import dev.coder2195.stellarity.util.FloralBloom;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -22,12 +23,21 @@ public class SpectralBolt extends AbstractArrow {
 	private int liveTime = 3 * 20;
 	private Vec3 posOld = null;
 
+	public static final FloralBloom.Applier DEFAULT_FLORAL_BLOOM_APPLIER = new FloralBloom.Applier(3, 1.5f, 50, 30);
+
 	public SpectralBolt(EntityType<? extends AbstractArrow> type, Level level) {
 		super(type, level);
 	}
 
 	public SpectralBolt(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
 		super(StellarityEntityTypes.SPECTRAL_BOLT, owner, level, pickupItemStack, firedFromWeapon);
+	}
+
+
+
+	@Override
+	public FloralBloom.Applier stellarity$defaultFloralBloomApplier() {
+		return DEFAULT_FLORAL_BLOOM_APPLIER;
 	}
 
 	public int getLiveTime() {

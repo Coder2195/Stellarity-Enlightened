@@ -169,6 +169,8 @@
 	"commands.stellarity.kill_ender_dragon.success": "엔더 드래곤을 죽였어요",
 	"commands.stellarity.reset_config_to_default.success": "모든 구성이 기본값으로 재설정되었습니다",
 	"commands.stellarity.uninstall.success": "모든 등록된 Stellarity 스코어보드와 팀, 보스바를 제거했어요",
+	"death.attack.stellarity.bloom": "%1$s exploded into a cloud of petals",
+	"death.attack.stellarity.bloom.player": "%1$s exploded into a cloud of petals by %2$s",
 	"death.attack.stellarity.brittle": "%1$s shattered into ice shards by magic",
 	"death.attack.stellarity.dragonblade.1": "%1$s was punched into the otherworld by %2$s",
 	"death.attack.stellarity.dragonblade.2": "%1$s was punched a bit too hard by %2$s",

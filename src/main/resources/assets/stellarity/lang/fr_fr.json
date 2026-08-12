@@ -169,6 +169,8 @@
 	"commands.stellarity.kill_ender_dragon.success": "Vous avez tué l'Ender Dragon",
 	"commands.stellarity.reset_config_to_default.success": "Toutes les configurations ont été réinitialisées",
 	"commands.stellarity.uninstall.success": "Tous les scoreboards, équipes et barre de boss venant de Stellarity ont été retirés",
+	"death.attack.stellarity.bloom": "%1$s exploded into a cloud of petals",
+	"death.attack.stellarity.bloom.player": "%1$s exploded into a cloud of petals by %2$s",
 	"death.attack.stellarity.brittle": "%1$s shattered into ice shards by magic",
 	"death.attack.stellarity.dragonblade.1": "%1$s was punched into the otherworld by %2$s",
 	"death.attack.stellarity.dragonblade.2": "%1$s was punched a bit too hard by %2$s",

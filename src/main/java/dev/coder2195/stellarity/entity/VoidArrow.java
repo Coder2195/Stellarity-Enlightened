@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.entity;
 
+import dev.coder2195.stellarity.util.FloralBloom;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.component.DataComponents;
@@ -36,6 +37,13 @@ public class VoidArrow extends AbstractArrow {
 
 	public VoidArrow(final Level level, final LivingEntity owner, final ItemStack pickupItemStack, final @Nullable ItemStack firedFromWeapon) {
 		super(StellarityEntityTypes.VOID_ARROW, owner, level, pickupItemStack, firedFromWeapon);
+	}
+
+	public static final FloralBloom.Applier DEFAULT_FLORAL_BLOOM_APPLIER = new FloralBloom.Applier(4.5f, 2.5f, 70, 30);
+
+	@Override
+	public FloralBloom.Applier stellarity$defaultFloralBloomApplier() {
+		return DEFAULT_FLORAL_BLOOM_APPLIER;
 	}
 
 	@Override

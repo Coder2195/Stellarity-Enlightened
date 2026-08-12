@@ -169,6 +169,8 @@
 	"commands.stellarity.kill_ender_dragon.success": "Zabito Smoka Kresu",
 	"commands.stellarity.reset_config_to_default.success": "Wszystkie opcje konfiguracyjne zostały przywrócone do ich początkowych wartości",
 	"commands.stellarity.uninstall.success": "Usunięto wszystkie zarejestrowane przez Stellarity zmienne",
+	"death.attack.stellarity.bloom": "%1$s exploded into a cloud of petals",
+	"death.attack.stellarity.bloom.player": "%1$s exploded into a cloud of petals by %2$s",
 	"death.attack.stellarity.brittle": "%1$s shattered into ice shards by magic",
 	"death.attack.stellarity.dragonblade.1": "%1$s został wyrzucony do innego świata przez %2$s",
 	"death.attack.stellarity.dragonblade.2": "%1$s został uderzony nieco zbyt mocno przez %2$s",

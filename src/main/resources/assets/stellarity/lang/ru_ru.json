@@ -169,6 +169,8 @@
 	"commands.stellarity.kill_ender_dragon.success": "Дракон Края был убит",
 	"commands.stellarity.reset_config_to_default.success": "Все настройки были сброшены!",
 	"commands.stellarity.uninstall.success": "Все действующие счётчики, команды и полоски боссов Stellarity были убраны",
+	"death.attack.stellarity.bloom": "%1$s exploded into a cloud of petals",
+	"death.attack.stellarity.bloom.player": "%1$s exploded into a cloud of petals by %2$s",
 	"death.attack.stellarity.brittle": "%1$s shattered into ice shards by magic",
 	"death.attack.stellarity.dragonblade.1": "%1$s был отправлен %2$s в мир иной",
 	"death.attack.stellarity.dragonblade.2": "%1$s был ударен %2$s слишком сильно",

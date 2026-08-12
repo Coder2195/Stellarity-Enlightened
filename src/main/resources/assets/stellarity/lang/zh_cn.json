@@ -169,6 +169,8 @@
 	"commands.stellarity.kill_ender_dragon.success": "杀死了末影龙",
 	"commands.stellarity.reset_config_to_default.success": "所有配置均已重置为默认值",
 	"commands.stellarity.uninstall.success": "移除所有已创建的Stellarity记分版、队伍和boss血条",
+	"death.attack.stellarity.bloom": "%1$s exploded into a cloud of petals",
+	"death.attack.stellarity.bloom.player": "%1$s exploded into a cloud of petals by %2$s",
 	"death.attack.stellarity.brittle": "%1$s shattered into ice shards by magic",
 	"death.attack.stellarity.dragonblade.1": "%1$s 被 %2$s 推入异世界（待更新源文本）",
 	"death.attack.stellarity.dragonblade.2": "%1$s 被 %2$s 攻击的有点太重了（待更新源文本）",
