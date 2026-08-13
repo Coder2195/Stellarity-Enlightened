@@ -33,13 +33,13 @@ public record AltarDyeRecipe(Ingredient item) implements AltarRecipe {
 		if (itemStacks.size() < 2) return null;
 
 		LinkedList<DyeColor> dyes = new LinkedList<>();
+
 		ItemStack target = null;
-		boolean waterBucket = false;
+		ItemStack waterBucket = null;
 
 		for (ItemStack itemStack : itemStacks) {
 			if (itemStack.is(Items.WATER_BUCKET)) {
-				if (itemStack.count() != 1) return null;
-				waterBucket = true;
+				waterBucket = itemStack;
 				continue;
 			}
 
@@ -53,12 +53,14 @@ public record AltarDyeRecipe(Ingredient item) implements AltarRecipe {
 			target = itemStack.copy();
 		}
 
-		if (waterBucket) {
+		if (waterBucket != null) {
 			if (!dyes.isEmpty() || target == null || !target.has(StellarityDataComponents.COLOR)) return null;
 
 			target.remove(StellarityDataComponents.COLOR);
 
-			return new Output(new HashMap<>(), target, new ItemStack(Items.BUCKET));
+			var remainders = new HashMap<ItemStack, Integer>();
+			remainders.put(waterBucket, Math.max(waterBucket.count() - 1, 0));
+			return new Output(remainders, target);
 		}
 
 		if (target == null || dyes.isEmpty()) return null;

@@ -6,6 +6,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -142,8 +143,21 @@ public interface AltarRecipe extends Recipe<AltarRecipe.Input> {
 
 		if (output == null) return;
 
+		var remainders= output.remainders();
+		for (var itemStack: itemStacks) {
+			var remaining = remainders.getOrDefault(itemStack, 0);
+			var craftingRemainder = itemStack.getCraftingRemainder();
+			if (craftingRemainder == null) continue;
+			int toGive = itemStack.getCount() - remaining;
+			if (toGive <= 0) continue;
+
+			ItemEntity remainderItem = new ItemEntity(serverLevel, x, y + 0.75, z, craftingRemainder.apply(toGive, DataComponentPatch.builder().build()));
+			remainderItem.stellarity$setItemMode(ExtItemEntity.ItemMode.RESULT);
+			serverLevel.addFreshEntity(remainderItem);
+		}
+
 		for (var entity : itemEntities) {
-			entity.stellarity$updateResults(output.remainders());
+			entity.stellarity$updateResults(remainders);
 		}
 
 		var stacks = output.result();
