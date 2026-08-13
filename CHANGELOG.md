@@ -69,6 +69,22 @@ Compatibility update
   ##  
   ##
 
+**[+] 3 Chorus Plant + Water Bucket = 6 Paper**
+
+**[+] Chorus Flower = Purple Dye**
+
+**[+] Ender Eye + Water Bucket = 3 Slime Ball**
+
+**[+] Glowstone + Arrow = 4 Spectral Arrow**
+
+**[+] Chorus Fruit = Sugar**
+
+**[+] Bowl + Red Mushroom + Brown Mushroom + Chorus Fruit = Levitation Suspicious Stew**
+
+**[+] Bowl + Red Mushroom + Brown Mushroom + Pink Petals = Absorption Suspicious Stew**
+
+**[+] Bowl + Red Mushroom + Brown Mushroom + Pitcher Plant = Strength Suspicious Stew**
+
 ### Blast Furnace
 
 **[+] Popped Chorus Fruit = Gunpowder**

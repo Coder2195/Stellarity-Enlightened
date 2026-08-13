@@ -11,12 +11,16 @@ import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
@@ -115,6 +119,65 @@ public class RecipeProvider extends FabricRecipeProvider {
 					.unlockedBy(getHasName(PHANTOM_MEMBRANE), this.has(PHANTOM_MEMBRANE))
 					.save(this.output, "crafting/leather_from_phantom_membrane");
 
+				this.shapeless(RecipeCategory.MISC, PAPER, 6)
+					.requires(CHORUS_PLANT, 3)
+					.requires(WATER_BUCKET, 1)
+					.unlockedBy(getHasName(CHORUS_PLANT), this.has(CHORUS_PLANT))
+					.unlockedBy(getHasName(WATER_BUCKET), this.has(WATER_BUCKET))
+					.save(this.output, "crafting/papyrus");
+
+				this.shapeless(RecipeCategory.MISC, DYE.purple(), 2)
+					.requires(CHORUS_FLOWER)
+					.unlockedBy(getHasName(CHORUS_FLOWER), this.has(CHORUS_FLOWER))
+					.save(this.output, "crafting/purple_dye_from_chorus_flower");
+
+				this.shapeless(RecipeCategory.BUILDING_BLOCKS, SLIME_BALL, 3)
+					.requires(WATER_BUCKET).requires(ENDER_EYE)
+					.unlockedBy(getHasName(WATER_BUCKET), this.has(WATER_BUCKET))
+					.unlockedBy(getHasName(ENDER_EYE), this.has(ENDER_EYE))
+					.save(this.output, "crafting/slime_ball_from_ender_eye");
+
+				this.shapeless(RecipeCategory.COMBAT, SPECTRAL_ARROW, 4)
+					.requires(ARROW).requires(GLOWSTONE)
+					.unlockedBy(getHasName(ARROW), this.has(ARROW))
+					.unlockedBy(getHasName(GLOWSTONE), this.has(GLOWSTONE))
+					.save(this.output, "crafting/spectral_arrow");
+
+				this.shapeless(RecipeCategory.BUILDING_BLOCKS, SUGAR, 1)
+					.requires(CHORUS_FRUIT)
+					.unlockedBy(getHasName(CHORUS_FRUIT), this.has(CHORUS_FRUIT))
+					.save(this.output, "crafting/sugar_from_chorus_fruit");
+
+				this.shapeless(RecipeCategory.FOOD, new ItemStackTemplate(SUSPICIOUS_STEW,
+						DataComponentPatch.builder().set(DataComponents.SUSPICIOUS_STEW_EFFECTS, new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(MobEffects.LEVITATION, 160)))).build())
+					)
+					.requires(BOWL).requires(CHORUS_FRUIT).requires(RED_MUSHROOM).requires(BROWN_MUSHROOM)
+					.unlockedBy(getHasName(BOWL), this.has(BOWL))
+					.unlockedBy(getHasName(CHORUS_FRUIT), this.has(CHORUS_FRUIT))
+					.unlockedBy(getHasName(RED_MUSHROOM), this.has(RED_MUSHROOM))
+					.unlockedBy(getHasName(BROWN_MUSHROOM), this.has(BROWN_MUSHROOM))
+					.save(this.output, "crafting/suspicious_stew_from_chorus_fruit");
+
+				this.shapeless(RecipeCategory.FOOD, new ItemStackTemplate(SUSPICIOUS_STEW,
+						DataComponentPatch.builder().set(DataComponents.SUSPICIOUS_STEW_EFFECTS, new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(MobEffects.ABSORPTION, 180)))).build())
+					)
+					.requires(BOWL).requires(PINK_PETALS).requires(RED_MUSHROOM).requires(BROWN_MUSHROOM)
+					.unlockedBy(getHasName(BOWL), this.has(BOWL))
+					.unlockedBy(getHasName(PINK_PETALS), this.has(PINK_PETALS))
+					.unlockedBy(getHasName(RED_MUSHROOM), this.has(RED_MUSHROOM))
+					.unlockedBy(getHasName(BROWN_MUSHROOM), this.has(BROWN_MUSHROOM))
+					.save(this.output, "crafting/suspicious_stew_from_pink_petals");
+
+				this.shapeless(RecipeCategory.FOOD, new ItemStackTemplate(SUSPICIOUS_STEW,
+						DataComponentPatch.builder().set(DataComponents.SUSPICIOUS_STEW_EFFECTS, new SuspiciousStewEffects(List.of(new SuspiciousStewEffects.Entry(MobEffects.STRENGTH, 220)))).build())
+					)
+					.requires(BOWL).requires(PITCHER_PLANT).requires(RED_MUSHROOM).requires(BROWN_MUSHROOM)
+					.unlockedBy(getHasName(BOWL), this.has(BOWL))
+					.unlockedBy(getHasName(PITCHER_PLANT), this.has(PITCHER_PLANT))
+					.unlockedBy(getHasName(RED_MUSHROOM), this.has(RED_MUSHROOM))
+					.unlockedBy(getHasName(BROWN_MUSHROOM), this.has(BROWN_MUSHROOM))
+					.save(this.output, "crafting/suspicious_stew_from_pitcher_plant");
+
 				provider.allRegistriesLifecycle().add(Lifecycle.stable());
 				RecipeProvider.this.buildRecipes(provider, output);
 			}
@@ -129,7 +192,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 		));
 
 		altarOfTheAccursed(output, "altar_of_the_accursed/chorus_plating", new AltarSimpleRecipe(
-			new Ingredients().put(IRON_INGOT).put(POPPED_CHORUS_FRUIT, 2),
+			new Ingredients().put(IRON_INGOT).put(POPPED_CHORUS_FRUIT	, 2),
 			new ItemStackTemplate(CHORUS_PLATING)
 		));
 
