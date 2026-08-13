@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.renderer.entity;
+package dev.coder2195.stellarity.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.coder2195.stellarity.entity.ObstructSpellBlock;

@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.renderer.entity;
+package dev.coder2195.stellarity.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -7,7 +7,7 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
-import dev.coder2195.stellarity.client.registry.model.entity.PixieModel;
+import dev.coder2195.stellarity.client.model.entity.PixieModel;
 import dev.coder2195.stellarity.entity.Pixie;
 
 public class PixieRenderer extends MobRenderer<Pixie, LivingEntityRenderState, PixieModel> {

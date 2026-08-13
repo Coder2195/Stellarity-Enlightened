@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 
-import static dev.coder2195.stellarity.client.registry.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
+import static dev.coder2195.stellarity.client.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
 
 @Mixin(ItemFrameRenderer.class)
 public class ItemFrameRendererMixin {

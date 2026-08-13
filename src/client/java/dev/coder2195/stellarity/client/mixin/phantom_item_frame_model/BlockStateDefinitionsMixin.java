@@ -16,7 +16,7 @@ import dev.coder2195.stellarity.Stellarity;
 import java.util.Map;
 import java.util.function.Function;
 
-import static dev.coder2195.stellarity.client.registry.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
+import static dev.coder2195.stellarity.client.renderer.entity.PhantomItemFrameRenderer.FAKE_STATE_DEFINITION;
 
 @Mixin(BlockStateDefinitions.class)
 public class BlockStateDefinitionsMixin {

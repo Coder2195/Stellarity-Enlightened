@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.renderer.entity;
+package dev.coder2195.stellarity.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.SlimeRenderer;

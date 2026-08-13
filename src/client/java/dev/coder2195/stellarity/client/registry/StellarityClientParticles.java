@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.client.registry;
 
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.particle.ScaleShrinkingParticle;
+import dev.coder2195.stellarity.client.particle.ScaleShrinkingParticle;
 import dev.coder2195.stellarity.registry.StellarityParticleTypes;
 
 public interface StellarityClientParticles {

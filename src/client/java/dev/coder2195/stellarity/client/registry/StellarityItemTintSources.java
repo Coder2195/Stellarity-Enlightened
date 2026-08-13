@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.client.registry;
 
 import net.minecraft.client.color.item.ItemTintSources;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.item_tint_source.ColorTintSource;
+import dev.coder2195.stellarity.client.item_tint_source.ColorTintSource;
 
 public interface StellarityItemTintSources {
 	static void init() {

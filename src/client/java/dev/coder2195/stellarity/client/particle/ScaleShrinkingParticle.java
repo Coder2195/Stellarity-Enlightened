@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.particle;
+package dev.coder2195.stellarity.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;

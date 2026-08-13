@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.model.entity;
+package dev.coder2195.stellarity.client.model.entity;
 
 
 import net.minecraft.client.model.EntityModel;

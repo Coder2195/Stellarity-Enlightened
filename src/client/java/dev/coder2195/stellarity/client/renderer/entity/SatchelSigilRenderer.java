@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.renderer.entity;
+package dev.coder2195.stellarity.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.EntityModel;
@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
-import dev.coder2195.stellarity.client.registry.model.entity.SatchelSigilModel;
+import dev.coder2195.stellarity.client.model.entity.SatchelSigilModel;
 import dev.coder2195.stellarity.entity.SatchelSigil;
 
 public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSigilRenderer.SatchelSigilRenderState> {

@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.datagen;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.item_tint_source.ColorTintSource;
+import dev.coder2195.stellarity.client.item_tint_source.ColorTintSource;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityEquipmentAssets;
 import dev.coder2195.stellarity.util.tuple.Tuple2;

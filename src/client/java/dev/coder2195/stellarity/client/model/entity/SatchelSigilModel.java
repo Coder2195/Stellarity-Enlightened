@@ -1,5 +1,5 @@
 
-package dev.coder2195.stellarity.client.registry.model.entity;
+package dev.coder2195.stellarity.client.model.entity;
 
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.util.Mth;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.client.registry.renderer.entity.SatchelSigilRenderer;
+import dev.coder2195.stellarity.client.renderer.entity.SatchelSigilRenderer;
 import dev.coder2195.stellarity.entity.SatchelSigil;
 
 public class SatchelSigilModel extends EntityModel<SatchelSigilRenderer.SatchelSigilRenderState> {

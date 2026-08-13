@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.client.registry;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.renderer.entity.*;
+import dev.coder2195.stellarity.client.renderer.entity.*;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;

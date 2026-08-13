@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.client.registry.item_tint_source;
+package dev.coder2195.stellarity.client.item_tint_source;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.color.item.ItemTintSource;
