@@ -2,22 +2,22 @@ package dev.coder2195.stellarity.datagen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.criterion_trigger.HolyProtectionDodgeTrigger;
-import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
-import dev.coder2195.stellarity.registry.StellarityBlocks;
-import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
-import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.registry.StellarityStructures;
 import dev.coder2195.stellarity.criterion_trigger.DashTrigger;
+import dev.coder2195.stellarity.criterion_trigger.HolyProtectionDodgeTrigger;
 import dev.coder2195.stellarity.criterion_trigger.SpecialCraftTrigger;
 import dev.coder2195.stellarity.criterion_trigger.VoidFishedTrigger;
+import dev.coder2195.stellarity.datagen.tags.BiomeTagProvider;
 import dev.coder2195.stellarity.entity_sub_predicate.EntityAttributeModifiersPredicate;
 import dev.coder2195.stellarity.entity_sub_predicate.NbtNumberPredicate;
+import dev.coder2195.stellarity.registry.*;
+import dev.coder2195.stellarity.tags.StellarityBiomeTags;
 import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.predicates.*;
+import net.minecraft.advancements.predicates.entity.EntityEquipmentPredicate;
 import net.minecraft.advancements.predicates.entity.EntityPredicate;
 import net.minecraft.advancements.predicates.entity.EntityTypePredicate;
 import net.minecraft.advancements.predicates.entity.PlayerPredicate;
@@ -280,18 +280,61 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.requirements(requires("find_village")).build(Stellarity.id("exploration/find_end_village"));
 
 		var HALLELUJAH = advancement().display(
-			StellarityItems.HALLOWED_CHESTPLATE,
-			Component.translatable("advancements.stellarity.hallelujah"), Component.translatable("advancements.stellarity.hallelujah.description"),
-			null, TASK, true, true, false
-		).parent(CURSED_CRAFTING)
+				StellarityItems.HALLOWED_CHESTPLATE,
+				Component.translatable("advancements.stellarity.hallelujah"), Component.translatable("advancements.stellarity.hallelujah.description"),
+				null, TASK, true, true, false
+			).parent(CURSED_CRAFTING)
 			.addCriterion("holy_protection", HolyProtectionDodgeTrigger.trigger())
 			.requirements(requires("holy_protection")).build(Stellarity.id("altar_of_the_accursed/hallelujah"));
 
+		var ENTER_HALLOW_DESCRIPTION = Component.empty();
+		Stream.<Tuple2<String, Integer>>of(
+				new Tuple2<>("'", 0xffafaf), new Tuple2<>("O", 0xf9b0a4), new Tuple2<>("n", 0xf4b19a), new Tuple2<>("c", 0xeeb290), new Tuple2<>("e ", 0xe9b385),
+				new Tuple2<>("y", 0xe3b47b), new Tuple2<>("o", 0xdeb571), new Tuple2<>("u ", 0xddba6c), new Tuple2<>("e", 0xe2c570), new Tuple2<>("n", 0xe7d074),
+				new Tuple2<>("t", 0xeddb78), new Tuple2<>("e", 0xf2e67c), new Tuple2<>("r ", 0xf8f180), new Tuple2<>("h", 0xfdfc84), new Tuple2<>("a", 0xf1ff85),
+				new Tuple2<>("l", 0xdeff85), new Tuple2<>("l", 0xccff85), new Tuple2<>("o", 0xb9ff85), new Tuple2<>("w", 0xa7ff85), new Tuple2<>("e", 0x95ff85),
+				new Tuple2<>("d ", 0x85ff87), new Tuple2<>("l", 0x85ff99), new Tuple2<>("a", 0x85ffac), new Tuple2<>("n", 0x85ffbe), new Tuple2<>("d", 0x85ffd0),
+				new Tuple2<>(", ", 0x85ffe3), new Tuple2<>("y", 0x85fff5), new Tuple2<>("o", 0x80fafa), new Tuple2<>("u ", 0x78f0f0), new Tuple2<>("w", 0x6fe6e6),
+				new Tuple2<>("i", 0x67dcdc), new Tuple2<>("l", 0x5ed2d2), new Tuple2<>("l ", 0x56c8c8), new Tuple2<>("s", 0x4ebebe), new Tuple2<>("e", 0x52b3c5),
+				new Tuple2<>("e ", 0x58a8cf), new Tuple2<>("a ", 0x5e9dd9), new Tuple2<>("r", 0x6492e3), new Tuple2<>("a", 0x6a88ed), new Tuple2<>("i", 0x707df7),
+				new Tuple2<>("n", 0x7a74ff), new Tuple2<>("b", 0x8f74ff), new Tuple2<>("o", 0xa373ff), new Tuple2<>("w ", 0xb873ff), new Tuple2<>("i", 0xcd72ff),
+				new Tuple2<>("n ", 0xe271ff), new Tuple2<>("t", 0xf771ff), new Tuple2<>("h", 0xf86df8), new Tuple2<>("e ", 0xef68ef), new Tuple2<>("s", 0xe562e5),
+				new Tuple2<>("k", 0xdb5ddb), new Tuple2<>("y", 0xd257d2), new Tuple2<>(".", 0xc852c8)
+			).map(tuple -> Component.literal(tuple._1()).withStyle(style -> style.withColor(tuple._2())))
+			.forEach(ENTER_HALLOW_DESCRIPTION::append);
+
+		var ENTER_HALLOW = advancement().display(
+				Items.AMETHYST_CLUSTER,
+				Component.translatable("advancements.stellarity.enter_hallow"), ENTER_HALLOW_DESCRIPTION,
+				null, TASK, true, true, true
+			).parent(ENTER_END_GATEWAY)
+			.addCriterion("enter_hallow", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inBiome(registryLookup.getOrThrow(StellarityBiomes.THE_HALLOW))))
+			.requirements(requires("enter_hallow"))
+			.build(Stellarity.id("exploration/enter_hallow"));
+
+		var KEEP_WARM = advancement().display(
+				Items.LEATHER_CHESTPLATE,
+				Component.translatable("advancements.stellarity.keep_warm"), Component.translatable("advancements.stellarity.keep_warm.description"),
+				null, TASK, true, true, false
+			).parent(ENTER_END_GATEWAY)
+			.addCriterion("keep_warm", PlayerTrigger.TriggerInstance
+				.located(EntityPredicate.Builder.entity()
+					.located(LocationPredicate.Builder.location().setBiomes(registryLookup.getOrThrow(StellarityBiomeTags.SNOWY)))
+					.equipment(EntityEquipmentPredicate.Builder.equipment()
+						.head(ItemPredicate.Builder.item().of(items, Items.LEATHER_HELMET))
+						.chest(ItemPredicate.Builder.item().of(items, Items.LEATHER_CHESTPLATE))
+						.legs(ItemPredicate.Builder.item().of(items, Items.LEATHER_LEGGINGS))
+						.feet(ItemPredicate.Builder.item().of(items, Items.LEATHER_BOOTS))
+					)
+				)
+			).requirements(requires("keep_warm"))
+			.build(Stellarity.id("exploration/keep_warm"));
 
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
-			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH
+			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
+			KEEP_WARM
 		)) {
 			consumer.accept(advancement);
 		}

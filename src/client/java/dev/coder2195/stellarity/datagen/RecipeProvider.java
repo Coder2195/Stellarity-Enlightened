@@ -14,8 +14,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.crafting.BlastingRecipe;
+import net.minecraft.world.item.crafting.CampfireCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jspecify.annotations.NonNull;
@@ -64,12 +68,12 @@ public class RecipeProvider extends FabricRecipeProvider {
 				shapeless(RecipeCategory.BUILDING_BLOCKS, ENDERITE_BLOCK)
 					.requires(ENDERITE_SHARD, 9)
 					.unlockedBy(getHasName(ENDERITE_SHARD), has(ENDERITE_SHARD))
-					.save(output);
+					.save(output, "crafting/enderite_block");
 
 				shapeless(RecipeCategory.BUILDING_BLOCKS, ENDERITE_SHARD, 9)
 					.requires(ENDERITE_BLOCK)
 					.unlockedBy(getHasName(ENDERITE_BLOCK), has(ENDERITE_BLOCK))
-					.save(output);
+					.save(output, "crafting/enderite_shard");
 
 				this.shaped(RecipeCategory.BUILDING_BLOCKS, COARSE_ENDER_DIRT, 4)
 					.pattern("DG")
@@ -78,7 +82,38 @@ public class RecipeProvider extends FabricRecipeProvider {
 					.define('G', GRAVEL)
 					.unlockedBy(getHasName(GRAVEL), this.has(GRAVEL))
 					.unlockedBy(getHasName(ENDER_DIRT), this.has(ENDER_DIRT))
-					.save(this.output);
+					.save(this.output, "crafting/coarse_ender_dirt");
+
+				this.shaped(RecipeCategory.MISC, CHORUS_PLANT, 4)
+					.pattern("CC")
+					.pattern("CC")
+					.define('C', CHORUS_FRUIT)
+					.unlockedBy(getHasName(CHORUS_FRUIT), this.has(CHORUS_FRUIT))
+					.save(this.output, "crafting/chorus_plant_from_chorus_fruit");
+
+				this.shapeless(RecipeCategory.BUILDING_BLOCKS, GLASS, 3)
+					.requires(END_STONE).requires(BLAZE_POWDER)
+					.unlockedBy(getHasName(END_STONE), this.has(END_STONE))
+					.unlockedBy(getHasName(BLAZE_POWDER), this.has(BLAZE_POWDER))
+					.save(this.output, "crafting/glass_from_end_stone");
+
+
+				SimpleCookingRecipeBuilder.generic(Ingredient.of(POPPED_CHORUS_FRUIT), RecipeCategory.MISC, CookingBookCategory.MISC, GUNPOWDER, 0.05f, 150, BlastingRecipe::new)
+					.group("gunpowder")
+					.unlockedBy(getHasName(GUNPOWDER), this.has(GUNPOWDER))
+					.save(this.output, "blasting/gunpowder_from_popped_chorus_fruit");
+
+				SimpleCookingRecipeBuilder.generic(Ingredient.of(POPPED_CHORUS_FRUIT), RecipeCategory.MISC, CookingBookCategory.MISC, GUNPOWDER, 0, 600, CampfireCookingRecipe::new)
+					.group("gunpowder")
+					.unlockedBy(getHasName(GUNPOWDER), this.has(GUNPOWDER))
+					.save(this.output, "campfire/gunpowder_from_popped_chorus_fruit");
+
+				this.shaped(RecipeCategory.MISC, LEATHER, 2)
+					.pattern("##")
+					.pattern("##")
+					.define('#', PHANTOM_MEMBRANE)
+					.unlockedBy(getHasName(PHANTOM_MEMBRANE), this.has(PHANTOM_MEMBRANE))
+					.save(this.output, "crafting/leather_from_phantom_membrane");
 
 				provider.allRegistriesLifecycle().add(Lifecycle.stable());
 				RecipeProvider.this.buildRecipes(provider, output);

@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "stellarity:coarse_ender_dirt"
+        "recipe": "stellarity:crafting/coarse_ender_dirt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -37,7 +37,7 @@
   ],
   "rewards": {
     "recipes": [
-      "stellarity:coarse_ender_dirt"
+      "stellarity:crafting/coarse_ender_dirt"
     ]
   }
 }

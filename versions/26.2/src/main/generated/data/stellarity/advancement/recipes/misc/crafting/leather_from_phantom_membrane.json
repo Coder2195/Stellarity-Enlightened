@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_enderite_shard": {
+    "has_phantom_membrane": {
       "conditions": {
         "items": [
           {
-            "items": "stellarity:enderite_shard"
+            "items": "minecraft:phantom_membrane"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "stellarity:enderite_block"
+        "recipe": "stellarity:crafting/leather_from_phantom_membrane"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_enderite_shard"
+      "has_phantom_membrane"
     ]
   ],
   "rewards": {
     "recipes": [
-      "stellarity:enderite_block"
+      "stellarity:crafting/leather_from_phantom_membrane"
     ]
   }
 }

@@ -2,7 +2,13 @@
 
 Compatibility update
 
+## Blocks
+
+**[*] AOTA**
+- Respects crafting remainders now
+
 ## Items
+
 **[+] Champion Helmet**
 
 **[+] Champion Chestplate**
@@ -27,6 +33,16 @@ Compatibility update
 
 **[+] Floral Boots**
 
+**[+] Dragon Wings**
+
+**[+] Empress Wings**
+
+## Advancements
+
+**[+]** Hallowed Be Thy Name
+
+**[+] **
+
 ## Recipes
 
 ### AOTA
@@ -37,9 +53,34 @@ Compatibility update
 
 **[+] Netherite Armor + 8 Cherry Leaves + 1 Enderite Upgrade = Floral Armor**
 
+### Crafting Table
+
+**[+] 4 Chorus Fruit = 4 Chorus Plant**
+
+- Where C=Chorus Fruit  
+  CC  
+  CC
+
+**[+] End Stone + Blaze Powder = 3 Glass**
+
+**[+] 4 Phantom Membrane = 2 Leather**
+
+- Where #=Phantom Membrane  
+  ##  
+  ##
+
+### Blast Furnace
+
+**[+] Popped Chorus Fruit = Gunpowder**
+
+### Campfire
+
+**[+] Popped Chorus Fruit = Gunpowder**
+
 ## Dependencies
 
 **[+] Stellarity x Nullscape**
+
 - Now embeded and determined at runtime, allowing for nullscape support
 
 ## Mechanics
