@@ -4,6 +4,7 @@ import com.google.common.collect.Streams;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.consume_effect.*;
 import dev.coder2195.stellarity.item.*;
+import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -289,7 +290,8 @@ public interface StellarityItems {
 		.component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
 	);
 	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
-	Item PHANTOM_WINGS = register(StellarityItemIds.PHANTOM_WINGS, new Item.Properties().stacksTo(1).durability(70).rarity(Rarity.UNCOMMON)
+	Item PHANTOM_WINGS = register(StellarityItemIds.PHANTOM_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+		.durability(70).repairable(StellarityItemTags.REPAIRS_PHANTOM_WINGS)
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
 		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.PHANTOM_WINGS).setDamageOnHurt(false).build())
 		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
@@ -333,6 +335,7 @@ public interface StellarityItems {
 	Item FLORAL_BOOTS = register(StellarityItemIds.FLORAL_BOOTS, new Item.Properties().rarity(Rarity.UNCOMMON).humanoidArmor(StellarityArmorMaterials.FLORAL, ArmorType.BOOTS));
 
 	Item DRAGON_WINGS = register(StellarityItemIds.DRAGON_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.RARE)
+		.durability(648).repairable(StellarityItemTags.REPAIRS_DRAGON_WINGS)
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
 		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.DRAGON_WINGS).setDamageOnHurt(false).build())
 		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()
@@ -342,6 +345,7 @@ public interface StellarityItems {
 			.build())
 	);
 	Item EMPRESS_WINGS = register(StellarityItemIds.EMPRESS_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)
+		.durability(432).repairable(StellarityItemTags.REPAIRS_EMPRESS_WINGS)
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
 		.component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST).setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA).setAsset(StellarityEquipmentAssets.EMPRESS_WINGS).setDamageOnHurt(false).build())
 		.component(DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.builder()

@@ -84,5 +84,9 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(StellarityItemTags.HALLOWED_ARMOR).add(HALLOWED_HELMET, HALLOWED_CHESTPLATE, HALLOWED_LEGGINGS, HALLOWED_BOOTS);
 		addTags(StellarityItemTags.CHAMPION_ARMOR).add(CHAMPION_HELMET, CHAMPION_CHESTPLATE, CHAMPION_LEGGINGS, CHAMPION_BOOTS);
 
+		addTags(StellarityItemTags.REPAIRS_PHANTOM_WINGS).add(PHANTOM_MEMBRANE);
+		addTags(StellarityItemTags.REPAIRS_DRAGON_WINGS).add(PHANTOM_MEMBRANE);
+		addTags(StellarityItemTags.REPAIRS_EMPRESS_WINGS).add(PHANTOM_MEMBRANE);
+
 	}
 }
