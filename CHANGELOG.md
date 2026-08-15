@@ -9,6 +9,9 @@ Compatibility update along with general additions of armor and recipes
 
 ## Items
 
+**[*] Life Crystal**
+- Fully implemented
+
 **[+] Champion Helmet**
 
 **[+] Champion Chestplate**

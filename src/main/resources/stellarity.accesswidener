@@ -10,11 +10,9 @@ inject-interface net/minecraft/world/level/levelgen/feature/configurations/Large
 inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone dev/coder2195/stellarity/interface_injection/ExtLargeDripstone
 
 accessible class net/minecraft/world/effect/RegenerationMobEffect
-extendable method net/minecraft/world/entity/decoration/ItemFrame onItemChanged (Lnet/minecraft/world/item/ItemStack;)V
 accessible class net/minecraft/server/commands/AdvancementCommands$Action
 accessible class net/minecraft/world/entity/projectile/FishingHook$FishHookState
 accessible class net/minecraft/world/level/levelgen/feature/EndSpikeFeature$SpikeCacheLoader
-extendable class net/minecraft/world/item/enchantment/Enchantment
 accessible class net/minecraft/world/item/enchantment/EnchantmentHelper$EnchantmentInSlotVisitor
 accessible class net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone
 accessible class net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap
