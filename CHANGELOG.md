@@ -42,9 +42,9 @@ Compatibility update along with general additions of armor and recipes
 
 ## Advancements
 
-**[+]** Hallowed Be Thy Name
+**[+] Hallowed Be Thy Name**
 
-**[+] **
+**[+] Keep Warm!**
 
 ## Recipes
 
