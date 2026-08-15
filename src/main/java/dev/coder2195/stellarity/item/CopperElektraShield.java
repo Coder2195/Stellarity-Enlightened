@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.item;
 
+import dev.coder2195.stellarity.mixin.accessor.CreeperAccessor;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -109,7 +110,7 @@ public class CopperElektraShield extends ShieldItem {
 			victims.add(hit);
 			hit.hurtServer(serverLevel, electric, 4);
 			if (hit instanceof Creeper creeper && creeper.getRandom().nextFloat() < 0.25F) {
-				creeper.getEntityData().set(Creeper.DATA_IS_POWERED, true);
+				creeper.getEntityData().set(CreeperAccessor.getDataIsPowered(), true);
 				creeperLocations.add(creeper.position());
 			}
 		}

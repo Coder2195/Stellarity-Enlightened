@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.client.renderer.entity;
 
+import dev.coder2195.stellarity.client.mixin.accessor.ItemFrameRendererAccessor;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemFrameRenderer;
 import net.minecraft.client.renderer.entity.state.ItemFrameRenderState;
@@ -26,7 +27,7 @@ public class PhantomItemFrameRenderer extends ItemFrameRenderer<PhantomItemFrame
 
 		if (!state.isInvisible) {
 
-			this.blockModelResolver.update(state.frameModel, FAKE_STATE_DEFINITION.any(), ItemFrameRenderer.BLOCK_DISPLAY_CONTEXT);
+			((ItemFrameRendererAccessor) this).stellarity$getBlockModelResolver().update(state.frameModel, FAKE_STATE_DEFINITION.any(), ItemFrameRenderer.BLOCK_DISPLAY_CONTEXT);
 		}
 	}
 }

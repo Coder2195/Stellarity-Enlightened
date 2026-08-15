@@ -1,5 +1,4 @@
 classTweaker v1 official
-
 inject-interface net/minecraft/world/entity/boss/enderdragon/EndCrystal dev/coder2195/stellarity/interface_injection/ExtEndCrystal
 inject-interface net/minecraft/world/entity/Entity dev/coder2195/stellarity/interface_injection/ExtEntity
 inject-interface net/minecraft/world/entity/projectile/FishingHook dev/coder2195/stellarity/interface_injection/ExtFishingHook
@@ -10,97 +9,18 @@ inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight dev/co
 inject-interface net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration dev/coder2195/stellarity/interface_injection/ExtLargeDripstoneConfiguration
 inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone dev/coder2195/stellarity/interface_injection/ExtLargeDripstone
 
+accessible class net/minecraft/world/effect/RegenerationMobEffect
 extendable method net/minecraft/world/entity/decoration/ItemFrame onItemChanged (Lnet/minecraft/world/item/ItemStack;)V
 accessible class net/minecraft/server/commands/AdvancementCommands$Action
 accessible class net/minecraft/world/entity/projectile/FishingHook$FishHookState
-
 accessible class net/minecraft/world/level/levelgen/feature/EndSpikeFeature$SpikeCacheLoader
-
-accessible field net/minecraft/world/level/dimension/end/EnderDragonFight dragonKilled Z
-accessible field net/minecraft/world/level/dimension/end/EnderDragonFight exitPortalLocation Lnet/minecraft/core/BlockPos;
-
-accessible field net/minecraft/server/level/ServerPlayer server Lnet/minecraft/server/MinecraftServer;
-accessible method net/minecraft/network/syncher/SynchedEntityData <init> (Lnet/minecraft/network/syncher/SyncedDataHolder;[Lnet/minecraft/network/syncher/SynchedEntityData$DataItem;)V
-
 extendable class net/minecraft/world/item/enchantment/Enchantment
 accessible class net/minecraft/world/item/enchantment/EnchantmentHelper$EnchantmentInSlotVisitor
-accessible field net/minecraft/world/entity/LivingEntity lastHurt F
-
-accessible field net/minecraft/client/renderer/entity/ItemFrameRenderer blockModelResolver Lnet/minecraft/client/renderer/block/BlockModelResolver;
-
-accessible field net/minecraft/world/entity/Mob target Lnet/minecraft/world/entity/LivingEntity;
-accessible field net/minecraft/world/level/dimension/DimensionType height I
-accessible field net/minecraft/world/level/dimension/DimensionType logicalHeight I
-accessible field net/minecraft/world/level/dimension/DimensionType hasSkyLight Z
-mutable field net/minecraft/world/level/dimension/DimensionType height I
-mutable field net/minecraft/world/level/dimension/DimensionType logicalHeight I
-mutable field net/minecraft/world/level/dimension/DimensionType hasSkyLight Z
-accessible field net/minecraft/world/level/dimension/DimensionType ambientLight F
-mutable field net/minecraft/world/level/dimension/DimensionType ambientLight F
-accessible field net/minecraft/world/level/dimension/DimensionType$MonsterSettings monsterSpawnBlockLightLimit I
-mutable field net/minecraft/world/level/dimension/DimensionType$MonsterSettings monsterSpawnBlockLightLimit I
-
-accessible field net/minecraft/world/level/levelgen/NoiseSettings height I
-mutable field net/minecraft/world/level/levelgen/NoiseSettings height I
-
-accessible field net/minecraft/world/level/levelgen/NoiseRouter temperature Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter vegetation Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter continents Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter erosion Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter depth Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter ridges Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter preliminarySurfaceLevel Lnet/minecraft/world/level/levelgen/DensityFunction;
-accessible field net/minecraft/world/level/levelgen/NoiseRouter finalDensity Lnet/minecraft/world/level/levelgen/DensityFunction;
-
-mutable field net/minecraft/world/level/levelgen/NoiseRouter temperature Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter vegetation Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter erosion Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter continents Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter depth Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter ridges Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter preliminarySurfaceLevel Lnet/minecraft/world/level/levelgen/DensityFunction;
-mutable field net/minecraft/world/level/levelgen/NoiseRouter finalDensity Lnet/minecraft/world/level/levelgen/DensityFunction;
-
-accessible method net/minecraft/world/level/levelgen/feature/configurations/TreeConfiguration <init> (Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacer;Lnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;Lnet/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer;Ljava/util/Optional;Lnet/minecraft/world/level/levelgen/feature/featuresize/FeatureSize;Ljava/util/List;ZLnet/minecraft/world/level/levelgen/feature/stateproviders/BlockStateProvider;)V
-
-accessible field net/minecraft/world/level/LocalMobCapCalculator$MobCounts counts Lit/unimi/dsi/fastutil/objects/Object2IntMap;
-accessible field net/minecraft/world/level/NaturalSpawner$SpawnState localMobCapCalculator Lnet/minecraft/world/level/LocalMobCapCalculator;
-accessible method net/minecraft/world/level/LocalMobCapCalculator getPlayersNear (Lnet/minecraft/world/level/ChunkPos;)Ljava/util/List;
-accessible field net/minecraft/world/level/LocalMobCapCalculator playerMobCounts Ljava/util/Map;
-
-accessible field net/minecraft/client/model/geom/ModelLayers ALL_MODELS Ljava/util/Set;
-
-accessible field net/minecraft/world/level/dimension/end/EnderDragonFight respawnCrystals Ljava/util/List;
-
 accessible class net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone
-
-accessible method net/minecraft/world/entity/projectile/ProjectileUtil getHitResult (Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/entity/Entity;Ljava/util/function/Predicate;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/Level;FLnet/minecraft/world/level/ClipContext$Block;)Lnet/minecraft/world/phys/HitResult;
-
-accessible field net/minecraft/world/level/levelgen/NoiseGeneratorSettings disableMobGeneration Z
-mutable field net/minecraft/world/level/levelgen/NoiseGeneratorSettings disableMobGeneration Z
-
-accessible field net/minecraft/world/level/chunk/ChunkGenerator biomeSource Lnet/minecraft/world/level/biome/BiomeSource;
-mutable field net/minecraft/world/level/chunk/ChunkGenerator biomeSource Lnet/minecraft/world/level/biome/BiomeSource;
 accessible class net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap
-
-accessible method net/minecraft/world/level/biome/MultiNoiseBiomeSource collectPossibleBiomes ()Ljava/util/stream/Stream;
-
-mutable field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceRule Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
-accessible field net/minecraft/world/level/levelgen/NoiseGeneratorSettings surfaceRule Lnet/minecraft/world/level/levelgen/SurfaceRules$RuleSource;
-
-accessible method net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement <init> (Lcom/mojang/datafixers/util/Either;Lnet/minecraft/core/Holder;Lnet/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool$Projection;Ljava/util/Optional;)V
-
-accessible field net/minecraft/world/entity/monster/Creeper DATA_IS_POWERED Lnet/minecraft/network/syncher/EntityDataAccessor;
-accessible method net/minecraft/server/network/ServerGamePacketListenerImpl addBlockDataToItem (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/item/ItemStack;)V
-
-accessible field net/minecraft/client/gui/components/EditBox value Ljava/lang/String;
-accessible method net/minecraft/world/level/levelgen/SurfaceRules$Context getBiome ()Lnet/minecraft/core/Holder;
 accessible class net/minecraft/world/level/levelgen/SurfaceRules$Context
 accessible class net/minecraft/world/level/levelgen/SurfaceRules$Condition
 accessible class net/minecraft/world/level/levelgen/SurfaceRules$LazyYCondition
-
 extendable class net/minecraft/world/item/equipment/ArmorMaterial
-accessible method net/minecraft/world/level/storage/loot/functions/SetComponentsFunction <init> (Ljava/util/List;Lnet/minecraft/core/component/DataComponentPatch;)V
 extendable class net/minecraft/world/item/ToolMaterial
-accessible method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;
 extendable method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;

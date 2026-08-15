@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.util;
 
+import dev.coder2195.stellarity.mixin.accessor.SetComponentsFunctionAccessor;
 import net.minecraft.advancements.predicates.*;
 import net.minecraft.advancements.predicates.entity.EntityFlagsPredicate;
 import net.minecraft.advancements.predicates.entity.EntityPredicate;
@@ -260,7 +261,7 @@ public interface LootUtil {
 	}
 
 	static LootItemFunction setComponents(DataComponentPatch components) {
-		return new SetComponentsFunction(List.of(), components);
+		return SetComponentsFunctionAccessor.create(List.of(), components);
 	}
 
 	static LootItemCondition.Builder chance(float chance) {

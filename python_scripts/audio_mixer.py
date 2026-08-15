@@ -1,3 +1,4 @@
+import os
 import pathlib
 
 from pydub import AudioSegment
@@ -27,34 +28,36 @@ def mc(path: str,  volume: float, pitch: float):
 
 
 
-# def check_stereo():
-# 	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
-# 		for name in files:
-# 			path_joined = os.path.join(root, name)
-# 			if not path_joined.endswith(".ogg"): continue
-# 			channels = AudioSegment.from_ogg(path_joined).channels
-# 			if channels == 1: continue
-#
-# 			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
+def check_stereo():
+	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
+		for name in files:
+			path_joined = os.path.join(root, name)
+			if not path_joined.endswith(".ogg"): continue
+			channels = AudioSegment.from_ogg(path_joined).channels
+			if channels == 1: continue
+
+			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
+
+check_stereo()
 
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
-
-first = ["entity/wind_charge/wind_burst1", "entity/wind_charge/wind_burst2", "entity/wind_charge/wind_burst3"]
-second = ["random/explode1"]
-
-
-num=0
-combo = [(a, b) for a in first for b in second]
-for (a, b) in combo:
-
-	num+=1
-	a_sound = mc(a, 1, 1)
-	b_sound = mc(b, 0.333, 1.2)
-
-	new_sound = a_sound.overlay(mc("block/beehive/enter", 1, 0.7)).overlay(a_sound).set_channels(1)
-	play(new_sound)
-	new_sound.export(f"output_audio/floral_bloom/bloom_{num}", format="ogg")
+#
+# first = ["entity/wind_charge/wind_burst1", "entity/wind_charge/wind_burst2", "entity/wind_charge/wind_burst3"]
+# second = ["random/explode1"]
+#
+#
+# num=0
+# combo = [(a, b) for a in first for b in second]
+# for (a, b) in combo:
+#
+# 	num+=1
+# 	a_sound = mc(a, 1, 1)
+# 	b_sound = mc(b, 0.333, 1.2)
+#
+# 	new_sound = a_sound.overlay(mc("block/beehive/enter", 1, 0.7)).overlay(a_sound).set_channels(1)
+# 	play(new_sound)
+# 	new_sound.export(f"output_audio/floral_bloom/bloom_{num}", format="ogg")
 
 
 # thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]

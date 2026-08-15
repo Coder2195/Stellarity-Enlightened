@@ -300,7 +300,7 @@ public interface StellarityItems {
 			.add(Attributes.FALL_DAMAGE_MULTIPLIER, new AttributeModifier(Stellarity.id("armor.chestplate"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL), EquipmentSlotGroup.CHEST)
 			.build())
 	);
-	Item LIFE_CRYSTAL = register(StellarityItemIds.LIFE_CRYSTAL, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+	Item LIFE_CRYSTAL = register(StellarityItemIds.LIFE_CRYSTAL, LifeCrystal::new, LifeCrystal.PROPERTIES);
 	Item LOAF_OF_PLENTY = register(StellarityItemIds.LOAF_OF_PLENTY, foodProperties(
 		new Item.Properties().stacksTo(1).useCooldown(10).rarity(Rarity.EPIC),
 		new FoodProperties.Builder(), Consumables.defaultFood().onConsume(LoafOfPlentyConsumeEffect.INSTANCE), 5, 6, true

@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.coder2195.stellarity.mixin.accessor.EnderDragonFightAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -82,8 +83,9 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 		Type type = stellarity$getType();
 		ServerLevel level = (ServerLevel) level();
 		EnderDragonFight dragonFight = level.getDragonFight();
+		var dragonFightAccessor = ((EnderDragonFightAccessor) dragonFight);
 		BlockPos blockPos = blockPosition();
-		BlockPos portalLocation = dragonFight == null ? null : dragonFight.exitPortalLocation;
+		BlockPos portalLocation = dragonFight == null ? null : dragonFightAccessor.stellarity$getExitPortalLocation();
 		if (type == Type.RESPAWN) {
 			if (portalLocation == null) {
 				stellarity$setType(Type.NORMAL);
@@ -104,7 +106,7 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 		} else if (type == Type.NORMAL) {
 			if (portalLocation != null) {
 				for (Direction direction : Direction.Plane.HORIZONTAL) {
-					if (portalLocation.above(3).relative(direction, 4).equals(blockPos) && dragonFight.dragonKilled) {
+					if (portalLocation.above(3).relative(direction, 4).equals(blockPos) && dragonFightAccessor.stellarity$getDragonKilled()) {
 						stellarity$setType(Type.RESPAWN);
 						this.playSound(SoundEvents.END_PORTAL_FRAME_FILL, 1, 0.5f);
 						Stellarity.LOGGER.info("Found respawn crystal");

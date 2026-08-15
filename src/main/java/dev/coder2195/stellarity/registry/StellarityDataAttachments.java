@@ -60,6 +60,8 @@ public interface StellarityDataAttachments {
 	AttachmentType<FloralBloom> FLORAL_BLOOM = AttachmentRegistry.create(Stellarity.id("floral_bloom"), builder -> builder.persistent(FloralBloom.CODEC).syncWith(FloralBloom.STREAM_CODEC, AttachmentSyncPredicate.all()));
 	AttachmentType<FloralBloom.Applier> FLORAL_BLOOM_APPLIER = AttachmentRegistry.create(Stellarity.id("floral_bloom_applier"), builder -> builder.persistent(FloralBloom.Applier.CODEC));
 
+	AttachmentType<Long> LIFE_CRYSTAL_HELD_AT = AttachmentRegistry.create(Stellarity.id("life_crystal_held_at"), builder -> builder.persistent(Codec.LONG));
+
 
 
 	static void init() {

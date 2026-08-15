@@ -1,5 +1,11 @@
 package dev.coder2195.stellarity.entity;
 
+import dev.coder2195.stellarity.effect.VoidedEffect;
+import dev.coder2195.stellarity.mixin.accessor.ProjectileUtilAccessor;
+import dev.coder2195.stellarity.networking.ClientboundVoidArrowHitPayload;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
+import dev.coder2195.stellarity.registry.StellarityEntityTypes;
+import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.util.FloralBloom;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -10,7 +16,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -21,11 +26,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import dev.coder2195.stellarity.registry.StellarityDamageTypes;
-import dev.coder2195.stellarity.networking.ClientboundVoidArrowHitPayload;
-import dev.coder2195.stellarity.registry.StellarityEntityTypes;
-import dev.coder2195.stellarity.registry.StellarityMobEffects;
-import dev.coder2195.stellarity.effect.VoidedEffect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +98,7 @@ public class VoidArrow extends AbstractArrow {
 		for (int i = 0; i < shrapnelCount; i++) {
 			Vec3 raycast = Vec3.directionFromRotation(random.nextFloat() * 3600, random.nextFloat() * 1500 - 750).scale(4);
 
-			var result = ProjectileUtil.getHitResult(position, this, entity -> entity instanceof LivingEntity, raycast, level, 0.05f, ClipContext.Block.COLLIDER);
+			var result = ProjectileUtilAccessor.getHitResult(position, this, entity -> entity instanceof LivingEntity, raycast, level, 0.05f, ClipContext.Block.COLLIDER);
 
 			if (result.getType().equals(HitResult.Type.MISS)) {
 				raycasts.add(raycast);

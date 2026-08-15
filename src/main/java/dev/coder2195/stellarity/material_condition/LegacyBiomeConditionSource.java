@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.material_condition;
 
 
 import com.mojang.serialization.MapCodec;
+import dev.coder2195.stellarity.mixin.accessor.SurfaceRulesContextAccessor;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
@@ -47,7 +48,7 @@ public final class LegacyBiomeConditionSource implements SurfaceRules.ConditionS
 		return new SurfaceRules.LazyYCondition(ruleContext) {
 			@Override
 			protected boolean compute() {
-				return this.context.getBiome().is(LegacyBiomeConditionSource.this.biomeNameTest);
+				return ((SurfaceRulesContextAccessor) (Object) this.context).stellarity$getBiome().is(LegacyBiomeConditionSource.this.biomeNameTest);
 			}
 		};
 	}

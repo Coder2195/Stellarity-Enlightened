@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.mixin.armor_effects;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.mixin.accessor.MobAccessor;
 import dev.coder2195.stellarity.mixin_helper.ArmorEffectsHelper;
 import dev.coder2195.stellarity.networking.ClientboundFloralBloomBloomPayload;
 import dev.coder2195.stellarity.networking.ClientboundHolyProtectionDodgePayload;
@@ -44,6 +45,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 @Mixin(LivingEntity.class)
@@ -65,7 +67,7 @@ public abstract class LivingEntityMixin extends Entity {
 	protected abstract AABB getHitbox();
 
 	@Shadow
-	public float lastHurt;
+	protected float lastHurt;
 
 	@Shadow
 	public abstract @Nullable MobEffectInstance getEffect(Holder<MobEffect> effect);
@@ -108,7 +110,11 @@ public abstract class LivingEntityMixin extends Entity {
 		if (!ArmorEffectsHelper.isFullShulkerArmor(castedSelf) || counter++ < 10) return;
 
 		var position = position();
-		var swarmCount = level.getEntitiesOfClass(Mob.class, new AABB(position, position).inflate(5), e -> e.target != null && castedSelf.is(e.target)).size();
+		var swarmCount = level.getEntitiesOfClass(Mob.class, new AABB(position, position).inflate(5), e -> {
+			if (!(e instanceof MobAccessor mob)) return false;
+			var target = mob.stellarity$getTarget();
+			return target != null && castedSelf.is(target);
+		}).size();
 
 		if (swarmCount < 3) return;
 
@@ -123,10 +129,10 @@ public abstract class LivingEntityMixin extends Entity {
 		final var attacker = getLastAttacker();
 
 		return castedSelf instanceof Monster monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Player || e instanceof Mob mob && castedSelf == mob.target
+			e.is(attacker) || e instanceof Player || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget()
 		) : castedSelf instanceof Player player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Monster || e instanceof Mob mob && castedSelf == mob.target
-		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof Mob mob && castedSelf == mob.target);
+			e.is(attacker) || e instanceof Monster || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget()
+		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget());
 	}
 
 	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")

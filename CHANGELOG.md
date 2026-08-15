@@ -1,6 +1,6 @@
 # 0.9.0
 
-Compatibility update
+Compatibility update along with general additions of armor and recipes
 
 ## Blocks
 
@@ -107,4 +107,4 @@ Compatibility update
 
 # Developer's Note
 
-It was hard asf messing with mc registries
+Won't be updating for a while due to college setup!

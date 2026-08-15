@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.registry;
 import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.mixin.accessor.SinglePoolElementAccessor;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.minecraft.core.registries.Registries;
@@ -12,7 +13,6 @@ import net.minecraft.data.worldgen.ProcessorLists;
 import net.minecraft.data.worldgen.placement.VillagePlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.pools.FeaturePoolElement;
-import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
@@ -46,13 +46,13 @@ public interface StellarityTemplatePools {
 		var emptyProcessor = processorLists.getOrThrow(ProcessorLists.EMPTY);
 		context.register(CAMPSITE, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("1", 3), new Tuple2<>("2", 2)
-		).map(tuple -> new Pair<StructurePoolElement, Integer>(new SinglePoolElement(
+		).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("campsite/" + tuple._1())), campsiteProcessor, StructureTemplatePool.Projection.RIGID, Optional.empty()
 		), tuple._2())).toList()));
 
 		context.register(VILLAGE_ANIMALS, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("cows", 6), new Tuple2<>("pigs", 6), new Tuple2<>("sheep", 4), new Tuple2<>("mooshrooms", 1)
-		).map(tuple -> new Pair<StructurePoolElement, Integer>(new SinglePoolElement(
+		).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/entities/" + tuple._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), tuple._2())).toList()));
 
@@ -60,7 +60,7 @@ public interface StellarityTemplatePools {
 		var villageFloweringAzaleaLeavesProcessor = processorLists.getOrThrow(StellarityProcessorLists.VILLAGE_FLOWERING_AZALEA_LEAVES);
 		context.register(VILLAGE_BEES, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("1_bee", 5), new Tuple2<>("2_bees", 3), new Tuple2<>("3_bees", 1)
-		).map(tuple -> new Pair<StructurePoolElement, Integer>(new SinglePoolElement(
+		).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/entities/" + tuple._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), tuple._2())).toList()));
 
@@ -68,7 +68,7 @@ public interface StellarityTemplatePools {
 			Stream.of(
 				new Tuple2<>("lamp_1", 1), new Tuple2<>("lamp_2", 1), new Tuple2<>("lamp_3", 1), new Tuple2<>("lamp_4", 1),
 				new Tuple2<>("lamp_5", 1), new Tuple2<>("lamp_6", 1), new Tuple2<>("lamp_7", 1)
-			).map(tuple -> new Pair<StructurePoolElement, Integer>(new SinglePoolElement(
+			).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
 				Either.left(Stellarity.id("village/decorations/" + tuple._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 			), tuple._2())),
 			Stream.of(
@@ -84,31 +84,31 @@ public interface StellarityTemplatePools {
 			new Tuple3<>("planter_box_4", emptyProcessor, 1), new Tuple3<>("planter_box_5", villageFloweringAzaleaLeavesProcessor, 1),
 			new Tuple3<>("planter_box_6", emptyProcessor, 1), new Tuple3<>("planter_box_7", emptyProcessor, 1)
 
-		).map(decoration -> new Pair<StructurePoolElement, Integer>(new SinglePoolElement(
+		).map(decoration -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/decorations/" + decoration._1())), decoration._2(), StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), decoration._3())).toList()));
 
-		context.register(VILLAGE_GOLEMS, new StructureTemplatePool(EMPTY, List.of(new Pair<>(new SinglePoolElement(
+		context.register(VILLAGE_GOLEMS, new StructureTemplatePool(EMPTY, List.of(new Pair<>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/entities/golem")), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), 1))));
 
 		context.register(VILLAGE_LARGE_BUILDINGS, new StructureTemplatePool(EMPTY, Stream.of(
 			"butcher_big", "cartographer_big", "fletcher_big", "farm_big", "temple_big", "shepherd_big", "market_1", "market_2"
 		).map(building -> new Pair<StructurePoolElement, Integer>(
-			new SinglePoolElement(Either.left(Stellarity.id("village/"+building)), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), 1
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("village/"+building)), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), 1
 		)).toList()));
 
-		context.register(VILLAGE_LAYOUTS, new StructureTemplatePool(EMPTY, List.of(new Pair<>(new SinglePoolElement(
+		context.register(VILLAGE_LAYOUTS, new StructureTemplatePool(EMPTY, List.of(new Pair<>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/layouts/1")), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), 1))));
 
 		context.register(VILLAGE_RESPAWN_ANCHORS, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("0", 1), new Tuple2<>("1", 2), new Tuple2<>("2", 3), new Tuple2<>("3", 3), new Tuple2<>("4", 1)
 		).map(level -> new Pair<StructurePoolElement, Integer>(
-			new SinglePoolElement(Either.left(Stellarity.id("village/respawn_anchors/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("village/respawn_anchors/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
 		)).toList()));
 
-		context.register(VILLAGE_SHEEP, new StructureTemplatePool(EMPTY, List.of(new Pair<>(new SinglePoolElement(
+		context.register(VILLAGE_SHEEP, new StructureTemplatePool(EMPTY, List.of(new Pair<>(SinglePoolElementAccessor.create(
 			Either.left(Stellarity.id("village/entities/sheep")), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)
 		), 1))));
 
@@ -121,19 +121,19 @@ public interface StellarityTemplatePools {
 			new Tuple2<>("small_house_1", 4), new Tuple2<>("small_house_2", 4), new Tuple2<>("small_house_3", 4), new Tuple2<>("small_house_4", 4), new Tuple2<>("small_house_5", 4),
 			new Tuple2<>("tannery_1", 3), new Tuple2<>("temple_1", 3), new Tuple2<>("toolsmith_1", 3), new Tuple2<>("weaponsmith_1", 3)
 		).map(level -> new Pair<StructurePoolElement, Integer>(
-			new SinglePoolElement(Either.left(Stellarity.id("village/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("village/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
 		)).toList()));
 
 		context.register(VILLAGE_TOWN_CENTERS, new StructureTemplatePool(EMPTY, Stream.of(
 			"town_center_1", "town_center_2", "town_center_3"
 		).map(building -> new Pair<StructurePoolElement, Integer>(
-			new SinglePoolElement(Either.left(Stellarity.id("village/"+building)), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), 1
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("village/"+building)), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), 1
 		)).toList()));
 
 		context.register(VILLAGE_VILLAGERS_JOBLESS, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("1_villager", 2), new Tuple2<>("2_villagers", 3), new Tuple2<>("3_villagers", 1)
 		).map(level -> new Pair<StructurePoolElement, Integer>(
-			new SinglePoolElement(Either.left(Stellarity.id("village/entities/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("village/entities/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
 		)).toList()));
 		
 		

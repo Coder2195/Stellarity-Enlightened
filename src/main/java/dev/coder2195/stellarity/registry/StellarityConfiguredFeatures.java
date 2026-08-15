@@ -4,6 +4,7 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.interface_injection.ExtLargeDripstoneConfiguration;
 import dev.coder2195.stellarity.feature.configuration.DungeonFeatureConfiguration;
 import dev.coder2195.stellarity.feature.configuration.SpikeFeatureConfiguration;
+import dev.coder2195.stellarity.mixin.accessor.TreeConfigurationAccessor;
 import dev.coder2195.stellarity.tree_decorator.HangingColumnDecorator;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import dev.coder2195.stellarity.util.Constants;
@@ -264,7 +265,7 @@ public interface StellarityConfiguredFeatures {
 	 * @param context context for registering stuff
 	 */
 	@SuppressWarnings("deprecation")
-	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+	static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 		var placed = context.lookup(Registries.PLACED_FEATURE);
 		var configured = context.lookup(Registries.CONFIGURED_FEATURE);
 		var blocksGetter = context.lookup(Registries.BLOCK);
@@ -371,7 +372,7 @@ public interface StellarityConfiguredFeatures {
 			tag(WORLDGEN_GRASS_BLOCK), weightedBlocks(new Block[]{ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT}, new int[]{11, 2}), nothing, CaveSurface.FLOOR, num(1),
 			0.25f, 5, 0f, num(3, 5), 0.15f
 		)));
-		context.register(END_HIGHLANDS_CHORUS_BUD, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(END_HIGHLANDS_CHORUS_BUD, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(CHERRY_WOOD), new StraightTrunkPlacer(2, 0, 0),
 			weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT}, new int[]{7, 4}),
 			new BushFoliagePlacer(num(0), num(0), 6),
@@ -387,14 +388,14 @@ public interface StellarityConfiguredFeatures {
 			new int[]{28, 18, 8, 4}
 		))));
 		context.register(GLOBAL_HANGING_ROOTS, new ConfiguredFeature<>(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(block(HANGING_ROOTS))));
-		context.register(END_HIGHLANDS_CHORUS_LEAF, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(END_HIGHLANDS_CHORUS_LEAF, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(PEARLESCENT_FROGLIGHT), new ForkingTrunkPlacer(10, 0, 0),
 			block(AIR), new BlobFoliagePlacer(num(1), num(1), 0),
 			Optional.of(new MangroveRootPlacer(num(0), block(END_STONE), Optional.of(new AboveRootPlacement(block(END_STONE), 0.33f)), new MangroveRootPlacement(
 				worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f
 			))), twoLayersSize(), List.of(), false, block(END_STONE)
 		)));
-		context.register(END_HIGHLANDS_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(END_HIGHLANDS_BUSH, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(CHERRY_WOOD), new StraightTrunkPlacer(1, 0, 0),
 			block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(1), 2),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
@@ -430,7 +431,7 @@ public interface StellarityConfiguredFeatures {
 			tag(WORLDGEN_GRASS_BLOCK), weightedBlocks(new Block[]{ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT}, new int[]{21, 1}), nothing,
 			CaveSurface.FLOOR, num(1), 0, 1, 0.1f, num(0, 5), 0.1f
 		)));
-		context.register(AMETHYST_FOREST_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(AMETHYST_FOREST_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(property(CHERRY_LOG, BlockStateProperties.AXIS, Direction.Axis.Y)), new MegaJungleTrunkPlacer(10, 6, 12),
 			weightedBlocks(new BlockState[]{property(DARK_OAK_LEAVES, BlockStateProperties.DISTANCE, 1).setValue(BlockStateProperties.PERSISTENT, true), from(GLOWSTONE)}, new int[]{64, 1}),
 			new RandomSpreadFoliagePlacer(num(3, 4), num(0, 6), num(10, 13), 256),
@@ -461,7 +462,7 @@ public interface StellarityConfiguredFeatures {
 				TUBE, BUSH, ROSE, FIRE, BUBBLE, FIRE, ROSE, BUBBLE, BUSH, TUBE, ROSE
 			))));
 		}
-		context.register(ASHFALL_DELTAS_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(ASHFALL_DELTAS_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(ACACIA_WOOD), new CherryTrunkPlacer(5, 3, 6, ValueUtil.weightedInts(1, 1, 2, 1, 3, 1), num(3, 5), num(-4, -3), num(-1, 0)),
 			block(property(OAK_LEAVES, BlockStateProperties.WATERLOGGED, false)), new CherryFoliagePlacer(num(4), num(0), num(5), 0.25f, 0.25f, 0.16666667f, 0.33333334f),
 			Optional.of(new MangroveRootPlacer(num(0, 5), block(ACACIA_WOOD), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)), new MangroveRootPlacement(
@@ -500,18 +501,18 @@ public interface StellarityConfiguredFeatures {
 		))));
 		context.register(END_SHRUBLAND_SHRUB, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
 			List.of(
-				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
 					block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(1), 2),
 					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
 				))), List.of())), 0.1f),
-				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(OAK_LOG), new StraightTrunkPlacer(2, 0, 0),
 					block(OAK_LEAVES), new BlobFoliagePlacer(num(2), num(0), 1),
 					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
 				))), List.of())), 0.25f)
 			),
-			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
 				block(OAK_LEAVES), new BlobFoliagePlacer(num(2), num(0), 1),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
@@ -524,7 +525,7 @@ public interface StellarityConfiguredFeatures {
 		)));
 		context.register(END_WILDS_TREE, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(OAK_WOOD), new StraightTrunkPlacer(1, 0, 0),
 					block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
 					Optional.of(new MangroveRootPlacer(
@@ -539,7 +540,7 @@ public interface StellarityConfiguredFeatures {
 				countPlace(50), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0))
 			))), 0.6f),
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(OAK_WOOD), new StraightTrunkPlacer(5, 0, 2),
 					block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
 					Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
@@ -548,7 +549,7 @@ public interface StellarityConfiguredFeatures {
 				countPlace(4), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(num(0), num(3))
 			))), 0.6f),
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(OAK_LOG), new ForkingTrunkPlacer(9, 0, 3),
 					block(property(ACACIA_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(num(4), num(0),
 					num(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
@@ -613,7 +614,7 @@ public interface StellarityConfiguredFeatures {
 				)))
 			), List.of())), CaveSurface.FLOOR, num(1), 0, 6, 0.15f, num(4), 0.33f
 		)));
-		var endlessDunesOasisPalmTree = context.register(ENDLESS_DUNES_OASIS_PALM_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		var endlessDunesOasisPalmTree = context.register(ENDLESS_DUNES_OASIS_PALM_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(JUNGLE_LOG), new ForkingTrunkPlacer(5, 3, 2),
 			block(property(JUNGLE_LEAVES, LeavesBlock.PERSISTENT, true)), new RandomSpreadFoliagePlacer(num(3, 4), num(0), num(2, 3), 48),
 			Optional.empty(), twoLayersSize(), List.of(new LeaveVineDecorator(0.08f), new AttachedToLeavesDecorator(0.1f, 2, 1, block(SHROOMLIGHT), 1, List.of(Direction.DOWN))),
@@ -714,7 +715,7 @@ public interface StellarityConfiguredFeatures {
 				new BlockColumnConfiguration.Layer(num(1), block(FIRE))
 			), Direction.UP, all(), false
 		)));
-		context.register(FIERY_HILLS_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(FIERY_HILLS_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(CRIMSON_HYPHAE), new ForkingTrunkPlacer(5, 2, 0),
 			block(OAK_LEAVES), new CherryFoliagePlacer(num(4), num(0), num(5), 0.25f, 0.8f, 0.16666667f, 0.33333334f),
 			Optional.of(new MangroveRootPlacer(
@@ -742,12 +743,12 @@ public interface StellarityConfiguredFeatures {
 			List.of(new BlockColumnConfiguration.Layer(num(9, 24), block(BONE_BLOCK)), new BlockColumnConfiguration.Layer(ValueUtil.weightedInts(0, 40, 1, 1), block(property(SOUL_LANTERN, BlockStateProperties.HANGING, true)))),
 			Direction.DOWN, matchBlocks(AIR), true
 		)));
-		var fleshTundraTree = context.register(FLESH_TUNDRA_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		var fleshTundraTree = context.register(FLESH_TUNDRA_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(BONE_BLOCK), new FancyTrunkPlacer(12, 8, 6),
 			block(AIR), new DarkOakFoliagePlacer(num(0), num(0)),
 			Optional.empty(), threeLayersSize(3, 1, 4, 5, 3), List.of(), true, block(BONE_BLOCK)
 		)));
-		var fleshTundraRib = context.register(FLESH_TUNDRA_RIB, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		var fleshTundraRib = context.register(FLESH_TUNDRA_RIB, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(BONE_BLOCK), new BendingTrunkPlacer(4, 3, 0, 1, num(1, 3)),
 			block(AIR), new BlobFoliagePlacer(num(0), num(0), 0),
 			Optional.empty(), threeLayersSize(1, 1, 0, 1, 2), List.of(), true, block(BONE_BLOCK)
@@ -822,7 +823,7 @@ public interface StellarityConfiguredFeatures {
 				new Tuple2<>(new ConfiguredFeature<>(Feature.HUGE_RED_MUSHROOM, new HugeMushroomFeatureConfiguration(
 					block(WARPED_WART_BLOCK), block(WARPED_STEM), 1, all()
 				)), 0.2137f),
-				new Tuple2<>(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+				new Tuple2<>(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 					block(WARPED_HYPHAE), new ForkingTrunkPlacer(5, 0, 3),
 					block(WARPED_WART_BLOCK), new FancyFoliagePlacer(num(1), num(0), 2),
 					Optional.empty(), twoLayersSize(), List.of(new TrunkVineDecorator()), false, block(ROOTED_ENDER_DIRT)
@@ -850,12 +851,12 @@ public interface StellarityConfiguredFeatures {
 		)));
 		context.register(FROZEN_SHRUBLANDS_SHRUB, new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
 			Stream.of(new Tuple2<>(1, 0.1f), new Tuple2<>(2, 0.25f)
-			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(OAK_LOG), new StraightTrunkPlacer(t._1(), 0, 0),
 				block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(2 - t._1()), 3 - t._1()),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
 			))), List.of())), t._2())).toList(),
-			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
 				block(OAK_LEAVES), new BushFoliagePlacer(num(2), num(0), 1),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
@@ -890,12 +891,12 @@ public interface StellarityConfiguredFeatures {
 			crystalBlock, 1, 8, 2, 3, tag(WORLDGEN_STALACTITE_REPLACEABLE), block(AMETHYST_BLOCK), 20, 100, 3, 2, block(AMETHYST_CLUSTER), 15, 1, all()
 		)));
 		context.register(THE_HALLOW_ROCK, new ConfiguredFeature<>(Feature.BLOCK_BLOB, new BlockBlobConfiguration(from(DIORITE), all())));
-		context.register(THE_HALLOW_BUSH, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(THE_HALLOW_BUSH, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
 			block(OAK_LEAVES), new RandomSpreadFoliagePlacer(num(2), num(1), num(2), 64),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
 		)));
-		Function<Block, Holder<PlacedFeature>> scatteredBush = (leaves) -> direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		Function<Block, Holder<PlacedFeature>> scatteredBush = (leaves) -> direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
 			block(property(leaves, LeavesBlock.PERSISTENT, true)), new RandomSpreadFoliagePlacer(num(3), num(0), num(2), 48),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
@@ -907,7 +908,7 @@ public interface StellarityConfiguredFeatures {
 		var hangingLanternDecor = new HangingColumnDecorator(0.1f, 2, true, false, List.of(
 			new BlockColumnConfiguration.Layer(num(4, 16), block(IRON_CHAIN)), new BlockColumnConfiguration.Layer(num(1), block(property(LANTERN, LanternBlock.HANGING, true)))
 		), true);
-		context.register(THE_HALLOW_OAK_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(THE_HALLOW_OAK_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(STRIPPED_OAK_LOG), new FancyTrunkPlacer(15, 6, 9),
 			block(OAK_LEAVES), new FancyFoliagePlacer(num(2, 3), num(4), 4),
 			Optional.of(new MangroveRootPlacer(
@@ -925,7 +926,7 @@ public interface StellarityConfiguredFeatures {
 			), true));
 			return newList;
 		};
-		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> regular = (leaves) -> new TreeConfiguration(
+		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> regular = (leaves) -> TreeConfigurationAccessor.create(
 			block(STRIPPED_BIRCH_LOG), new FancyTrunkPlacer(15, 6, 9),
 			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new FancyFoliagePlacer(num(2, 3), num(4), 4),
 			Optional.of(new MangroveRootPlacer(
@@ -933,7 +934,7 @@ public interface StellarityConfiguredFeatures {
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
 			)), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of(new BeehiveDecorator(0.06f), hangingLanternDecor)), true, block(ENDER_DIRT)
 		);
-		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> pine = (leaves) -> new TreeConfiguration(
+		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> pine = (leaves) -> TreeConfigurationAccessor.create(
 			block(STRIPPED_SPRUCE_LOG), new StraightTrunkPlacer(17, 6, 9),
 			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new MegaPineFoliagePlacer(num(0, 1), num(0), num(12, 24)),
 			Optional.of(new MangroveRootPlacer(
@@ -941,7 +942,7 @@ public interface StellarityConfiguredFeatures {
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
 			)), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of()), true, block(ENDER_DIRT)
 		);
-		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> jungle = (leaves) -> new TreeConfiguration(
+		Function<Tuple3<Block, Block, Boolean>, TreeConfiguration> jungle = (leaves) -> TreeConfigurationAccessor.create(
 			block(STRIPPED_JUNGLE_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
 			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new RandomSpreadFoliagePlacer(num(3, 7), num(0, 12), num(6, 18), 256),
 			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of()), true, block(ENDER_DIRT)
@@ -991,7 +992,7 @@ public interface StellarityConfiguredFeatures {
 			CaveSurface.CEILING, num(1), 0, 10, 1, num(3, 6), 0.5f
 		)));
 
-		context.register(HALLOWED_TUNDRA_PINE_TREE, new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+		context.register(HALLOWED_TUNDRA_PINE_TREE, new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 			block(STRIPPED_OAK_LOG), new StraightTrunkPlacer(15, 6, 9),
 			block(OAK_LEAVES), new MegaPineFoliagePlacer(num(2, 3), num(4), num(11, 19)),
 			Optional.of(new MangroveRootPlacer(
@@ -1034,13 +1035,13 @@ public interface StellarityConfiguredFeatures {
 				new Tuple7<>(9, 4, 9, 4, 5, threeLayersSize(), 0.66f),
 				new Tuple7<>(6, 1, 4, 4, 5, twoLayersSize(), 0.15f),
 				new Tuple7<>(4, 0, 3, 3, 4, twoLayersSize(), 0.3f)
-			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(STRIPPED_BIRCH_LOG), new DarkOakTrunkPlacer(t._1(), t._2(), t._3()),
 				prismarineForestTreeLeaves, new CherryFoliagePlacer(num(t._4()), num(0), num(t._5()), 0.25f, 0.25f, 0.24f, 0.37f),
 				Optional.empty(), t._6(),
 				List.of(new LeaveVineDecorator(0.0555f), new AttachedToLeavesDecorator(0.08f, 3, 2, block(SEA_LANTERN), 2, List.of(Direction.DOWN))), false, block(ENDER_DIRT)
 			))), List.of())), t._7())).toList(),
-			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(STRIPPED_BIRCH_LOG), new StraightTrunkPlacer(1, 0, 0),
 				block(ACACIA_LEAVES), new BushFoliagePlacer(num(2), num(1), 2),
 				Optional.empty(), twoLayersSize(), List.of(), false, block(ROOTED_ENDER_DIRT)
@@ -1155,7 +1156,7 @@ public interface StellarityConfiguredFeatures {
 					Direction.UP, matchBlocks(AIR), true
 				))), List.of())), 0.15f)
 			),
-			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, new TreeConfiguration(
+			direct(new PlacedFeature(direct(new ConfiguredFeature<>(Feature.TREE, TreeConfigurationAccessor.create(
 				block(WARPED_HYPHAE), new ForkingTrunkPlacer(5, 0, 3),
 				block(WARPED_WART_BLOCK), new FancyFoliagePlacer(num(1), num(0), 2),
 				Optional.empty(), twoLayersSize(), List.of(new LeaveVineDecorator(0.12f)), false, block(SNOW_BLOCK)

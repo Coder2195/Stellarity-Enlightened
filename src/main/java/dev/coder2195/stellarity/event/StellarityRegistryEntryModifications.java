@@ -1,6 +1,10 @@
 package dev.coder2195.stellarity.event;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.mixin.accessor.ChunkGeneratorAccessor;
+import dev.coder2195.stellarity.mixin.accessor.NoiseGeneratorSettingsAccessor;
+import dev.coder2195.stellarity.mixin.accessor.NoiseRouterAccessor;
+import dev.coder2195.stellarity.mixin.accessor.NoiseSettingsAccessor;
 import dev.coder2195.stellarity.util.WorldgenData;
 import net.fabricmc.fabric.api.event.registry.DynamicRegistrySetupCallback;
 import net.minecraft.core.Registry;
@@ -38,17 +42,19 @@ public class StellarityRegistryEntryModifications {
 	private static void checkMerge() {
 		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || (preliminarySurfaceLevel == null && nullscapePreliminarySurfaceLevel == null) || (finalDensity == null && nullscapeFinalDensity == null) || endNoiseRouter == null)
 			return;
+		
+		NoiseRouterAccessor routerAccessor = (NoiseRouterAccessor) (Object) endNoiseRouter;
 
-		endNoiseRouter.temperature = temperature;
-		endNoiseRouter.vegetation = vegetation;
-		endNoiseRouter.continents = continents;
-		endNoiseRouter.erosion = erosion;
-		endNoiseRouter.depth = depth;
-		endNoiseRouter.ridges = ridges;
+		routerAccessor.stellarity$setTemperature(temperature);
+		routerAccessor.stellarity$setVegetation(vegetation);
+		routerAccessor.stellarity$setContinents(continents);
+		routerAccessor.stellarity$setErosion(erosion);
+		routerAccessor.stellarity$setDepth(depth);
+		routerAccessor.stellarity$setRidges(ridges);
 
 		boolean usedNullscape = nullscapeFinalDensity != null && nullscapePreliminarySurfaceLevel != null;
-		endNoiseRouter.preliminarySurfaceLevel = nullscapePreliminarySurfaceLevel == null ? preliminarySurfaceLevel : nullscapePreliminarySurfaceLevel;
-		endNoiseRouter.finalDensity = nullscapeFinalDensity == null ? finalDensity : nullscapeFinalDensity;
+		routerAccessor.stellarity$setPreliminarySurfaceLevel(nullscapePreliminarySurfaceLevel == null ? preliminarySurfaceLevel : nullscapePreliminarySurfaceLevel);
+		routerAccessor.stellarity$setFinalDensity(nullscapeFinalDensity == null ? finalDensity : nullscapeFinalDensity);
 
 		Stellarity.LOGGER.info("MERGED! This is an important checkpoint as it could corrupt worlds without it. Used Nullscape: {}", usedNullscape);
 	}
@@ -96,21 +102,25 @@ public class StellarityRegistryEntryModifications {
 				checkMerge();
 			});
 
-			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (_, id, noiseSettings) -> {
+			registryView.registerEntryAdded(Registries.NOISE_SETTINGS, (_, id, generatorSettings) -> {
 				if (!id.equals(Stellarity.mcId("end"))) return;
 
-				cachedNoiseSettings = noiseSettings;
-				var noise = noiseSettings.noiseSettings();
-				endNoiseRouter = noiseSettings.noiseRouter();
-				noise.height = Math.max(noise.height(), 384);
+				cachedNoiseSettings = generatorSettings;
+				var noise = generatorSettings.noiseSettings();
+				endNoiseRouter = generatorSettings.noiseRouter();
+				((NoiseSettingsAccessor) (Object) noise).stellarity$setHeight(Math.max(noise.height(), 384));
+
+				//noinspection DataFlowIssue
+				var generatorSettingsAccessor = ((NoiseGeneratorSettingsAccessor) (Object) generatorSettings);
 
 				if (!Stellarity.hasBiolith() && !surfaceRulesDone) {
 					try {
-						noiseSettings.surfaceRule = SurfaceRules.sequence(
+
+						generatorSettingsAccessor.stellarity$setSurfaceRule(SurfaceRules.sequence(
 							WorldgenData.stellaritySurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
 							WorldgenData.vanillaSurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
-							noiseSettings.surfaceRule
-						);
+							generatorSettings.surfaceRule()
+						));
 
 						surfaceRulesDone = true;
 
@@ -123,7 +133,7 @@ public class StellarityRegistryEntryModifications {
 
 				checkMerge();
 
-				noiseSettings.disableMobGeneration = false;
+				generatorSettingsAccessor.stellarity$setDisableMobGeneration(false);
 			});
 
 			registryView.registerEntryAdded(Registries.LEVEL_STEM, (_, id, levelStem) -> {
@@ -131,7 +141,7 @@ public class StellarityRegistryEntryModifications {
 
 				chunkGenerator = levelStem.generator();
 				if (biomeRegistry != null) {
-					chunkGenerator.biomeSource = Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+					((ChunkGeneratorAccessor) chunkGenerator).stellarity$setBiomeSource(Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes));
 					Stellarity.LOGGER.info("adding biomes (level stem)");
 				}
 			});
@@ -150,18 +160,20 @@ public class StellarityRegistryEntryModifications {
 				}
 
 				if (chunkGenerator != null) {
-					chunkGenerator.biomeSource = Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes);
+					((ChunkGeneratorAccessor) chunkGenerator).stellarity$setBiomeSource(Stellarity.hasBiolith() ? TheEndBiomeSource.create(biomeRegistry) : WorldgenData.stellarityBiomeSource(biomeRegistry, nullscapeBiomes));
 
 					Stellarity.LOGGER.info("adding biomes (biome registry)");
 				}
 
 				if (cachedNoiseSettings != null && !Stellarity.hasBiolith() && !surfaceRulesDone)
 					try {
-						cachedNoiseSettings.surfaceRule = SurfaceRules.sequence(
+						//noinspection DataFlowIssue
+						var cachedNoiseSettingsAccessor = (NoiseGeneratorSettingsAccessor) (Object) cachedNoiseSettings;
+						cachedNoiseSettingsAccessor.stellarity$setSurfaceRule(SurfaceRules.sequence(
 							WorldgenData.stellaritySurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
 							WorldgenData.vanillaSurfaceRules(registryView.asRegistryAccess().lookupOrThrow(Registries.BIOME)),
-							cachedNoiseSettings.surfaceRule
-						);
+							cachedNoiseSettings.surfaceRule()
+						));
 						Stellarity.LOGGER.info("biome registry is mature for surface rules (biome)");
 						surfaceRulesDone = true;
 					} catch (Exception e) {

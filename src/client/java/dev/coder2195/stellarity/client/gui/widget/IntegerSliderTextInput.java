@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.client.gui.widget;
 
+import dev.coder2195.stellarity.client.mixin.accessor.EditBoxAccessor;
 import net.minecraft.client.gui.Font;
 import net.minecraft.network.chat.Component;
 
@@ -13,7 +14,7 @@ public class IntegerSliderTextInput extends SliderTextInput {
 	public IntegerSliderTextInput(int x, int y, Font font, Component title, int sliderMin, int sliderMax, int min, int max, int step, int initialValue) {
 		super(x, y, font, title, sliderMin, sliderMax, min, max, step);
 
-		editBox.value = String.valueOf(initialValue);
+		((EditBoxAccessor) editBox).stellarity$setValue(String.valueOf(initialValue));
 		slider.setValueNoApply(valueToSlider(initialValue));
 		
 		this.value = initialValue;

@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.mixin.accessor.SetComponentsFunctionAccessor;
 import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.HolderSet;
@@ -264,7 +265,6 @@ public interface StellarityVillagerTrades {
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
 		var paintings = context.lookup(Registries.PAINTING_VARIANT);
-		var itemModifiers = context.lookup(Registries.ITEM_MODIFIER);
 
 		List<LootItemFunction> ironArmorModifier = List.of(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
@@ -336,7 +336,7 @@ public interface StellarityVillagerTrades {
 		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), MAP, List.of(
 			ExplorationMapFunction.makeExplorationMap().setMapDecoration(MapDecorationTypes.PURPLE_BANNER).setZoom((byte) 3).setSearchRadius(96).setSkipKnownStructures(false).setDestination(StellarityStructureTags.EXPLORATION_MAP_END_CITY).build(),
 			SetNameFunction.setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME).build(),
-			new SetComponentsFunction(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
+			SetComponentsFunctionAccessor.create(List.of(), DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, shardToSimple(3, GLOW_ITEM_FRAME, 2, 18, 8, 0.05f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME, shardToSimple(num(4, 6), PHANTOM_ITEM_FRAME, 3, 20, 4, 0.05f));

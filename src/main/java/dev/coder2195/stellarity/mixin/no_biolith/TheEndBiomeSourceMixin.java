@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.sugar.Local;
+import dev.coder2195.stellarity.mixin.accessor.MultiNoiseBiomeSourceAccessor;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.world.level.biome.*;
@@ -38,7 +39,7 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource {
 
 	@WrapMethod(method = "collectPossibleBiomes")
 	private Stream<Holder<Biome>> collectPossibleBiomesOverride(Operation<Stream<Holder<Biome>>> original) {
-		if (biomeSource != null) return biomeSource.collectPossibleBiomes();
+		if (biomeSource != null) return ((MultiNoiseBiomeSourceAccessor) biomeSource).stellarity$collectPossibleBiomes();
 		return original.call();
 	}
 }

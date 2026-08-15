@@ -1,5 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.mixin.accessor.DimensionTypeAccessor;
+import dev.coder2195.stellarity.mixin.accessor.DimensionTypeMonsterSettingsAccessor;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -38,9 +40,11 @@ public interface StellarityVanillaWorldgenModifications {
 			attributes.set(WATER_EVAPORATES, false);
 
 			DimensionType dimensionType = dimension.value();
-			dimensionType.logicalHeight = Math.max(dimensionType.logicalHeight, 384);
-			dimensionType.height = Math.max(dimensionType.height, 384);
-			dimensionType.monsterSettings().monsterSpawnBlockLightLimit = 15;
+			var dimensionTypeAccessor = (DimensionTypeAccessor) (Object) dimensionType;
+			dimensionTypeAccessor.stellarity$setLogicalHeight(Math.max(dimensionType.logicalHeight(), 384));
+			dimensionTypeAccessor.stellarity$setHeight(Math.max(dimensionType.height(), 384));
+			//noinspection DataFlowIssue
+			((DimensionTypeMonsterSettingsAccessor) (Object) dimensionType.monsterSettings()).stellarity$setMonsterSpawnBlockLightLimit(15);
 		});
 
 
