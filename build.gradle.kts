@@ -116,7 +116,6 @@ loom {
 fabricApi {
 	configureDataGeneration {
 		client = true
-		modId = "stellarity"
 
 		dependencies {
 			val modonomicon = property("deps.modonomicon").toString().split('-')
@@ -223,7 +222,6 @@ publishMods {
 		requires("fabric-api")
 		optional("biolith")
 		optional("modonomicon")
-		embeds("stellarity-x-nullscape")
 		
 		client = true
 		server = true
