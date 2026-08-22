@@ -34,7 +34,7 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 		builder.add(CONFIGURED_CARVER, StellarityConfiguredCarvers::bootstrap);
 		builder.add(BIOME, StellarityBiomes::bootstrap);
 		builder.add(PLACED_FEATURE, StellarityPlacedFeatures::bootstrapEarly);
-		builder.add(CONFIGURED_FEATURE, StellarityConfiguredFeatures::bootstrap);
+		builder.add(CONFIGURED_FEATURE, StellarityFeatures::bootstrap);
 		builder.add(PLACED_FEATURE, StellarityPlacedFeatures::bootstrap);
 		builder.add(PROCESSOR_LIST, StellarityProcessorLists::bootstrap);
 		builder.add(TEMPLATE_POOL, StellarityTemplatePools::bootstrap);

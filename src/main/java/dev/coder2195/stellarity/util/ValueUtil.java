@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.util;
 
+import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.random.Weighted;
@@ -61,6 +62,17 @@ public interface ValueUtil {
 		@SuppressWarnings("unchecked") Weighted<T>[] weightList = new Weighted[values.length];
 		for (int i = 0; i < values.length; i++) {
 			weightList[i] = new Weighted<>(values[i], weights[i]);
+		}
+
+		return WeightedList.of(weightList);
+	}
+
+	static <T> WeightedList<Holder<T>> weightedHolder(T[] values, int[] weights) {
+		if (values.length != weights.length)
+			throw new IllegalArgumentException("Blockstates must correspond to weights. %s %s".formatted(Arrays.toString(values), Arrays.toString(weights)));
+		@SuppressWarnings("unchecked") Weighted<Holder<T>>[] weightList = new Weighted[values.length];
+		for (int i = 0; i < values.length; i++) {
+			weightList[i] = new Weighted<>(Holder.direct(values[i]), weights[i]);
 		}
 
 		return WeightedList.of(weightList);

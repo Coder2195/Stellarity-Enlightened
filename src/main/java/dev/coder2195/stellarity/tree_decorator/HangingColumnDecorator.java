@@ -3,14 +3,14 @@ package dev.coder2195.stellarity.tree_decorator;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.coder2195.stellarity.registry.StellarityTreeDecorators;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
+import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import org.jspecify.annotations.NonNull;
-import dev.coder2195.stellarity.registry.StellarityTreeDecorators;
-import dev.coder2195.stellarity.util.tuple.Tuple2;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,7 +24,7 @@ public class HangingColumnDecorator extends TreeDecorator {
 		Codec.INT.fieldOf("min_size").forGetter(HangingColumnDecorator::minSize),
 		Codec.BOOL.fieldOf("place_under_trunk").forGetter(HangingColumnDecorator::placeUnderTrunk),
 		Codec.BOOL.fieldOf("place_under_leaves").forGetter(HangingColumnDecorator::placeUnderLeaves),
-		BlockColumnConfiguration.Layer.CODEC.listOf().fieldOf("layers").forGetter(HangingColumnDecorator::layers),
+		BlockColumnFeature.Layer.CODEC.listOf().fieldOf("layers").forGetter(HangingColumnDecorator::layers),
 		Codec.BOOL.fieldOf("prioritize_tip").forGetter(HangingColumnDecorator::prioritizeTip)
 	).apply(instance, HangingColumnDecorator::new));
 
@@ -32,11 +32,11 @@ public class HangingColumnDecorator extends TreeDecorator {
 	private final int minSize;
 	private final boolean placeUnderTrunk;
 	private final boolean placeUnderLeaves;
-	private final List<BlockColumnConfiguration.Layer> layers;
+	private final List<BlockColumnFeature.Layer> layers;
 	private final boolean prioritizeTip;
 
 	public HangingColumnDecorator(float chance, int minSize, boolean placeUnderTrunk, boolean placeUnderLeaves,
-	                              List<BlockColumnConfiguration.Layer> layers, boolean prioritizeTip) {
+	                              List<BlockColumnFeature.Layer> layers, boolean prioritizeTip) {
 		super();
 		this.chance = chance;
 		this.minSize = minSize;
@@ -62,7 +62,7 @@ public class HangingColumnDecorator extends TreeDecorator {
 		return placeUnderLeaves;
 	}
 
-	public List<BlockColumnConfiguration.Layer> layers() {
+	public List<BlockColumnFeature.Layer> layers() {
 		return layers;
 	}
 

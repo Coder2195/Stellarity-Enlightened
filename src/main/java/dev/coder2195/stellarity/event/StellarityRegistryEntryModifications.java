@@ -13,10 +13,10 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.TheEndBiomeSource;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.SurfaceRules;
+import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 
 import static dev.coder2195.stellarity.registry.StellarityDensityFunctions.*;
 

@@ -13,8 +13,8 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.*;
+import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.OptionalInt;
 
 import static dev.coder2195.stellarity.util.ValueUtil.*;
+import static net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate.matchesBlocks;
 
 public interface WorldgenUtil {
 	static SimpleStateProvider block(Block block) {
@@ -85,31 +86,32 @@ public interface WorldgenUtil {
 	}
 
 	static BlockPredicate matchBlocks(Block... blocks) {
-		return BlockPredicate.matchesBlocks(blocks);
+		return matchesBlocks(blocks);
 	}
 
 	static BlockPredicate matchBlocks(Vec3i offset, Block... blocks) {
-		return BlockPredicate.matchesBlocks(offset, blocks);
+		return matchesBlocks(offset, List.of(blocks));
 	}
 
 	static BlockPredicate solid() {
 		return BlockPredicate.solid();
 	}
 
+	@SuppressWarnings("deprecation")
 	static BlockPredicate solid(Vec3i offset) {
-		return BlockPredicate.solid(offset);
+		return new SolidPredicate(offset);
+	}
+
+	static BlockColumnFeature.Layer columnLayer(IntProvider intProvider, BlockStateProvider state) {
+		return new BlockColumnFeature.Layer(intProvider, state);
+	}
+
+	static BlockColumnFeature blockColumns(Direction direction, BlockPredicate allowedPlacement, boolean prioritizeTip, BlockColumnFeature.Layer... layers) {
+		return new BlockColumnFeature(List.of(layers), direction, allowedPlacement, prioritizeTip);
 	}
 
 	static BiomeFilter biome() {
 		return BiomeFilter.biome();
-	}
-
-	static BlockColumnConfiguration.Layer columnLayer(IntProvider intProvider, BlockStateProvider state) {
-		return new BlockColumnConfiguration.Layer(intProvider, state);
-	}
-
-	static BlockColumnConfiguration blockColumns(Direction direction, BlockPredicate allowedPlacement, boolean prioritizeTip, BlockColumnConfiguration.Layer... layers) {
-		return new BlockColumnConfiguration(List.of(layers), direction, allowedPlacement, prioritizeTip);
 	}
 
 	static WeightedStateProvider weightedBlocks(BlockState[] states, int[] weights) {
@@ -189,31 +191,31 @@ public interface WorldgenUtil {
 	}
 
 	static BlockPredicate wouldSurvive(BlockState state) {
-		return BlockPredicate.wouldSurvive(state, Vec3i.ZERO);
+		return new WouldSurvivePredicate(Vec3i.ZERO, state);
 	}
 
 	static BlockPredicate wouldSurvive(Block block) {
 		return wouldSurvive(block.defaultBlockState());
 	}
 
-	static NoiseProvider noiseBlocks(int seed, NormalNoise.NoiseParameters noise, float scale, BlockState... blockStates) {
+	static NoiseProvider noiseBlocks(int seed, NormalNoise noise, float scale, BlockState... blockStates) {
 		return new NoiseProvider(seed, noise, scale, List.of(blockStates));
 	}
 
-	static NoiseProvider noiseBlocks(int seed, NormalNoise.NoiseParameters noise, float scale, Block... blocks) {
+	static NoiseProvider noiseBlocks(int seed, NormalNoise noise, float scale, Block... blocks) {
 		return new NoiseProvider(seed, noise, scale, Arrays.stream(blocks).map(Block::defaultBlockState).toList());
 	}
 
-	static DualNoiseProvider noiseBlocks(InclusiveRange<Integer> variety, NormalNoise.NoiseParameters slowNoiseParameters, float slowScale, long seed, NormalNoise.NoiseParameters parameters, float scale, BlockState... blockStates) {
+	static DualNoiseProvider noiseBlocks(InclusiveRange<Integer> variety, NormalNoise slowNoiseParameters, float slowScale, long seed, NormalNoise parameters, float scale, BlockState... blockStates) {
 		return new DualNoiseProvider(variety, slowNoiseParameters, slowScale, seed, parameters, scale, List.of(blockStates));
 	}
 
-	static DualNoiseProvider noiseBlocks(InclusiveRange<Integer> variety, NormalNoise.NoiseParameters slowNoiseParameters, float slowScale, long seed, NormalNoise.NoiseParameters parameters, float scale, Block... blocks) {
+	static DualNoiseProvider noiseBlocks(InclusiveRange<Integer> variety, NormalNoise slowNoiseParameters, float slowScale, long seed, NormalNoise parameters, float scale, Block... blocks) {
 		return new DualNoiseProvider(variety, slowNoiseParameters, slowScale, seed, parameters, scale, Arrays.stream(blocks).map(Block::defaultBlockState).toList());
 	}
 
-	static RandomOffsetPlacement randOffset(IntProvider xzSpread, IntProvider ySpread) {
-		return RandomOffsetPlacement.of(xzSpread, ySpread);
+	static OffsetPlacement randOffset(IntProvider xzSpread, IntProvider ySpread) {
+		return OffsetPlacement.of(xzSpread, ySpread);
 	}
 
 	static HasSturdyFacePredicate sturdyFace(Direction direction) {
@@ -246,7 +248,7 @@ public interface WorldgenUtil {
 	}
 
 	static BlockPredicate replaceable(Vec3i pos) {
-		return BlockPredicate.replaceable(pos);
+		return new ReplaceablePredicate(pos);
 	}
 
 	static BlockPredicate matchTag(TagKey<Block> tag) {
@@ -267,13 +269,5 @@ public interface WorldgenUtil {
 
 	static RandomizedIntStateProvider randIntState(Block block, IntegerProperty property, IntProvider num) {
 		return new RandomizedIntStateProvider(block(block), property, num);
-	}
-
-	static SimpleStateProvider randIntState(Block block) {
-		return RandomizedIntStateProvider.simple(block);
-	}
-
-	static SimpleStateProvider randIntState(BlockState block) {
-		return RandomizedIntStateProvider.simple(block);
 	}
 }

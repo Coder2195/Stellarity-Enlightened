@@ -1,9 +1,17 @@
 package dev.coder2195.stellarity.feature;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.coder2195.stellarity.registry.StellarityLootTables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.IntProviders;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
@@ -12,36 +20,39 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.StairsShape;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import dev.coder2195.stellarity.registry.StellarityLootTables;
-import dev.coder2195.stellarity.feature.configuration.DungeonFeatureConfiguration;
+import org.jspecify.annotations.NonNull;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
+import static dev.coder2195.stellarity.util.ValueUtil.*;
 import static net.minecraft.tags.BlockTags.AIR;
 import static net.minecraft.tags.BlockTags.FEATURES_CANNOT_REPLACE;
 import static net.minecraft.world.level.block.Blocks.*;
-import static dev.coder2195.stellarity.util.ValueUtil.from;
-import static dev.coder2195.stellarity.util.ValueUtil.property;
 
-public class DungeonFeature extends Feature<DungeonFeatureConfiguration> {
-	public DungeonFeature(Codec<DungeonFeatureConfiguration> codec) {
-		super(codec);
+public record DungeonFeature(
+	EntityType<?> entityType, IntProvider size, IntProvider height, IntProvider chests
+) implements Feature {
+	public static final MapCodec<DungeonFeature> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
+		EntityType.CODEC.optionalFieldOf("entity_type", EntityTypes.ENDERMITE).forGetter(DungeonFeature::entityType),
+		IntProviders.CODEC.optionalFieldOf("size", num(4)).forGetter(DungeonFeature::size),
+		IntProviders.CODEC.optionalFieldOf("height", num(6)).forGetter(DungeonFeature::height),
+		IntProviders.CODEC.optionalFieldOf("chests", num(1, 2)).forGetter(DungeonFeature::chests)
+	).apply(i, DungeonFeature::new));
+
+	public DungeonFeature() {
+		this(EntityTypes.ENDERMITE, num(4), num(6), num(1, 2));
 	}
 
 	@Override
-	public boolean place(FeaturePlaceContext<DungeonFeatureConfiguration> context) {
-		var config = context.config();
+	public boolean place(@NonNull WorldGenLevel level, @NonNull ChunkGenerator chunkGenerator, @NonNull RandomSource random, @NonNull BlockPos origin) {
 
-		var replaceable = Feature.isReplaceable(FEATURES_CANNOT_REPLACE).and(state -> !state.is(AIR));
-		var origin = context.origin();
-		var level = context.level();
-		var random = context.random();
-		var size = config.size().sample(random);
-		var height = config.height().sample(random);
-		var chests = Math.max(config.chests().sample(random), 0);
-		var entityType = config.entityType();
+		var size = this.size.sample(random);
+		var height = this.height.sample(random);
+		var chests = Math.max(this.chests.sample(random), 0);
+		Predicate<BlockState> replaceable = (state) -> state.is(AIR) || !state.is(FEATURES_CANNOT_REPLACE);
 
 		if (size < 3 || height < 4)
 			return false;
@@ -138,4 +149,10 @@ public class DungeonFeature extends Feature<DungeonFeatureConfiguration> {
 		return true;
 
 	}
+
+	@Override
+	public @NonNull MapCodec<? extends Feature> codec() {
+		return CODEC;
+	}
+
 }

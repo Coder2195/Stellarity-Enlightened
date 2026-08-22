@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.DensityFunction;
+import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 import dev.coder2195.stellarity.Stellarity;
 
 public interface StellarityDensityFunctions {

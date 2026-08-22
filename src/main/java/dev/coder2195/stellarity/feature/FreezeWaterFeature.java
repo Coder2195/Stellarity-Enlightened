@@ -1,23 +1,23 @@
 package dev.coder2195.stellarity.feature;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import org.jspecify.annotations.NonNull;
 
 import static dev.coder2195.stellarity.util.ValueUtil.from;
 
-public class FreezeWaterFeature extends Feature<NoneFeatureConfiguration> {
-	public FreezeWaterFeature() {
-		super(NoneFeatureConfiguration.CODEC);
-	}
+public class FreezeWaterFeature implements Feature {
+	public static final FreezeWaterFeature INSTANCE = new FreezeWaterFeature();
+	public static final MapCodec<FreezeWaterFeature> CODEC = MapCodec.unit(INSTANCE);
 
 	@Override
-	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-		var level = context.level();
-		var origin = context.origin();
+	public boolean place(@NonNull WorldGenLevel level, @NonNull ChunkGenerator generator, @NonNull RandomSource random, @NonNull BlockPos origin) {
 
 		var pos = new BlockPos.MutableBlockPos();
 
@@ -43,4 +43,10 @@ public class FreezeWaterFeature extends Feature<NoneFeatureConfiguration> {
 		return true;
 
 	}
+
+	@Override
+	public @NonNull MapCodec<? extends Feature> codec() {
+		return CODEC;
+	}
+
 }

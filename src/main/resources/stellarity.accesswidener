@@ -1,4 +1,5 @@
 classTweaker v1 official
+
 inject-interface net/minecraft/world/entity/boss/enderdragon/EndCrystal dev/coder2195/stellarity/interface_injection/ExtEndCrystal
 inject-interface net/minecraft/world/entity/Entity dev/coder2195/stellarity/interface_injection/ExtEntity
 inject-interface net/minecraft/world/entity/projectile/FishingHook dev/coder2195/stellarity/interface_injection/ExtFishingHook
@@ -6,7 +7,7 @@ inject-interface net/minecraft/world/entity/item/ItemEntity dev/coder2195/stella
 inject-interface net/minecraft/world/entity/projectile/arrow/AbstractArrow dev/coder2195/stellarity/interface_injection/ExtAbstractArrow
 inject-interface net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike dev/coder2195/stellarity/interface_injection/ExtEndSpike
 inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight dev/coder2195/stellarity/interface_injection/ExtEnderDragonFight
-inject-interface net/minecraft/world/level/levelgen/feature/configurations/LargeDripstoneConfiguration dev/coder2195/stellarity/interface_injection/ExtLargeDripstoneConfiguration
+inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature dev/coder2195/stellarity/interface_injection/ExtLargeDripstoneFeature
 inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone dev/coder2195/stellarity/interface_injection/ExtLargeDripstone
 
 accessible class net/minecraft/world/effect/RegenerationMobEffect

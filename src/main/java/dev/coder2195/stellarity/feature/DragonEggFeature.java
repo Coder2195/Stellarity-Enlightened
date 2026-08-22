@@ -1,30 +1,32 @@
 package dev.coder2195.stellarity.feature;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import org.jspecify.annotations.NonNull;
 
-public class DragonEggFeature extends Feature<SimpleBlockConfiguration> {
-	public DragonEggFeature(Codec<SimpleBlockConfiguration> codec) {
-		super(codec);
-	}
+public record DragonEggFeature(BlockStateProvider toPlace) implements Feature {
+	public static final MapCodec<DragonEggFeature> CODEC = RecordCodecBuilder.mapCodec(
+		instance -> instance.group(
+			BlockStateProvider.CODEC.fieldOf("to_place").forGetter(DragonEggFeature::toPlace)
+			).apply(instance, DragonEggFeature::new));
 
 	public static final int[] LAYERS = {
 		5, 6, 6, 7, 7, 7, 7, 7, 6, 6, 6, 5, 5, 4, 3, 2
 	};
 
 	@Override
-	public boolean place(@NonNull FeaturePlaceContext<SimpleBlockConfiguration> context) {
-		var origin = context.origin();
+	public boolean place(@NonNull WorldGenLevel level, @NonNull ChunkGenerator chunkGenerator, @NonNull RandomSource random, BlockPos origin) {
+
 		var ox = origin.getX();
 		var oz = origin.getZ();
-		var level = context.level();
-		var toPlace = context.config().toPlace();
-		var random = context.random();
+
 
 		BlockPos.MutableBlockPos pos = origin.mutable();
 
@@ -45,4 +47,10 @@ public class DragonEggFeature extends Feature<SimpleBlockConfiguration> {
 
 		return true;
 	}
+
+	@Override
+	public @NonNull MapCodec<? extends Feature> codec() {
+		return CODEC;
+	}
+
 }

@@ -13,11 +13,11 @@ import static dev.coder2195.stellarity.util.WorldgenUtil.*;
 import static net.minecraft.world.level.block.Blocks.*;
 
 public interface StellarityConfiguredCarvers {
-	ResourceKey<ConfiguredWorldCarver<?>> RAVINE = id("ravine");
-	ResourceKey<ConfiguredWorldCarver<?>> CAVE = id("cave");
-	ResourceKey<ConfiguredWorldCarver<?>> CRACK = id("crack");
+	ResourceKey<WorldCarver> RAVINE = id("ravine");
+	ResourceKey<WorldCarver> CAVE = id("cave");
+	ResourceKey<WorldCarver> CRACK = id("crack");
 
-	static void bootstrap(BootstrapContext<ConfiguredWorldCarver<?>> context) {
+	static void bootstrap(BootstrapContext<WorldCarver> context) {
 		var blocks = context.lookup(Registries.BLOCK);
 		final var orangeGlass = from(STAINED_GLASS.orange());
 		final var candle = property(property(CANDLE, BlockStateProperties.LIT, false), BlockStateProperties.CANDLES, 1);
@@ -26,9 +26,9 @@ public interface StellarityConfiguredCarvers {
 		final var carverDebug = CarverDebugSettings.of(whiteGlass, candle, orangeGlass, glass);
 		final var replaceable = blocks.getOrThrow(StellarityBlockTags.WORLDGEN_CARVER_REPLACEABLE);
 
-		context.register(CAVE, new ConfiguredWorldCarver<>(WorldCarver.CAVE, new CaveCarverConfiguration(
+		context.register(CAVE, new CaveWorldCarver(
 			0.15f, height(aboveBottom(8), belowTop(8)), numf(0.4f, 1.5f), absolute(0), carverDebug, replaceable, numf(1, 2.2f), numf(1, 2.2f), numf(-1, -0.4f)
-		)));
+		));
 
 		context.register(CRACK, new ConfiguredWorldCarver<>(WorldCarver.CANYON, new CanyonCarverConfiguration(0.066f, height(aboveBottom(16), belowTop(16)), numf(6, 8), absolute(0), carverDebug, replaceable, numf(-0.125f, 0.125f), new CanyonCarverConfiguration.CanyonShapeConfiguration(
 			numf(0.5f, 1), numf(0, 1), 6, numf(0.25f, 1), 0, 5
@@ -39,7 +39,7 @@ public interface StellarityConfiguredCarvers {
 		))));
 	}
 
-	private static ResourceKey<ConfiguredWorldCarver<?>> id(String id) {
+	private static ResourceKey<WorldCarver> id(String id) {
 		return Stellarity.key(Registries.CONFIGURED_CARVER, id);
 	}
 }

@@ -61,7 +61,7 @@ public class Stellarity implements ModInitializer {
 		StellarityEntitySubPredicates.init();
 		StellarityRegistries.init();
 		StellarityRegistryEntryModifications.init();
-		StellarityFeatures.init();
+		StellarityFeatureTypes.init();
 		StellarityVanillaWorldgenModifications.init();
 		StellarityTreeDecorators.init();
 		if (hasBiolith()) StellarityBiolithBiomes.init();

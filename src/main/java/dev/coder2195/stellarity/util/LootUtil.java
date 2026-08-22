@@ -81,20 +81,24 @@ public interface LootUtil {
 		return new NbtPredicate(tag);
 	}
 
-	static LootItemFunction explorationMap(Holder<MapDecorationType> decoration, TagKey<Structure> destination, byte zoom, int searchRadius, boolean skipExisting) {
-		return ExplorationMapFunction.makeExplorationMap().setMapDecoration(decoration).setZoom(zoom).setDestination(destination).setSearchRadius(searchRadius).setSkipKnownStructures(skipExisting).build();
+	static LootItemFunction explorationMap(Holder<MapDecorationType> decoration, HolderSet<Structure> destination, byte zoom, int searchRadius, boolean skipExisting) {
+		return ExplorationMapFunction.makeExplorationMap(destination).setMapDecoration(decoration).setZoom(zoom).setSearchRadius(searchRadius).setSkipKnownStructures(skipExisting).build();
 	}
 
 	static LootItemFunction setName(Component text, SetNameFunction.Target target) {
 		return SetNameFunction.setName(text, target).build();
 	}
 
-	static ConstantValue num(float num) {
-		return new ConstantValue(num);
+	static Holder<NumberProvider> num(float num) {
+		return ConstantValue.exactly(num);
 	}
 
-	static UniformGenerator num(float min, float max) {
-		return new UniformGenerator(num(min), num(max));
+	static Holder<NumberProvider> num(float min, float max) {
+		return UniformGenerator.between(min, max);
+	}
+
+	static Holder<SequenceFunction> sequence(List<Holder<LootItemFunction>> functions) {
+		return Holder.direct(SequenceFunction.of(functions));
 	}
 
 	static BinomialDistributionGenerator binomial(int n, float p) {

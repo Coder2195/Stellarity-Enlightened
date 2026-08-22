@@ -7,26 +7,23 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DirtPathBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import org.jspecify.annotations.NonNull;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 
 
-public class EnderDirtPath extends DirtPathBlock {
+public class EnderDirtPath extends PathBlock {
 	public EnderDirtPath(Properties properties) {
-		super(properties);
+		super(StellarityBlocks.ENDER_DIRT, properties);
 	}
 
 	public static final Properties PROPERTIES = Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.65F)
 		.sound(SoundType.GRASS)
-		.isViewBlocking((_, _, _) -> true)
+		.isViewBlocking((_, _, _, _) -> true)
 		.isSuffocating((_, _, _) -> true).forceSolidOn();
 
 
@@ -53,6 +50,6 @@ public class EnderDirtPath extends DirtPathBlock {
 	@Override
 	public boolean canSurvive(@NonNull BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		BlockState blockState2 = levelReader.getBlockState(blockPos.above());
-		return !(blockState2.isSolid() || blockState2.getBlock() instanceof DirtPathBlock) || blockState2.getBlock() instanceof FenceGateBlock;
+		return !(blockState2.isSolid() || blockState2.getBlock() instanceof PathBlock) || blockState2.getBlock() instanceof FenceGateBlock;
 	}
 }
