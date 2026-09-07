@@ -137,7 +137,7 @@ Compatibility update along with general additions of armor and recipes
 - Available through `stellarity:consecration` recipe type
 
 ## Versions
-**[*] 26.2 -> 26.3d**
+**[*] 26.2 → 26.3**
 
 # Developer's Note
 
