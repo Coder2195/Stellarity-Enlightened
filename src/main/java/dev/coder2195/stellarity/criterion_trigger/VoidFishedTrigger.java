@@ -61,7 +61,7 @@ public class VoidFishedTrigger extends SimpleCriterionTrigger<VoidFishedTrigger.
 			} else {
 				if (this.item.isPresent()) {
 					boolean bl = false;
-					Entity entity = lootContext.getOptionalParameter(LootContextParams.THIS_ENTITY);
+					Entity entity = lootContext.getOptional(LootContextParams.THIS_ENTITY);
 
 					if (entity instanceof ItemEntity itemEntity) {
 						if (this.item.get().test(itemEntity.getItem())) {

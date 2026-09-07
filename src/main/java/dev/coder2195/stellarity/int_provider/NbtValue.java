@@ -23,7 +23,7 @@ public record NbtValue(
 
 	@Override
 	public int getIntUnsafe(LootContext context) {
-		var entity = context.getOptionalParameter(target.contextParam());
+		var entity = context.getOptional(target.contextParam());
 
 		if (entity == null) return defaultValue;
 		var accessor = new EntityDataAccessor(entity);
