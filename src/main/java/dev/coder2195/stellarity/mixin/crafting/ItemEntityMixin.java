@@ -75,9 +75,9 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 		var input = new ConsecrationRecipe.Input(getItem());
 		var recipe = level.recipeAccess().getRecipeFor(StellarityRecipeTypes.CONSECRATION, input, level);
 		if (recipe.isEmpty()) return;
-		var position = position();
 
 		setItem(recipe.get().value().assemble(input));
+		stellarity$setItemMode(ItemMode.RESULT);
 	}
 
 }

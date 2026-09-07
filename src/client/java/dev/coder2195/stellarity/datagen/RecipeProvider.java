@@ -337,9 +337,10 @@ public class RecipeProvider extends FabricRecipeProvider {
 		consecration(output, "purpur_key", Ingredient.of(GILDED_PURPUR_KEY), new ItemStackTemplate(PURPUR_KEY));
 		consecration(output, "sculk_shrieker", Ingredient.of(SCULK_CATALYST), new ItemStackTemplate(SCULK_SHRIEKER));
 		consecration(output, "sculk_catalyst", Ingredient.of(SCULK_SHRIEKER), new ItemStackTemplate(SCULK_CATALYST));
-		consecration(output, "verdant_froglight", Ingredient.of(OCHRE_FROGLIGHT), new ItemStackTemplate(VERDANT_FROGLIGHT));
+		consecration(output, "verdant_froglight", Ingredient.of(ASHEN_FROGLIGHT), new ItemStackTemplate(VERDANT_FROGLIGHT));
 		consecration(output, "pearlescent_froglight", Ingredient.of(VERDANT_FROGLIGHT), new ItemStackTemplate(PEARLESCENT_FROGLIGHT));
 		consecration(output, "ochre_froglight", Ingredient.of(PEARLESCENT_FROGLIGHT), new ItemStackTemplate(OCHRE_FROGLIGHT));
+		consecration(output, "ashen_froglight", Ingredient.of(OCHRE_FROGLIGHT), new ItemStackTemplate(ASHEN_FROGLIGHT));
 	}
 
 	@Override

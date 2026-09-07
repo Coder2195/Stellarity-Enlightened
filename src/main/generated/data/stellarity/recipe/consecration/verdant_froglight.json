@@ -1,6 +1,6 @@
 {
   "type": "stellarity:consecration",
-  "item": "minecraft:ochre_froglight",
+  "item": "stellarity:ashen_froglight",
   "result": {
     "id": "minecraft:verdant_froglight"
   }
