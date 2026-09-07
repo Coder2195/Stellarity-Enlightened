@@ -28,10 +28,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.component.Consumable;
-import net.minecraft.world.item.component.Consumables;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.TooltipDisplay;
+import net.minecraft.world.item.component.*;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
 import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -369,6 +366,12 @@ public interface StellarityItems {
 	Item SHULKER_SPEAR = register(
 		StellarityItemIds.SHULKER_SPEAR, new Item.Properties().spear(StellarityToolMaterials.SHULKER, 1.15F, 1.4F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F).fireResistant()
 	);
+
+	Item VILLAGE_MAP = register(StellarityItemIds.VILLAGE_MAP, MapItem::new, mapProperties());
+	Item END_CITY_MAP = register(StellarityItemIds.END_CITY_MAP, MapItem::new, mapProperties());
+	Item CHAPEL_OF_LIGHT_MAP = register(StellarityItemIds.CHAPEL_OF_LIGHT_MAP, MapItem::new, mapProperties());
+	Item FLOATING_TREASURE_MAP = register(StellarityItemIds.FLOATING_TREASURE_MAP, MapItem::new, mapProperties());
+
 	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
 		return () -> PotionContents.createItemStack(Items.POTION, potion);
 	}
@@ -423,6 +426,10 @@ public interface StellarityItems {
 		public EffectChance(MobEffectInstance effect) {
 			this(effect, 1.0f);
 		}
+	}
+
+	private static Item.Properties mapProperties() {
+		return new Item.Properties().component(DataComponents.MAP_DECORATIONS, MapDecorations.EMPTY);
 	}
 
 

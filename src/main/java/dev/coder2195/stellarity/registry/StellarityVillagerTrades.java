@@ -81,7 +81,7 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> CARTOGRAPHER_1_PAPER_ENDERITE_SHARD = id("cartographer/1/paper_enderite_shard");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_1_ENDERITE_SHARD_MAP = id("cartographer/1/enderite_shard_map");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD = id("cartographer/2/glass_pane_enderite_shard");
-	ResourceKey<VillagerTrade> CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP = id("cartographer/2/map_enderite_shard_end_city_explorer_map");
+	ResourceKey<VillagerTrade> CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP = id("cartographer/2/map_enderite_shard_end_city_map");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME = id("cartographer/3/enderite_shard_item_frame");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP = id("cartographer/3/map_enderite_shard_chapel_of_light_map");
 	ResourceKey<VillagerTrade> CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME = id("cartographer/4/enderite_shard_glow_item_frame");
@@ -326,19 +326,19 @@ public interface StellarityVillagerTrades {
 		context.register(BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK, shardToSimple(5, DRIED_KELP_BLOCK, 2, 20, 8, 0.05f));
 
 
-		var explorationMapEndCity = structures.getOrThrow(StellarityStructureTags.EXPLORATION_MAP_END_CITY);
+		var explorationMapEndCity = structures.getOrThrow(StellarityStructureTags.ON_END_CITY_MAPS);
 		//TODO: Update with actual chapel of light
-		var explorationMapChapelOfLight = structures.getOrThrow(StellarityStructureTags.EXPLORATION_MAP_VILLAGE);
+		var explorationMapChapelOfLight = structures.getOrThrow(StellarityStructureTags.ON_VILLAGE_MAPS);
 		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
-		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_EXPLORER_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), MAP, sequence(
+		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), END_CITY_MAP, sequence(
 			explorationMap(MapDecorationTypes.PURPLE_BANNER, explorationMapEndCity, (byte) 3, 96, true),
 			setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
 			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
-		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), MAP, sequence(
+		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), CHAPEL_OF_LIGHT_MAP, sequence(
 			explorationMap(MapDecorationTypes.PURPLE_BANNER, explorationMapChapelOfLight, (byte) 3, 96, false),
 			setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
 			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())

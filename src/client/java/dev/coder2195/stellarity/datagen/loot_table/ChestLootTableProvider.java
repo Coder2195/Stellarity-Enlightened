@@ -145,8 +145,8 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(pool().add(item(ENDERITE_SHARD).apply(count(2, 5))))
 			.withPool(campsiteTentEmeraldBooks)
 			.withPool(campsiteTentArmor)
-			.withPool(pool().add(item(MAP)
-				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.EXPLORATION_MAP_VILLAGE), (byte) 3, 96, false),
+			.withPool(pool().add(item(VILLAGE_MAP)
+				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.ON_VILLAGE_MAPS), (byte) 3, 96, false),
 					setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME),
 					setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build())
 				))
@@ -200,9 +200,9 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(COMPASS).setWeight(2))
 				.add(item(SHEARS))
 				.add(item(GLASS_PANE).setWeight(4).apply(count(1, 2)))
-			).withPool(pool().setRolls(num(-1, 1)).add(item(MAP)
+			).withPool(pool().setRolls(num(-1, 1)).add(item(END_CITY_MAP)
 				.apply(sequence(
-					explorationMap(MapDecorationTypes.PURPLE_BANNER, lookup.getOrThrow(StellarityStructureTags.EXPLORATION_MAP_END_CITY), (byte) 3, 96, true),
+					explorationMap(MapDecorationTypes.PURPLE_BANNER, lookup.getOrThrow(StellarityStructureTags.ON_END_CITY_MAPS), (byte) 3, 96, true),
 					setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
 					setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 				))

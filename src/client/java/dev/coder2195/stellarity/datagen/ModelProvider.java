@@ -93,7 +93,11 @@ public class ModelProvider extends FabricModelProvider {
 		BOOK_OF_OBSTRUCT,
 		BOOK_OF_UPDRAFT,
 		BOOK_OF_CONVEYANCE,
-		BOOK_OF_RETURN
+		BOOK_OF_RETURN,
+		VILLAGE_MAP,
+		END_CITY_MAP,
+		FLOATING_TREASURE_MAP,
+		CHAPEL_OF_LIGHT_MAP
 	};
 
 	public final static Item[] HANDHELD_ITEMS = new Item[]{

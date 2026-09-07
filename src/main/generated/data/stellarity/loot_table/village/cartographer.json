@@ -58,7 +58,7 @@
             {
               "type": "minecraft:exploration_map",
               "decoration": "minecraft:banner_purple",
-              "destination": "#stellarity:exploration_map/end_city",
+              "destination": "#stellarity:on_end_city_maps",
               "search_radius": 96,
               "zoom": 3
             },
@@ -77,7 +77,7 @@
               }
             }
           ],
-          "name": "minecraft:map"
+          "name": "stellarity:end_city_map"
         }
       ],
       "rolls": {

@@ -113,12 +113,15 @@ public interface StellarityItemIds {
 	ResourceKey<Item> VOID_LOCKET = id("void_locket");
 	ResourceKey<Item> WINGED_KEY = id("winged_key");
 	ResourceKey<Item> POTASSIFISH = id("potassifish");
-
 	ResourceKey<Item> VOIDED_ZOMBIE_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_ZOMBIE);
 	ResourceKey<Item> VOIDED_SKELETON_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SKELETON);
 	ResourceKey<Item> VOIDED_SILVERFISH_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SILVERFISH);
 	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SLIME);
 	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityTypeIds.FLESH_PIGLIN);
+	ResourceKey<Item> VILLAGE_MAP = id("village_map");
+	ResourceKey<Item> END_CITY_MAP = id("end_city_map");
+	ResourceKey<Item> FLOATING_TREASURE_MAP = id("floating_treasure_map");
+	ResourceKey<Item> CHAPEL_OF_LIGHT_MAP = id("chapel_of_light_map");
 
 
 	static ResourceKey<Item> id(String id) {

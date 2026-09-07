@@ -9,8 +9,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 
 import java.util.concurrent.CompletableFuture;
 
-import static dev.coder2195.stellarity.tags.StellarityStructureTags.EXPLORATION_MAP_END_CITY;
-import static dev.coder2195.stellarity.tags.StellarityStructureTags.EXPLORATION_MAP_VILLAGE;
+import static dev.coder2195.stellarity.tags.StellarityStructureTags.ON_END_CITY_MAPS;
+import static dev.coder2195.stellarity.tags.StellarityStructureTags.ON_VILLAGE_MAPS;
 import static net.minecraft.world.level.levelgen.structure.BuiltinStructures.END_CITY;
 
 public class StructureTagProvider extends FabricTagsProvider<Structure> {
@@ -21,7 +21,7 @@ public class StructureTagProvider extends FabricTagsProvider<Structure> {
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		builder(EXPLORATION_MAP_END_CITY).add(END_CITY);
-		builder(EXPLORATION_MAP_VILLAGE).add(StellarityStructures.VILLAGE);
+		builder(ON_END_CITY_MAPS).add(END_CITY);
+		builder(ON_VILLAGE_MAPS).add(StellarityStructures.VILLAGE);
 	}
 }
