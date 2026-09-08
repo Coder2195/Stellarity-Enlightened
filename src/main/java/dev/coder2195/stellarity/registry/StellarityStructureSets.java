@@ -9,21 +9,20 @@ import net.minecraft.world.level.levelgen.structure.StructureSet;
 import net.minecraft.world.level.levelgen.structure.placement.AbstractSpreadingStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
-import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface StellarityStructureSets {
 	ResourceKey<StructureSet> SMALL_STRUCTURES = id("small_structures");
-	ResourceKey<StructureSet> VILLAGES = id("villages");
+	ResourceKey<StructureSet> END_VILLAGES = id("end_villages");
 
 	@SuppressWarnings("deprecation")
 	static void bootstrap(BootstrapContext<StructureSet> context) {
 		var structures = context.lookup(Registries.STRUCTURE);
 
-		var villageStructureSet = context.register(VILLAGES, new StructureSet(List.of(
-			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.VILLAGE), 1)
+		var villageStructureSet = context.register(END_VILLAGES, new StructureSet(List.of(
+			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.END_VILLAGE), 1)
 		), new RandomSpreadStructurePlacement(
 			Vec3i.ZERO, AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT, 0.7f, 2343435,
 			Optional.empty(), 51, 26, RandomSpreadType.TRIANGULAR

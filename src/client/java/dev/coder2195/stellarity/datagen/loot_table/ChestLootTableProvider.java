@@ -164,17 +164,17 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(campsiteTentFood)
 		);
 
-		consumer.accept(VILLAGE_APIARY, lootTable().withPool(pool().setRolls(num(4, 6))
+		consumer.accept(END_VILLAGE_APIARY, lootTable().withPool(pool().setRolls(num(4, 6))
 			.add(item(HONEYCOMB_BLOCK).apply(count(1, 2)))
 			.add(item(HONEYCOMB).setWeight(3).apply(count(2, 3)))
 			.add(item(HONEY_BOTTLE).setWeight(2))
 			.add(item(HONEY_BLOCK).apply(count(1, 2)))
 		));
-		consumer.accept(VILLAGE_ARCHER_TOWER, lootTable()
+		consumer.accept(END_VILLAGE_ARCHER_TOWER, lootTable()
 			.withPool(pool().setRolls(num(2, 4)).add(item(ARROW).apply(count(binomial(14, 0.44f)))))
 			.withPool(pool().add(item(BOW).apply(damage(0.1f, 0.77f)).apply(enchant(enchantments, 30, 30))))
 		);
-		consumer.accept(VILLAGE_ARMORER, lootTable()
+		consumer.accept(END_VILLAGE_ARMORER, lootTable()
 			.withPool(pool().setRolls(num(1, 2))
 				.add(item(IRON_CHESTPLATE).apply(enchant(enchantments, 29, 39)))
 				.add(item(IRON_HELMET).apply(enchant(enchantments, 29, 39)))
@@ -189,11 +189,11 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(group(item(GOLD_INGOT).setWeight(8), item(IRON_INGOT).setWeight(8)))
 			)
 		);
-		consumer.accept(VILLAGE_BUTCHER, lootTable()
+		consumer.accept(END_VILLAGE_BUTCHER, lootTable()
 			.withPool(pool().setRolls(num(5, 7)).add(item(BEEF)).add(item(MUTTON)).add(item(PORKCHOP)).add(item(RABBIT)))
 			.withPool(pool().setRolls(num(7)).add(item(ICE)).add(item(SNOWBALL)).apply(count(1, 2)))
 		);
-		consumer.accept(VILLAGE_CARTOGRAPHER, lootTable()
+		consumer.accept(END_VILLAGE_CARTOGRAPHER, lootTable()
 			.withPool(pool().setRolls(num(4, 6))
 				.add(item(MAP).setWeight(7))
 				.add(item(PAPER).setWeight(15).apply(count(2, 3)))
@@ -208,10 +208,10 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				))
 			))
 		);
-		consumer.accept(VILLAGE_CARTOGRAPHER_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2, 3))
+		consumer.accept(END_VILLAGE_CARTOGRAPHER_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2, 3))
 			.add(item(PAPER).apply(count(1, 3))).add(item(GLASS_PANE).apply(count(1, 2)))
 		));
-		consumer.accept(VILLAGE_CLERIC, lootTable().withPool(pool().setRolls(num(6, 7))
+		consumer.accept(END_VILLAGE_CLERIC, lootTable().withPool(pool().setRolls(num(6, 7))
 			.add(item(NETHER_WART).setWeight(6).apply(count(2, 4)))
 			.add(item(BLAZE_POWDER).setWeight(6).apply(count(1, 2)))
 			.add(item(POTION).setWeight(4).apply(potion(Potions.WATER)))
@@ -219,11 +219,11 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(ROTTEN_FLESH).setWeight(4).setQuality(-1).apply(count(2, 3)))
 			.add(item(EXPERIENCE_BOTTLE).setQuality(1).setWeight(2).apply(count(1, 2)))
 		));
-		consumer.accept(VILLAGE_FISHERMAN, lootTable()
+		consumer.accept(END_VILLAGE_FISHERMAN, lootTable()
 			.withPool(pool().setRolls(num(5, 7)).add(item(SALMON)).add(item(COD)))
 			.withPool(pool().setRolls(num(7)).add(group(item(ICE), item(SNOWBALL))).apply(count(1, 2)))
 		);
-		consumer.accept(VILLAGE_FISHERMAN_SHULKER_BOX, lootTable()
+		consumer.accept(END_VILLAGE_FISHERMAN_SHULKER_BOX, lootTable()
 			.withPool(pool().setRolls(num(-1, 1)).add(item(FISHING_ROD).apply(damage(0.2f, 0.85f))))
 			.withPool(pool().setRolls(num(0, 1)).add(item(PRISMARINE_CRYSTALS).apply(count(2, 4))))
 			.withPool(pool().setRolls(num(0, 2)).add(item(LILY_PAD)).add(item(STICK)).add(alternatives(
@@ -231,7 +231,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				item(INK_SAC)
 			)))
 		);
-		consumer.accept(VILLAGE_FLETCHER, lootTable().withPool(pool().setRolls(num(5, 7))
+		consumer.accept(END_VILLAGE_FLETCHER, lootTable().withPool(pool().setRolls(num(5, 7))
 			.add(item(ARROW).setWeight(9).apply(count(2, 5)))
 			.add(item(FEATHER).setWeight(6).apply(count(1, 2)))
 			.add(item(FLINT).setWeight(6).apply(count(1, 2)))
@@ -241,12 +241,12 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				enchant(enchantments, Enchantments.POWER, Enchantments.PUNCH, Enchantments.FLAME, Enchantments.INFINITY, Enchantments.MENDING)
 			))
 		));
-		consumer.accept(VILLAGE_FLETCHER_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2, 3))
+		consumer.accept(END_VILLAGE_FLETCHER_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2, 3))
 			.add(item(FEATHER).setWeight(6).apply(count(1, 2)))
 			.add(item(FLINT).setWeight(6).apply(count(1, 2)))
 			.add(item(STICK).setWeight(6).apply(count(1, 2)))
 		));
-		consumer.accept(VILLAGE_LEATHERWORKER, lootTable().withPool(pool().setRolls(num(3, 5))
+		consumer.accept(END_VILLAGE_LEATHERWORKER, lootTable().withPool(pool().setRolls(num(3, 5))
 			.add(item(LEATHER).setWeight(9).apply(count(4, 6)))
 			.add(item(LEATHER_CHESTPLATE).setWeight(4).apply(enchant()))
 			.add(item(LEATHER_BOOTS).setWeight(4).apply(enchant()))
@@ -255,7 +255,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(SADDLE).setWeight(3).setQuality(1))
 			.add(item(LEATHER_HORSE_ARMOR))
 		));
-		consumer.accept(VILLAGE_LIBRARIAN, lootTable()
+		consumer.accept(END_VILLAGE_LIBRARIAN, lootTable()
 			.withPool(pool().setRolls(num(5, 7))
 				.add(item(BOOK).setQuality(-1).setWeight(7).apply(count(1, 2)))
 				.add(item(PAPER).setWeight(6).setQuality(-1).apply(count(1, 2)))
@@ -264,28 +264,28 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(INK_SAC).setWeight(3).setQuality(-1).apply(count(0, 2)))
 			).withPool(pool().setRolls(num(0, 1)).add(item(COMPASS)))
 		);
-		consumer.accept(VILLAGE_MARKET, lootTable().withPool(pool().setRolls(num(4, 6))
+		consumer.accept(END_VILLAGE_MARKET, lootTable().withPool(pool().setRolls(num(4, 6))
 			.add(item(GOLD_NUGGET).apply(count(1, 3)))
 			.add(item(IRON_NUGGET).apply(count(1, 3)))
 			.add(item(COPPER_NUGGET).apply(count(1, 3)))
 			.add(item(BOOK)).add(item(FEATHER)).add(item(STRING)).add(item(LANTERN)).add(item(EMERALD))
 		));
-		consumer.accept(VILLAGE_MASON, lootTable().withPool(pool().setRolls(num(5, 7))
+		consumer.accept(END_VILLAGE_MASON, lootTable().withPool(pool().setRolls(num(5, 7))
 			.add(item(BRICK).setWeight(2).apply(count(2, 3)))
 			.add(item(CLAY_BALL).setWeight(3).apply(count(2, 4)))
 			.add(item(END_STONE).setWeight(2).apply(countAdd(2, 3)))
 			.add(item(END_STONE_BRICKS).setWeight(4).apply(count(3, 4)))
 			.add(item(GLAZED_TERRACOTTA.magenta())).add(item(GLAZED_TERRACOTTA.purple())).add(item(GLAZED_TERRACOTTA.pink()))
 		));
-		consumer.accept(VILLAGE_SHEPHERD, lootTable().withPool(pool().setRolls(num(3, 5))
+		consumer.accept(END_VILLAGE_SHEPHERD, lootTable().withPool(pool().setRolls(num(3, 5))
 			.add(item(WOOL.white()).setWeight(6).apply(countAdd(1, 3)))
 			.add(item(WOOL.purple()).setWeight(3).apply(countAdd(1, 3)))
 			.add(item(WOOL.magenta()).setWeight(2).apply(countAdd(1, 3)))
 			.add(item(WOOL.pink()).setWeight(2).apply(countAdd(1, 3)))
 			.add(item(SHEARS).setQuality(1)).add(item(PAINTING).setWeight(4))
 		));
-		consumer.accept(VILLAGE_SHEPHERD_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(0, 2)).add(item(WHEAT).apply(count(1, 2)))));
-		consumer.accept(VILLAGE_TOOLSMITH, lootTable()
+		consumer.accept(END_VILLAGE_SHEPHERD_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(0, 2)).add(item(WHEAT).apply(count(1, 2)))));
+		consumer.accept(END_VILLAGE_TOOLSMITH, lootTable()
 			.withPool(pool().setRolls(num(1, 2))
 				.add(item(DIAMOND_AXE).apply(enchant(enchantments, 29, 39)))
 				.add(item(DIAMOND_PICKAXE).apply(enchant(enchantments, 29, 39)))
@@ -300,7 +300,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(group(item(GOLD_INGOT).setWeight(8), item(IRON_INGOT).setWeight(8)))
 			).apply(count(1, 2))
 		);
-		consumer.accept(VILLAGE_TREE_FARM_1, lootTable()
+		consumer.accept(END_VILLAGE_TREE_FARM_1, lootTable()
 			.withPool(pool().setRolls(num(1, 2))
 				.add(item(OAK_LOG).apply(count(2, 3)))
 				.add(item(OAK_SAPLING).apply(count(1, 2)))
@@ -319,7 +319,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(PALE_OAK_LEAVES).apply(count(3, 5)))
 			)
 		);
-		consumer.accept(VILLAGE_TREE_FARM_2, lootTable()
+		consumer.accept(END_VILLAGE_TREE_FARM_2, lootTable()
 			.withPool(pool().setRolls(num(1, 2))
 				.add(item(ACACIA_LOG).apply(count(2, 3)))
 				.add(item(ACACIA_SAPLING).apply(count(1, 2)))
@@ -335,7 +335,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(COCOA_BEANS).apply(count(1, 2)))
 			)
 		);
-		consumer.accept(VILLAGE_WEAPONSMITH, lootTable()
+		consumer.accept(END_VILLAGE_WEAPONSMITH, lootTable()
 			.withPool(pool().setRolls(num(1, 2))
 				.add(item(IRON_SWORD).apply(enchant(enchantments, 29, 39)))
 				.add(item(IRON_SPEAR).apply(enchant(enchantments, 29, 39)))
@@ -351,7 +351,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 		);
 
 
-		consumer.accept(VILLAGE_HOUSE_COMMON, lootTable().withPool(pool().setRolls(num(3, 4))
+		consumer.accept(END_VILLAGE_HOUSE_COMMON, lootTable().withPool(pool().setRolls(num(3, 4))
 			.add(item(GOLD_NUGGET).apply(count(1, 3)))
 			.add(item(DANDELION).setWeight(2)).add(item(POPPY))
 			.add(item(POTATO).setWeight(10).apply(count(1, 3)))
@@ -360,39 +360,39 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(BOOK)).add(item(FEATHER)).add(item(FEATHER).setWeight(2).apply(count(1, 3)))
 		));
 
-		consumer.accept(VILLAGE_HOUSE_BOOKWORM, lootTable()
+		consumer.accept(END_VILLAGE_HOUSE_BOOKWORM, lootTable()
 			.withPool(pool().setRolls(num(3)).add(item(BOOK).apply(count(1, 2))))
-			.withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON))))
+			.withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
 		);
 
-		consumer.accept(VILLAGE_HOUSE_LUSH, lootTable()
+		consumer.accept(END_VILLAGE_HOUSE_LUSH, lootTable()
 			.withPool(pool().setRolls(num(3))
 				.add(item(MOSS_BLOCK).apply(count(1, 2)))
 				.add(item(PALE_MOSS_BLOCK).apply(count(1, 2)))
 				.add(item(GLOW_BERRIES).apply(count(2, 3)))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON))))
+			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
 		);
-		consumer.accept(VILLAGE_HOUSE_MUSIC, lootTable()
+		consumer.accept(END_VILLAGE_HOUSE_MUSIC, lootTable()
 			.withPool(pool().setRolls(num(3))
 				.add(item(MUSIC_DISC_STRAD)).add(item(MUSIC_DISC_CAT)).add(item(MUSIC_DISC_WAIT)).add(item(MUSIC_DISC_MALL)).add(empty().setWeight(3))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON))))
+			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
 		);
-		consumer.accept(VILLAGE_HOUSE_REGULAR, lootTable().withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON)))));
-		consumer.accept(VILLAGE_HOUSE_REGULAR_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2))
-			.add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON)).setWeight(37))
+		consumer.accept(END_VILLAGE_HOUSE_REGULAR, lootTable().withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON)))));
+		consumer.accept(END_VILLAGE_HOUSE_REGULAR_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2))
+			.add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON)).setWeight(37))
 			.add(item(EMERALD).setWeight(2).apply(count(1, 3)))
 		));
-		consumer.accept(VILLAGE_HOUSE_WARPED, lootTable()
+		consumer.accept(END_VILLAGE_HOUSE_WARPED, lootTable()
 			.withPool(pool().setRolls(num(3))
 				.add(item(WARPED_WART_BLOCK).apply(count(1, 2))).add(item(WARPED_FUNGUS).apply(count(2, 3)))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, VILLAGE_HOUSE_COMMON))))
+			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
 		);
-		consumer.accept(VILLAGE_CENTER_AETHER, lootTable()
+		consumer.accept(END_VILLAGE_CENTER_AETHER, lootTable()
 			.withPool(pool().setRolls(num(4, 6)).add(item(WOOL.lightBlue()).apply(count(1, 3))).add(item(WARPED_FENCE)))
 			.withPool(pool().setRolls(num(1)).add(item(GLOWSTONE).apply(count(2, 5))))
 			.withPool(pool().setRolls(num(0, 1)).add(item(WATER_BUCKET)))
 		);
-		consumer.accept(VILLAGE_CENTER_TOWN_HALL, lootTable()
+		consumer.accept(END_VILLAGE_CENTER_TOWN_HALL, lootTable()
 			.withPool(pool().setRolls(num(3)).setBonusRolls(binomialf(1, 0.25f))
 				.add(item(IRON_INGOT).setWeight(10).apply(count(1, 2)))
 				.add(item(GOLD_INGOT).setWeight(7).apply(count(1, 2)))
@@ -407,19 +407,19 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(IRON_NUGGET).apply(count(3, 6))).add(item(GOLD_NUGGET).apply(count(3, 6)))
 			)
 		);
-		consumer.accept(VILLAGE_CENTER_MARKET_BAKER, lootTable().withPool(pool().setRolls(num(5, 7))
+		consumer.accept(END_VILLAGE_CENTER_MARKET_BAKER, lootTable().withPool(pool().setRolls(num(5, 7))
 			.add(item(BREAD).setWeight(2))
 			.add(item(COOKIE).setWeight(1).apply(count(1, 2)))
 			.add(item(CAKE).setQuality(1))
 		));
-		consumer.accept(VILLAGE_CENTER_MARKET_ENCHANTS, lootTable().withPool(pool().setRolls(num(5, 7))
+		consumer.accept(END_VILLAGE_CENTER_MARKET_ENCHANTS, lootTable().withPool(pool().setRolls(num(5, 7))
 			.add(item(BOOK).setWeight(12).setQuality(-2).apply(countAdd(1, 2)))
 			.add(item(PAPER).setQuality(-4).setWeight(9).apply(countAdd(num(1, 4))))
 			.add(item(ENCHANTED_BOOK).setWeight(4).setQuality(3).apply(enchant(enchantments, 20, 30)))
 			.add(item(OBSIDIAN).setWeight(5).apply(count(1, 3)))
 			.add(item(AMETHYST_SHARD).setWeight(8).apply(count(2, 3)))
 		));
-		consumer.accept(VILLAGE_CENTER_MARKET_EXPLORER, lootTable().withPool(pool().setRolls(num(5, 7))
+		consumer.accept(END_VILLAGE_CENTER_MARKET_EXPLORER, lootTable().withPool(pool().setRolls(num(5, 7))
 			.add(item(MAP).setWeight(10).setQuality(-1).apply(count(1, 2)))
 			.add(item(PAPER).setQuality(-2).setWeight(15).apply(count(1, 3)))
 			.add(item(COMPASS).setWeight(5))

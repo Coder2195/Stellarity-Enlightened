@@ -280,7 +280,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 				Component.translatable("advancements.stellarity.find_end_village"), Component.translatable("advancements.stellarity.find_end_village.description"),
 				TASK, true, true, false
 			).parent(ENTER_END_GATEWAY)
-			.addCriterion("find_village", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(StellarityStructures.VILLAGE))))
+			.addCriterion("find_village", PlayerTrigger.TriggerInstance.located(LocationPredicate.Builder.inStructure(structures.getOrThrow(StellarityStructures.END_VILLAGE))))
 			.requirements(requires("find_village")).build(Stellarity.id("exploration/find_end_village"));
 
 		var HALLELUJAH = advancement().display(

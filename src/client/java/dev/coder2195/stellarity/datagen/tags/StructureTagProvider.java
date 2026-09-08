@@ -22,6 +22,6 @@ public class StructureTagProvider extends FabricTagsProvider<Structure> {
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		builder(ON_END_CITY_MAPS).add(END_CITY);
-		builder(ON_VILLAGE_MAPS).add(StellarityStructures.VILLAGE);
+		builder(ON_VILLAGE_MAPS).add(StellarityStructures.END_VILLAGE);
 	}
 }

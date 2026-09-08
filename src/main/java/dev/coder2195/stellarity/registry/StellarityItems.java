@@ -367,7 +367,7 @@ public interface StellarityItems {
 		StellarityItemIds.SHULKER_SPEAR, new Item.Properties().spear(StellarityToolMaterials.SHULKER, 1.15F, 1.4F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F).fireResistant()
 	);
 
-	Item VILLAGE_MAP = register(StellarityItemIds.VILLAGE_MAP, MapItem::new, mapProperties());
+	Item VILLAGE_MAP = register(StellarityItemIds.END_VILLAGE_MAP, MapItem::new, mapProperties());
 	Item END_CITY_MAP = register(StellarityItemIds.END_CITY_MAP, MapItem::new, mapProperties());
 	Item CHAPEL_OF_LIGHT_MAP = register(StellarityItemIds.CHAPEL_OF_LIGHT_MAP, MapItem::new, mapProperties());
 	Item FLOATING_TREASURE_MAP = register(StellarityItemIds.FLOATING_TREASURE_MAP, MapItem::new, mapProperties());

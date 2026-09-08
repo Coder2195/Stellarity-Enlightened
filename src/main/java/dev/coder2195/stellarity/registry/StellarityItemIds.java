@@ -118,7 +118,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> VOIDED_SILVERFISH_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SILVERFISH);
 	ResourceKey<Item> VOIDED_SLIME_SPAWN_EGG = id(StellarityEntityTypeIds.VOIDED_SLIME);
 	ResourceKey<Item> FLESH_PIGLIN_SPAWN_EGG = id(StellarityEntityTypeIds.FLESH_PIGLIN);
-	ResourceKey<Item> VILLAGE_MAP = id("village_map");
+	ResourceKey<Item> END_VILLAGE_MAP = id("end_village_map");
 	ResourceKey<Item> END_CITY_MAP = id("end_city_map");
 	ResourceKey<Item> FLOATING_TREASURE_MAP = id("floating_treasure_map");
 	ResourceKey<Item> CHAPEL_OF_LIGHT_MAP = id("chapel_of_light_map");

@@ -21,12 +21,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_CAMPSITE;
-import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_VILLAGE;
+import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_END_VILLAGE;
 import static dev.coder2195.stellarity.util.WorldgenUtil.*;
 
 public interface StellarityStructures {
 	ResourceKey<Structure> CAMPSITE = id("campsite");
-	ResourceKey<Structure> VILLAGE = id("village");
+	ResourceKey<Structure> END_VILLAGE = id("end_village");
 
 	static void bootstrap(BootstrapContext<Structure> context) {
 		var templatePools = context.lookup(Registries.TEMPLATE_POOL);
@@ -42,10 +42,10 @@ public interface StellarityStructures {
 		for (var category : MobCategory.values())
 			villageSpawns.put(category, new StructureSpawnOverride(BoundingBoxType.STRUCTURE, WeightedList.of()));
 
-		context.register(VILLAGE, new JigsawStructure(
+		context.register(END_VILLAGE, new JigsawStructure(
 			new Structure.StructureSettings(
-				biomes.getOrThrow(HAS_STRUCTURE_VILLAGE), villageSpawns, GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX
-			), templatePools.getOrThrow(StellarityTemplatePools.VILLAGE_LAYOUTS), Optional.empty(), 6, height(absolute(0)),
+				biomes.getOrThrow(HAS_STRUCTURE_END_VILLAGE), villageSpawns, GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_BOX
+			), templatePools.getOrThrow(StellarityTemplatePools.END_VILLAGE_LAYOUTS), Optional.empty(), 6, height(absolute(0)),
 			false, Optional.of(Heightmap.Types.OCEAN_FLOOR), new JigsawStructure.MaxDistance(116), List.of(),
 			new DimensionPadding(30, 0), JigsawStructure.DEFAULT_LIQUID_SETTINGS
 		));
