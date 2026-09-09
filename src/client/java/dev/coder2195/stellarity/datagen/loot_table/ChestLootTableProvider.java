@@ -145,7 +145,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(pool().add(item(ENDERITE_SHARD).apply(count(2, 5))))
 			.withPool(campsiteTentEmeraldBooks)
 			.withPool(campsiteTentArmor)
-			.withPool(pool().add(item(VILLAGE_MAP)
+			.withPool(pool().add(item(END_VILLAGE_MAP)
 				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.ON_VILLAGE_MAPS), (byte) 3, 96, false),
 					setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME),
 					setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build())
