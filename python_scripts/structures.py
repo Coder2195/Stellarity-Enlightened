@@ -18,21 +18,33 @@ for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/struct
 		tag = amulet_nbt.load(resolved_path).tag
 
 		save = False
-		if "LootTable" in str(tag):
-			for block in typing.cast(CompoundTag, tag).get_list("blocks"):
+		for block in typing.cast(CompoundTag, tag).get_list("blocks"):
 
-				if "nbt" not in block.keys(): continue
+			if "nbt" not in block.keys(): continue
 
-				nbt = block.get_compound("nbt")
-				if "LootTable" not in nbt.keys(): continue
-				loot_table = str(nbt.get_string("LootTable"))
+			nbt = block.get_compound("nbt")
+			if "jigsaw" not in str(nbt["id"]): continue
 
-				print(f"loot table in {resolved_path}: {loot_table}")
-				if loot_table.replace("stellarity:", "") in loot_tables: continue
+			if "pool" in nbt.keys():
+				pool = str(nbt.get_string("pool"))
 
-				nbt["LootTable"] = StringTag(loot_table.replace("village/", "end_village/"))
+				print(f"pool in {resolved_path}: {pool}")
+				if "stellarity:village" not in pool: continue
+
+				nbt["pool"] = StringTag(pool.replace("stellarity:village", "stellarity:end_village"))
 				save = True
 
-				print(f"broken loot table in {resolved_path}: {loot_table}")
+				print(f"broken pool in {resolved_path}: {pool}")
+
+			if "name" in nbt.keys():
+				name = str(nbt.get_string("name"))
+
+				print(f"jigsaw name in {resolved_path}: {name}")
+				if "stellarity:village" not in name: continue
+
+				nbt["name"] = StringTag(name.replace("stellarity:village", "stellarity:end_village"))
+				save = True
+
+				print(f"broken structure name in {resolved_path}: {name}")
 		if save:
-			amulet_nbt.save(resolved_path, tag)
+			tag.save_to(resolved_path)

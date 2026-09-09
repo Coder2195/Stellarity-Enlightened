@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/respawn_anchors/0",
+        "location": "stellarity:end_village/respawn_anchors/0",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -13,7 +13,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/respawn_anchors/1",
+        "location": "stellarity:end_village/respawn_anchors/1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -23,7 +23,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/respawn_anchors/2",
+        "location": "stellarity:end_village/respawn_anchors/2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -33,7 +33,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/respawn_anchors/3",
+        "location": "stellarity:end_village/respawn_anchors/3",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -43,7 +43,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/respawn_anchors/4",
+        "location": "stellarity:end_village/respawn_anchors/4",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"

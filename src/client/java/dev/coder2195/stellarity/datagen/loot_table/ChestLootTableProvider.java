@@ -5,7 +5,6 @@ import dev.coder2195.stellarity.registry.StellarityPotions;
 import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
@@ -38,19 +37,25 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public ChestLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+		registryLookup = registryLookup.thenApply(CachedLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.CHEST);
 		this.registryLookup = registryLookup;
-
 	}
 
 	@SuppressWarnings("DuplicatedCode")
 	@Override
-	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumerOld) {
 		var lookup = registryLookup.join();
 		var enchantments = lookup.lookupOrThrow(Registries.ENCHANTMENT);
 		var trimMaterials = lookup.lookupOrThrow(Registries.TRIM_MATERIAL);
 		var trimPatterns = lookup.lookupOrThrow(Registries.TRIM_PATTERN);
 		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
+
+
+		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
+			consumerOld.accept(key, builder);
+			((CachedLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
+		};
 
 		consumer.accept(EXIT_PORTAL, lootTable()
 			.withPool(pool().add(item(END_CRYSTAL).apply(count(4))))
@@ -146,7 +151,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(campsiteTentEmeraldBooks)
 			.withPool(campsiteTentArmor)
 			.withPool(pool().add(item(END_VILLAGE_MAP)
-				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.ON_VILLAGE_MAPS), (byte) 3, 96, false),
+				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS), (byte) 3, 96, false),
 					setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME),
 					setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build())
 				))
@@ -362,7 +367,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 
 		consumer.accept(END_VILLAGE_HOUSE_BOOKWORM, lootTable()
 			.withPool(pool().setRolls(num(3)).add(item(BOOK).apply(count(1, 2))))
-			.withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
+			.withPool(pool().setRolls(num(1)).add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON))))
 		);
 
 		consumer.accept(END_VILLAGE_HOUSE_LUSH, lootTable()
@@ -370,22 +375,23 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(MOSS_BLOCK).apply(count(1, 2)))
 				.add(item(PALE_MOSS_BLOCK).apply(count(1, 2)))
 				.add(item(GLOW_BERRIES).apply(count(2, 3)))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
+			).withPool(pool().setRolls(num(1)).add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON))))
 		);
 		consumer.accept(END_VILLAGE_HOUSE_MUSIC, lootTable()
 			.withPool(pool().setRolls(num(3))
 				.add(item(MUSIC_DISC_STRAD)).add(item(MUSIC_DISC_CAT)).add(item(MUSIC_DISC_WAIT)).add(item(MUSIC_DISC_MALL)).add(empty().setWeight(3))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
+			).withPool(pool().setRolls(num(1)).add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON))))
 		);
-		consumer.accept(END_VILLAGE_HOUSE_REGULAR, lootTable().withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON)))));
+		consumer.accept(END_VILLAGE_HOUSE_REGULAR, lootTable().withPool(pool().setRolls(num(1)).add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON)))));
 		consumer.accept(END_VILLAGE_HOUSE_REGULAR_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2))
-			.add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON)).setWeight(37))
+			.add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON)).setWeight(37))
 			.add(item(EMERALD).setWeight(2).apply(count(1, 3)))
 		));
 		consumer.accept(END_VILLAGE_HOUSE_WARPED, lootTable()
 			.withPool(pool().setRolls(num(3))
-				.add(item(WARPED_WART_BLOCK).apply(count(1, 2))).add(item(WARPED_FUNGUS).apply(count(2, 3)))
-			).withPool(pool().setRolls(num(1)).add(lootTable(Holder.Reference.createStandAlone(lootTables, END_VILLAGE_HOUSE_COMMON))))
+				.add(item(WARPED_WART_BLOCK).apply(count(1, 2)))
+				.add(item(WARPED_FUNGUS).apply(count(2, 3)))).withPool(pool().setRolls(num(1))
+				.add(lootTable(lootTables.getOrThrow(END_VILLAGE_HOUSE_COMMON))))
 		);
 		consumer.accept(END_VILLAGE_CENTER_AETHER, lootTable()
 			.withPool(pool().setRolls(num(4, 6)).add(item(WOOL.lightBlue()).apply(count(1, 3))).add(item(WARPED_FENCE)))

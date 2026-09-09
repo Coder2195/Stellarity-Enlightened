@@ -158,7 +158,7 @@
           "modifier": [
             {
               "type": "minecraft:exploration_map",
-              "destination": "#stellarity:on_village_maps",
+              "destination": "#stellarity:on_end_village_maps",
               "search_radius": 96,
               "skip_existing_chunks": false,
               "zoom": 3
@@ -177,7 +177,7 @@
               }
             }
           ],
-          "name": "stellarity:village_map"
+          "name": "stellarity:end_village_map"
         }
       ],
       "rolls": 1

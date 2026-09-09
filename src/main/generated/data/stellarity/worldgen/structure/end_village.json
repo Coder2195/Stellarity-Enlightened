@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#stellarity:has_structure/village",
+  "biomes": "#stellarity:has_structure/end_village",
   "dimension_padding": {
     "bottom": 30
   },
@@ -44,7 +44,7 @@
   "start_height": {
     "absolute": 0
   },
-  "start_pool": "stellarity:village/layouts",
+  "start_pool": "stellarity:end_village/layouts",
   "step": "surface_structures",
   "terrain_adaptation": "beard_box",
   "use_expansion_hack": false

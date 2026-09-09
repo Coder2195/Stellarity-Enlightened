@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/animal_pen_1",
+        "location": "stellarity:end_village/animal_pen_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -13,7 +13,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/animal_pen_2",
+        "location": "stellarity:end_village/animal_pen_2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -23,7 +23,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/archer_tower_1",
+        "location": "stellarity:end_village/archer_tower_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -33,7 +33,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/archer_tower_2",
+        "location": "stellarity:end_village/archer_tower_2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -43,7 +43,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/archer_tower_3",
+        "location": "stellarity:end_village/archer_tower_3",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -53,7 +53,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/armorer_1",
+        "location": "stellarity:end_village/armorer_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -63,7 +63,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/butcher_1",
+        "location": "stellarity:end_village/butcher_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -73,7 +73,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/cartographer_1",
+        "location": "stellarity:end_village/cartographer_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -83,7 +83,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/farm_1",
+        "location": "stellarity:end_village/farm_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -93,7 +93,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/farm_2",
+        "location": "stellarity:end_village/farm_2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -103,7 +103,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/farm_3",
+        "location": "stellarity:end_village/farm_3",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -113,7 +113,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/farm_4",
+        "location": "stellarity:end_village/farm_4",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -123,7 +123,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/farm_5",
+        "location": "stellarity:end_village/farm_5",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -133,7 +133,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/fisherman_1",
+        "location": "stellarity:end_village/fisherman_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -143,7 +143,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/garden_1",
+        "location": "stellarity:end_village/garden_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -153,7 +153,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/library_1",
+        "location": "stellarity:end_village/library_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -163,7 +163,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/mason_1",
+        "location": "stellarity:end_village/mason_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -173,7 +173,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/shepherd_1",
+        "location": "stellarity:end_village/shepherd_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -183,7 +183,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/small_house_1",
+        "location": "stellarity:end_village/small_house_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -193,7 +193,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/small_house_2",
+        "location": "stellarity:end_village/small_house_2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -203,7 +203,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/small_house_3",
+        "location": "stellarity:end_village/small_house_3",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -213,7 +213,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/small_house_4",
+        "location": "stellarity:end_village/small_house_4",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -223,7 +223,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/small_house_5",
+        "location": "stellarity:end_village/small_house_5",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -233,7 +233,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/tannery_1",
+        "location": "stellarity:end_village/tannery_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -243,7 +243,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/temple_1",
+        "location": "stellarity:end_village/temple_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -253,7 +253,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/toolsmith_1",
+        "location": "stellarity:end_village/toolsmith_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -263,7 +263,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/weaponsmith_1",
+        "location": "stellarity:end_village/weaponsmith_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"

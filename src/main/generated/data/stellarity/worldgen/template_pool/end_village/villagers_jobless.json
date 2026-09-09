@@ -3,27 +3,27 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/town_center_1",
+        "location": "stellarity:end_village/entities/1_villager",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 2
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/town_center_2",
+        "location": "stellarity:end_village/entities/2_villagers",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 1
+      "weight": 3
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/town_center_3",
+        "location": "stellarity:end_village/entities/3_villagers",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"

@@ -17,6 +17,7 @@ accessible class net/minecraft/world/level/levelgen/feature/EndSpikeFeature$Spik
 accessible class net/minecraft/world/item/enchantment/EnchantmentHelper$EnchantmentInSlotVisitor
 accessible class net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone
 accessible class net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap
+accessible class net/minecraft/core/Holder$Reference$Type
 extendable class net/minecraft/world/item/equipment/ArmorMaterial
 extendable class net/minecraft/world/item/ToolMaterial
 extendable method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;

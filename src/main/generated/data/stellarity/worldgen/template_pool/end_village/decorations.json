@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_1",
+        "location": "stellarity:end_village/decorations/lamp_1",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -13,7 +13,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_2",
+        "location": "stellarity:end_village/decorations/lamp_2",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -23,7 +23,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_3",
+        "location": "stellarity:end_village/decorations/lamp_3",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -33,7 +33,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_4",
+        "location": "stellarity:end_village/decorations/lamp_4",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -43,7 +43,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_5",
+        "location": "stellarity:end_village/decorations/lamp_5",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -53,7 +53,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_6",
+        "location": "stellarity:end_village/decorations/lamp_6",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
@@ -63,7 +63,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/decorations/lamp_7",
+        "location": "stellarity:end_village/decorations/lamp_7",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"

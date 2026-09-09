@@ -24,19 +24,23 @@ import static dev.coder2195.stellarity.util.LootUtil.*;
 import static net.minecraft.world.item.Items.*;
 
 public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
-
-
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public FishingLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+		registryLookup = registryLookup.thenApply(CachedLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.FISHING);
 		this.registryLookup = registryLookup;
 	}
 
 	@Override
-	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumerOld) {
 		var lookup = registryLookup.join();
 		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
+		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
+			consumerOld.accept(key, builder);
+			((CachedLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
+		};
+
 		consumer.accept(VOID_FISHING_FISH, lootTable().withPool(pool()
 			.add(item(ENDER_KOI).setWeight(15).apply(count(2, 4)))
 			.add(item(CRYSTAL_HEARTFISH).setWeight(4))

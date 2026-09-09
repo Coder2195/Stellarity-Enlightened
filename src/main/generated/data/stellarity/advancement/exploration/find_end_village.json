@@ -8,7 +8,7 @@
           "entity": "this",
           "predicate": {
             "minecraft:location": {
-              "structures": "stellarity:village"
+              "structures": "stellarity:end_village"
             }
           }
         }

@@ -3,37 +3,27 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/entities/cows",
+        "location": "stellarity:end_village/entities/1_bee",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 6
+      "weight": 5
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/entities/pigs",
+        "location": "stellarity:end_village/entities/2_bees",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
-      "weight": 6
+      "weight": 3
     },
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/entities/sheep",
-        "override_liquid_settings": "ignore_waterlogging",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      },
-      "weight": 4
-    },
-    {
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "stellarity:village/entities/mooshrooms",
+        "location": "stellarity:end_village/entities/3_bees",
         "override_liquid_settings": "ignore_waterlogging",
         "processors": "minecraft:empty",
         "projection": "rigid"

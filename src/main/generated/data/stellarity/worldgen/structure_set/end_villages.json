@@ -9,7 +9,7 @@
   },
   "structures": [
     {
-      "structure": "stellarity:village",
+      "structure": "stellarity:end_village",
       "weight": 1
     }
   ]

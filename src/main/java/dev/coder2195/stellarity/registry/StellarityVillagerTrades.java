@@ -328,7 +328,7 @@ public interface StellarityVillagerTrades {
 
 		var explorationMapEndCity = structures.getOrThrow(StellarityStructureTags.ON_END_CITY_MAPS);
 		//TODO: Update with actual chapel of light
-		var explorationMapChapelOfLight = structures.getOrThrow(StellarityStructureTags.ON_VILLAGE_MAPS);
+		var explorationMapChapelOfLight = structures.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS);
 		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));

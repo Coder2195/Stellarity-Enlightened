@@ -11,7 +11,7 @@
     {
       "type": "minecraft:exploration_map",
       "decoration": "minecraft:banner_purple",
-      "destination": "#stellarity:on_village_maps",
+      "destination": "#stellarity:on_end_village_maps",
       "search_radius": 96,
       "skip_existing_chunks": false,
       "zoom": 3

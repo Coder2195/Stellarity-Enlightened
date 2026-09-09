@@ -46,7 +46,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "stellarity:village/house/common"
+          "value": "stellarity:end_village/house/common"
         }
       ],
       "rolls": 1
