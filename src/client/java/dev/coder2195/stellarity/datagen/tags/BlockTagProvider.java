@@ -24,7 +24,6 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 		super(output, registriesFuture);
 	}
 
-
 	@SafeVarargs
 	public final BlockItemTagAppender<Block> addTags(TagKey<Block> tagKey, TagKey<Block>... tags) {
 		var appender = builder(tagKey);
@@ -73,6 +72,9 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 		addTags(WORLDGEN_WARPED_MARSH_POND_REPLACEABLE, LUSH_GROUND_REPLACEABLE).add(END_STONE);
 		addTags(FLORAL_ARMOR_HIDEABLES, FLOWERS, SMALL_FLOWERS).add(TALL_DRY_GRASS, TALL_GRASS, SHORT_DRY_GRASS, SHORT_DRY_GRASS, KELP, SEAGRASS, SEA_PICKLE, VINE, DUSKBERRY_BUSH, BUSH, WEEPING_VINES, TWISTING_VINES, BROWN_MUSHROOM, RED_MUSHROOM, CRIMSON_ROOTS, HANGING_ROOTS, WARPED_ROOTS, NETHER_SPROUTS);
 		addTags(INCORRECT_FOR_SHULKER_TOOL);
+		// CRITICAL: must be used for stuff to work correctly esp with heightmap
+		addTags(BLOCKS_MOTION_NO_LEAVES, StellarityBlockTags.DIRT).add(ASHEN_FROGLIGHT, ENDER_DIRT_PATH, ALTAR_OF_THE_ACCURSED, ENDERITE_BLOCK);
+		addTags(LEAVES).add(COLORED_LEAVES);
 
 	}
 }
