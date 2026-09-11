@@ -62,20 +62,20 @@ public class StellarityRegistryEntryModifications {
 	}
 
 	public static void resetState() {
-//		temperature = null;
-//		vegetation = null;
-//		continents = null;
-//		erosion = null;
-//		depth = null;
-//		ridges = null;
-//		nullscapeInitialDensity = null;
-//		nullscapeFinalDensity = null;
-//		initialDensity = null;
-//		finalDensity = null;
-//		endNoiseRouter = null;
-//		chunkGenerator = null;
-//		cachedNoiseSettings = null;
-//		surfaceRulesDone = false;
+		temperature = null;
+		vegetation = null;
+		continents = null;
+		erosion = null;
+		depth = null;
+		ridges = null;
+		nullscapeInitialDensity = null;
+		nullscapeFinalDensity = null;
+		initialDensity = null;
+		finalDensity = null;
+		endNoiseRouter = null;
+		chunkGenerator = null;
+		cachedNoiseSettings = null;
+		surfaceRulesDone = false;
 	}
 
 	public static void init() {
