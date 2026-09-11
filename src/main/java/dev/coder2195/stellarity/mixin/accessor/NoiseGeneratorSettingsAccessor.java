@@ -16,4 +16,8 @@ public interface NoiseGeneratorSettingsAccessor {
 	@Mutable
 	@Accessor("disableMobGeneration")
 	void stellarity$setDisableMobGeneration(boolean b);
+
+	@Mutable
+	@Accessor("useLegacyRandomSource")
+	void stellarity$setUseLegacyRandomSource(boolean b);
 }

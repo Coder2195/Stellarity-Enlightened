@@ -138,6 +138,7 @@ public class StellarityRegistryEntryModifications {
 				checkMerge();
 
 				generatorSettingsAccessor.stellarity$setDisableMobGeneration(false);
+				generatorSettingsAccessor.stellarity$setUseLegacyRandomSource(false);
 			});
 
 			registryView.registerEntryAdded(Registries.LEVEL_STEM, (_, id, levelStem) -> {
