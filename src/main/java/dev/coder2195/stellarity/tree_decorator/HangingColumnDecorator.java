@@ -125,7 +125,7 @@ public class HangingColumnDecorator extends TreeDecorator {
 			ArrayList<BlockPos> belowCandidates = new ArrayList<>();
 			while (true) {
 				pointer = pointer.below();
-				if (invalid.contains(pointer) || !level.getBlockState(pointer).isAir()) {
+				if (invalid.contains(pointer) || !level.getBlockState(pointer).canBeReplaced()) {
 					invalid.add(pointer);
 					break;
 				}

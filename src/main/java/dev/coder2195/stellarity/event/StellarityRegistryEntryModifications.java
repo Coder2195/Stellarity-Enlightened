@@ -18,30 +18,31 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.NoiseRouter;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
 import net.minecraft.world.level.levelgen.material.MaterialRules;
+import org.jspecify.annotations.Nullable;
 
 import static dev.coder2195.stellarity.registry.StellarityDensityFunctions.*;
 
 public class StellarityRegistryEntryModifications {
-	public static DensityFunction temperature;
-	public static DensityFunction vegetation;
-	public static DensityFunction continents;
-	public static DensityFunction erosion;
-	public static DensityFunction depth;
-	public static DensityFunction ridges;
-	public static DensityFunction preliminarySurfaceLevel;
-	public static DensityFunction nullscapePreliminarySurfaceLevel;
-	public static DensityFunction finalDensity;
-	public static DensityFunction nullscapeFinalDensity;
-	public static NoiseRouter endNoiseRouter;
-	public static ChunkGenerator chunkGenerator;
-	public static Registry<Biome> biomeRegistry;
-	public static NoiseGeneratorSettings cachedNoiseSettings;
+	public static @Nullable DensityFunction temperature;
+	public static @Nullable DensityFunction vegetation;
+	public static @Nullable DensityFunction continents;
+	public static @Nullable DensityFunction erosion;
+	public static @Nullable DensityFunction depth;
+	public static @Nullable DensityFunction ridges;
+	public static @Nullable DensityFunction initialDensity;
+	public static @Nullable DensityFunction nullscapeInitialDensity;
+	public static @Nullable DensityFunction finalDensity;
+	public static @Nullable DensityFunction nullscapeFinalDensity;
+	public static @Nullable NoiseRouter endNoiseRouter;
+	public static @Nullable ChunkGenerator chunkGenerator;
+	public static @Nullable Registry<Biome> biomeRegistry;
+	public static @Nullable NoiseGeneratorSettings cachedNoiseSettings;
 	public static boolean surfaceRulesDone = false;
 	public static int lastBiomeAdded = 100;
 	public static boolean nullscapeBiomes = false;
 
 	private static void checkMerge() {
-		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || (preliminarySurfaceLevel == null && nullscapePreliminarySurfaceLevel == null) || (finalDensity == null && nullscapeFinalDensity == null) || endNoiseRouter == null)
+		if (temperature == null || vegetation == null || continents == null || erosion == null || depth == null || ridges == null || (initialDensity == null && nullscapeInitialDensity == null) || (finalDensity == null && nullscapeFinalDensity == null) || endNoiseRouter == null)
 			return;
 		
 		NoiseRouterAccessor routerAccessor = (NoiseRouterAccessor) (Object) endNoiseRouter;
@@ -53,8 +54,8 @@ public class StellarityRegistryEntryModifications {
 		routerAccessor.stellarity$setDepth(depth);
 		routerAccessor.stellarity$setRidges(ridges);
 
-		boolean usedNullscape = nullscapeFinalDensity != null && nullscapePreliminarySurfaceLevel != null;
-		routerAccessor.stellarity$setChunkSurfaceLevel(nullscapePreliminarySurfaceLevel == null ? preliminarySurfaceLevel : nullscapePreliminarySurfaceLevel);
+		boolean usedNullscape = nullscapeFinalDensity != null && nullscapeInitialDensity != null;
+		routerAccessor.stellarity$setChunkSurfaceLevel(nullscapeInitialDensity == null ? initialDensity : nullscapeInitialDensity);
 		routerAccessor.stellarity$setFinalDensity(nullscapeFinalDensity == null ? finalDensity : nullscapeFinalDensity);
 
 		Stellarity.LOGGER.info("MERGED! This is an important checkpoint as it could corrupt worlds without it. Used Nullscape: {}", usedNullscape);
@@ -67,9 +68,9 @@ public class StellarityRegistryEntryModifications {
 		erosion = null;
 		depth = null;
 		ridges = null;
-		nullscapePreliminarySurfaceLevel = null;
+		nullscapeInitialDensity = null;
 		nullscapeFinalDensity = null;
-		preliminarySurfaceLevel = null;
+		initialDensity = null;
 		finalDensity = null;
 		endNoiseRouter = null;
 		chunkGenerator = null;
@@ -93,11 +94,11 @@ public class StellarityRegistryEntryModifications {
 				else if (id.equals(CLIMATE_RIDGES.identifier())) ridges = densityFunction;
 				else if (id.equals(NULLSCAPE_COMPAT_INITIAL_DENSITY.identifier())) {
 					Stellarity.LOGGER.info("Nullscape detected, pulling nullscape initial density");
-					nullscapePreliminarySurfaceLevel = densityFunction;
+					nullscapeInitialDensity = densityFunction;
 				} else if (id.equals(NULLSCAPE_COMPAT_FINAL_DENSITY.identifier())) {
 					Stellarity.LOGGER.info("Nullscape detected, pulling nullscape final density");
 					nullscapeFinalDensity = densityFunction;
-				} else if (id.equals(INITIAL_DENSITY.identifier())) preliminarySurfaceLevel = densityFunction;
+				} else if (id.equals(INITIAL_DENSITY.identifier())) initialDensity = densityFunction;
 				else if (id.equals(FINAL_DENSITY.identifier())) finalDensity = densityFunction;
 
 				checkMerge();

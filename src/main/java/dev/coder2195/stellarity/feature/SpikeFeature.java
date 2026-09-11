@@ -59,7 +59,7 @@ public record SpikeFeature(
 					if (distanceSquared > radiusSquared)
 						continue;
 					blockPos.set(currentX + dx, y, currentZ + dz);
-					if (level.getBlockState(blockPos).isAir() || canReplace.map(c -> c.test(level, blockPos)).orElse(true))
+					if (level.getBlockState(blockPos).canBeReplaced() || canReplace.map(c -> c.test(level, blockPos)).orElse(true))
 						level.setBlock(blockPos, stateProvider.getState(level, random, blockPos), Block.UPDATE_CLIENTS);
 				}
 			}

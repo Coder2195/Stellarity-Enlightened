@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.feature.EndCrystalTowerFeature;
 import dev.coder2195.stellarity.feature.DragonEggFeature;
 import dev.coder2195.stellarity.feature.DungeonFeature;
 import dev.coder2195.stellarity.feature.SpikeFeature;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.levelgen.placement.CaveSurface;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,6 +64,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> GLOBAL_FOSSIL = id("global/fossil");
 	ResourceKey<Feature> GLOBAL_DUNGEON = id("global/dungeon");
 	ResourceKey<Feature> GLOBAL_HANGING_ROOTS = id("end_highlands/roots");
+	ResourceKey<Feature> GLOBAL_OBSIDIAN_TOWER = id("global/obsidian_tower");
 
 	ResourceKey<Feature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<Feature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -249,10 +252,11 @@ public interface StellarityFeatures {
 
 
 	class State {
-		private static HolderGetter<Block> blocksGetter;
+		private static @Nullable HolderGetter<Block> blocksGetter;
 	}
 
 	static HolderSet.Named<Block> tag(TagKey<Block> blockTag) {
+		assert State.blocksGetter != null;
 		return State.blocksGetter.getOrThrow(blockTag);
 	}
 
@@ -299,6 +303,7 @@ public interface StellarityFeatures {
 			)),
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
+		context.register(GLOBAL_OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.empty()));
 		context.register(GLOBAL_FOSSIL, new FossilFeature(
 			List.of(Stellarity.id("fossil/phantom")), List.of(Stellarity.id("fossil/phantom_overlay")),
 			processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_rot")), processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_coal")),

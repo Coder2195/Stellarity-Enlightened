@@ -1,0 +1,16 @@
+{
+  "type": "stellarity:end_crystal_tower",
+  "diameter": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 7,
+    "min_inclusive": 3
+  },
+  "height": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 20,
+    "min_inclusive": 6
+  },
+  "material": {
+    "id": "minecraft:obsidian"
+  }
+}

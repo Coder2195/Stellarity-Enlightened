@@ -215,6 +215,14 @@ public interface WorldgenUtil {
 		return BlockPredicateFilter.forPredicate(predicate);
 	}
 
+	static NormalNoise oldNoise(int baseOctave, double... amplitudeModifiers) {
+		var builder = NormalNoise.builder().setBaseOctave(baseOctave).setOctaveCount(amplitudeModifiers.length);
+		for (int i=0; i<amplitudeModifiers.length; i++) {
+			builder.setAmplitudeModifier(i, amplitudeModifiers[i]);
+		}
+		return builder.build();
+	}
+
 
 	static BlockPredicate all(BlockPredicate... predicates) {
 		return BlockPredicate.allOf(List.of(predicates));

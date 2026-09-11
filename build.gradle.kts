@@ -104,7 +104,6 @@ loom {
 	}
 }
 
-
 fabricApi {
 	configureDataGeneration {
 		client = true

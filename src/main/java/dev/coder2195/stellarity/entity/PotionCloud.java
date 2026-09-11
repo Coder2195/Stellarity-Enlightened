@@ -139,7 +139,7 @@ public class PotionCloud extends Entity {
 	protected void readAdditionalSaveData(ValueInput input) {
 		input.read("particles", ParticleTypes.CODEC.listOf()).ifPresent(this::setParticles);
 		input.read("particle_density", Codec.FLOAT).ifPresent(this::setParticleDensity);
-		input.read("width", Codec.FLOAT).ifPresent(this::setWidth);
+		input.read("diameter", Codec.FLOAT).ifPresent(this::setWidth);
 		input.read("height", Codec.FLOAT).ifPresent(this::setHeight);
 		input.read("live_time", Codec.INT).ifPresent(this::setLiveTime);
 	}
@@ -148,7 +148,7 @@ public class PotionCloud extends Entity {
 	protected void addAdditionalSaveData(ValueOutput output) {
 		output.store("particles", ParticleTypes.CODEC.listOf(), getParticles());
 		output.store("particle_density", Codec.FLOAT, getParticleDensity());
-		output.store("width", Codec.FLOAT, getWidth());
+		output.store("diameter", Codec.FLOAT, getWidth());
 		output.store("height", Codec.FLOAT, getHeight());
 		output.store("live_time", Codec.INT, liveTime);
 	}

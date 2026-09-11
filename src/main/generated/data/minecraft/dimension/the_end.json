@@ -1,0 +1,33 @@
+{
+	"type": "minecraft:the_end",
+	"generator": {
+		"type": "minecraft:noise",
+		"settings": "minecraft:end",
+		"biome_source": {
+			"type": "minecraft:multi_noise",
+			"biomes": [{
+				"biome": "stellarity:hallowed_tundra",
+				"parameters": {
+					"temperature": [-1, -0.405],
+					"humidity": [-1, 1],
+					"continentalness": [-1.2, -0.725],
+					"erosion": [-1, 1],
+					"weirdness": [-1, 1],
+					"depth": [0, 0],
+					"offset": 0
+				}
+			}]
+		}
+	},
+	"fabric:load_conditions": [
+		{
+			"condition": "fabric:not",
+			"value": {
+				"condition": "fabric:any_mods_loaded",
+				"values": [
+					"biolith"
+				]
+			}
+		}
+	]
+}

@@ -20,6 +20,7 @@ public interface StellarityFeatureTypes {
 		register("feature_sequence", FeatureSequenceFeature.CODEC);
 		register("freeze_water", FreezeWaterFeature.CODEC);
 		register("spike", SpikeFeature.CODEC);
+		register("end_crystal_tower", EndCrystalTowerFeature.CODEC);
 
 	}
 }
