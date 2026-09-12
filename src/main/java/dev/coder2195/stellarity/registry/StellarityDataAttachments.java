@@ -5,6 +5,7 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.StellarityConfig;
 import dev.coder2195.stellarity.interface_injection.ExtEndCrystal;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
+import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
 import dev.coder2195.stellarity.util.FloralBloom;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
@@ -61,8 +62,7 @@ public interface StellarityDataAttachments {
 	AttachmentType<FloralBloom.Applier> FLORAL_BLOOM_APPLIER = AttachmentRegistry.create(Stellarity.id("floral_bloom_applier"), builder -> builder.persistent(FloralBloom.Applier.CODEC));
 
 	AttachmentType<Long> LIFE_CRYSTAL_HELD_AT = AttachmentRegistry.create(Stellarity.id("life_crystal_held_at"), builder -> builder.persistent(Codec.LONG));
-
-
+	AttachmentType<ConsecrationRecipe.ConsecrationData> CONSECRATION_DATA = AttachmentRegistry.create(Stellarity.id("consecration_data"), builder -> builder.persistent(ConsecrationRecipe.ConsecrationData.CODEC).syncWith(ConsecrationRecipe.ConsecrationData.STREAM_CODEC, AttachmentSyncPredicate.all()));
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");

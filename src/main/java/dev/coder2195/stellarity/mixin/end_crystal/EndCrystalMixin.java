@@ -44,7 +44,6 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 		ExtEndCrystal.super.stellarity$setType(type);
 
 		boolean glow = type != Type.NORMAL;
-		setGlowingTag(glow);
 		this.stellarity$setGlowColor(glow ? 11141290 : -1);
 	}
 

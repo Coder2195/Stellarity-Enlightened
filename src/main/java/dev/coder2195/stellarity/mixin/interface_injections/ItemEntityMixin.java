@@ -31,9 +31,7 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 	public void stellarity$setItemMode(ItemMode mode, @Nullable Integer color) {
 		ExtItemEntity.super.stellarity$setItemMode(mode, color);
 
-		boolean crafting = mode.isCrafting();
-		setGlowingTag(color != null || crafting);
-		this.stellarity$setGlowColor(color == null ? crafting ? 11141290 : -1 : color);
+		if (color != null) this.stellarity$setGlowColor(color);
 
 		var delay = mode.getPickupDelay();
 		if (delay != null) setPickUpDelay(delay);

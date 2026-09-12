@@ -18,6 +18,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import java.util.function.Function;
 
 public interface StellarityBlocks {
+	// IMPORTANT: all solid blocks must be registered in block motion in datagen or risk having hard to locate bugs
 	Block ENDER_DIRT = register(StellarityBlockItemIds.ENDER_DIRT, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)

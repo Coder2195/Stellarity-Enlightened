@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.interface_injection;
 
 import com.mojang.serialization.Codec;
+import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
 import io.netty.buffer.ByteBuf;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -15,17 +16,21 @@ import java.util.HashMap;
 import java.util.function.IntFunction;
 
 @SuppressWarnings("NonExtendableApiUsage")
-public interface ExtItemEntity extends AttachmentTarget {
+public interface ExtItemEntity extends AttachmentTarget, ExtEntity {
 	enum ItemMode {
-		DEFAULT(0),
-		ALTAR_CRAFTING(1),
-		CONSECRATING(2),
-		RESULT(3);
+		DEFAULT(0, (short) 5, -1),
+		ALTAR_CRAFTING(1, Short.MAX_VALUE, 0xaa00aa),
+		CONSECRATING(2, null, 0xd556ef),
+		RESULT(3, (short) 5, 0xffffff);
 
 		private final int id;
+		private final @Nullable Short pickupDelay;
+		private final @Nullable Integer color;
 
-		ItemMode(int id) {
+		ItemMode(int id, @Nullable Short pickupDelay, @Nullable Integer color) {
 			this.id = id;
+			this.pickupDelay = pickupDelay;
+			this.color = color;
 		}
 
 		public int id() {
@@ -43,9 +48,7 @@ public interface ExtItemEntity extends AttachmentTarget {
 		public static final Codec<ItemMode> CODEC = CustomCodecs.enumName(ItemMode.class, DEFAULT);
 
 		public @Nullable Short getPickupDelay() {
-			if (this == ALTAR_CRAFTING) return Short.MAX_VALUE;
-			if (this == CONSECRATING) return null;
-			return 5;
+			return pickupDelay;
 		}
 
 		public boolean isCrafting() {
@@ -59,13 +62,35 @@ public interface ExtItemEntity extends AttachmentTarget {
 
 	default void stellarity$setItemMode(ItemMode mode, @Nullable Integer color) {
 		this.setAttached(StellarityDataAttachments.ITEM_MODE, mode);
+		if (color != null) this.stellarity$setGlowColor(color);
 	}
 
 	default void stellarity$setItemMode(ItemMode mode) {
-		stellarity$setItemMode(mode, null);
+		stellarity$setItemMode(mode, mode.color);
+	}
+
+	default void stellarity$removeItemMode() {
+		this.removeAttached(StellarityDataAttachments.ITEM_MODE);
+		this.removeAttached(StellarityDataAttachments.GLOW_COLOR);
 	}
 
 	default void stellarity$updateResults(HashMap<ItemStack, Integer> results) {
 		throw new AssertionError("Not transformed!");
+	}
+
+	default void stellarity$consecrationCraft(boolean inWater) {
+		throw new AssertionError("Not transformed!");
+	}
+
+	default ConsecrationRecipe.@Nullable ConsecrationData stellarity$getConsecrationData() {
+		return this.getAttached(StellarityDataAttachments.CONSECRATION_DATA);
+	}
+
+	default void stellarity$setConsecrationData(ConsecrationRecipe.ConsecrationData data) {
+		this.setAttached(StellarityDataAttachments.CONSECRATION_DATA, data);
+	}
+
+	default void stellarity$removeConsecrationData() {
+		this.removeAttached(StellarityDataAttachments.CONSECRATION_DATA);
 	}
 }

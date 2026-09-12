@@ -136,6 +136,9 @@ Compatibility update along with general additions of armor and recipes
 **[+] Consecration**
 - Available through `stellarity:consecration` recipe type
 
+**[*] Worldgen**
+- Uses non legacy worldgen in par with default Stellarity.
+
 ## Versions
 **[*] 26.2 → 26.3**
 
