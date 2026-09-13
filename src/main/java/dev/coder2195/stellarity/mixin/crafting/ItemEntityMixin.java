@@ -5,10 +5,12 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import dev.coder2195.stellarity.block.AltarOfTheAccursed;
 import dev.coder2195.stellarity.entity.SatchelSigil;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
+import dev.coder2195.stellarity.networking.ClientboundConsecrationCraftPayload;
 import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityRecipeTypes;
 import dev.coder2195.stellarity.tags.StellarityBiomeTags;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -75,10 +78,14 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 		if (!(level instanceof ServerLevel serverLevel)) {
 			if (consecrationData == null) return;
 
+
+			var itemTemplate = ItemStackTemplate.fromStack(getItem());
+
 			long tickStage = (ConsecrationRecipe.ConsecrationData.CONSECRATION_DURATION - (consecrationData.consecratesAt() - level().getGameTime()));
 			long particles = 3 + (tickStage * 8 / ConsecrationRecipe.ConsecrationData.CONSECRATION_DURATION);
-			for (int i=0; i<particles; i++) level.addAlwaysVisibleParticle(new ItemParticleOption(ParticleTypes.ITEM, consecrationData.itemStack().getItem()),
-				getX(), getY() + 0.2, getZ(), random.nextGaussian() * 0.2, 0.2 + random.nextDouble() * 0.2, random.nextGaussian() * 0.2);
+			for (int i = 0; i < particles; i++)
+				level.addAlwaysVisibleParticle(new ItemParticleOption(ParticleTypes.ITEM, itemTemplate),
+					getX(), getY() + 0.2, getZ(), random.nextGaussian() * 0.2, 0.2 + random.nextDouble() * 0.2, random.nextGaussian() * 0.2);
 
 			return;
 		}
@@ -97,9 +104,13 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 			}
 
 			if (consecrationData == null || gameTime < consecrationData.consecratesAt()) return;
-			setItem(consecrationData.itemStack());
+			var item = getItem();
+			setItem(consecrationData.convertsInto().apply(item.count(), item.getComponentsPatch()));
 			stellarity$removeConsecrationData();
 			stellarity$setItemMode(ItemMode.RESULT, -1);
+
+			var packet = new ClientboundConsecrationCraftPayload(position(), this.getItem());
+			for (var players : serverLevel.getPlayers(player -> player.distanceToSqr(this) < 10000)) ServerPlayNetworking.send(players, packet);
 
 			return;
 		}

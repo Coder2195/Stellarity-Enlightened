@@ -52,7 +52,7 @@ public interface ExtItemEntity extends AttachmentTarget, ExtEntity {
 		}
 
 		public boolean isCrafting() {
-			return !(this == RESULT || this == DEFAULT);
+			return this == ALTAR_CRAFTING || this == CONSECRATING;
 		}
 	}
 

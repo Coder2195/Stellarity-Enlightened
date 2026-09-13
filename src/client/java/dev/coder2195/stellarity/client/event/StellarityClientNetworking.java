@@ -1,20 +1,19 @@
 package dev.coder2195.stellarity.client.event;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.client.gui.screen.ConfigScreen;
 import dev.coder2195.stellarity.networking.*;
+import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.gui.screen.ConfigScreen;
-import dev.coder2195.stellarity.registry.StellaritySoundEvents;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.phys.Vec3;
 
 public interface StellarityClientNetworking {
@@ -25,8 +24,32 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpellbookCastPayload.TYPE, StellarityClientNetworking::spellbookCast);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundHolyProtectionDodgePayload.TYPE, StellarityClientNetworking::holyProtectionDodge);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundFloralBloomBloomPayload.TYPE, StellarityClientNetworking::floralBloomBloom);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundConsecrationCraftPayload.TYPE, StellarityClientNetworking::consecrationCraft);
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void consecrationCraft(ClientboundConsecrationCraftPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		var player = client.player;
+
+		if (level == null) return;
+		var position = packet.position();
+		double x = position.x;
+		double y = position.y;
+		double z = position.z;
+		var itemStack = ItemStackTemplate.fromStack(packet.result());
+
+		RandomSource random = RandomSource.create();
+
+		level.addParticle(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), x, y, z, 0, 0, 0);
+		level.playSound(player, x, y, z, SoundEvents.FIREWORK_ROCKET_TWINKLE, SoundSource.NEUTRAL, 1.5f, 1.5f);
+		for (double speed = 0.3f; speed < 0.6; speed += 0.05)
+			for (int i = 0; i < 30; i++)
+				level.addAlwaysVisibleParticle(new ItemParticleOption(ParticleTypes.ITEM, itemStack),
+					x, y + 0.2, z, random.nextGaussian() * speed, speed + random.nextDouble() * speed, random.nextGaussian() * speed);
+
 	}
 
 	static void floralBloomBloom(ClientboundFloralBloomBloomPayload packet, ClientPlayNetworking.Context context) {
@@ -38,7 +61,7 @@ public interface StellarityClientNetworking {
 		var damage = packet.damage();
 
 
-		for (int i=0; i<360; i++) {
+		for (int i = 0; i < 360; i++) {
 			float angle = i * Mth.TWO_PI / 360;
 			Vec3 baseSpeed = new Vec3(10, 0, 0).yRot(angle);
 			level.addParticle(ParticleTypes.SPORE_BLOSSOM_AIR, true, true, position.x, position.y, position.z, baseSpeed.x, 0, baseSpeed.z);
@@ -56,15 +79,15 @@ public interface StellarityClientNetworking {
 
 		var position = packet.position();
 
-		for (int i=0; i<11; i++) {
+		for (int i = 0; i < 11; i++) {
 			level.addParticle(ParticleTypes.END_ROD, true, true, position.x, position.y, position.z, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11);
 			level.addParticle(ParticleTypes.FIREWORK, true, true, position.x, position.y, position.z, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11, random.nextGaussian() * 0.11);
 		}
-		for (int i=0; i<22; i++) {
+		for (int i = 0; i < 22; i++) {
 			level.addParticle(ParticleTypes.POOF, true, true, position.x + random.nextGaussian() * 0.3, position.y + random.nextGaussian() * 0.5, position.z + random.nextGaussian() * 0.3, 0, 0, 0);
 		}
 
-		level.addParticle(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), true, true,position.x, position.y, position.z, 0, 0, 0);
+		level.addParticle(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), true, true, position.x, position.y, position.z, 0, 0, 0);
 		level.playSound(player, position.x, position.y, position.z, StellaritySoundEvents.HALLOWED_ARMOR_DODGE, packet.source());
 	}
 

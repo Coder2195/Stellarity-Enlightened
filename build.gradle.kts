@@ -100,7 +100,7 @@ loom {
 
 	runConfigs.all {
 		generateRunConfig = true
-		jvmArguments.addAll("-Dmixin.debug.export=true", "-XX:+AllowEnhancedClassRedefinition")
+		jvmArguments.addAll("-XX:+AllowEnhancedClassRedefinition")
 	}
 }
 

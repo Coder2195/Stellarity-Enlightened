@@ -28,15 +28,15 @@ public record ConsecrationRecipe(Ingredient item, ItemStackTemplate result) impl
 		ConsecrationRecipe::new
 	);
 
-	public record ConsecrationData(ItemStack itemStack, long consecratesAt) {
+	public record ConsecrationData(ItemStackTemplate convertsInto, long consecratesAt) {
 		public static final int CONSECRATION_DURATION = 20 * 2;
 		public static final Codec<ConsecrationData> CODEC = RecordCodecBuilder.create(i -> i.group(
-			ItemStack.CODEC.fieldOf("item_stack").forGetter(ConsecrationData::itemStack),
+			ItemStackTemplate.CODEC.fieldOf("converts_into").forGetter(ConsecrationData::convertsInto),
 			Codec.LONG.fieldOf("consecrates_at").forGetter(ConsecrationData::consecratesAt)
 		).apply(i, ConsecrationData::new));
 
 		public static final StreamCodec<RegistryFriendlyByteBuf, ConsecrationData> STREAM_CODEC = StreamCodec.composite(
-			ItemStack.STREAM_CODEC, ConsecrationData::itemStack,
+			ItemStackTemplate.STREAM_CODEC, ConsecrationData::convertsInto,
 			ByteBufCodecs.LONG, ConsecrationData::consecratesAt,
 			ConsecrationData::new
 		);
@@ -88,8 +88,7 @@ public record ConsecrationRecipe(Ingredient item, ItemStackTemplate result) impl
 	}
 
 	public void apply(ItemEntity itemEntity) {
-		var input = new Input(itemEntity.getItem());
-		itemEntity.stellarity$setConsecrationData(new ConsecrationData(assemble(input), itemEntity.level().getGameTime() + ConsecrationData.CONSECRATION_DURATION));
+		itemEntity.stellarity$setConsecrationData(new ConsecrationData(result, itemEntity.level().getGameTime() + ConsecrationData.CONSECRATION_DURATION));
 		itemEntity.stellarity$setItemMode(ExtItemEntity.ItemMode.CONSECRATING);
 	}
 
