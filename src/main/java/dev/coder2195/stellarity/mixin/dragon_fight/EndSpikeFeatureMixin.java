@@ -36,7 +36,7 @@ public abstract class EndSpikeFeatureMixin implements Feature {
 	private RandomSource random = RandomSource.create();
 
 	@Inject(method = "placeSpike", at = @At("HEAD"))
-	private void stellaritySpikeInit(ServerLevelAccessor level, RandomSource random, EndSpikeFeature.EndSpike spike, CallbackInfo ci) {
+	private void spikeSetRandom(ServerLevelAccessor level, RandomSource random, EndSpikeFeature.EndSpike spike, CallbackInfo ci) {
 		this.random = new RandomSequence((long) (spike.getCenterX()) << 32 & spike.getCenterZ(), Stellarity.id("obsidian_splatter")).random();
 	}
 

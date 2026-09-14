@@ -15,6 +15,7 @@ public interface StellarityBlockItemIds {
 	BlockItemId COARSE_ENDER_DIRT = id("coarse_ender_dirt");
 	BlockItemId ALTAR_OF_THE_SACRED = id("altar_of_the_sacred");
 	BlockItemId COLORED_LEAVES = id("colored_leaves");
+	BlockItemId DRAGONS_BREATH_CAULDRON = id("dragons_breath_cauldron");
 
 	private static BlockItemId id(String id) {
 		return BlockItemId.create(Stellarity.id(id), Stellarity.id(id));

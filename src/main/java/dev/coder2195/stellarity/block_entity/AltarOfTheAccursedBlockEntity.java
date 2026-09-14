@@ -1,5 +1,8 @@
 package dev.coder2195.stellarity.block_entity;
 
+import dev.coder2195.stellarity.block.AltarOfTheAccursed;
+import dev.coder2195.stellarity.recipe.AltarOfTheAccursedRecipe;
+import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -14,9 +17,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.end.EnderDragonFight;
 import net.minecraft.world.phys.Vec3;
-import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
-import dev.coder2195.stellarity.block.AltarOfTheAccursed;
-import dev.coder2195.stellarity.recipe.AltarOfTheAccursedRecipe;
 
 
 public class AltarOfTheAccursedBlockEntity extends BlockEntity {
@@ -39,89 +39,88 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 	public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T blockEntity) {
 		boolean locked = blockState.getValue(AltarOfTheAccursed.LOCKED);
 		var placeType = blockState.getValue(AltarOfTheAccursed.PLACE_TYPE);
-		if (blockEntity instanceof AltarOfTheAccursedBlockEntity entity) {
-			entity.ticksPassed++;
-			var centerPos = Vec3.atCenterOf(blockPos);
-			double x = centerPos.x;
-			double y = centerPos.y;
-			double z = centerPos.z;
+		if (!(blockEntity instanceof AltarOfTheAccursedBlockEntity entity)) return;
+		entity.ticksPassed++;
+		var centerPos = Vec3.atCenterOf(blockPos);
+		double x = centerPos.x;
+		double y = centerPos.y;
+		double z = centerPos.z;
 
-			if (level.isClientSide()) {
-				if (locked) return;
+		if (level.isClientSide()) {
+			if (locked) return;
 
-				float angle = entity.ticksPassed / 20f;
-				double dx = Mth.cos(angle);
-				double dz = Mth.sin(angle);
-
-
-				var purpleParticle = new DustColorTransitionOptions(0xbb00ff, 0x1b0025, 1.4f);
+			float angle = entity.ticksPassed / 20f;
+			double dx = Mth.cos(angle);
+			double dz = Mth.sin(angle);
 
 
+			var purpleParticle = new DustColorTransitionOptions(0xbb00ff, 0x1b0025, 1.4f);
+
+
+			level.addParticle(
+				purpleParticle,
+				x + dx, y, z + dz,
+				0, 0, 0
+			);
+
+
+			level.addParticle(
+				purpleParticle,
+				x - dx, y, z - dz,
+				0, 0, 0
+			);
+
+
+			dx = Mth.cos(-angle) * 1.5;
+			dz = Mth.sin(-angle) * 1.5;
+
+
+			level.addParticle(
+				purpleParticle,
+				x + dx, y, z + dz,
+				0, 0, 0
+			);
+
+			level.addParticle(
+				purpleParticle,
+				x - dx, y, z - dz,
+				0, 0, 0
+			);
+			if (entity.ticksPassed % 3 == 0) {
+				dx = level.getRandom().nextGaussian() * 0.5;
+				dz = level.getRandom().nextGaussian() * 0.5;
 				level.addParticle(
-					purpleParticle,
-					x + dx, y, z + dz,
-					0, 0, 0
+					ParticleTypes.ENCHANT,
+					x + dx, y + 1.5, z + dz,
+					dx * 2, -1.5, dz * 2
 				);
-
-
-				level.addParticle(
-					purpleParticle,
-					x - dx, y, z - dz,
-					0, 0, 0
-				);
-
-
-				dx = Mth.cos(-angle) * 1.5;
-				dz = Mth.sin(-angle) * 1.5;
-
-
-				level.addParticle(
-					purpleParticle,
-					x + dx, y, z + dz,
-					0, 0, 0
-				);
-
-				level.addParticle(
-					purpleParticle,
-					x - dx, y, z - dz,
-					0, 0, 0
-				);
-				if (entity.ticksPassed % 3 == 0) {
-					dx = level.getRandom().nextGaussian() * 0.5;
-					dz = level.getRandom().nextGaussian() * 0.5;
-					level.addParticle(
-						ParticleTypes.ENCHANT,
-						x + dx, y + 1.5, z + dz,
-						dx * 2, -1.5, dz * 2
-					);
-				}
-
-				level.addParticle(
-					ParticleTypes.WITCH,
-					x, y + 0.5, z,
-					0, 0,
-					0
-				);
-
-			} else if (level instanceof ServerLevel serverLevel) {
-
-				if (!placeType.bypassesDragon()) {
-					var end = serverLevel.getServer().getLevel(Level.END);
-					EnderDragonFight dragonFight = end == null ? null : end.getDragonFight();
-
-
-					boolean newLocked = dragonFight != null && !dragonFight.hasPreviouslyKilledDragon();
-					if (locked != newLocked) {
-						locked = newLocked;
-						serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(AltarOfTheAccursed.LOCKED, newLocked));
-					}
-				}
-
-				if (entity.ticksPassed % 10 == 0) {
-					AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
-				}
-
 			}
+
+			level.addParticle(
+				ParticleTypes.WITCH,
+				x, y + 0.5, z,
+				0, 0,
+				0
+			);
+
+		} else if (level instanceof ServerLevel serverLevel) {
+
+			if (!placeType.bypassesDragon()) {
+				var end = serverLevel.getServer().getLevel(Level.END);
+				EnderDragonFight dragonFight = end == null ? null : end.getDragonFight();
+
+
+				boolean newLocked = dragonFight != null && !dragonFight.hasPreviouslyKilledDragon();
+				if (locked != newLocked) {
+					locked = newLocked;
+					serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(AltarOfTheAccursed.LOCKED, newLocked));
+				}
+			}
+
+			if (entity.ticksPassed % 10 == 0) {
+				AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
+			}
+
 		}
 	}
 

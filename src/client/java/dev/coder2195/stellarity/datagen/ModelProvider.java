@@ -17,6 +17,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.List;
@@ -182,6 +183,22 @@ public class ModelProvider extends FabricModelProvider {
 
 		generators.blockStateOutput.accept(createSimpleBlock(StellarityBlocks.COLORED_LEAVES, plainVariant(TexturedModel.LEAVES.create(StellarityBlocks.COLORED_LEAVES, generators.modelOutput))));
 		generators.registerSimpleTintedItemModel(StellarityBlocks.COLORED_LEAVES, Stellarity.id("block/colored_leaves"), new ColorTintSource());
+
+		var cauldronLiquid = TextureMapping.cauldron(TextureMapping.getBlockTexture(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_liquid"));
+		generators.blockStateOutput
+			.accept(
+				MultiVariantGenerator.dispatch(StellarityBlocks.DRAGONS_BREATH_CAULDRON).with(
+					PropertyDispatch.<Integer>initial(LayeredCauldronBlock.LEVEL)
+						.select(1, plainVariant(
+							ModelTemplates.CAULDRON_LEVEL1.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_level1", cauldronLiquid, generators.modelOutput)
+						)).select(2, plainVariant(
+							ModelTemplates.CAULDRON_LEVEL2.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_level2", cauldronLiquid, generators.modelOutput)
+						)).select(3, plainVariant(
+							ModelTemplates.CAULDRON_FULL
+								.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_full", cauldronLiquid, generators.modelOutput)
+						))
+				)
+			);
 	}
 
 	@Override

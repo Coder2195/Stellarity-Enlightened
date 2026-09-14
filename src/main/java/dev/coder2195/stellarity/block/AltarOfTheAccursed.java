@@ -89,7 +89,6 @@ public class AltarOfTheAccursed extends Block implements EntityBlock {
 	@Override
 	@Nullable
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-		if (type == StellarityBlockEntityTypes.ALTAR_OF_THE_ACCURSED) return AltarOfTheAccursedBlockEntity::tick;
-		return null;
+		return AltarOfTheAccursedBlockEntity::tick;
 	}
 }
