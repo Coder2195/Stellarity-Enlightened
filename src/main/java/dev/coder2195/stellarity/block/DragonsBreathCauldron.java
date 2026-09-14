@@ -19,7 +19,7 @@ public class DragonsBreathCauldron extends LayeredCauldronBlock implements Entit
 	public static final Properties PROPERTIES = Properties.ofFullCopy(Blocks.LAVA_CAULDRON);
 
 	public DragonsBreathCauldron(Properties properties) {
-		super(Biome.Precipitation.NONE, StellarityCauldronInteractions.DRAGONS_BREATH, properties);
+		super(Biome.Precipitation.NONE, StellarityCauldronInteractions.DRAGON_BREATH, properties);
 	}
 
 

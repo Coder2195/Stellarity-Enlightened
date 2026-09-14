@@ -51,7 +51,7 @@ public class ModelProvider extends FabricModelProvider {
 		PRISMITE,
 		OVERGROWN_COD,
 		PRISMATIC_SUSHI,
-		SHEPHERDS_PIE,
+		SHEPHERD_PIE,
 		CHORUS_PIE,
 		PHO,
 		PHANTOM_ITEM_FRAME,
@@ -83,8 +83,8 @@ public class ModelProvider extends FabricModelProvider {
 		GOOSH,
 		CHORUS_STEW,
 		POTASSIFISH,
-		ENDERMANS_HAND,
-		DRAGONS_EYE,
+		ENDERMAN_HAND,
+		DRAGON_EYE,
 		LIFE_CRYSTAL,
 		LOAF_OF_PLENTY,
 		CANDIED_CHORUS_FRUIT,
@@ -184,18 +184,18 @@ public class ModelProvider extends FabricModelProvider {
 		generators.blockStateOutput.accept(createSimpleBlock(StellarityBlocks.COLORED_LEAVES, plainVariant(TexturedModel.LEAVES.create(StellarityBlocks.COLORED_LEAVES, generators.modelOutput))));
 		generators.registerSimpleTintedItemModel(StellarityBlocks.COLORED_LEAVES, Stellarity.id("block/colored_leaves"), new ColorTintSource());
 
-		var cauldronLiquid = TextureMapping.cauldron(TextureMapping.getBlockTexture(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_liquid"));
+		var cauldronLiquid = TextureMapping.cauldron(TextureMapping.getBlockTexture(StellarityBlocks.DRAGON_BREATH_CAULDRON, "_liquid"));
 		generators.blockStateOutput
 			.accept(
-				MultiVariantGenerator.dispatch(StellarityBlocks.DRAGONS_BREATH_CAULDRON).with(
-					PropertyDispatch.<Integer>initial(LayeredCauldronBlock.LEVEL)
+				MultiVariantGenerator.dispatch(StellarityBlocks.DRAGON_BREATH_CAULDRON).with(
+					PropertyDispatch.initial(LayeredCauldronBlock.LEVEL)
 						.select(1, plainVariant(
-							ModelTemplates.CAULDRON_LEVEL1.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_level1", cauldronLiquid, generators.modelOutput)
+							ModelTemplates.CAULDRON_LEVEL1.createWithSuffix(StellarityBlocks.DRAGON_BREATH_CAULDRON, "_level1", cauldronLiquid, generators.modelOutput)
 						)).select(2, plainVariant(
-							ModelTemplates.CAULDRON_LEVEL2.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_level2", cauldronLiquid, generators.modelOutput)
+							ModelTemplates.CAULDRON_LEVEL2.createWithSuffix(StellarityBlocks.DRAGON_BREATH_CAULDRON, "_level2", cauldronLiquid, generators.modelOutput)
 						)).select(3, plainVariant(
 							ModelTemplates.CAULDRON_FULL
-								.createWithSuffix(StellarityBlocks.DRAGONS_BREATH_CAULDRON, "_full", cauldronLiquid, generators.modelOutput)
+								.createWithSuffix(StellarityBlocks.DRAGON_BREATH_CAULDRON, "_full", cauldronLiquid, generators.modelOutput)
 						))
 				)
 			);

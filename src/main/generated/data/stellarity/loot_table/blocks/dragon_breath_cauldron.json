@@ -8,7 +8,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "stellarity:duskberry"
+          "name": "minecraft:cauldron"
         }
       ],
       "rolls": 1

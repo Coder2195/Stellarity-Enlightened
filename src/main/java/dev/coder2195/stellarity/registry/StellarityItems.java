@@ -61,12 +61,12 @@ public interface StellarityItems {
 	 * COPPER_ELEKTRA_SHIELD uncommon
 	 * CREST_OF_THE_END rare
 	 * DRAGONBLADE epic
-	 * DRAGONS_EYE rare
+	 * DRAGON_EYE rare
 	 * DRAGON_WINGS rare
 	 * DUSKBERRY epic
 	 * EMPRESS_WINGS epic
 	 * ENDERITE_SMITHING_TEMPLATE rare
-	 * ENDERMANS_HAND uncommon
+	 * ENDERMAN_HAND uncommon
 	 * FISHER_OF_VOIDS uncommon
 	 * FLORAL_BOOTS uncommon
 	 * FLORAL_CHESTPLATE uncommon
@@ -144,7 +144,7 @@ public interface StellarityItems {
 		foodProperties(1, 0.2f, new MobEffectInstance(MobEffects.SLOWNESS, 3 * 20, 2)));
 	Item SHULKER_BODY = register(StellarityItemIds.SHULKER_BODY, tpFoodProperties(4, 0.8f, true, 16, new StellarityItems.EffectChance(new MobEffectInstance(MobEffects.HUNGER, 40 * 20, 0), 0.3f)).useCooldown(1.0F));
 	Item PRISMATIC_SUSHI = register(StellarityItemIds.PRISMATIC_SUSHI, foodProperties(4, 2.4f, true, new MobEffectInstance(MobEffects.HEALTH_BOOST, 40 * 20)).rarity(Rarity.UNCOMMON));
-	Item SHEPHERDS_PIE = register(StellarityItemIds.SHEPHERDS_PIE, Item::new,
+	Item SHEPHERD_PIE = register(StellarityItemIds.SHEPHERD_PIE, Item::new,
 		foodProperties(20, 20f, true,
 			new MobEffectInstance(MobEffects.HEALTH_BOOST, 20, 2),
 			new MobEffectInstance(MobEffects.REGENERATION, 64 * 20, 1)
@@ -279,13 +279,13 @@ public interface StellarityItems {
 	Item SHARANGA = register(StellarityItemIds.SHARANGA, Sharanga::new, Sharanga.PROPERTIES);
 	Item SPECTRAL_FURY = register(StellarityItemIds.SPECTRAL_FURY, SpectralFury::new, SpectralFury.PROPERTIES);
 	Item COPPER_ELEKTRA_SHIELD = register(StellarityItemIds.COPPER_ELEKTRA_SHIELD, CopperElektraShield::new, CopperElektraShield.PROPERTIES);
-	Item ENDERMANS_HAND = register(StellarityItemIds.ENDERMANS_HAND, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)
+	Item ENDERMAN_HAND = register(StellarityItemIds.ENDERMAN_HAND, new Item.Properties().rarity(Rarity.UNCOMMON).stacksTo(1)
 		.attributes(ItemAttributeModifiers.builder()
-			.add(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(Stellarity.id("endermans_hand"), 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
+			.add(Attributes.BLOCK_INTERACTION_RANGE, new AttributeModifier(Stellarity.id("enderman_hand"), 3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
 			.build())
 		.component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
 	);
-	Item DRAGONS_EYE = register(StellarityItemIds.DRAGONS_EYE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
+	Item DRAGON_EYE = register(StellarityItemIds.DRAGON_EYE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 	Item PHANTOM_WINGS = register(StellarityItemIds.PHANTOM_WINGS, new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
 		.durability(70).repairable(StellarityItemTags.REPAIRS_PHANTOM_WINGS)
 		.component(DataComponents.GLIDER, Unit.INSTANCE)
@@ -550,8 +550,8 @@ public interface StellarityItems {
 		put(SHULKER_BODY, TextColor.WHITE.getValue());
 		put(FRIED_CHORUS_FRUIT, TextColor.WHITE.getValue());
 		put(PRISMITE, TextColor.YELLOW.getValue());
-		put(ENDERMANS_HAND, 0xed8cff);
-		put(DRAGONS_EYE, 0x9936D6);
+		put(ENDERMAN_HAND, 0xed8cff);
+		put(DRAGON_EYE, 0x9936D6);
 		put(DUSKBERRY, 0xAB6AD1);
 		put(COPPER_ELEKTRA_SHIELD, 0xE0976B);
 //		put(SOARING_INSIGNIA, 0xFF76D0);

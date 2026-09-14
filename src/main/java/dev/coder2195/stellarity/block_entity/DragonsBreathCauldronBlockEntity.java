@@ -11,7 +11,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class DragonsBreathCauldronBlockEntity extends BlockEntity {
 	public DragonsBreathCauldronBlockEntity(BlockPos worldPosition, BlockState blockState) {
-		super(StellarityBlockEntityTypes.DRAGONS_BREATH_CAULDRON, worldPosition, blockState);
+		super(StellarityBlockEntityTypes.DRAGON_BREATH_CAULDRON, worldPosition, blockState);
 	}
 
 	public static void tick(Level level, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity) {

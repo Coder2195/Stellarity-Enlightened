@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
@@ -34,7 +35,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 		}
 
 		dropOther(StellarityBlocks.ENDER_DIRT_PATH, StellarityBlocks.ENDER_DIRT);
-
+		dropOther(StellarityBlocks.DRAGON_BREATH_CAULDRON, Blocks.CAULDRON);
+		dropOther(StellarityBlocks.DUSKBERRY_BUSH, StellarityItems.DUSKBERRY);
 
 		add(StellarityBlocks.ENDER_GRASS_BLOCK, lootTable().withPool(pool().add(
 			AlternativesEntry.alternatives(
@@ -47,10 +49,6 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 			.withPool(pool().add(item(Items.CRYING_OBSIDIAN)))
 			.withPool(pool().add(item(StellarityItems.SATCHEL_OF_VOIDS)))
 		);
-
-		add(StellarityBlocks.DUSKBERRY_BUSH, lootTable().withPool(pool().add(
-			item(StellarityItems.DUSKBERRY).apply(count(1))
-		)));
 
 		// todo: actual saplings
 		add(StellarityBlocks.COLORED_LEAVES, createLeavesDrops(StellarityBlocks.COLORED_LEAVES, StellarityBlocks.COLORED_LEAVES, NORMAL_LEAVES_SAPLING_CHANCES)

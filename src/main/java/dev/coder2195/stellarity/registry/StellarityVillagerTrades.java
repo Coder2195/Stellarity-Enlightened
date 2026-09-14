@@ -75,7 +75,7 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> BUTCHER_4_CHICKEN_FEATHER_ENDERITE_SHARD = id("butcher/4/chicken_feather_enderite_shard");
 	ResourceKey<VillagerTrade> BUTCHER_4_PORKCHOP_ENDERITE_SHARD = id("butcher/4/porkchop_enderite_shard");
 	ResourceKey<VillagerTrade> BUTCHER_4_ENDERITE_SHARD_PHO = id("butcher/4/enderite_shard_pho");
-	ResourceKey<VillagerTrade> BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE = id("butcher/5/enderite_shard_shepherds_pie");
+	ResourceKey<VillagerTrade> BUTCHER_5_ENDERITE_SHARD_SHEPHERD_PIE = id("butcher/5/enderite_shard_shepherd_pie");
 	ResourceKey<VillagerTrade> BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK = id("butcher/5/enderite_shard_dried_kelp_block");
 
 	ResourceKey<VillagerTrade> CARTOGRAPHER_1_PAPER_ENDERITE_SHARD = id("cartographer/1/paper_enderite_shard");
@@ -90,7 +90,7 @@ public interface StellarityVillagerTrades {
 
 	ResourceKey<VillagerTrade> CLERIC_1_PHANTOM_MEMBRANE_ENDERITE_SHARD = id("cleric/phantom_membrane_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_1_BONE_ENDERITE_SHARD = id("cleric/bone_enderite_shard");
-	ResourceKey<VillagerTrade> CLERIC_1_ENDERMANS_HAND_ENDERITE_SHARD = id("cleric/endermans_hand_enderite_shard");
+	ResourceKey<VillagerTrade> CLERIC_1_ENDERMAN_HAND_ENDERITE_SHARD = id("cleric/enderman_hand_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_1_ENDERITE_SHARD_REDSTONE = id("cleric/enderite_shard_redstone");
 	ResourceKey<VillagerTrade> CLERIC_1_ENDERITE_SHARD_BLAZE_ROD = id("cleric/enderite_shard_blaze_rod");
 	ResourceKey<VillagerTrade> CLERIC_2_GOLD_INGOT_ENDERITE_SHARD = id("cleric/gold_ingot_enderite_shard");
@@ -101,7 +101,7 @@ public interface StellarityVillagerTrades {
 	ResourceKey<VillagerTrade> CLERIC_4_ENDER_PEARL_ENDERITE_SHARD = id("cleric/ender_pearl_enderite_shard");
 	ResourceKey<VillagerTrade> CLERIC_4_ENDERITE_SHARD_LEVEL_4_POTION = id("cleric/enderite_shard_level_4_potion");
 	ResourceKey<VillagerTrade> CLERIC_5_ENDERITE_SHARD_LEVEL_5_POTION = id("cleric/enderite_shard_level_5_potion");
-	ResourceKey<VillagerTrade> CLERIC_5_DRAGONS_BREATH_ENDERITE_SHARD = id("cleric/dragons_breath_enderite_shard");
+	ResourceKey<VillagerTrade> CLERIC_5_DRAGON_BREATH_ENDERITE_SHARD = id("cleric/dragon_breath_enderite_shard");
 
 	ResourceKey<VillagerTrade> FARMER_1_WHEAT_ENDERITE_SHARD = id("farmer/1/wheat_enderite_shard");
 	ResourceKey<VillagerTrade> FARMER_1_POTATO_ENDERITE_SHARD = id("farmer/1/potato_enderite_shard");
@@ -322,7 +322,7 @@ public interface StellarityVillagerTrades {
 		context.register(BUTCHER_4_CHICKEN_FEATHER_ENDERITE_SHARD, simpleSimpleToShard(CHICKEN, num(5, 10), FEATHER, num(5, 10), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_PORKCHOP_ENDERITE_SHARD, simpleToShard(PORKCHOP, num(8, 15), 1, 20, 8, 0.05f));
 		context.register(BUTCHER_4_ENDERITE_SHARD_PHO, shardToSimple(num(16, 23), PHO, 1, 25, 3, 0.05f));
-		context.register(BUTCHER_5_ENDERITE_SHARD_SHEPHERDS_PIE, shardToSimple(44, SHEPHERDS_PIE, 1, 50, 2, 0.2f));
+		context.register(BUTCHER_5_ENDERITE_SHARD_SHEPHERD_PIE, shardToSimple(44, SHEPHERD_PIE, 1, 50, 2, 0.2f));
 		context.register(BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK, shardToSimple(5, DRIED_KELP_BLOCK, 2, 20, 8, 0.05f));
 
 
@@ -350,7 +350,7 @@ public interface StellarityVillagerTrades {
 
 		context.register(CLERIC_1_PHANTOM_MEMBRANE_ENDERITE_SHARD, simpleToShard(PHANTOM_MEMBRANE, num(15, 18), 1, 3, 8, 0.05F));
 		context.register(CLERIC_1_BONE_ENDERITE_SHARD, simpleToShard(BONE, num(24, 33), 1, 2, 12, 0.05f));
-		context.register(CLERIC_1_ENDERMANS_HAND_ENDERITE_SHARD, simpleToShard(ENDERMANS_HAND, 1, 2, 3, 12, 0.05f));
+		context.register(CLERIC_1_ENDERMAN_HAND_ENDERITE_SHARD, simpleToShard(ENDERMAN_HAND, 1, 2, 3, 12, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_REDSTONE, shardToSimple(1, REDSTONE, 4, 1, 16, 0.05f));
 		context.register(CLERIC_1_ENDERITE_SHARD_BLAZE_ROD, shardToSimple(2, BLAZE_ROD, 1, 2, 8, 0.05f));
 		context.register(CLERIC_2_GOLD_INGOT_ENDERITE_SHARD, simpleToShard(GOLD_INGOT, 3, 1, 5, 10, 0.05f));
@@ -367,7 +367,7 @@ public interface StellarityVillagerTrades {
 		context.register(CLERIC_5_ENDERITE_SHARD_LEVEL_5_POTION, shardToModifierItem(num(11, 18), POTION, Holder.direct(
 			SetRandomPotionFunction.fromTagKey(HolderSet.direct(StellarityPotions.RED, StellarityPotions.LIFEFORCE)).build()
 		), 1, 25, 2, 0.2f));
-		context.register(CLERIC_5_DRAGONS_BREATH_ENDERITE_SHARD, simpleToShard(DRAGON_BREATH, 3, 1, 15, 10, 0.05f));
+		context.register(CLERIC_5_DRAGON_BREATH_ENDERITE_SHARD, simpleToShard(DRAGON_BREATH, 3, 1, 15, 10, 0.05f));
 
 
 		context.register(FARMER_1_WHEAT_ENDERITE_SHARD, simpleToShard(WHEAT, num(15, 30), 1, 2, 8, 0.05f));

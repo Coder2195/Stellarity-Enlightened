@@ -35,7 +35,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> DECAYED_CLOVER = id("decayed_clover");
 	ResourceKey<Item> DRAGON_WINGS = id("dragon_wings");
 	ResourceKey<Item> DRAGONBLADE = id("dragonblade");
-	ResourceKey<Item> DRAGONS_EYE = id("dragons_eye");
+	ResourceKey<Item> DRAGON_EYE = id("dragon_eye");
 	ResourceKey<Item> DUSKBERRY = id("duskberry");
 	ResourceKey<Item> EMPRESS_WINGS = id("empress_wings");
 	ResourceKey<Item> ENDER_EGG = id("ender_egg");
@@ -43,7 +43,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> ENDERITE_SHARD = id("enderite_shard");
 	ResourceKey<Item> ENDERITE_UPGRADE_SMITHING_TEMPLATE = id("enderite_upgrade_smithing_template");
 	ResourceKey<Item> ENDERMAN_FLESH = id("enderman_flesh");
-	ResourceKey<Item> ENDERMANS_HAND = id("endermans_hand");
+	ResourceKey<Item> ENDERMAN_HAND = id("enderman_hand");
 	ResourceKey<Item> ENDONOMICON = id("endonomicon");
 	ResourceKey<Item> FISHER_OF_VOIDS = id("fisher_of_voids");
 	ResourceKey<Item> FLAREFIN_KOI = id("flarefin_koi");
@@ -89,7 +89,7 @@ public interface StellarityItemIds {
 	ResourceKey<Item> SANDSTORM_TRIDENT = id("sandstorm_trident");
 	ResourceKey<Item> SATCHEL_OF_VOIDS = id("satchel_of_voids");
 	ResourceKey<Item> SHARANGA = id("sharanga");
-	ResourceKey<Item> SHEPHERDS_PIE = id("shepherds_pie");
+	ResourceKey<Item> SHEPHERD_PIE = id("shepherd_pie");
 	ResourceKey<Item> SHULKER_AXE = id("shulker_axe");
 	ResourceKey<Item> SHULKER_BODY = id("shulker_body");
 	ResourceKey<Item> SHULKER_BOOTS = id("shulker_boots");

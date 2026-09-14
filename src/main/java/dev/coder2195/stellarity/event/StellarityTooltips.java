@@ -110,7 +110,7 @@ public interface StellarityTooltips {
 			ArrayList<Component> list = new ArrayList<>();
 
 			if (lines > 0) list.add(Component.empty());
-			String base = type.toString() + "." + id.getNamespace() + "." + id.getPath();
+			String base = type + "." + id.getNamespace() + "." + id.getPath();
 			if (lines == 1)
 				list.add(Component.translatable(base + ".description").withColor(0xEEEEEE));
 			else {
@@ -158,7 +158,7 @@ public interface StellarityTooltips {
 				desc(DUSKBERRY, 4),
 				desc(EMPRESS_WINGS, 2).flavorText(),
 				desc(ENDERITE_SHARD, 1),
-				desc(ENDERMANS_HAND, 0).flavorText(),
+				desc(ENDERMAN_HAND, 0).flavorText(),
 				desc(ENDERITE_UPGRADE_SMITHING_TEMPLATE, 1),
 				desc(ENDONOMICON, 1).flavorText(),
 				desc(FISHER_OF_VOIDS, 1),
@@ -176,7 +176,7 @@ public interface StellarityTooltips {
 				desc(SANDSTORM_TRIDENT, 1).flavorText(),
 				desc(SATCHEL_OF_VOIDS, 5),
 				desc(SHARANGA, 2),
-				desc(SHEPHERDS_PIE, 0).flavorText(),
+				desc(SHEPHERD_PIE, 0).flavorText(),
 				desc(SHULKER_BODY, 0).flavorText(),
 				desc(SLAYER_CROSSBOW, 2),
 				desc(SOARING_INSIGNIA, 4),
