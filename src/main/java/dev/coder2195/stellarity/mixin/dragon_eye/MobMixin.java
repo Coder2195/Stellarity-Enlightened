@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.mixin.dragons_eye;
+package dev.coder2195.stellarity.mixin.dragon_eye;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -18,7 +18,7 @@ public abstract class MobMixin extends LivingEntity {
 
 	@WrapMethod(method = "canAttack")
 	private boolean blockEndermanPhantomAttackingPlayer(LivingEntity target, Operation<Boolean> original) {
-		if (target.isHolding(StellarityItems.DRAGONS_EYE) && (this.is(EntityTypes.ENDERMAN) || this.is(EntityTypes.PHANTOM)))
+		if (target.isHolding(StellarityItems.DRAGON_EYE) && (this.is(EntityTypes.ENDERMAN) || this.is(EntityTypes.PHANTOM)))
 			return false;
 		return original.call(target);
 	}

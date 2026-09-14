@@ -1,4 +1,4 @@
-package dev.coder2195.stellarity.mixin.dragons_eye;
+package dev.coder2195.stellarity.mixin.dragon_eye;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -24,7 +24,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")
 	private boolean blockBadEffects(MobEffectInstance newEffect, Entity source, Operation<Boolean> original) {
-		if (isHolding(StellarityItems.DRAGONS_EYE) && newEffect.getEffect().value().getCategory().equals(MobEffectCategory.HARMFUL))
+		if (isHolding(StellarityItems.DRAGON_EYE) && newEffect.getEffect().value().getCategory().equals(MobEffectCategory.HARMFUL))
 			return false;
 
 		return original.call(newEffect, source);
