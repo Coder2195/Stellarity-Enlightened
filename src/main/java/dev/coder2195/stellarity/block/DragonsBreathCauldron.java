@@ -1,6 +1,6 @@
 package dev.coder2195.stellarity.block;
 
-import dev.coder2195.stellarity.block_entity.DragonsBreathCauldronBlockEntity;
+import dev.coder2195.stellarity.block_entity.DragonBreathCauldronBlockEntity;
 import dev.coder2195.stellarity.registry.StellarityCauldronInteractions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -25,11 +25,11 @@ public class DragonsBreathCauldron extends LayeredCauldronBlock implements Entit
 
 	@Override
 	public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
-		return new DragonsBreathCauldronBlockEntity(worldPosition, blockState);
+		return new DragonBreathCauldronBlockEntity(worldPosition, blockState);
 	}
 
 	@Override
 	public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> type) {
-		return DragonsBreathCauldronBlockEntity::tick;
+		return DragonBreathCauldronBlockEntity::tick;
 	}
 }

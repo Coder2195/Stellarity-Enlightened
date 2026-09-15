@@ -9,13 +9,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-public class DragonsBreathCauldronBlockEntity extends BlockEntity {
-	public DragonsBreathCauldronBlockEntity(BlockPos worldPosition, BlockState blockState) {
+public class DragonBreathCauldronBlockEntity extends BlockEntity {
+	public DragonBreathCauldronBlockEntity(BlockPos worldPosition, BlockState blockState) {
 		super(StellarityBlockEntityTypes.DRAGON_BREATH_CAULDRON, worldPosition, blockState);
 	}
 
 	public static void tick(Level level, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity) {
-		if (!(blockEntity instanceof DragonsBreathCauldronBlockEntity entity)) return;
+		if (!(blockEntity instanceof DragonBreathCauldronBlockEntity entity)) return;
 
 		var random = level.getRandom();
 
