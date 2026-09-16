@@ -9,9 +9,11 @@ import net.minecraft.client.renderer.entity.state.ItemClusterRenderState;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.util.Brightness;
 
 public class DragonBreathCauldronItemEntityRenderer extends EntityRenderer<DragonBreathCauldronItemEntity, DragonBreathCauldronItemEntityRenderer.DragonBreathCauldronItemEntityRenderState> {
 	private final ItemModelResolver itemModelResolver;
+	private static final int BRIGHTNESS = new Brightness(15, 15).pack();
 
 	public DragonBreathCauldronItemEntityRenderer(final EntityRendererProvider.Context context) {
 		super(context);
@@ -22,8 +24,9 @@ public class DragonBreathCauldronItemEntityRenderer extends EntityRenderer<Drago
 	public void submit(DragonBreathCauldronItemEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
 		if (state.item.isEmpty()) return;
 		poseStack.pushPose();
-
-		state.item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
+		poseStack.translate(0, -0.125f, 0);
+		poseStack.scale(2f, 2f, 2f);
+		state.item.submit(poseStack, submitNodeCollector, BRIGHTNESS, OverlayTexture.NO_OVERLAY, state.outlineColor);
 
 		poseStack.popPose();
 		super.submit(state, poseStack, submitNodeCollector, camera);
