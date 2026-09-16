@@ -1,7 +1,12 @@
 package dev.coder2195.stellarity.item;
 
 import dev.coder2195.stellarity.mixin.accessor.CreeperAccessor;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import dev.coder2195.stellarity.networking.ClientboundElectricDashPayload;
+import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
+import dev.coder2195.stellarity.registry.StellarityDamageTypes;
+import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.util.NetworkingUtil;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,11 +34,6 @@ import net.minecraft.world.level.block.entity.BannerPatterns;
 import net.minecraft.world.level.portal.TeleportTransition;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import dev.coder2195.stellarity.registry.StellarityDamageTypes;
-import dev.coder2195.stellarity.networking.ClientboundElectricDashPayload;
-import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
-import dev.coder2195.stellarity.registry.StellarityDataComponents;
-import dev.coder2195.stellarity.util.tuple.Tuple2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,12 +114,8 @@ public class CopperElektraShield extends ShieldItem {
 			}
 		}
 
-//		player.getCooldowns().addCooldown(itemStack, 5);
+		NetworkingUtil.sendTrackingPlayers(serverLevel, player, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
 
-		var simulationDistance = (serverLevel.getServer().getPlayerList().getSimulationDistance() + 1) * 16;
-		for (var networkPlayer : serverLevel.getPlayers(networkPlayer -> networkPlayer.position().distanceTo(endLocation) < simulationDistance)) {
-			ServerPlayNetworking.send(networkPlayer, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
-		}
 
 		if (player instanceof ServerPlayer serverPlayer) {
 			StellarityCriteriaTriggers.DASH.trigger(serverPlayer, victims, itemStack);

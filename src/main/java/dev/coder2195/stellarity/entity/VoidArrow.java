@@ -7,8 +7,7 @@ import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.util.FloralBloom;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -110,13 +109,7 @@ public class VoidArrow extends AbstractArrow {
 			raycasts.add(result.getLocation().subtract(position));
 		}
 
-		var payload = new ClientboundVoidArrowHitPayload(position, raycasts);
-		for (var player : PlayerLookup.level(level)) {
-			ServerPlayNetworking.send(player, payload);
-		}
-
+		NetworkingUtil.sendTrackingPlayers(level, this, new ClientboundVoidArrowHitPayload(position, raycasts));
 		discard();
-
-
 	}
 }

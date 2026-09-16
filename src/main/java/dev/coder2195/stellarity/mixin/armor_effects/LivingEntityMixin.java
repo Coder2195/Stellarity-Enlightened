@@ -12,7 +12,7 @@ import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityItems;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
@@ -212,7 +212,7 @@ public abstract class LivingEntityMixin extends Entity {
 
 			if (castedSelf instanceof ServerPlayer player) StellarityCriteriaTriggers.HOLY_PROTECTION_DODGE.trigger(player, source, damage, lastHurt);
 
-			if (level instanceof ServerLevel serverLevel) for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000)) ServerPlayNetworking.send(player, new ClientboundHolyProtectionDodgePayload(position, getSoundSource()));
+			NetworkingUtil.sendTrackingPlayers(level, this, new ClientboundHolyProtectionDodgePayload(position, getSoundSource()));
 		}
 
 		return true;
@@ -290,10 +290,8 @@ public abstract class LivingEntityMixin extends Entity {
 
 		if (timeUntilExplode <= 0) {
 			removeAttached(StellarityDataAttachments.FLORAL_BLOOM);
-			var packet = new ClientboundFloralBloomBloomPayload(position, damage);
 			if (hurtServer(serverLevel, damageSources().source(StellarityDamageTypes.BLOOM), damage))
-				for (var player : serverLevel.getPlayers(player -> player.distanceToSqr(position) < 10000))
-					ServerPlayNetworking.send(player, packet);
+				NetworkingUtil.sendTrackingPlayers(serverLevel, this, new ClientboundFloralBloomBloomPayload(position, damage));
 		}
 	}
 

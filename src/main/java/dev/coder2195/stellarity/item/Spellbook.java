@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.item;
 
 import dev.coder2195.stellarity.networking.ClientboundSpellbookCastPayload;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -12,8 +12,8 @@ public abstract class Spellbook extends Item {
 	}
 
 	public void castSpell(ServerLevel level, Player player) {
-		for (var serverPlayer: level.players()) {
-			ServerPlayNetworking.send(serverPlayer, new ClientboundSpellbookCastPayload(player.getEyePosition()));
-		}
+		var packet = new ClientboundSpellbookCastPayload(player.getEyePosition());
+
+		NetworkingUtil.sendTrackingPlayers(level, player, packet);
 	}
 }

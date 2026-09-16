@@ -10,7 +10,7 @@ import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityRecipeTypes;
 import dev.coder2195.stellarity.tags.StellarityBiomeTags;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -110,7 +110,7 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 			stellarity$setItemMode(ItemMode.RESULT, -1);
 
 			var packet = new ClientboundConsecrationCraftPayload(position(), this.getItem());
-			for (var players : serverLevel.getPlayers(player -> player.distanceToSqr(this) < 10000)) ServerPlayNetworking.send(players, packet);
+			NetworkingUtil.sendTrackingPlayers(serverLevel, this, packet);
 
 			return;
 		}
