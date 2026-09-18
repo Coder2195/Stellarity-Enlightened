@@ -13,7 +13,6 @@ public abstract class Spellbook extends Item {
 
 	public void castSpell(ServerLevel level, Player player) {
 		var packet = new ClientboundSpellbookCastPayload(player.getEyePosition());
-
 		NetworkingUtil.sendTrackingPlayers(level, player, packet);
 	}
 }

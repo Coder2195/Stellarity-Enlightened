@@ -47,7 +47,7 @@ public interface StellarityBlocks {
 		.strength(0.5F)
 		.sound(SoundType.GRAVEL));
 	Block COLORED_LEAVES = register(StellarityBlockItemIds.COLORED_LEAVES, ColoredLeavesBlock::new, Blocks.leavesProperties(SoundType.GRASS));
-	Block DRAGON_BREATH_CAULDRON = register(StellarityBlockItemIds.DRAGON_BREATH_CAULDRON, DragonsBreathCauldron::new, DragonsBreathCauldron.PROPERTIES);
+	Block DRAGON_BREATH_CAULDRON = register(StellarityBlockItemIds.DRAGON_BREATH_CAULDRON, DragonBreathCauldron::new, DragonBreathCauldron.PROPERTIES);
 
 
 	static Block register(BlockItemId key, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {

@@ -18,7 +18,7 @@ public interface StellarityCauldronInteractions {
 			if (level.isClientSide()) return InteractionResult.SUCCESS;
 			level.setBlock(pos, StellarityBlocks.DRAGON_BREATH_CAULDRON.withPropertiesOf(state), Block.UPDATE_ALL);
 			itemInHand.consume(1, player);
-			player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
+			if (!player.hasInfiniteMaterials()) player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
 
 			level.playSound(null, pos, SoundEvents.ENDER_DRAGON_GROWL, SoundSource.PLAYERS);
 

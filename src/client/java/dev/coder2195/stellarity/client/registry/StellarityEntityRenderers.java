@@ -27,6 +27,6 @@ public interface StellarityEntityRenderers {
 		EntityRenderers.register(StellarityEntityTypes.OBSTRUCT_SPELL_BLOCK, ObstructSpellBlockRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.LIGHT_AURA, NoopRenderer::new);
 		EntityRenderers.register(StellarityEntityTypes.POTION_CLOUD, NoopRenderer::new);
-		EntityRenderers.register(StellarityEntityTypes.DRAGON_BREATH_CAULDRON_ITEM, DragonBreathCauldronItemEntityRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.DRAGON_BREATH_CAULDRON_INGREDIENT, DragonBreathCauldronIngredientRenderer::new);
 	}
 }

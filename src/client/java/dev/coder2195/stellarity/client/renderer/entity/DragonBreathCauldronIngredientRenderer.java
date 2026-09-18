@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import dev.coder2195.stellarity.entity.DragonBreathCauldronItemEntity;
+import dev.coder2195.stellarity.entity.DragonBreathCauldronIngredientEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -11,11 +11,11 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.Brightness;
 
-public class DragonBreathCauldronItemEntityRenderer extends EntityRenderer<DragonBreathCauldronItemEntity, DragonBreathCauldronItemEntityRenderer.DragonBreathCauldronItemEntityRenderState> {
+public class DragonBreathCauldronIngredientRenderer extends EntityRenderer<DragonBreathCauldronIngredientEntity, DragonBreathCauldronIngredientRenderer.DragonBreathCauldronItemEntityRenderState> {
 	private final ItemModelResolver itemModelResolver;
 	private static final int BRIGHTNESS = new Brightness(15, 15).pack();
 
-	public DragonBreathCauldronItemEntityRenderer(final EntityRendererProvider.Context context) {
+	public DragonBreathCauldronIngredientRenderer(final EntityRendererProvider.Context context) {
 		super(context);
 		itemModelResolver = context.getItemModelResolver();
 	}
@@ -38,7 +38,7 @@ public class DragonBreathCauldronItemEntityRenderer extends EntityRenderer<Drago
 	}
 
 	@Override
-	public void extractRenderState(DragonBreathCauldronItemEntity entity, DragonBreathCauldronItemEntityRenderState state, float partialTicks) {
+	public void extractRenderState(DragonBreathCauldronIngredientEntity entity, DragonBreathCauldronItemEntityRenderState state, float partialTicks) {
 		super.extractRenderState(entity, state, partialTicks);
 		state.extractItemGroupRenderState(entity, entity.getItemStack(), itemModelResolver);
 	}
