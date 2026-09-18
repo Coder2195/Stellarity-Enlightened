@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.block_entity;
 
 import com.mojang.serialization.Codec;
-import dev.coder2195.stellarity.entity.DragonBreathCauldronIngredientEntity;
+import dev.coder2195.stellarity.entity.DragonBreathCauldronIngredient;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DragonBreathCauldronBlockEntity extends BlockEntity {
-	private final List<DragonBreathCauldronIngredientEntity> ingredientEntities = new ArrayList<>();
+	private final List<DragonBreathCauldronIngredient> ingredientEntities = new ArrayList<>();
 	private List<ItemStack> ingredients = new ArrayList<>();
 	private int maxIngredients = 10;
-	private int tickCounter = 0;
+	private int tickCounter = -1;
 	private int remainingUses = -1;
 
 
@@ -48,19 +48,13 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 			return;
 		}
 
-		if (++tickCounter > 100) {
+		if (tickCounter < 0 || ++tickCounter > 100) {
 			tickCounter = 0;
 			syncIngredientEntities(level, blockPos);
 		}
 
 		var ingredientsSize = ingredientEntities.size();
 		if (ingredientsSize == 0) return;
-	}
-
-	@Override
-	public void setLevel(Level level) {
-		super.setLevel(level);
-		syncIngredientEntities(level, worldPosition);
 	}
 
 	public void syncIngredientEntities(Level level, BlockPos blockPos) {
@@ -83,7 +77,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 			return;
 		}
 		for (int i=commonSize; i<ingredientsSize; i++) {
-			var newEntity = new DragonBreathCauldronIngredientEntity(level, this, anchor, ingredients.get(i));
+			var newEntity = new DragonBreathCauldronIngredient(level, this, anchor, ingredients.get(i));
 			ingredientEntities.add(newEntity);
 			level.addFreshEntity(newEntity);
 		}
@@ -107,6 +101,8 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 				this.ingredients.add(rawIngredient.copyWithCount(1));
 			}
 		}
+
+		setChanged();
 	}
 
 	@Override
@@ -125,6 +121,9 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		for (int i=0; i<count; i++) {
 			ingredients.add(ingredient.copyWithCount(1));
 		}
+
+		setChanged();
+
 		if (!willOverflow) return ItemStack.EMPTY;
 		ingredient.setCount(ingredientCount - count);
 		syncRotationOffsets();
@@ -133,6 +132,18 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 
 	public void setMaxIngredients(int maxIngredients) {
 		this.maxIngredients = maxIngredients;
+
+		setChanged();
+	}
+
+	public void setRemainingUses(int remainingUses) {
+		this.remainingUses = remainingUses;
+
+		setChanged();
+	}
+
+	public int getRemainingUses(BlockState blockState) {
+		return remainingUses;
 	}
 
 	public int getMaxIngredients() {
@@ -142,8 +153,10 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 	@Override
 	protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
-		input.read("ingredients", ItemStack.CODEC.listOf()).ifPresent(this::setIngredients);
+
 		input.read("max_ingredients", Codec.INT).ifPresent(this::setMaxIngredients);
+		input.read("ingredients", ItemStack.CODEC.listOf()).ifPresent(this::setIngredients);
+		input.read("remaining_uses", Codec.INT).ifPresent(this::setRemainingUses);
 
 		if (level != null) syncIngredientEntities(level, worldPosition);
 	}
@@ -152,13 +165,15 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 	protected void saveAdditional(ValueOutput output) {
 		super.saveAdditional(output);
 
-		if (!ingredients.isEmpty()) output.store("ingredients", ItemStack.CODEC.listOf(), ingredients);
 		output.store("max_ingredients", Codec.INT, maxIngredients);
+		output.store("ingredients", ItemStack.CODEC.listOf(), ingredients);
+		output.store("remaining_uses", Codec.INT, remainingUses);
 	}
 
-	public void removeIngredient(DragonBreathCauldronIngredientEntity ingredientEntity) {
+	public void removeIngredient(DragonBreathCauldronIngredient ingredientEntity) {
 		ingredientEntities.remove(ingredientEntity);
 		ingredients.remove(ingredientEntity.getItemStack());
 		syncRotationOffsets();
+		setChanged();
 	}
 }

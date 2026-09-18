@@ -51,7 +51,7 @@ public interface StellarityEntityTypes {
 	EntityType<ConveyanceSpark> CONVEYANCE_SPARK = register(StellarityEntityTypeIds.CONVEYANCE_SPARK, EntityType.Builder.<ConveyanceSpark>of(ConveyanceSpark::new, MobCategory.MISC).sized(0.3f, 0.3f).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 	EntityType<LightAura> LIGHT_AURA = register(StellarityEntityTypeIds.LIGHT_AURA, EntityType.Builder.of(LightAura::new, MobCategory.MISC).sized(0, 0).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 	EntityType<PotionCloud> POTION_CLOUD = register(StellarityEntityTypeIds.POTION_CLOUD, EntityType.Builder.of(PotionCloud::new, MobCategory.MISC).sized(0, 0).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
-	EntityType<DragonBreathCauldronIngredientEntity> DRAGON_BREATH_CAULDRON_INGREDIENT = register(StellarityEntityTypeIds.DRAGON_BREATH_CAULDRON_INGREDIENT, EntityType.Builder.<DragonBreathCauldronIngredientEntity>of(DragonBreathCauldronIngredientEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).eyeHeight(0.125f).clientTrackingRange(4).noLootTable());
+	EntityType<DragonBreathCauldronIngredient> DRAGON_BREATH_CAULDRON_INGREDIENT = register(StellarityEntityTypeIds.DRAGON_BREATH_CAULDRON_INGREDIENT, EntityType.Builder.<DragonBreathCauldronIngredient>of(DragonBreathCauldronIngredient::new, MobCategory.MISC).sized(0.5f, 0.5f).eyeHeight(0.125f).clientTrackingRange(4).noLootTable());
 
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));

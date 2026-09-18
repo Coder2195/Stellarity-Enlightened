@@ -23,22 +23,22 @@ import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
-public class DragonBreathCauldronIngredientEntity extends Entity {
-	private static final EntityDataAccessor<Vec3> ANCHOR = SynchedEntityData.defineId(DragonBreathCauldronIngredientEntity.class, StellarityEntityDataSerializers.VEC3);
-	private static final EntityDataAccessor<ItemStack> ITEM_STACK = SynchedEntityData.defineId(DragonBreathCauldronIngredientEntity.class, EntityDataSerializers.ITEM_STACK);
-	private static final EntityDataAccessor<Float> SYNCED_ROTATION_OFFSET = SynchedEntityData.defineId(DragonBreathCauldronIngredientEntity.class, EntityDataSerializers.FLOAT);
+public class DragonBreathCauldronIngredient extends Entity {
+	private static final EntityDataAccessor<Vec3> ANCHOR = SynchedEntityData.defineId(DragonBreathCauldronIngredient.class, StellarityEntityDataSerializers.VEC3);
+	private static final EntityDataAccessor<ItemStack> ITEM_STACK = SynchedEntityData.defineId(DragonBreathCauldronIngredient.class, EntityDataSerializers.ITEM_STACK);
+	private static final EntityDataAccessor<Float> SYNCED_ROTATION_OFFSET = SynchedEntityData.defineId(DragonBreathCauldronIngredient.class, EntityDataSerializers.FLOAT);
 
 	private float appearanceRotationOffset = 0;
 
 	private @Nullable DragonBreathCauldronBlockEntity cauldronBlockEntity = null;
 
-	public DragonBreathCauldronIngredientEntity(Level level, Vec3 anchor, ItemStack itemStack) {
+	public DragonBreathCauldronIngredient(Level level, Vec3 anchor, ItemStack itemStack) {
 		super(StellarityEntityTypes.DRAGON_BREATH_CAULDRON_INGREDIENT, level);
 		setAnchor(anchor);
 		setItemStack(itemStack);
 	}
 
-	public DragonBreathCauldronIngredientEntity(Level level, DragonBreathCauldronBlockEntity entity, Vec3 anchor, ItemStack itemStack) {
+	public DragonBreathCauldronIngredient(Level level, DragonBreathCauldronBlockEntity entity, Vec3 anchor, ItemStack itemStack) {
 		this(level, anchor, itemStack);
 		this.cauldronBlockEntity = entity;
 	}
@@ -68,7 +68,7 @@ public class DragonBreathCauldronIngredientEntity extends Entity {
 		entityData.set(ANCHOR, anchor);
 	}
 
-	public DragonBreathCauldronIngredientEntity(EntityType<DragonBreathCauldronIngredientEntity> entityEntityType, Level level) {
+	public DragonBreathCauldronIngredient(EntityType<DragonBreathCauldronIngredient> entityEntityType, Level level) {
 		super(entityEntityType, level);
 	}
 
