@@ -1,6 +1,5 @@
 # Stellarity Enlightened
 
----
 [![Discord](https://img.shields.io/discord/1528554343509393579?color=7289DA&logo=discord&style=for-the-badge&logoColor=7289DA)](https://discord.gg/ZSwKknnFat)
 [![Wiki](https://img.shields.io/badge/wiki-Work_in_progress!-orange?style=for-the-badge&logo=ReadMe&logoColor=white)](https://koharasbasement.wiki.gg/wiki/Stellarity)
 [![Modrinth](https://img.shields.io/modrinth/dt/stellarity-enlightened?label=Modrinth&logo=modrinth&style=for-the-badge)](https://modrinth.com/mod/stellarity-enlightened)
