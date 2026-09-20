@@ -1,0 +1,17 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:golden_chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:bowl"
+    },
+    {
+      "ingredient": "stellarity:grilled_enderman_flesh"
+    }
+  ],
+  "result": {
+    "id": "stellarity:pho"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:crimson_tigerfish"
+    },
+    {
+      "ingredient": "stellarity:prismite"
+    },
+    {
+      "ingredient": "minecraft:glistering_melon_slice"
+    },
+    {
+      "ingredient": "minecraft:ghast_tear"
+    },
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:regeneraga"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

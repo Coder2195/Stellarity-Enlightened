@@ -1,0 +1,14 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:ender_koi"
+    },
+    {
+      "ingredient": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "id": "stellarity:sushi"
+  }
+}

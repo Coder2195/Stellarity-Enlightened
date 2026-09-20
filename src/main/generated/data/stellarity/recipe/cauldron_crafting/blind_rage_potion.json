@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:fleshy_piranha"
+    },
+    {
+      "ingredient": "minecraft:glowstone_dust"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "minecraft:nether_wart"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:blind_rage"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

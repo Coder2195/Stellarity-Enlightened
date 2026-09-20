@@ -9,6 +9,7 @@ public interface StellarityRecipeBookCategories {
 
 	RecipeBookCategory ALTAR_OF_THE_ACCURSED = register("altar_of_the_accursed");
 	RecipeBookCategory CONSECRATION = register("consecration");
+	RecipeBookCategory CAULDRON_CRAFTING = register("cauldron_crafting");
 
 	private static RecipeBookCategory register(final String id) {
 		return Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, Stellarity.id(id), new RecipeBookCategory());

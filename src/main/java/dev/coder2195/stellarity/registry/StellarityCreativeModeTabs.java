@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ColorCollection;
 import dev.coder2195.stellarity.Stellarity;
@@ -66,7 +67,7 @@ public interface StellarityCreativeModeTabs {
 	};
 
 
-	List<Supplier<ItemStack>> FOOD_ITEMSTACKS = List.of(
+	List<ItemStackTemplate> FOOD_TEMPLATES = List.of(
 		AMARENE_POTION,
 		BLIND_RAGE_POTION,
 		LONG_BLIND_RAGE_POTION,
@@ -86,7 +87,7 @@ public interface StellarityCreativeModeTabs {
 		SPELUNKER_POTION,
 		LONG_SPELUNKER_POTION,
 		STRONG_SPELUNKER_POTION,
-		POSEIDONS_NECTAR_POTION,
+		POSEIDON_NECTAR_POTION,
 		RED_POTION,
 		REGENERAGA_POTION,
 		LONG_REGENERAGA_POTION,
@@ -219,7 +220,7 @@ public interface StellarityCreativeModeTabs {
 		.build();
 
 	static void init() {
-		register(key("food"), FOOD, FOOD_ITEMS, FOOD_ITEMSTACKS);
+		register(key("food"), FOOD, FOOD_ITEMS, FOOD_TEMPLATES);
 		register(key("blocks"), BLOCKS, BLOCKS_ITEMS, List.of(), BLOCKS_BATCH_ITEMSTACKS);
 		register(key("equipment"), EQUIPMENT, EQUIPMENT_ITEMS);
 		register(key("ingredients"), INGREDIENTS, INGREDIENT_ITEMS);
@@ -231,7 +232,7 @@ public interface StellarityCreativeModeTabs {
 
 	}
 
-	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<Supplier<ItemStack>> stacks, List<Supplier<List<ItemStack>>> batchStacks) {
+	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<ItemStackTemplate> stacks, List<Supplier<List<ItemStack>>> batchStacks) {
 		if (key.identifier().getNamespace().equals(Stellarity.MOD_ID))
 			Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, key, tab);
 
@@ -240,8 +241,8 @@ public interface StellarityCreativeModeTabs {
 				itemGroup.accept(item);
 			}
 
-			for (Supplier<ItemStack> stack : stacks) {
-				itemGroup.accept(stack.get());
+			for (ItemStackTemplate stack : stacks) {
+				itemGroup.accept(stack.create());
 			}
 
 			for (Supplier<List<ItemStack>> batch : batchStacks) {
@@ -252,7 +253,7 @@ public interface StellarityCreativeModeTabs {
 
 	}
 
-	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<Supplier<ItemStack>> stacks) {
+	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<ItemStackTemplate> stacks) {
 		register(key, tab, items, stacks, List.of());
 	}
 

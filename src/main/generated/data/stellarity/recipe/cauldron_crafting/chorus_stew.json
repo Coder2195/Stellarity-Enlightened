@@ -1,0 +1,17 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:bowl"
+    },
+    {
+      "ingredient": "minecraft:chorus_flower"
+    }
+  ],
+  "result": {
+    "id": "stellarity:chorus_stew"
+  }
+}

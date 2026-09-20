@@ -1,0 +1,17 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:sugar"
+    },
+    {
+      "ingredient": "stellarity:ender_egg"
+    }
+  ],
+  "result": {
+    "id": "stellarity:chorus_pie"
+  }
+}

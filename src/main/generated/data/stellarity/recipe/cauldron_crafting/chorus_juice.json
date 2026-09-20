@@ -1,0 +1,20 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "count": 2,
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:chorus_juice"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

@@ -16,7 +16,6 @@ import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,13 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
-public interface AltarOfTheAccursedRecipe extends Recipe<AltarOfTheAccursedRecipe.Input> {
-	class Input extends SimpleContainer implements RecipeInput {
-		@Override
-		public int size() {
-			return this.items.size();
-		}
-	}
+public interface AltarOfTheAccursedRecipe extends Recipe<ItemListInput> {
 
 	record Output(HashMap<ItemStack, Integer> remainders, ItemStack... result) {
 		public Output(HashMap<ItemStack, Integer> remainders, ItemStack result) {
@@ -43,7 +36,7 @@ public interface AltarOfTheAccursedRecipe extends Recipe<AltarOfTheAccursedRecip
 		}
 	}
 
-	@Nullable Output craft(List<ItemStack> itemStacks);
+	@Nullable Output craft(List<ItemStack> input);
 
 	@Override
 	default PlacementInfo placementInfo() {
@@ -56,14 +49,14 @@ public interface AltarOfTheAccursedRecipe extends Recipe<AltarOfTheAccursedRecip
 	}
 
 	@Override
-	default RecipeType<? extends Recipe<Input>> getType() {
+	default RecipeType<? extends Recipe<ItemListInput>> getType() {
 		return StellarityRecipeTypes.ALTAR_OF_THE_ACCURSED;
 	}
 
 
 	@Override
-	default boolean matches(Input container, Level level) {
-		return craft(container.items) == null;
+	default boolean matches(ItemListInput input, Level level) {
+		return craft(input) == null;
 	}
 
 
@@ -153,7 +146,7 @@ public interface AltarOfTheAccursedRecipe extends Recipe<AltarOfTheAccursedRecip
 
 
 	@Override
-	default ItemStack assemble(Input recipeInput) {
+	default ItemStack assemble(ItemListInput recipeInput) {
 		// stupid mojang recipes
 		return ItemStack.EMPTY;
 	}

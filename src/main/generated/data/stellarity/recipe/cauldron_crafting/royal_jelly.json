@@ -1,0 +1,18 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:honey_bottle"
+    },
+    {
+      "ingredient": "stellarity:starlight_soot"
+    },
+    {
+      "count": 2,
+      "ingredient": "minecraft:amethyst_shard"
+    }
+  ],
+  "result": {
+    "id": "stellarity:royal_jelly"
+  }
+}

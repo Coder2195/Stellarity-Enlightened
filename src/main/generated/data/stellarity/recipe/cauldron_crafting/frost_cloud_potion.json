@@ -1,0 +1,26 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "stellarity:frost_minnow"
+    },
+    {
+      "count": 3,
+      "ingredient": "minecraft:packed_ice"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:frost_cloud"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

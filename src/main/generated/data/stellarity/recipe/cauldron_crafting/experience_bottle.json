@@ -1,0 +1,15 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "count": 2,
+      "ingredient": "minecraft:lapis_lazuli"
+    }
+  ],
+  "result": {
+    "id": "minecraft:experience_bottle"
+  }
+}

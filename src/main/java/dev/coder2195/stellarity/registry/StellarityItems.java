@@ -8,6 +8,7 @@ import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.CommonComponents;
@@ -41,7 +42,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public interface StellarityItems {
@@ -213,43 +213,43 @@ public interface StellarityItems {
 	);
 
 
-	Supplier<ItemStack> AMARENE_POTION = createPotion(StellarityPotions.AMARENE);
+	ItemStackTemplate AMARENE_POTION = createPotion(StellarityPotions.AMARENE);
 
-	Supplier<ItemStack> BLIND_RAGE_POTION = createPotion(StellarityPotions.BLIND_RAGE);
-	Supplier<ItemStack> LONG_BLIND_RAGE_POTION = createPotion(StellarityPotions.LONG_BLIND_RAGE);
+	ItemStackTemplate BLIND_RAGE_POTION = createPotion(StellarityPotions.BLIND_RAGE);
+	ItemStackTemplate LONG_BLIND_RAGE_POTION = createPotion(StellarityPotions.LONG_BLIND_RAGE);
 
-	Supplier<ItemStack> ENDURANCE_POTION = createPotion(StellarityPotions.ENDURANCE);
-	Supplier<ItemStack> LONG_ENDURANCE_POTION = createPotion(StellarityPotions.LONG_ENDURANCE);
-	Supplier<ItemStack> STRONG_ENDURANCE_POTION = createPotion(StellarityPotions.STRONG_ENDURANCE);
+	ItemStackTemplate ENDURANCE_POTION = createPotion(StellarityPotions.ENDURANCE);
+	ItemStackTemplate LONG_ENDURANCE_POTION = createPotion(StellarityPotions.LONG_ENDURANCE);
+	ItemStackTemplate STRONG_ENDURANCE_POTION = createPotion(StellarityPotions.STRONG_ENDURANCE);
 
-	Supplier<ItemStack> ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.ENTANGLEMENT);
-	Supplier<ItemStack> LONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.LONG_ENTANGLEMENT);
-	Supplier<ItemStack> STRONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.STRONG_ENTANGLEMENT);
+	ItemStackTemplate ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.ENTANGLEMENT);
+	ItemStackTemplate LONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.LONG_ENTANGLEMENT);
+	ItemStackTemplate STRONG_ENTANGLEMENT_POTION = createSplashPotion(StellarityPotions.STRONG_ENTANGLEMENT);
 
-	Supplier<ItemStack> FROST_CLOUD_POTION = createLingeringPotion(StellarityPotions.FROST_CLOUD);
+	ItemStackTemplate FROST_CLOUD_POTION = createLingeringPotion(StellarityPotions.FROST_CLOUD);
 
-	Supplier<ItemStack> HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.HELLFIRE_TREADER);
-	Supplier<ItemStack> LONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.LONG_HELLFIRE_TREADER);
-	Supplier<ItemStack> STRONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.STRONG_HELLFIRE_TREADER);
+	ItemStackTemplate HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.HELLFIRE_TREADER);
+	ItemStackTemplate LONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.LONG_HELLFIRE_TREADER);
+	ItemStackTemplate STRONG_HELLFIRE_TREADER_POTION = createPotion(StellarityPotions.STRONG_HELLFIRE_TREADER);
 
-	Supplier<ItemStack> LIFEFORCE_POTION = createPotion(StellarityPotions.LIFEFORCE);
-	Supplier<ItemStack> LONG_LIFEFORCE_POTION = createPotion(StellarityPotions.LONG_LIFEFORCE);
-	Supplier<ItemStack> STRONG_LIFEFORCE_POTION = createPotion(StellarityPotions.STRONG_LIFEFORCE);
+	ItemStackTemplate LIFEFORCE_POTION = createPotion(StellarityPotions.LIFEFORCE);
+	ItemStackTemplate LONG_LIFEFORCE_POTION = createPotion(StellarityPotions.LONG_LIFEFORCE);
+	ItemStackTemplate STRONG_LIFEFORCE_POTION = createPotion(StellarityPotions.STRONG_LIFEFORCE);
 
-	Supplier<ItemStack> SPELUNKER_POTION = createPotion(StellarityPotions.SPELUNKER);
-	Supplier<ItemStack> LONG_SPELUNKER_POTION = createPotion(StellarityPotions.LONG_SPELUNKER);
-	Supplier<ItemStack> STRONG_SPELUNKER_POTION = createPotion(StellarityPotions.STRONG_SPELUNKER);
+	ItemStackTemplate SPELUNKER_POTION = createPotion(StellarityPotions.SPELUNKER);
+	ItemStackTemplate LONG_SPELUNKER_POTION = createPotion(StellarityPotions.LONG_SPELUNKER);
+	ItemStackTemplate STRONG_SPELUNKER_POTION = createPotion(StellarityPotions.STRONG_SPELUNKER);
 
-	Supplier<ItemStack> POSEIDONS_NECTAR_POTION = createPotion(StellarityPotions.POSEIDONS_NECTAR);
-	Supplier<ItemStack> RED_POTION = createPotion(StellarityPotions.RED);
+	ItemStackTemplate POSEIDON_NECTAR_POTION = createPotion(StellarityPotions.POSEIDON_NECTAR);
+	ItemStackTemplate RED_POTION = createPotion(StellarityPotions.RED);
 
-	Supplier<ItemStack> REGENERAGA_POTION = createPotion(StellarityPotions.REGENERAGA);
-	Supplier<ItemStack> LONG_REGENERAGA_POTION = createPotion(StellarityPotions.LONG_REGENERAGA);
-	Supplier<ItemStack> STRONG_REGENERAGA_POTION = createPotion(StellarityPotions.STRONG_REGENERAGA);
+	ItemStackTemplate REGENERAGA_POTION = createPotion(StellarityPotions.REGENERAGA);
+	ItemStackTemplate LONG_REGENERAGA_POTION = createPotion(StellarityPotions.LONG_REGENERAGA);
+	ItemStackTemplate STRONG_REGENERAGA_POTION = createPotion(StellarityPotions.STRONG_REGENERAGA);
 
-	Supplier<ItemStack> LUCK_POTION = createPotion(StellarityPotions.LUCK);
+	ItemStackTemplate LUCK_POTION = createPotion(StellarityPotions.LUCK);
 
-	Supplier<ItemStack> CHORUS_JUICE = createPotion(StellarityPotions.CHORUS_JUICE);
+	ItemStackTemplate CHORUS_JUICE = createPotion(StellarityPotions.CHORUS_JUICE);
 
 	Item ROYAL_JELLY = register(StellarityItemIds.ROYAL_JELLY, foodProperties(new Item.Properties().stacksTo(1).craftRemainder(Items.GLASS_BOTTLE), new FoodProperties.Builder(), Consumables.defaultFood().consumeSeconds(1.5f).sound(SoundEvents.HONEY_DRINK).onConsume(RemoveHarmfulStatusEffectsConsumeEffect.INSTANCE), 6, 3.6f, true,
 		new MobEffectInstance(MobEffects.ABSORPTION, 60 * 20)
@@ -372,16 +372,16 @@ public interface StellarityItems {
 	Item CHAPEL_OF_LIGHT_MAP = register(StellarityItemIds.CHAPEL_OF_LIGHT_MAP, MapItem::new, mapProperties());
 	Item FLOATING_TREASURE_MAP = register(StellarityItemIds.FLOATING_TREASURE_MAP, MapItem::new, mapProperties());
 
-	static Supplier<ItemStack> createPotion(Holder<Potion> potion) {
-		return () -> PotionContents.createItemStack(Items.POTION, potion);
+	static ItemStackTemplate createPotion(Holder<Potion> potion) {
+		return new ItemStackTemplate(Items.POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(potion)).build());
 	}
 
-	static Supplier<ItemStack> createSplashPotion(Holder<Potion> potion) {
-		return () -> PotionContents.createItemStack(Items.SPLASH_POTION, potion);
+	static ItemStackTemplate createSplashPotion(Holder<Potion> potion) {
+		return new ItemStackTemplate(Items.SPLASH_POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(potion)).build());
 	}
 
-	static Supplier<ItemStack> createLingeringPotion(Holder<Potion> potion) {
-		return () -> PotionContents.createItemStack(Items.LINGERING_POTION, potion);
+	static ItemStackTemplate createLingeringPotion(Holder<Potion> potion) {
+		return new ItemStackTemplate(Items.LINGERING_POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(potion)).build());
 	}
 
 	static Item registerBlock(BlockItemId key, Block block) {

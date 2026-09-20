@@ -87,7 +87,7 @@ public record AltarOfTheAccursedUpgradeRecipe(Ingredient equipment,
 
 
 	@Override
-	public RecipeSerializer<? extends Recipe<Input>> getSerializer() {
+	public RecipeSerializer<? extends Recipe<ItemListInput>> getSerializer() {
 		return StellarityRecipeSerializers.ALTAR_OF_THE_ACCURSED_UPGRADE;
 	}
 

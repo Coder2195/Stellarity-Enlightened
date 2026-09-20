@@ -1,0 +1,26 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "count": 2,
+      "ingredient": "minecraft:short_grass"
+    },
+    {
+      "ingredient": "minecraft:diamond"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:luck"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

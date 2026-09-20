@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "stellarity:prismite"
+    },
+    {
+      "ingredient": "stellarity:starlight_soot"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:lifeforce"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

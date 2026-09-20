@@ -1,0 +1,14 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:enderman_flesh"
+    },
+    {
+      "ingredient": "minecraft:ice"
+    }
+  ],
+  "result": {
+    "id": "stellarity:frozen_carpaccio"
+  }
+}

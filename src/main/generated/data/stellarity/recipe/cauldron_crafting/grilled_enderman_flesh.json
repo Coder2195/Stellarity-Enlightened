@@ -1,0 +1,14 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:enderman_flesh"
+    },
+    {
+      "ingredient": "minecraft:blaze_powder"
+    }
+  ],
+  "result": {
+    "id": "stellarity:grilled_enderman_flesh"
+  }
+}

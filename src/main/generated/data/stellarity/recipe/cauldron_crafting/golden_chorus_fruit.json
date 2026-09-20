@@ -1,0 +1,14 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:gold_block"
+    }
+  ],
+  "result": {
+    "id": "stellarity:golden_chorus_fruit"
+  }
+}

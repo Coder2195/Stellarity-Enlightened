@@ -1,0 +1,14 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:prismite"
+    },
+    {
+      "ingredient": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "id": "stellarity:prismatic_sushi"
+  }
+}

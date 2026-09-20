@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "#minecraft:mushrooms"
+    },
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "minecraft:gold_ingot"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:spelunker"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

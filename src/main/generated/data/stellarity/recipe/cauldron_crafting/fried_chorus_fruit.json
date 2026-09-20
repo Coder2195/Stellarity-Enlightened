@@ -1,0 +1,17 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "ingredient": "minecraft:wheat"
+    },
+    {
+      "ingredient": "minecraft:blaze_powder"
+    }
+  ],
+  "result": {
+    "id": "stellarity:fried_chorus_fruit"
+  }
+}

@@ -80,7 +80,7 @@ public interface StellarityPotions {
 		new MobEffectInstance(MobEffects.HASTE, 90 * 20, 1)
 	);
 
-	Holder<Potion> POSEIDONS_NECTAR = register("poseidons_nectar", "poseidons_nectar",
+	Holder<Potion> POSEIDON_NECTAR = register("poseidon_nectar", "poseidon_nectar",
 		new MobEffectInstance(MobEffects.CONDUIT_POWER, 390 * 20),
 		new MobEffectInstance(MobEffects.ABSORPTION, 390 * 20),
 		new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 390 * 20)
@@ -149,7 +149,7 @@ public interface StellarityPotions {
 		COLORS.put(SPELUNKER, 0xffd900);
 		COLORS.put(LONG_SPELUNKER, 0xffd900);
 		COLORS.put(STRONG_SPELUNKER, 0xffd900);
-		COLORS.put(POSEIDONS_NECTAR, 0x47a6ff);
+		COLORS.put(POSEIDON_NECTAR, 0x47a6ff);
 		COLORS.put(RED, 0xf50022);
 		COLORS.put(REGENERAGA, 0xf60077);
 		COLORS.put(LONG_REGENERAGA, 0xf60077);
@@ -165,6 +165,6 @@ public interface StellarityPotions {
 		NAME_COLORS.put(LIFEFORCE, TextColor.WHITE.getValue());
 		NAME_COLORS.put(AMARENE, 0xC90D17);
 		NAME_COLORS.put(FROST_CLOUD, TextColor.WHITE.getValue());
-		NAME_COLORS.put(POSEIDONS_NECTAR, TextColor.YELLOW.getValue());
+		NAME_COLORS.put(POSEIDON_NECTAR, TextColor.YELLOW.getValue());
 	}
 }

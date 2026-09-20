@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "stellarity:flarefin_koi"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "minecraft:sugar"
+    },
+    {
+      "ingredient": "minecraft:nether_wart"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:hellfire_treader"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

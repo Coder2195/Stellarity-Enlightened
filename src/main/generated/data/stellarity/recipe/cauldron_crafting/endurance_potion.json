@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "minecraft:iron_ingot"
+    },
+    {
+      "ingredient": "minecraft:popped_chorus_fruit"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:endurance"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}

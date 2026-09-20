@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.datagen;
 import com.mojang.serialization.Lifecycle;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.recipe.*;
+import dev.coder2195.stellarity.registry.StellarityPotions;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
@@ -17,12 +18,16 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
+import org.jspecify.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -34,7 +39,7 @@ import static net.minecraft.world.item.Items.*;
 
 
 public class RecipeProvider extends FabricRecipeProvider {
-
+	private HolderLookup.@Nullable Provider registries = null;
 	public RecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
@@ -47,7 +52,11 @@ public class RecipeProvider extends FabricRecipeProvider {
 		output.accept(Stellarity.key(Registries.RECIPE, "consecration/" + id), new ConsecrationRecipe(item, result), null);
 	}
 
-	public static class Ingredients extends LinkedHashMap<Ingredient, Integer> {
+	public static void cauldronCrafting(RecipeOutput output, String id, CauldronCraftingRecipe recipe) {
+		output.accept(Stellarity.key(Registries.RECIPE, "cauldron_crafting/" + id), recipe, null);
+	}
+
+	public class Ingredients extends LinkedHashMap<Ingredient, Integer> {
 		public Ingredients put(ItemLike item, int count) {
 			put(Ingredient.of(item), count);
 			return this;
@@ -55,6 +64,17 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 		public Ingredients put(ItemLike item) {
 			return put(item, 1);
+		}
+		
+		public Ingredients put(TagKey<Item> itemTag, int count) {
+			assert RecipeProvider.this.registries != null;
+			put(Ingredient.of(RecipeProvider.this.registries.getOrThrow(itemTag)), count);
+
+			 return this;
+		}
+
+		public Ingredients put(TagKey<Item> itemTag) {
+			return put(itemTag, 1);
 		}
 
 		public Ingredients putMany(int count, ItemLike... items) {
@@ -185,6 +205,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 
 	public void buildRecipes(HolderLookup.Provider provider, RecipeOutput output) {
+		registries = provider;
 
 		altarOfTheAccursed(output, "lapis_to_amethyst", new AltarOfTheAccursedSimpleRecipe(
 			new Ingredients().put(DIAMOND).put(LAPIS_LAZULI),
@@ -341,6 +362,185 @@ public class RecipeProvider extends FabricRecipeProvider {
 		consecration(output, "pearlescent_froglight", Ingredient.of(VERDANT_FROGLIGHT), new ItemStackTemplate(PEARLESCENT_FROGLIGHT));
 		consecration(output, "ochre_froglight", Ingredient.of(PEARLESCENT_FROGLIGHT), new ItemStackTemplate(OCHRE_FROGLIGHT));
 		consecration(output, "ashen_froglight", Ingredient.of(OCHRE_FROGLIGHT), new ItemStackTemplate(ASHEN_FROGLIGHT));
+
+
+		cauldronCrafting(output, "chorus_stew", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT)
+			.put(BOWL)
+			.put(CHORUS_FLOWER),
+			new ItemStackTemplate(CHORUS_STEW)
+		));
+
+		cauldronCrafting(output, "experience_bottle", new CauldronCraftingRecipe(new Ingredients()
+			.put(GLASS_BOTTLE)
+			.put(LAPIS_LAZULI, 2),
+			new ItemStackTemplate(EXPERIENCE_BOTTLE)
+		));
+
+		cauldronCrafting(output, "golden_chorus_fruit", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT)
+			.put(GOLD_BLOCK),
+			new ItemStackTemplate(GOLDEN_CHORUS_FRUIT)
+		));
+
+		cauldronCrafting(output, "candied_chorus_fruit", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT)
+			.put(SUGAR, 2),
+			new ItemStackTemplate(CANDIED_CHORUS_FRUIT)
+		));
+
+		cauldronCrafting(output, "fried_chorus_fruit", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT)
+			.put(WHEAT)
+			.put(BLAZE_POWDER),
+			new ItemStackTemplate(FRIED_CHORUS_FRUIT)
+		));
+
+		cauldronCrafting(output, "grilled_enderman_flesh", new CauldronCraftingRecipe(new Ingredients()
+			.put(ENDERMAN_FLESH)
+			.put(BLAZE_POWDER),
+			new ItemStackTemplate(GRILLED_ENDERMAN_FLESH)
+		));
+
+		cauldronCrafting(output, "frozen_carpaccio", new CauldronCraftingRecipe(new Ingredients()
+			.put(ENDERMAN_FLESH)
+			.put(ICE),
+			new ItemStackTemplate(FROZEN_CARPACCIO)
+		));
+
+		cauldronCrafting(output, "chorus_pie", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT)
+			.put(SUGAR)
+			.put(ENDER_EGG),
+			new ItemStackTemplate(CHORUS_PIE)
+		));
+
+		cauldronCrafting(output, "pho", new CauldronCraftingRecipe(new Ingredients()
+			.put(GOLDEN_CHORUS_FRUIT)
+			.put(BOWL)
+			.put(GRILLED_ENDERMAN_FLESH),
+			new ItemStackTemplate(PHO)
+		));
+
+		cauldronCrafting(output, "shepherd_pie", new CauldronCraftingRecipe(new Ingredients()
+			.put(SHULKER_BODY)
+			.put(GOLDEN_CARROT)
+			.put(BAKED_POTATO)
+			.put(CHORUS_FRUIT, 2),
+			new ItemStackTemplate(SHEPHERD_PIE)
+));
+
+		cauldronCrafting(output, "sushi", new CauldronCraftingRecipe(new Ingredients()
+			.put(ENDER_KOI)
+			.put(DRIED_KELP),
+			new ItemStackTemplate(SUSHI)
+		));
+
+		cauldronCrafting(output, "prismatic_sushi", new CauldronCraftingRecipe(new Ingredients()
+			.put(PRISMITE)
+			.put(DRIED_KELP),
+			new ItemStackTemplate(PRISMATIC_SUSHI)
+		));
+
+		cauldronCrafting(output, "chorus_juice", new CauldronCraftingRecipe(new Ingredients()
+			.put(CHORUS_FRUIT, 2)
+			.put(GLASS_BOTTLE),
+			CHORUS_JUICE
+		));
+
+		cauldronCrafting(output, "blind_rage_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(FLESHY_PIRANHA)
+			.put(GLOWSTONE_DUST)
+			.put(GLASS_BOTTLE)
+			.put(NETHER_WART),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.BLIND_RAGE)).build()))
+		);
+
+
+
+		cauldronCrafting(output, "endurance_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(IRON_INGOT)
+			.put(POPPED_CHORUS_FRUIT),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.ENDURANCE)).build())
+		));
+
+		//todo potion extensions
+
+		cauldronCrafting(output, "entanglement_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(OVERGROWN_COD)
+			.put(GUNPOWDER),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.ENTANGLEMENT)).build())
+		));
+
+		cauldronCrafting(output, "frost_cloud_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(FROST_MINNOW)
+			.put(PACKED_ICE, 3),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.FROST_CLOUD)).build())
+		));
+
+		cauldronCrafting(output, "hellfire_treader_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(FLAREFIN_KOI)
+			.put(GLASS_BOTTLE)
+			.put(SUGAR)
+			.put(NETHER_WART),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.HELLFIRE_TREADER)).build())
+		));
+
+		cauldronCrafting(output, "lifeforce_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(PRISMITE)
+			.put(STARLIGHT_SOOT),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.LIFEFORCE)).build())
+		));
+
+		cauldronCrafting(output, "spelunker_potion", new CauldronCraftingRecipe(new Ingredients()
+			.put(ItemTags.MUSHROOMS)
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(GOLD_INGOT),
+			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.SPELUNKER)).build())
+		));
+
+		cauldronCrafting(output, "of_luck", new CauldronCraftingRecipe(new Ingredients()
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE)
+			.put(SHORT_GRASS, 2)
+			.put(DIAMOND),
+			LUCK_POTION
+		));
+
+		cauldronCrafting(output, "poseidon_nectar", new CauldronCraftingRecipe(new Ingredients()
+			.put(BUBBLEFISH)
+			.put(NAUTILUS_SHELL)
+			.put(PRISMARINE_SHARD)
+			.put(HONEY_BOTTLE)
+			.put(KELP),
+			POSEIDON_NECTAR_POTION
+		));
+
+		cauldronCrafting(output, "regeneraga", new CauldronCraftingRecipe(new Ingredients()
+			.put(CRIMSON_TIGERFISH)
+			.put(PRISMITE)
+			.put(GLISTERING_MELON_SLICE)
+			.put(GHAST_TEAR)
+			.put(NETHER_WART)
+			.put(GLASS_BOTTLE),
+			REGENERAGA_POTION
+		));
+
+		cauldronCrafting(output, "royal_jelly", new CauldronCraftingRecipe(new Ingredients()
+			.put(HONEY_BOTTLE)
+			.put(STARLIGHT_SOOT)
+			.put(AMETHYST_SHARD, 2),
+			new ItemStackTemplate(ROYAL_JELLY)
+		));
 	}
 
 	@Override

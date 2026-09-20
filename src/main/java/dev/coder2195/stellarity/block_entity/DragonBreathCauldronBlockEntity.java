@@ -2,14 +2,21 @@ package dev.coder2195.stellarity.block_entity;
 
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.entity.DragonBreathCauldronIngredient;
+import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
+import dev.coder2195.stellarity.recipe.ItemListInput;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
+import dev.coder2195.stellarity.registry.StellarityRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.PowerParticleOption;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
@@ -24,8 +31,10 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 	private List<ItemStack> ingredients = new ArrayList<>();
 	private int maxIngredients = 10;
 	private int tickCounter = -1;
-	private int remainingUses = -1;
+	private int remainingUses = Integer.MIN_VALUE;
 
+	public static final int[] CAULDRON_THRESHOLDS = {-1, 2, 4, 6};
+	public static final int[] UNKNOWN_USES_FALLBACK = {0, 2, 4, 7};
 
 	public DragonBreathCauldronBlockEntity(BlockPos worldPosition, BlockState blockState) {
 		super(StellarityBlockEntityTypes.DRAGON_BREATH_CAULDRON, worldPosition, blockState);
@@ -39,7 +48,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		var random = level.getRandom();
 
 		var centerPos = Vec3.atCenterOf(blockPos);
-		if (level.isClientSide()) {
+		if (!(level instanceof ServerLevel serverLevel)) {
 			double x = centerPos.x + random.nextDouble() * 0.8 - 0.4;
 			double z = centerPos.z + random.nextDouble() * 0.8 - 0.4;
 
@@ -54,7 +63,34 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		}
 
 		var ingredientsSize = ingredientEntities.size();
-		if (ingredientsSize == 0) return;
+		if (ingredientsSize == 0 || tickCounter % 10 != 0) return;
+		var input = new ItemListInput(ingredients);
+		var recipes = serverLevel.recipeAccess().getRecipeFor(StellarityRecipeTypes.CAULDRON_CRAFTING, input, serverLevel);
+		if (recipes.isEmpty()) return;
+		// offset for 0 index
+		int cauldronLevel = blockState.getValueOrElse(LayeredCauldronBlock.LEVEL, 3);
+		if (remainingUses == Integer.MIN_VALUE) remainingUses = UNKNOWN_USES_FALLBACK[cauldronLevel];
+
+		var itemStack = recipes.get().value().assemble(input);
+
+		var resultEntity = new ItemEntity(serverLevel, centerPos.x, centerPos.y, centerPos.z, itemStack);
+		resultEntity.stellarity$setItemMode(ExtItemEntity.ItemMode.RESULT, -1);
+		serverLevel.addFreshEntity(resultEntity);
+		remainingUses--;
+		setIngredients(List.of());
+		syncIngredientEntities(level, blockPos);
+
+		if (remainingUses == 0) {
+			level.setBlock(blockPos, Blocks.CAULDRON.defaultBlockState(), Block.UPDATE_ALL);
+			return;
+		}
+
+		for (int i = 0; i < CAULDRON_THRESHOLDS.length; i++) {
+			if (CAULDRON_THRESHOLDS[i] < remainingUses) continue;
+			if (i != cauldronLevel) level.setBlock(blockPos, blockState.setValue(LayeredCauldronBlock.LEVEL, i), Block.UPDATE_ALL);
+			return;
+		}
+
 	}
 
 	public void syncIngredientEntities(Level level, BlockPos blockPos) {
@@ -63,7 +99,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		int commonSize = Math.min(ingredientsSize, entitiesSize);
 		var anchor = Vec3.atCenterOf(blockPos);
 
-		for (int i=0; i<commonSize; i++) {
+		for (int i = 0; i < commonSize; i++) {
 			var entity = ingredientEntities.get(i);
 			entity.setItemStack(ingredients.get(i));
 			entity.setCauldronBlockEntity(this);
@@ -71,12 +107,12 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		}
 
 		if (ingredientsSize < entitiesSize) {
-			for (int i=entitiesSize - 1; i>=commonSize; i--) {
+			for (int i = entitiesSize - 1; i >= commonSize; i--) {
 				ingredientEntities.remove(i).discard();
 			}
 			return;
 		}
-		for (int i=commonSize; i<ingredientsSize; i++) {
+		for (int i = commonSize; i < ingredientsSize; i++) {
 			var newEntity = new DragonBreathCauldronIngredient(level, this, anchor, ingredients.get(i));
 			ingredientEntities.add(newEntity);
 			level.addFreshEntity(newEntity);
@@ -88,7 +124,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 	public void syncRotationOffsets() {
 		var entitiesSize = ingredientEntities.size();
 
-		for (int i=0; i<entitiesSize; i++) {
+		for (int i = 0; i < entitiesSize; i++) {
 			ingredientEntities.get(i).setSyncedRotationOffset(Mth.TWO_PI * i / entitiesSize);
 		}
 	}
@@ -107,7 +143,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 
 	@Override
 	public void preRemoveSideEffects(BlockPos pos, BlockState state) {
-		if (level instanceof ServerLevel serverLevel) while(!ingredientEntities.isEmpty()) ingredientEntities.getLast().dropItem(serverLevel);
+		if (level instanceof ServerLevel serverLevel) while (!ingredientEntities.isEmpty()) ingredientEntities.getLast().dropItem(serverLevel);
 	}
 
 	public boolean isFull() {
@@ -118,7 +154,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		boolean willOverflow = ingredients.size() + ingredient.count() > maxIngredients;
 		int ingredientCount = ingredient.count();
 		int count = willOverflow ? maxIngredients - ingredients.size() : ingredientCount;
-		for (int i=0; i<count; i++) {
+		for (int i = 0; i < count; i++) {
 			ingredients.add(ingredient.copyWithCount(1));
 		}
 

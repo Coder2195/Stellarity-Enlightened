@@ -1,0 +1,15 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:chorus_fruit"
+    },
+    {
+      "count": 2,
+      "ingredient": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "id": "stellarity:candied_chorus_fruit"
+  }
+}

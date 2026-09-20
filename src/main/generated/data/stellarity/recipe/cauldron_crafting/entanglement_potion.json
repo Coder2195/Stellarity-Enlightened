@@ -1,0 +1,25 @@
+{
+  "type": "stellarity:cauldron_crafting",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:nether_wart"
+    },
+    {
+      "ingredient": "minecraft:glass_bottle"
+    },
+    {
+      "ingredient": "stellarity:overgrown_cod"
+    },
+    {
+      "ingredient": "minecraft:gunpowder"
+    }
+  ],
+  "result": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "stellarity:entanglement"
+      }
+    },
+    "id": "minecraft:potion"
+  }
+}
