@@ -2,19 +2,19 @@
   "type": "stellarity:cauldron_crafting_simple",
   "ingredients": [
     {
-      "ingredient": "stellarity:crimson_tigerfish"
+      "ingredient": "minecraft:wither_rose"
     },
     {
-      "ingredient": "stellarity:prismite"
+      "ingredient": "minecraft:wither_skeleton_skull"
     },
     {
-      "ingredient": "minecraft:glistering_melon_slice"
+      "ingredient": "minecraft:red_dye"
     },
     {
-      "ingredient": "minecraft:ghast_tear"
+      "ingredient": "minecraft:sweet_berries"
     },
     {
-      "ingredient": "minecraft:nether_wart"
+      "ingredient": "minecraft:nether_wart_block"
     },
     {
       "ingredient": "minecraft:glass_bottle"
@@ -23,7 +23,7 @@
   "result": {
     "components": {
       "minecraft:potion_contents": {
-        "potion": "stellarity:regeneraga"
+        "potion": "stellarity:red"
       }
     },
     "id": "minecraft:potion"

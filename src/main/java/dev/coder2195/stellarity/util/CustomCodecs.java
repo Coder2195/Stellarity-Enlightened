@@ -8,6 +8,7 @@ import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -24,11 +25,21 @@ public interface CustomCodecs {
 		}
 	};
 
-	MapCodec<Map.Entry<Ingredient, Integer>> INGREDIENT_MAP_CODEC = RecordCodecBuilder.mapCodec(
+	MapCodec<Map.Entry<Ingredient, Integer>> INGREDIENT_MAP_ENTRY_CODEC = RecordCodecBuilder.mapCodec(
 		instance -> instance.group(
 			Ingredient.CODEC.fieldOf("ingredient").forGetter(Map.Entry::getKey),
 			Codec.INT.optionalFieldOf("count", 1).forGetter(Map.Entry::getValue)
 		).apply(instance, Map::entry)
+	);
+
+	Codec<HashMap<Ingredient, Integer>> INGREDIENT_MAP_CODEC =  INGREDIENT_MAP_ENTRY_CODEC.codec().listOf().xmap(
+		(entries) -> {
+			HashMap<Ingredient, Integer> hashMap = new HashMap<>();
+			entries.forEach(e -> hashMap.put(e.getKey(), e.getValue()));
+			return hashMap;
+		}, (map) -> {
+			return map.entrySet().stream().toList();
+		}
 	);
 
 	static <T extends Enum<T>> Codec<T> enumName(Class<T> enumClass, T defaultValue) {

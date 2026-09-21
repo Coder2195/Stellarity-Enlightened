@@ -1,0 +1,11 @@
+{
+  "type": "stellarity:cauldron_crafting_potion_convert",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:glowstone_dust"
+    }
+  ],
+  "original_potion": "stellarity:regeneraga",
+  "potion_item": "minecraft:potion",
+  "result_potion": "stellarity:strong_regeneraga"
+}

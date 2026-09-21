@@ -77,7 +77,7 @@ public record AltarOfTheAccursedSimpleRecipe(HashMap<Ingredient, Integer> ingred
 
 	public static final MapCodec<AltarOfTheAccursedSimpleRecipe> CODEC = RecordCodecBuilder.mapCodec(
 		instance -> instance.group(
-			CustomCodecs.INGREDIENT_MAP_CODEC.codec().listOf().fieldOf("ingredients").forGetter((recipe) ->
+			CustomCodecs.INGREDIENT_MAP_ENTRY_CODEC.codec().listOf().fieldOf("ingredients").forGetter((recipe) ->
 				recipe.ingredients.entrySet().stream().toList()
 			),
 			ItemStackTemplate.CODEC.fieldOf("result").forGetter(AltarOfTheAccursedSimpleRecipe::result)

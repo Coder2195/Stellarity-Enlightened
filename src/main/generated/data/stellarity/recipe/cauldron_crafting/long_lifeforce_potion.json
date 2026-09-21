@@ -1,0 +1,11 @@
+{
+  "type": "stellarity:cauldron_crafting_potion_convert",
+  "ingredients": [
+    {
+      "ingredient": "minecraft:redstone"
+    }
+  ],
+  "original_potion": "stellarity:lifeforce",
+  "potion_item": "minecraft:potion",
+  "result_potion": "stellarity:long_lifeforce"
+}

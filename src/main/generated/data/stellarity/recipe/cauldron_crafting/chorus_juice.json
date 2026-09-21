@@ -1,5 +1,5 @@
 {
-  "type": "stellarity:cauldron_crafting",
+  "type": "stellarity:cauldron_crafting_simple",
   "ingredients": [
     {
       "count": 2,

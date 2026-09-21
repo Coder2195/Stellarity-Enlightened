@@ -101,7 +101,7 @@ public record AltarOfTheAccursedUpgradeRecipe(Ingredient equipment,
 	public static final MapCodec<AltarOfTheAccursedUpgradeRecipe> CODEC = RecordCodecBuilder.mapCodec(
 
 		instance -> instance.group(
-			CustomCodecs.INGREDIENT_MAP_CODEC.codec().listOf().fieldOf("ingredients").forGetter((recipe) ->
+			CustomCodecs.INGREDIENT_MAP_ENTRY_CODEC.codec().listOf().fieldOf("ingredients").forGetter((recipe) ->
 				recipe.ingredients.entrySet().stream().toList()
 			),
 			Ingredient.CODEC.fieldOf("equipment").forGetter(AltarOfTheAccursedUpgradeRecipe::equipment),

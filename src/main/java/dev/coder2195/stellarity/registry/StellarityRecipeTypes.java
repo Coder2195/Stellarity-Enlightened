@@ -1,6 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
-import dev.coder2195.stellarity.recipe.CauldronCraftingRecipe;
+import dev.coder2195.stellarity.recipe.CauldronCraftingSimpleRecipe;
 import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,7 +12,7 @@ import dev.coder2195.stellarity.recipe.AltarOfTheAccursedRecipe;
 public interface StellarityRecipeTypes {
 	RecipeType<AltarOfTheAccursedRecipe> ALTAR_OF_THE_ACCURSED = register("altar_of_the_accursed");
 	RecipeType<ConsecrationRecipe> CONSECRATION = register("consecration");
-	RecipeType<CauldronCraftingRecipe> CAULDRON_CRAFTING = register("cauldron_crafting");
+	RecipeType<CauldronCraftingSimpleRecipe> CAULDRON_CRAFTING = register("cauldron_crafting");
 
 
 	private static <T extends Recipe<?>> RecipeType<T> register(final String id) {
