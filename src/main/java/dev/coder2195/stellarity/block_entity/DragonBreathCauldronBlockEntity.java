@@ -3,9 +3,12 @@ package dev.coder2195.stellarity.block_entity;
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.entity.DragonBreathCauldronIngredient;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
+import dev.coder2195.stellarity.networking.ClientboundCauldronCraftPayload;
 import dev.coder2195.stellarity.recipe.ItemListInput;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
 import dev.coder2195.stellarity.registry.StellarityRecipeTypes;
+import dev.coder2195.stellarity.util.NetworkingUtil;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.PowerParticleOption;
@@ -13,6 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -30,8 +34,9 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 	private final List<DragonBreathCauldronIngredient> ingredientEntities = new ArrayList<>();
 	private List<ItemStack> ingredients = new ArrayList<>();
 	private int maxIngredients = 10;
-	private int tickCounter = -1;
+	private int tickCounter = Integer.MIN_VALUE;
 	private int remainingUses = Integer.MIN_VALUE;
+	private int disabledTime = 0;
 
 	public static final int[] CAULDRON_THRESHOLDS = {-1, 2, 4, 6};
 	public static final int[] UNKNOWN_USES_FALLBACK = {0, 2, 4, 7};
@@ -57,12 +62,16 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 			return;
 		}
 
-		if (tickCounter < 0 || ++tickCounter > 100) {
+		if (tickCounter == Integer.MIN_VALUE || ++tickCounter > 100) {
 			tickCounter = 0;
 			syncIngredientEntities(level, blockPos);
 		}
 
 		var ingredientsSize = ingredientEntities.size();
+		if (disabledTime > 0) {
+			disabledTime--;
+			return;
+		}
 		if (ingredientsSize == 0 || tickCounter % 10 != 0) return;
 		var input = new ItemListInput(ingredients);
 		var recipes = serverLevel.recipeAccess().getRecipeFor(StellarityRecipeTypes.CAULDRON_CRAFTING, input, serverLevel);
@@ -77,6 +86,10 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		resultEntity.stellarity$setItemMode(ExtItemEntity.ItemMode.RESULT, -1);
 		serverLevel.addFreshEntity(resultEntity);
 		remainingUses--;
+		NetworkingUtil.sendTrackingPlayers(serverLevel, blockPos, new ClientboundCauldronCraftPayload(
+			centerPos, ingredientEntities.stream().map(entity -> new Tuple2<>(
+				ItemStackTemplate.fromNonEmptyStack(entity.getItemStack()), entity.position()
+		)).toList()));
 		setIngredients(List.of());
 		syncIngredientEntities(level, blockPos);
 
@@ -158,6 +171,8 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 			ingredients.add(ingredient.copyWithCount(1));
 		}
 
+		disabledTime = 20;
+
 		setChanged();
 
 		if (!willOverflow) return ItemStack.EMPTY;
@@ -186,6 +201,14 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		return maxIngredients;
 	}
 
+	public void setDisabledTime(int disabledTime) {
+		this.disabledTime = disabledTime;
+	}
+
+	public int getDisabledTime() {
+		return disabledTime;
+	}
+
 	@Override
 	protected void loadAdditional(ValueInput input) {
 		super.loadAdditional(input);
@@ -193,6 +216,7 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		input.read("max_ingredients", Codec.INT).ifPresent(this::setMaxIngredients);
 		input.read("ingredients", ItemStack.CODEC.listOf()).ifPresent(this::setIngredients);
 		input.read("remaining_uses", Codec.INT).ifPresent(this::setRemainingUses);
+		input.read("disabled_time", Codec.INT).ifPresent(this::setDisabledTime);
 
 		if (level != null) syncIngredientEntities(level, worldPosition);
 	}
@@ -204,11 +228,13 @@ public class DragonBreathCauldronBlockEntity extends BlockEntity {
 		output.store("max_ingredients", Codec.INT, maxIngredients);
 		output.store("ingredients", ItemStack.CODEC.listOf(), ingredients);
 		output.store("remaining_uses", Codec.INT, remainingUses);
+		output.store("disabled_time", Codec.INT, disabledTime);
 	}
 
 	public void removeIngredient(DragonBreathCauldronIngredient ingredientEntity) {
 		ingredientEntities.remove(ingredientEntity);
 		ingredients.remove(ingredientEntity.getItemStack());
+		disabledTime = 30;
 		syncRotationOffsets();
 		setChanged();
 	}

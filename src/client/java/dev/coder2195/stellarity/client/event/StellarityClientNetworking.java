@@ -4,6 +4,7 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.gui.screen.ConfigScreen;
 import dev.coder2195.stellarity.networking.*;
 import dev.coder2195.stellarity.registry.StellaritySoundEvents;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -25,8 +26,39 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundHolyProtectionDodgePayload.TYPE, StellarityClientNetworking::holyProtectionDodge);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundFloralBloomBloomPayload.TYPE, StellarityClientNetworking::floralBloomBloom);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundConsecrationCraftPayload.TYPE, StellarityClientNetworking::consecrationCraft);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundCauldronCraftPayload.TYPE, StellarityClientNetworking::cauldronCraft);
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void cauldronCraft(ClientboundCauldronCraftPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		var random = RandomSource.create();
+
+		if (level == null) return;
+
+		var resultPosition = packet.resultPosition();
+		var fromEntries = packet.fromEntries();
+
+		for (Tuple2<ItemStackTemplate, Vec3> fromEntry: fromEntries) {
+			var itemStackTemplate = fromEntry._1();
+			var position = fromEntry._2();
+
+			var itemParticle = new ItemParticleOption(ParticleTypes.ITEM, itemStackTemplate);
+			for (int i=0; i<50; i++) {
+				level.addAlwaysVisibleParticle(itemParticle, true, position.x + random.nextGaussian() * 0.2, position.y + random.nextGaussian() * 0.2, position.z + random.nextGaussian() * 0.2, 0, 0, 0);
+			}
+
+			var delta = resultPosition.subtract(position);
+
+			for (int i=0; i<32; i++) {
+				level.addAlwaysVisibleParticle(ParticleTypes.ELECTRIC_SPARK, true,
+					position.x + delta.x * i / 32d, position.y + delta.y * i / 32d, position.z + delta.z * i / 32d, 0, 0, 0);
+			}
+
+			level.playLocalSound(position.x, position.y, position.z, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1, 1, false);
+		}
 	}
 
 	static void consecrationCraft(ClientboundConsecrationCraftPayload packet, ClientPlayNetworking.Context context) {

@@ -110,7 +110,7 @@ fabricApi {
 
 		dependencies {
 			val modonomicon = property("deps.modonomicon").toString().split('-')
-//			implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
+			implementation("com.klikli_dev:modonomicon-${modonomicon[0]}-fabric:${modonomicon[1]}") { isTransitive = false }
 		}
 	}
 }

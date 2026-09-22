@@ -20,6 +20,7 @@ public interface StellarityNetworking {
 		clientbound.register(ClientboundHolyProtectionDodgePayload.TYPE, ClientboundHolyProtectionDodgePayload.STREAM_CODEC);
 		clientbound.register(ClientboundFloralBloomBloomPayload.TYPE, ClientboundFloralBloomBloomPayload.STREAM_CODEC);
 		clientbound.register(ClientboundConsecrationCraftPayload.TYPE, ClientboundConsecrationCraftPayload.STREAM_CODEC);
+		clientbound.register(ClientboundCauldronCraftPayload.TYPE, ClientboundCauldronCraftPayload.STREAM_CODEC);
 
 		Stellarity.LOGGER.info("Registering Stellarity Common Networking");
 	}

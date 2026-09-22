@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.function.Predicate;
 
 public record CauldronCraftingPotionConvertRecipe(Ingredient potionItem, HolderSet<Potion> originalPotion, HashMap<Ingredient, Integer> ingredients, Holder<Potion> resultPotion) implements CauldronCraftingRecipe {
 	public static final StreamCodec<RegistryFriendlyByteBuf, CauldronCraftingPotionConvertRecipe> STREAM_CODEC = StreamCodec.composite(
@@ -45,24 +46,23 @@ public record CauldronCraftingPotionConvertRecipe(Ingredient potionItem, HolderS
 	}
 
 	public @Nullable ItemStack findPotion(ItemListInput input) {
-		ItemStack targetPotion = null;
 		for (int i = input.size() - 1; i >= 0; i--) {
 			var testItem = input.getItem(i);
 			var potionContents = testItem.get(DataComponents.POTION_CONTENTS);
 			if (potionContents == null) continue;
 			if (potionItem.test(testItem) && potionContents.potion().map(originalPotion::contains).orElse(false)) {
-				targetPotion = input.remove(i);
-				break;
+				return testItem;
 			}
 		}
-		return targetPotion;
+		return null;
 	}
 
 	@Override
 	public boolean matches(ItemListInput input, Level level) {
+		var targetItem = findPotion(input);
+		if (targetItem == null) return false;
 
-		if (findPotion(input) == null) return false;
-		return CauldronCraftingRecipe.fulfillsIngredients(new HashMap<>(ingredients), input);
+		return CauldronCraftingRecipe.fulfillsIngredients(new HashMap<>(ingredients), new ItemListInput(input.stream().filter(Predicate.not(targetItem::equals)).toList()));
 	}
 
 	@Override
