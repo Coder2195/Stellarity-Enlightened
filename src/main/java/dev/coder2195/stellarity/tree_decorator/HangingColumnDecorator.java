@@ -109,9 +109,9 @@ public class HangingColumnDecorator extends TreeDecorator {
 	public void place(Context context) {
 		var leaves = context.leaves();
 		var logs = context.logs();
+
 		var level = context.level();
 		var random = context.random();
-
 
 		HashSet<BlockPos> invalid = new HashSet<>();
 

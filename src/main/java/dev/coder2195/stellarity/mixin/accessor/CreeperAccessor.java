@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(Creeper.class)
 public interface CreeperAccessor {
 	@Accessor("DATA_IS_POWERED")
-	static EntityDataAccessor<Boolean> getDataIsPowered() {
+	static EntityDataAccessor<Boolean> DATA_IS_POWERED() {
 		throw new AssertionError("Not transformed!");
 	}
 }

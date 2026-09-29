@@ -4,6 +4,7 @@ import com.mojang.serialization.Lifecycle;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.recipe.*;
 import dev.coder2195.stellarity.registry.StellarityPotions;
+import dev.coder2195.stellarity.tags.StellarityBlockItemTags;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
@@ -275,11 +276,11 @@ public class RecipeProvider extends FabricRecipeProvider {
 				));
 		}
 
-		consecration(output, "cherry_leaves", Ingredient.of(provider.getOrThrow(StellarityItemTags.LEAVES_EXCEPT_CHERRY)), new ItemStackTemplate(CHERRY_LEAVES));
-		consecration(output, "stripped_cherry_log", Ingredient.of(provider.getOrThrow(StellarityItemTags.STRIPPED_LOGS_EXCEPT_CHERRY)), new ItemStackTemplate(STRIPPED_CHERRY_LOG));
-		consecration(output, "stripped_cherry_wood", Ingredient.of(provider.getOrThrow(StellarityItemTags.STRIPPED_WOOD_EXCEPT_CHERRY)), new ItemStackTemplate(STRIPPED_CHERRY_WOOD));
-		consecration(output, "cherry_log", Ingredient.of(provider.getOrThrow(StellarityItemTags.LOGS_EXCEPT_CHERRY)), new ItemStackTemplate(CHERRY_LOG));
-		consecration(output, "cherry_wood", Ingredient.of(provider.getOrThrow(StellarityItemTags.WOOD_EXCEPT_CHERRY)), new ItemStackTemplate(CHERRY_WOOD));
+		consecration(output, "cherry_leaves", Ingredient.of(provider.getOrThrow(StellarityBlockItemTags.LEAVES_EXCEPT_CHERRY.item())), new ItemStackTemplate(CHERRY_LEAVES));
+		consecration(output, "stripped_cherry_log", Ingredient.of(provider.getOrThrow(StellarityBlockItemTags.STRIPPED_LOGS_EXCEPT_CHERRY.item())), new ItemStackTemplate(STRIPPED_CHERRY_LOG));
+		consecration(output, "stripped_cherry_wood", Ingredient.of(provider.getOrThrow(StellarityBlockItemTags.STRIPPED_WOOD_EXCEPT_CHERRY.item())), new ItemStackTemplate(STRIPPED_CHERRY_WOOD));
+		consecration(output, "cherry_log", Ingredient.of(provider.getOrThrow(StellarityBlockItemTags.LOGS_EXCEPT_CHERRY.item())), new ItemStackTemplate(CHERRY_LOG));
+		consecration(output, "cherry_wood", Ingredient.of(provider.getOrThrow(StellarityBlockItemTags.WOOD_EXCEPT_CHERRY.item())), new ItemStackTemplate(CHERRY_WOOD));
 		consecration(output, "poppy", Ingredient.of(WITHER_ROSE), new ItemStackTemplate(POPPY));
 		consecration(output, "pink_petals", Ingredient.of(DEAD_BUSH), new ItemStackTemplate(PINK_PETALS));
 		consecration(output, "glow_ink_sac", Ingredient.of(INK_SAC), new ItemStackTemplate(GLOW_INK_SAC));

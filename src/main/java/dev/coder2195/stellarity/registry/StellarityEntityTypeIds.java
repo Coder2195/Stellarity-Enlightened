@@ -24,6 +24,18 @@ public interface StellarityEntityTypeIds {
 	ResourceKey<EntityType<?>> LIGHT_AURA = id("light_aura");
 	ResourceKey<EntityType<?>> POTION_CLOUD = id("potion_cloud");
 	ResourceKey<EntityType<?>> DRAGON_BREATH_CAULDRON_INGREDIENT = id("dragon_breath_cauldron_ingredient");
+	ResourceKey<EntityType<?>> ASHEN_BOAT = id("ashen_boat");
+	ResourceKey<EntityType<?>> AMETHYII_BOAT = id("amethyii_boat");
+	ResourceKey<EntityType<?>> HALLOWED_BOAT = id("hallowed_boat");
+	ResourceKey<EntityType<?>> SHRUBBED_BOAT = id("shrubbed_boat");
+	ResourceKey<EntityType<?>> PRISMATIC_BOAT = id("prismatic_boat");
+	ResourceKey<EntityType<?>> INFERNO_BOAT = id("inferno_boat");
+	ResourceKey<EntityType<?>> ASHEN_CHEST_BOAT = id("ashen_chest_boat");
+	ResourceKey<EntityType<?>> AMETHYII_CHEST_BOAT = id("amethyii_chest_boat");
+	ResourceKey<EntityType<?>> HALLOWED_CHEST_BOAT = id("hallowed_chest_boat");
+	ResourceKey<EntityType<?>> SHRUBBED_CHEST_BOAT = id("shrubbed_chest_boat");
+	ResourceKey<EntityType<?>> PRISMATIC_CHEST_BOAT = id("prismatic_chest_boat");
+	ResourceKey<EntityType<?>> INFERNO_CHEST_BOAT = id("inferno_chest_boat");
 
 	static ResourceKey<EntityType<?>> id(String id) {
 		return Stellarity.key(Registries.ENTITY_TYPE, id);

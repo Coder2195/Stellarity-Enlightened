@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static dev.coder2195.stellarity.registry.StellarityBlockItemIds.*;
 import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
 import static net.minecraft.references.ItemIds.*;
 import static net.minecraft.references.BlockItemIds.*;
@@ -36,8 +37,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		return appender;
 	}
 
-	public final BlockItemTagAppender<Item> addTagsBlock(TagKey<Item> tagKey, BlockItemTagId... tags) {
-		var appender = builder(tagKey);
+	public final BlockItemTagAppender<Item> addTags(BlockItemTagId tagKey, BlockItemTagId... tags) {
+		var appender = builder(tagKey.item());
 		for (var tag : tags) {
 			appender.forceAddTag(tag.item());
 		}
@@ -46,6 +47,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 	@Override
 	public void addTags(HolderLookup.Provider provider) {
+		new BlockItemTagProvider<>(this::addTags, true).run();
 		addTags(StellarityItemTags.FISHES).add(
 			AMETHYST_BUDFISH,
 			BUBBLEFISH,
@@ -100,11 +102,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(StellarityItemTags.REPAIRS_EMPRESS_WINGS).add(PHANTOM_MEMBRANE);
 		addTags(StellarityItemTags.SHULKER_TOOL_MATERIALS).add(SHULKER_SHELL);
 
-		addTagsBlock(StellarityItemTags.STRIPPED_LOGS_EXCEPT_CHERRY, ConventionalBlockItemTags.STRIPPED_LOGS).remove(STRIPPED_CHERRY_LOG.item());
-		addTagsBlock(StellarityItemTags.LOGS_EXCEPT_CHERRY, ConventionalBlockItemTags.NATURAL_LOGS).remove(CHERRY_LOG.item());
-		addTagsBlock(StellarityItemTags.WOOD_EXCEPT_CHERRY, ConventionalBlockItemTags.NATURAL_WOODS).remove(CHERRY_WOOD.item());
-		addTagsBlock(StellarityItemTags.STRIPPED_WOOD_EXCEPT_CHERRY, ConventionalBlockItemTags.STRIPPED_WOODS).remove(STRIPPED_CHERRY_WOOD.item());
-		addTagsBlock(StellarityItemTags.LEAVES_EXCEPT_CHERRY, BlockItemTags.LEAVES).remove(CHERRY_LEAVES.item());
-
+		addTags(ItemTags.BOATS).add(ASHEN_BOAT, AMETHYII_BOAT, HALLOWED_BOAT, SHRUBBED_BOAT, PRISMATIC_BOAT, INFERNO_BOAT);
+		addTags(ItemTags.CHEST_BOATS).add(ASHEN_CHEST_BOAT, AMETHYII_CHEST_BOAT, HALLOWED_CHEST_BOAT, SHRUBBED_CHEST_BOAT, PRISMATIC_CHEST_BOAT, INFERNO_CHEST_BOAT);
 	}
 }

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.BlockItemTagAppender;
 import net.minecraft.references.BlockItemIds;
+import net.minecraft.tags.BlockItemTagId;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -12,6 +13,7 @@ import dev.coder2195.stellarity.tags.StellarityBlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
+import static dev.coder2195.stellarity.registry.StellarityBlockIds.*;
 import static net.minecraft.references.BlockItemIds.*;
 import static net.minecraft.references.BlockItemIds.DIRT;
 import static net.minecraft.tags.BlockTags.*;
@@ -33,9 +35,19 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 		return appender;
 	}
 
+	public final BlockItemTagAppender<Block> addTags(BlockItemTagId tagKey, BlockItemTagId... tags) {
+		var appender = builder(tagKey.block());
+		for (var tag : tags) {
+			appender.forceAddTag(tag.block());
+		}
+		return appender;
+	}
 
+
+	@SuppressWarnings("DuplicatedCode")
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
+		new BlockItemTagProvider<>(this::addTags, true).run();
 		addTags(StellarityBlockTags.DIRT).add(ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT, COARSE_ENDER_DIRT);
 		addTags(MINEABLE_WITH_SHOVEL, StellarityBlockTags.DIRT).add(ENDER_DIRT_PATH);
 		addTags(MINEABLE_WITH_PICKAXE).add(ALTAR_OF_THE_ACCURSED, ENDERITE_BLOCK);
@@ -77,7 +89,11 @@ public class BlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
 		// CRITICAL: must be used for stuff to work correctly esp with heightmap
 		addTags(BLOCKS_MOTION_NO_LEAVES, StellarityBlockTags.DIRT).add(ASHEN_FROGLIGHT, ENDER_DIRT_PATH, ALTAR_OF_THE_ACCURSED, ENDERITE_BLOCK);
-		addTags(LEAVES).add(COLORED_LEAVES);
 
+		addTags(PRESSURE_PLATES).add(ASHEN_PRESSURE_PLATE, AMETHYII_PRESSURE_PLATE, HALLOWED_PRESSURE_PLATE, SHRUBBED_PRESSURE_PLATE, PRISMATIC_PRESSURE_PLATE, INFERNO_PRESSURE_PLATE);
+		addTags(STANDING_SIGNS).add(ASHEN_SIGN, AMETHYII_SIGN, HALLOWED_SIGN, SHRUBBED_SIGN, PRISMATIC_SIGN, INFERNO_SIGN);
+		addTags(WALL_SIGNS).add(ASHEN_WALL_SIGN, AMETHYII_WALL_SIGN, HALLOWED_WALL_SIGN, SHRUBBED_WALL_SIGN, PRISMATIC_WALL_SIGN, INFERNO_WALL_SIGN);
+		addTags(CEILING_HANGING_SIGNS).add(ASHEN_HANGING_SIGN, AMETHYII_HANGING_SIGN, HALLOWED_HANGING_SIGN, SHRUBBED_HANGING_SIGN, PRISMATIC_HANGING_SIGN, INFERNO_HANGING_SIGN);
+		addTags(WALL_HANGING_SIGNS).add(ASHEN_WALL_HANGING_SIGN, AMETHYII_WALL_HANGING_SIGN, HALLOWED_WALL_HANGING_SIGN, SHRUBBED_WALL_HANGING_SIGN, PRISMATIC_WALL_HANGING_SIGN, INFERNO_WALL_HANGING_SIGN);
 	}
 }

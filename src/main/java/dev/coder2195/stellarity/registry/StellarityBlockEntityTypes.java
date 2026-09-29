@@ -2,7 +2,6 @@ package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.block_entity.AltarOfTheAccursedBlockEntity;
-import dev.coder2195.stellarity.block_entity.ColoredBlockEntity;
 import dev.coder2195.stellarity.block_entity.DragonBreathCauldronBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public interface StellarityBlockEntityTypes {
 	BlockEntityType<AltarOfTheAccursedBlockEntity> ALTAR_OF_THE_ACCURSED = register("altar_of_the_accursed", AltarOfTheAccursedBlockEntity::new, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
-	BlockEntityType<ColoredBlockEntity> COLORED_BLOCK = register("colored_block", ColoredBlockEntity::new, StellarityBlocks.COLORED_LEAVES);
 	BlockEntityType<DragonBreathCauldronBlockEntity> DRAGON_BREATH_CAULDRON = register("dragon_breath_cauldron", DragonBreathCauldronBlockEntity::new, StellarityBlocks.DRAGON_BREATH_CAULDRON);
 
 	static <T extends BlockEntity> BlockEntityType<T> register(String id, FabricBlockEntityTypeBuilder.Factory<T> entityFactory, Block... blocks) {

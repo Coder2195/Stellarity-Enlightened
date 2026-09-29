@@ -1,5 +1,5 @@
 {
-  "feature": "stellarity:global/fossil",
+  "feature": "stellarity:fossil",
   "placement": [
     {
       "type": "minecraft:rarity_filter",

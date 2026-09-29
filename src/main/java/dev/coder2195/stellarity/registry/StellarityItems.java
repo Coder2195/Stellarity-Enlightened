@@ -25,6 +25,9 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
+import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
@@ -35,6 +38,7 @@ import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -108,7 +112,120 @@ public interface StellarityItems {
 	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityBlockItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 	Item ENDERITE_BLOCK = registerBlock(StellarityBlockItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
 	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
-	Item COLORED_LEAVES = registerBlock(StellarityBlockItemIds.COLORED_LEAVES, StellarityBlocks.COLORED_LEAVES);
+
+	Item AMETHYII_PLANKS = registerBlock(StellarityBlockItemIds.AMETHYII_PLANKS, StellarityBlocks.AMETHYII_PLANKS);
+	Item AMETHYII_SAPLING = registerBlock(StellarityBlockItemIds.AMETHYII_SAPLING, StellarityBlocks.AMETHYII_SAPLING);
+	Item AMETHYII_LOG = registerBlock(StellarityBlockItemIds.AMETHYII_LOG, StellarityBlocks.AMETHYII_LOG);
+	Item STRIPPED_AMETHYII_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_AMETHYII_LOG, StellarityBlocks.STRIPPED_AMETHYII_LOG);
+	Item STRIPPED_AMETHYII_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_AMETHYII_WOOD, StellarityBlocks.STRIPPED_AMETHYII_WOOD);
+	Item AMETHYII_WOOD = registerBlock(StellarityBlockItemIds.AMETHYII_WOOD, StellarityBlocks.AMETHYII_WOOD);
+	Item AMETHYII_LEAVES = registerBlock(StellarityBlockItemIds.AMETHYII_LEAVES, StellarityBlocks.AMETHYII_LEAVES);
+	Item AMETHYII_SLAB = registerBlock(StellarityBlockItemIds.AMETHYII_SLAB, StellarityBlocks.AMETHYII_SLAB);
+	Item AMETHYII_SHELF = registerBlock(StellarityBlockItemIds.AMETHYII_SHELF, StellarityBlocks.AMETHYII_SHELF);
+	Item AMETHYII_FENCE = registerBlock(StellarityBlockItemIds.AMETHYII_FENCE, StellarityBlocks.AMETHYII_FENCE);
+	Item AMETHYII_STAIRS = registerBlock(StellarityBlockItemIds.AMETHYII_STAIRS, StellarityBlocks.AMETHYII_STAIRS);
+	Item AMETHYII_BUTTON = registerBlock(StellarityBlockItemIds.AMETHYII_BUTTON, StellarityBlocks.AMETHYII_BUTTON);
+	Item AMETHYII_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.AMETHYII_PRESSURE_PLATE, StellarityBlocks.AMETHYII_PRESSURE_PLATE);
+	Item AMETHYII_DOOR = registerBlock(StellarityBlockItemIds.AMETHYII_DOOR, StellarityBlocks.AMETHYII_DOOR);
+	Item AMETHYII_TRAPDOOR = registerBlock(StellarityBlockItemIds.AMETHYII_TRAPDOOR, StellarityBlocks.AMETHYII_TRAPDOOR);
+	Item AMETHYII_FENCE_GATE = registerBlock(StellarityBlockItemIds.AMETHYII_FENCE_GATE, StellarityBlocks.AMETHYII_FENCE_GATE);
+	Item AMETHYII_SIGN = registerBlock(StellarityBlockItemIds.AMETHYII_SIGN, StellarityBlocks.AMETHYII_SIGN);
+	Item AMETHYII_HANGING_SIGN = registerBlock(StellarityBlockItemIds.AMETHYII_HANGING_SIGN, StellarityBlocks.AMETHYII_HANGING_SIGN);
+
+	Item HALLOWED_PLANKS = registerBlock(StellarityBlockItemIds.HALLOWED_PLANKS, StellarityBlocks.HALLOWED_PLANKS);
+	Item HALLOWED_SAPLING = registerBlock(StellarityBlockItemIds.HALLOWED_SAPLING, StellarityBlocks.HALLOWED_SAPLING);
+	Item HALLOWED_LOG = registerBlock(StellarityBlockItemIds.HALLOWED_LOG, StellarityBlocks.HALLOWED_LOG);
+	Item STRIPPED_HALLOWED_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_HALLOWED_LOG, StellarityBlocks.STRIPPED_HALLOWED_LOG);
+	Item STRIPPED_HALLOWED_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_HALLOWED_WOOD, StellarityBlocks.STRIPPED_HALLOWED_WOOD);
+	Item HALLOWED_WOOD = registerBlock(StellarityBlockItemIds.HALLOWED_WOOD, StellarityBlocks.HALLOWED_WOOD);
+	Item HALLOWED_LEAVES = registerBlock(StellarityBlockItemIds.HALLOWED_LEAVES, StellarityBlocks.HALLOWED_LEAVES);
+	Item HALLOWED_SLAB = registerBlock(StellarityBlockItemIds.HALLOWED_SLAB, StellarityBlocks.HALLOWED_SLAB);
+	Item HALLOWED_SHELF = registerBlock(StellarityBlockItemIds.HALLOWED_SHELF, StellarityBlocks.HALLOWED_SHELF);
+	Item HALLOWED_FENCE = registerBlock(StellarityBlockItemIds.HALLOWED_FENCE, StellarityBlocks.HALLOWED_FENCE);
+	Item HALLOWED_STAIRS = registerBlock(StellarityBlockItemIds.HALLOWED_STAIRS, StellarityBlocks.HALLOWED_STAIRS);
+	Item HALLOWED_BUTTON = registerBlock(StellarityBlockItemIds.HALLOWED_BUTTON, StellarityBlocks.HALLOWED_BUTTON);
+	Item HALLOWED_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.HALLOWED_PRESSURE_PLATE, StellarityBlocks.HALLOWED_PRESSURE_PLATE);
+	Item HALLOWED_DOOR = registerBlock(StellarityBlockItemIds.HALLOWED_DOOR, StellarityBlocks.HALLOWED_DOOR);
+	Item HALLOWED_TRAPDOOR = registerBlock(StellarityBlockItemIds.HALLOWED_TRAPDOOR, StellarityBlocks.HALLOWED_TRAPDOOR);
+	Item HALLOWED_FENCE_GATE = registerBlock(StellarityBlockItemIds.HALLOWED_FENCE_GATE, StellarityBlocks.HALLOWED_FENCE_GATE);
+	Item HALLOWED_SIGN = registerBlock(StellarityBlockItemIds.HALLOWED_SIGN, StellarityBlocks.HALLOWED_SIGN);
+	Item HALLOWED_HANGING_SIGN = registerBlock(StellarityBlockItemIds.HALLOWED_HANGING_SIGN, StellarityBlocks.HALLOWED_HANGING_SIGN);
+
+	Item SHRUBBED_PLANKS = registerBlock(StellarityBlockItemIds.SHRUBBED_PLANKS, StellarityBlocks.SHRUBBED_PLANKS);
+	Item SHRUBBED_SAPLING = registerBlock(StellarityBlockItemIds.SHRUBBED_SAPLING, StellarityBlocks.SHRUBBED_SAPLING);
+	Item SHRUBBED_LOG = registerBlock(StellarityBlockItemIds.SHRUBBED_LOG, StellarityBlocks.SHRUBBED_LOG);
+	Item STRIPPED_SHRUBBED_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_SHRUBBED_LOG, StellarityBlocks.STRIPPED_SHRUBBED_LOG);
+	Item STRIPPED_SHRUBBED_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_SHRUBBED_WOOD, StellarityBlocks.STRIPPED_SHRUBBED_WOOD);
+	Item SHRUBBED_WOOD = registerBlock(StellarityBlockItemIds.SHRUBBED_WOOD, StellarityBlocks.SHRUBBED_WOOD);
+	Item SHRUBBED_LEAVES = registerBlock(StellarityBlockItemIds.SHRUBBED_LEAVES, StellarityBlocks.SHRUBBED_LEAVES);
+	Item SHRUBBED_SLAB = registerBlock(StellarityBlockItemIds.SHRUBBED_SLAB, StellarityBlocks.SHRUBBED_SLAB);
+	Item SHRUBBED_SHELF = registerBlock(StellarityBlockItemIds.SHRUBBED_SHELF, StellarityBlocks.SHRUBBED_SHELF);
+	Item SHRUBBED_FENCE = registerBlock(StellarityBlockItemIds.SHRUBBED_FENCE, StellarityBlocks.SHRUBBED_FENCE);
+	Item SHRUBBED_STAIRS = registerBlock(StellarityBlockItemIds.SHRUBBED_STAIRS, StellarityBlocks.SHRUBBED_STAIRS);
+	Item SHRUBBED_BUTTON = registerBlock(StellarityBlockItemIds.SHRUBBED_BUTTON, StellarityBlocks.SHRUBBED_BUTTON);
+	Item SHRUBBED_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.SHRUBBED_PRESSURE_PLATE, StellarityBlocks.SHRUBBED_PRESSURE_PLATE);
+	Item SHRUBBED_DOOR = registerBlock(StellarityBlockItemIds.SHRUBBED_DOOR, StellarityBlocks.SHRUBBED_DOOR);
+	Item SHRUBBED_TRAPDOOR = registerBlock(StellarityBlockItemIds.SHRUBBED_TRAPDOOR, StellarityBlocks.SHRUBBED_TRAPDOOR);
+	Item SHRUBBED_FENCE_GATE = registerBlock(StellarityBlockItemIds.SHRUBBED_FENCE_GATE, StellarityBlocks.SHRUBBED_FENCE_GATE);
+	Item SHRUBBED_SIGN = registerBlock(StellarityBlockItemIds.SHRUBBED_SIGN, StellarityBlocks.SHRUBBED_SIGN);
+	Item SHRUBBED_HANGING_SIGN = registerBlock(StellarityBlockItemIds.SHRUBBED_HANGING_SIGN, StellarityBlocks.SHRUBBED_HANGING_SIGN);
+
+	Item PRISMATIC_PLANKS = registerBlock(StellarityBlockItemIds.PRISMATIC_PLANKS, StellarityBlocks.PRISMATIC_PLANKS);
+	Item PRISMATIC_SAPLING = registerBlock(StellarityBlockItemIds.PRISMATIC_SAPLING, StellarityBlocks.PRISMATIC_SAPLING);
+	Item PRISMATIC_LOG = registerBlock(StellarityBlockItemIds.PRISMATIC_LOG, StellarityBlocks.PRISMATIC_LOG);
+	Item STRIPPED_PRISMATIC_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_PRISMATIC_LOG, StellarityBlocks.STRIPPED_PRISMATIC_LOG);
+	Item STRIPPED_PRISMATIC_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_PRISMATIC_WOOD, StellarityBlocks.STRIPPED_PRISMATIC_WOOD);
+	Item PRISMATIC_WOOD = registerBlock(StellarityBlockItemIds.PRISMATIC_WOOD, StellarityBlocks.PRISMATIC_WOOD);
+	Item PRISMATIC_LEAVES = registerBlock(StellarityBlockItemIds.PRISMATIC_LEAVES, StellarityBlocks.PRISMATIC_LEAVES);
+	Item PRISMATIC_SLAB = registerBlock(StellarityBlockItemIds.PRISMATIC_SLAB, StellarityBlocks.PRISMATIC_SLAB);
+	Item PRISMATIC_SHELF = registerBlock(StellarityBlockItemIds.PRISMATIC_SHELF, StellarityBlocks.PRISMATIC_SHELF);
+	Item PRISMATIC_FENCE = registerBlock(StellarityBlockItemIds.PRISMATIC_FENCE, StellarityBlocks.PRISMATIC_FENCE);
+	Item PRISMATIC_STAIRS = registerBlock(StellarityBlockItemIds.PRISMATIC_STAIRS, StellarityBlocks.PRISMATIC_STAIRS);
+	Item PRISMATIC_BUTTON = registerBlock(StellarityBlockItemIds.PRISMATIC_BUTTON, StellarityBlocks.PRISMATIC_BUTTON);
+	Item PRISMATIC_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.PRISMATIC_PRESSURE_PLATE, StellarityBlocks.PRISMATIC_PRESSURE_PLATE);
+	Item PRISMATIC_DOOR = registerBlock(StellarityBlockItemIds.PRISMATIC_DOOR, StellarityBlocks.PRISMATIC_DOOR);
+	Item PRISMATIC_TRAPDOOR = registerBlock(StellarityBlockItemIds.PRISMATIC_TRAPDOOR, StellarityBlocks.PRISMATIC_TRAPDOOR);
+	Item PRISMATIC_FENCE_GATE = registerBlock(StellarityBlockItemIds.PRISMATIC_FENCE_GATE, StellarityBlocks.PRISMATIC_FENCE_GATE);
+	Item PRISMATIC_SIGN = registerBlock(StellarityBlockItemIds.PRISMATIC_SIGN, StellarityBlocks.PRISMATIC_SIGN);
+	Item PRISMATIC_HANGING_SIGN = registerBlock(StellarityBlockItemIds.PRISMATIC_HANGING_SIGN, StellarityBlocks.PRISMATIC_HANGING_SIGN);
+
+	Item ASHEN_PLANKS = registerBlock(StellarityBlockItemIds.ASHEN_PLANKS, StellarityBlocks.ASHEN_PLANKS);
+	Item ASHEN_SAPLING = registerBlock(StellarityBlockItemIds.ASHEN_SAPLING, StellarityBlocks.ASHEN_SAPLING);
+	Item ASHEN_LOG = registerBlock(StellarityBlockItemIds.ASHEN_LOG, StellarityBlocks.ASHEN_LOG);
+	Item STRIPPED_ASHEN_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_ASHEN_LOG, StellarityBlocks.STRIPPED_ASHEN_LOG);
+	Item STRIPPED_ASHEN_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_ASHEN_WOOD, StellarityBlocks.STRIPPED_ASHEN_WOOD);
+	Item ASHEN_WOOD = registerBlock(StellarityBlockItemIds.ASHEN_WOOD, StellarityBlocks.ASHEN_WOOD);
+	Item ASHEN_LEAVES = registerBlock(StellarityBlockItemIds.ASHEN_LEAVES, StellarityBlocks.ASHEN_LEAVES);
+	Item ASHEN_SLAB = registerBlock(StellarityBlockItemIds.ASHEN_SLAB, StellarityBlocks.ASHEN_SLAB);
+	Item ASHEN_SHELF = registerBlock(StellarityBlockItemIds.ASHEN_SHELF, StellarityBlocks.ASHEN_SHELF);
+	Item ASHEN_FENCE = registerBlock(StellarityBlockItemIds.ASHEN_FENCE, StellarityBlocks.ASHEN_FENCE);
+	Item ASHEN_STAIRS = registerBlock(StellarityBlockItemIds.ASHEN_STAIRS, StellarityBlocks.ASHEN_STAIRS);
+	Item ASHEN_BUTTON = registerBlock(StellarityBlockItemIds.ASHEN_BUTTON, StellarityBlocks.ASHEN_BUTTON);
+	Item ASHEN_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.ASHEN_PRESSURE_PLATE, StellarityBlocks.ASHEN_PRESSURE_PLATE);
+	Item ASHEN_DOOR = registerBlock(StellarityBlockItemIds.ASHEN_DOOR, StellarityBlocks.ASHEN_DOOR);
+	Item ASHEN_TRAPDOOR = registerBlock(StellarityBlockItemIds.ASHEN_TRAPDOOR, StellarityBlocks.ASHEN_TRAPDOOR);
+	Item ASHEN_FENCE_GATE = registerBlock(StellarityBlockItemIds.ASHEN_FENCE_GATE, StellarityBlocks.ASHEN_FENCE_GATE);
+	Item ASHEN_SIGN = registerBlock(StellarityBlockItemIds.ASHEN_SIGN, StellarityBlocks.ASHEN_SIGN);
+	Item ASHEN_HANGING_SIGN = registerBlock(StellarityBlockItemIds.ASHEN_HANGING_SIGN, StellarityBlocks.ASHEN_HANGING_SIGN);
+
+	Item INFERNO_PLANKS = registerBlock(StellarityBlockItemIds.INFERNO_PLANKS, StellarityBlocks.INFERNO_PLANKS);
+	Item INFERNO_SAPLING = registerBlock(StellarityBlockItemIds.INFERNO_SAPLING, StellarityBlocks.INFERNO_SAPLING);
+	Item INFERNO_LOG = registerBlock(StellarityBlockItemIds.INFERNO_LOG, StellarityBlocks.INFERNO_LOG);
+	Item STRIPPED_INFERNO_LOG = registerBlock(StellarityBlockItemIds.STRIPPED_INFERNO_LOG, StellarityBlocks.STRIPPED_INFERNO_LOG);
+	Item STRIPPED_INFERNO_WOOD = registerBlock(StellarityBlockItemIds.STRIPPED_INFERNO_WOOD, StellarityBlocks.STRIPPED_INFERNO_WOOD);
+	Item INFERNO_WOOD = registerBlock(StellarityBlockItemIds.INFERNO_WOOD, StellarityBlocks.INFERNO_WOOD);
+	Item INFERNO_LEAVES = registerBlock(StellarityBlockItemIds.INFERNO_LEAVES, StellarityBlocks.INFERNO_LEAVES);
+	Item INFERNO_SLAB = registerBlock(StellarityBlockItemIds.INFERNO_SLAB, StellarityBlocks.INFERNO_SLAB);
+	Item INFERNO_SHELF = registerBlock(StellarityBlockItemIds.INFERNO_SHELF, StellarityBlocks.INFERNO_SHELF);
+	Item INFERNO_FENCE = registerBlock(StellarityBlockItemIds.INFERNO_FENCE, StellarityBlocks.INFERNO_FENCE);
+	Item INFERNO_STAIRS = registerBlock(StellarityBlockItemIds.INFERNO_STAIRS, StellarityBlocks.INFERNO_STAIRS);
+	Item INFERNO_BUTTON = registerBlock(StellarityBlockItemIds.INFERNO_BUTTON, StellarityBlocks.INFERNO_BUTTON);
+	Item INFERNO_PRESSURE_PLATE = registerBlock(StellarityBlockItemIds.INFERNO_PRESSURE_PLATE, StellarityBlocks.INFERNO_PRESSURE_PLATE);
+	Item INFERNO_DOOR = registerBlock(StellarityBlockItemIds.INFERNO_DOOR, StellarityBlocks.INFERNO_DOOR);
+	Item INFERNO_TRAPDOOR = registerBlock(StellarityBlockItemIds.INFERNO_TRAPDOOR, StellarityBlocks.INFERNO_TRAPDOOR);
+	Item INFERNO_FENCE_GATE = registerBlock(StellarityBlockItemIds.INFERNO_FENCE_GATE, StellarityBlocks.INFERNO_FENCE_GATE);
+	Item INFERNO_SIGN = registerBlock(StellarityBlockItemIds.INFERNO_SIGN, StellarityBlocks.INFERNO_SIGN);
+	Item INFERNO_HANGING_SIGN = registerBlock(StellarityBlockItemIds.INFERNO_HANGING_SIGN, StellarityBlocks.INFERNO_HANGING_SIGN);
 
 	Item CALL_OF_THE_VOID = register(StellarityItemIds.CALL_OF_THE_VOID, CallOfTheVoid::new, CallOfTheVoid.PROPERTIES);
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FishingRodItem::new, new Item.Properties().stacksTo(1).durability(100).rarity(Rarity.UNCOMMON));
@@ -371,6 +488,23 @@ public interface StellarityItems {
 	Item END_CITY_MAP = register(StellarityItemIds.END_CITY_MAP, MapItem::new, mapProperties());
 	Item CHAPEL_OF_LIGHT_MAP = register(StellarityItemIds.CHAPEL_OF_LIGHT_MAP, MapItem::new, mapProperties());
 	Item FLOATING_TREASURE_MAP = register(StellarityItemIds.FLOATING_TREASURE_MAP, MapItem::new, mapProperties());
+
+	Item ASHEN_BOAT = registerBoat(StellarityItemIds.ASHEN_BOAT, StellarityEntityTypes.ASHEN_BOAT, new Item.Properties());
+	Item AMETHYII_BOAT = registerBoat(StellarityItemIds.AMETHYII_BOAT, StellarityEntityTypes.AMETHYII_BOAT, new Item.Properties());
+	Item HALLOWED_BOAT = registerBoat(StellarityItemIds.HALLOWED_BOAT, StellarityEntityTypes.HALLOWED_BOAT, new Item.Properties());
+	Item SHRUBBED_BOAT = registerBoat(StellarityItemIds.SHRUBBED_BOAT, StellarityEntityTypes.SHRUBBED_BOAT, new Item.Properties());
+	Item PRISMATIC_BOAT = registerBoat(StellarityItemIds.PRISMATIC_BOAT, StellarityEntityTypes.PRISMATIC_BOAT, new Item.Properties());
+	Item INFERNO_BOAT = registerBoat(StellarityItemIds.INFERNO_BOAT, StellarityEntityTypes.INFERNO_BOAT, new Item.Properties());
+	Item ASHEN_CHEST_BOAT = registerBoat(StellarityItemIds.ASHEN_CHEST_BOAT, StellarityEntityTypes.ASHEN_CHEST_BOAT, new Item.Properties());
+	Item AMETHYII_CHEST_BOAT = registerBoat(StellarityItemIds.AMETHYII_CHEST_BOAT, StellarityEntityTypes.AMETHYII_CHEST_BOAT, new Item.Properties());
+	Item HALLOWED_CHEST_BOAT = registerBoat(StellarityItemIds.HALLOWED_CHEST_BOAT, StellarityEntityTypes.HALLOWED_CHEST_BOAT, new Item.Properties());
+	Item SHRUBBED_CHEST_BOAT = registerBoat(StellarityItemIds.SHRUBBED_CHEST_BOAT, StellarityEntityTypes.SHRUBBED_CHEST_BOAT, new Item.Properties());
+	Item PRISMATIC_CHEST_BOAT = registerBoat(StellarityItemIds.PRISMATIC_CHEST_BOAT, StellarityEntityTypes.PRISMATIC_CHEST_BOAT, new Item.Properties());
+	Item INFERNO_CHEST_BOAT = registerBoat(StellarityItemIds.INFERNO_CHEST_BOAT, StellarityEntityTypes.INFERNO_CHEST_BOAT, new Item.Properties());
+
+	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
+		return register(key, (props) -> new BoatItem(type, properties), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
+	}
 
 	static ItemStackTemplate createPotion(Holder<Potion> potion) {
 		return new ItemStackTemplate(Items.POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(potion)).build());

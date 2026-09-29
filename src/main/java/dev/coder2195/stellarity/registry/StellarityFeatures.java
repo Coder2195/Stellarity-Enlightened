@@ -60,11 +60,11 @@ import static net.minecraft.world.level.block.Blocks.*;
 
 public interface StellarityFeatures {
 
-	ResourceKey<Feature> GLOBAL_STALACTITES = id("global/stalactites");
-	ResourceKey<Feature> GLOBAL_FOSSIL = id("global/fossil");
-	ResourceKey<Feature> GLOBAL_DUNGEON = id("global/dungeon");
-	ResourceKey<Feature> GLOBAL_HANGING_ROOTS = id("end_highlands/roots");
-	ResourceKey<Feature> GLOBAL_OBSIDIAN_TOWER = id("global/obsidian_tower");
+	ResourceKey<Feature> STALACTITES = id("stalactites");
+	ResourceKey<Feature> FOSSIL = id("fossil");
+	ResourceKey<Feature> DUNGEON = id("dungeon");
+	ResourceKey<Feature> HANGING_ROOTS = id("hanging_roots");
+	ResourceKey<Feature> OBSIDIAN_TOWER = id("obsidian_tower");
 
 	ResourceKey<Feature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<Feature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -293,7 +293,7 @@ public interface StellarityFeatures {
 			DEAD_TUBE_CORAL_FAN, DEAD_HORN_CORAL_FAN, DEAD_FIRE_CORAL_FAN, DEAD_BUBBLE_CORAL_FAN, DEAD_BRAIN_CORAL_FAN
 		).map(b -> property(b, CoralFanBlock.WATERLOGGED, false)).toArray(BlockState[]::new);
 
-		context.register(GLOBAL_STALACTITES, new VegetationPatchFeature(
+		context.register(STALACTITES, new VegetationPatchFeature(
 			tag(WORLDGEN_STALACTITE_REPLACEABLE), block(END_STONE),
 			direct(new PlacedFeature(
 				direct(new BlockColumnFeature(
@@ -303,13 +303,13 @@ public interface StellarityFeatures {
 			)),
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
-		context.register(GLOBAL_OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.empty()));
-		context.register(GLOBAL_FOSSIL, new FossilFeature(
+		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.empty()));
+		context.register(FOSSIL, new FossilFeature(
 			List.of(Stellarity.id("fossil/phantom")), List.of(Stellarity.id("fossil/phantom_overlay")),
 			processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_rot")), processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_coal")),
 			2
 		));
-		context.register(GLOBAL_DUNGEON, new DungeonFeature());
+		context.register(DUNGEON, new DungeonFeature());
 
 		context.register(MAIN_ISLAND_RING, new EndSpikeFeature(
 			Constants.OBSIDIAN_SPIKES, false, Optional.empty()
@@ -393,7 +393,7 @@ public interface StellarityFeatures {
 			new Block[]{SHORT_GRASS, TALL_GRASS, FERN, LARGE_FERN},
 			new int[]{28, 18, 8, 4}
 		)));
-		context.register(GLOBAL_HANGING_ROOTS, new SimpleBlockFeature(block(HANGING_ROOTS)));
+		context.register(HANGING_ROOTS, new SimpleBlockFeature(block(Blocks.HANGING_ROOTS)));
 		context.register(END_HIGHLANDS_CHORUS_LEAF, new TreeFeature(
 			block(PEARLESCENT_FROGLIGHT), new ForkingTrunkPlacer(10, 0, 0),
 			block(AIR), new BlobFoliagePlacer(numRaw(1), numRaw(1), 0),

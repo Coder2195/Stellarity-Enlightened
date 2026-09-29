@@ -84,7 +84,7 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 		EnderDragonFight dragonFight = level.getDragonFight();
 		var dragonFightAccessor = ((EnderDragonFightAccessor) dragonFight);
 		BlockPos blockPos = blockPosition();
-		BlockPos portalLocation = dragonFight == null ? null : dragonFightAccessor.stellarity$getExitPortalLocation();
+		BlockPos portalLocation = dragonFight == null ? null : dragonFightAccessor.stellarity$exitPortalLocation();
 		if (type == Type.RESPAWN) {
 			if (portalLocation == null) {
 				stellarity$setType(Type.NORMAL);
@@ -105,7 +105,7 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 		} else if (type == Type.NORMAL) {
 			if (portalLocation != null) {
 				for (Direction direction : Direction.Plane.HORIZONTAL) {
-					if (portalLocation.above(3).relative(direction, 4).equals(blockPos) && dragonFightAccessor.stellarity$getDragonKilled()) {
+					if (portalLocation.above(3).relative(direction, 4).equals(blockPos) && dragonFightAccessor.stellarity$dragonKilled()) {
 						stellarity$setType(Type.RESPAWN);
 						this.playSound(SoundEvents.END_PORTAL_FRAME_FILL, 1, 0.5f);
 						Stellarity.LOGGER.info("Found respawn crystal");

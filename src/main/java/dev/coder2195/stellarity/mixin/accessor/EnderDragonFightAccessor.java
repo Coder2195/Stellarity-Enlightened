@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(EnderDragonFight.class)
 public interface EnderDragonFightAccessor {
 	@Accessor("exitPortalLocation")
-	BlockPos stellarity$getExitPortalLocation();
+	BlockPos stellarity$exitPortalLocation();
 
 	@Accessor("dragonKilled")
-	boolean stellarity$getDragonKilled();
+	boolean stellarity$dragonKilled();
 }

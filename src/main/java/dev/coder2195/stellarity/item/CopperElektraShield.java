@@ -109,7 +109,7 @@ public class CopperElektraShield extends ShieldItem {
 			victims.add(hit);
 			hit.hurtServer(serverLevel, electric, 4);
 			if (hit instanceof Creeper creeper && creeper.getRandom().nextFloat() < 0.25F) {
-				creeper.getEntityData().set(CreeperAccessor.getDataIsPowered(), true);
+				creeper.getEntityData().set(CreeperAccessor.DATA_IS_POWERED(), true);
 				creeperLocations.add(creeper.position());
 			}
 		}

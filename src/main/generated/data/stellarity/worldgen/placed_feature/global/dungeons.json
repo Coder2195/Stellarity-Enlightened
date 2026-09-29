@@ -1,5 +1,5 @@
 {
-  "feature": "stellarity:global/dungeon",
+  "feature": "stellarity:dungeon",
   "placement": [
     {
       "type": "minecraft:rarity_filter",

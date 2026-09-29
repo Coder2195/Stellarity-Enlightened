@@ -26,7 +26,7 @@ public class PhantomItemFrameRenderer extends ItemFrameRenderer<PhantomItemFrame
 
 		if (!state.isInvisible) {
 
-			((ItemFrameRendererAccessor) this).stellarity$getBlockModelResolver().update(state.frameModel, FAKE_STATE_DEFINITION.any(), ItemFrameRenderer.BLOCK_DISPLAY_CONTEXT);
+			((ItemFrameRendererAccessor) this).stellarity$blockModelResolver().update(state.frameModel, FAKE_STATE_DEFINITION.any(), ItemFrameRenderer.BLOCK_DISPLAY_CONTEXT);
 		}
 	}
 }

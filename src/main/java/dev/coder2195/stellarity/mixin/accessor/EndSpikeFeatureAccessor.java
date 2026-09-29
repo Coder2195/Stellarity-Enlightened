@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(EndSpikeFeature.class)
 public interface EndSpikeFeatureAccessor {
 	@Accessor("NUMBER_OF_SPIKES")
-	static int getNumberOfSpikes() {
+	static int NUMBER_OF_SPIKES() {
 		throw new AssertionError("Not transformed!");
 	}
 

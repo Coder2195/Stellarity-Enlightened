@@ -39,7 +39,7 @@ public class LifeCrystal extends Item {
 			heldAt = gameTime;
 		}
 
-		if (gameTime - ((LivingEntityAccessor) livingOwner).stellarity$getLastDamageStamp() < 10) return;
+		if (gameTime - ((LivingEntityAccessor) livingOwner).stellarity$lastDamageStamp() < 10) return;
 
 		var durationSince = gameTime - heldAt - 10;
 		if (durationSince < 0) return;

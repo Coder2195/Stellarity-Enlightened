@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(ItemFrameRenderer.class)
 public interface ItemFrameRendererAccessor {
-	@Mutable
 	@Accessor("blockModelResolver")
-	BlockModelResolver stellarity$getBlockModelResolver();
+	BlockModelResolver stellarity$blockModelResolver();
 }

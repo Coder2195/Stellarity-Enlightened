@@ -110,7 +110,7 @@ public abstract class LivingEntityMixin extends Entity {
 		var position = position();
 		var swarmCount = level.getEntitiesOfClass(Mob.class, new AABB(position, position).inflate(5), e -> {
 			if (!(e instanceof MobAccessor mob)) return false;
-			var target = mob.stellarity$getTarget();
+			var target = mob.stellarity$target();
 			return target != null && castedSelf.is(target);
 		}).size();
 
@@ -127,10 +127,10 @@ public abstract class LivingEntityMixin extends Entity {
 		final var attacker = getLastAttacker();
 
 		return castedSelf instanceof Monster monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Player || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget()
+			e.is(attacker) || e instanceof Player || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
 		) : castedSelf instanceof Player player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Monster || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget()
-		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof MobAccessor mob && castedSelf == mob.stellarity$getTarget());
+			e.is(attacker) || e instanceof Monster || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
+		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target());
 	}
 
 	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")

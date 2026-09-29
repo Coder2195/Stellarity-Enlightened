@@ -7,6 +7,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.vehicle.boat.Boat;
+import net.minecraft.world.entity.vehicle.boat.ChestBoat;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.levelgen.Heightmap;
 
 
@@ -53,8 +57,42 @@ public interface StellarityEntityTypes {
 	EntityType<PotionCloud> POTION_CLOUD = register(StellarityEntityTypeIds.POTION_CLOUD, EntityType.Builder.of(PotionCloud::new, MobCategory.MISC).sized(0, 0).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 	EntityType<DragonBreathCauldronIngredient> DRAGON_BREATH_CAULDRON_INGREDIENT = register(StellarityEntityTypeIds.DRAGON_BREATH_CAULDRON_INGREDIENT, EntityType.Builder.<DragonBreathCauldronIngredient>of(DragonBreathCauldronIngredient::new, MobCategory.MISC).sized(0.5f, 0.5f).eyeHeight(0.125f).clientTrackingRange(4).noLootTable());
 
+	EntityType<Boat> ASHEN_BOAT = registerBoat(StellarityEntityTypeIds.ASHEN_BOAT, StellarityItems.ASHEN_BOAT);
+	EntityType<Boat> AMETHYII_BOAT = registerBoat(StellarityEntityTypeIds.AMETHYII_BOAT, StellarityItems.AMETHYII_BOAT);
+	EntityType<Boat> HALLOWED_BOAT = registerBoat(StellarityEntityTypeIds.HALLOWED_BOAT, StellarityItems.HALLOWED_BOAT);
+	EntityType<Boat> SHRUBBED_BOAT = registerBoat(StellarityEntityTypeIds.SHRUBBED_BOAT, StellarityItems.SHRUBBED_BOAT);
+	EntityType<Boat> PRISMATIC_BOAT = registerBoat(StellarityEntityTypeIds.PRISMATIC_BOAT, StellarityItems.PRISMATIC_BOAT);
+	EntityType<Boat> INFERNO_BOAT = registerBoat(StellarityEntityTypeIds.INFERNO_BOAT, StellarityItems.INFERNO_BOAT);
+	EntityType<ChestBoat> ASHEN_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.ASHEN_CHEST_BOAT, StellarityItems.ASHEN_CHEST_BOAT);
+	EntityType<ChestBoat> AMETHYII_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.AMETHYII_CHEST_BOAT, StellarityItems.AMETHYII_CHEST_BOAT);
+	EntityType<ChestBoat> HALLOWED_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.HALLOWED_CHEST_BOAT, StellarityItems.HALLOWED_CHEST_BOAT);
+	EntityType<ChestBoat> SHRUBBED_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.SHRUBBED_CHEST_BOAT, StellarityItems.SHRUBBED_CHEST_BOAT);
+	EntityType<ChestBoat> PRISMATIC_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.PRISMATIC_CHEST_BOAT, StellarityItems.PRISMATIC_CHEST_BOAT);
+	EntityType<ChestBoat> INFERNO_CHEST_BOAT = registerChestBoat(StellarityEntityTypeIds.INFERNO_CHEST_BOAT, StellarityItems.INFERNO_CHEST_BOAT);
+
 	static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
 		return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
+	}
+
+	static EntityType<Boat> registerBoat(ResourceKey<EntityType<?>> key, Item boatItem) {
+		return register(
+			key,
+			EntityType.Builder.of((EntityType.EntityFactory<Boat>) (entityType, level) -> new Boat(entityType, level, () -> boatItem), MobCategory.MISC)
+				.noLootTable()
+				.sized(1.375F, 0.5625F)
+				.eyeHeight(0.5625F)
+				.clientTrackingRange(10)
+		);
+	}
+	static EntityType<ChestBoat> registerChestBoat(ResourceKey<EntityType<?>> key, Item boatItem) {
+		return register(
+			key,
+			EntityType.Builder.of((EntityType.EntityFactory<ChestBoat>) (entityType, level) -> new ChestBoat(entityType, level, () -> boatItem), MobCategory.MISC)
+				.noLootTable()
+				.sized(1.375F, 0.5625F)
+				.eyeHeight(0.5625F)
+				.clientTrackingRange(10)
+		);
 	}
 
 	static void init() {

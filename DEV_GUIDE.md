@@ -160,6 +160,19 @@ Make sure the translation submodule is added to your project. If it is not, add 
 Translations should be added via the translation python script. This helps manage automatic synchronization between the
 resources folder and the git submodule.
 
+## Accessors
+Accessors are recommended in place of accesswideners, accesswideners should only be used when mixin accessors fail.
+
+For static fields:
+- Use `@Accessor("myField")` and for the static method accosicated with it, it should be `static [Type] myField()`. This means if the field is `int CONSTANT_LIKE_THIS`, the method should be `static int CONSTANT_LIKE_THIS()`.
+
+- For setters, prefix the method with `set` and capitalize the first letter of the field. For example, if the field is `int myField`, the setter should be `void setMyField(int myField)`. If it is `CONSTANT_LIKE_THIS`, the setter should be `void setCONSTANT_LIKE_THIS(int CONSTANT_LIKE_THIS)`.
+
+For private fields:
+- Use `@Accessor("myField")` and for the method, it should look like `[Type] stellarity$myField()`.
+- For setters, prefix the method with `stellarity$set` and capitalize the first letter of the field. For example, if the field is `int myField`, the setter should be `void stellarity$setMyField(int myField)`.
+
+
 ## Commit Guides
 
 Don't write an essay, and try to use these emojis at the beginning of commit message whenever possible.

@@ -84,7 +84,6 @@ public class Stellarity implements ModInitializer {
 		StellarityVillagerTypes.init();
 		StellarityVillagerProfessions.init();
 		StellarityCommands.init();
-		StellarityPlayerPickItemModifications.init();
 		StellarityServerNetworking.init();
 		StellarityRecipeBookCategories.init();
 

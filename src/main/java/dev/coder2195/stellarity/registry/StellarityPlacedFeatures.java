@@ -205,21 +205,21 @@ public interface StellarityPlacedFeatures {
 
 		final var chorusPlant = configured.getOrThrow(mcConfig("chorus_plant"));
 		final var nothing = placed.getOrThrow(NOTHING);
-		final var stalactites = configured.getOrThrow(StellarityFeatures.GLOBAL_STALACTITES);
+		final var stalactites = configured.getOrThrow(StellarityFeatures.STALACTITES);
 		final var aboveBelow0 = heightRange(height(aboveBottom(0), belowTop(0)));
 		final var scanDownSolidAir32 = envScan(Direction.DOWN, solid(), matchBlocks(AIR), 32);
 		final var scanUpSolidAir32 = envScan(Direction.UP, solid(), matchBlocks(AIR), 32);
 		final var crystalCragsAmethystCrystal = configured.getOrThrow(StellarityFeatures.CRYSTAL_CRAGS_AMETHYST_CRYSTAL);
-		final var hangingRoots = configured.getOrThrow(StellarityFeatures.GLOBAL_HANGING_ROOTS);
+		final var hangingRoots = configured.getOrThrow(StellarityFeatures.HANGING_ROOTS);
 
 		context.register(GLOBAL_STALACTITES, new PlacedFeature(stalactites, List.of(
 			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)), inSquare(), noiseCount(10, 55, 0),
 			aboveBelow0, scanUpSolidAir32, biome()
 		)));
-		context.register(GLOBAL_FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.GLOBAL_FOSSIL), List.of(
+		context.register(GLOBAL_FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FOSSIL), List.of(
 			rarity(40), inSquare(), heightRange(height(aboveBottom(8), absolute(140))), biome()
 		)));
-		context.register(GLOBAL_DUNGEONS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.GLOBAL_DUNGEON), List.of(
+		context.register(GLOBAL_DUNGEONS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.DUNGEON), List.of(
 			rarity(10), heightRange(height(aboveBottom(8), absolute(140))), inSquare(), biome()
 		)));
 		context.register(GLOBAL_FREEZE_WATER, new PlacedFeature(direct(new FreezeWaterFeature()), List.of(biome())));
@@ -249,7 +249,7 @@ public interface StellarityPlacedFeatures {
 				Direction.DOWN, solid(), matchBlocks(AIR), 32
 			), biome()
 		)));
-		context.register(END_BARRENS_STALACTITES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.GLOBAL_STALACTITES), List.of(
+		context.register(END_BARRENS_STALACTITES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.STALACTITES), List.of(
 			countPlace(ValueUtil.weightedInts(15, 100, 25, 50, 35, 25, 45, 1)), inSquare(), noiseCount(25, 55, 0.1), aboveBelow0,
 			scanUpSolidAir32, biome()
 		)));

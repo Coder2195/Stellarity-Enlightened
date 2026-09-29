@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(LivingEntity.class)
 public interface LivingEntityAccessor {
 	@Accessor("lastDamageStamp")
-	long stellarity$getLastDamageStamp();
+	long stellarity$lastDamageStamp();
 
 	@Accessor("lastHurt")
-	float stellarity$getLastHurt();
+	float stellarity$lastHurt();
 }

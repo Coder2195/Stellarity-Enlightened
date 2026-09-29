@@ -1,5 +1,5 @@
 {
-  "feature": "stellarity:global/stalactites",
+  "feature": "stellarity:stalactites",
   "placement": [
     {
       "type": "minecraft:count",

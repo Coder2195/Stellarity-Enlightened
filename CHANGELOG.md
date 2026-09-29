@@ -15,7 +15,14 @@ Compatibility update along with general additions of armor and recipes
 
 **[+] Shulker Shovel**
 
+
+## Blocks
+**[-] Colored Leaves**
+
 ## Recipes
+
+### Cauldron Crafting
+
 ### Consecration
 
 **[+] All Other Leaves → Cherry Leaves**

@@ -1,7 +1,6 @@
 package dev.coder2195.stellarity.datagen;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.item_tint_source.ColorTintSource;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -180,9 +179,6 @@ public class ModelProvider extends FabricModelProvider {
 		generateBush(generators, StellarityBlocks.DUSKBERRY_BUSH);
 
 		generators.createAxisAlignedPillarBlock(StellarityBlocks.ASHEN_FROGLIGHT, TexturedModel.COLUMN);
-
-		generators.blockStateOutput.accept(createSimpleBlock(StellarityBlocks.COLORED_LEAVES, plainVariant(TexturedModel.LEAVES.create(StellarityBlocks.COLORED_LEAVES, generators.modelOutput))));
-		generators.registerSimpleTintedItemModel(StellarityBlocks.COLORED_LEAVES, Stellarity.id("block/colored_leaves"), new ColorTintSource());
 
 		var cauldronLiquid = TextureMapping.cauldron(TextureMapping.getBlockTexture(StellarityBlocks.DRAGON_BREATH_CAULDRON, "_liquid"));
 		generators.blockStateOutput
