@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "stellarity:block/prismatic_planks",
+    "side": "stellarity:block/prismatic_planks",
+    "top": "stellarity:block/prismatic_planks"
+  }
+}

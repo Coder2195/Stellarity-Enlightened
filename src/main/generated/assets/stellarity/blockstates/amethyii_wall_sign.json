@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stellarity:block/amethyii_wall_sign",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "stellarity:block/amethyii_wall_sign",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "stellarity:block/amethyii_wall_sign"
+    },
+    "facing=west": {
+      "model": "stellarity:block/amethyii_wall_sign",
+      "y": 90
+    }
+  }
+}

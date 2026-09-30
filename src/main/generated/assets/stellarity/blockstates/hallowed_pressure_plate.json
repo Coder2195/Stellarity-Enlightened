@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "stellarity:block/hallowed_pressure_plate"
+    },
+    "powered=true": {
+      "model": "stellarity:block/hallowed_pressure_plate_down"
+    }
+  }
+}

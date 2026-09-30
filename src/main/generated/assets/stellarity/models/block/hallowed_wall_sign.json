@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_wall_sign",
+  "textures": {
+    "all": "stellarity:block/hallowed_sign",
+    "particle": "stellarity:block/hallowed_planks"
+  }
+}

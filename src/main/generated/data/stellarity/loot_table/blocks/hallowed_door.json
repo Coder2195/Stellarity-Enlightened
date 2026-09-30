@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "stellarity:hallowed_door",
+            "state": {
+              "half": "lower"
+            }
+          },
+          "name": "stellarity:hallowed_door"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "stellarity:block/shrubbed_log_top",
+    "side": "stellarity:block/shrubbed_log"
+  }
+}

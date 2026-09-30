@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "stellarity:block/hallowed_planks",
+    "side": "stellarity:block/hallowed_planks",
+    "top": "stellarity:block/hallowed_planks"
+  }
+}

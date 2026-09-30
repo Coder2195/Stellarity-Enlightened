@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_hanging_sign_rot_3",
+  "textures": {
+    "all": "stellarity:block/hallowed_hanging_sign",
+    "particle": "stellarity:block/stripped_hallowed_log"
+  }
+}

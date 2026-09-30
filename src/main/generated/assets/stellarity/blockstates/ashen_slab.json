@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/ashen_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/ashen_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/ashen_slab_top"
+    }
+  }
+}

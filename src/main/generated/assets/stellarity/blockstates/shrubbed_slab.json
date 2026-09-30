@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/shrubbed_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/shrubbed_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/shrubbed_slab_top"
+    }
+  }
+}

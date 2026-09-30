@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/prismatic_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/prismatic_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/prismatic_slab_top"
+    }
+  }
+}

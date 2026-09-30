@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "stellarity:block/prismatic_log",
+    "side": "stellarity:block/prismatic_log"
+  }
+}

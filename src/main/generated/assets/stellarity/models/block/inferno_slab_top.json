@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "stellarity:block/inferno_planks",
+    "side": "stellarity:block/inferno_planks",
+    "top": "stellarity:block/inferno_planks"
+  }
+}

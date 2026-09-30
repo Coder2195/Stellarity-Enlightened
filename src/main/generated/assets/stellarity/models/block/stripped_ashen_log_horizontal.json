@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "stellarity:block/stripped_ashen_log_top",
+    "side": "stellarity:block/stripped_ashen_log"
+  }
+}

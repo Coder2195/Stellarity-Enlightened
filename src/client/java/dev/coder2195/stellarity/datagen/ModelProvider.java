@@ -1,7 +1,9 @@
 package dev.coder2195.stellarity.datagen;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.registry.StellarityBlockFamilies;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.color.item.GrassColorSource;
@@ -195,6 +197,24 @@ public class ModelProvider extends FabricModelProvider {
 						))
 				)
 			);
+
+		for (var blockFamily : List.of(StellarityBlockFamilies.AMETHYII_PLANKS, StellarityBlockFamilies.HALLOWED_PLANKS, StellarityBlockFamilies.SHRUBBED_PLANKS, StellarityBlockFamilies.PRISMATIC_PLANKS, StellarityBlockFamilies.ASHEN_PLANKS, StellarityBlockFamilies.INFERNO_PLANKS))
+			generators.family(blockFamily.getBaseBlock()).generateFor(blockFamily);
+
+		for (var wood: List.of(
+			new Tuple2<>(StellarityBlocks.AMETHYII_LOG, StellarityBlocks.AMETHYII_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_AMETHYII_LOG, StellarityBlocks.STRIPPED_AMETHYII_WOOD),
+			new Tuple2<>(StellarityBlocks.HALLOWED_LOG, StellarityBlocks.HALLOWED_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_HALLOWED_LOG, StellarityBlocks.STRIPPED_HALLOWED_WOOD),
+			new Tuple2<>(StellarityBlocks.SHRUBBED_LOG, StellarityBlocks.SHRUBBED_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_SHRUBBED_LOG, StellarityBlocks.STRIPPED_SHRUBBED_WOOD),
+			new Tuple2<>(StellarityBlocks.PRISMATIC_LOG, StellarityBlocks.PRISMATIC_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_PRISMATIC_LOG, StellarityBlocks.STRIPPED_PRISMATIC_WOOD),
+			new Tuple2<>(StellarityBlocks.ASHEN_LOG, StellarityBlocks.ASHEN_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_ASHEN_LOG, StellarityBlocks.STRIPPED_ASHEN_WOOD),
+			new Tuple2<>(StellarityBlocks.INFERNO_LOG, StellarityBlocks.INFERNO_WOOD),
+			new Tuple2<>(StellarityBlocks.STRIPPED_INFERNO_LOG, StellarityBlocks.STRIPPED_INFERNO_WOOD)
+		)) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
 	}
 
 	@Override

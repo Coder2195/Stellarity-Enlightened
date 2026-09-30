@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/inferno_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/inferno_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/inferno_slab_top"
+    }
+  }
+}

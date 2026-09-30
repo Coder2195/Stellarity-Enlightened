@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right_open",
+  "textures": {
+    "bottom": "stellarity:block/hallowed_door_bottom",
+    "top": "stellarity:block/hallowed_door_top"
+  }
+}

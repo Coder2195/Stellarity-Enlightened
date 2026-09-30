@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_sign_rot_3",
+  "textures": {
+    "all": "stellarity:block/hallowed_sign",
+    "particle": "stellarity:block/hallowed_planks"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/hallowed_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/hallowed_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/hallowed_slab_top"
+    }
+  }
+}

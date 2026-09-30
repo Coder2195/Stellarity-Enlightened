@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "stellarity:block/stripped_inferno_log_top",
+    "side": "stellarity:block/stripped_inferno_log"
+  }
+}

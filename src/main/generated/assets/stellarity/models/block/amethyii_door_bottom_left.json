@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "stellarity:block/amethyii_door_bottom",
+    "top": "stellarity:block/amethyii_door_top"
+  }
+}

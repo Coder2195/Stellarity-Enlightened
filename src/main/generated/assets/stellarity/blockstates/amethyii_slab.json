@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "stellarity:block/amethyii_slab"
+    },
+    "type=double": {
+      "model": "stellarity:block/amethyii_planks"
+    },
+    "type=top": {
+      "model": "stellarity:block/amethyii_slab_top"
+    }
+  }
+}

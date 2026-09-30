@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:match_block",
+            "blocks": "stellarity:inferno_door",
+            "state": {
+              "half": "lower"
+            }
+          },
+          "name": "stellarity:inferno_door"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

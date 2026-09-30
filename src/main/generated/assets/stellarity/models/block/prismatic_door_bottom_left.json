@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "stellarity:block/prismatic_door_bottom",
+    "top": "stellarity:block/prismatic_door_top"
+  }
+}

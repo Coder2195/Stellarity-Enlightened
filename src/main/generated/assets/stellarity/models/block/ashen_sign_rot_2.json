@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_sign_rot_2",
+  "textures": {
+    "all": "stellarity:block/ashen_sign",
+    "particle": "stellarity:block/ashen_planks"
+  }
+}

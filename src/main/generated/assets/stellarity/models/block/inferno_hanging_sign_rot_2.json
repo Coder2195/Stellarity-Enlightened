@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_hanging_sign_rot_2",
+  "textures": {
+    "all": "stellarity:block/inferno_hanging_sign",
+    "particle": "stellarity:block/stripped_inferno_log"
+  }
+}
