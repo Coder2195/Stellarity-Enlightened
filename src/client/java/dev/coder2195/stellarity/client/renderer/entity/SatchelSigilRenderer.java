@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import dev.coder2195.stellarity.client.registry.StellarityModelLayers;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -11,7 +12,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
 import dev.coder2195.stellarity.client.model.entity.SatchelSigilModel;
 import dev.coder2195.stellarity.entity.SatchelSigil;
 
@@ -21,7 +21,7 @@ public class SatchelSigilRenderer extends EntityRenderer<SatchelSigil, SatchelSi
 
 	public SatchelSigilRenderer(EntityRendererProvider.Context context) {
 		super(context);
-		this.model = new SatchelSigilModel(context.bakeLayer(StellarityEntityModelLayers.SATCHEL_SIGIL));
+		this.model = new SatchelSigilModel(context.bakeLayer(StellarityModelLayers.SATCHEL_SIGIL));
 	}
 
 	@Override

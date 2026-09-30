@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.resources.Identifier;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.client.registry.StellarityEntityModelLayers;
+import dev.coder2195.stellarity.client.registry.StellarityModelLayers;
 import dev.coder2195.stellarity.client.model.entity.PixieModel;
 import dev.coder2195.stellarity.entity.Pixie;
 
@@ -13,7 +13,7 @@ public class PixieRenderer extends MobRenderer<Pixie, LivingEntityRenderState, P
 	public static final Identifier TEXTURE = Stellarity.id("textures/entity/pixie/pixie.png");
 
 	public PixieRenderer(EntityRendererProvider.Context context) {
-		super(context, new PixieModel(context.bakeLayer(StellarityEntityModelLayers.PIXIE)), 0f);
+		super(context, new PixieModel(context.bakeLayer(StellarityModelLayers.PIXIE)), 0f);
 	}
 
 	@Override
