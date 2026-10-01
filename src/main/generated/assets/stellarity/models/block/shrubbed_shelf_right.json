@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_shelf_right",
+  "textures": {
+    "all": "stellarity:block/shrubbed_shelf",
+    "particle": "stellarity:block/stripped_shrubbed_log"
+  }
+}

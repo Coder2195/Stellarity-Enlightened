@@ -5,33 +5,46 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.model.entity.PixieModel;
 import dev.coder2195.stellarity.client.model.entity.SatchelSigilModel;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.object.boat.BoatModel;
 
-@SuppressWarnings("ConfusingMainMethod")
 public interface StellarityModelLayers {
-	ModelLayerLocation SATCHEL_SIGIL = main("satchel_sigil");
-	ModelLayerLocation PIXIE = main("pixie");
+	LayerDefinition BOAT_MODEL = BoatModel.createBoatModel();
+	LayerDefinition CHEST_BOAT_MODEL = BoatModel.createChestBoatModel();
 
-	ModelLayerLocation AMETHYII_BOAT = main("boat/amethyii");
-	ModelLayerLocation HALLOWED_BOAT = main("boat/hallowed");
-	ModelLayerLocation SHRUBBED_BOAT = main("boat/shrubbed");
-	ModelLayerLocation PRISMATIC_BOAT = main("boat/prismatic");
-	ModelLayerLocation ASHEN_BOAT = main("boat/ashen");
-	ModelLayerLocation INFERNO_BOAT = main("boat/inferno");
+	ModelLayerLocation SATCHEL_SIGIL = layer("satchel_sigil", SatchelSigilModel::getTexturedModelData);
+	ModelLayerLocation PIXIE = layer("pixie",PixieModel::getTexturedModelData);
 
-	ModelLayerLocation AMETHYII_CHEST_BOAT = main("chest_boat/amethyii");
-	ModelLayerLocation HALLOWED_CHEST_BOAT = main("chest_boat/hallowed");
-	ModelLayerLocation SHRUBBED_CHEST_BOAT = main("chest_boat/shrubbed");
-	ModelLayerLocation PRISMATIC_CHEST_BOAT = main("chest_boat/prismatic");
-	ModelLayerLocation ASHEN_CHEST_BOAT = main("chest_boat/ashen");
-	ModelLayerLocation INFERNO_CHEST_BOAT = main("chest_boat/inferno");
+	ModelLayerLocation AMETHYII_BOAT = boat("boat/amethyii");
+	ModelLayerLocation HALLOWED_BOAT = boat("boat/hallowed");
+	ModelLayerLocation SHRUBBED_BOAT = boat("boat/shrubbed");
+	ModelLayerLocation PRISMATIC_BOAT = boat("boat/prismatic");
+	ModelLayerLocation ASHEN_BOAT = boat("boat/ashen");
+	ModelLayerLocation INFERNO_BOAT = boat("boat/inferno");
+
+	ModelLayerLocation AMETHYII_CHEST_BOAT = chestBoat("chest_boat/amethyii");
+	ModelLayerLocation HALLOWED_CHEST_BOAT = chestBoat("chest_boat/hallowed");
+	ModelLayerLocation SHRUBBED_CHEST_BOAT = chestBoat("chest_boat/shrubbed");
+	ModelLayerLocation PRISMATIC_CHEST_BOAT = chestBoat("chest_boat/prismatic");
+	ModelLayerLocation ASHEN_CHEST_BOAT = chestBoat("chest_boat/ashen");
+	ModelLayerLocation INFERNO_CHEST_BOAT = chestBoat("chest_boat/inferno");
 
 
-	static ModelLayerLocation main(String id) {
-		return new ModelLayerLocation(Stellarity.id(id), "main");
+	static ModelLayerLocation layer(String id, ModelLayerRegistry.TexturedLayerDefinitionProvider provider) {
+		var location = new ModelLayerLocation(Stellarity.id(id), "main");
+		ModelLayerRegistry.registerModelLayer(location, provider);
+		return location;
+	}
+
+	static ModelLayerLocation boat(String id) {
+		return layer(id, () -> BOAT_MODEL);
+	}
+
+	static ModelLayerLocation chestBoat(String id) {
+		return layer(id, () -> CHEST_BOAT_MODEL);
 	}
 
 	static void init() {
-		ModelLayerRegistry.registerModelLayer(SATCHEL_SIGIL, SatchelSigilModel::getTexturedModelData);
-		ModelLayerRegistry.registerModelLayer(PIXIE, PixieModel::getTexturedModelData);
+		Stellarity.LOGGER.info("Registering Stellarity Model Layers");
 	}
 }

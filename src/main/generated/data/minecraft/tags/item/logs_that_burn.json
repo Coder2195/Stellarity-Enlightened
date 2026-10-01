@@ -1,10 +1,10 @@
 {
   "values": [
-    "stellarity:ashen_log",
-    "stellarity:amethyii_log",
-    "stellarity:hallowed_log",
-    "stellarity:shrubbed_log",
-    "stellarity:prismatic_log",
-    "stellarity:inferno_log"
+    "#stellarity:ashen_logs",
+    "#stellarity:amethyii_logs",
+    "#stellarity:hallowed_logs",
+    "#stellarity:shrubbed_logs",
+    "#stellarity:prismatic_logs",
+    "#stellarity:inferno_logs"
   ]
 }

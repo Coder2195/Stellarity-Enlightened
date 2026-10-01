@@ -14,6 +14,7 @@ import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -99,7 +100,20 @@ public class ModelProvider extends FabricModelProvider {
 		END_VILLAGE_MAP,
 		END_CITY_MAP,
 		FLOATING_TREASURE_MAP,
-		CHAPEL_OF_LIGHT_MAP
+		CHAPEL_OF_LIGHT_MAP,
+
+		AMETHYII_BOAT,
+		AMETHYII_SAPLING,
+		HALLOWED_BOAT,
+		HALLOWED_SAPLING,
+		SHRUBBED_BOAT,
+		SHRUBBED_SAPLING,
+		PRISMATIC_BOAT,
+		PRISMATIC_SAPLING,
+		ASHEN_BOAT,
+		ASHEN_SAPLING,
+		INFERNO_BOAT,
+		INFERNO_SAPLING
 	};
 
 	public final static Item[] HANDHELD_ITEMS = new Item[]{
@@ -113,6 +127,39 @@ public class ModelProvider extends FabricModelProvider {
 		StellarityBlocks.ENDERITE_BLOCK,
 		StellarityBlocks.COARSE_ENDER_DIRT
 	};
+
+	public static final List<Tuple2<Block, Block>> WOOD_BLOCKS = List.of(
+		new Tuple2<>(StellarityBlocks.AMETHYII_LOG, StellarityBlocks.AMETHYII_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_AMETHYII_LOG, StellarityBlocks.STRIPPED_AMETHYII_WOOD),
+		new Tuple2<>(StellarityBlocks.HALLOWED_LOG, StellarityBlocks.HALLOWED_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_HALLOWED_LOG, StellarityBlocks.STRIPPED_HALLOWED_WOOD),
+		new Tuple2<>(StellarityBlocks.SHRUBBED_LOG, StellarityBlocks.SHRUBBED_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_SHRUBBED_LOG, StellarityBlocks.STRIPPED_SHRUBBED_WOOD),
+		new Tuple2<>(StellarityBlocks.PRISMATIC_LOG, StellarityBlocks.PRISMATIC_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_PRISMATIC_LOG, StellarityBlocks.STRIPPED_PRISMATIC_WOOD),
+		new Tuple2<>(StellarityBlocks.ASHEN_LOG, StellarityBlocks.ASHEN_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_ASHEN_LOG, StellarityBlocks.STRIPPED_ASHEN_WOOD),
+		new Tuple2<>(StellarityBlocks.INFERNO_LOG, StellarityBlocks.INFERNO_WOOD),
+		new Tuple2<>(StellarityBlocks.STRIPPED_INFERNO_LOG, StellarityBlocks.STRIPPED_INFERNO_WOOD)
+	);
+
+	public static final List<Tuple2<Block, Block>> SHELVES = List.of(
+		new Tuple2<>(StellarityBlocks.AMETHYII_SHELF, StellarityBlocks.STRIPPED_AMETHYII_LOG),
+		new Tuple2<>(StellarityBlocks.HALLOWED_SHELF, StellarityBlocks.STRIPPED_HALLOWED_LOG),
+		new Tuple2<>(StellarityBlocks.SHRUBBED_SHELF, StellarityBlocks.STRIPPED_SHRUBBED_LOG),
+		new Tuple2<>(StellarityBlocks.PRISMATIC_SHELF, StellarityBlocks.STRIPPED_PRISMATIC_LOG),
+		new Tuple2<>(StellarityBlocks.ASHEN_SHELF, StellarityBlocks.STRIPPED_ASHEN_LOG),
+		new Tuple2<>(StellarityBlocks.INFERNO_SHELF, StellarityBlocks.STRIPPED_INFERNO_LOG)
+	);
+
+	public static final BlockFamily[] BLOCK_FAMILIES = new BlockFamily[]{
+		StellarityBlockFamilies.AMETHYII_PLANKS, StellarityBlockFamilies.HALLOWED_PLANKS, StellarityBlockFamilies.SHRUBBED_PLANKS, StellarityBlockFamilies.PRISMATIC_PLANKS, StellarityBlockFamilies.ASHEN_PLANKS, StellarityBlockFamilies.INFERNO_PLANKS
+	};
+
+	public static final Block[] LEAVES = new Block[]{
+		StellarityBlocks.AMETHYII_LEAVES, StellarityBlocks.HALLOWED_LEAVES, StellarityBlocks.SHRUBBED_LEAVES, StellarityBlocks.PRISMATIC_LEAVES, StellarityBlocks.ASHEN_LEAVES, StellarityBlocks.INFERNO_LEAVES
+	};
+
 
 	public void generateBush(BlockModelGenerators generators, Block block) {
 		generators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
@@ -198,23 +245,13 @@ public class ModelProvider extends FabricModelProvider {
 				)
 			);
 
-		for (var blockFamily : List.of(StellarityBlockFamilies.AMETHYII_PLANKS, StellarityBlockFamilies.HALLOWED_PLANKS, StellarityBlockFamilies.SHRUBBED_PLANKS, StellarityBlockFamilies.PRISMATIC_PLANKS, StellarityBlockFamilies.ASHEN_PLANKS, StellarityBlockFamilies.INFERNO_PLANKS))
+		for (var blockFamily : BLOCK_FAMILIES)
 			generators.family(blockFamily.getBaseBlock()).generateFor(blockFamily);
 
-		for (var wood: List.of(
-			new Tuple2<>(StellarityBlocks.AMETHYII_LOG, StellarityBlocks.AMETHYII_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_AMETHYII_LOG, StellarityBlocks.STRIPPED_AMETHYII_WOOD),
-			new Tuple2<>(StellarityBlocks.HALLOWED_LOG, StellarityBlocks.HALLOWED_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_HALLOWED_LOG, StellarityBlocks.STRIPPED_HALLOWED_WOOD),
-			new Tuple2<>(StellarityBlocks.SHRUBBED_LOG, StellarityBlocks.SHRUBBED_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_SHRUBBED_LOG, StellarityBlocks.STRIPPED_SHRUBBED_WOOD),
-			new Tuple2<>(StellarityBlocks.PRISMATIC_LOG, StellarityBlocks.PRISMATIC_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_PRISMATIC_LOG, StellarityBlocks.STRIPPED_PRISMATIC_WOOD),
-			new Tuple2<>(StellarityBlocks.ASHEN_LOG, StellarityBlocks.ASHEN_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_ASHEN_LOG, StellarityBlocks.STRIPPED_ASHEN_WOOD),
-			new Tuple2<>(StellarityBlocks.INFERNO_LOG, StellarityBlocks.INFERNO_WOOD),
-			new Tuple2<>(StellarityBlocks.STRIPPED_INFERNO_LOG, StellarityBlocks.STRIPPED_INFERNO_WOOD)
-		)) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
+		for (Tuple2<Block, Block> wood : WOOD_BLOCKS) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
+
+		for (var shelf : SHELVES) generators.createShelf(shelf._1(), shelf._2());
+		for (var leaves: LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
 	}
 
 	@Override
