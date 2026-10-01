@@ -5,7 +5,6 @@ import dev.coder2195.stellarity.client.renderer.entity.*;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.NoopRenderer;
@@ -51,8 +50,7 @@ public interface StellarityEntityRenderers {
 			new Tuple2<>(StellarityEntityTypes.ASHEN_CHEST_BOAT, StellarityModelLayers.ASHEN_CHEST_BOAT),
 			new Tuple2<>(StellarityEntityTypes.INFERNO_CHEST_BOAT, StellarityModelLayers.INFERNO_CHEST_BOAT)
 		)) {
-			// TODO: replace with real textures when added
-			EntityRenderers.register(boat._1(), c -> new BoatRenderer(c, ModelLayers.ACACIA_BOAT));
+			EntityRenderers.register(boat._1(), c -> new BoatRenderer(c, boat._2()));
 		}
 	}
 }
