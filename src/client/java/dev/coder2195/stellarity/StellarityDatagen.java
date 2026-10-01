@@ -40,15 +40,6 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(BlockLootTableProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
-
-		if (Stellarity.hasModonomicon()) {
-			var langCache = new LanguageProviderCache("en_us");
-			var researchCache = new ResearchCache();
-
-			pack.addProvider(FabricBookProvider.of(Stellarity.MOD_ID, langCache, researchCache,
-					new EndonomiconBookProvider()
-			));
-		}
 	}
 
 
