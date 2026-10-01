@@ -5,7 +5,6 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.recipe.*;
 import dev.coder2195.stellarity.registry.StellarityPotions;
 import dev.coder2195.stellarity.tags.StellarityBlockItemTags;
-import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
@@ -24,7 +23,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.item.crafting.*;
@@ -485,7 +483,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(GLASS_BOTTLE)
 			.put(OVERGROWN_COD)
 			.put(GUNPOWDER),
-			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.ENTANGLEMENT)).build())
+			ENTANGLEMENT_POTION
 		));
 
 		cauldronCrafting(output, "long_entanglement_potion", new CauldronCraftingPotionConvertRecipe(potionIngredient, StellarityPotions.ENTANGLEMENT, redstoneDust, StellarityPotions.LONG_ENTANGLEMENT));
@@ -507,7 +505,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(GLASS_BOTTLE)
 			.put(SUGAR)
 			.put(NETHER_WART),
-			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.HELLFIRE_TREADER)).build())
+			HELLFIRE_TREADER_POTION
 		));
 
 		cauldronCrafting(output, "long_hellfire_treader_potion", new CauldronCraftingPotionConvertRecipe(potionIngredient, StellarityPotions.HELLFIRE_TREADER, redstoneDust, StellarityPotions.LONG_HELLFIRE_TREADER));
@@ -521,7 +519,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(GLASS_BOTTLE)
 			.put(PRISMITE)
 			.put(STARLIGHT_SOOT),
-			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.LIFEFORCE)).build())
+			LIFEFORCE_POTION
 		));
 
 		cauldronCrafting(output, "long_lifeforce_potion", new CauldronCraftingPotionConvertRecipe(potionIngredient, StellarityPotions.LIFEFORCE, redstoneDust, StellarityPotions.LONG_LIFEFORCE));
@@ -535,7 +533,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(NETHER_WART)
 			.put(GLASS_BOTTLE)
 			.put(GOLD_INGOT),
-			new ItemStackTemplate(POTION, DataComponentPatch.builder().set(DataComponents.POTION_CONTENTS, new PotionContents(StellarityPotions.SPELUNKER)).build())
+			SPELUNKER_POTION
 		));
 
 		cauldronCrafting(output, "long_spelunker_potion", new CauldronCraftingPotionConvertRecipe(potionIngredient, StellarityPotions.SPELUNKER, redstoneDust, StellarityPotions.LONG_SPELUNKER));
@@ -558,10 +556,10 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(PRISMARINE_SHARD)
 			.put(HONEY_BOTTLE)
 			.put(KELP),
-			POSEIDON_NECTAR_POTION
+			POSEIDON_NECTAR
 		));
 
-		cauldronCrafting(output, "red", new CauldronCraftingSimpleRecipe(new Ingredients()
+		cauldronCrafting(output, "red_potion", new CauldronCraftingSimpleRecipe(new Ingredients()
 			.put(WITHER_ROSE)
 			.put(WITHER_SKELETON_SKULL)
 			.put(DYE.red())
@@ -578,10 +576,10 @@ public class RecipeProvider extends FabricRecipeProvider {
 			.put(GHAST_TEAR)
 			.put(NETHER_WART)
 			.put(GLASS_BOTTLE),
-			REGENERAGA_POTION
+			REGENERAGA
 		));
 
-		cauldronCrafting(output, "strong_regeneraga_potion", new CauldronCraftingPotionConvertRecipe(
+		cauldronCrafting(output, "strong_regeneraga", new CauldronCraftingPotionConvertRecipe(
 			potionIngredient, StellarityPotions.REGENERAGA, glowstoneDust, StellarityPotions.STRONG_REGENERAGA
 		));
 
@@ -594,7 +592,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 
 		cauldronCrafting(output, "royal_jelly_ii", new CauldronCraftingSimpleRecipe(new Ingredients()
 			.put(STARLIGHT_SOOT)
-			.put(ROYAL_JELLY_II),
+			.put(ROYAL_JELLY),
 			new ItemStackTemplate(ROYAL_JELLY_II)
 		));
 	}

@@ -10,9 +10,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.ColorCollection;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.data_component.Color;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -99,9 +97,9 @@ public interface StellarityCreativeModeTabs {
 		SPELUNKER_POTION,
 		LONG_SPELUNKER_POTION,
 		STRONG_SPELUNKER_POTION,
-		POSEIDON_NECTAR_POTION,
+    POSEIDON_NECTAR,
 		RED_POTION,
-		REGENERAGA_POTION,
+		REGENERAGA,
 		LONG_REGENERAGA_POTION,
 		STRONG_REGENERAGA_POTION,
 		LUCK_POTION,

@@ -141,9 +141,6 @@ public interface StellarityItemIds {
 	ResourceKey<Item> INFERNO_BOAT = id("inferno_boat");
 	ResourceKey<Item> INFERNO_CHEST_BOAT = id("inferno_chest_boat");
 
-
-
-
 	static ResourceKey<Item> id(String id) {
 		return Stellarity.key(Registries.ITEM, id);
 	}

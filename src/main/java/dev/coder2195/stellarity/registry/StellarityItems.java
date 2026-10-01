@@ -26,8 +26,6 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
-import net.minecraft.world.entity.vehicle.boat.Boat;
-import net.minecraft.world.entity.vehicle.boat.ChestBoat;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
@@ -357,10 +355,10 @@ public interface StellarityItems {
 	ItemStackTemplate LONG_SPELUNKER_POTION = createPotion(StellarityPotions.LONG_SPELUNKER);
 	ItemStackTemplate STRONG_SPELUNKER_POTION = createPotion(StellarityPotions.STRONG_SPELUNKER);
 
-	ItemStackTemplate POSEIDON_NECTAR_POTION = createPotion(StellarityPotions.POSEIDON_NECTAR);
+	ItemStackTemplate POSEIDON_NECTAR = createPotion(StellarityPotions.POSEIDON_NECTAR);
 	ItemStackTemplate RED_POTION = createPotion(StellarityPotions.RED);
 
-	ItemStackTemplate REGENERAGA_POTION = createPotion(StellarityPotions.REGENERAGA);
+	ItemStackTemplate REGENERAGA = createPotion(StellarityPotions.REGENERAGA);
 	ItemStackTemplate LONG_REGENERAGA_POTION = createPotion(StellarityPotions.LONG_REGENERAGA);
 	ItemStackTemplate STRONG_REGENERAGA_POTION = createPotion(StellarityPotions.STRONG_REGENERAGA);
 
