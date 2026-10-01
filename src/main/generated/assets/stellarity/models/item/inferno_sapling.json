@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stellarity:item/inferno_sapling"
+    "layer0": "stellarity:block/inferno_sapling"
   }
 }

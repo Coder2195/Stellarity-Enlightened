@@ -103,18 +103,27 @@ public class ModelProvider extends FabricModelProvider {
 		CHAPEL_OF_LIGHT_MAP,
 
 		AMETHYII_BOAT,
-		AMETHYII_SAPLING,
+		AMETHYII_CHEST_BOAT,
 		HALLOWED_BOAT,
-		HALLOWED_SAPLING,
+		HALLOWED_CHEST_BOAT,
 		SHRUBBED_BOAT,
-		SHRUBBED_SAPLING,
+		SHRUBBED_CHEST_BOAT,
 		PRISMATIC_BOAT,
-		PRISMATIC_SAPLING,
+		PRISMATIC_CHEST_BOAT,
 		ASHEN_BOAT,
-		ASHEN_SAPLING,
+		ASHEN_CHEST_BOAT,
 		INFERNO_BOAT,
-		INFERNO_SAPLING
+		INFERNO_CHEST_BOAT
 	};
+
+	public static final List<Tuple2<Block, Block>> SAPLINGS = List.of(
+		new Tuple2<>(StellarityBlocks.AMETHYII_SAPLING, StellarityBlocks.POTTED_AMETHYII_SAPLING),
+		new Tuple2<>(StellarityBlocks.HALLOWED_SAPLING, StellarityBlocks.POTTED_HALLOWED_SAPLING),
+		new Tuple2<>(StellarityBlocks.SHRUBBED_SAPLING, StellarityBlocks.POTTED_SHRUBBED_SAPLING),
+		new Tuple2<>(StellarityBlocks.PRISMATIC_SAPLING, StellarityBlocks.POTTED_PRISMATIC_SAPLING),
+		new Tuple2<>(StellarityBlocks.ASHEN_SAPLING, StellarityBlocks.POTTED_ASHEN_SAPLING),
+		new Tuple2<>(StellarityBlocks.INFERNO_SAPLING, StellarityBlocks.POTTED_INFERNO_SAPLING)
+	);
 
 	public final static Item[] HANDHELD_ITEMS = new Item[]{
 		TAMARIS, STELLAR_STRIKER,
@@ -252,6 +261,7 @@ public class ModelProvider extends FabricModelProvider {
 
 		for (var shelf : SHELVES) generators.createShelf(shelf._1(), shelf._2());
 		for (var leaves: LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
+		for (Tuple2<Block, Block> sapling : SAPLINGS) generators.createPlantWithDefaultItem(sapling._1(), sapling._2(), PlantType.NOT_TINTED);
 	}
 
 	@Override

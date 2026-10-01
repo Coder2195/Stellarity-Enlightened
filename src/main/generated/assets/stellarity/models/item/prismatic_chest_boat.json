@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stellarity:block/shrubbed_sapling"
+    "layer0": "stellarity:item/prismatic_chest_boat"
   }
 }
