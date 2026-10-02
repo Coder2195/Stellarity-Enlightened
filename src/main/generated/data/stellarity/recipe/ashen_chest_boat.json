@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest_boat",
+  "ingredients": [
+    "minecraft:chest",
+    "stellarity:ashen_boat"
+  ],
+  "result": {
+    "id": "stellarity:ashen_chest_boat"
+  }
+}

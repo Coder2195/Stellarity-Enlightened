@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#stellarity:amethyii_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "stellarity:amethyii_planks"
+  }
+}

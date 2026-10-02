@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 
@@ -107,6 +108,9 @@ public interface StellarityBlockFamilies {
 		.recipeGroupPrefix("wooden")
 		.recipeUnlockedBy("has_planks")
 		.getFamily();
-	
-	
+
+	static void init() {
+		Stellarity.LOGGER.info("Registering Stellarity Block Families");
+	}
+
 }

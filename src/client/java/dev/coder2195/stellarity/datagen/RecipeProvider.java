@@ -3,10 +3,12 @@ package dev.coder2195.stellarity.datagen;
 import com.mojang.serialization.Lifecycle;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.recipe.*;
+import dev.coder2195.stellarity.registry.StellarityBlockFamilies;
 import dev.coder2195.stellarity.registry.StellarityPotions;
 import dev.coder2195.stellarity.tags.StellarityBlockItemTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
+import dev.coder2195.stellarity.util.tuple.Tuple7;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.Advancement;
@@ -14,6 +16,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -21,6 +24,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -196,6 +200,33 @@ public class RecipeProvider extends FabricRecipeProvider {
 					.unlockedBy(getHasName(RED_MUSHROOM), this.has(RED_MUSHROOM))
 					.unlockedBy(getHasName(BROWN_MUSHROOM), this.has(BROWN_MUSHROOM))
 					.save(this.output, "crafting/suspicious_stew_from_pitcher_plant");
+
+				for (var woodGroup : List.of(
+					new Tuple7<>(StellarityBlockFamilies.AMETHYII_PLANKS, StellarityBlockItemTags.AMETHYII_LOGS, AMETHYII_WOOD, STRIPPED_AMETHYII_WOOD, AMETHYII_BOAT, AMETHYII_CHEST_BOAT, AMETHYII_SHELF),
+					new Tuple7<>(StellarityBlockFamilies.ASHEN_PLANKS, StellarityBlockItemTags.ASHEN_LOGS, ASHEN_WOOD, STRIPPED_ASHEN_WOOD, ASHEN_BOAT, ASHEN_CHEST_BOAT, ASHEN_SHELF),
+					new Tuple7<>(StellarityBlockFamilies.HALLOWED_PLANKS, StellarityBlockItemTags.HALLOWED_LOGS, HALLOWED_WOOD, STRIPPED_HALLOWED_WOOD, HALLOWED_BOAT, HALLOWED_CHEST_BOAT, HALLOWED_SHELF),
+					new Tuple7<>(StellarityBlockFamilies.INFERNO_PLANKS, StellarityBlockItemTags.INFERNO_LOGS, INFERNO_WOOD, STRIPPED_INFERNO_WOOD, INFERNO_BOAT, INFERNO_CHEST_BOAT, INFERNO_SHELF),
+					new Tuple7<>(StellarityBlockFamilies.PRISMATIC_PLANKS, StellarityBlockItemTags.PRISMATIC_LOGS, PRISMATIC_WOOD, STRIPPED_PRISMATIC_WOOD, PRISMATIC_BOAT, PRISMATIC_CHEST_BOAT, PRISMATIC_SHELF),
+					new Tuple7<>(StellarityBlockFamilies.SHRUBBED_PLANKS, StellarityBlockItemTags.SHRUBBED_LOGS, SHRUBBED_WOOD, STRIPPED_SHRUBBED_WOOD, SHRUBBED_BOAT, SHRUBBED_CHEST_BOAT, SHRUBBED_SHELF)
+				)) {
+					var family = woodGroup._1();
+					var logs = woodGroup._2().item();
+					var wood = woodGroup._3();
+					var log = family.get(BlockFamily.Variant.LOG);
+					var strippedLog = family.get(BlockFamily.Variant.STRIPPED_LOG);
+					var strippedWood = woodGroup._4();
+					var planks = family.getBaseBlock();
+					var boat = woodGroup._5();
+					var chestBoat = woodGroup._6();
+					var shelf = woodGroup._7();
+					this.planksFromLog(planks, logs, 4);
+					this.woodFromLogs(wood, log);
+					this.woodFromLogs(strippedWood, strippedLog);
+					this.generateRecipes(family, FeatureFlags.VANILLA_SET);
+					this.woodenBoat(boat, planks);
+					this.chestBoat(chestBoat, boat);
+					this.shelf(shelf, strippedLog);
+				}
 
 				registries.allRegistriesLifecycle().add(Lifecycle.stable());
 				RecipeProvider.this.buildRecipes(registries, output);

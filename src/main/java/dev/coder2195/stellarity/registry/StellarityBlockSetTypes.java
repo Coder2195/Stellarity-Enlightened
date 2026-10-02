@@ -11,4 +11,8 @@ public interface StellarityBlockSetTypes {
 	BlockSetType PRISMATIC = new BlockSetTypeBuilder().register(Stellarity.id("prismatic"));
 	BlockSetType ASHEN = new BlockSetTypeBuilder().register(Stellarity.id("ashen"));
 	BlockSetType INFERNO = new BlockSetTypeBuilder().register(Stellarity.id("inferno"));
+
+	static void init() {
+		Stellarity.LOGGER.info("Registering Stellarity Block Set Types");
+	}
 }

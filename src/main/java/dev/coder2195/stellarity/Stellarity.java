@@ -71,6 +71,8 @@ public class Stellarity implements ModInitializer {
 		StellarityNetworking.init();
 		StellarityPotions.init();
 		StellarityBlocks.init();
+		StellarityBlockSetTypes.init();
+		StellarityBlockFamilies.init();
 		StellarityCauldronInteractions.init();
 		StellarityCreativeModeTabs.init();
 		StellarityEntityTypes.init();

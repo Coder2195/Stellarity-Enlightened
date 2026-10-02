@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#stellarity:prismatic_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "stellarity:prismatic_planks"
+  }
+}

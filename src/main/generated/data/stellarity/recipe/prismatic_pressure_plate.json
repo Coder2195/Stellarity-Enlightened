@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_pressure_plate",
+  "key": {
+    "#": "stellarity:prismatic_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "stellarity:prismatic_pressure_plate"
+  }
+}

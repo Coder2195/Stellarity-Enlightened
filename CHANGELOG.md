@@ -15,254 +15,53 @@ Compatibility update along with general additions of armor and recipes
 
 **[+] Shulker Shovel**
 
-**[+] Amethyii Boat**
-
-**[+] Amethyii Chest Boat**
-
-**[+] Hallowed Boat**
-
-**[+] Hallowed Chest Boat**
-
-**[+] Prismatic Boat**
-
-**[+] Prismatic Chest Boat**
-
-**[+] Shrubbed Boat**
-
-**[+] Shrubbed Chest Boat**
-
-**[+] Ashen Boat**
-
-**[+] Ashen Chest Boat**
-
-**[+] Inferno Boat**
-
-**[+] Inferno Chest Boat**
+For each of Amethyii, Ashen, Prismatic, Hallowed, Shrubbed, Inferno wood types:
+- **[+] Boat**
+- **[+] Chest Boat**
 
 
 ## Blocks
 **[-] Colored Leaves**
 
-**[+] Amethyii Planks**
-
-**[+] Amethyii Sapling**
-
-**[+] Amethyii Log**
-
-**[+] Stripped Amethyii Log**
-
-**[+] Stripped Amethyii Wood**
-
-**[+] Amethyii Wood**
-
-**[+] Amethyii Leaves**
-
-**[+] Amethyii Slab**
-
-**[+] Amethyii Shelf**
-
-**[+] Amethyii Fence**
-
-**[+] Amethyii Stairs**
-
-**[+] Amethyii Button**
-
-**[+] Amethyii Pressure Plate**
-
-**[+] Amethyii Door**
-
-**[+] Amethyii Trapdoor**
-
-**[+] Amethyii Fence Gate**
-
-**[+] Amethyii Sign**
-
-**[+] Amethyii Hanging Sign**
-
-**[+] Hallowed Planks**
-
-**[+] Hallowed Sapling**
-
-**[+] Hallowed Log**
-
-**[+] Stripped Hallowed Log**
-
-**[+] Stripped Hallowed Wood**
-
-**[+] Hallowed Wood**
-
-**[+] Hallowed Leaves**
-
-**[+] Hallowed Slab**
-
-**[+] Hallowed Shelf**
-
-**[+] Hallowed Fence**
-
-**[+] Hallowed Stairs**
-
-**[+] Hallowed Button**
-
-**[+] Hallowed Pressure Plate**
-
-**[+] Hallowed Door**
-
-**[+] Hallowed Trapdoor**
-
-**[+] Hallowed Fence Gate**
-
-**[+] Hallowed Sign**
-
-**[+] Hallowed Hanging Sign**
-
-**[+] Shrubbed Planks**
-
-**[+] Shrubbed Sapling**
-
-**[+] Shrubbed Log**
-
-**[+] Stripped Shrubbed Log**
-
-**[+] Stripped Shrubbed Wood**
-
-**[+] Shrubbed Wood**
-
-**[+] Shrubbed Leaves**
-
-**[+] Shrubbed Slab**
-
-**[+] Shrubbed Shelf**
-
-**[+] Shrubbed Fence**
-
-**[+] Shrubbed Stairs**
-
-**[+] Shrubbed Button**
-
-**[+] Shrubbed Pressure Plate**
-
-**[+] Shrubbed Door**
-
-**[+] Shrubbed Trapdoor**
-
-**[+] Shrubbed Fence Gate**
-
-**[+] Shrubbed Sign**
-
-**[+] Shrubbed Hanging Sign**
-
-**[+] Prismatic Planks**
-
-**[+] Prismatic Sapling**
-
-**[+] Prismatic Log**
-
-**[+] Stripped Prismatic Log**
-
-**[+] Stripped Prismatic Wood**
-
-**[+] Prismatic Wood**
-
-**[+] Prismatic Leaves**
-
-**[+] Prismatic Slab**
-
-**[+] Prismatic Shelf**
-
-**[+] Prismatic Fence**
-
-**[+] Prismatic Stairs**
-
-**[+] Prismatic Button**
-
-**[+] Prismatic Pressure Plate**
-
-**[+] Prismatic Door**
-
-**[+] Prismatic Trapdoor**
-
-**[+] Prismatic Fence Gate**
-
-**[+] Prismatic Sign**
-
-**[+] Prismatic Hanging Sign**
-
-**[+] Ashen Planks**
-
-**[+] Ashen Sapling**
-
-**[+] Ashen Log**
-
-**[+] Stripped Ashen Log**
-
-**[+] Stripped Ashen Wood**
-
-**[+] Ashen Wood**
-
-**[+] Ashen Leaves**
-
-**[+] Ashen Slab**
-
-**[+] Ashen Shelf**
-
-**[+] Ashen Fence**
-
-**[+] Ashen Stairs**
-
-**[+] Ashen Button**
-
-**[+] Ashen Pressure Plate**
-
-**[+] Ashen Door**
-
-**[+] Ashen Trapdoor**
-
-**[+] Ashen Fence Gate**
-
-**[+] Ashen Sign**
-
-**[+] Ashen Hanging Sign**
-
-**[+] Inferno Planks**
-
-**[+] Inferno Sapling**
-
-**[+] Inferno Log**
-
-**[+] Stripped Inferno Log**
-
-**[+] Stripped Inferno Wood**
-
-**[+] Inferno Wood**
-
-**[+] Inferno Leaves**
-
-**[+] Inferno Slab**
-
-**[+] Inferno Shelf**
-
-**[+] Inferno Fence**
-
-**[+] Inferno Stairs**
-
-**[+] Inferno Button**
-
-**[+] Inferno Pressure Plate**
-
-**[+] Inferno Door**
-
-**[+] Inferno Trapdoor**
-
-**[+] Inferno Fence Gate**
-
-**[+] Inferno Sign**
-
-**[+] Inferno Hanging Sign**
+For each of Amethyii, Ashen, Prismatic, Hallowed, Shrubbed, Inferno wood types:
+- **[+] Planks**
+- **[+] Sapling**
+- **[+] Log**
+- **[+] Stripped Log**
+- **[+] Stripped Wood**
+- **[+] Wood**
+- **[+] Leaves**
+- **[+] Slab**
+- **[+] Shelf**
+- **[+] Fence**
+- **[+] Stairs**
+- **[+] Button**
+- **[+] Pressure Plate**
+- **[+] Door**
+- **[+] Trapdoor**
+- **[+] Fence Gate**
+- **[+] Sign**
+- **[+] Hanging Sign**
 
 
 ## Recipes
+### Crafting Table
+For each of Amethyii, Ashen, Prismatic, Hallowed, Shrubbed, Inferno wood types, using vanilla recipe format:
+- **[+] 5 Planks → Boat**
+- **[+] Planks → Button**
+- **[+] Chest + Boat → Chest Boat**
+- **[+] 6 Planks → Door**
+- **[+] 2 Stick + 4 Planks → Fence**
+- **[+] 6 Stripped Log + 2 Iron Chain → Hanging Sign**
+- **[+] Unstripped/Stripped Log/Wood → 4 Planks**
+- **[+] 2 Planks → Pressure Plate**
+- **[+] 6 Stripped Log → Shelf**
+- **[+] Stick + 6 Planks → Sign**
+- **[+] 3 Planks → 6 Slab**
+- **[+] 6 Planks → 4 Stairs**
+- **[+] 6 Planks → 2 Trapdoor**
+- **[+] 4 Log → Wood**
 
-### Cauldron Crafting
 
 ### Consecration
 

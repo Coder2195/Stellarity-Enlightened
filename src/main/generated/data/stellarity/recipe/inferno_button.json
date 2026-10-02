@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    "stellarity:inferno_planks"
+  ],
+  "result": {
+    "id": "stellarity:inferno_button"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#stellarity:hallowed_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "stellarity:hallowed_planks"
+  }
+}
