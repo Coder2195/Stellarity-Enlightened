@@ -65,6 +65,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> DUNGEON = id("dungeon");
 	ResourceKey<Feature> HANGING_ROOTS = id("hanging_roots");
 	ResourceKey<Feature> OBSIDIAN_TOWER = id("obsidian_tower");
+	ResourceKey<Feature> ENDERITE_ORE = id("enderite_ore");
 
 	ResourceKey<Feature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<Feature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -304,6 +305,9 @@ public interface StellarityFeatures {
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
 		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.empty()));
+		context.register(ENDERITE_ORE, new OreFeature(
+			new BlockMatchTest(END_STONE), from(StellarityBlocks.ENDERITE_ORE), 4
+		));
 		context.register(FOSSIL, new FossilFeature(
 			List.of(Stellarity.id("fossil/phantom")), List.of(Stellarity.id("fossil/phantom_overlay")),
 			processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_rot")), processors.getOrThrow(Stellarity.mcKey(Registries.PROCESSOR_LIST, "fossil_coal")),

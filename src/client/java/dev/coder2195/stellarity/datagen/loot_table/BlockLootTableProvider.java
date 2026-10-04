@@ -12,6 +12,7 @@ import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import java.util.concurrent.CompletableFuture;
 
 import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
+import static dev.coder2195.stellarity.registry.StellarityItems.ENDERITE_SHARD;
 import static dev.coder2195.stellarity.util.LootUtil.*;
 
 public class BlockLootTableProvider extends FabricBlockLootSubProvider {
@@ -64,11 +65,12 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 
 	@Override
 	public void generate() {
+		add(ENDERITE_ORE, createOreDrop(ENDERITE_ORE, ENDERITE_SHARD));
+
 		for (Block block : DROP_SELF) dropSelf(block);
 		for (Block block : DROP_DOORS) add(block, this::createDoorTable);
 		for (Block block : DROP_POTTED) dropPottedContents(block);
 		for (Block block : DROP_SLAB) add(block, this::createSlabItemTable);
-
 
 		dropOther(ENDER_DIRT_PATH, ENDER_DIRT);
 		dropOther(DRAGON_BREATH_CAULDRON, Blocks.CAULDRON);

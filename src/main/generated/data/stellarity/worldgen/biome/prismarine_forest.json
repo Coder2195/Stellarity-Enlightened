@@ -114,7 +114,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [
@@ -125,8 +127,8 @@
       "stellarity:amethyst_forest/roots"
     ],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
+      "stellarity:dungeons",
+      "stellarity:fossils"
     ]
   ],
   "has_precipitation": false,

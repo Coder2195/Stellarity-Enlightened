@@ -134,6 +134,7 @@ public class ModelProvider extends FabricModelProvider {
 		StellarityBlocks.ENDER_DIRT,
 		StellarityBlocks.ROOTED_ENDER_DIRT,
 		StellarityBlocks.ENDERITE_BLOCK,
+		StellarityBlocks.ENDERITE_ORE,
 		StellarityBlocks.COARSE_ENDER_DIRT
 	};
 

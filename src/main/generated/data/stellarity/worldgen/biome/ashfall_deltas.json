@@ -72,7 +72,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites"
+      "stellarity:stalactites"
     ],
     [],
     [],
@@ -83,7 +83,9 @@
     ],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [

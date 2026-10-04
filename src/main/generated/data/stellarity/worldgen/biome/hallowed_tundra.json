@@ -61,7 +61,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:frozen_spikes/large_dripstone",
       "stellarity:frosted_valley/hills"
     ],
@@ -75,7 +75,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [
@@ -83,7 +85,7 @@
       "stellarity:the_hallow/lanterns"
     ],
     [
-      "stellarity:global/freeze_water"
+      "stellarity:freeze_water"
     ]
   ],
   "has_precipitation": false,

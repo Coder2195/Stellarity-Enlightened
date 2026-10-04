@@ -82,7 +82,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [
       "stellarity:flesh_tundra/trees"
     ],

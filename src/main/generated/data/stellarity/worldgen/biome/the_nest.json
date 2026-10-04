@@ -58,7 +58,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:the_nest/deepslate",
       "stellarity:the_nest/tuff"
     ],
@@ -67,7 +67,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [

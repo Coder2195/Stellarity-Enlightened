@@ -76,7 +76,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:frozen_spikes/large_dripstone",
       "stellarity:frozen_spikes/hills"
     ],
@@ -95,9 +95,9 @@
     [],
     [],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils",
-      "stellarity:global/freeze_water"
+      "stellarity:dungeons",
+      "stellarity:fossils",
+      "stellarity:freeze_water"
     ]
   ],
   "has_precipitation": false,

@@ -17,6 +17,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import dev.coder2195.stellarity.Stellarity;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,9 +52,10 @@ public interface StellarityVanillaWorldgenModifications {
 
 
 		Predicate<BiomeSelectionContext> outerVanilla = context -> context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS);
-		BiomeModifications.addFeature(context -> context.getBiomeHolder().is(Biomes.THE_END) || context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS), RAW_GENERATION, GLOBAL_STALACTITES);
-		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS);
-		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, GLOBAL_DUNGEONS);
+		BiomeModifications.addFeature(context -> context.getBiomeHolder().is(Biomes.THE_END) || context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS), RAW_GENERATION, STALACTITES);
+		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, FOSSILS);
+		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, DUNGEONS);
+		BiomeModifications.addFeature(outerVanilla, UNDERGROUND_ORES, ENDERITE_ORE);
 
 
 		Predicate<BiomeSelectionContext> mainIsland = context -> context.getBiomeHolder().is(Biomes.THE_END);
@@ -117,7 +119,7 @@ public interface StellarityVanillaWorldgenModifications {
 		BiomeModifications.addFeature(endMidlands, STRONGHOLDS, END_MIDLANDS_VEGETATION);
 		BiomeModifications.addFeature(endMidlands, STRONGHOLDS, Stellarity.mcKey(Registries.PLACED_FEATURE, "patch_bush"));
 		BiomeModifications.addFeature(endMidlands, VEGETAL_DECORATION, END_MIDLANDS_CHORUS_PLANTS);
-		BiomeModifications.addFeature(endMidlands, TOP_LAYER_MODIFICATION, GLOBAL_FOSSILS);
+		BiomeModifications.addFeature(endMidlands, TOP_LAYER_MODIFICATION, FOSSILS);
 		BiomeModifications.create(Stellarity.id("end_midlands_replacements")).add(ModificationPhase.REPLACEMENTS, endMidlands, (_, modification) -> {
 			var attributes = modification.getAttributes();
 			attributes.set(SKY_COLOR, vecColor(0x000000));

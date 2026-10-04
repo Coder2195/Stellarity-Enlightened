@@ -50,6 +50,7 @@ public interface StellarityBlocks {
 		.requiresCorrectToolForDrops()
 		.strength(5.0F, 6.0F)
 		.sound(SoundType.METAL));
+	Block ENDERITE_ORE = register(StellarityBlockItemIds.ENDERITE_ORE, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 9.0F));
 	Block COARSE_ENDER_DIRT = register(StellarityBlockItemIds.COARSE_ENDER_DIRT, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)

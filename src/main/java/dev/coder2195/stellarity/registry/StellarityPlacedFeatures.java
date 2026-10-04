@@ -37,10 +37,12 @@ import static net.minecraft.world.level.block.Blocks.AIR;
 
 public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> NOTHING = id("nothing");
-	ResourceKey<PlacedFeature> GLOBAL_STALACTITES = id("global/stalactites");
-	ResourceKey<PlacedFeature> GLOBAL_FOSSILS = id("global/fossils");
-	ResourceKey<PlacedFeature> GLOBAL_DUNGEONS = id("global/dungeons");
-	ResourceKey<PlacedFeature> GLOBAL_FREEZE_WATER = id("global/freeze_water");
+	ResourceKey<PlacedFeature> STALACTITES = id("stalactites");
+	ResourceKey<PlacedFeature> FOSSILS = id("fossils");
+	ResourceKey<PlacedFeature> DUNGEONS = id("dungeons");
+	ResourceKey<PlacedFeature> FREEZE_WATER = id("freeze_water");
+	ResourceKey<PlacedFeature> OBSIDIAN_TOWERS = id("obsidian_towers");
+	ResourceKey<PlacedFeature> ENDERITE_ORE = id("enderite_ore");
 
 	ResourceKey<PlacedFeature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<PlacedFeature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -212,17 +214,18 @@ public interface StellarityPlacedFeatures {
 		final var crystalCragsAmethystCrystal = configured.getOrThrow(StellarityFeatures.CRYSTAL_CRAGS_AMETHYST_CRYSTAL);
 		final var hangingRoots = configured.getOrThrow(StellarityFeatures.HANGING_ROOTS);
 
-		context.register(GLOBAL_STALACTITES, new PlacedFeature(stalactites, List.of(
+		context.register(STALACTITES, new PlacedFeature(stalactites, List.of(
 			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)), inSquare(), noiseCount(10, 55, 0),
 			aboveBelow0, scanUpSolidAir32, biome()
 		)));
-		context.register(GLOBAL_FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FOSSIL), List.of(
+		context.register(FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FOSSIL), List.of(
 			rarity(40), inSquare(), heightRange(height(aboveBottom(8), absolute(140))), biome()
 		)));
-		context.register(GLOBAL_DUNGEONS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.DUNGEON), List.of(
+		context.register(DUNGEONS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.DUNGEON), List.of(
 			rarity(10), heightRange(height(aboveBottom(8), absolute(140))), inSquare(), biome()
 		)));
-		context.register(GLOBAL_FREEZE_WATER, new PlacedFeature(direct(new FreezeWaterFeature()), List.of(biome())));
+		context.register(FREEZE_WATER, new PlacedFeature(direct(new FreezeWaterFeature()), List.of(biome())));
+		context.register(ENDERITE_ORE, new PlacedFeature(configured.getOrThrow(StellarityFeatures.ENDERITE_ORE), List.of(countPlace(60), inSquare(), aboveBelow0, biome())));
 
 		context.register(MAIN_ISLAND_RING, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_RING), List.of(biome())));
 		context.register(MAIN_ISLAND_PORTAL_PLATFORM, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_PORTAL_PLATFORM), List.of(biome())));
@@ -659,6 +662,7 @@ public interface StellarityPlacedFeatures {
 			envScan(Direction.UP, all(sturdyFace(Direction.DOWN), matchBlocks(END_STONE)), matchBlocks(AIR), 24),
 			randOffset(numRaw(0), numRaw(-1)), biome()
 		)));
+
 	}
 
 	private static ResourceKey<PlacedFeature> id(String id) {

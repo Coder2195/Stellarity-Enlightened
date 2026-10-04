@@ -121,7 +121,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:end_wilds/dirt",
       "stellarity:end_wilds/roots"
     ],
@@ -130,7 +130,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [
@@ -141,8 +143,8 @@
       "stellarity:end_shrubland/shrubs"
     ],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
+      "stellarity:dungeons",
+      "stellarity:fossils"
     ]
   ],
   "has_precipitation": false,

@@ -60,7 +60,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:ender_wastes/hills"
     ],
     [],
@@ -68,15 +68,17 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [
       "stellarity:ender_wastes/chorus_plants"
     ],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
+      "stellarity:dungeons",
+      "stellarity:fossils"
     ]
   ],
   "has_precipitation": false,

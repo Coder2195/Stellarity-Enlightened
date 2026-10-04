@@ -55,7 +55,7 @@
   },
   "features": [
     [
-      "stellarity:global/stalactites",
+      "stellarity:stalactites",
       "stellarity:crystal_crags/hills"
     ],
     [
@@ -70,7 +70,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:enderite_ore"
+    ],
     [],
     [],
     [
@@ -79,8 +81,8 @@
       "stellarity:crystal_crags/grass"
     ],
     [
-      "stellarity:global/dungeons",
-      "stellarity:global/fossils"
+      "stellarity:dungeons",
+      "stellarity:fossils"
     ]
   ],
   "has_precipitation": false,

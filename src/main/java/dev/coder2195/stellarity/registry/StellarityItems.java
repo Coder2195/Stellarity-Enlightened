@@ -109,6 +109,7 @@ public interface StellarityItems {
 	Item ENDER_DIRT_PATH = registerBlock(StellarityBlockItemIds.ENDER_DIRT_PATH, StellarityBlocks.ENDER_DIRT_PATH);
 	Item ALTAR_OF_THE_ACCURSED = registerBlock(StellarityBlockItemIds.ALTAR_OF_THE_ACCURSED, StellarityBlocks.ALTAR_OF_THE_ACCURSED);
 	Item ENDERITE_BLOCK = registerBlock(StellarityBlockItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
+	Item ENDERITE_ORE = registerBlock(StellarityBlockItemIds.ENDERITE_ORE, StellarityBlocks.ENDERITE_ORE);
 	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
 
 	Item AMETHYII_PLANKS = registerBlock(StellarityBlockItemIds.AMETHYII_PLANKS, StellarityBlocks.AMETHYII_PLANKS);

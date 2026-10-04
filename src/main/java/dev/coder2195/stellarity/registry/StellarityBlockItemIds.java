@@ -12,6 +12,7 @@ public interface StellarityBlockItemIds {
 	BlockItemId ALTAR_OF_THE_ACCURSED = id("altar_of_the_accursed");
 	BlockItemId DUSKBERRY_BUSH = id("duskberry_bush", "duskberry");
 	BlockItemId ENDERITE_BLOCK = id("enderite_block");
+	BlockItemId ENDERITE_ORE = id("enderite_ore");
 	BlockItemId COARSE_ENDER_DIRT = id("coarse_ender_dirt");
 	BlockItemId ALTAR_OF_THE_SACRED = id("altar_of_the_sacred");
 	BlockItemId DRAGON_BREATH_CAULDRON = id("dragon_breath_cauldron");
