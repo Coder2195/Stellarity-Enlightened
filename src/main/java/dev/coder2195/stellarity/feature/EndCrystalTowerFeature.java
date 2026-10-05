@@ -1,12 +1,10 @@
 package dev.coder2195.stellarity.feature;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.coder2195.stellarity.Stellarity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -23,12 +21,12 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, Holder<BlockStateProvider> material, boolean extendDown, Optional<BlockPredicate> canReplace) implements Feature {
+public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, Holder<BlockStateProvider> material, IntProvider extendDownHeight, Optional<BlockPredicate> canReplace) implements Feature {
 	public static final MapCodec<EndCrystalTowerFeature> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		IntProviders.codec(1, 16).fieldOf("diameter").forGetter(EndCrystalTowerFeature::diameter),
 		IntProviders.POSITIVE_CODEC.fieldOf("height").forGetter(EndCrystalTowerFeature::height),
 		BlockStateProvider.CODEC.fieldOf("material").forGetter(EndCrystalTowerFeature::material),
-		Codec.BOOL.optionalFieldOf("extend_down", true).forGetter(EndCrystalTowerFeature::extendDown),
+		IntProviders.POSITIVE_CODEC.fieldOf("extend_down_height").forGetter(EndCrystalTowerFeature::extendDownHeight),
 		BlockPredicate.CODEC.optionalFieldOf("can_replace").forGetter(EndCrystalTowerFeature::canReplace)
 	).apply(instance, EndCrystalTowerFeature::new));
 
@@ -98,7 +96,8 @@ public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, H
 		var diameter = this.diameter.sample(random);
 		var height = this.height.sample(random);
 
-		int maxY = Math.min(level.getMaxY(), origin.getY() + height);
+		int originY = origin.getY();
+		int maxY = Math.min(level.getMaxY(), originY + height);
 		var crystalPos = Vec3.atBottomCenterOf(origin.atY(maxY + 1)).add(diameter % 2 == 0 ? -0.5 : 0, 0, diameter % 2 == 0 ? -0.5 : 0);
 
 		int start = diameter / 2;
@@ -109,7 +108,7 @@ public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, H
 		var toPlace = material.value();
 
 		var pattern = PATTERNS[Mth.clamp(diameter, 1, 16)];
-		int minY = level.getMinY();
+
 		Predicate<BlockPos> replaceable = canReplace.map((predicate) -> (Predicate<BlockPos>) ((pos) -> predicate.test(level, pos))).orElse((pos) -> {
 			var blockState = level.getBlockState(pos);
 			return blockState.canBeReplaced();
@@ -127,7 +126,7 @@ public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, H
 					if (replaceable.test(mutableBlockPos)) setBlock(level, mutableBlockPos, toPlace.getState(level, random, mutableBlockPos));
 				}
 
-				if (!extendDown) continue;
+				int minY = Math.max(level.getMinY(), originY - extendDownHeight.sample(random));
 
 				int y = origin.getY();
 

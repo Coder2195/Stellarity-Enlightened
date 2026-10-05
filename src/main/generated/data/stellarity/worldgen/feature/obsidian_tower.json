@@ -1,34 +1,18 @@
 {
   "type": "stellarity:end_crystal_tower",
   "can_replace": {
-    "type": "minecraft:any_of",
-    "predicates": [
-      {
-        "type": "minecraft:any_of",
-        "predicates": [
-          {
-            "type": "minecraft:matching_block_tag",
-            "tag": "minecraft:air"
-          },
-          {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:water"
-          }
-        ]
-      },
-      {
-        "type": "minecraft:replaceable"
-      },
-      {
-        "type": "minecraft:matching_block_tag",
-        "tag": "minecraft:leaves"
-      }
-    ]
+    "type": "minecraft:matching_block_tag",
+    "tag": "stellarity:worldgen/obsidian_spike_replaceable"
   },
   "diameter": {
     "type": "minecraft:uniform",
     "max_inclusive": 7,
     "min_inclusive": 3
+  },
+  "extend_down_height": {
+    "type": "minecraft:uniform",
+    "max_inclusive": 7,
+    "min_inclusive": 4
   },
   "height": {
     "type": "minecraft:uniform",

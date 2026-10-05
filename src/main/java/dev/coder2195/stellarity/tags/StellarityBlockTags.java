@@ -9,6 +9,7 @@ public interface StellarityBlockTags {
 	TagKey<Block> DUNE_SPEED_BLOCKS = id("dune_speed_blocks");
 	TagKey<Block> DIRT = id("dirt");
 	TagKey<Block> WORLDGEN_STALACTITE_REPLACEABLE = id("worldgen/stalactite_replaceable");
+	TagKey<Block> WORLDGEN_OBSIDIAN_SPIKE_REPLACEABLE = id("worldgen/obsidian_spike_replaceable");
 	TagKey<Block> WORLDGEN_END_STONE = id("worldgen/end_stone");
 	TagKey<Block> WORLDGEN_AMETHYST_FOREST_BOTTOM = id("worldgen/amethyst_forest/bottom");
 	TagKey<Block> WORLDGEN_GRASS_BLOCK = id("worldgen/grass_block");

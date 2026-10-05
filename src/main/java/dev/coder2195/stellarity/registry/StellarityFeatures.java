@@ -1,9 +1,9 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.feature.EndCrystalTowerFeature;
 import dev.coder2195.stellarity.feature.DragonEggFeature;
 import dev.coder2195.stellarity.feature.DungeonFeature;
+import dev.coder2195.stellarity.feature.EndCrystalTowerFeature;
 import dev.coder2195.stellarity.feature.SpikeFeature;
 import dev.coder2195.stellarity.interface_injection.ExtLargeDripstoneFeature;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
@@ -23,6 +23,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.IntProvider;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -305,9 +306,8 @@ public interface StellarityFeatures {
 			)),
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
-		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.of(BlockPredicate.anyOf(
-			BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, BlockPredicate.replaceable(), BlockPredicate.matchesTag(BlockTags.LEAVES)
-		))));
+	context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), UniformInt.of(4, 7), Optional.of(BlockPredicate.matchesTag(WORLDGEN_OBSIDIAN_SPIKE_REPLACEABLE)
+	)));
 		context.register(ENDERITE_ORE, new OreFeature(
 			new BlockMatchTest(END_STONE), from(StellarityBlocks.ENDERITE_ORE), 4
 		));

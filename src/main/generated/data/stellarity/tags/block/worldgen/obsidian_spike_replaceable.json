@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#minecraft:air",
+    "#minecraft:leaves",
+    "#minecraft:replaceable",
+    "minecraft:chorus_plant",
+    "minecraft:chorus_flower"
+  ]
+}
