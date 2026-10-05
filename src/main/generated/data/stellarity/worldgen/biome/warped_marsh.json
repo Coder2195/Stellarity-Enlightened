@@ -131,7 +131,8 @@
       "stellarity:warped_marsh/water_vegetation",
       "stellarity:warped_marsh/trees",
       "stellarity:warped_marsh/slime",
-      "stellarity:warped_marsh/hanging_froglights"
+      "stellarity:warped_marsh/hanging_froglights",
+      "stellarity:obsidian_towers"
     ]
   ],
   "has_precipitation": false,

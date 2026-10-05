@@ -92,7 +92,8 @@
       "stellarity:ashfall_deltas/seagrass",
       "stellarity:ashfall_deltas/trees",
       "stellarity:ashfall_deltas/vegetation",
-      "minecraft:patch_bush"
+      "minecraft:patch_bush",
+      "stellarity:obsidian_towers"
     ],
     [
       "stellarity:ashfall_deltas/magma",

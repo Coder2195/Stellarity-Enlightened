@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin.accessor.DimensionTypeAccessor;
 import dev.coder2195.stellarity.mixin.accessor.DimensionTypeMonsterSettingsAccessor;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -16,19 +17,17 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
-import dev.coder2195.stellarity.Stellarity;
-import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
+import static dev.coder2195.stellarity.registry.StellarityPlacedFeatures.*;
 import static dev.coder2195.stellarity.util.ColorUtil.vecColor;
 import static dev.coder2195.stellarity.util.ValueUtil.numRaw;
 import static net.minecraft.world.attribute.EnvironmentAttributes.*;
 import static net.minecraft.world.level.biome.Biomes.END_BARRENS;
 import static net.minecraft.world.level.levelgen.GenerationStep.Decoration.*;
-import static dev.coder2195.stellarity.registry.StellarityPlacedFeatures.*;
 
 public interface StellarityVanillaWorldgenModifications {
 	@SuppressWarnings("DuplicatedCode")
@@ -56,6 +55,7 @@ public interface StellarityVanillaWorldgenModifications {
 		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, FOSSILS);
 		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, DUNGEONS);
 		BiomeModifications.addFeature(outerVanilla, UNDERGROUND_ORES, ENDERITE_ORE);
+		BiomeModifications.addFeature(outerVanilla, VEGETAL_DECORATION, OBSIDIAN_TOWERS);
 
 
 		Predicate<BiomeSelectionContext> mainIsland = context -> context.getBiomeHolder().is(Biomes.THE_END);

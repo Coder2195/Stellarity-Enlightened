@@ -92,7 +92,8 @@
     [
       "stellarity:flesh_tundra/vegetation",
       "stellarity:flesh_tundra/vines",
-      "stellarity:flesh_tundra/roots"
+      "stellarity:flesh_tundra/roots",
+      "stellarity:obsidian_towers"
     ]
   ],
   "has_precipitation": false,

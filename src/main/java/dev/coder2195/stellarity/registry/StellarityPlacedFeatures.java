@@ -226,6 +226,9 @@ public interface StellarityPlacedFeatures {
 		)));
 		context.register(FREEZE_WATER, new PlacedFeature(direct(new FreezeWaterFeature()), List.of(biome())));
 		context.register(ENDERITE_ORE, new PlacedFeature(configured.getOrThrow(StellarityFeatures.ENDERITE_ORE), List.of(countPlace(60), inSquare(), aboveBelow0, biome())));
+		context.register(OBSIDIAN_TOWERS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.OBSIDIAN_TOWER), List.of(
+			rarity(6), inSquare(), heightmap(Heightmap.Types.MOTION_BLOCKING), biome()
+		)));
 
 		context.register(MAIN_ISLAND_RING, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_RING), List.of(biome())));
 		context.register(MAIN_ISLAND_PORTAL_PLATFORM, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_PORTAL_PLATFORM), List.of(biome())));

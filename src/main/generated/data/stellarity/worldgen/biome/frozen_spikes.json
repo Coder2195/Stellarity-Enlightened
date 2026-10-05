@@ -93,7 +93,9 @@
       "stellarity:frozen_spikes/ice_spikes"
     ],
     [],
-    [],
+    [
+      "stellarity:obsidian_towers"
+    ],
     [
       "stellarity:dungeons",
       "stellarity:fossils",

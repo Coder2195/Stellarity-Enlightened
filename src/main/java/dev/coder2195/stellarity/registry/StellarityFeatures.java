@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.*;
 import net.minecraft.world.level.levelgen.feature.rootplacers.AboveRootPlacement;
@@ -304,7 +305,9 @@ public interface StellarityFeatures {
 			)),
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
-		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.empty()));
+		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), true, Optional.of(BlockPredicate.anyOf(
+			BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, BlockPredicate.replaceable(), BlockPredicate.matchesTag(BlockTags.LEAVES)
+		))));
 		context.register(ENDERITE_ORE, new OreFeature(
 			new BlockMatchTest(END_STONE), from(StellarityBlocks.ENDERITE_ORE), 4
 		));

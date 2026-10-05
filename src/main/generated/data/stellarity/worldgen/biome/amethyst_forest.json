@@ -116,7 +116,8 @@
       "stellarity:amethyst_forest/crystal_grass",
       "stellarity:amethyst_forest/flowers",
       "minecraft:patch_bush",
-      "stellarity:amethyst_forest/roots"
+      "stellarity:amethyst_forest/roots",
+      "stellarity:obsidian_towers"
     ]
   ],
   "has_precipitation": false,
