@@ -325,7 +325,7 @@ public interface StellarityPlacedFeatures {
 		context.register(AMETHYST_FOREST_DIRT, new PlacedFeature(configured.getOrThrow(StellarityFeatures.AMETHYST_FOREST_DIRT), List.of(
 			rarity(3), inSquare(), heightmap(Heightmap.Types.WORLD_SURFACE_WG), countPlace(16), biome()
 		)));
-		context.register(AMETHYST_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.AMETHYST_FOREST_TREE), List.of(
+		context.register(AMETHYST_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.AMETHYII_TREE), List.of(
 			everyLayer(2), biome(), blockFilter(all(
 				matchBlocks(AIR), wouldSurvive(DARK_OAK_SAPLING.defaultBlockState().setValue(BlockStateProperties.STAGE, 0))
 			))
@@ -362,7 +362,7 @@ public interface StellarityPlacedFeatures {
 			everyLayer(30), biome(), countPlace(2), randOffset(trapezoid(-5, 5, 0), trapezoid(-3, 3, 0)), blockFilter(BlockPredicate.allOf(matchBlocks(AIR), matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK, MUD)))
 		)));
 		context.register(ASHFALL_DELTAS_TREES, new PlacedFeature(Holder.direct(new RandomSelectorFeature(
-			List.of(weightedPlaced(new PlacedFeature(configured.getOrThrow(StellarityFeatures.ASHFALL_DELTAS_TREE), List.of()), 0.8f)), nothing
+			List.of(weightedPlaced(new PlacedFeature(configured.getOrThrow(StellarityFeatures.ASHEN_TREE), List.of()), 0.8f)), nothing
 		)), List.of(everyLayer(2), biome(), rarity(5))));
 		context.register(ASHFALL_DELTAS_GRASS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.ASHFALL_DELTAS_GRASS), List.of(
 			everyLayer(30), biome(), countPlace(20), randOffset(trapezoid(-5, 5, 0), trapezoid(-3, 3, 0)), blockFilter(all(matchBlocks(AIR), wouldSurvive(SHORT_GRASS)))
@@ -416,10 +416,10 @@ public interface StellarityPlacedFeatures {
 			), matchBlocks(AIR), 24), randOffset(numRaw(0), numRaw(-1)), biome(), countPlace(24), randOffset(trapezoid(-5, 5, 0), trapezoid(-4, 4, 0)),
 			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, 1, 0), ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT)))
 		)));
-		context.register(END_WILDS_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.END_WILDS_TREE), List.of(
+		context.register(END_WILDS_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.SHRUBBED_TREE), List.of(
 			everyLayer(1), rarity(130), blockFilter(matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK)), biome(), countPlace(64), randOffset(trapezoid(0, 0, 0), trapezoid(0, 0, 0))
 		)));
-		context.register(END_WILDS_FOREST, new PlacedFeature(configured.getOrThrow(StellarityFeatures.END_WILDS_TREE), List.of(
+		context.register(END_WILDS_FOREST, new PlacedFeature(configured.getOrThrow(StellarityFeatures.SHRUBBED_TREE), List.of(
 			noiseCount(13, 1100, -0.3), inSquare(), aboveBelow0, envScan(Direction.DOWN, all(replaceable(), matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK)), all(), 32), rarity(1), biome(), countPlace(64), randOffset(trapezoid(0, 0, 0), trapezoid(0, 0, 0))
 		)));
 		context.register(END_WILDS_CHORUS_PLANTS, new PlacedFeature(chorusPlant, List.of(everyLayer(1), biome())));
@@ -482,7 +482,7 @@ public interface StellarityPlacedFeatures {
 		context.register(FIERY_HILLS_FIRE, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FIERY_HILLS_FIRE), List.of(
 			countPlace(100), inSquare(), heightRange(height(aboveBottom(15), belowTop(9))), biome(), envScan(Direction.UP, all(solid(), matchBlocks(vec(0, 1, 0), AIR)), all(), 32)
 		)));
-		context.register(FIERY_HILLS_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FIERY_HILLS_TREE), List.of(
+		context.register(FIERY_HILLS_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.INFERNO_TREE), List.of(
 			everyLayer(3), blockFilter(matchBlocks(vec(0, -1, 0), LAVA, MAGMA_BLOCK)), biome()
 		)));
 		context.register(FIERY_HILLS_VEGETATION, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FIERY_HILLS_VEGETATION), List.of(
@@ -587,7 +587,7 @@ public interface StellarityPlacedFeatures {
 		context.register(PRISMARINE_FOREST_FLOWERS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_FLOWER), List.of(
 			everyLayer(4), biome(), countPlace(12), randOffset(trapezoid(-6, 6, 0), trapezoid(-2, 2, 0)), blockFilter(matchBlocks(AIR))
 		)));
-		context.register(PRISMARINE_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_TREE), List.of(
+		context.register(PRISMARINE_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMATIC_TREE), List.of(
 			everyLayer(5), blockFilter(all(matchBlocks(AIR), wouldSurvive(DARK_OAK_SAPLING))), biome()
 		)));
 		context.register(PRISMARINE_FOREST_GRASS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_GRASS), List.of(

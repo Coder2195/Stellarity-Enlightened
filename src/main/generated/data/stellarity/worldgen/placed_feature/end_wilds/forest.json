@@ -1,5 +1,5 @@
 {
-  "feature": "stellarity:end_wilds/trees",
+  "feature": "stellarity:shrubbed_tree",
   "placement": [
     {
       "type": "minecraft:noise_based_count",

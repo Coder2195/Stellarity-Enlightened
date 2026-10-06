@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.registry;
 
 import net.minecraft.references.BlockItemId;
 import dev.coder2195.stellarity.Stellarity;
+import net.minecraft.world.level.block.ColorCollection;
 
 public interface StellarityBlockItemIds {
 	BlockItemId ENDER_DIRT = id("ender_dirt");
@@ -54,6 +55,7 @@ public interface StellarityBlockItemIds {
 	BlockItemId HALLOWED_FENCE_GATE = id("hallowed_fence_gate");
 	BlockItemId HALLOWED_SIGN = id("hallowed_sign");
 	BlockItemId HALLOWED_HANGING_SIGN = id("hallowed_hanging_sign");
+	ColorCollection<BlockItemId> COLORED_HALLOWED_LEAVES = ColorCollection.NAMES.map(color -> id(color + "_hallowed_leaves"));
 
 	BlockItemId SHRUBBED_PLANKS = id("shrubbed_planks");
 	BlockItemId SHRUBBED_SAPLING = id("shrubbed_sapling");

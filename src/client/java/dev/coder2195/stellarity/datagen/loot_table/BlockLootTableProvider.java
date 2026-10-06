@@ -1,6 +1,8 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
+import dev.coder2195.stellarity.registry.StellarityBlocks;
 import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -9,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
@@ -63,6 +66,15 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 		INFERNO_DOOR,
 	};
 
+	private static final List<Tuple2<Block, Block>> LEAVES = List.of(
+		new Tuple2<>(StellarityBlocks.AMETHYII_LEAVES, StellarityBlocks.AMETHYII_SAPLING),
+		new Tuple2<>(StellarityBlocks.HALLOWED_LEAVES, StellarityBlocks.HALLOWED_SAPLING),
+		new Tuple2<>(StellarityBlocks.SHRUBBED_LEAVES, StellarityBlocks.SHRUBBED_SAPLING),
+		new Tuple2<>(StellarityBlocks.PRISMATIC_LEAVES, StellarityBlocks.PRISMATIC_SAPLING),
+		new Tuple2<>(StellarityBlocks.ASHEN_LEAVES, StellarityBlocks.ASHEN_SAPLING),
+		new Tuple2<>(StellarityBlocks.INFERNO_LEAVES, StellarityBlocks.INFERNO_SAPLING)
+	);
+
 	@Override
 	public void generate() {
 		add(ENDERITE_ORE, createOreDrop(ENDERITE_ORE, ENDERITE_SHARD));
@@ -71,6 +83,8 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 		for (Block block : DROP_DOORS) add(block, this::createDoorTable);
 		for (Block block : DROP_POTTED) dropPottedContents(block);
 		for (Block block : DROP_SLAB) add(block, this::createSlabItemTable);
+		for (Tuple2<Block, Block> leaves : LEAVES) add(leaves._1(), (block) -> createLeavesDrops(block, leaves._2(), NORMAL_LEAVES_SAPLING_CHANCES));
+
 
 		dropOther(ENDER_DIRT_PATH, ENDER_DIRT);
 		dropOther(DRAGON_BREATH_CAULDRON, Blocks.CAULDRON);

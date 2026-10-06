@@ -12,7 +12,7 @@
     "radius": 2
   },
   "foliage_provider": {
-    "id": "minecraft:oak_leaves",
+    "id": "stellarity:hallowed_leaves",
     "properties": {
       "distance": "7",
       "persistent": "false",
@@ -32,7 +32,7 @@
     "height_rand_b": 0
   },
   "trunk_provider": {
-    "id": "minecraft:stripped_jungle_log",
+    "id": "stellarity:stripped_hallowed_log",
     "properties": {
       "axis": "y"
     }

@@ -2,7 +2,7 @@
   "type": "minecraft:simple_random_selector",
   "features": [
     {
-      "feature": "stellarity:the_hallow/oak_tree",
+      "feature": "stellarity:regular_hallowed_tree",
       "placement": []
     },
     {
@@ -10,147 +10,195 @@
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/red_regular_tree",
+      "feature": "stellarity:white_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/red_jungle_tree",
+      "feature": "stellarity:orange_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/red_pine_tree",
+      "feature": "stellarity:magenta_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/orange_regular_tree",
+      "feature": "stellarity:light_blue_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/orange_jungle_tree",
+      "feature": "stellarity:yellow_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/orange_pine_tree",
+      "feature": "stellarity:lime_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/yellow_regular_tree",
+      "feature": "stellarity:pink_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/yellow_jungle_tree",
+      "feature": "stellarity:gray_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/yellow_pine_tree",
+      "feature": "stellarity:light_gray_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/lime_regular_tree",
+      "feature": "stellarity:cyan_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/lime_jungle_tree",
+      "feature": "stellarity:purple_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/lime_pine_tree",
+      "feature": "stellarity:blue_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/green_regular_tree",
+      "feature": "stellarity:brown_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/green_jungle_tree",
+      "feature": "stellarity:green_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/green_pine_tree",
+      "feature": "stellarity:red_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/cyan_regular_tree",
+      "feature": "stellarity:black_regular_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/cyan_jungle_tree",
+      "feature": "stellarity:white_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/cyan_pine_tree",
+      "feature": "stellarity:orange_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/light_blue_regular_tree",
+      "feature": "stellarity:magenta_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/light_blue_jungle_tree",
+      "feature": "stellarity:light_blue_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/light_blue_pine_tree",
+      "feature": "stellarity:yellow_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/blue_regular_tree",
+      "feature": "stellarity:lime_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/blue_jungle_tree",
+      "feature": "stellarity:pink_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/blue_pine_tree",
+      "feature": "stellarity:gray_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/purple_regular_tree",
+      "feature": "stellarity:light_gray_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/purple_jungle_tree",
+      "feature": "stellarity:cyan_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/purple_pine_tree",
+      "feature": "stellarity:purple_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/magenta_regular_tree",
+      "feature": "stellarity:blue_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/magenta_jungle_tree",
+      "feature": "stellarity:brown_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/magenta_pine_tree",
+      "feature": "stellarity:green_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/pink_regular_tree",
+      "feature": "stellarity:red_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/pink_jungle_tree",
+      "feature": "stellarity:black_pine_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/pink_pine_tree",
+      "feature": "stellarity:white_mega_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/white_regular_tree",
+      "feature": "stellarity:orange_mega_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/white_jungle_tree",
+      "feature": "stellarity:magenta_mega_hallowed_tree",
       "placement": []
     },
     {
-      "feature": "stellarity:the_hallow/white_pine_tree",
+      "feature": "stellarity:light_blue_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:yellow_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:lime_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:pink_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:gray_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:light_gray_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:cyan_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:purple_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:blue_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:brown_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:green_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:red_mega_hallowed_tree",
+      "placement": []
+    },
+    {
+      "feature": "stellarity:black_mega_hallowed_tree",
       "placement": []
     }
   ]

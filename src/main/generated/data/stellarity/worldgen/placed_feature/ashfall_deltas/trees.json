@@ -6,7 +6,7 @@
       {
         "chance": 0.8,
         "feature": {
-          "feature": "stellarity:ashfall_deltas/tree",
+          "feature": "stellarity:ashen_tree",
           "placement": []
         }
       }

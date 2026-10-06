@@ -93,7 +93,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> AMETHYST_FOREST_TUFF_ROCK = id("amethyst_forest/tuff_rock");
 	ResourceKey<Feature> AMETHYST_FOREST_OBSIDIAN = id("amethyst_forest/obsidian");
 	ResourceKey<Feature> AMETHYST_FOREST_DIRT = id("amethyst_forest/dirt");
-	ResourceKey<Feature> AMETHYST_FOREST_TREE = id("amethyst_forest/tree");
+	ResourceKey<Feature> AMETHYII_TREE = id("amethyii_tree");
 	ResourceKey<Feature> AMETHYST_FOREST_CRYSTAL_GRASS = id("amethyst_forest/crystal_grass");
 	ResourceKey<Feature> AMETHYST_FOREST_FLOWER = id("amethyst_forest/flower");
 
@@ -101,7 +101,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> ASHFALL_DELTAS_GRASS_DELTA = id("ashfall_deltas/grass_delta");
 	ResourceKey<Feature> ASHFALL_DELTAS_BASALT_COLUMNS = id("ashfall_deltas/basalt_columns");
 	ResourceKey<Feature> ASHFALL_DELTAS_SEAGRASS = id("ashfall_deltas/sea_grass");
-	ResourceKey<Feature> ASHFALL_DELTAS_TREE = id("ashfall_deltas/tree");
+	ResourceKey<Feature> ASHEN_TREE = id("ashen_tree");
 	ResourceKey<Feature> ASHFALL_DELTAS_VEGETATION = id("ashfall_deltas/vegetation");
 	ResourceKey<Feature> ASHFALL_DELTAS_GRASS = id("ashfall_deltas/grass");
 	ResourceKey<Feature> ASHFALL_DELTAS_ASH_PILE = id("ashfall_deltas/ash_pile");
@@ -119,7 +119,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> END_SHRUBLAND_SHRUB = id("end_shrubland/shrub");
 
 	ResourceKey<Feature> END_WILDS_DIRT = id("end_wilds/dirt");
-	ResourceKey<Feature> END_WILDS_TREE = id("end_wilds/trees");
+	ResourceKey<Feature> SHRUBBED_TREE = id("shrubbed_tree");
 	ResourceKey<Feature> END_WILDS_GRASS = id("end_wilds/grass");
 	ResourceKey<Feature> END_WILDS_BUSH = id("end_wilds/bush");
 
@@ -147,7 +147,7 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> FIERY_HILLS_SAND = id("fiery_hills/sand");
 	ResourceKey<Feature> FIERY_HILLS_VENT = id("fiery_hills/vent");
 	ResourceKey<Feature> FIERY_HILLS_FIRE = id("fiery_hills/fire");
-	ResourceKey<Feature> FIERY_HILLS_TREE = id("fiery_hills/tree");
+	ResourceKey<Feature> INFERNO_TREE = id("inferno_tree");
 	ResourceKey<Feature> FIERY_HILLS_VEGETATION = id("fiery_hills/vegetation");
 
 	ResourceKey<Feature> FLESH_TUNDRA_NETHERRACK_BOTTOM = id("flesh_tundra/netherrack_bottom");
@@ -177,57 +177,24 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> FROZEN_SPIKES_ICE_SPIKE = id("frozen_spikes/ice_spike");
 
 	ResourceKey<Feature> HALLOWED_TUNDRA_LAKE = id("hallowed_tundra/lake");
-	ResourceKey<Feature> HALLOWED_TUNDRA_PINE_TREE = id("hallowed_tundra/pine_tree");
+	ResourceKey<Feature> PINE_HALLOWED_TREE = id("pine_hallowed_tree");
 	ResourceKey<Feature> HALLOWED_TUNDRA_TREE = id("hallowed_tundra/tree");
 
 	ResourceKey<Feature> THE_HALLOW_CRYSTAL_ROOTS = id("the_hallow/crystal_roots");
 	ResourceKey<Feature> THE_HALLOW_ROCK = id("the_hallow/rock");
 	ResourceKey<Feature> THE_HALLOW_BUSH = id("the_hallow/bush");
 	ResourceKey<Feature> THE_HALLOW_SCATTERED_BUSH = id("the_hallow/scattered_bush");
-	ResourceKey<Feature> THE_HALLOW_OAK_TREE = id("the_hallow/oak_tree");
-	ResourceKey<Feature> THE_HALLOW_RED_REGULAR_TREE = id("the_hallow/red_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_RED_JUNGLE_TREE = id("the_hallow/red_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_RED_PINE_TREE = id("the_hallow/red_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_ORANGE_REGULAR_TREE = id("the_hallow/orange_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_ORANGE_JUNGLE_TREE = id("the_hallow/orange_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_ORANGE_PINE_TREE = id("the_hallow/orange_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_YELLOW_REGULAR_TREE = id("the_hallow/yellow_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_YELLOW_JUNGLE_TREE = id("the_hallow/yellow_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_YELLOW_PINE_TREE = id("the_hallow/yellow_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_LIME_REGULAR_TREE = id("the_hallow/lime_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_LIME_JUNGLE_TREE = id("the_hallow/lime_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_LIME_PINE_TREE = id("the_hallow/lime_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_GREEN_REGULAR_TREE = id("the_hallow/green_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_GREEN_JUNGLE_TREE = id("the_hallow/green_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_GREEN_PINE_TREE = id("the_hallow/green_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_CYAN_REGULAR_TREE = id("the_hallow/cyan_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_CYAN_JUNGLE_TREE = id("the_hallow/cyan_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_CYAN_PINE_TREE = id("the_hallow/cyan_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_LIGHT_BLUE_REGULAR_TREE = id("the_hallow/light_blue_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_LIGHT_BLUE_JUNGLE_TREE = id("the_hallow/light_blue_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_LIGHT_BLUE_PINE_TREE = id("the_hallow/light_blue_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_BLUE_REGULAR_TREE = id("the_hallow/blue_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_BLUE_JUNGLE_TREE = id("the_hallow/blue_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_BLUE_PINE_TREE = id("the_hallow/blue_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_PURPLE_REGULAR_TREE = id("the_hallow/purple_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_PURPLE_JUNGLE_TREE = id("the_hallow/purple_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_PURPLE_PINE_TREE = id("the_hallow/purple_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_MAGENTA_REGULAR_TREE = id("the_hallow/magenta_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_MAGENTA_JUNGLE_TREE = id("the_hallow/magenta_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_MAGENTA_PINE_TREE = id("the_hallow/magenta_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_PINK_REGULAR_TREE = id("the_hallow/pink_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_PINK_JUNGLE_TREE = id("the_hallow/pink_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_PINK_PINE_TREE = id("the_hallow/pink_pine_tree");
-	ResourceKey<Feature> THE_HALLOW_WHITE_REGULAR_TREE = id("the_hallow/white_regular_tree");
-	ResourceKey<Feature> THE_HALLOW_WHITE_JUNGLE_TREE = id("the_hallow/white_jungle_tree");
-	ResourceKey<Feature> THE_HALLOW_WHITE_PINE_TREE = id("the_hallow/white_pine_tree");
+	ResourceKey<Feature> REGULAR_HALLOWED_TREE = id("regular_hallowed_tree");
+	ColorCollection<ResourceKey<Feature>> COLORED_REGULAR_HALLOWED_TREE = ColorCollection.NAMES.map(color -> id(color + "_regular_hallowed_tree"));
+	ColorCollection<ResourceKey<Feature>> COLORED_MEGA_HALLOWED_TREE = ColorCollection.NAMES.map(color -> id(color + "_mega_hallowed_tree"));
+	ColorCollection<ResourceKey<Feature>> COLORED_PINE_HALLOWED_TREE = ColorCollection.NAMES.map(color -> id(color + "_pine_hallowed_tree"));
 	ResourceKey<Feature> THE_HALLOW_LANTERN = id("the_hallow/lantern");
 	ResourceKey<Feature> THE_HALLOW_DIORITE_BOTTOM = id("the_hallow/diorite_bottom");
 
 	ResourceKey<Feature> PRISMARINE_FOREST_POND = id("prismarine_forest/pond");
 	ResourceKey<Feature> PRISMARINE_FOREST_FLOWER = id("prismarine_forest/flower");
 	ResourceKey<Feature> PRISMARINE_FOREST_GRASS = id("prismarine_forest/grass");
-	ResourceKey<Feature> PRISMARINE_FOREST_TREE = id("prismarine_forest/tree");
+	ResourceKey<Feature> PRISMATIC_TREE = id("prismatic_/tree");
 
 	ResourceKey<Feature> PRISMATIC_DUNES_DELTA = id("prismatic_dunes/delta");
 	ResourceKey<Feature> PRISMATIC_DUNES_GLASS_SPIKE = id("prismatic_dunes/glass_spike");
@@ -306,8 +273,8 @@ public interface StellarityFeatures {
 			)),
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
-	context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), UniformInt.of(4, 7), Optional.of(BlockPredicate.matchesTag(WORLDGEN_OBSIDIAN_SPIKE_REPLACEABLE)
-	)));
+		context.register(OBSIDIAN_TOWER, new EndCrystalTowerFeature(numRaw(3, 7), numRaw(6, 20), block(OBSIDIAN), UniformInt.of(4, 7), Optional.of(BlockPredicate.matchesTag(WORLDGEN_OBSIDIAN_SPIKE_REPLACEABLE)
+		)));
 		context.register(ENDERITE_ORE, new OreFeature(
 			new BlockMatchTest(END_STONE), from(StellarityBlocks.ENDERITE_ORE), 4
 		));
@@ -445,9 +412,9 @@ public interface StellarityFeatures {
 			tag(WORLDGEN_GRASS_BLOCK), weightedBlocks(new Block[]{ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT}, new int[]{21, 1}), nothing,
 			CaveSurface.FLOOR, numRaw(1), 0, 1, 0.1f, numRaw(0, 5), 0.1f
 		));
-		context.register(AMETHYST_FOREST_TREE, new TreeFeature(
-			block(property(CHERRY_LOG, BlockStateProperties.AXIS, Direction.Axis.Y)), new MegaJungleTrunkPlacer(10, 6, 12),
-			weightedBlocks(new BlockState[]{property(DARK_OAK_LEAVES, BlockStateProperties.DISTANCE, 1).setValue(BlockStateProperties.PERSISTENT, true), from(GLOWSTONE)}, new int[]{64, 1}),
+		context.register(AMETHYII_TREE, new TreeFeature(
+			block(property(AMETHYII_LOG, BlockStateProperties.AXIS, Direction.Axis.Y)), new MegaJungleTrunkPlacer(10, 6, 12),
+			weightedBlocks(new BlockState[]{property(AMETHYII_LEAVES, BlockStateProperties.DISTANCE, 1).setValue(BlockStateProperties.PERSISTENT, true), from(GLOWSTONE)}, new int[]{64, 1}),
 			new RandomSpreadFoliagePlacer(numRaw(3, 4), numRaw(0, 6), numRaw(10, 13), 256),
 			Optional.empty(), threeLayersSize(), List.of(), false, block(ENDER_DIRT)
 		));
@@ -485,12 +452,12 @@ public interface StellarityFeatures {
 				TUBE, BUSH, ROSE, FIRE, BUBBLE, FIRE, ROSE, BUBBLE, BUSH, TUBE, ROSE
 			)));
 		}
-		context.register(ASHFALL_DELTAS_TREE, new TreeFeature(
-			block(ACACIA_WOOD), new CherryTrunkPlacer(5, 3, 6, ValueUtil.weightedInts(1, 1, 2, 1, 3, 1), numRaw(3, 5), numRaw(-4, -3), numRaw(-1, 0)),
-			block(property(OAK_LEAVES, BlockStateProperties.WATERLOGGED, false)), new CherryFoliagePlacer(numRaw(4), numRaw(0), numRaw(5), 0.25f, 0.25f, 0.16666667f, 0.33333334f),
-			Optional.of(new MangroveRootPlacer(numRaw(0, 5), block(ACACIA_WOOD), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)), new MangroveRootPlacement(
+		context.register(ASHEN_TREE, new TreeFeature(
+			block(ASHEN_WOOD), new CherryTrunkPlacer(5, 3, 6, ValueUtil.weightedInts(1, 1, 2, 1, 3, 1), numRaw(3, 5), numRaw(-4, -3), numRaw(-1, 0)),
+			block(property(ASHEN_LEAVES, BlockStateProperties.WATERLOGGED, false)), new CherryFoliagePlacer(numRaw(4), numRaw(0), numRaw(5), 0.25f, 0.25f, 0.16666667f, 0.33333334f),
+			Optional.of(new MangroveRootPlacer(numRaw(0, 5), block(ASHEN_WOOD), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)), new MangroveRootPlacement(
 				blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
-				muddyBlocks, block(ACACIA_WOOD), 8, 15, 0.2f
+				muddyBlocks, block(ASHEN_WOOD), 8, 15, 0.2f
 			))),
 			twoLayersSize(3, 0, 2), List.of(new LeaveVineDecorator(0.125f)), true, block(ACACIA_WOOD)
 		));
@@ -546,36 +513,36 @@ public interface StellarityFeatures {
 			tag(WORLDGEN_GRASS_BLOCK), weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, ENDER_GRASS_BLOCK}, new int[]{6, 50}), nothing,
 			CaveSurface.FLOOR, numRaw(2), 0, 5, 0, numRaw(1, 3), 0.5f
 		));
-		context.register(END_WILDS_TREE, new RandomSelectorFeature(List.of(
+		context.register(SHRUBBED_TREE, new RandomSelectorFeature(List.of(
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
 				new TreeFeature(
-					block(OAK_WOOD), new StraightTrunkPlacer(1, 0, 0),
+					block(SHRUBBED_WOOD), new StraightTrunkPlacer(1, 0, 0),
 					block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
 					Optional.of(new MangroveRootPlacer(
-						numRaw(2, 4), block(OAK_WOOD),
+						numRaw(2, 4), block(SHRUBBED_WOOD),
 						Optional.of(new AboveRootPlacement(
-							block(OAK_WOOD), 0.25f
+							block(SHRUBBED_WOOD), 0.25f
 						)),
 						new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), HolderSet.empty(), block(COBBLESTONE), 4, 15, 0.15f)
-					)), twoLayersSize(0, 0, 0), List.of(), true, block(OAK_LOG)
+					)), twoLayersSize(0, 0, 0), List.of(), true, block(SHRUBBED_LOG)
 				)
 			), List.of(
 				countPlace(50), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0))
 			))), 0.6f),
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
 				new TreeFeature(
-					block(OAK_WOOD), new StraightTrunkPlacer(5, 0, 2),
+					block(SHRUBBED_WOOD), new StraightTrunkPlacer(5, 0, 2),
 					block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
-					Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
+					Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
 				)
 			), List.of(
 				countPlace(4), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(3))
 			))), 0.6f),
 			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
 				new TreeFeature(
-					block(OAK_LOG), new ForkingTrunkPlacer(9, 0, 3),
-					block(property(ACACIA_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(numRaw(4), numRaw(0),
-					numRaw(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(OAK_WOOD)
+					block(SHRUBBED_LOG), new ForkingTrunkPlacer(9, 0, 3),
+					block(property(SHRUBBED_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(numRaw(4), numRaw(0),
+					numRaw(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
 				)
 			), List.of(
 				countPlace(3), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(9))
@@ -734,15 +701,15 @@ public interface StellarityFeatures {
 				new BlockColumnFeature.Layer(numRaw(1), block(FIRE))
 			), Direction.UP, all(), false
 		));
-		context.register(FIERY_HILLS_TREE, new TreeFeature(
-			block(CRIMSON_HYPHAE), new ForkingTrunkPlacer(5, 2, 0),
-			block(OAK_LEAVES), new CherryFoliagePlacer(numRaw(4), numRaw(0), numRaw(5), 0.25f, 0.8f, 0.16666667f, 0.33333334f),
+		context.register(INFERNO_TREE, new TreeFeature(
+			block(INFERNO_LOG), new ForkingTrunkPlacer(5, 2, 0),
+			block(INFERNO_LEAVES), new CherryFoliagePlacer(numRaw(4), numRaw(0), numRaw(5), 0.25f, 0.8f, 0.16666667f, 0.33333334f),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(3, 7), block(CRIMSON_HYPHAE), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)),
+				numRaw(3, 7), block(INFERNO_LOG), Optional.of(new AboveRootPlacement(block(AIR), 0.5f)),
 				new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), muddyBlocks, block(CRIMSON_HYPHAE), 8, 15, 0.2f)
 			)),
 			twoLayersSize(3, 0, 2), List.of(new AttachedToLeavesDecorator(0.1f, 3, 2, block(SHROOMLIGHT), 1, List.of(Direction.DOWN))),
-			true, block(CRIMSON_HYPHAE)
+			true, block(INFERNO_LOG)
 		));
 		context.register(FIERY_HILLS_VEGETATION, new BlockColumnFeature(
 			List.of(new BlockColumnFeature.Layer(numRaw(1), blocks(CRIMSON_ROOTS, CRIMSON_FUNGUS)), new BlockColumnFeature.Layer(numRaw(1), block(CRIMSON_NYLIUM))),
@@ -871,13 +838,13 @@ public interface StellarityFeatures {
 		context.register(FROZEN_SHRUBLANDS_SHRUB, new RandomSelectorFeature(
 			Stream.of(new Tuple2<>(1, 0.1f), new Tuple2<>(2, 0.25f)
 			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new TreeFeature(
-				block(OAK_LOG), new StraightTrunkPlacer(t._1(), 0, 0),
-				block(OAK_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(2 - t._1()), 3 - t._1()),
+				block(SHRUBBED_LOG), new StraightTrunkPlacer(t._1(), 0, 0),
+				block(SHRUBBED_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(2 - t._1()), 3 - t._1()),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
 			)), List.of())), t._2())).toList(),
 			direct(new PlacedFeature(direct(new TreeFeature(
-				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
-				block(OAK_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(0), 1),
+				block(SHRUBBED_LOG), new StraightTrunkPlacer(1, 0, 0),
+				block(SHRUBBED_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(0), 1),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(COARSE_ENDER_DIRT)
 			)), List.of()))
 		));
@@ -911,27 +878,27 @@ public interface StellarityFeatures {
 		));
 		context.register(THE_HALLOW_ROCK, new BlockBlobFeature(from(DIORITE), all()));
 		context.register(THE_HALLOW_BUSH, new TreeFeature(
-			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
-			block(OAK_LEAVES), new RandomSpreadFoliagePlacer(numRaw(2), numRaw(1), numRaw(2), 64),
+			block(STRIPPED_HALLOWED_LOG), new StraightTrunkPlacer(1, 0, 0),
+			block(HALLOWED_LEAVES), new RandomSpreadFoliagePlacer(numRaw(2), numRaw(1), numRaw(2), 64),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
 		));
 		Function<Block, Holder<PlacedFeature>> scatteredBush = (leaves) -> direct(new PlacedFeature(direct(new TreeFeature(
-			block(STRIPPED_JUNGLE_LOG), new StraightTrunkPlacer(1, 0, 0),
+			block(STRIPPED_HALLOWED_LOG), new StraightTrunkPlacer(1, 0, 0),
 			block(property(leaves, LeavesBlock.PERSISTENT, true)), new RandomSpreadFoliagePlacer(numRaw(3), numRaw(0), numRaw(2), 48),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
 		)), List.of()));
 		context.register(THE_HALLOW_SCATTERED_BUSH, new RandomSelectorFeature(
 			List.of(new WeightedPlacedFeature(scatteredBush.apply(CHERRY_LEAVES), 0.15f)),
-			scatteredBush.apply(OAK_LEAVES)
+			scatteredBush.apply(HALLOWED_LEAVES)
 		));
 		var hangingLanternDecor = new HangingColumnDecorator(0.1f, 2, true, false, List.of(
 			new BlockColumnFeature.Layer(numRaw(4, 16), block(IRON_CHAIN)), new BlockColumnFeature.Layer(numRaw(1), block(property(LANTERN, LanternBlock.HANGING, true)))
 		), true);
-		context.register(THE_HALLOW_OAK_TREE, new TreeFeature(
-			block(STRIPPED_OAK_LOG), new FancyTrunkPlacer(15, 6, 9),
-			block(OAK_LEAVES), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
+		context.register(REGULAR_HALLOWED_TREE, new TreeFeature(
+			block(HALLOWED_WOOD), new FancyTrunkPlacer(15, 6, 9),
+			block(HALLOWED_LEAVES), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(0), block(STRIPPED_OAK_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_OAK_WOOD), 0.5f)),
+				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
 			)), twoLayersSize(),
 			List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f), hangingLanternDecor),
@@ -945,63 +912,41 @@ public interface StellarityFeatures {
 			), true));
 			return newList;
 		};
-		Function<Tuple3<Block, Block, Boolean>, TreeFeature> regular = (leaves) -> new TreeFeature(
-			block(STRIPPED_BIRCH_LOG), new FancyTrunkPlacer(15, 6, 9),
-			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
+
+		// boolean only for isRed
+		Function<Tuple2<Block, Boolean>, TreeFeature> regular = (leaves) -> new TreeFeature(
+			block(HALLOWED_WOOD), new FancyTrunkPlacer(15, 6, 9),
+			block(leaves._1()), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(0), block(STRIPPED_BIRCH_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_BIRCH_WOOD), 0.5f)),
+				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
-			)), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of(new BeehiveDecorator(0.06f), hangingLanternDecor)), true, block(ENDER_DIRT)
+			)), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of(new BeehiveDecorator(0.06f), hangingLanternDecor)), true, block(ENDER_DIRT)
 		);
-		Function<Tuple3<Block, Block, Boolean>, TreeFeature> pine = (leaves) -> new TreeFeature(
-			block(STRIPPED_SPRUCE_LOG), new StraightTrunkPlacer(17, 6, 9),
-			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new MegaPineFoliagePlacer(numRaw(0, 1), numRaw(0), numRaw(12, 24)),
+		Function<Tuple2<Block, Boolean>, TreeFeature> pine = (leaves) -> new TreeFeature(
+			block(HALLOWED_WOOD), new StraightTrunkPlacer(17, 6, 9),
+			blocks(leaves._1()), new MegaPineFoliagePlacer(numRaw(0, 1), numRaw(0), numRaw(12, 24)),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(0), block(STRIPPED_SPRUCE_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_SPRUCE_WOOD), 0.5f)),
+				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_SPRUCE_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
-			)), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of()), true, block(ENDER_DIRT)
+			)), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
-		Function<Tuple3<Block, Block, Boolean>, TreeFeature> jungle = (leaves) -> new TreeFeature(
+		Function<Tuple2<Block, Boolean>, TreeFeature> mega = (leaves) -> new TreeFeature(
 			block(STRIPPED_JUNGLE_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
-			weightedBlocks(new Block[]{leaves._1(), leaves._2()}, new int[]{5, 2}), new RandomSpreadFoliagePlacer(numRaw(3, 7), numRaw(0, 12), numRaw(6, 18), 256),
-			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._3(), List.of()), true, block(ENDER_DIRT)
+			blocks(leaves._1()), new RandomSpreadFoliagePlacer(numRaw(3, 7), numRaw(0, 12), numRaw(6, 18), 256),
+			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
-		var hallowTrees = List.of(
-			THE_HALLOW_RED_REGULAR_TREE, THE_HALLOW_RED_JUNGLE_TREE, THE_HALLOW_RED_PINE_TREE,
-			THE_HALLOW_ORANGE_REGULAR_TREE, THE_HALLOW_ORANGE_JUNGLE_TREE, THE_HALLOW_ORANGE_PINE_TREE,
-			THE_HALLOW_YELLOW_REGULAR_TREE, THE_HALLOW_YELLOW_JUNGLE_TREE, THE_HALLOW_YELLOW_PINE_TREE,
-			THE_HALLOW_LIME_REGULAR_TREE, THE_HALLOW_LIME_JUNGLE_TREE, THE_HALLOW_LIME_PINE_TREE,
-			THE_HALLOW_GREEN_REGULAR_TREE, THE_HALLOW_GREEN_JUNGLE_TREE, THE_HALLOW_GREEN_PINE_TREE,
-			THE_HALLOW_CYAN_REGULAR_TREE, THE_HALLOW_CYAN_JUNGLE_TREE, THE_HALLOW_CYAN_PINE_TREE,
-			THE_HALLOW_LIGHT_BLUE_REGULAR_TREE, THE_HALLOW_LIGHT_BLUE_JUNGLE_TREE, THE_HALLOW_LIGHT_BLUE_PINE_TREE,
-			THE_HALLOW_BLUE_REGULAR_TREE, THE_HALLOW_BLUE_JUNGLE_TREE, THE_HALLOW_BLUE_PINE_TREE,
-			THE_HALLOW_PURPLE_REGULAR_TREE, THE_HALLOW_PURPLE_JUNGLE_TREE, THE_HALLOW_PURPLE_PINE_TREE,
-			THE_HALLOW_MAGENTA_REGULAR_TREE, THE_HALLOW_MAGENTA_JUNGLE_TREE, THE_HALLOW_MAGENTA_PINE_TREE,
-			THE_HALLOW_PINK_REGULAR_TREE, THE_HALLOW_PINK_JUNGLE_TREE, THE_HALLOW_PINK_PINE_TREE,
-			THE_HALLOW_WHITE_REGULAR_TREE, THE_HALLOW_WHITE_JUNGLE_TREE, THE_HALLOW_WHITE_PINE_TREE
-		);
-		for (var tree : hallowTrees) {
-			var string = tree.identifier().getPath();
-			var isRed = string.contains("red");
-			Tuple2<Block, Block> leaves = isRed ? new Tuple2<>(WOOL.red(), STAINED_GLASS.red()) :
-				string.contains("orange") ? new Tuple2<>(WOOL.orange(), STAINED_GLASS.orange()) :
-				string.contains("yellow") ? new Tuple2<>(WOOL.yellow(), STAINED_GLASS.yellow()) :
-				string.contains("lime") ? new Tuple2<>(WOOL.lime(), STAINED_GLASS.lime()) :
-				string.contains("green") ? new Tuple2<>(WOOL.green(), STAINED_GLASS.green()) :
-				string.contains("cyan") ? new Tuple2<>(WOOL.cyan(), STAINED_GLASS.cyan()) :
-				string.contains("light_blue") ? new Tuple2<>(WOOL.lightBlue(), STAINED_GLASS.lightBlue()) :
-				string.contains("blue") ? new Tuple2<>(WOOL.blue(), STAINED_GLASS.blue()) :
-				string.contains("purple") ? new Tuple2<>(WOOL.purple(), STAINED_GLASS.purple()) :
-				string.contains("magenta") ? new Tuple2<>(WOOL.magenta(), STAINED_GLASS.magenta()) :
-				string.contains("pink") ? new Tuple2<>(WOOL.pink(), STAINED_GLASS.pink()) :
-				string.contains("white") ? new Tuple2<>(WOOL.white(), STAINED_GLASS.white()) : null;
-			if (leaves == null) throw new AssertionError("Must contain a color for this loop");
-			var template = string.contains("regular") ? regular :
-				string.contains("jungle") ? jungle :
-				string.contains("pine") ? pine : null;
-			if (template == null) throw new AssertionError("Must contain a type for this loop");
-			context.register(tree, template.apply(Tuple3.from(leaves, isRed)));
-		}
+
+		for (Tuple2<ColorCollection<ResourceKey<Feature>>, Function<Tuple2<Block, Boolean>, TreeFeature>> treeData: List.of(
+			new Tuple2<>(COLORED_REGULAR_HALLOWED_TREE, regular),
+			new Tuple2<>(COLORED_PINE_HALLOWED_TREE, pine),
+			new Tuple2<>(COLORED_MEGA_HALLOWED_TREE, mega)
+		)) ColorCollection.zipApply(treeData._1(), COLORED_HALLOWED_LEAVES, (tree, leaves) -> {
+			context.register(tree, treeData._2().apply(new Tuple2<>(leaves, tree.equals(COLORED_REGULAR_HALLOWED_TREE.red()))));
+		});
+
+		var hallowTrees = Stream.concat(Stream.concat(COLORED_REGULAR_HALLOWED_TREE.asList().stream(), COLORED_PINE_HALLOWED_TREE.asList().stream()), COLORED_MEGA_HALLOWED_TREE.asList().stream()).toList();
+
+
 		context.register(THE_HALLOW_DIORITE_BOTTOM, new VegetationPatchFeature(
 			tag(WORLDGEN_STALACTITE_REPLACEABLE), block(DIORITE),
 			direct(new PlacedFeature(direct(new BlockColumnFeature(
@@ -1011,19 +956,19 @@ public interface StellarityFeatures {
 			CaveSurface.CEILING, numRaw(1), 0, 10, 1, numRaw(3, 6), 0.5f
 		));
 
-		context.register(HALLOWED_TUNDRA_PINE_TREE, new TreeFeature(
-			block(STRIPPED_OAK_LOG), new StraightTrunkPlacer(15, 6, 9),
-			block(OAK_LEAVES), new MegaPineFoliagePlacer(numRaw(2, 3), numRaw(4), numRaw(11, 19)),
+		context.register(PINE_HALLOWED_TREE, new TreeFeature(
+			block(HALLOWED_LOG), new StraightTrunkPlacer(15, 6, 9),
+			block(HALLOWED_LEAVES), new MegaPineFoliagePlacer(numRaw(2, 3), numRaw(4), numRaw(11, 19)),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(0), block(STRIPPED_OAK_WOOD),
-				Optional.of(new AboveRootPlacement(block(STRIPPED_OAK_WOOD), 0.5f)),
+				numRaw(0), block(HALLOWED_WOOD),
+				Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
 			)), twoLayersSize(), List.of(new LeaveVineDecorator(0.1f), new BeehiveDecorator(0.3f)), true, block(ROOTED_ENDER_DIRT)
 		));
 		context.register(HALLOWED_TUNDRA_TREE, new SimpleRandomSelectorFeature(HolderSet.direct(
-			Stream.of(THE_HALLOW_SCATTERED_BUSH, THE_HALLOW_RED_PINE_TREE, THE_HALLOW_ORANGE_PINE_TREE, THE_HALLOW_YELLOW_PINE_TREE, THE_HALLOW_LIME_PINE_TREE,
-				THE_HALLOW_GREEN_PINE_TREE, THE_HALLOW_LIGHT_BLUE_PINE_TREE, THE_HALLOW_CYAN_PINE_TREE, THE_HALLOW_BLUE_PINE_TREE, THE_HALLOW_PURPLE_PINE_TREE,
-				THE_HALLOW_MAGENTA_PINE_TREE, THE_HALLOW_PINK_PINE_TREE, THE_HALLOW_WHITE_PINE_TREE, HALLOWED_TUNDRA_PINE_TREE
+			Stream.of(THE_HALLOW_SCATTERED_BUSH, COLORED_PINE_HALLOWED_TREE.red(), COLORED_PINE_HALLOWED_TREE.orange(), COLORED_PINE_HALLOWED_TREE.yellow(), COLORED_PINE_HALLOWED_TREE.lime(),
+				COLORED_PINE_HALLOWED_TREE.green(), COLORED_PINE_HALLOWED_TREE.lightBlue(), COLORED_PINE_HALLOWED_TREE.cyan(), COLORED_PINE_HALLOWED_TREE.blue(), COLORED_PINE_HALLOWED_TREE.purple(),
+				COLORED_PINE_HALLOWED_TREE.magenta(), COLORED_PINE_HALLOWED_TREE.pink(), COLORED_PINE_HALLOWED_TREE.white(), PINE_HALLOWED_TREE
 			).map(c -> direct(new PlacedFeature(configured.getOrThrow(c), List.of()))).toList()
 		)));
 
@@ -1048,21 +993,21 @@ public interface StellarityFeatures {
 			new Block[]{SHORT_GRASS, TALL_GRASS, NETHER_SPROUTS, WARPED_ROOTS}, new int[]{5, 1, 2, 2}
 		)));
 		var prismarineForestTreeLeaves = weightedBlocks(Stream.of(OAK_LEAVES, JUNGLE_LEAVES).map(b -> property(b, LeavesBlock.PERSISTENT, true)).toArray(BlockState[]::new), new int[]{32, 15});
-		context.register(PRISMARINE_FOREST_TREE, new RandomSelectorFeature(
+		context.register(PRISMATIC_TREE, new RandomSelectorFeature(
 			Stream.of(
 				// baseHeight, heightRandA, heightRandB, radius, height, minSize, chance
 				new Tuple7<>(9, 4, 9, 4, 5, threeLayersSize(), 0.66f),
 				new Tuple7<>(6, 1, 4, 4, 5, twoLayersSize(), 0.15f),
 				new Tuple7<>(4, 0, 3, 3, 4, twoLayersSize(), 0.3f)
 			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new TreeFeature(
-				block(STRIPPED_BIRCH_LOG), new DarkOakTrunkPlacer(t._1(), t._2(), t._3()),
+				block(PRISMATIC_WOOD), new DarkOakTrunkPlacer(t._1(), t._2(), t._3()),
 				prismarineForestTreeLeaves, new CherryFoliagePlacer(numRaw(t._4()), numRaw(0), numRaw(t._5()), 0.25f, 0.25f, 0.24f, 0.37f),
 				Optional.empty(), t._6(),
 				List.of(new LeaveVineDecorator(0.0555f), new AttachedToLeavesDecorator(0.08f, 3, 2, block(SEA_LANTERN), 2, List.of(Direction.DOWN))), false, block(ENDER_DIRT)
 			)), List.of())), t._7())).toList(),
 			direct(new PlacedFeature(direct(new TreeFeature(
-				block(STRIPPED_BIRCH_LOG), new StraightTrunkPlacer(1, 0, 0),
-				block(ACACIA_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
+				block(PRISMATIC_WOOD), new StraightTrunkPlacer(1, 0, 0),
+				block(PRISMATIC_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
 				Optional.empty(), twoLayersSize(), List.of(), false, block(ROOTED_ENDER_DIRT)
 			)), List.of()))
 		));
@@ -1093,7 +1038,7 @@ public interface StellarityFeatures {
 			matchBlocks(ENDER_GRASS_BLOCK, ENDER_DIRT, ROOTED_ENDER_DIRT, END_STONE)
 		));
 		context.register(THE_HALLOW_TREE, new SimpleRandomSelectorFeature(
-			HolderSet.direct(Stream.concat(Stream.of(THE_HALLOW_OAK_TREE, THE_HALLOW_SCATTERED_BUSH), hallowTrees.stream())
+			HolderSet.direct(Stream.concat(Stream.of(REGULAR_HALLOWED_TREE, THE_HALLOW_SCATTERED_BUSH), hallowTrees.stream())
 				.map(c -> direct(new PlacedFeature(configured.getOrThrow(c), List.of()))).toList())
 		));
 		context.register(THE_HALLOW_GROUND_FLOWER, new SimpleBlockFeature(blocksRaw(
@@ -1170,14 +1115,14 @@ public interface StellarityFeatures {
 			new int[]{100, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}
 		)));
 		context.register(WARPED_MARSH_TREE, new RandomSelectorFeature(
-				List.of(
-					new WeightedPlacedFeature(direct(new PlacedFeature(direct(new HugeRedMushroomFeature(
-						block(WARPED_WART_BLOCK), block(WARPED_STEM), 1, all()
-					)), List.of())), 0.25f),
-					new WeightedPlacedFeature(direct(new PlacedFeature(direct(new BlockColumnFeature(
-						List.of(new BlockColumnFeature.Layer(weightedInts(new IntProvider[]{numRaw(2, 3), numRaw(1), numRaw(2, 5)}, new int[]{4, 1, 4}), block(TWISTING_VINES_PLANT))),
-						Direction.UP, matchBlocks(AIR), true
-					)), List.of())), 0.15f)
+			List.of(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new HugeRedMushroomFeature(
+					block(WARPED_WART_BLOCK), block(WARPED_STEM), 1, all()
+				)), List.of())), 0.25f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new BlockColumnFeature(
+					List.of(new BlockColumnFeature.Layer(weightedInts(new IntProvider[]{numRaw(2, 3), numRaw(1), numRaw(2, 5)}, new int[]{4, 1, 4}), block(TWISTING_VINES_PLANT))),
+					Direction.UP, matchBlocks(AIR), true
+				)), List.of())), 0.15f)
 			),
 			direct(new PlacedFeature(direct(new TreeFeature(
 				block(WARPED_HYPHAE), new ForkingTrunkPlacer(5, 0, 3),

@@ -3,12 +3,10 @@ package dev.coder2195.stellarity.datagen.tags;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.tags.BlockItemTagAppender;
 import net.minecraft.references.ItemIds;
 import net.minecraft.tags.BlockItemTagId;
-import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -16,10 +14,8 @@ import net.minecraft.world.item.Item;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static dev.coder2195.stellarity.registry.StellarityBlockItemIds.*;
 import static dev.coder2195.stellarity.registry.StellarityItemIds.*;
 import static net.minecraft.references.ItemIds.*;
-import static net.minecraft.references.BlockItemIds.*;
 
 
 public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
