@@ -5,6 +5,22 @@
     "stellarity:hallowed_leaves",
     "stellarity:shrubbed_leaves",
     "stellarity:prismatic_leaves",
-    "stellarity:inferno_leaves"
+    "stellarity:inferno_leaves",
+    "stellarity:white_hallowed_leaves",
+    "stellarity:orange_hallowed_leaves",
+    "stellarity:magenta_hallowed_leaves",
+    "stellarity:light_blue_hallowed_leaves",
+    "stellarity:yellow_hallowed_leaves",
+    "stellarity:lime_hallowed_leaves",
+    "stellarity:pink_hallowed_leaves",
+    "stellarity:gray_hallowed_leaves",
+    "stellarity:light_gray_hallowed_leaves",
+    "stellarity:cyan_hallowed_leaves",
+    "stellarity:purple_hallowed_leaves",
+    "stellarity:blue_hallowed_leaves",
+    "stellarity:brown_hallowed_leaves",
+    "stellarity:green_hallowed_leaves",
+    "stellarity:red_hallowed_leaves",
+    "stellarity:black_hallowed_leaves"
   ]
 }

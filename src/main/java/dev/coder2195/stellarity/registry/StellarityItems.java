@@ -36,6 +36,7 @@ import net.minecraft.world.item.consume_effects.TeleportRandomlyConsumeEffect;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ColorCollection;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.Arrays;
@@ -111,6 +112,7 @@ public interface StellarityItems {
 	Item ENDERITE_BLOCK = registerBlock(StellarityBlockItemIds.ENDERITE_BLOCK, StellarityBlocks.ENDERITE_BLOCK);
 	Item ENDERITE_ORE = registerBlock(StellarityBlockItemIds.ENDERITE_ORE, StellarityBlocks.ENDERITE_ORE);
 	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
+	ColorCollection<Item> COLORED_HALLOWED_LEAVES = ColorCollection.zipMap(StellarityBlockItemIds.COLORED_HALLOWED_LEAVES, StellarityBlocks.COLORED_HALLOWED_LEAVES, StellarityItems::registerBlock);
 
 	Item AMETHYII_PLANKS = registerBlock(StellarityBlockItemIds.AMETHYII_PLANKS, StellarityBlocks.AMETHYII_PLANKS);
 	Item AMETHYII_SAPLING = registerBlock(StellarityBlockItemIds.AMETHYII_SAPLING, StellarityBlocks.AMETHYII_SAPLING);
@@ -500,6 +502,7 @@ public interface StellarityItems {
 	Item SHRUBBED_CHEST_BOAT = registerBoat(StellarityItemIds.SHRUBBED_CHEST_BOAT, StellarityEntityTypes.SHRUBBED_CHEST_BOAT, new Item.Properties());
 	Item PRISMATIC_CHEST_BOAT = registerBoat(StellarityItemIds.PRISMATIC_CHEST_BOAT, StellarityEntityTypes.PRISMATIC_CHEST_BOAT, new Item.Properties());
 	Item INFERNO_CHEST_BOAT = registerBoat(StellarityItemIds.INFERNO_CHEST_BOAT, StellarityEntityTypes.INFERNO_CHEST_BOAT, new Item.Properties());
+
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
 		return register(key, (props) -> new BoatItem(type, properties), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));

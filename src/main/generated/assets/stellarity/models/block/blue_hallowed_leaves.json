@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "stellarity:block/blue_hallowed_leaves"
+  }
+}

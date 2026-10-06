@@ -166,9 +166,7 @@ public class ModelProvider extends FabricModelProvider {
 		StellarityBlockFamilies.AMETHYII_PLANKS, StellarityBlockFamilies.HALLOWED_PLANKS, StellarityBlockFamilies.SHRUBBED_PLANKS, StellarityBlockFamilies.PRISMATIC_PLANKS, StellarityBlockFamilies.ASHEN_PLANKS, StellarityBlockFamilies.INFERNO_PLANKS
 	};
 
-	public static final Block[] LEAVES = new Block[]{
-		StellarityBlocks.AMETHYII_LEAVES, StellarityBlocks.HALLOWED_LEAVES, StellarityBlocks.SHRUBBED_LEAVES, StellarityBlocks.PRISMATIC_LEAVES, StellarityBlocks.ASHEN_LEAVES, StellarityBlocks.INFERNO_LEAVES
-	};
+
 
 
 	public void generateBush(BlockModelGenerators generators, Block block) {
@@ -261,7 +259,7 @@ public class ModelProvider extends FabricModelProvider {
 		for (Tuple2<Block, Block> wood : WOOD_BLOCKS) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
 
 		for (var shelf : SHELVES) generators.createShelf(shelf._1(), shelf._2());
-		for (var leaves: LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
+		for (var leaves: StellarityBlocks.LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
 		for (Tuple2<Block, Block> sapling : SAPLINGS) generators.createPlantWithDefaultItem(sapling._1(), sapling._2(), PlantType.NOT_TINTED);
 	}
 

@@ -21,6 +21,7 @@ import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import static net.minecraft.world.level.block.Blocks.flowerPotProperties;
 import static net.minecraft.world.level.block.Blocks.leavesProperties;
@@ -529,4 +530,8 @@ public interface StellarityBlocks {
 		)
 			BlockTransformerHelper.registerStripping(pair._1(), pair._2());
 	}
+
+	Block[] LEAVES = Stream.concat(Stream.of(
+		StellarityBlocks.AMETHYII_LEAVES, StellarityBlocks.HALLOWED_LEAVES, StellarityBlocks.SHRUBBED_LEAVES, StellarityBlocks.PRISMATIC_LEAVES, StellarityBlocks.ASHEN_LEAVES, StellarityBlocks.INFERNO_LEAVES
+	), StellarityBlocks.COLORED_HALLOWED_LEAVES.asList().stream()).toList().toArray(Block[]::new);
 }
