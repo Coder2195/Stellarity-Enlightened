@@ -5,7 +5,7 @@
     "entries": [
       {
         "data": {
-          "id": "minecraft:acacia_leaves",
+          "id": "stellarity:shrubbed_leaves",
           "properties": {
             "distance": "7",
             "persistent": "true",

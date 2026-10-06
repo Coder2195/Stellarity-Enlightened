@@ -43,7 +43,7 @@
     "height_rand_b": 10
   },
   "trunk_provider": {
-    "id": "minecraft:stripped_jungle_log",
+    "id": "stellarity:stripped_hallowed_log",
     "properties": {
       "axis": "y"
     }

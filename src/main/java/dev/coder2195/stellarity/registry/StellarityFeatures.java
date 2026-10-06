@@ -359,7 +359,7 @@ public interface StellarityFeatures {
 			Optional.empty(), twoLayersSize(),
 			List.of(new LeaveVineDecorator(0.15f), new AttachedToLeavesDecorator(
 				0.35f, 0, 0,
-				block(property(property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true), BlockStateProperties.DISTANCE, 1)), 1, List.of(Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
+				block(property(property(HALLOWED_LEAVES, BlockStateProperties.PERSISTENT, true), BlockStateProperties.DISTANCE, 1)), 1, List.of(Direction.UP, Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST)
 			)), false, block(CHERRY_WOOD)
 		));
 		context.register(END_HIGHLANDS_PITCHER_PLANT, new SimpleBlockFeature(block(PITCHER_PLANT)));
@@ -376,8 +376,8 @@ public interface StellarityFeatures {
 			))), twoLayersSize(), List.of(), false, block(END_STONE)
 		));
 		context.register(END_HIGHLANDS_BUSH, new TreeFeature(
-			block(CHERRY_WOOD), new StraightTrunkPlacer(1, 0, 0),
-			block(OAK_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
+			block(AMETHYII_WOOD), new StraightTrunkPlacer(1, 0, 0),
+			block(AMETHYII_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
 			Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ENDER_DIRT)
 		));
 
@@ -459,7 +459,7 @@ public interface StellarityFeatures {
 				blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
 				muddyBlocks, block(ASHEN_WOOD), 8, 15, 0.2f
 			))),
-			twoLayersSize(3, 0, 2), List.of(new LeaveVineDecorator(0.125f)), true, block(ACACIA_WOOD)
+			twoLayersSize(3, 0, 2), List.of(new LeaveVineDecorator(0.125f)), true, block(ASHEN_WOOD)
 		));
 		context.register(ASHFALL_DELTAS_GRASS, new SimpleBlockFeature(weightedBlocksRaw(new Block[]{SHORT_GRASS, FERN}, new int[]{16, 1})));
 		context.register(ASHFALL_DELTAS_ASH_PILE, new BlockPileFeature(block(CONCRETE_POWDER.lightGray())));
@@ -486,25 +486,25 @@ public interface StellarityFeatures {
 		context.register(CRYSTAL_CRAGS_GRASS, new SimpleBlockFeature(weightedBlocksRaw(new Block[]{SHORT_GRASS, TALL_GRASS}, new int[]{4, 1})));
 
 		context.register(END_SHRUBLAND_GRASS, new SimpleBlockFeature(weightedBlocksRaw(
-			new BlockState[]{from(FERN), from(SHORT_GRASS), from(TALL_GRASS), from(TALL_GRASS), property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true)},
+			new BlockState[]{from(FERN), from(SHORT_GRASS), from(TALL_GRASS), from(TALL_GRASS), property(SHRUBBED_LEAVES, BlockStateProperties.PERSISTENT, true)},
 			new int[]{2, 11, 2, 2, 2}
 		)));
 		context.register(END_SHRUBLAND_SHRUB, new RandomSelectorFeature(
 			List.of(
 				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new TreeFeature(
-					block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
-					block(OAK_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
+					block(SHRUBBED_LOG), new StraightTrunkPlacer(1, 0, 0),
+					block(SHRUBBED_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
 					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
 				)), List.of())), 0.1f),
 				new WeightedPlacedFeature(direct(new PlacedFeature(direct(new TreeFeature(
-					block(OAK_LOG), new StraightTrunkPlacer(2, 0, 0),
-					block(OAK_LEAVES), new BlobFoliagePlacer(numRaw(2), numRaw(0), 1),
+					block(SHRUBBED_LOG), new StraightTrunkPlacer(2, 0, 0),
+					block(SHRUBBED_LEAVES), new BlobFoliagePlacer(numRaw(2), numRaw(0), 1),
 					Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
 				)), List.of())), 0.25f)
 			),
 			direct(new PlacedFeature(direct(new TreeFeature(
-				block(OAK_LOG), new StraightTrunkPlacer(1, 0, 0),
-				block(OAK_LEAVES), new BlobFoliagePlacer(numRaw(2), numRaw(0), 1),
+				block(SHRUBBED_LOG), new StraightTrunkPlacer(1, 0, 0),
+				block(SHRUBBED_LEAVES), new BlobFoliagePlacer(numRaw(2), numRaw(0), 1),
 				Optional.empty(), twoLayersSize(0, 0, 0), List.of(), false, block(ROOTED_ENDER_DIRT)
 			)), List.of()))
 		));
@@ -595,7 +595,7 @@ public interface StellarityFeatures {
 			tag(WORLDGEN_ENDLESS_DUNES_DUNE_REPLACEABLE), block(ENDER_GRASS_BLOCK),
 			direct(new PlacedFeature(direct(
 				new SimpleBlockFeature(weightedBlocksRaw(
-					new BlockState[]{from(TALL_GRASS), from(SHORT_GRASS), property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true), persistAzaleaLeaves},
+					new BlockState[]{from(TALL_GRASS), from(SHORT_GRASS), property(SHRUBBED_LEAVES, BlockStateProperties.PERSISTENT, true), persistAzaleaLeaves},
 					new int[]{5, 24, 2, 1}
 				))
 			), List.of())), CaveSurface.FLOOR, numRaw(1), 0, 6, 0.15f, numRaw(4), 0.33f
@@ -607,7 +607,7 @@ public interface StellarityFeatures {
 			false, block(ROOTED_ENDER_DIRT)
 		));
 		var endlessDunesOasisVegetationMiddle = context.register(ENDLESS_DUNES_OASIS_MIDDLE_VEGETATION, new SimpleBlockFeature(weightedBlocksRaw(
-			new BlockState[]{property(ACACIA_LEAVES, BlockStateProperties.PERSISTENT, true), persistAzaleaLeaves, from(ORANGE_TULIP), from(PINK_TULIP), from(WHITE_TULIP), from(LILAC), from(PITCHER_PLANT)},
+			new BlockState[]{property(SHRUBBED_LEAVES, BlockStateProperties.PERSISTENT, true), persistAzaleaLeaves, from(ORANGE_TULIP), from(PINK_TULIP), from(WHITE_TULIP), from(LILAC), from(PITCHER_PLANT)},
 			new int[]{2, 2, 2, 2, 2, 2, 1}
 		)));
 		var endlessDunesOasisVegetationLake = context.register(ENDLESS_DUNES_OASIS_LAKE_VEGETATION, new RandomSelectorFeature(List.of(
@@ -747,7 +747,7 @@ public interface StellarityFeatures {
 			), nothing)), List.of())), CaveSurface.FLOOR, numRaw(1), 0, 1, 1, numRaw(0), 0
 		));
 		context.register(FLESH_TUNDRA_VEGETATION, new SimpleBlockFeature(weightedBlocksRaw(
-			new BlockState[]{property(OAK_LEAVES, BlockStateProperties.PERSISTENT, true), from(NETHER_WART_BLOCK)}, new int[]{1, 6}
+			new Block[]{RED_MUSHROOM_BLOCK, NETHER_WART_BLOCK}, new int[]{1, 6}
 		)));
 		var vines = new ArrayList<>(Stream.of(VineBlock.NORTH, VineBlock.SOUTH, VineBlock.EAST, VineBlock.WEST)
 			.map(b -> {
@@ -931,7 +931,7 @@ public interface StellarityFeatures {
 			)), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
 		Function<Tuple2<Block, Boolean>, TreeFeature> mega = (leaves) -> new TreeFeature(
-			block(STRIPPED_JUNGLE_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
+			block(STRIPPED_HALLOWED_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
 			blocks(leaves._1()), new RandomSpreadFoliagePlacer(numRaw(3, 7), numRaw(0, 12), numRaw(6, 18), 256),
 			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
@@ -992,7 +992,7 @@ public interface StellarityFeatures {
 		context.register(PRISMARINE_FOREST_GRASS, new SimpleBlockFeature(weightedBlocksRaw(
 			new Block[]{SHORT_GRASS, TALL_GRASS, NETHER_SPROUTS, WARPED_ROOTS}, new int[]{5, 1, 2, 2}
 		)));
-		var prismarineForestTreeLeaves = weightedBlocks(Stream.of(OAK_LEAVES, JUNGLE_LEAVES).map(b -> property(b, LeavesBlock.PERSISTENT, true)).toArray(BlockState[]::new), new int[]{32, 15});
+		var prismarineForestTreeLeaves = weightedBlocks(Stream.of(PRISMATIC_LEAVES, HALLOWED_LEAVES).map(b -> property(b, LeavesBlock.PERSISTENT, true)).toArray(BlockState[]::new), new int[]{32, 15});
 		context.register(PRISMATIC_TREE, new RandomSelectorFeature(
 			Stream.of(
 				// baseHeight, heightRandA, heightRandB, radius, height, minSize, chance
@@ -1051,7 +1051,7 @@ public interface StellarityFeatures {
 				.toArray(Block[]::new)
 		)));
 		context.register(THE_HALLOW_GRASS, new SimpleBlockFeature(weightedBlocksRaw(
-			Stream.concat(Stream.of(SHORT_GRASS, TALL_GRASS, ACACIA_LEAVES, DEAD_BUSH, WARPED_ROOTS, NETHER_SPROUTS).map(ValueUtil::from), Arrays.stream(amethystCrystalsUp)).toArray(BlockState[]::new),
+			Stream.concat(Stream.of(SHORT_GRASS, TALL_GRASS, HALLOWED_LEAVES, DEAD_BUSH, WARPED_ROOTS, NETHER_SPROUTS).map(ValueUtil::from), Arrays.stream(amethystCrystalsUp)).toArray(BlockState[]::new),
 			new int[]{88, 23, 8, 1, 19, 18, 3, 3, 3, 3}
 		)));
 

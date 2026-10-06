@@ -4,14 +4,7 @@
     "type": "minecraft:weighted",
     "entries": [
       {
-        "data": {
-          "id": "minecraft:oak_leaves",
-          "properties": {
-            "distance": "7",
-            "persistent": "true",
-            "waterlogged": "false"
-          }
-        },
+        "data": "minecraft:red_mushroom_block",
         "weight": 1
       },
       {

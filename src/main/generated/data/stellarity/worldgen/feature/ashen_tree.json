@@ -1,7 +1,7 @@
 {
   "type": "minecraft:tree",
   "below_trunk_provider": {
-    "id": "minecraft:acacia_wood",
+    "id": "stellarity:ashen_wood",
     "properties": {
       "axis": "y"
     }

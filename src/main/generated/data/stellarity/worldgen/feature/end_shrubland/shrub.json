@@ -14,7 +14,7 @@
         "radius": 2
       },
       "foliage_provider": {
-        "id": "minecraft:oak_leaves",
+        "id": "stellarity:shrubbed_leaves",
         "properties": {
           "distance": "7",
           "persistent": "false",
@@ -34,7 +34,7 @@
         "height_rand_b": 0
       },
       "trunk_provider": {
-        "id": "minecraft:oak_log",
+        "id": "stellarity:shrubbed_log",
         "properties": {
           "axis": "y"
         }
@@ -59,7 +59,7 @@
             "radius": 2
           },
           "foliage_provider": {
-            "id": "minecraft:oak_leaves",
+            "id": "stellarity:shrubbed_leaves",
             "properties": {
               "distance": "7",
               "persistent": "false",
@@ -79,7 +79,7 @@
             "height_rand_b": 0
           },
           "trunk_provider": {
-            "id": "minecraft:oak_log",
+            "id": "stellarity:shrubbed_log",
             "properties": {
               "axis": "y"
             }
@@ -104,7 +104,7 @@
             "radius": 2
           },
           "foliage_provider": {
-            "id": "minecraft:oak_leaves",
+            "id": "stellarity:shrubbed_leaves",
             "properties": {
               "distance": "7",
               "persistent": "false",
@@ -124,7 +124,7 @@
             "height_rand_b": 0
           },
           "trunk_provider": {
-            "id": "minecraft:oak_log",
+            "id": "stellarity:shrubbed_log",
             "properties": {
               "axis": "y"
             }

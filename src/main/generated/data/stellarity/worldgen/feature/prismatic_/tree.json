@@ -83,7 +83,7 @@
             "entries": [
               {
                 "data": {
-                  "id": "minecraft:oak_leaves",
+                  "id": "stellarity:prismatic_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
@@ -94,7 +94,7 @@
               },
               {
                 "data": {
-                  "id": "minecraft:jungle_leaves",
+                  "id": "stellarity:hallowed_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
@@ -167,7 +167,7 @@
             "entries": [
               {
                 "data": {
-                  "id": "minecraft:oak_leaves",
+                  "id": "stellarity:prismatic_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
@@ -178,7 +178,7 @@
               },
               {
                 "data": {
-                  "id": "minecraft:jungle_leaves",
+                  "id": "stellarity:hallowed_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
@@ -251,7 +251,7 @@
             "entries": [
               {
                 "data": {
-                  "id": "minecraft:oak_leaves",
+                  "id": "stellarity:prismatic_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
@@ -262,7 +262,7 @@
               },
               {
                 "data": {
-                  "id": "minecraft:jungle_leaves",
+                  "id": "stellarity:hallowed_leaves",
                   "properties": {
                     "distance": "7",
                     "persistent": "true",
