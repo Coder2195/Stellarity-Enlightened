@@ -43,6 +43,8 @@ For each of Amethyii, Ashen, Prismatic, Hallowed, Shrubbed, Inferno wood types:
 - **[+] Sign**
 - **[+] Hanging Sign**
 
+## Structures
+**[+] Floating Treasure**
 
 ## Recipes
 ### Crafting Table

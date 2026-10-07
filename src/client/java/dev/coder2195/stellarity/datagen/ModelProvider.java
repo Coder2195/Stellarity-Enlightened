@@ -259,7 +259,8 @@ public class ModelProvider extends FabricModelProvider {
 		for (Tuple2<Block, Block> wood : WOOD_BLOCKS) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
 
 		for (var shelf : SHELVES) generators.createShelf(shelf._1(), shelf._2());
-		for (var leaves: StellarityBlocks.LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
+		for (var leaves: StellarityBlocks.TINTED_LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
+		for (var leaves: StellarityBlocks.COLORED_HALLOWED_LEAVES.asList()) generators.createTrivialCube(leaves);
 		for (Tuple2<Block, Block> sapling : SAPLINGS) generators.createPlantWithDefaultItem(sapling._1(), sapling._2(), PlantType.NOT_TINTED);
 	}
 

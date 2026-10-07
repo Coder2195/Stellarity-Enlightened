@@ -20,13 +20,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_CAMPSITE;
-import static dev.coder2195.stellarity.tags.StellarityBiomeTags.HAS_STRUCTURE_END_VILLAGE;
+import static dev.coder2195.stellarity.tags.StellarityBiomeTags.*;
 import static dev.coder2195.stellarity.util.WorldgenUtil.*;
 
 public interface StellarityStructures {
 	ResourceKey<Structure> CAMPSITE = id("campsite");
 	ResourceKey<Structure> END_VILLAGE = id("end_village");
+	ResourceKey<Structure> FLOATING_TREASURE = id("floating_treasure");
 
 	static void bootstrap(BootstrapContext<Structure> context) {
 		var templatePools = context.lookup(Registries.TEMPLATE_POOL);
@@ -36,6 +36,12 @@ public interface StellarityStructures {
 			new Structure.StructureSettings(
 				biomes.getOrThrow(HAS_STRUCTURE_CAMPSITE), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN
 			), templatePools.getOrThrow(StellarityTemplatePools.CAMPSITE), 1, height(aboveBottom(10), belowTop(50)), false, Heightmap.Types.WORLD_SURFACE
+		));
+
+		context.register(FLOATING_TREASURE, new JigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(HAS_STRUCTURE_FLOATING_TREASURE), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BURY
+			), templatePools.getOrThrow(StellarityTemplatePools.FLOATING_TREASURE), 1, height(belowTop(50), belowTop(10)), false
 		));
 
 		Map<MobCategory, StructureSpawnOverride> villageSpawns = new HashMap<>();

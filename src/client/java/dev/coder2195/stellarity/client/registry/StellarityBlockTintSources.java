@@ -12,7 +12,7 @@ import static dev.coder2195.stellarity.registry.StellarityBlocks.ENDER_GRASS_BLO
 public interface StellarityBlockTintSources {
 	static void init() {
 		BlockColorRegistry.register(List.of(BlockTintSources.grassBlock()), ENDER_GRASS_BLOCK);
-		BlockColorRegistry.register(List.of(BlockTintSources.foliage()), StellarityBlocks.LEAVES);
+		BlockColorRegistry.register(List.of(BlockTintSources.foliage()), StellarityBlocks.TINTED_LEAVES);
 
 		Stellarity.LOGGER.info("Initialized Block Tint Sources");
 	}

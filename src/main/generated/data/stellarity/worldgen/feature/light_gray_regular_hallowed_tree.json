@@ -57,7 +57,7 @@
     "id": "stellarity:light_gray_hallowed_leaves",
     "properties": {
       "distance": "7",
-      "persistent": "false",
+      "persistent": "true",
       "waterlogged": "false"
     }
   },

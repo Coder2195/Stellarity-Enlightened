@@ -896,7 +896,7 @@ public interface StellarityFeatures {
 		), true);
 		context.register(REGULAR_HALLOWED_TREE, new TreeFeature(
 			block(HALLOWED_WOOD), new FancyTrunkPlacer(15, 6, 9),
-			block(HALLOWED_LEAVES), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
+			block(property(HALLOWED_LEAVES, BlockStateProperties.PERSISTENT, true)), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
 			Optional.of(new MangroveRootPlacer(
 				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
@@ -916,7 +916,7 @@ public interface StellarityFeatures {
 		// boolean only for isRed
 		Function<Tuple2<Block, Boolean>, TreeFeature> regular = (leaves) -> new TreeFeature(
 			block(HALLOWED_WOOD), new FancyTrunkPlacer(15, 6, 9),
-			block(leaves._1()), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
+			block(property(leaves._1(), BlockStateProperties.PERSISTENT, true)), new FancyFoliagePlacer(numRaw(2, 3), numRaw(4), 4),
 			Optional.of(new MangroveRootPlacer(
 				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
@@ -924,7 +924,7 @@ public interface StellarityFeatures {
 		);
 		Function<Tuple2<Block, Boolean>, TreeFeature> pine = (leaves) -> new TreeFeature(
 			block(HALLOWED_WOOD), new StraightTrunkPlacer(17, 6, 9),
-			blocks(leaves._1()), new MegaPineFoliagePlacer(numRaw(0, 1), numRaw(0), numRaw(12, 24)),
+			blocks(property(leaves._1(), BlockStateProperties.PERSISTENT, true)), new MegaPineFoliagePlacer(numRaw(0, 1), numRaw(0), numRaw(12, 24)),
 			Optional.of(new MangroveRootPlacer(
 				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_SPRUCE_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
@@ -932,7 +932,7 @@ public interface StellarityFeatures {
 		);
 		Function<Tuple2<Block, Boolean>, TreeFeature> mega = (leaves) -> new TreeFeature(
 			block(STRIPPED_HALLOWED_LOG), new MegaJungleTrunkPlacer(12, 7, 10),
-			blocks(leaves._1()), new RandomSpreadFoliagePlacer(numRaw(3, 7), numRaw(0, 12), numRaw(6, 18), 256),
+			blocks(property(leaves._1(), BlockStateProperties.PERSISTENT, true)), new RandomSpreadFoliagePlacer(numRaw(3, 7), numRaw(0, 12), numRaw(6, 18), 256),
 			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
 
@@ -940,9 +940,9 @@ public interface StellarityFeatures {
 			new Tuple2<>(COLORED_REGULAR_HALLOWED_TREE, regular),
 			new Tuple2<>(COLORED_PINE_HALLOWED_TREE, pine),
 			new Tuple2<>(COLORED_MEGA_HALLOWED_TREE, mega)
-		)) ColorCollection.zipApply(treeData._1(), COLORED_HALLOWED_LEAVES, (tree, leaves) -> {
-			context.register(tree, treeData._2().apply(new Tuple2<>(leaves, tree.equals(COLORED_REGULAR_HALLOWED_TREE.red()))));
-		});
+		)) ColorCollection.zipApply(treeData._1(), COLORED_HALLOWED_LEAVES, (tree, leaves) ->
+			context.register(tree, treeData._2().apply(new Tuple2<>(leaves, tree.equals(COLORED_REGULAR_HALLOWED_TREE.red()))))
+		);
 
 		var hallowTrees = Stream.concat(Stream.concat(COLORED_REGULAR_HALLOWED_TREE.asList().stream(), COLORED_PINE_HALLOWED_TREE.asList().stream()), COLORED_MEGA_HALLOWED_TREE.asList().stream()).toList();
 
@@ -1076,12 +1076,10 @@ public interface StellarityFeatures {
 			new BlockMatchTest(END_STONE), from(COBBLED_DEEPSLATE), 64, 0
 		));
 
-		BiFunction<Block, Block, Holder<PlacedFeature>> warpedForestWaterTreeFunc = (trunk, leaf) -> {
-			return direct(new PlacedFeature(direct(new BlockColumnFeature(
-				List.of(new BlockColumnFeature.Layer(numRaw(1, 4), block(trunk)), new BlockColumnFeature.Layer(numRaw(1, 3), block(property(leaf, LeavesBlock.PERSISTENT, true)))),
-				Direction.UP, matchBlocks(AIR, WATER), false
-			)), List.of()));
-		};
+		BiFunction<Block, Block, Holder<PlacedFeature>> warpedForestWaterTreeFunc = (trunk, leaf) -> direct(new PlacedFeature(direct(new BlockColumnFeature(
+			List.of(new BlockColumnFeature.Layer(numRaw(1, 4), block(trunk)), new BlockColumnFeature.Layer(numRaw(1, 3), block(property(leaf, LeavesBlock.PERSISTENT, true)))),
+			Direction.UP, matchBlocks(AIR, WATER), false
+		)), List.of()));
 		var warpedForestWaterTree = context.register(WARPED_MARSH_WATER_TREE, new SimpleRandomSelectorFeature(HolderSet.direct(warpedForestWaterTreeFunc.apply(DARK_OAK_FENCE, MANGROVE_LEAVES), warpedForestWaterTreeFunc.apply(SPRUCE_FENCE, OAK_LEAVES)
 		)));
 		context.register(WARPED_MARSH_POND, new RandomSelectorFeature(

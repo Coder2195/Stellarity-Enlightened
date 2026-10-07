@@ -297,12 +297,15 @@
           "weight": 22
         },
         {
-          "type": "minecraft:item",
-          "modifier": {
-            "type": "minecraft:set_potion",
-            "id": "stellarity:chorus_juice"
-          },
-          "name": "minecraft:potion"
+          "type": "stellarity:item_stack",
+          "name": {
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "stellarity:chorus_juice"
+              }
+            },
+            "id": "minecraft:potion"
+          }
         },
         {
           "type": "minecraft:alternatives",

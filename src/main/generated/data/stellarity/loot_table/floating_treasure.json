@@ -1,0 +1,237 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_conveyance"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_jinx"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_light"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_obstruct"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_return"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:book_of_updraft"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "condition": {
+            "type": "minecraft:random_chance",
+            "chance": 0.5
+          },
+          "name": "stellarity:gilded_purpur_key"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_hoe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_hoe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_pickaxe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_shovel"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_helmet"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_chestplate"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_boots"
+        }
+      ],
+      "modifier": {
+        "type": "minecraft:enchant_with_levels",
+        "levels": {
+          "type": "minecraft:uniform",
+          "max": 60,
+          "min": 30
+        },
+        "options": "#minecraft:on_random_loot"
+      },
+      "rolls": 1
+    },
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 5,
+              "min": 1
+            }
+          },
+          "name": "stellarity:enderite_shard"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 4,
+              "min": 1
+            }
+          },
+          "name": "stellarity:hallowed_ingot"
+        },
+        {
+          "type": "stellarity:item_stack",
+          "name": {
+            "components": {
+              "minecraft:potion_contents": {
+                "potion": "stellarity:luck"
+              }
+            },
+            "id": "minecraft:potion"
+          }
+        },
+        {
+          "type": "minecraft:item",
+          "name": "stellarity:enderman_hand"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 3,
+              "min": 1
+            }
+          },
+          "value": "stellarity:void_fishing/fish"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 12,
+              "min": 6
+            }
+          },
+          "name": "minecraft:purpur_block"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 8,
+              "min": 4
+            }
+          },
+          "name": "minecraft:purpur_pillar"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 7,
+              "min": 3
+            }
+          },
+          "name": "stellarity:fried_chorus_fruit"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:end_crystal"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 8,
+              "min": 2
+            }
+          },
+          "name": "stellarity:ashen_froglight"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 10,
+              "min": 4
+            }
+          },
+          "name": "minecraft:chorus_fruit"
+        },
+        {
+          "type": "minecraft:item",
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "max": 4,
+              "min": 1
+            }
+          },
+          "name": "minecraft:ender_pearl"
+        }
+      ],
+      "rolls": 8
+    }
+  ]
+}

@@ -22,7 +22,14 @@
     "type": "minecraft:weighted",
     "entries": [
       {
-        "data": "stellarity:lime_hallowed_leaves",
+        "data": {
+          "id": "stellarity:lime_hallowed_leaves",
+          "properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
         "weight": 1
       }
     ]

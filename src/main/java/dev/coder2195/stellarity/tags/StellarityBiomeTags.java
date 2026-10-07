@@ -21,12 +21,12 @@ public interface StellarityBiomeTags {
 	TagKey<Biome> HAS_STRUCTURE_FOSSIL = id("has_structure/fossil");
 	TagKey<Biome> HAS_STRUCTURE_OBSIDIAN_SPIKE = id("has_structure/obsidian_spike");
 	TagKey<Biome> HAS_STRUCTURE_END_VILLAGE = id("has_structure/end_village");
+	TagKey<Biome> HAS_STRUCTURE_FLOATING_TREASURE = id("has_structure/floating_treasure");
 
 	TagKey<Biome> NO_VOID_FISHING = id("no_void_fishing");
 	TagKey<Biome> ALLOWS_CONSECRATION = id("allows_consecration");
 
-	static TagKey<Biome> id(String id) {
+	private static TagKey<Biome> id(String id) {
 		return TagKey.create(Registries.BIOME, Stellarity.id(id));
-
 	}
 }

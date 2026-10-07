@@ -27,7 +27,14 @@
     "type": "minecraft:weighted",
     "entries": [
       {
-        "data": "stellarity:yellow_hallowed_leaves",
+        "data": {
+          "id": "stellarity:yellow_hallowed_leaves",
+          "properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
         "weight": 1
       }
     ]

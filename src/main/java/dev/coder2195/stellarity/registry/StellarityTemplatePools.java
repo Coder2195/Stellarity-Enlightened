@@ -23,6 +23,7 @@ import java.util.stream.Stream;
 
 public interface StellarityTemplatePools {
 	ResourceKey<StructureTemplatePool> CAMPSITE = id("campsite");
+	ResourceKey<StructureTemplatePool> FLOATING_TREASURE = id("floating_treasure");
 	ResourceKey<StructureTemplatePool> END_VILLAGE_ANIMALS = id("end_village/animals");
 	ResourceKey<StructureTemplatePool> END_VILLAGE_BEES = id("end_village/bees");
 	ResourceKey<StructureTemplatePool> END_VILLAGE_DECORATIONS = id("end_village/decorations");
@@ -44,6 +45,9 @@ public interface StellarityTemplatePools {
 
 		var campsiteProcessor = processorLists.getOrThrow(StellarityProcessorLists.CAMPSITE);
 		var emptyProcessor = processorLists.getOrThrow(ProcessorLists.EMPTY);
+		context.register(FLOATING_TREASURE, new StructureTemplatePool(EMPTY, List.of(new Pair<>(
+			SinglePoolElementAccessor.create(Either.left(Stellarity.id("floating_treasure")), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.empty()), 1
+		))));
 		context.register(CAMPSITE, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("1", 3), new Tuple2<>("2", 2)
 		).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(

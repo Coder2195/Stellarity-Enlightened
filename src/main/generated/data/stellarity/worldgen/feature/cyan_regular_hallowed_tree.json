@@ -57,7 +57,7 @@
     "id": "stellarity:cyan_hallowed_leaves",
     "properties": {
       "distance": "7",
-      "persistent": "false",
+      "persistent": "true",
       "waterlogged": "false"
     }
   },

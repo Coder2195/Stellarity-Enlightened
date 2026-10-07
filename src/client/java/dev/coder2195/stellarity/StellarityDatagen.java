@@ -1,11 +1,10 @@
 package dev.coder2195.stellarity;
 
-import com.klikli_dev.modonomicon.api.datagen.FabricBookProvider;
-import com.klikli_dev.modonomicon.api.datagen.LanguageProviderCache;
-import com.klikli_dev.modonomicon.api.datagen.research.ResearchCache;
 import dev.coder2195.stellarity.datagen.*;
-import dev.coder2195.stellarity.datagen.book.EndonomiconBookProvider;
-import dev.coder2195.stellarity.datagen.loot_table.*;
+import dev.coder2195.stellarity.datagen.loot_table.BlockLootTableProvider;
+import dev.coder2195.stellarity.datagen.loot_table.ChestLootTableProvider;
+import dev.coder2195.stellarity.datagen.loot_table.EntityLootTableProvider;
+import dev.coder2195.stellarity.datagen.loot_table.FishingLootTableProvider;
 import dev.coder2195.stellarity.datagen.tags.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -35,9 +34,9 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(StructureTagProvider::new);
 		pack.addProvider(VillagerTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
+		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(ChestLootTableProvider::new);
 		pack.addProvider(EquipmentAssetProvider::new);
-		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(BlockLootTableProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
 	}

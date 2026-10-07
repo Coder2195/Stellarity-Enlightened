@@ -22,7 +22,14 @@
     "type": "minecraft:weighted",
     "entries": [
       {
-        "data": "stellarity:orange_hallowed_leaves",
+        "data": {
+          "id": "stellarity:orange_hallowed_leaves",
+          "properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
         "weight": 1
       }
     ]

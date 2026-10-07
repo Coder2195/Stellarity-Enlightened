@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.util;
 
+import dev.coder2195.stellarity.loot_pool_entry.ItemStackEntry;
 import dev.coder2195.stellarity.mixin.accessor.SetComponentsFunctionAccessor;
 import net.minecraft.advancements.predicates.*;
 import net.minecraft.advancements.predicates.entity.EntityFlagsPredicate;
@@ -17,6 +18,7 @@ import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
@@ -103,7 +105,9 @@ public interface LootUtil {
 		return LootItem.lootTableItem(i);
 	}
 
-
+	static UniformContainerBase.Builder<?> item(ItemStackTemplate i) {
+		return ItemStackEntry.lootTableItemStack(i);
+	}
 
 	static LootItemConditionalFunction.Builder<?> count(Holder<ContextIntProvider> provider) {
 		return SetItemCountFunction.setCount(provider);

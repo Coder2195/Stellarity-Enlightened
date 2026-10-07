@@ -1,7 +1,6 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
-import dev.coder2195.stellarity.registry.StellarityPotions;
 import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
@@ -37,7 +36,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public ChestLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
-		registryLookup = registryLookup.thenApply(CachedLootTableLookupProvider::new);
+		registryLookup = registryLookup.thenApply(MockLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.CHEST);
 		this.registryLookup = registryLookup;
 	}
@@ -54,8 +53,46 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 
 		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
 			consumerOld.accept(key, builder);
-			((CachedLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
+			((MockLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
 		};
+
+		consumer.accept(FLOATING_TREASURE, lootTable()
+			.withPool(pool()
+				.add(item(BOOK_OF_CONVEYANCE))
+				.add(item(BOOK_OF_JINX))
+				.add(item(BOOK_OF_LIGHT))
+				.add(item(BOOK_OF_OBSTRUCT))
+				.add(item(BOOK_OF_RETURN))
+				.add(item(BOOK_OF_UPDRAFT))
+				.when(chance(0.2f))
+			).withPool(pool().add(item(GILDED_PURPUR_KEY).when(chance(0.5f))))
+			.withPool(pool()
+				.add(item(DIAMOND_AXE))
+				.add(item(DIAMOND_HOE))
+				.add(item(DIAMOND_HOE))
+				.add(item(DIAMOND_PICKAXE))
+				.add(item(DIAMOND_SHOVEL))
+				.add(item(DIAMOND_SWORD))
+				.add(item(DIAMOND_HELMET))
+				.add(item(DIAMOND_CHESTPLATE))
+				.add(item(DIAMOND_LEGGINGS))
+				.add(item(DIAMOND_BOOTS))
+				.apply(enchant(enchantments, 30, 60))
+			).withPool(pool().setRolls(num(8))
+				.add(item(ENDERITE_SHARD).apply(count(1, 5)))
+				.add(item(HALLOWED_INGOT).apply(count(1, 4)))
+				.add(item(LUCK_POTION))
+				.add(item(ENDERMAN_HAND))
+				.add(lootTable(lookup.getOrThrow(VOID_FISHING_FISH)).apply(count(1, 3)))
+				.add(item(PURPUR_BLOCK).apply(count(6, 12)))
+				.add(item(PURPUR_PILLAR).apply(count(4, 8)))
+				.add(item(FRIED_CHORUS_FRUIT).apply(count(3, 7)))
+				.add(item(END_CRYSTAL))
+				.add(item(ASHEN_FROGLIGHT).apply(count(2, 8)))
+				.add(item(CHORUS_FRUIT).apply(count(4, 10)))
+				.add(item(ENDER_PEARL).apply(count(1, 4)))
+			)
+		);
 
 		consumer.accept(EXIT_PORTAL, lootTable()
 			.withPool(pool().add(item(END_CRYSTAL).apply(count(4))))
@@ -141,7 +178,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(SPLASH_POTION).setWeight(8).apply(potion(Potions.LONG_REGENERATION)))
 			.add(item(SPLASH_POTION).setWeight(8).apply(potion(Potions.STRONG_HEALING)))
 			.add(item(CHORUS_PIE).setWeight(22).apply(count(1, 2)))
-			.add(item(POTION).apply(potion(StellarityPotions.CHORUS_JUICE)))
+			.add(item(CHORUS_JUICE))
 			.add(alternatives(
 				item(ENCHANTED_GOLDEN_APPLE).when(randomChance(0.1f)),
 				item(GOLDEN_APPLE).setWeight(3)

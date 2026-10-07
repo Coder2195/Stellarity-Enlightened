@@ -16,12 +16,14 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class CachedLootTableLookupProvider implements HolderLookup.Provider {
+public class MockLootTableLookupProvider implements HolderLookup.Provider {
 	private HolderLookup.@Nullable RegistryLookup<LootTable> lootTable = null;
 	private final HolderLookup.Provider parentProvider;
 	public final HashMap<ResourceKey<LootTable>, LootTable> lootTableCache = new HashMap<>();
+	private final LootTable DUMMY = LootTable.lootTable().build();
 
-	public CachedLootTableLookupProvider(HolderLookup.Provider parentProvider) {
+
+	public MockLootTableLookupProvider(HolderLookup.Provider parentProvider) {
 		this.parentProvider = parentProvider;
 	}
 
@@ -66,8 +68,10 @@ public class CachedLootTableLookupProvider implements HolderLookup.Provider {
 				var parentHolder = parent.get(id);
 				var cacheValue = lootTableCache.get(id);
 				if (cacheValue != null) return Optional.of(HolderReferenceMixin.create(Holder.Reference.Type.STAND_ALONE, this, id, cacheValue));
+				if (parentHolder.isEmpty()) return Optional.of(HolderReferenceMixin.create(Holder.Reference.Type.STAND_ALONE, this, id, DUMMY));
 				return parentHolder;
 			}
+
 
 			@Override
 			public Optional<HolderSet.Named<LootTable>> get(TagKey<LootTable> id) {

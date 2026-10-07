@@ -1,12 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "stellarity:block/lime_hallowed_leaves",
-    "tints": [
-      {
-        "type": "minecraft:constant",
-        "value": -12012264
-      }
-    ]
+    "model": "stellarity:block/lime_hallowed_leaves"
   }
 }

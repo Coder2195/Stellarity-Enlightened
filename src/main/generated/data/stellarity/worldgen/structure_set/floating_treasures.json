@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 8,
+      "other_set": "minecraft:end_cities"
+    },
+    "salt": 485323964,
+    "separation": 12,
+    "spacing": 23
+  },
+  "structures": [
+    {
+      "structure": "stellarity:floating_treasure",
+      "weight": 1
+    }
+  ]
+}

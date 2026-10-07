@@ -27,7 +27,7 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public FishingLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
-		registryLookup = registryLookup.thenApply(CachedLootTableLookupProvider::new);
+		registryLookup = registryLookup.thenApply(MockLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.FISHING);
 		this.registryLookup = registryLookup;
 	}
@@ -38,7 +38,7 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
 		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
 			consumerOld.accept(key, builder);
-			((CachedLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
+			((MockLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
 		};
 
 		consumer.accept(VOID_FISHING_FISH, lootTable().withPool(pool()

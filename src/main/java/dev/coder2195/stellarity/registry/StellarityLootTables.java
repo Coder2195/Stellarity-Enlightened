@@ -8,6 +8,7 @@ import dev.coder2195.stellarity.Stellarity;
 public interface StellarityLootTables {
 	ResourceKey<LootTable> DUNGEON = id("dungeon");
 	ResourceKey<LootTable> EXIT_PORTAL = id("exit_portal");
+	ResourceKey<LootTable> FLOATING_TREASURE = id("floating_treasure");
 
 	ResourceKey<LootTable> CAMPSITE_TRASH = id("campsite/trash");
 	ResourceKey<LootTable> CAMPSITE_FOOD = id("campsite/food");
