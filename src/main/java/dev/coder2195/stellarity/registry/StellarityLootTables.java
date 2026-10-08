@@ -64,6 +64,15 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> END_VILLAGE_CENTER_MARKET_ENCHANTS = id("end_village/center/market/enchants");
 	ResourceKey<LootTable> END_VILLAGE_CENTER_MARKET_EXPLORER = id("end_village/center/market/explorer");
 
+	ResourceKey<LootTable> SHIPWRECK_MAPS = id("shipwreck/maps");
+	ResourceKey<LootTable> SHIPWRECK_SUPPLIES = id("shipwreck/supplies");
+	ResourceKey<LootTable> SHIPWRECK_TREASURE = id("shipwreck/treasure");
+	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_DUNES_COMMON = id("shipwreck/archaeology/dunes/common");
+	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_DUNES_RARE = id("shipwreck/archaeology/dunes/rare");
+	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_NORMAL_COMMON = id("shipwreck/archaeology/normal/common");
+	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_NORMAL_RARE = id("shipwreck/archaeology/normal/rare");
+
+
 	static ResourceKey<LootTable> id(String id) {
 		return Stellarity.key(Registries.LOOT_TABLE, id);
 	}

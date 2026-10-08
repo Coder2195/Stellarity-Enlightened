@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.registry.StellarityItemModifiers;
 import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
@@ -9,7 +10,6 @@ import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.Rarity;
@@ -242,13 +242,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(COMPASS).setWeight(2))
 				.add(item(SHEARS))
 				.add(item(GLASS_PANE).setWeight(4).apply(count(1, 2)))
-			).withPool(pool().setRolls(num(-1, 1)).add(item(END_CITY_MAP)
-				.apply(sequence(
-					explorationMap(MapDecorationTypes.PURPLE_BANNER, lookup.getOrThrow(StellarityStructureTags.ON_END_CITY_MAPS), (byte) 3, 96, true),
-					setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
-					setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
-				))
-			))
+			).withPool(pool().setRolls(num(-1, 1)).add(item(END_CITY_MAP).apply(lookup.getOrThrow(StellarityItemModifiers.END_CITY_MAP))))
 		);
 		consumer.accept(END_VILLAGE_CARTOGRAPHER_SHULKER_BOX, lootTable().withPool(pool().setRolls(num(2, 3))
 			.add(item(PAPER).apply(count(1, 3))).add(item(GLASS_PANE).apply(count(1, 2)))
@@ -467,6 +461,12 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(PAPER).setQuality(-2).setWeight(15).apply(count(1, 3)))
 			.add(item(COMPASS).setWeight(5))
 		));
+
+		consumer.accept(SHIPWRECK_MAPS, lootTable()
+			.withPool(pool()
+				.add(item(END_CITY_MAP).apply(lookup.getOrThrow(StellarityItemModifiers.END_CITY_MAP)))
+			).withPool(pool().setRolls(num(10)))
+		);
 
 	}
 

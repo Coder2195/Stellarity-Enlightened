@@ -19,6 +19,7 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 
 	@SuppressWarnings("DuplicatedCode")
 	public static void buildRegistry(RegistrySetBuilder builder) {
+		builder.add(ITEM_MODIFIER, StellarityItemModifiers::bootstrap);
 		builder.add(DAMAGE_TYPE, StellarityDamageTypes::boostrap);
 		builder.add(JUKEBOX_SONG, StellarityJukeboxSongs::bootstrap);
 		builder.add(NOISE, StellarityNoises::bootstrap);
@@ -46,7 +47,8 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 
 	@Override
 	public void configure(HolderLookup.Provider provider, Entries entries) {
-		for (var registry : List.of(JUKEBOX_SONG, NOISE, PAINTING_VARIANT, COW_VARIANT, FROG_VARIANT, CAT_VARIANT, WOLF_VARIANT, PIG_VARIANT, CHICKEN_VARIANT, VOIDED_SKELETON_VARIANT, CARVER, FEATURE, PLACED_FEATURE, BIOME, PROCESSOR_LIST, TEMPLATE_POOL, ENCHANTMENT, STRUCTURE, STRUCTURE_SET, VILLAGER_TRADE, TRADE_SET, DAMAGE_TYPE)) {
+
+		for (var registry : List.of(ITEM_MODIFIER, JUKEBOX_SONG, NOISE, PAINTING_VARIANT, COW_VARIANT, FROG_VARIANT, CAT_VARIANT, WOLF_VARIANT, PIG_VARIANT, CHICKEN_VARIANT, VOIDED_SKELETON_VARIANT, CARVER, FEATURE, PLACED_FEATURE, BIOME, PROCESSOR_LIST, TEMPLATE_POOL, ENCHANTMENT, STRUCTURE, STRUCTURE_SET, VILLAGER_TRADE, TRADE_SET, DAMAGE_TYPE)) {
 			entries.addAll(provider.lookupOrThrow(registry));
 		}
 	}

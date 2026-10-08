@@ -125,19 +125,14 @@ public interface StellarityItemIds {
 
 	ResourceKey<Item> AMETHYII_BOAT = id("amethyii_boat");
 	ResourceKey<Item> AMETHYII_CHEST_BOAT = id("amethyii_chest_boat");
-
 	ResourceKey<Item> HALLOWED_BOAT = id("hallowed_boat");
 	ResourceKey<Item> HALLOWED_CHEST_BOAT = id("hallowed_chest_boat");
-
 	ResourceKey<Item> SHRUBBED_BOAT = id("shrubbed_boat");
 	ResourceKey<Item> SHRUBBED_CHEST_BOAT = id("shrubbed_chest_boat");
-
 	ResourceKey<Item> PRISMATIC_BOAT = id("prismatic_boat");
 	ResourceKey<Item> PRISMATIC_CHEST_BOAT = id("prismatic_chest_boat");
-
 	ResourceKey<Item> ASHEN_BOAT = id("ashen_boat");
 	ResourceKey<Item> ASHEN_CHEST_BOAT = id("ashen_chest_boat");
-
 	ResourceKey<Item> INFERNO_BOAT = id("inferno_boat");
 	ResourceKey<Item> INFERNO_CHEST_BOAT = id("inferno_chest_boat");
 
