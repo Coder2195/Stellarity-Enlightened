@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
 import dev.coder2195.stellarity.registry.StellarityItemModifiers;
+import dev.coder2195.stellarity.util.DatagenUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -28,25 +29,19 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public ChestLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
-		registryLookup = registryLookup.thenApply(MockLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.CHEST);
 		this.registryLookup = registryLookup;
 	}
 
 	@SuppressWarnings("DuplicatedCode")
 	@Override
-	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumerOld) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
 		var lookup = registryLookup.join();
 		var enchantments = lookup.lookupOrThrow(Registries.ENCHANTMENT);
 		var trimMaterials = lookup.lookupOrThrow(Registries.TRIM_MATERIAL);
 		var trimPatterns = lookup.lookupOrThrow(Registries.TRIM_PATTERN);
-		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
+		var lootTables = DatagenUtil.FAKE_LOOT_TABLES;
 		var itemModifiers = lookup.lookupOrThrow(Registries.ITEM_MODIFIER);
-
-		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
-			consumerOld.accept(key, builder);
-			((MockLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
-		};
 
 		consumer.accept(FLOATING_TREASURE, lootTable()
 			.withPool(pool()
@@ -75,7 +70,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 				.add(item(HALLOWED_INGOT).apply(count(1, 4)))
 				.add(item(LUCK_POTION))
 				.add(item(ENDERMAN_HAND))
-				.add(lootTable(lookup.getOrThrow(VOID_FISHING_FISH)).apply(count(1, 3)))
+				.add(lootTable(lootTables, VOID_FISHING_FISH).apply(count(1, 3)))
 				.add(item(PURPUR_BLOCK).apply(count(6, 12)))
 				.add(item(PURPUR_PILLAR).apply(count(4, 8)))
 				.add(item(FRIED_CHORUS_FRUIT).apply(count(3, 7)))
@@ -451,12 +446,43 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.add(item(COMPASS).setWeight(5))
 		));
 
-		consumer.accept(SHIPWRECK_MAPS, lootTable()
+		consumer.accept(END_SHIPWRECK_MAPS, lootTable()
 			.withPool(pool()
 				.add(item(END_CITY_MAP).apply(lookup.getOrThrow(StellarityItemModifiers.END_CITY_MAP)))
-			).withPool(pool().setRolls(num(10)))
+				.add(item(FLOATING_TREASURE_MAP).apply(lookup.getOrThrow(StellarityItemModifiers.FLOATING_TREASURE_MAP)))
+			).withPool(pool().setRolls(num(10))
+				.add(item(MAP).setWeight(3))
+				.add(item(PAPER).setWeight(18).apply(count(1, 3)))
+				.add(item(FEATHER).setWeight(8).apply(count(1, 2)))
+				.add(item(WRITTEN_BOOK).setWeight(3))
+				.add(item(BOOK).setWeight(8).apply(count(1, 2)))
+				.add(item(BOOK).setWeight(2).setQuality(1).apply(enchant(enchantments, 25, 35)))
+			).withPool(pool().add(item(ENDER_EYE).apply(count(1, 4))))
 		);
 
+		consumer.accept(END_SHIPWRECK_SUPPLIES, lootTable()
+			.withPool(pool().setRolls(num(10))
+				.add(item(MAP).setWeight(3))
+				.add(item(PAPER).setWeight(18).apply(count(1, 3)))
+				.add(item(FEATHER).setWeight(8).apply(count(1, 2)))
+				.add(item(WRITTEN_BOOK).setWeight(3))
+				.add(item(BOOK).setWeight(8).apply(count(1, 2)))
+				.add(item(BOOK).setWeight(2).setQuality(1).apply(enchant(enchantments, 25, 35)))
+			).withPool(pool().add(item(ENDER_EYE).apply(count(1, 4))))
+		);
+
+		consumer.accept(END_SHIPWRECK_TREASURE, lootTable()
+			.withPool(pool().setRolls(num(2, 4))
+				.add(item(DRAGON_BREATH).setWeight(2).apply(count(1, 4)))
+				.add(item(GOLD_INGOT).setWeight(3).apply(count(2, 4)))
+				.add(item(EMERALD).setWeight(2).apply(count(1, 3)))
+				.add(item(DIAMOND).setWeight(2).apply(count(1, 3)))
+			).withPool(pool().setRolls(num(2, 3))
+				.add(item(GOLD_NUGGET).setWeight(10).apply(count(4, 12)))
+				.add(item(LAPIS_LAZULI).setWeight(30).apply(count(2, 6)))
+			).withPool(pool().add(empty()).add(item(EYE_ARMOR_TRIM_SMITHING_TEMPLATE)))
+			.withPool(pool().add(empty().setWeight(2)).add(item(ENDERITE_UPGRADE_SMITHING_TEMPLATE)))
+		);
 	}
 
 	@Override

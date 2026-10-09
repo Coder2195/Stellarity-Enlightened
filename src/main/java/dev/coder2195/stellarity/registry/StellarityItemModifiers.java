@@ -11,7 +11,6 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetNameFunction;
 
@@ -21,6 +20,7 @@ public interface StellarityItemModifiers {
 	ResourceKey<LootItemFunction> END_CITY_MAP = id("end_city_map");
 	ResourceKey<LootItemFunction> CHAPEL_OF_LIGHT_MAP = id("chapel_of_light_map");
 	ResourceKey<LootItemFunction> END_VILLAGE_MAP = id("end_village_map");
+	ResourceKey<LootItemFunction> FLOATING_TREASURE_MAP = id("floating_treasure_map");
 
 	private static ResourceKey<LootItemFunction> id(String id) {
 		return Stellarity.key(Registries.ITEM_MODIFIER, id);
@@ -43,6 +43,12 @@ public interface StellarityItemModifiers {
 		context.register(CHAPEL_OF_LIGHT_MAP, sequence(
 			explorationMap(StellarityMapDecorationTypes.CHAPEL_OF_LIGHT, structures.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS), (byte) 3, 96, false),
 			setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
+			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
+		).value());
+
+		context.register(FLOATING_TREASURE_MAP, sequence(
+			explorationMap(StellarityMapDecorationTypes.FLOATING_TREASURE, structures.getOrThrow(StellarityStructureTags.ON_FLOATING_TREASURE_MAPS), (byte) 3, 96, false),
+			setName(Component.translatable("filled_map.stellarity.floating_treasure").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
 			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
 		).value());
 

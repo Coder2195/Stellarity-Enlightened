@@ -7,7 +7,10 @@
     },
     "id": "stellarity:enderite_shard"
   },
-  "given_item_modifier": "stellarity:end_city_map",
+  "given_item_modifier": {
+    "type": "stellarity:reference",
+    "name": "stellarity:end_city_map"
+  },
   "gives": {
     "id": "stellarity:end_city_map"
   },

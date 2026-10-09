@@ -64,13 +64,13 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> END_VILLAGE_CENTER_MARKET_ENCHANTS = id("end_village/center/market/enchants");
 	ResourceKey<LootTable> END_VILLAGE_CENTER_MARKET_EXPLORER = id("end_village/center/market/explorer");
 
-	ResourceKey<LootTable> SHIPWRECK_MAPS = id("shipwreck/maps");
-	ResourceKey<LootTable> SHIPWRECK_SUPPLIES = id("shipwreck/supplies");
-	ResourceKey<LootTable> SHIPWRECK_TREASURE = id("shipwreck/treasure");
-	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_DUNES_COMMON = id("shipwreck/archaeology/dunes/common");
-	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_DUNES_RARE = id("shipwreck/archaeology/dunes/rare");
-	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_NORMAL_COMMON = id("shipwreck/archaeology/normal/common");
-	ResourceKey<LootTable> SHIPWRECK_ARCHAEOLOGY_NORMAL_RARE = id("shipwreck/archaeology/normal/rare");
+	ResourceKey<LootTable> END_SHIPWRECK_MAPS = id("end_shipwreck/maps");
+	ResourceKey<LootTable> END_SHIPWRECK_SUPPLIES = id("end_shipwreck/supplies");
+	ResourceKey<LootTable> END_SHIPWRECK_TREASURE = id("end_shipwreck/treasure");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_COMMON = id("end_shipwreck/archaeology/dunes/common");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_RARE = id("end_shipwreck/archaeology/dunes/rare");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_NORMAL_COMMON = id("end_shipwreck/archaeology/normal/common");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_NORMAL_RARE = id("end_shipwreck/archaeology/normal/rare");
 
 
 	static ResourceKey<LootTable> id(String id) {

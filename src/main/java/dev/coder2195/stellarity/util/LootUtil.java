@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.util;
 
+import dev.coder2195.stellarity.loot_function.FunctionReference;
 import dev.coder2195.stellarity.loot_pool_entry.ItemStackEntry;
 import dev.coder2195.stellarity.mixin.accessor.SetComponentsFunctionAccessor;
 import net.minecraft.advancements.predicates.*;
@@ -96,6 +97,10 @@ public interface LootUtil {
 		return sequence(List.of(functions));
 	}
 
+	static Holder<LootItemFunction> reference(ResourceKey<LootItemFunction> function) {
+		return Holder.direct(new FunctionReference(function));
+	}
+
 	static Holder<LootItemFunction> sequence(LootItemFunction... functions) {
 		return sequence(Stream.of(functions).map(Holder::direct).toList());
 	}
@@ -163,8 +168,8 @@ public interface LootUtil {
 		return NestedLootTable.lootTableReference(table);
 	}
 
-	static UniformContainerBase.Builder<?> lootTable(HolderOwner<LootTable> lookup, ResourceKey<LootTable> table) {
-		return lootTable(Holder.Reference.createStandAlone(lookup, table));
+	static UniformContainerBase.Builder<?> lootTable(HolderGetter<LootTable> lookup, ResourceKey<LootTable> table) {
+		return lootTable(lookup.getOrThrow(table));
 	}
 
 	static UniformContainerBase.Builder<?> lootTableBound(HolderGetter.Provider provider, ResourceKey<LootTable> table) {

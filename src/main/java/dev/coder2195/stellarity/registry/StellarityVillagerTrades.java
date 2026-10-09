@@ -2,7 +2,6 @@ package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin.accessor.VillagerTradeAccessor;
-import dev.coder2195.stellarity.util.DatagenUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -261,7 +260,6 @@ public interface StellarityVillagerTrades {
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
 		var paintings = context.lookup(Registries.PAINTING_VARIANT);
-		var itemModifiers = DatagenUtil.FAKE_ITEM_MODIFIERS;
 
 		Holder<LootItemFunction> ironArmorModifier = sequence(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
@@ -323,9 +321,9 @@ public interface StellarityVillagerTrades {
 		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
-		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), END_CITY_MAP, itemModifiers.getOrThrow((StellarityItemModifiers.END_CITY_MAP)), 1, 40, 1, 0.2f));
+		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), END_CITY_MAP, reference(StellarityItemModifiers.END_CITY_MAP), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
-		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), CHAPEL_OF_LIGHT_MAP, itemModifiers.getOrThrow(StellarityItemModifiers.CHAPEL_OF_LIGHT_MAP), 1, 40, 1, 0.2f));
+		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), CHAPEL_OF_LIGHT_MAP, reference(StellarityItemModifiers.CHAPEL_OF_LIGHT_MAP), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, shardToSimple(3, GLOW_ITEM_FRAME, 2, 18, 8, 0.05f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME, shardToSimple(num(4, 6), PHANTOM_ITEM_FRAME, 3, 20, 4, 0.05f));
 		context.register(CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN, shardToSimple(num(15, 23), MOJANG_BANNER_PATTERN, 1, 30, 8, 0.05f));

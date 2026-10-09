@@ -7,7 +7,10 @@
     },
     "id": "stellarity:enderite_shard"
   },
-  "given_item_modifier": "stellarity:chapel_of_light_map",
+  "given_item_modifier": {
+    "type": "stellarity:reference",
+    "name": "stellarity:chapel_of_light_map"
+  },
   "gives": {
     "id": "stellarity:chapel_of_light_map"
   },

@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.datagen.loot_table;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.StellarityBiomes;
+import dev.coder2195.stellarity.util.DatagenUtil;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
@@ -27,19 +28,14 @@ public class FishingLootTableProvider extends SimpleFabricLootTableSubProvider {
 	private final CompletableFuture<HolderLookup.Provider> registryLookup;
 
 	public FishingLootTableProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
-		registryLookup = registryLookup.thenApply(MockLootTableLookupProvider::new);
 		super(output, registryLookup, LootContextParamSets.FISHING);
 		this.registryLookup = registryLookup;
 	}
 
 	@Override
-	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumerOld) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer) {
 		var lookup = registryLookup.join();
-		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
-		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
-			consumerOld.accept(key, builder);
-			((MockLootTableLookupProvider) lookup).lootTableCache.put(key, builder.build());
-		};
+		var lootTables = DatagenUtil.FAKE_LOOT_TABLES;
 
 		consumer.accept(VOID_FISHING_FISH, lootTable().withPool(pool()
 			.add(item(ENDER_KOI).setWeight(15).apply(count(2, 4)))

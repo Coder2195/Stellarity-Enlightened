@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:exploration_map",
+      "decoration": "stellarity:floating_treasure",
+      "destination": "#stellarity:on_floating_treasure_maps",
+      "search_radius": 96,
+      "skip_existing_chunks": false,
+      "zoom": 3
+    },
+    {
+      "type": "minecraft:set_name",
+      "name": {
+        "italic": false,
+        "translate": "filled_map.stellarity.floating_treasure"
+      }
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:rarity": "rare",
+        "stellarity:marked_item": {}
+      }
+    }
+  ]
+}
