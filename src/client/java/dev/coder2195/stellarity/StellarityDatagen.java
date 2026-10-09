@@ -16,6 +16,10 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		DynamicRegistriesProvider.buildRegistry(builder);
 	}
 
+	@Override
+	public void buildReloadableRegistry(RegistrySetBuilder builder) {
+		DynamicRegistriesProvider.buildReloableRegistry(builder);
+	}
 
 	@SuppressWarnings("DuplicatedCode")
 	@Override

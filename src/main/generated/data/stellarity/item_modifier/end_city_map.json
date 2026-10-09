@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:exploration_map",
+      "decoration": "stellarity:end_city",
+      "destination": "#stellarity:on_end_city_maps",
+      "search_radius": 96,
+      "zoom": 3
+    },
+    {
+      "type": "minecraft:set_name",
+      "name": {
+        "italic": false,
+        "translate": "filled_map.stellarity.end_city"
+      }
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:rarity": "rare",
+        "stellarity:marked_item": {}
+      }
+    }
+  ]
+}

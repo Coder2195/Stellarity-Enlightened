@@ -1,7 +1,7 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
 import com.mojang.serialization.Lifecycle;
-import dev.coder2195.stellarity.mixin.accessor.HolderReferenceMixin;
+import dev.coder2195.stellarity.mixin.accessor.HolderReferenceAccessor;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
@@ -53,7 +53,7 @@ public class MockLootTableLookupProvider implements HolderLookup.Provider {
 			public Stream<Holder.Reference<LootTable>> listElements() {
 				return Stream.concat(
 					parent.listElements(),
-					lootTableCache.entrySet().stream().map(entrySet -> HolderReferenceMixin.create(Holder.Reference.Type.STAND_ALONE, this, entrySet.getKey(), entrySet.getValue()))
+					lootTableCache.entrySet().stream().map(entrySet -> HolderReferenceAccessor.create(Holder.Reference.Type.STAND_ALONE, this, entrySet.getKey(), entrySet.getValue()))
 				);
 			}
 
@@ -67,8 +67,8 @@ public class MockLootTableLookupProvider implements HolderLookup.Provider {
 			public Optional<Holder.Reference<LootTable>> get(ResourceKey<LootTable> id) {
 				var parentHolder = parent.get(id);
 				var cacheValue = lootTableCache.get(id);
-				if (cacheValue != null) return Optional.of(HolderReferenceMixin.create(Holder.Reference.Type.STAND_ALONE, this, id, cacheValue));
-				if (parentHolder.isEmpty()) return Optional.of(HolderReferenceMixin.create(Holder.Reference.Type.STAND_ALONE, this, id, DUMMY));
+				if (cacheValue != null) return Optional.of(HolderReferenceAccessor.create(Holder.Reference.Type.STAND_ALONE, this, id, cacheValue));
+				if (parentHolder.isEmpty()) return Optional.of(HolderReferenceAccessor.create(Holder.Reference.Type.STAND_ALONE, this, id, DUMMY));
 				return parentHolder;
 			}
 

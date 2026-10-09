@@ -1,26 +1,18 @@
 package dev.coder2195.stellarity.datagen.loot_table;
 
-import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItemModifiers;
-import dev.coder2195.stellarity.tags.StellarityStructureTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Unit;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import net.minecraft.world.item.equipment.trim.TrimMaterials;
 import net.minecraft.world.item.equipment.trim.TrimPatterns;
-import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.functions.SetNameFunction;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 import java.util.concurrent.CompletableFuture;
@@ -49,7 +41,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 		var trimMaterials = lookup.lookupOrThrow(Registries.TRIM_MATERIAL);
 		var trimPatterns = lookup.lookupOrThrow(Registries.TRIM_PATTERN);
 		var lootTables = lookup.lookupOrThrow(Registries.LOOT_TABLE);
-
+		var itemModifiers = lookup.lookupOrThrow(Registries.ITEM_MODIFIER);
 
 		BiConsumer<ResourceKey<LootTable>, LootTable.Builder> consumer = (key, builder) -> {
 			consumerOld.accept(key, builder);
@@ -188,10 +180,7 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 			.withPool(campsiteTentEmeraldBooks)
 			.withPool(campsiteTentArmor)
 			.withPool(pool().add(item(END_VILLAGE_MAP)
-				.apply(sequence(explorationMap(MapDecorationTypes.WOODLAND_MANSION, lookup.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS), (byte) 3, 96, false),
-					setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME),
-					setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build())
-				))
+				.apply(itemModifiers.getOrThrow(StellarityItemModifiers.END_VILLAGE_MAP))
 			))
 			.withPool(campsiteTentTools)
 			.withPool(campsiteTentArrows)

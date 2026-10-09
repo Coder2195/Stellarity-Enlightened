@@ -2,24 +2,19 @@ package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin.accessor.VillagerTradeAccessor;
-import dev.coder2195.stellarity.tags.StellarityStructureTags;
+import dev.coder2195.stellarity.util.DatagenUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.decoration.painting.PaintingVariants;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -29,7 +24,6 @@ import net.minecraft.world.item.equipment.trim.TrimPatterns;
 import net.minecraft.world.item.trading.TradeCost;
 import net.minecraft.world.item.trading.VillagerTrade;
 import net.minecraft.world.level.block.ColorCollection;
-import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
@@ -267,7 +261,7 @@ public interface StellarityVillagerTrades {
 		var trimPatterns = context.lookup(Registries.TRIM_PATTERN);
 		var enchants = context.lookup(Registries.ENCHANTMENT);
 		var paintings = context.lookup(Registries.PAINTING_VARIANT);
-		var structures = context.lookup(Registries.STRUCTURE);
+		var itemModifiers = DatagenUtil.FAKE_ITEM_MODIFIERS;
 
 		Holder<LootItemFunction> ironArmorModifier = sequence(
 			component(DataComponents.TRIM, new ArmorTrim(trimMaterials.getOrThrow(TrimMaterials.EMERALD), trimPatterns.getOrThrow(TrimPatterns.SPIRE))).when(chance(0.5f)).build(),
@@ -326,23 +320,12 @@ public interface StellarityVillagerTrades {
 		context.register(BUTCHER_5_ENDERITE_SHARD_DRIED_KELP_BLOCK, shardToSimple(5, DRIED_KELP_BLOCK, 2, 20, 8, 0.05f));
 
 
-		var explorationMapEndCity = structures.getOrThrow(StellarityStructureTags.ON_END_CITY_MAPS);
-		//TODO: Update with actual chapel of light
-		var explorationMapChapelOfLight = structures.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS);
 		context.register(CARTOGRAPHER_1_PAPER_ENDERITE_SHARD, simpleToShard(PAPER, num(24, 30), 1, 2, 12, 0.05f));
 		context.register(CARTOGRAPHER_1_ENDERITE_SHARD_MAP, shardToSimple(num(6, 8), MAP, 1, 1, 10, 0.05f));
 		context.register(CARTOGRAPHER_2_GLASS_PANE_ENDERITE_SHARD, simpleToShard(GLASS_PANE, num(14, 20), 1, 8, 14, 0.05f));
-		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), END_CITY_MAP, sequence(
-			explorationMap(MapDecorationTypes.PURPLE_BANNER, explorationMapEndCity, (byte) 3, 96, true),
-			setName(Component.translatable("filled_map.stellarity.end_city").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
-			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
-		), 1, 40, 1, 0.2f));
+		context.register(CARTOGRAPHER_2_MAP_ENDERITE_SHARD_END_CITY_MAP, simpleShardToModifierItem(MAP, num(1), num(40, 50), END_CITY_MAP, itemModifiers.getOrThrow((StellarityItemModifiers.END_CITY_MAP)), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_3_ENDERITE_SHARD_ITEM_FRAME, shardToSimple(2, ITEM_FRAME, 4, 12, 8, 0.05f));
-		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), CHAPEL_OF_LIGHT_MAP, sequence(
-			explorationMap(MapDecorationTypes.PURPLE_BANNER, explorationMapChapelOfLight, (byte) 3, 96, false),
-			setName(Component.translatable("filled_map.stellarity.chapel_of_light").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
-			setComponents(DataComponentPatch.builder().set(DataComponents.RARITY, Rarity.RARE).set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).build())
-		), 1, 40, 1, 0.2f));
+		context.register(CARTOGRAPHER_3_MAP_ENDERITE_SHARD_CHAPEL_OF_LIGHT_MAP, simpleShardToModifierItem(MAP, num(1), num(50, 60), CHAPEL_OF_LIGHT_MAP, itemModifiers.getOrThrow(StellarityItemModifiers.CHAPEL_OF_LIGHT_MAP), 1, 40, 1, 0.2f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_GLOW_ITEM_FRAME, shardToSimple(3, GLOW_ITEM_FRAME, 2, 18, 8, 0.05f));
 		context.register(CARTOGRAPHER_4_ENDERITE_SHARD_PHANTOM_ITEM_FRAME, shardToSimple(num(4, 6), PHANTOM_ITEM_FRAME, 3, 20, 4, 0.05f));
 		context.register(CARTOGRAPHER_5_ENDERITE_SHARD_MOJANG_BANNER_PATTERN, shardToSimple(num(15, 23), MOJANG_BANNER_PATTERN, 1, 30, 8, 0.05f));

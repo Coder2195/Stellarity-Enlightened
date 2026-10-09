@@ -54,29 +54,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "modifier": [
-            {
-              "type": "minecraft:exploration_map",
-              "decoration": "minecraft:banner_purple",
-              "destination": "#stellarity:on_end_city_maps",
-              "search_radius": 96,
-              "zoom": 3
-            },
-            {
-              "type": "minecraft:set_name",
-              "name": {
-                "italic": false,
-                "translate": "filled_map.stellarity.end_city"
-              }
-            },
-            {
-              "type": "minecraft:set_components",
-              "components": {
-                "minecraft:rarity": "rare",
-                "stellarity:marked_item": {}
-              }
-            }
-          ],
+          "modifier": "stellarity:end_city_map",
           "name": "stellarity:end_city_map"
         }
       ],

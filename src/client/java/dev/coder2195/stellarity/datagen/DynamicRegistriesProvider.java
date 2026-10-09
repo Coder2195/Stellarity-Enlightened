@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.MultiRegistryBootstrap;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -19,8 +20,7 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 
 	@SuppressWarnings("DuplicatedCode")
 	public static void buildRegistry(RegistrySetBuilder builder) {
-		builder.add(ITEM_MODIFIER, StellarityItemModifiers::bootstrap);
-		builder.add(DAMAGE_TYPE, StellarityDamageTypes::boostrap);
+		builder.add(DAMAGE_TYPE, StellarityDamageTypes::bootstrap);
 		builder.add(JUKEBOX_SONG, StellarityJukeboxSongs::bootstrap);
 		builder.add(NOISE, StellarityNoises::bootstrap);
 		builder.add(PAINTING_VARIANT, StellarityPaintings::bootstrap);
@@ -43,6 +43,10 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 		builder.add(STRUCTURE_SET, StellarityStructureSets::bootstrap);
 		builder.add(VILLAGER_TRADE, StellarityVillagerTrades::bootstrap);
 		builder.add(TRADE_SET, StellarityVillagerTradeSets::bootstrap);
+	}
+
+	public static void buildReloableRegistry(RegistrySetBuilder builder) {
+		builder.add(ITEM_MODIFIER, StellarityItemModifiers::bootstrap);
 	}
 
 	@Override

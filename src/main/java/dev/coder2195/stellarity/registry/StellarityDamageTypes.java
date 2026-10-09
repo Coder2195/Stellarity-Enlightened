@@ -19,7 +19,7 @@ public interface StellarityDamageTypes {
 	ResourceKey<DamageType> STRIKER_STAR = id("striker_star");
 	ResourceKey<DamageType> BLOOM = id("bloom");
 
-	static void boostrap(BootstrapContext<DamageType> context) {
+	static void bootstrap(BootstrapContext<DamageType> context) {
 		context.register(StellarityDamageTypes.BRITTLE, new DamageType("stellarity.brittle", DamageScaling.NEVER, 0.1f, DamageEffects.FREEZING));
 		context.register(StellarityDamageTypes.FROSTBURN, new DamageType("stellarity.frostburn", DamageScaling.NEVER, 0.1f, DamageEffects.FREEZING));
 		context.register(StellarityDamageTypes.TAMARIS_EXECUTE, new DamageType("stellarity.tamaris_execute", DamageScaling.NEVER, 0.1f));

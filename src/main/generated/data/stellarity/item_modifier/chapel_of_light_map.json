@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:exploration_map",
+      "decoration": "stellarity:chapel_of_light",
+      "destination": "#stellarity:on_end_village_maps",
+      "search_radius": 96,
+      "skip_existing_chunks": false,
+      "zoom": 3
+    },
+    {
+      "type": "minecraft:set_name",
+      "name": {
+        "italic": false,
+        "translate": "filled_map.stellarity.chapel_of_light"
+      }
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:rarity": "rare",
+        "stellarity:marked_item": {}
+      }
+    }
+  ]
+}
