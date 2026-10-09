@@ -1,10 +1,7 @@
 package dev.coder2195.stellarity;
 
 import dev.coder2195.stellarity.datagen.*;
-import dev.coder2195.stellarity.datagen.loot_table.BlockLootTableProvider;
-import dev.coder2195.stellarity.datagen.loot_table.ChestLootTableProvider;
-import dev.coder2195.stellarity.datagen.loot_table.EntityLootTableProvider;
-import dev.coder2195.stellarity.datagen.loot_table.FishingLootTableProvider;
+import dev.coder2195.stellarity.datagen.loot_table.*;
 import dev.coder2195.stellarity.datagen.tags.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -38,6 +35,7 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(StructureTagProvider::new);
 		pack.addProvider(VillagerTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
+		pack.addProvider(ArchaeologyLootTableProvider::new);
 		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(ChestLootTableProvider::new);
 		pack.addProvider(EquipmentAssetProvider::new);

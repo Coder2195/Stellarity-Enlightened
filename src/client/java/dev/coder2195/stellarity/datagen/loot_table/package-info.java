@@ -1,3 +1,4 @@
+
 @NullMarked
 package dev.coder2195.stellarity.datagen.loot_table;
 

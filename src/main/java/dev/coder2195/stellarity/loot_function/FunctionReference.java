@@ -16,7 +16,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 import java.util.Optional;
 
-// imported from 26.2
 public class FunctionReference extends LootItemConditionalFunction {
 	public static final MapCodec<FunctionReference> MAP_CODEC = RecordCodecBuilder.mapCodec(
 		i -> commonFields(i).and(Identifier.CODEC.fieldOf("name").forGetter(FunctionReference::getName)).apply(i, FunctionReference::new)
