@@ -68,7 +68,7 @@ public interface StellarityMobVariants {
 
 		context.register(StellarityMobVariants.PIG_END, new PigVariant(
 			texture(PigVariant.ModelType.NORMAL, "pig/pig_end"),
-			texture("pig/pig_end"),
+			texture("pig/pig_end_baby"),
 			SpawnPrioritySelectors.single(new BiomeCheck(biomes.getOrThrow(BiomeTags.IS_END)), 5)
 		));
 	}

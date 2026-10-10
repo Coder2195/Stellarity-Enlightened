@@ -18,7 +18,7 @@ import static net.minecraft.world.level.block.Blocks.*;
 
 public interface StellarityProcessorLists {
 	ResourceKey<StructureProcessorList> CAMPSITE = id("campsite");
-	ResourceKey<StructureProcessorList> END_VILLAGE_FLOWERING_AZALEA_LEAVES = id("end_village/flowering_azalea_leaves");
+	ResourceKey<StructureProcessorList> END_VILLAGE_FLOWERING_AZALEA_LEAVES = id("end_village_flowering_azalea_leaves");
 	ResourceKey<StructureProcessorList> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
 	ResourceKey<StructureProcessorList> END_SHIPWRECK = id("end_shipwreck");
 

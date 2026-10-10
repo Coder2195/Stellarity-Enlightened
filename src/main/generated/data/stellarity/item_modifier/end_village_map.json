@@ -12,6 +12,7 @@
     {
       "type": "minecraft:set_name",
       "name": {
+        "italic": false,
         "translate": "filled_map.stellarity.end_village"
       }
     },

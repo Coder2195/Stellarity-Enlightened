@@ -95,7 +95,7 @@
         "element_type": "minecraft:single_pool_element",
         "location": "stellarity:end_village/decorations/planter_box_1",
         "override_liquid_settings": "ignore_waterlogging",
-        "processors": "stellarity:end_village/flowering_azalea_leaves",
+        "processors": "stellarity:end_village_flowering_azalea_leaves",
         "projection": "rigid"
       },
       "weight": 1
@@ -135,7 +135,7 @@
         "element_type": "minecraft:single_pool_element",
         "location": "stellarity:end_village/decorations/planter_box_5",
         "override_liquid_settings": "ignore_waterlogging",
-        "processors": "stellarity:end_village/flowering_azalea_leaves",
+        "processors": "stellarity:end_village_flowering_azalea_leaves",
         "projection": "rigid"
       },
       "weight": 1

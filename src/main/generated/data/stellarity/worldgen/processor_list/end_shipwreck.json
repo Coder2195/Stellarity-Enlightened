@@ -155,6 +155,12 @@
         "min_inclusive": 10
       },
       "processor_type": "minecraft:capped"
+    },
+    {
+      "blocks": [
+        "minecraft:structure_void"
+      ],
+      "processor_type": "minecraft:block_ignore"
     }
   ]
 }

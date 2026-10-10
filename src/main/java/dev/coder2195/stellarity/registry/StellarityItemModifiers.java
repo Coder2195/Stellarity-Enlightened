@@ -36,7 +36,7 @@ public interface StellarityItemModifiers {
 		).value());
 
 		context.register(END_VILLAGE_MAP, sequence(explorationMap(StellarityMapDecorationTypes.END_VILLAGE, structures.getOrThrow(StellarityStructureTags.ON_END_VILLAGE_MAPS), (byte) 3, 96, false),
-			setName(Component.translatable("filled_map.stellarity.end_village"), SetNameFunction.Target.CUSTOM_NAME),
+			setName(Component.translatable("filled_map.stellarity.end_village").setStyle(Style.EMPTY.withItalic(false)), SetNameFunction.Target.CUSTOM_NAME),
 			setComponents(DataComponentPatch.builder().set(StellarityDataComponents.MARKED_ITEM, Unit.INSTANCE).set(DataComponents.RARITY, Rarity.RARE).build())
 		).value());
 
