@@ -67,10 +67,10 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> END_SHIPWRECK_MAPS = id("end_shipwreck/maps");
 	ResourceKey<LootTable> END_SHIPWRECK_SUPPLIES = id("end_shipwreck/supplies");
 	ResourceKey<LootTable> END_SHIPWRECK_TREASURE = id("end_shipwreck/treasure");
-	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_COMMON = id("end_shipwreck/archaeology/dunes/common");
-	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_RARE = id("end_shipwreck/archaeology/dunes/rare");
-	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_NORMAL_COMMON = id("end_shipwreck/archaeology/normal/common");
-	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_NORMAL_RARE = id("end_shipwreck/archaeology/normal/rare");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_COMMON = id("end_shipwreck/archaeology/dunes_common");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_DUNES_RARE = id("end_shipwreck/archaeology/dunes_rare");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_COMMON = id("end_shipwreck/archaeology/common");
+	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_RARE = id("end_shipwreck/archaeology/rare");
 
 
 	static ResourceKey<LootTable> id(String id) {

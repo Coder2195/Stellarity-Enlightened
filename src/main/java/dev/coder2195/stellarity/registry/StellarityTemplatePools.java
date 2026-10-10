@@ -36,6 +36,8 @@ public interface StellarityTemplatePools {
 	ResourceKey<StructureTemplatePool> END_VILLAGE_SMALL_BUILDINGS = id("end_village/small_buildings");
 	ResourceKey<StructureTemplatePool> END_VILLAGE_TOWN_CENTERS = id("end_village/town_centers");
 	ResourceKey<StructureTemplatePool> END_VILLAGE_VILLAGERS_JOBLESS = id("end_village/villagers_jobless");
+	ResourceKey<StructureTemplatePool> END_SHIPWRECK = id("end_shipwreck");
+	ResourceKey<StructureTemplatePool> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
 
 	static void bootstrap(BootstrapContext<StructureTemplatePool> context) {
 		final var templatePools = context.lookup(Registries.TEMPLATE_POOL);
@@ -61,7 +63,7 @@ public interface StellarityTemplatePools {
 		), tuple._2())).toList()));
 
 
-		var villageFloweringAzaleaLeavesProcessor = processorLists.getOrThrow(StellarityProcessorLists.VILLAGE_FLOWERING_AZALEA_LEAVES);
+		var villageFloweringAzaleaLeavesProcessor = processorLists.getOrThrow(StellarityProcessorLists.END_VILLAGE_FLOWERING_AZALEA_LEAVES);
 		context.register(END_VILLAGE_BEES, new StructureTemplatePool(EMPTY, Stream.of(
 			new Tuple2<>("1_bee", 5), new Tuple2<>("2_bees", 3), new Tuple2<>("3_bees", 1)
 		).map(tuple -> new Pair<StructurePoolElement, Integer>(SinglePoolElementAccessor.create(
@@ -139,6 +141,13 @@ public interface StellarityTemplatePools {
 		).map(level -> new Pair<StructurePoolElement, Integer>(
 			SinglePoolElementAccessor.create(Either.left(Stellarity.id("end_village/entities/"+ level._1())), emptyProcessor, StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING)), level._2()
 		)).toList()));
+
+		for (var variant: List.of(
+			new Tuple2<>(END_SHIPWRECK, StellarityProcessorLists.END_SHIPWRECK),
+			new Tuple2<>(END_SHIPWRECK_DUNES, StellarityProcessorLists.END_SHIPWRECK_DUNES)
+		)) context.register(variant._1(), new StructureTemplatePool(EMPTY, Stream.of(1, 2, 3, 4, 5, 6, 7, 8).map(index -> Pair.<StructurePoolElement, Integer>of(SinglePoolElementAccessor.create(
+			Either.left(Stellarity.id("end_shipwreck/" + index)), processorLists.getOrThrow(variant._2()), StructureTemplatePool.Projection.RIGID, Optional.empty()
+		), 1)).toList()));
 		
 		
 	}

@@ -1,0 +1,77 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/1",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/2",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/3",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/4",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/5",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/6",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/7",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:end_shipwreck/8",
+        "processors": "stellarity:end_shipwreck",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

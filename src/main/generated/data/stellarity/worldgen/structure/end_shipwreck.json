@@ -1,6 +1,6 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#stellarity:has_structure/campsite",
+  "biomes": "#stellarity:has_structure/end_shipwreck",
   "dimension_padding": {
     "bottom": 30
   },
@@ -9,10 +9,15 @@
   "size": 1,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": 0
+    "type": "minecraft:uniform",
+    "max_inclusive": {
+      "absolute": -15
+    },
+    "min_inclusive": {
+      "absolute": -20
+    }
   },
-  "start_pool": "stellarity:campsite",
+  "start_pool": "stellarity:end_shipwreck",
   "step": "surface_structures",
-  "terrain_adaptation": "beard_thin",
   "use_expansion_hack": false
 }

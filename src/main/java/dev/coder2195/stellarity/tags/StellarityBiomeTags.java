@@ -22,6 +22,8 @@ public interface StellarityBiomeTags {
 	TagKey<Biome> HAS_STRUCTURE_OBSIDIAN_SPIKE = id("has_structure/obsidian_spike");
 	TagKey<Biome> HAS_STRUCTURE_END_VILLAGE = id("has_structure/end_village");
 	TagKey<Biome> HAS_STRUCTURE_FLOATING_TREASURE = id("has_structure/floating_treasure");
+	TagKey<Biome> HAS_STRUCTURE_END_SHIPWRECK = id("has_structure/end_shipwreck");
+	TagKey<Biome> HAS_STRUCTURE_END_SHIPWRECK_DUNES = id("has_structure/end_shipwreck_dunes");
 
 	TagKey<Biome> NO_VOID_FISHING = id("no_void_fishing");
 	TagKey<Biome> ALLOWS_CONSECRATION = id("allows_consecration");

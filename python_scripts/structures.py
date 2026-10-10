@@ -86,3 +86,23 @@ for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/struct
 
 		if save:
 			tag.save_to(resolved_path)
+
+for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/structure/end_shipwreck"):
+	for file in files:
+		resolved_path = os.path.join(root, file)
+		print("tested: " + str(resolved_path))
+
+		tag = amulet_nbt.load(resolved_path).tag
+
+		save = False
+		for palette_item in typing.cast(CompoundTag, tag).get_list("palette"):
+			block = palette_item["Name"]
+			if not isinstance(block, StringTag): continue
+			block = str(block)
+			if block in ["air", "minecraft:air"]:
+				print("DETECTED AIR IN SHIPWRECK", block, "in", resolved_path)
+				palette_item["Name"] = StringTag("minecraft:structure_void")
+				save = True
+
+		if save:
+			tag.save_to(resolved_path)

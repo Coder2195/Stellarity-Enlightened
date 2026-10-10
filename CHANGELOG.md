@@ -16,4 +16,6 @@ Structure Update
 - Uses item modifier `chapel_of_light_map` available for use in datapacks
 
 ## Structure
-**[+] Shipwreck**
+**[+] End Shipwreck**
+
+**[+] Dune End Shipwreck**

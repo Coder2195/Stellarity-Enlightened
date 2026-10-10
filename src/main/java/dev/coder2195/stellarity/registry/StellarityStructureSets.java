@@ -18,6 +18,7 @@ public interface StellarityStructureSets {
 	ResourceKey<StructureSet> SMALL_STRUCTURES = id("small_structures");
 	ResourceKey<StructureSet> END_VILLAGES = id("end_villages");
 	ResourceKey<StructureSet> FLOATING_TREASURES = id("floating_treasures");
+	ResourceKey<StructureSet> END_SHIPWRECKS = id("end_shipwrecks");
 
 	@SuppressWarnings("deprecation")
 	static void bootstrap(BootstrapContext<StructureSet> context) {
@@ -47,6 +48,14 @@ public interface StellarityStructureSets {
 		), new RandomSpreadStructurePlacement(
 			Vec3i.ZERO, AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT, 1f, 485323964,
 			Optional.of(new AbstractSpreadingStructurePlacement.ExclusionZone(structureSets.getOrThrow(BuiltinStructureSets.END_CITIES), 8)), 23, 12, RandomSpreadType.LINEAR
+		)));
+
+		context.register(END_SHIPWRECKS, new StructureSet(List.of(
+			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.END_SHIPWRECK), 1),
+			new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.END_SHIPWRECK_DUNES), 1)
+		), new RandomSpreadStructurePlacement(
+			Vec3i.ZERO, AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT, 1f, 656346133,
+			Optional.of(new AbstractSpreadingStructurePlacement.ExclusionZone(structureSets.getOrThrow(BuiltinStructureSets.END_CITIES), 8)), 27, 20, RandomSpreadType.LINEAR
 		)));
 
 

@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride.Bound
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.pools.DimensionPadding;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,8 @@ public interface StellarityStructures {
 	ResourceKey<Structure> CAMPSITE = id("campsite");
 	ResourceKey<Structure> END_VILLAGE = id("end_village");
 	ResourceKey<Structure> FLOATING_TREASURE = id("floating_treasure");
+	ResourceKey<Structure> END_SHIPWRECK = id("end_shipwreck");
+	ResourceKey<Structure> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
 
 	static void bootstrap(BootstrapContext<Structure> context) {
 		var templatePools = context.lookup(Registries.TEMPLATE_POOL);
@@ -35,7 +39,7 @@ public interface StellarityStructures {
 		context.register(CAMPSITE, new JigsawStructure(
 			new Structure.StructureSettings(
 				biomes.getOrThrow(HAS_STRUCTURE_CAMPSITE), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN
-			), templatePools.getOrThrow(StellarityTemplatePools.CAMPSITE), 1, height(aboveBottom(10), belowTop(50)), false, Heightmap.Types.WORLD_SURFACE
+			), templatePools.getOrThrow(StellarityTemplatePools.CAMPSITE), Optional.empty(), 1, height(absolute(0)), false, Optional.of(Heightmap.Types.WORLD_SURFACE), new JigsawStructure.MaxDistance(40), List.of(), new DimensionPadding(30, 0), LiquidSettings.APPLY_WATERLOGGING
 		));
 
 		context.register(FLOATING_TREASURE, new JigsawStructure(
@@ -55,6 +59,15 @@ public interface StellarityStructures {
 			false, Optional.of(Heightmap.Types.OCEAN_FLOOR), new JigsawStructure.MaxDistance(116), List.of(),
 			new DimensionPadding(30, 0), JigsawStructure.DEFAULT_LIQUID_SETTINGS
 		));
+
+		for (var endShipwreck: List.of(
+			new Tuple3<>(END_SHIPWRECK, HAS_STRUCTURE_END_SHIPWRECK, StellarityTemplatePools.END_SHIPWRECK),
+			new Tuple3<>(END_SHIPWRECK_DUNES, HAS_STRUCTURE_END_SHIPWRECK_DUNES, StellarityTemplatePools.END_SHIPWRECK_DUNES)
+		)) context.register(endShipwreck._1(), new JigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(endShipwreck._2()), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.NONE
+			), templatePools.getOrThrow(endShipwreck._3()), Optional.empty(), 1, height(absolute(-20), absolute(-15)), false, Optional.of(Heightmap.Types.WORLD_SURFACE), new JigsawStructure.MaxDistance(40), List.of(), new DimensionPadding(30, 0), LiquidSettings.APPLY_WATERLOGGING)
+		);
 	}
 
 	private static ResourceKey<Structure> id(String id) {

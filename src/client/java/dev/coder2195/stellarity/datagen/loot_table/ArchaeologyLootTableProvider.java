@@ -66,7 +66,7 @@ public class ArchaeologyLootTableProvider extends SimpleFabricLootTableSubProvid
 			.add(item(BOOK).apply(enchant(enchantments, StellarityEnchantments.DUNE_SPEED)))
 		));
 		
-		consumer.accept(StellarityLootTables.END_SHIPWRECK_ARCHAEOLOGY_NORMAL_COMMON, lootTable().withPool(pool()
+		consumer.accept(StellarityLootTables.END_SHIPWRECK_ARCHAEOLOGY_COMMON, lootTable().withPool(pool()
 			.add(item(EMERALD).setWeight(2))
 			.add(item(CHORUS_FRUIT).setWeight(2))
 			.add(item(DYE.magenta()).setWeight(2))
@@ -98,7 +98,7 @@ public class ArchaeologyLootTableProvider extends SimpleFabricLootTableSubProvid
 			.add(item(ENDERITE_SHARD).setWeight(4))
 		));
 
-		consumer.accept(StellarityLootTables.END_SHIPWRECK_ARCHAEOLOGY_NORMAL_RARE, lootTable().withPool(pool()
+		consumer.accept(StellarityLootTables.END_SHIPWRECK_ARCHAEOLOGY_RARE, lootTable().withPool(pool()
 			.add(item(SKULL_POTTERY_SHERD).setWeight(2))
 			.add(item(PRIZE_POTTERY_SHERD).setWeight(2))
 			.add(item(EXPLORER_POTTERY_SHERD).setWeight(2))
