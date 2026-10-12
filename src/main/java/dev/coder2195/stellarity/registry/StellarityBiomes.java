@@ -77,7 +77,7 @@ public interface StellarityBiomes {
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, AMETHYST_FOREST_TUFF_ROCKS)
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, AMETHYST_FOREST_OBSIDIAN)
 				.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, AMETHYST_FOREST_DIRT)
-					.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ENDERITE_ORE)
+				.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ENDERITE_ORE)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, OBSIDIAN_TOWERS)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_TREES)
 				.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AMETHYST_FOREST_CRYSTAL_GRASS)
