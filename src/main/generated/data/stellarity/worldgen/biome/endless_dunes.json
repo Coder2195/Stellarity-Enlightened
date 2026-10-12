@@ -92,10 +92,10 @@
     [],
     [],
     [
+      "stellarity:obsidian_towers",
       "stellarity:endless_dunes/vegetation",
       "minecraft:patch_dry_grass_desert",
-      "stellarity:endless_dunes/grass",
-      "stellarity:obsidian_towers"
+      "stellarity:endless_dunes/grass"
     ],
     [
       "stellarity:dungeons",

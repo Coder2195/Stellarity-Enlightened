@@ -90,10 +90,10 @@
     ],
     [],
     [
+      "stellarity:obsidian_towers",
       "stellarity:flesh_tundra/vegetation",
       "stellarity:flesh_tundra/vines",
-      "stellarity:flesh_tundra/roots",
-      "stellarity:obsidian_towers"
+      "stellarity:flesh_tundra/roots"
     ]
   ],
   "has_precipitation": false,

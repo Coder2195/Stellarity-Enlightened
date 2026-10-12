@@ -136,12 +136,12 @@
     [],
     [],
     [
+      "stellarity:obsidian_towers",
       "stellarity:end_wilds/trees",
       "stellarity:end_wilds/forest",
       "stellarity:end_wilds/chorus_plants",
       "stellarity:end_wilds/grass",
-      "stellarity:end_wilds/bushes",
-      "stellarity:obsidian_towers"
+      "stellarity:end_wilds/bushes"
     ],
     [
       "stellarity:dungeons",

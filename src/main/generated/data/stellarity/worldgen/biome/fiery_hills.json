@@ -83,11 +83,11 @@
       "stellarity:fiery_hills/sand"
     ],
     [
+      "stellarity:obsidian_towers",
       "stellarity:fiery_hills/vents",
       "stellarity:fiery_hills/fire",
       "stellarity:fiery_hills/trees",
-      "stellarity:fiery_hills/vegetation",
-      "stellarity:obsidian_towers"
+      "stellarity:fiery_hills/vegetation"
     ],
     [
       "stellarity:dungeons",

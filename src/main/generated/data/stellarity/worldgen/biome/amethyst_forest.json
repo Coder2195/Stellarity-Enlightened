@@ -112,12 +112,12 @@
     [],
     [],
     [
+      "stellarity:obsidian_towers",
       "stellarity:amethyst_forest/trees",
       "stellarity:amethyst_forest/crystal_grass",
       "stellarity:amethyst_forest/flowers",
       "minecraft:patch_bush",
-      "stellarity:amethyst_forest/roots",
-      "stellarity:obsidian_towers"
+      "stellarity:amethyst_forest/roots"
     ]
   ],
   "has_precipitation": false,
