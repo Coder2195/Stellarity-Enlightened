@@ -19,6 +19,12 @@ Structure Update
 **[*] Pig**
 - Fixes Ender variant baby pig's texture
 
+## Mechanics
+**[*] Worldgen**
+- Synchronized with Stellarity worldgen, hopefully removing the end walls bug.
+- Fixes [#5](https://github.com/Coder2195/Stellarity-Enlightened/issues/5) by adding biome tags and seperate deferred features in order to mitigate these issues.
+
+
 ## Structure
 **[+] End Shipwreck**
 

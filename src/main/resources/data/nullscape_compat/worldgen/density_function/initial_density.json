@@ -12,12 +12,13 @@
 		"type": "minecraft:quarter_negative"
 	},
 	"type": "minecraft:mul",
-
 	"fabric:load_conditions": [
 		{
 			"condition": "fabric:tags_populated",
 			"registry": "minecraft:block",
-			"values": ["nullscape:amethyst_cut"]
+			"values": [
+				"nullscape:amethyst_cut"
+			]
 		}
 	]
 }

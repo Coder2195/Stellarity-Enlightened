@@ -35,14 +35,20 @@ import static net.minecraft.core.Holder.direct;
 import static net.minecraft.world.level.block.Blocks.*;
 import static net.minecraft.world.level.block.Blocks.AIR;
 
+@SuppressWarnings("deprecation")
 public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> NOTHING = id("nothing");
 	ResourceKey<PlacedFeature> STALACTITES = id("stalactites");
+	ResourceKey<PlacedFeature> STALACTITES_DEFERRED = id("stalactites_deferred");
 	ResourceKey<PlacedFeature> FOSSILS = id("fossils");
+	ResourceKey<PlacedFeature> FOSSILS_DEFERRED = id("fossils_deferred");
 	ResourceKey<PlacedFeature> DUNGEONS = id("dungeons");
+	ResourceKey<PlacedFeature> DUNGEONS_DEFERRED = id("dungeons_deferred");
 	ResourceKey<PlacedFeature> FREEZE_WATER = id("freeze_water");
 	ResourceKey<PlacedFeature> OBSIDIAN_TOWERS = id("obsidian_towers");
+	ResourceKey<PlacedFeature> OBSIDIAN_TOWERS_DEFERRED = id("obsidian_towers_deferred");
 	ResourceKey<PlacedFeature> ENDERITE_ORE = id("enderite_ore");
+	ResourceKey<PlacedFeature> ENDERITE_ORE_DEFERRED = id("enderite_ore_deferred");
 
 	ResourceKey<PlacedFeature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<PlacedFeature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -214,19 +220,19 @@ public interface StellarityPlacedFeatures {
 		final var crystalCragsAmethystCrystal = configured.getOrThrow(StellarityFeatures.CRYSTAL_CRAGS_AMETHYST_CRYSTAL);
 		final var hangingRoots = configured.getOrThrow(StellarityFeatures.HANGING_ROOTS);
 
-		context.register(STALACTITES, new PlacedFeature(stalactites, List.of(
+		for (var feature: List.of(STALACTITES, STALACTITES_DEFERRED)) context.register(feature, new PlacedFeature(stalactites, List.of(
 			countPlace(ValueUtil.weightedInts(14, 100, 28, 50, 56, 25, 80, 1)), inSquare(), noiseCount(10, 55, 0),
 			aboveBelow0, scanUpSolidAir32, biome()
 		)));
-		context.register(FOSSILS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FOSSIL), List.of(
+		for (var feature: List.of(FOSSILS, FOSSILS_DEFERRED)) context.register(feature, new PlacedFeature(configured.getOrThrow(StellarityFeatures.FOSSIL), List.of(
 			rarity(40), inSquare(), heightRange(height(aboveBottom(8), absolute(140))), biome()
 		)));
-		context.register(DUNGEONS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.DUNGEON), List.of(
+		for (var feature: List.of(DUNGEONS, DUNGEONS_DEFERRED)) context.register(feature, new PlacedFeature(configured.getOrThrow(StellarityFeatures.DUNGEON), List.of(
 			rarity(10), heightRange(height(aboveBottom(8), absolute(140))), inSquare(), biome()
 		)));
 		context.register(FREEZE_WATER, new PlacedFeature(direct(new FreezeWaterFeature()), List.of(biome())));
-		context.register(ENDERITE_ORE, new PlacedFeature(configured.getOrThrow(StellarityFeatures.ENDERITE_ORE), List.of(countPlace(60), inSquare(), aboveBelow0, biome())));
-		context.register(OBSIDIAN_TOWERS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.OBSIDIAN_TOWER), List.of(
+		for (var feature: List.of(ENDERITE_ORE, ENDERITE_ORE_DEFERRED)) context.register(feature, new PlacedFeature(configured.getOrThrow(StellarityFeatures.ENDERITE_ORE), List.of(countPlace(60), inSquare(), aboveBelow0, biome())));
+		for (var feature: List.of(OBSIDIAN_TOWERS, OBSIDIAN_TOWERS_DEFERRED)) context.register(feature, new PlacedFeature(configured.getOrThrow(StellarityFeatures.OBSIDIAN_TOWER), List.of(
 			rarity(40), inSquare(), heightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), biome()
 		)));
 

@@ -3,6 +3,7 @@ package dev.coder2195.stellarity.registry;
 import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin.accessor.DimensionTypeAccessor;
 import dev.coder2195.stellarity.mixin.accessor.DimensionTypeMonsterSettingsAccessor;
+import dev.coder2195.stellarity.tags.StellarityBiomeTags;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.ModificationPhase;
@@ -12,9 +13,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.attribute.*;
 import net.minecraft.world.entity.EntityTypes;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 
@@ -49,13 +48,11 @@ public interface StellarityVanillaWorldgenModifications {
 			((DimensionTypeMonsterSettingsAccessor) (Object) dimensionType.monsterSettings()).stellarity$setMonsterSpawnBlockLightLimit(15);
 		});
 
-
-		Predicate<BiomeSelectionContext> outerVanilla = context -> context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS);
-		BiomeModifications.addFeature(context -> context.getBiomeHolder().is(Biomes.THE_END) || context.getBiomeHolder().is(END_BARRENS) || context.getBiomeHolder().is(Biomes.END_HIGHLANDS) || context.getBiomeHolder().is(Biomes.END_MIDLANDS), RAW_GENERATION, STALACTITES);
-		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, FOSSILS);
-		BiomeModifications.addFeature(outerVanilla, TOP_LAYER_MODIFICATION, DUNGEONS);
-		BiomeModifications.addFeature(outerVanilla, UNDERGROUND_ORES, ENDERITE_ORE);
-		BiomeModifications.addFeature(outerVanilla, VEGETAL_DECORATION, OBSIDIAN_TOWERS);
+		BiomeModifications.addFeature(biome -> biome.hasTag(StellarityBiomeTags.GENERATES_STALACTITES), RAW_GENERATION, STALACTITES_DEFERRED);
+		BiomeModifications.addFeature(biome -> biome.hasTag(StellarityBiomeTags.GENERATES_FOSSILS), TOP_LAYER_MODIFICATION, FOSSILS_DEFERRED);
+		BiomeModifications.addFeature(biome -> biome.hasTag(StellarityBiomeTags.GENERATES_DUNGEONS), TOP_LAYER_MODIFICATION, DUNGEONS_DEFERRED);
+		BiomeModifications.addFeature(biome -> biome.hasTag(StellarityBiomeTags.GENERATES_ENDERITE_ORE), UNDERGROUND_ORES, ENDERITE_ORE_DEFERRED);
+		BiomeModifications.addFeature(biome -> biome.hasTag(StellarityBiomeTags.GENERATES_OBSIDIAN_TOWERS), VEGETAL_DECORATION, OBSIDIAN_TOWERS_DEFERRED);
 
 
 		Predicate<BiomeSelectionContext> mainIsland = context -> context.getBiomeHolder().is(Biomes.THE_END);
@@ -78,7 +75,7 @@ public interface StellarityVanillaWorldgenModifications {
 
 				var mobSpawns = modification.getMobSpawnSettings();
 				mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, numRaw(4)),10);
+				mobSpawns.addSpawn(EntityTypes.ENDERMAN, 10, numRaw(4));
 				mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
 				mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.75, 1);
 			}
@@ -105,8 +102,8 @@ public interface StellarityVanillaWorldgenModifications {
 
 				var mobSpawns = modification.getMobSpawnSettings();
 				mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, numRaw(4)), 30);
-				mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(StellarityEntityTypes.VOIDED_ZOMBIE, numRaw(4)), 30);
+				mobSpawns.addSpawn(EntityTypes.ENDERMAN, 30, numRaw(4));
+				mobSpawns.addSpawn(StellarityEntityTypes.VOIDED_ZOMBIE, 30, numRaw(4));
 				mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
 				mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.8, 1);
 				mobSpawns.addMobCharge(StellarityEntityTypes.VOIDED_ZOMBIE, 0.68, 1);
@@ -137,7 +134,7 @@ public interface StellarityVanillaWorldgenModifications {
 
 			var mobSpawns = modification.getMobSpawnSettings();
 			mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
-			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, numRaw(4)), 10);
+			mobSpawns.addSpawn(EntityTypes.ENDERMAN, 10, numRaw(4));
 			mobSpawns.clearMobCharge(EntityTypes.ENDERMAN);
 			mobSpawns.addMobCharge(EntityTypes.ENDERMAN, 0.7, 1);
 		});
@@ -173,7 +170,7 @@ public interface StellarityVanillaWorldgenModifications {
 
 			var mobSpawns = modification.getMobSpawnSettings();
 			mobSpawns.removeSpawnsOfEntityType(EntityTypes.ENDERMAN);
-			mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, numRaw(4)), 20);
+			mobSpawns.addSpawn(EntityTypes.ENDERMAN, 20, numRaw(4));
 		});
 	}
 }

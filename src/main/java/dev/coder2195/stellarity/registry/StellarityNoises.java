@@ -6,6 +6,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import dev.coder2195.stellarity.Stellarity;
 
+import java.util.List;
+
 import static dev.coder2195.stellarity.util.WorldgenUtil.oldNoise;
 
 public interface StellarityNoises {
@@ -22,6 +24,18 @@ public interface StellarityNoises {
 	ResourceKey<NormalNoise> MAIN_ISLAND_N2 = id("main_island/n2");
 	ResourceKey<NormalNoise> MAIN_ISLAND_N3 = id("main_island/n3");
 	ResourceKey<NormalNoise> MAIN_ISLAND_N4 = id("main_island/n4");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N5 = id("main_island/n5");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N6 = id("main_island/n6");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N7 = id("main_island/n7");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N8 = id("main_island/n8");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N9 = id("main_island/n9");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N10 = id("main_island/n10");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N11 = id("main_island/n11");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N12 = id("main_island/n12");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N13 = id("main_island/n13");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N14 = id("main_island/n14");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N15 = id("main_island/n15");
+	ResourceKey<NormalNoise> MAIN_ISLAND_N16 = id("main_island/n16");
 	ResourceKey<NormalNoise> MAIN_ISLAND_SHAPER_1 = id("main_island/shaper_1");
 	ResourceKey<NormalNoise> MAIN_ISLAND_SHAPER_2 = id("main_island/shaper_2");
 	ResourceKey<NormalNoise> MAIN_ISLAND_SHIFT_X = id("main_island/shift_x");
@@ -44,11 +58,17 @@ public interface StellarityNoises {
 		context.register(CLIMATE_HUMIDITY, oldNoise(-8, 1, 1, 0, 0, 0, 0));
 		context.register(CLIMATE_CONTINENTALNESS, oldNoise(-9, 1, 1, 2, 2, 2, 1, 1, 1, 1));
 		context.register(CLIMATE_WEIRDNESS, oldNoise(-7, 1, 2, 1, 0, 0, 0));
-		context.register(MAIN_ISLAND_N1, oldNoise(-14, 1.0));
+
+		// ask void on what this fucking is for cuz i don't fucking know why he made 16 fucking noises but I trust that guy so forgive me God
+		for (var nNoise: List.of(
+			MAIN_ISLAND_N1, MAIN_ISLAND_N2, MAIN_ISLAND_N3, MAIN_ISLAND_N4,
+			MAIN_ISLAND_N5, MAIN_ISLAND_N6, MAIN_ISLAND_N7, MAIN_ISLAND_N8,
+			MAIN_ISLAND_N9, MAIN_ISLAND_N10, MAIN_ISLAND_N11, MAIN_ISLAND_N12,
+			MAIN_ISLAND_N13, MAIN_ISLAND_N14, MAIN_ISLAND_N15, MAIN_ISLAND_N16
+		)) context.register(nNoise, oldNoise(-14, 1.0));
+
+
 		context.register(MAIN_ISLAND_SHIFT_X, oldNoise(-6, 1));
-		context.register(MAIN_ISLAND_N3, oldNoise(-14, 1.0));
-		context.register(MAIN_ISLAND_N2, oldNoise(-14, 1.0));
-		context.register(MAIN_ISLAND_N4, oldNoise(-14, 1.0));
 		context.register(MAIN_ISLAND_SURFACE, oldNoise(-3, 1, 1, 1, 1, 1));
 		context.register(MAIN_ISLAND_EDGES_3, oldNoise(-5, 0, 0.5, 1.5, 0));
 		context.register(MAIN_ISLAND_EDGES_1, oldNoise(-7, 1.5, 0, 1, 0, 0));

@@ -27,6 +27,12 @@ public interface StellarityBiomeTags {
 
 	TagKey<Biome> NO_VOID_FISHING = id("no_void_fishing");
 	TagKey<Biome> ALLOWS_CONSECRATION = id("allows_consecration");
+	// these are compat tags should a mod consent to let stellarity generate global features in their biomes
+	TagKey<Biome> GENERATES_STALACTITES = id("generates_stalactites");
+	TagKey<Biome> GENERATES_FOSSILS = id("generates_fossils");
+	TagKey<Biome> GENERATES_DUNGEONS = id("generates_dungeons");
+	TagKey<Biome> GENERATES_OBSIDIAN_TOWERS = id("generates_obsidian_towers");
+	TagKey<Biome> GENERATES_ENDERITE_ORE = id("generates_enderite_ore");
 
 	private static TagKey<Biome> id(String id) {
 		return TagKey.create(Registries.BIOME, Stellarity.id(id));
