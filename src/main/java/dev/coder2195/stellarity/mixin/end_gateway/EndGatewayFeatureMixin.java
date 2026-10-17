@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.Mixin;
 public abstract class EndGatewayFeatureMixin implements Feature {
 	@WrapMethod(method = "place")
 	public boolean stellarityGateway(WorldGenLevel level, ChunkGenerator chunkGenerator, RandomSource random, BlockPos origin, Operation<Boolean> original) {
+		// todo: replace with nbt
 		if (!original.call(level, chunkGenerator, random, origin)) return false;
 
 		var wall = Blocks.END_STONE_BRICK_WALL.defaultBlockState();

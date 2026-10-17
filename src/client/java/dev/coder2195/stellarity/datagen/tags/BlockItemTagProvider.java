@@ -35,6 +35,9 @@ public class BlockItemTagProvider<T> {
 
 	@SuppressWarnings("DuplicatedCode")
 	protected void run() {
+
+		addTags(EMPTY);
+
 		addTags(STRIPPED_LOGS_EXCEPT_CHERRY, ConventionalBlockItemTags.STRIPPED_LOGS).remove(key(STRIPPED_CHERRY_LOG));
 		addTags(LOGS_EXCEPT_CHERRY, ConventionalBlockItemTags.NATURAL_LOGS).remove(key(CHERRY_LOG));
 		addTags(WOOD_EXCEPT_CHERRY, ConventionalBlockItemTags.NATURAL_WOODS).remove(key(CHERRY_WOOD));

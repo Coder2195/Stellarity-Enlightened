@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StairBlock;
@@ -13,8 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -45,9 +42,6 @@ public abstract class EndPodiumFeatureMixin implements Feature {
 			}
 		}
 
-		for (EndCrystal crystal : level.getEntitiesOfClass(EndCrystal.class, new AABB(Vec3.atCenterOf(origin).add(-2, 1, -2), Vec3.atCenterOf(origin).add(2, 5, 2)))) {
-			crystal.discard();
-		}
 
 		int p = active ? 4 : 0;
 		printRow(level, new BlockState[]{

@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.feature.FreezeWaterFeature;
 import dev.coder2195.stellarity.util.ValueUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
@@ -17,23 +18,16 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import dev.coder2195.stellarity.Stellarity;
 
 import java.util.List;
 
-import static dev.coder2195.stellarity.registry.StellarityBlocks.COARSE_ENDER_DIRT;
-import static dev.coder2195.stellarity.registry.StellarityBlocks.ENDER_DIRT;
-import static dev.coder2195.stellarity.registry.StellarityBlocks.ENDER_GRASS_BLOCK;
-import static dev.coder2195.stellarity.registry.StellarityBlocks.ROOTED_ENDER_DIRT;
+import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
 import static dev.coder2195.stellarity.tags.StellarityBlockTags.WORLDGEN_PRISMATIC_DUNES_SURFACE;
 import static dev.coder2195.stellarity.tags.StellarityBlockTags.WORLDGEN_THE_NEST_SURFACE;
 import static dev.coder2195.stellarity.util.ValueUtil.*;
-import static dev.coder2195.stellarity.util.ValueUtil.numRaw;
 import static dev.coder2195.stellarity.util.WorldgenUtil.*;
-import static dev.coder2195.stellarity.util.WorldgenUtil.biome;
 import static net.minecraft.core.Holder.direct;
 import static net.minecraft.world.level.block.Blocks.*;
-import static net.minecraft.world.level.block.Blocks.AIR;
 
 @SuppressWarnings("deprecation")
 public interface StellarityPlacedFeatures {

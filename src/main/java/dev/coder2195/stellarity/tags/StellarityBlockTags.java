@@ -6,6 +6,8 @@ import net.minecraft.world.level.block.Block;
 import dev.coder2195.stellarity.Stellarity;
 
 public interface StellarityBlockTags {
+	TagKey<Block> EMPTY = StellarityBlockItemTags.EMPTY.block();
+
 	TagKey<Block> DUNE_SPEED_BLOCKS = id("dune_speed_blocks");
 	TagKey<Block> DIRT = id("dirt");
 	TagKey<Block> WORLDGEN_STALACTITE_REPLACEABLE = id("worldgen/stalactite_replaceable");

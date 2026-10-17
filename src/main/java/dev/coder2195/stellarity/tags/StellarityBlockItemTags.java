@@ -17,6 +17,8 @@ public interface StellarityBlockItemTags {
 	BlockItemTagId PRISMATIC_LOGS = id("prismatic_logs");
 	BlockItemTagId INFERNO_LOGS = id("inferno_logs");
 
+	BlockItemTagId EMPTY = id("empty");
+
 	static BlockItemTagId id(String id) {
 		return BlockItemTagId.create(Stellarity.id(id), Stellarity.id(id));
 	}

@@ -6,6 +6,13 @@ import net.minecraft.world.item.Item;
 import dev.coder2195.stellarity.Stellarity;
 
 public interface StellarityItemTags {
+	TagKey<Item> EMPTY = StellarityBlockItemTags.EMPTY.item();
+	TagKey<Item> WOOD_EXCEPT_CHERRY = StellarityBlockItemTags.WOOD_EXCEPT_CHERRY.item();
+	TagKey<Item> LOGS_EXCEPT_CHERRY = StellarityBlockItemTags.LOGS_EXCEPT_CHERRY.item();
+	TagKey<Item> STRIPPED_WOOD_EXCEPT_CHERRY = StellarityBlockItemTags.STRIPPED_WOOD_EXCEPT_CHERRY.item();
+	TagKey<Item> STRIPPED_LOGS_EXCEPT_CHERRY = StellarityBlockItemTags.STRIPPED_LOGS_EXCEPT_CHERRY.item();
+	TagKey<Item> LEAVES_EXCEPT_CHERRY = StellarityBlockItemTags.LEAVES_EXCEPT_CHERRY.item();
+
 	TagKey<Item> FISHES = id("fishes");
 	TagKey<Item> BOWS = id("bows");
 	TagKey<Item> ELYTRA_ENCHANTABLE = id("enchantable.elytra");
