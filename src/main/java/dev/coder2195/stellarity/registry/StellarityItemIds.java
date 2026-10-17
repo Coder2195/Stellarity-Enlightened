@@ -122,6 +122,8 @@ public interface StellarityItemIds {
 	ResourceKey<Item> END_CITY_MAP = id("end_city_map");
 	ResourceKey<Item> FLOATING_TREASURE_MAP = id("floating_treasure_map");
 	ResourceKey<Item> CHAPEL_OF_LIGHT_MAP = id("chapel_of_light_map");
+	ResourceKey<Item> THE_BEGINNING = id("the_beginning");
+	ResourceKey<Item> THE_END = id("the_end");
 
 	ResourceKey<Item> AMETHYII_BOAT = id("amethyii_boat");
 	ResourceKey<Item> AMETHYII_CHEST_BOAT = id("amethyii_chest_boat");

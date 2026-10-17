@@ -37,7 +37,7 @@ public record ConsecrationRecipe(Ingredient item, ItemStackTemplate result) impl
 
 		public static final StreamCodec<RegistryFriendlyByteBuf, ConsecrationData> STREAM_CODEC = StreamCodec.composite(
 			ItemStackTemplate.STREAM_CODEC, ConsecrationData::convertsInto,
-			ByteBufCodecs.LONG, ConsecrationData::consecratesAt,
+			ByteBufCodecs.VAR_LONG, ConsecrationData::consecratesAt,
 			ConsecrationData::new
 		);
 	}

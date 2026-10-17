@@ -145,6 +145,8 @@ public interface StellarityCreativeModeTabs {
 		SHULKER_SWORD,
 		SHULKER_SHOVEL,
 		SHULKER_HOE,
+		THE_BEGINNING,
+		THE_END
 	};
 
 	ItemLike[] INGREDIENT_ITEMS = new ItemLike[]{

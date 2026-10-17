@@ -25,6 +25,7 @@ while not done:
 	print("2. Remove key")
 	print("3. Rename key")
 	print("4. Copy key from stellarity")
+	print("5. Custom coded action")
 	print("x. Exit (or just syncing from weblate)")
 	action = input("Input action (1/2/3/4/5): ")
 
@@ -43,11 +44,23 @@ while not done:
 		new_key = input("Enter new key name: ")
 
 		translations["en_us.json"][new_key] = translations["en_us.json"].pop(old_key)
+
 	elif action == "4":
-		key = input("Enter key to copy: ")
+		key = input("Enter key to duplicate: ")
+		new_key = input("Enter new key name: ")
+
 		for stellarity_translation in stellarity_translations:
-			if key in stellarity_translations[stellarity_translation] and stellarity_translation in translations:
-				translations[stellarity_translation][key] = stellarity_translations[stellarity_translation][key]
+			if key in stellarity_translations[stellarity_translation]:
+				translations[stellarity_translation][new_key] = stellarity_translations[stellarity_translation][key]
+	elif action == "5":
+		for translation in translations:
+			translate_obj = translations[translation]
+			for key in list(translate_obj.keys()):
+				if "item.stellarity.spirit_dagger" in key:
+					value = translate_obj[key]
+					translate_obj[key.replace("item.stellarity.spirit_dagger", "item.stellarity.the_beginning")] = value
+					translate_obj[key.replace("item.stellarity.spirit_dagger", "item.stellarity.the_end")] = value
+					del translate_obj[key]
 
 	elif action == "x":
 		done = True

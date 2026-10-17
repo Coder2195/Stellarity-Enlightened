@@ -14,10 +14,10 @@ import net.minecraft.util.Unit;
 
 public interface StellarityDataComponents {
 	DataComponentType<Color> COLOR = register("color", DataComponentType.<Color>builder().persistent(Color.CODEC).networkSynchronized(Color.STREAM_CODEC));
-	DataComponentType<Long> RECHARGES_AT = register("recharges_at", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.LONG));
+	DataComponentType<Long> RECHARGES_AT = register("recharges_at", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.VAR_LONG));
 	DataComponentType<LoafOfPlentyEats> LOAF_OF_PLENTY_EATS = register("loaf_of_plenty_eats", DataComponentType.<LoafOfPlentyEats>builder().persistent(LoafOfPlentyEats.CODEC).networkSynchronized(LoafOfPlentyEats.STREAM_CODEC));
 	DataComponentType<Unit> MARKED_ITEM = register("marked_item", DataComponentType.<Unit>builder().persistent(Unit.CODEC).networkSynchronized(Unit.STREAM_CODEC));
-	DataComponentType<Long> ABILITY_DISABLED_UNTIL = register("ability_disabled_until", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.LONG));
+	DataComponentType<Long> ABILITY_DISABLED_UNTIL = register("ability_disabled_until", DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.VAR_LONG));
 
 
 	static <T> DataComponentType<T> register(String id, DataComponentType.Builder<T> component) {

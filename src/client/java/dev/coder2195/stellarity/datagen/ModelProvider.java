@@ -127,7 +127,8 @@ public class ModelProvider extends FabricModelProvider {
 
 	public final static Item[] HANDHELD_ITEMS = new Item[]{
 		TAMARIS, STELLAR_STRIKER,
-		SHULKER_SWORD, SHULKER_PICKAXE, SHULKER_HOE, SHULKER_AXE, SHULKER_SHOVEL
+		SHULKER_SWORD, SHULKER_PICKAXE, SHULKER_HOE, SHULKER_AXE, SHULKER_SHOVEL,
+		THE_BEGINNING, THE_END
 	};
 
 	public final static Block[] SIMPLE_BLOCKS = new Block[]{

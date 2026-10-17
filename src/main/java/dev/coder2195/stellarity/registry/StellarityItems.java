@@ -503,6 +503,9 @@ public interface StellarityItems {
 	Item PRISMATIC_CHEST_BOAT = registerBoat(StellarityItemIds.PRISMATIC_CHEST_BOAT, StellarityEntityTypes.PRISMATIC_CHEST_BOAT, new Item.Properties());
 	Item INFERNO_CHEST_BOAT = registerBoat(StellarityItemIds.INFERNO_CHEST_BOAT, StellarityEntityTypes.INFERNO_CHEST_BOAT, new Item.Properties());
 
+	Item THE_BEGINNING = register(StellarityItemIds.THE_BEGINNING, SpiritDagger::new, SpiritDagger.PROPERTIES);
+	Item THE_END = register(StellarityItemIds.THE_END, SpiritDagger::new, SpiritDagger.PROPERTIES);
+
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
 		return register(key, (props) -> new BoatItem(type, properties), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
@@ -735,8 +738,8 @@ public interface StellarityItems {
 //		put(DRAGONBLADE, 0xCD6AFF);
 		put(SPECTRAL_FURY, 0xBDF1FF);
 //		put(KALEIDOSCOPE, 0xFFCF37);
-//		put(THE_BEGINNING, 0xF5DC68);
-//		put(THE_END, 0xF5DC68);
+		put(THE_BEGINNING, 0xF5DC68);
+		put(THE_END, 0xF5DC68);
 		put(CALL_OF_THE_VOID, TextColor.DARK_PURPLE.getValue());
 		put(SHARANGA, 0xFF6B6B);
 		put(TAMARIS, 0x9936D6);

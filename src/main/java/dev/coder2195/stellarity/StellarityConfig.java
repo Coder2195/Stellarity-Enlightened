@@ -63,9 +63,9 @@ public record StellarityConfig(
 		ByteBufCodecs.BOOL, StellarityConfig::enableCreativeShock,
 		ByteBufCodecs.BOOL, StellarityConfig::nerfElytra,
 		ByteBufCodecs.BOOL, StellarityConfig::bossStatusMessages,
-		ByteBufCodecs.INT, StellarityConfig::dragonHealth,
-		ByteBufCodecs.INT, StellarityConfig::empressOfLightHealth,
-		ByteBufCodecs.INT, StellarityConfig::shulkingHealth,
+		ByteBufCodecs.VAR_INT, StellarityConfig::dragonHealth,
+		ByteBufCodecs.VAR_INT, StellarityConfig::empressOfLightHealth,
+		ByteBufCodecs.VAR_INT, StellarityConfig::shulkingHealth,
 		StellarityConfig::new
 	);
 
