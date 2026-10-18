@@ -181,7 +181,8 @@ public interface StellarityTooltips {
 				desc(SLAYER_CROSSBOW, 2),
 				desc(SOARING_INSIGNIA, 4),
 				desc(SPECTRAL_FURY, 3),
-				// the beginning and the end missing (spirit dagger)
+				desc(THE_BEGINNING, 4).flavorText(),
+				desc(THE_END, 4).flavorText(),
 				desc(STARLESS_SCYTHE, 2),
 				desc(STARLIGHT_SOOT, 2),
 				desc(STARSTRUCK_SHIELD, 1),

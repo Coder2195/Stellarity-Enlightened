@@ -38,12 +38,15 @@ while not done:
 	elif action == "2":
 		key = input("Enter key to remove: ")
 
-		del translations["en_us.json"][key]
+		for translation in translations:
+			if key in translations[translation]:
+				del translations[translation][key]
 	elif action == "3":
 		old_key = input("Enter key to rename: ")
 		new_key = input("Enter new key name: ")
 
-		translations["en_us.json"][new_key] = translations["en_us.json"].pop(old_key)
+		for translation in translations:
+			translations[translation][new_key] = translations[translation].pop(old_key)
 
 	elif action == "4":
 		key = input("Enter key to duplicate: ")
@@ -57,10 +60,18 @@ while not done:
 			translate_obj = translations[translation]
 			for key in list(translate_obj.keys()):
 				if "item.stellarity.spirit_dagger" in key:
+					print("Found key: " + key + " in translation: " + translation)
 					value = translate_obj[key]
 					translate_obj[key.replace("item.stellarity.spirit_dagger", "item.stellarity.the_beginning")] = value
 					translate_obj[key.replace("item.stellarity.spirit_dagger", "item.stellarity.the_end")] = value
 					del translate_obj[key]
+		for translation in translations:
+			translate_obj = translations[translation]
+			if "item.stellarity.the_beginning" in translate_obj and "item.stellarity.the_end.description.2" in translate_obj:
+				translate_obj["item.stellarity.the_end.description.2"] = translate_obj["item.stellarity.the_end.description.2"].replace("%s", translate_obj["item.stellarity.the_beginning"])
+			if "item.stellarity.the_end" in translate_obj and "item.stellarity.the_beginning.description.2" in translate_obj:
+				translate_obj["item.stellarity.the_beginning.description.2"] = translate_obj["item.stellarity.the_beginning.description.2"].replace("%s", translate_obj["item.stellarity.the_end"])
+
 
 	elif action == "x":
 		done = True
@@ -75,8 +86,8 @@ for lang in translations:
 
 	final = dict(natsorted(translations[lang].items()))
 
-	with open("../translations/enlightened/en_us.json", "w", encoding="utf-8") as f:
-		json.dump(dict(natsorted(translations["en_us.json"].items())), f, ensure_ascii=False, indent="\t")
+	with open(f"../translations/enlightened/{lang}", "w", encoding="utf-8") as f:
+		json.dump(dict(natsorted(translations[lang].items())), f, ensure_ascii=False, indent="\t")
 
 	# final["LEGACY_TRANSLATIONS_THIS_IS_NOT_A_KEY"] = "ALL LEGACY TRANSLATIONS BELOW, TRY NOT TO EDIT."
 
