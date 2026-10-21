@@ -56,7 +56,11 @@ public abstract class LivingEntityMixin extends Entity {
 
 	@WrapMethod(method = "hurtServer")
 	private boolean abortWhenHurt(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
-		if (original.call(level, source, damage)) removeLifeCrystalEffects();
+		if (original.call(level, source, damage)) {
+			removeLifeCrystalEffects();
+			return true;
+		}
+
 		return false;
 	}
 

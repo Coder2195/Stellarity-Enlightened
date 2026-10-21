@@ -15,6 +15,9 @@ Structure Update
 - Has its own decoration now
 - Uses item modifier `chapel_of_light_map` available for use in datapacks
 
+**[+] Life Crystal**
+- Patches a bug preventing sweeping damage
+
 ## Entities
 **[*] Pig**
 - Fixes Ender variant baby pig's texture

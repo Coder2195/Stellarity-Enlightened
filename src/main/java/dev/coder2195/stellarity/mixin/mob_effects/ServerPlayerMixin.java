@@ -3,7 +3,6 @@ package dev.coder2195.stellarity.mixin.mob_effects;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.authlib.GameProfile;
-import dev.coder2195.stellarity.effect.CreativeShockEffect;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import net.minecraft.server.level.ServerPlayer;
@@ -57,7 +56,7 @@ public abstract class ServerPlayerMixin extends Player {
 
 		if (!effect.is(StellarityMobEffects.CREATIVE_SHOCK)) return;
 
-		if (!CreativeShockEffect.extremeCreativeShock() && type == GameType.CREATIVE) return;
+//		if (!CreativeShockEffect.extremeCreativeShock() && type == GameType.CREATIVE) return;
 
 		if (getLastGamemode() == null) setLastGamemode(type);
 		setGameMode(GameType.ADVENTURE);
