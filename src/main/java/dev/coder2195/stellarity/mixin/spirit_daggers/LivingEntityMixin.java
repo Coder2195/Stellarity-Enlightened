@@ -12,7 +12,6 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySpawnReason;
@@ -20,13 +19,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 
 @SuppressWarnings("NonExtendableApiUsage")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements AttachmentTarget {
-	@Unique
-	private final RandomSource random = RandomSource.create();
 
 	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
@@ -38,7 +34,7 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 
 		if (random.nextBoolean()) return true;
 
-		if (!(source.getEntity() instanceof LivingEntity livingEntity) || livingEntity.isHolding(item -> item.is(StellarityItemTags.SPIRIT_DAGGERS))) return true;
+		if (!(source.getEntity() instanceof LivingEntity livingEntity && livingEntity.isHolding(item -> item.is(StellarityItemTags.SPIRIT_DAGGERS)))) return true;
 
 		long time = level.getGameTime();
 		if (getAttachedOrElse(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, 0L) > time) return true;
@@ -48,7 +44,7 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 			Stellarity.LOGGER.error("Couldn't create spirit for some reason idfk");
 			return true;
 		}
-		entity.setPos(position());
+		entity.setPos(getEyePosition());
 		level.addFreshEntity(entity);
 
 		setAttached(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, time + SpiritDagger.TIMEOUT_TICKS);
@@ -64,7 +60,7 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 		if (!level.isClientSide()) return;
 
 		long time = level.getGameTime();
-		if (getAttachedOrElse(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, Long.MAX_VALUE) < time) return;
+		if (getAttachedOrElse(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, 0L) < time) return;
 		var pos = position();
 
 		level.addParticle(

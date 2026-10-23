@@ -323,6 +323,7 @@
 	"death.attack.stellarity.tamaris_execute.2": "%1$s wurde von %2$s gezwungen zu sehen, wie sich 999 Schaden anfühlen",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s wurde die verbleibende Gesundheit von %2$s genommen",
 	"death.attack.stellarity.void_arrow_shrapnel": "%1$s was gored by shards of the void",
+	"effect.stellarity.assasination": "Assasination",
 	"effect.stellarity.brittle": "Brittle",
 	"effect.stellarity.creative_shock": "Creative Shock",
 	"effect.stellarity.frostburn": "Frostburn",

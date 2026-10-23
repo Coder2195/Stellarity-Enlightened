@@ -323,6 +323,7 @@
 	"death.attack.stellarity.tamaris_execute.2": "%1$s узяв на себе 999 шкоди від катувань %2$s",
 	"death.attack.stellarity.tamaris_execute.3": "%1$s втратив залишки свого здоровʼя, втікаючи від %2$s",
 	"death.attack.stellarity.void_arrow_shrapnel": "%1$s was gored by shards of the void",
+	"effect.stellarity.assasination": "Assasination",
 	"effect.stellarity.brittle": "Brittle",
 	"effect.stellarity.creative_shock": "Creative Shock",
 	"effect.stellarity.frostburn": "Frostburn",
