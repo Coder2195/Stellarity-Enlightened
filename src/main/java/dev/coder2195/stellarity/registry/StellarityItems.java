@@ -508,7 +508,7 @@ public interface StellarityItems {
 
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
-		return register(key, (props) -> new BoatItem(type, properties), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
+		return register(key, (props) -> new BoatItem(type, props), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
 	}
 
 	static ItemStackTemplate createPotion(Holder<Potion> potion) {
@@ -639,17 +639,17 @@ public interface StellarityItems {
 		);
 	}
 
-	static Item.Properties tpFoodProperties(Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, float teleportDiameter, boolean directionalParticles, StellarityItems.EffectChance... effectChances) {
-		return foodProperties(
-			new Item.Properties(),
-			new FoodProperties.Builder(),
-			consumable.onConsume(new TeleportRandomlyConsumeEffect(teleportDiameter, directionalParticles)),
-			nutrition,
-			saturation,
-			alwaysEat,
-			effectChances
-		);
-	}
+//	static Item.Properties tpFoodProperties(Consumable.Builder consumable, int nutrition, float saturation, boolean alwaysEat, float teleportDiameter, boolean directionalParticles, StellarityItems.EffectChance... effectChances) {
+//		return foodProperties(
+//			new Item.Properties(),
+//			new FoodProperties.Builder(),
+//			consumable.onConsume(new TeleportRandomlyConsumeEffect(teleportDiameter, directionalParticles)),
+//			nutrition,
+//			saturation,
+//			alwaysEat,
+//			effectChances
+//		);
+//	}
 
 
 	static Item.Properties tpFoodProperties(int nutrition, float saturation, int teleportDiameter, StellarityItems.EffectChance... effectChances) {
