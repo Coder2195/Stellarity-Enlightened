@@ -18,9 +18,15 @@ Structure Update
 **[+] Life Crystal**
 - Patches a bug preventing sweeping damage
 
+**[+] The Beginning**
+
+**[+] The End**
+
 ## Entities
 **[*] Pig**
 - Fixes Ender variant baby pig's texture
+
+**[+] Spirit**
 
 ## Mechanics
 **[*] Worldgen**

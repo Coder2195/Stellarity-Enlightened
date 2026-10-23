@@ -36,6 +36,8 @@ public interface StellarityItemTags {
 
 	TagKey<Item> SHULKER_TOOL_MATERIALS = id("shulker_tool_materials");
 
+	TagKey<Item> SPIRIT_DAGGERS = id("spirit_daggers");
+
 	static TagKey<Item> id(String id) {
 		return TagKey.create(Registries.ITEM, Stellarity.id(id));
 	}

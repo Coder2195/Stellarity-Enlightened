@@ -64,7 +64,7 @@ public interface StellarityDataAttachments {
 	AttachmentType<Long> LIFE_CRYSTAL_HELD_AT = AttachmentRegistry.create(Stellarity.id("life_crystal_held_at"), builder -> builder.persistent(Codec.LONG));
 	AttachmentType<ConsecrationRecipe.ConsecrationData> CONSECRATION_DATA = AttachmentRegistry.create(Stellarity.id("consecration_data"), builder -> builder.persistent(ConsecrationRecipe.ConsecrationData.CODEC).syncWith(ConsecrationRecipe.ConsecrationData.STREAM_CODEC, AttachmentSyncPredicate.all()));
 
-	AttachmentType<Long> SPIRIT_AFFECTED_UNTIL = AttachmentRegistry.create(Stellarity.id("spirit_affected_until"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
+	AttachmentType<Long> SPIRIT_ATTRACTABLE_AT = AttachmentRegistry.create(Stellarity.id("spirit_attractable_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");

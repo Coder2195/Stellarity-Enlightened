@@ -503,8 +503,8 @@ public interface StellarityItems {
 	Item PRISMATIC_CHEST_BOAT = registerBoat(StellarityItemIds.PRISMATIC_CHEST_BOAT, StellarityEntityTypes.PRISMATIC_CHEST_BOAT, new Item.Properties());
 	Item INFERNO_CHEST_BOAT = registerBoat(StellarityItemIds.INFERNO_CHEST_BOAT, StellarityEntityTypes.INFERNO_CHEST_BOAT, new Item.Properties());
 
-	Item THE_BEGINNING = register(StellarityItemIds.THE_BEGINNING, SpiritDagger::new, SpiritDagger.PROPERTIES);
-	Item THE_END = register(StellarityItemIds.THE_END, SpiritDagger::new, SpiritDagger.PROPERTIES);
+	Item THE_BEGINNING = register(StellarityItemIds.THE_BEGINNING, SpiritDagger::new,  new Item.Properties().sword(StellarityToolMaterials.THE_BEGINNING, 3, -2f));
+	Item THE_END = register(StellarityItemIds.THE_END, SpiritDagger::new,  new Item.Properties().sword(StellarityToolMaterials.THE_END, 3, -2f));
 
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {

@@ -72,7 +72,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
 
-		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER);
+		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER, THE_BEGINNING, THE_END);
 
 		// TODO: add shulker spear, and ensure all implementations complete
 		var donator = addTags(StellarityItemTags.DONATOR);
@@ -97,6 +97,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(StellarityItemTags.REPAIRS_DRAGON_WINGS).add(PHANTOM_MEMBRANE);
 		addTags(StellarityItemTags.REPAIRS_EMPRESS_WINGS).add(PHANTOM_MEMBRANE);
 		addTags(StellarityItemTags.SHULKER_TOOL_MATERIALS).add(SHULKER_SHELL);
+
+		addTags(StellarityItemTags.SPIRIT_DAGGERS).add(THE_BEGINNING, THE_END);
 
 		addTags(ItemTags.BOATS).add(ASHEN_BOAT, AMETHYII_BOAT, HALLOWED_BOAT, SHRUBBED_BOAT, PRISMATIC_BOAT, INFERNO_BOAT);
 		addTags(ItemTags.CHEST_BOATS).add(ASHEN_CHEST_BOAT, AMETHYII_CHEST_BOAT, HALLOWED_CHEST_BOAT, SHRUBBED_CHEST_BOAT, PRISMATIC_CHEST_BOAT, INFERNO_CHEST_BOAT);
