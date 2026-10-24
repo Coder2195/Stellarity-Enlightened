@@ -34,7 +34,7 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 
 		if (random.nextBoolean()) return true;
 
-		if (!(source.getEntity() instanceof LivingEntity livingEntity && livingEntity.isHolding(item -> item.is(StellarityItemTags.SPIRIT_DAGGERS)))) return true;
+		if (!(source.getEntity() instanceof LivingEntity attacker && attacker.isHolding(item -> item.is(StellarityItemTags.SPIRIT_DAGGERS)))) return true;
 
 		long time = level.getGameTime();
 		if (getAttachedOrElse(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, 0L) > time) return true;
@@ -45,6 +45,7 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 			return true;
 		}
 		entity.setPos(getEyePosition());
+		entity.setOwner(attacker);
 		level.addFreshEntity(entity);
 
 		setAttached(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, time + SpiritDagger.TIMEOUT_TICKS);

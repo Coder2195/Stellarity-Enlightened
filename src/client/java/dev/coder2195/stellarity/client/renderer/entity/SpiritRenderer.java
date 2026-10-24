@@ -13,8 +13,10 @@ import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
-public class SpiritRenderer extends EntityRenderer<Spirit, EntityRenderState> {
+public class SpiritRenderer extends EntityRenderer<Spirit, SpiritRenderer.SpiritRenderState> {
 	private static final Identifier TEXTURE = Stellarity.id("textures/entity/spirit/spirit.png");
 	private final SpiritModel model;
 
@@ -24,12 +26,12 @@ public class SpiritRenderer extends EntityRenderer<Spirit, EntityRenderState> {
 	}
 
 	@Override
-	public EntityRenderState createRenderState() {
-		return new EntityRenderState();
+	public SpiritRenderState createRenderState() {
+		return new SpiritRenderState();
 	}
 
 	@Override
-	public void submit(EntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
+	public void submit(SpiritRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera) {
 		poseStack.pushPose();
 		submitNodeCollector.submitModel(this.model, state, poseStack, model.renderType(TEXTURE), state.lightCoords, OverlayTexture.NO_OVERLAY, 0xffffffff, null, state.outlineColor);
 		poseStack.popPose();
@@ -44,5 +46,18 @@ public class SpiritRenderer extends EntityRenderer<Spirit, EntityRenderState> {
 	@Override
 	protected int getBlockLightLevel(Spirit entity, BlockPos blockPos) {
 		return 15;
+	}
+
+	@Override
+	public void extractRenderState(Spirit entity, SpiritRenderState state, float partialTicks) {
+		super.extractRenderState(entity, state, partialTicks);
+
+		state.innerAngularVelocity = entity.getInnerAngularVelocity();
+		state.auraAngularVelocity = entity.getAuraAngularVelocity();
+	}
+
+	public static class SpiritRenderState extends EntityRenderState {
+		public Vector3fc innerAngularVelocity = new Vector3f(0, 0, 0);
+		public Vector3fc auraAngularVelocity = new Vector3f(0, 0, 0);
 	}
 }
