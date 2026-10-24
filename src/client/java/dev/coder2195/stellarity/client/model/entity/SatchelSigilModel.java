@@ -21,7 +21,7 @@ public class SatchelSigilModel extends EntityModel<SatchelSigilRenderer.SatchelS
 	}
 
 
-	public static LayerDefinition getTexturedModelData() {
+	public static LayerDefinition getLayerDefinition() {
 		MeshDefinition modelData = new MeshDefinition();
 		PartDefinition root = modelData.getRoot();
 

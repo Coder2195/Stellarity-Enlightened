@@ -18,7 +18,7 @@ public class PixieModel extends EntityModel<LivingEntityRenderState> {
 		this.wing2 = root.getChild("wing2");
 	}
 
-	public static LayerDefinition getTexturedModelData() {
+	public static LayerDefinition getLayerDefinition() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition root = meshdefinition.getRoot();
 

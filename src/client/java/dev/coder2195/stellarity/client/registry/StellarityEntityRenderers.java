@@ -52,6 +52,6 @@ public interface StellarityEntityRenderers {
 		)) {
 			EntityRenderers.register(boat._1(), c -> new BoatRenderer(c, boat._2()));
 		}
-		EntityRenderers.register(StellarityEntityTypes.SPIRIT, NoopRenderer::new);
+		EntityRenderers.register(StellarityEntityTypes.SPIRIT, SpiritRenderer::new);
 	}
 }

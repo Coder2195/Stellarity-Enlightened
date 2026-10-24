@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.client.registry;
 
+import dev.coder2195.stellarity.client.model.entity.SpiritModel;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import dev.coder2195.stellarity.Stellarity;
@@ -12,8 +13,10 @@ public interface StellarityModelLayers {
 	LayerDefinition BOAT_MODEL = BoatModel.createBoatModel();
 	LayerDefinition CHEST_BOAT_MODEL = BoatModel.createChestBoatModel();
 
-	ModelLayerLocation SATCHEL_SIGIL = layer("satchel_sigil", SatchelSigilModel::getTexturedModelData);
-	ModelLayerLocation PIXIE = layer("pixie",PixieModel::getTexturedModelData);
+	ModelLayerLocation SATCHEL_SIGIL = layer("satchel_sigil", SatchelSigilModel::getLayerDefinition);
+	ModelLayerLocation PIXIE = layer("pixie",PixieModel::getLayerDefinition);
+	ModelLayerLocation SPIRIT = layer("spirit", SpiritModel::getLayerDefinition);
+
 
 	ModelLayerLocation AMETHYII_BOAT = boat("boat/amethyii");
 	ModelLayerLocation HALLOWED_BOAT = boat("boat/hallowed");
