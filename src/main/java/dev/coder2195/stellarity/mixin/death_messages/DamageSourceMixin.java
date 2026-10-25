@@ -24,7 +24,7 @@ public abstract class DamageSourceMixin {
 		int max = 0;
 		if (id.equals("stellarity.frostburn") || id.equals("stellarity.prismatic_inferno") || id.equals("stellarity.natures_wrath"))
 			max = 2;
-		else if (id.equals("stellarity.dragonblade") || id.equals("stellarity.kaleidoscope") || id.equals("stellarity.spirit_dagger") || id.equals("stellarity.tamaris_execute"))
+		else if (id.equals("stellarity.dragonblade") || id.equals("stellarity.kaleidoscope") || id.equals("stellarity.spirit_dagger") || id.equals("stellarity.tamaris_execute") || id.equals("stellarity.spirit_slash"))
 			max = 3;
 
 		if (max != 0) key += "." + random.nextInt(1, max + 1);
