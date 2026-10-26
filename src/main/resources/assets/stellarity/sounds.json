@@ -208,42 +208,27 @@
 	},
 	"item.spirit_dagger.charge": {
 		"sounds": [
-			"stellarity:item/spirit_dagger/prepare_teleport_1",
-			"stellarity:item/spirit_dagger/prepare_teleport_2",
-			"stellarity:item/spirit_dagger/prepare_teleport_3"
+			"stellarity:item/spirit_dagger/charge_1",
+			"stellarity:item/spirit_dagger/charge_2",
+			"stellarity:item/spirit_dagger/charge_3"
 		]
 	},
-	"item.spirit_dagger.teleport": {
+	"item.spirit_dagger.slash": {
 		"sounds": [
-			"stellarity:item/spirit_dagger/teleport_1",
-			"stellarity:item/spirit_dagger/teleport_2",
-			"stellarity:item/spirit_dagger/teleport_3"
+			"stellarity:item/spirit_dagger/slash_1",
+			"stellarity:item/spirit_dagger/slash_2",
+			"stellarity:item/spirit_dagger/slash_3"
 		],
 		"subtitle": "subtitles.entity.player.teleport"
 	},
-	"item.spirit_dagger.charge_kohara": {
+	"item.the_beginning.equip": {
 		"sounds": [
-			"stellarity:item/spirit_dagger/kohy_prepare_teleport_1",
-			"stellarity:item/spirit_dagger/kohy_prepare_teleport_2",
-			"stellarity:item/spirit_dagger/kohy_prepare_teleport_3"
+			"stellarity:item/the_beginning/equip"
 		]
 	},
-	"item.spirit_dagger.slash_kohara": {
+	"item.the_end.equip": {
 		"sounds": [
-			"stellarity:item/spirit_dagger/kohy_teleport_1",
-			"stellarity:item/spirit_dagger/kohy_teleport_2",
-			"stellarity:item/spirit_dagger/kohy_teleport_3"
-		],
-		"subtitle": "subtitles.entity.player.teleport"
-	},
-	"item.spirit_dagger.equip_beginning": {
-		"sounds": [
-			"stellarity:item/spirit_dagger/equip_beginning"
-		]
-	},
-	"item.spirit_dagger.equip_end": {
-		"sounds": [
-			"stellarity:item/spirit_dagger/equip_end"
+			"stellarity:item/the_end/equip"
 		]
 	},
 	"item.harvester.gain_damage": {

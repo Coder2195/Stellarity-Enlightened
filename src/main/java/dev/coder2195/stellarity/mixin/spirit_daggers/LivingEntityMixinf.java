@@ -6,25 +6,33 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.item.SpiritDagger;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
+import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.registry.StellaritySoundEvents;
+import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.ColorUtil;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+
+import java.util.Map;
 
 @SuppressWarnings("NonExtendableApiUsage")
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity implements AttachmentTarget {
+public abstract class LivingEntityMixinf extends Entity implements AttachmentTarget {
 
-	public LivingEntityMixin(EntityType<?> type, Level level) {
+	@Shadow
+	public abstract boolean isDeadOrDying();
+
+	public LivingEntityMixinf(EntityType<?> type, Level level) {
 		super(type, level);
 	}
 
@@ -32,26 +40,42 @@ public abstract class LivingEntityMixin extends Entity implements AttachmentTarg
 	private boolean checkHurt(ServerLevel level, DamageSource source, float damage, Operation<Boolean> original) {
 		if (!original.call(level, source, damage)) return false;
 
-		if (random.nextBoolean()) return true;
-
+		if (random.nextBoolean() || source.is(StellarityDamageTypeTags.BLOCKS_SPIRIT_SUMMONING) || isDeadOrDying()) return true;
 		if (!(source.getEntity() instanceof LivingEntity attacker && attacker.isHolding(item -> item.is(StellarityItemTags.SPIRIT_DAGGERS)))) return true;
 
 		long time = level.getGameTime();
 		if (getAttachedOrElse(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, 0L) > time) return true;
 
-		var entity = StellarityEntityTypes.SPIRIT.create(level, EntitySpawnReason.TRIGGERED);
-		if (entity == null) {
+		var spirit = StellarityEntityTypes.SPIRIT.create(level, EntitySpawnReason.TRIGGERED);
+		if (spirit == null) {
 			Stellarity.LOGGER.error("Couldn't create spirit for some reason idfk");
 			return true;
 		}
-		entity.setPos(getEyePosition());
-		entity.setOwner(attacker);
-		level.addFreshEntity(entity);
+		spirit.setPos(position().add(0, (getBbHeight() - spirit.getBbHeight()) / 2, 0));
+		spirit.setOwner(attacker);
+		level.addFreshEntity(spirit);
 
 		setAttached(StellarityDataAttachments.SPIRIT_ATTRACTABLE_AT, time + SpiritDagger.TIMEOUT_TICKS);
 
 		return true;
 	}
+
+	@WrapMethod(method = "handleHandSwap")
+	private void soundEffects(Map<EquipmentSlot, ItemStack> changedItems, Operation<Void> original) {
+		original.call(changedItems);
+		var level = level();
+		var position = position();
+		var itemSet = changedItems.values();
+		for (var stack : itemSet) {
+			if (stack.is(StellarityItems.THE_BEGINNING)) {
+				level.playSound(null, position.x, position.y, position.z, StellaritySoundEvents.THE_BEGINNING_EQUIP, SoundSource.NEUTRAL, 1, 1);
+				continue;
+			}
+
+			if (stack.is(StellarityItems.THE_END)) level.playSound(null, position.x, position.y, position.z, StellaritySoundEvents.THE_END_EQUIP, SoundSource.NEUTRAL, 1, 1);
+		}
+	}
+
 
 	@WrapMethod(method = "tick")
 	private void attractCooldownTick(Operation<Void> original) {

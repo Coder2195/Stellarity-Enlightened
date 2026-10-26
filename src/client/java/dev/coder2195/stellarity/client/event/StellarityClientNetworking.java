@@ -6,10 +6,7 @@ import dev.coder2195.stellarity.networking.*;
 import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.core.particles.ColorParticleOption;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -17,7 +14,11 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.List;
+
 public interface StellarityClientNetworking {
+	RandomSource random = RandomSource.create();
+
 	static void init() {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundVoidArrowHitPayload.TYPE, StellarityClientNetworking::voidArrowHit);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundConfigScreenPayload.TYPE, StellarityClientNetworking::configScreen);
@@ -27,32 +28,70 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundFloralBloomBloomPayload.TYPE, StellarityClientNetworking::floralBloomBloom);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundConsecrationCraftPayload.TYPE, StellarityClientNetworking::consecrationCraft);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundCauldronCraftPayload.TYPE, StellarityClientNetworking::cauldronCraft);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritSlashPayload.TYPE, StellarityClientNetworking::spiritSlash);
+
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+
+	static void spiritSlash(ClientboundSpiritSlashPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+
+		if (level == null) return;
+
+		var fromPosition = packet.fromPosition();
+		var toPosition = packet.toPosition();
+		var hasFire = packet.hasFire();
+
+		for (ParticleOptions particle : List.of(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), ParticleTypes.EXPLOSION))
+			level.addAlwaysVisibleParticle(particle, true, toPosition.x, toPosition.y, toPosition.z, 0, 0, 0);
+
+		for (int i = 0; i < 10; i++) {
+			var particlePos = toPosition.add(new Vec3(0, 0, 1.75).yRot(i * Mth.PI / 5f));
+			level.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 1);
+		}
+
+		for (ParticleOptions particle : List.of(ParticleTypes.END_ROD, PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1)))
+			for (int i = 0; i < 16; i++) {
+				level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, toPosition.x, toPosition.y, toPosition.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
+			}
+
+		if (hasFire) for (int i = 0; i < 21; i++) {
+			var particlePos = toPosition.add(new Vec3(random.nextGaussian() * 1.5, 0, random.nextGaussian() * 1.5));
+			level.addAlwaysVisibleParticle(ParticleTypes.FLAME, true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
+		}
+
+		level.playLocalSound(toPosition.x, toPosition.y, toPosition.z, StellaritySoundEvents.SPIRIT_DAGGER_SLASH, SoundSource.PLAYERS, 1, 1, false);
+
+		for (var slashedPosition : packet.slashedPositions()) {
+			level.addAlwaysVisibleParticle(ParticleTypes.SWEEP_ATTACK, true, slashedPosition.x, slashedPosition.y, slashedPosition.z, 0, 0, 1);
+		}
 	}
 
 	static void cauldronCraft(ClientboundCauldronCraftPayload packet, ClientPlayNetworking.Context context) {
 		var client = context.client();
 		var level = client.level;
-		var random = RandomSource.create();
+
 
 		if (level == null) return;
 
 		var resultPosition = packet.resultPosition();
 		var fromEntries = packet.fromEntries();
 
-		for (Tuple2<ItemStackTemplate, Vec3> fromEntry: fromEntries) {
+		for (Tuple2<ItemStackTemplate, Vec3> fromEntry : fromEntries) {
 			var itemStackTemplate = fromEntry._1();
 			var position = fromEntry._2();
 
 			var itemParticle = new ItemParticleOption(ParticleTypes.ITEM, itemStackTemplate);
-			for (int i=0; i<50; i++) {
+			for (int i = 0; i < 50; i++) {
 				level.addAlwaysVisibleParticle(itemParticle, true, position.x + random.nextGaussian() * 0.2, position.y + random.nextGaussian() * 0.2, position.z + random.nextGaussian() * 0.2, 0, 0, 0);
 			}
 
 			var delta = resultPosition.subtract(position);
 
-			for (int i=0; i<32; i++) {
+			for (int i = 0; i < 32; i++) {
 				level.addAlwaysVisibleParticle(ParticleTypes.ELECTRIC_SPARK, true,
 					position.x + delta.x * i / 32d, position.y + delta.y * i / 32d, position.z + delta.z * i / 32d, 0, 0, 0);
 			}
@@ -107,7 +146,7 @@ public interface StellarityClientNetworking {
 		var level = client.level;
 
 		if (level == null) return;
-		var random = RandomSource.create();
+
 
 		var position = packet.position();
 
@@ -159,7 +198,7 @@ public interface StellarityClientNetworking {
 		var displacement = to.subtract(from);
 		var particles = Math.floor(displacement.length() / 0.05);
 
-		var random = RandomSource.create();
+
 		for (int i = 0; i < particles; i++) {
 			var progress = i / particles;
 
@@ -197,7 +236,6 @@ public interface StellarityClientNetworking {
 		var position = packet.position();
 		var level = context.player().level();
 
-		var random = RandomSource.create();
 
 		double x = position.x;
 		double y = position.y;

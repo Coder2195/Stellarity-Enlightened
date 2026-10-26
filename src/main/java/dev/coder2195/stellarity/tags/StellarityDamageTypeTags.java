@@ -10,6 +10,7 @@ public interface StellarityDamageTypeTags {
 	TagKey<DamageType> RANGED = id("ranged");
 	TagKey<DamageType> TRIGGERS_FLESH_SPEED_BOOST = id("triggers_flesh_speed_boost");
 	TagKey<DamageType> BLOOD_FOR_BLOOD = id("blood_for_blood");
+	TagKey<DamageType> BLOCKS_SPIRIT_SUMMONING = id("blocks_spirit_summoning");
 
 	static TagKey<DamageType> id(String id) {
 		return TagKey.create(Registries.DAMAGE_TYPE, Stellarity.id(id));

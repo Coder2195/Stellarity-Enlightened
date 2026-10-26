@@ -21,6 +21,7 @@ public interface StellarityNetworking {
 		clientbound.register(ClientboundFloralBloomBloomPayload.TYPE, ClientboundFloralBloomBloomPayload.STREAM_CODEC);
 		clientbound.register(ClientboundConsecrationCraftPayload.TYPE, ClientboundConsecrationCraftPayload.STREAM_CODEC);
 		clientbound.register(ClientboundCauldronCraftPayload.TYPE, ClientboundCauldronCraftPayload.STREAM_CODEC);
+		clientbound.register(ClientboundSpiritSlashPayload.TYPE, ClientboundSpiritSlashPayload.STREAM_CODEC);
 
 		Stellarity.LOGGER.info("Registering Stellarity Common Networking");
 	}

@@ -56,7 +56,7 @@ public interface StellarityEntityTypes {
 	EntityType<PotionCloud> POTION_CLOUD = register(StellarityEntityTypeIds.POTION_CLOUD, EntityType.Builder.of(PotionCloud::new, MobCategory.MISC).sized(0, 0).eyeHeight(0.5f).clientTrackingRange(4).noLootTable());
 	EntityType<DragonBreathCauldronIngredient> DRAGON_BREATH_CAULDRON_INGREDIENT = register(StellarityEntityTypeIds.DRAGON_BREATH_CAULDRON_INGREDIENT, EntityType.Builder.<DragonBreathCauldronIngredient>of(DragonBreathCauldronIngredient::new, MobCategory.MISC).sized(0.5f, 0.5f).eyeHeight(0.125f).clientTrackingRange(4).noLootTable());
 
-	EntityType<Spirit> SPIRIT = register(StellarityEntityTypeIds.SPIRIT, EntityType.Builder.of(Spirit::new, MobCategory.MISC).sized(0.75f, 0.75f).eyeHeight(0.325f).clientTrackingRange(8).noLootTable());
+	EntityType<Spirit> SPIRIT = register(StellarityEntityTypeIds.SPIRIT, EntityType.Builder.of(Spirit::new, MobCategory.MISC).sized(1, 1).eyeHeight(0.325f).noLootTable());
 
 	EntityType<Boat> ASHEN_BOAT = registerBoat(StellarityEntityTypeIds.ASHEN_BOAT, StellarityItems.ASHEN_BOAT);
 	EntityType<Boat> AMETHYII_BOAT = registerBoat(StellarityEntityTypeIds.AMETHYII_BOAT, StellarityItems.AMETHYII_BOAT);

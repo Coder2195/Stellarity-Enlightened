@@ -37,7 +37,6 @@ public class SpiritModel extends EntityModel<SpiritRenderer.SpiritRenderState> {
 	public void setupAnim(SpiritRenderer.SpiritRenderState state) {
 		super.setupAnim(state);
 
-
 		inner.xRot = (state.ageInTicks) * state.innerAngularVelocity.x() / 20;
 		inner.zRot = (state.ageInTicks) * state.innerAngularVelocity.y() / 20;
 		inner.yRot = (state.ageInTicks) * state.innerAngularVelocity.z() / 20;

@@ -35,6 +35,13 @@ public interface StellaritySoundEvents {
 	SoundEvent CHAMPION_ARMOR_ADD_DAMAGE = register("item.champion_armor.add_damage");
 	SoundEvent HALLOWED_ARMOR_DODGE = register("item.hallowed_armor.dodge");
 
+
+	SoundEvent SPIRIT_DAGGER_CHARGE = register("item.spirit_dagger.charge");
+	SoundEvent SPIRIT_DAGGER_SLASH = register("item.spirit_dagger.slash");
+
+	SoundEvent THE_BEGINNING_EQUIP = register("item.the_beginning.equip");
+	SoundEvent THE_END_EQUIP = register("item.the_end.equip");
+
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");
 	Holder<SoundEvent> PRECIPICE_STEREO = registerHolder("music_disc.precipice_stereo");
