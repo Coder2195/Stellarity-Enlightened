@@ -43,7 +43,7 @@ public class LifeCrystal extends Item {
 
 		var durationSince = gameTime - heldAt - 10;
 		if (durationSince < 0) return;
-		var correctAmplifier = (int) Mth.clamp(durationSince / LEVEL_DURATION, 0, 3);
+		var correctAmplifier = (int) Math.clamp(durationSince / LEVEL_DURATION, 0, 3);
 
 		if (effect == null || effect.getAmplifier() != correctAmplifier) livingOwner.addEffect(new MobEffectInstance(StellarityMobEffects.LIFE_CRYSTAL_REGENERATION, LEVEL_DURATION + 10, correctAmplifier));
 	}

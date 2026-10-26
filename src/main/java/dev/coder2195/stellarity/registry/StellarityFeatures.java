@@ -5,7 +5,6 @@ import dev.coder2195.stellarity.feature.DragonEggFeature;
 import dev.coder2195.stellarity.feature.DungeonFeature;
 import dev.coder2195.stellarity.feature.EndCrystalTowerFeature;
 import dev.coder2195.stellarity.feature.SpikeFeature;
-import dev.coder2195.stellarity.interface_injection.ExtLargeDripstoneFeature;
 import dev.coder2195.stellarity.tags.StellarityBlockTags;
 import dev.coder2195.stellarity.tree_decorator.HangingColumnDecorator;
 import dev.coder2195.stellarity.util.Constants;
@@ -828,10 +827,10 @@ public interface StellarityFeatures {
 			CaveSurface.FLOOR, numRaw(2), 0, 5, 0, numRaw(1, 3), 0.5f
 		));
 
-		context.register(FROZEN_SPIKES_LARGE_DRIPSTONE, ExtLargeDripstoneFeature.apply(new LargeDripstoneFeature(
+		context.register(FROZEN_SPIKES_LARGE_DRIPSTONE, new LargeSpeleothemFeature(from(PACKED_ICE),
 			tag(BlockTags.DRIPSTONE_REPLACEABLE),
 			70, numRaw(4, 8), numfRaw(0.4f, 3), 0.2f, numfRaw(0.1f, 0.4f), numfRaw(0.1f, 0.3f), trapezoidf(0, 0.06f, 0), 0, 0.25f
-		), from(PACKED_ICE)));
+		));
 		context.register(FROZEN_SPIKES_BLUE_ICE_ORE, new OreFeature(
 			new BlockMatchTest(PACKED_ICE), from(BLUE_ICE), 40
 		));

@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.ai.village.poi.PoiTypes;
+import net.minecraft.world.entity.ai.village.poi.PoiTypeIds;
 import net.minecraft.world.entity.npc.villager.VillagerData;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.trading.TradeSet;
@@ -26,7 +26,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> ARMORER = register(
 		"armorer",
 		true,
-		PoiTypes.ARMORER,
+		PoiTypeIds.ARMORER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, ARMORER_LEVEL_1), Int2ObjectMap.entry(2, ARMORER_LEVEL_2), Int2ObjectMap.entry(3, ARMORER_LEVEL_3), Int2ObjectMap.entry(4, ARMORER_LEVEL_4), Int2ObjectMap.entry(5, ARMORER_LEVEL_5))
 	);
@@ -34,7 +34,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> BUTCHER = register(
 		"butcher",
 		true,
-		PoiTypes.BUTCHER,
+		PoiTypeIds.BUTCHER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, BUTCHER_LEVEL_1), Int2ObjectMap.entry(2, BUTCHER_LEVEL_2), Int2ObjectMap.entry(3, BUTCHER_LEVEL_3), Int2ObjectMap.entry(4, BUTCHER_LEVEL_4), Int2ObjectMap.entry(5, BUTCHER_LEVEL_5))
 	);
@@ -42,7 +42,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> CARTOGRAPHER = register(
 		"cartographer",
 		true,
-		PoiTypes.CARTOGRAPHER,
+		PoiTypeIds.CARTOGRAPHER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, CARTOGRAPHER_LEVEL_1), Int2ObjectMap.entry(2, CARTOGRAPHER_LEVEL_2), Int2ObjectMap.entry(3, CARTOGRAPHER_LEVEL_3), Int2ObjectMap.entry(4, CARTOGRAPHER_LEVEL_4), Int2ObjectMap.entry(5, CARTOGRAPHER_LEVEL_5))
 	);
@@ -50,7 +50,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> CLERIC = register(
 		"cleric",
 		true,
-		PoiTypes.CLERIC,
+		PoiTypeIds.CLERIC,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, CLERIC_LEVEL_1), Int2ObjectMap.entry(2, CLERIC_LEVEL_2), Int2ObjectMap.entry(3, CLERIC_LEVEL_3), Int2ObjectMap.entry(4, CLERIC_LEVEL_4), Int2ObjectMap.entry(5, CLERIC_LEVEL_5))
 	);
@@ -58,7 +58,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> FARMER = register(
 		"farmer",
 		true,
-		PoiTypes.FARMER,
+		PoiTypeIds.FARMER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, FARMER_LEVEL_1), Int2ObjectMap.entry(2, FARMER_LEVEL_2), Int2ObjectMap.entry(3, FARMER_LEVEL_3), Int2ObjectMap.entry(4, FARMER_LEVEL_4), Int2ObjectMap.entry(5, FARMER_LEVEL_5))
 	);
@@ -66,7 +66,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> FISHERMAN = register(
 		"fisherman",
 		true,
-		PoiTypes.FISHERMAN,
+		PoiTypeIds.FISHERMAN,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, FISHERMAN_LEVEL_1), Int2ObjectMap.entry(2, FISHERMAN_LEVEL_2), Int2ObjectMap.entry(3, FISHERMAN_LEVEL_3), Int2ObjectMap.entry(4, FISHERMAN_LEVEL_4), Int2ObjectMap.entry(5, FISHERMAN_LEVEL_5))
 	);
@@ -74,7 +74,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> FLETCHER = register(
 		"fletcher",
 		true,
-		PoiTypes.FLETCHER,
+		PoiTypeIds.FLETCHER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, FLETCHER_LEVEL_1), Int2ObjectMap.entry(2, FLETCHER_LEVEL_2), Int2ObjectMap.entry(3, FLETCHER_LEVEL_3), Int2ObjectMap.entry(4, FLETCHER_LEVEL_4), Int2ObjectMap.entry(5, FLETCHER_LEVEL_5))
 	);
@@ -82,7 +82,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> LEATHERWORKER = register(
 		"leatherworker",
 		true,
-		PoiTypes.LEATHERWORKER,
+		PoiTypeIds.LEATHERWORKER,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, LEATHERWORKER_LEVEL_1), Int2ObjectMap.entry(2, LEATHERWORKER_LEVEL_2), Int2ObjectMap.entry(3, LEATHERWORKER_LEVEL_3), Int2ObjectMap.entry(4, LEATHERWORKER_LEVEL_4), Int2ObjectMap.entry(5, LEATHERWORKER_LEVEL_5))
 	);
@@ -90,7 +90,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> LIBRARIAN = register(
 		"librarian",
 		true,
-		PoiTypes.LIBRARIAN,
+		PoiTypeIds.LIBRARIAN,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, LIBRARIAN_LEVEL_1), Int2ObjectMap.entry(2, LIBRARIAN_LEVEL_2), Int2ObjectMap.entry(3, LIBRARIAN_LEVEL_3), Int2ObjectMap.entry(4, LIBRARIAN_LEVEL_4), Int2ObjectMap.entry(5, LIBRARIAN_LEVEL_5))
 	);
@@ -98,7 +98,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> MASON = register(
 		"mason",
 		true,
-		PoiTypes.MASON,
+		PoiTypeIds.MASON,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, MASON_LEVEL_1), Int2ObjectMap.entry(2, MASON_LEVEL_2), Int2ObjectMap.entry(3, MASON_LEVEL_3), Int2ObjectMap.entry(4, MASON_LEVEL_4), Int2ObjectMap.entry(5, MASON_LEVEL_5))
 	);
@@ -106,7 +106,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> SHEPHERD = register(
 		"shepherd",
 		true,
-		PoiTypes.SHEPHERD,
+		PoiTypeIds.SHEPHERD,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, SHEPHERD_LEVEL_1), Int2ObjectMap.entry(2, SHEPHERD_LEVEL_2), Int2ObjectMap.entry(3, SHEPHERD_LEVEL_3), Int2ObjectMap.entry(4, SHEPHERD_LEVEL_4), Int2ObjectMap.entry(5, SHEPHERD_LEVEL_5))
 	);
@@ -114,7 +114,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> TOOLSMITH = register(
 		"toolsmith",
 		true,
-		PoiTypes.TOOLSMITH,
+		PoiTypeIds.TOOLSMITH,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, TOOLSMITH_LEVEL_1), Int2ObjectMap.entry(2, TOOLSMITH_LEVEL_2), Int2ObjectMap.entry(3, TOOLSMITH_LEVEL_3), Int2ObjectMap.entry(4, TOOLSMITH_LEVEL_4), Int2ObjectMap.entry(5, TOOLSMITH_LEVEL_5))
 	);
@@ -122,7 +122,7 @@ public interface StellarityVillagerProfessions {
 	Holder.Reference<VillagerProfession> WEAPONSMITH = register(
 		"weaponsmith",
 		true,
-		PoiTypes.WEAPONSMITH,
+		PoiTypeIds.WEAPONSMITH,
 		null,
 		Int2ObjectMap.ofEntries(Int2ObjectMap.entry(1, WEAPONSMITH_LEVEL_1), Int2ObjectMap.entry(2, WEAPONSMITH_LEVEL_2), Int2ObjectMap.entry(3, WEAPONSMITH_LEVEL_3), Int2ObjectMap.entry(4, WEAPONSMITH_LEVEL_4), Int2ObjectMap.entry(5, WEAPONSMITH_LEVEL_5))
 	);

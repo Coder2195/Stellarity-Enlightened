@@ -276,9 +276,10 @@ public interface WorldgenUtil {
 		return surfaceRelative(heightmap, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
 
-	static VerticalAnchor.Absolute absolute(int y) {
-		return new VerticalAnchor.Absolute(y);
+	static VerticalAnchor absolute(int y) {
+		return VerticalAnchor.absolute(y);
 	}
+	
 
 
 	static BlockPredicate not(BlockPredicate predicate) {

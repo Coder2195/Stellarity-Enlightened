@@ -27,8 +27,10 @@ public abstract class EntityMixin {
 	private void interact(Player player, InteractionHand hand, Vec3 location, CallbackInfoReturnable<InteractionResult> cir) {
 		if (!((Entity) (Object) this instanceof EndCrystal)) return;
 		if (level.isClientSide()) {
-			player.playSound(SoundEvents.AMETHYST_CLUSTER_HIT, 0.2f, 0.5f);
-			player.playSound(SoundEvents.AMETHYST_CLUSTER_HIT, 0.2f, 1f);
+			SoundEvents.AMETHYST_CLUSTER.hitSound().ifPresent(s -> {
+				player.playSound(s, 0.2f, 0.5f);
+				player.playSound(s, 0.2f, 1f);
+			});
 		}
 	}
 }

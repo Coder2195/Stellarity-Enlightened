@@ -12,6 +12,7 @@ import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -30,17 +31,17 @@ public interface StellarityBlocks {
 	Block ENDER_DIRT = register(StellarityBlockItemIds.ENDER_DIRT, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)
-		.sound(SoundType.ROOTED_DIRT));
+		.sound(BlockSoundSets.ROOTED_DIRT));
 	Block ENDER_GRASS_BLOCK = register(StellarityBlockItemIds.ENDER_GRASS_BLOCK, EnderGrassBlock::new, EnderGrassBlock.PROPERTIES);
 	Block ASHEN_FROGLIGHT = register(StellarityBlockItemIds.ASHEN_FROGLIGHT, RotatedPillarBlock::new, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.SAND)
 		.strength(0.3F)
 		.lightLevel((_) -> 15)
-		.sound(SoundType.FROGLIGHT));
+		.sound(BlockSoundSets.FROGLIGHT));
 	Block ROOTED_ENDER_DIRT = register(StellarityBlockItemIds.ROOTED_ENDER_DIRT, RootedDirtBlock::new, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)
-		.sound(SoundType.ROOTED_DIRT));
+		.sound(BlockSoundSets.ROOTED_DIRT));
 	Block ENDER_DIRT_PATH = register(StellarityBlockItemIds.ENDER_DIRT_PATH, EnderDirtPath::new, EnderDirtPath.PROPERTIES);
 	Block ALTAR_OF_THE_ACCURSED = register(StellarityBlockItemIds.ALTAR_OF_THE_ACCURSED, AltarOfTheAccursed::new, AltarOfTheAccursed.PROPERTIES);
 	Block DUSKBERRY_BUSH = register(StellarityBlockItemIds.DUSKBERRY_BUSH, DuskberryBush::new, DuskberryBush.PROPERTIES);
@@ -49,27 +50,27 @@ public interface StellarityBlocks {
 		.instrument(NoteBlockInstrument.BIT)
 		.requiresCorrectToolForDrops()
 		.strength(5.0F, 6.0F)
-		.sound(SoundType.METAL));
+		.sound(BlockSoundSets.METAL));
 	Block ENDERITE_ORE = register(StellarityBlockItemIds.ENDERITE_ORE, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(4.5F, 9.0F));
 	Block COARSE_ENDER_DIRT = register(StellarityBlockItemIds.COARSE_ENDER_DIRT, BlockBehaviour.Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.5F)
-		.sound(SoundType.GRAVEL));
+		.sound(BlockSoundSets.GRAVEL));
 	Block DRAGON_BREATH_CAULDRON = register(StellarityBlockItemIds.DRAGON_BREATH_CAULDRON, DragonBreathCauldron::new, DragonBreathCauldron.PROPERTIES);
 
-	Block AMETHYII_PLANKS = register(StellarityBlockItemIds.AMETHYII_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block AMETHYII_SAPLING = register(StellarityBlockItemIds.AMETHYII_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.AMETHYII, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block AMETHYII_LOG = register(StellarityBlockItemIds.AMETHYII_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_AMETHYII_LOG = register(StellarityBlockItemIds.STRIPPED_AMETHYII_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_AMETHYII_WOOD = register(StellarityBlockItemIds.STRIPPED_AMETHYII_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block AMETHYII_WOOD = register(StellarityBlockItemIds.AMETHYII_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block AMETHYII_LEAVES = register(StellarityBlockItemIds.AMETHYII_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
+	Block AMETHYII_PLANKS = register(StellarityBlockItemIds.AMETHYII_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block AMETHYII_SAPLING = register(StellarityBlockItemIds.AMETHYII_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.AMETHYII, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block AMETHYII_LOG = register(StellarityBlockItemIds.AMETHYII_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_AMETHYII_LOG = register(StellarityBlockItemIds.STRIPPED_AMETHYII_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_AMETHYII_WOOD = register(StellarityBlockItemIds.STRIPPED_AMETHYII_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block AMETHYII_WOOD = register(StellarityBlockItemIds.AMETHYII_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block AMETHYII_LEAVES = register(StellarityBlockItemIds.AMETHYII_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
 	Block AMETHYII_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.AMETHYII_SLAB, AMETHYII_PLANKS);
 	Block AMETHYII_SHELF = register(StellarityBlockItemIds.AMETHYII_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(AMETHYII_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block AMETHYII_FENCE = register(StellarityBlockItemIds.AMETHYII_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -77,7 +78,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block AMETHYII_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.AMETHYII_STAIRS, AMETHYII_PLANKS);
 	Block AMETHYII_BUTTON = register(StellarityBlockItemIds.AMETHYII_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.AMETHYII, 30, p), Blocks.buttonProperties());
@@ -129,20 +130,20 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_AMETHYII_SAPLING = register(StellarityBlockIds.POTTED_AMETHYII_SAPLING, p -> new FlowerPotBlock(AMETHYII_SAPLING, p), flowerPotProperties());
 
-	Block HALLOWED_PLANKS = register(StellarityBlockItemIds.HALLOWED_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block HALLOWED_SAPLING = register(StellarityBlockItemIds.HALLOWED_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.HALLOWED, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block HALLOWED_LOG = register(StellarityBlockItemIds.HALLOWED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_HALLOWED_LOG = register(StellarityBlockItemIds.STRIPPED_HALLOWED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_HALLOWED_WOOD = register(StellarityBlockItemIds.STRIPPED_HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block HALLOWED_WOOD = register(StellarityBlockItemIds.HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block HALLOWED_LEAVES = register(StellarityBlockItemIds.HALLOWED_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
-	ColorCollection<Block> COLORED_HALLOWED_LEAVES = StellarityBlockItemIds.COLORED_HALLOWED_LEAVES.map(id -> register(id, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS)));
+	Block HALLOWED_PLANKS = register(StellarityBlockItemIds.HALLOWED_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block HALLOWED_SAPLING = register(StellarityBlockItemIds.HALLOWED_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.HALLOWED, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block HALLOWED_LOG = register(StellarityBlockItemIds.HALLOWED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_HALLOWED_LOG = register(StellarityBlockItemIds.STRIPPED_HALLOWED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_HALLOWED_WOOD = register(StellarityBlockItemIds.STRIPPED_HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block HALLOWED_WOOD = register(StellarityBlockItemIds.HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block HALLOWED_LEAVES = register(StellarityBlockItemIds.HALLOWED_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
+	ColorCollection<Block> COLORED_HALLOWED_LEAVES = StellarityBlockItemIds.COLORED_HALLOWED_LEAVES.map(id -> register(id, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS)));
 	Block HALLOWED_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.HALLOWED_SLAB, HALLOWED_PLANKS);
 	Block HALLOWED_SHELF = register(StellarityBlockItemIds.HALLOWED_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(HALLOWED_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block HALLOWED_FENCE = register(StellarityBlockItemIds.HALLOWED_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -150,7 +151,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block HALLOWED_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.HALLOWED_STAIRS, HALLOWED_PLANKS);
 	Block HALLOWED_BUTTON = register(StellarityBlockItemIds.HALLOWED_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.HALLOWED, 30, p), Blocks.buttonProperties());
@@ -201,19 +202,19 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_HALLOWED_SAPLING = register(StellarityBlockIds.POTTED_HALLOWED_SAPLING, p -> new FlowerPotBlock(HALLOWED_SAPLING, p), flowerPotProperties());
 
-	Block SHRUBBED_PLANKS = register(StellarityBlockItemIds.SHRUBBED_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block SHRUBBED_SAPLING = register(StellarityBlockItemIds.SHRUBBED_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.SHRUBBED, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block SHRUBBED_LOG = register(StellarityBlockItemIds.SHRUBBED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_SHRUBBED_LOG = register(StellarityBlockItemIds.STRIPPED_SHRUBBED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_SHRUBBED_WOOD = register(StellarityBlockItemIds.STRIPPED_SHRUBBED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block SHRUBBED_WOOD = register(StellarityBlockItemIds.SHRUBBED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block SHRUBBED_LEAVES = register(StellarityBlockItemIds.SHRUBBED_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
+	Block SHRUBBED_PLANKS = register(StellarityBlockItemIds.SHRUBBED_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block SHRUBBED_SAPLING = register(StellarityBlockItemIds.SHRUBBED_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.SHRUBBED, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block SHRUBBED_LOG = register(StellarityBlockItemIds.SHRUBBED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_SHRUBBED_LOG = register(StellarityBlockItemIds.STRIPPED_SHRUBBED_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_SHRUBBED_WOOD = register(StellarityBlockItemIds.STRIPPED_SHRUBBED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block SHRUBBED_WOOD = register(StellarityBlockItemIds.SHRUBBED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block SHRUBBED_LEAVES = register(StellarityBlockItemIds.SHRUBBED_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
 	Block SHRUBBED_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.SHRUBBED_SLAB, SHRUBBED_PLANKS);
 	Block SHRUBBED_SHELF = register(StellarityBlockItemIds.SHRUBBED_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(SHRUBBED_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block SHRUBBED_FENCE = register(StellarityBlockItemIds.SHRUBBED_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -221,7 +222,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block SHRUBBED_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.SHRUBBED_STAIRS, SHRUBBED_PLANKS);
 	Block SHRUBBED_BUTTON = register(StellarityBlockItemIds.SHRUBBED_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.SHRUBBED, 30, p), Blocks.buttonProperties());
@@ -272,19 +273,19 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_SHRUBBED_SAPLING = register(StellarityBlockIds.POTTED_SHRUBBED_SAPLING, p -> new FlowerPotBlock(SHRUBBED_SAPLING, p), flowerPotProperties());
 
-	Block PRISMATIC_PLANKS = register(StellarityBlockItemIds.PRISMATIC_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block PRISMATIC_SAPLING = register(StellarityBlockItemIds.PRISMATIC_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.PRISMATIC, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block PRISMATIC_LOG = register(StellarityBlockItemIds.PRISMATIC_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_PRISMATIC_LOG = register(StellarityBlockItemIds.STRIPPED_PRISMATIC_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_PRISMATIC_WOOD = register(StellarityBlockItemIds.STRIPPED_PRISMATIC_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block PRISMATIC_WOOD = register(StellarityBlockItemIds.PRISMATIC_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block PRISMATIC_LEAVES = register(StellarityBlockItemIds.PRISMATIC_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
+	Block PRISMATIC_PLANKS = register(StellarityBlockItemIds.PRISMATIC_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block PRISMATIC_SAPLING = register(StellarityBlockItemIds.PRISMATIC_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.PRISMATIC, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block PRISMATIC_LOG = register(StellarityBlockItemIds.PRISMATIC_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_PRISMATIC_LOG = register(StellarityBlockItemIds.STRIPPED_PRISMATIC_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_PRISMATIC_WOOD = register(StellarityBlockItemIds.STRIPPED_PRISMATIC_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block PRISMATIC_WOOD = register(StellarityBlockItemIds.PRISMATIC_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block PRISMATIC_LEAVES = register(StellarityBlockItemIds.PRISMATIC_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
 	Block PRISMATIC_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.PRISMATIC_SLAB, PRISMATIC_PLANKS);
 	Block PRISMATIC_SHELF = register(StellarityBlockItemIds.PRISMATIC_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(PRISMATIC_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block PRISMATIC_FENCE = register(StellarityBlockItemIds.PRISMATIC_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -292,7 +293,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block PRISMATIC_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.PRISMATIC_STAIRS, PRISMATIC_PLANKS);
 	Block PRISMATIC_BUTTON = register(StellarityBlockItemIds.PRISMATIC_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.PRISMATIC, 30, p), Blocks.buttonProperties());
@@ -343,19 +344,19 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_PRISMATIC_SAPLING = register(StellarityBlockIds.POTTED_PRISMATIC_SAPLING, p -> new FlowerPotBlock(PRISMATIC_SAPLING, p), flowerPotProperties());
 
-	Block ASHEN_PLANKS = register(StellarityBlockItemIds.ASHEN_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block ASHEN_SAPLING = register(StellarityBlockItemIds.ASHEN_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.ASHEN, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block ASHEN_LOG = register(StellarityBlockItemIds.ASHEN_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_ASHEN_LOG = register(StellarityBlockItemIds.STRIPPED_ASHEN_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_ASHEN_WOOD = register(StellarityBlockItemIds.STRIPPED_ASHEN_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block ASHEN_WOOD = register(StellarityBlockItemIds.ASHEN_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block ASHEN_LEAVES = register(StellarityBlockItemIds.ASHEN_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
+	Block ASHEN_PLANKS = register(StellarityBlockItemIds.ASHEN_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block ASHEN_SAPLING = register(StellarityBlockItemIds.ASHEN_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.ASHEN, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block ASHEN_LOG = register(StellarityBlockItemIds.ASHEN_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_ASHEN_LOG = register(StellarityBlockItemIds.STRIPPED_ASHEN_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_ASHEN_WOOD = register(StellarityBlockItemIds.STRIPPED_ASHEN_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block ASHEN_WOOD = register(StellarityBlockItemIds.ASHEN_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block ASHEN_LEAVES = register(StellarityBlockItemIds.ASHEN_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
 	Block ASHEN_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.ASHEN_SLAB, ASHEN_PLANKS);
 	Block ASHEN_SHELF = register(StellarityBlockItemIds.ASHEN_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(ASHEN_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block ASHEN_FENCE = register(StellarityBlockItemIds.ASHEN_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -363,7 +364,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block ASHEN_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.ASHEN_STAIRS, ASHEN_PLANKS);
 	Block ASHEN_BUTTON = register(StellarityBlockItemIds.ASHEN_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.ASHEN, 30, p), Blocks.buttonProperties());
@@ -414,19 +415,19 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_ASHEN_SAPLING = register(StellarityBlockIds.POTTED_ASHEN_SAPLING, p -> new FlowerPotBlock(ASHEN_SAPLING, p), flowerPotProperties());
 
-	Block INFERNO_PLANKS = register(StellarityBlockItemIds.INFERNO_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block INFERNO_SAPLING = register(StellarityBlockItemIds.INFERNO_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.INFERNO, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.POPPED));
-	Block INFERNO_LOG = register(StellarityBlockItemIds.INFERNO_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_INFERNO_LOG = register(StellarityBlockItemIds.STRIPPED_INFERNO_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, SoundType.WOOD));
-	Block STRIPPED_INFERNO_WOOD = register(StellarityBlockItemIds.STRIPPED_INFERNO_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block INFERNO_WOOD = register(StellarityBlockItemIds.INFERNO_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava());
-	Block INFERNO_LEAVES = register(StellarityBlockItemIds.INFERNO_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(SoundType.GRASS));
+	Block INFERNO_PLANKS = register(StellarityBlockItemIds.INFERNO_PLANKS, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block INFERNO_SAPLING = register(StellarityBlockItemIds.INFERNO_SAPLING, p -> new SaplingBlock(StellarityTreeGrowers.INFERNO, p), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(BlockSoundSets.GRASS).pushReaction(PushReaction.POPPED));
+	Block INFERNO_LOG = register(StellarityBlockItemIds.INFERNO_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_INFERNO_LOG = register(StellarityBlockItemIds.STRIPPED_INFERNO_LOG, RotatedPillarBlock::new, Blocks.logProperties(MapColor.WOOD, MapColor.PODZOL, BlockSoundSets.WOOD));
+	Block STRIPPED_INFERNO_WOOD = register(StellarityBlockItemIds.STRIPPED_INFERNO_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block INFERNO_WOOD = register(StellarityBlockItemIds.INFERNO_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
+	Block INFERNO_LEAVES = register(StellarityBlockItemIds.INFERNO_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
 	Block INFERNO_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.INFERNO_SLAB, INFERNO_PLANKS);
 	Block INFERNO_SHELF = register(StellarityBlockItemIds.INFERNO_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()
 			.mapColor(INFERNO_PLANKS.defaultMapColor())
 			.instrument(NoteBlockInstrument.BASS)
-			.sound(SoundType.SHELF)
+			.sound(BlockSoundSets.SHELF)
 			.ignitedByLava()
 			.strength(2.0F, 3.0F));
 	Block INFERNO_FENCE = register(StellarityBlockItemIds.INFERNO_FENCE, FenceBlock::new, BlockBehaviour.Properties.of()
@@ -434,7 +435,7 @@ public interface StellarityBlocks {
 		.forceSolidOn()
 		.instrument(NoteBlockInstrument.BASS)
 		.strength(2.0F, 3.0F)
-		.sound(SoundType.WOOD)
+		.sound(BlockSoundSets.WOOD)
 		.ignitedByLava());
 	Block INFERNO_STAIRS = BlocksAccessor.registerStair(StellarityBlockItemIds.INFERNO_STAIRS, INFERNO_PLANKS);
 	Block INFERNO_BUTTON = register(StellarityBlockItemIds.INFERNO_BUTTON, p -> new ButtonBlock(StellarityBlockSetTypes.INFERNO, 30, p), Blocks.buttonProperties());

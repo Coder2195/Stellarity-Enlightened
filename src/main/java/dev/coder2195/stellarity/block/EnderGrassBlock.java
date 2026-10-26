@@ -1,19 +1,18 @@
 package dev.coder2195.stellarity.block;
 
+import dev.coder2195.stellarity.registry.StellarityBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.SnowLayerBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.level.material.MapColor;
-import dev.coder2195.stellarity.registry.StellarityBlocks;
 
 public class EnderGrassBlock extends GrassBlock {
 	public EnderGrassBlock(Properties properties) {
@@ -24,7 +23,7 @@ public class EnderGrassBlock extends GrassBlock {
 		.mapColor(MapColor.GRASS)
 		.randomTicks()
 		.strength(0.6F)
-		.sound(SoundType.GRASS);
+		.sound(BlockSoundSets.GRASS);
 
 	@Override
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
@@ -47,7 +46,7 @@ public class EnderGrassBlock extends GrassBlock {
 
 	private static boolean canPropagate(BlockState state, LevelReader level, BlockPos pos) {
 		BlockPos blockPos = pos.above();
-		return canBeGrass(state, level, pos) && !level.getFluidState(blockPos).is(FluidTags.WATER);
+		return canBeGrass(state, level, pos) && !level.isWaterAt(blockPos);
 	}
 
 	private static boolean canBeGrass(BlockState state, LevelReader levelReader, BlockPos pos) {

@@ -1,12 +1,19 @@
 package dev.coder2195.stellarity.registry;
 
+import dev.coder2195.stellarity.Stellarity;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
-import dev.coder2195.stellarity.Stellarity;
+import net.minecraft.world.level.levelgen.densityfunction.generator.ConstantFunction;
+import net.minecraft.world.level.levelgen.densityfunction.op.BinaryFunction;
+import net.minecraft.world.level.levelgen.densityfunction.op.CacheFunction;
+import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 
 public interface StellarityDensityFunctions {
 	ResourceKey<DensityFunction> BASE_3D_NOISE = id("base_3d_noise");
+	ResourceKey<DensityFunction> CAVE_NOODLE = id("cave/noodle");
+
 	ResourceKey<DensityFunction> FINAL_DENSITY = id("final_density");
 	ResourceKey<DensityFunction> JAGGEDNESS = id("jaggedness");
 	ResourceKey<DensityFunction> SLOPED_CHEESE = id("sloped_cheese");
@@ -30,7 +37,6 @@ public interface StellarityDensityFunctions {
 	ResourceKey<DensityFunction> MAIN_ISLAND_SHAPER_1 = id("main_island/shaper_1");
 	ResourceKey<DensityFunction> MAIN_ISLAND_ISLAND_BUILDER = id("main_island/island_builder");
 	ResourceKey<DensityFunction> MAIN_ISLAND_SHAPER_2 = id("main_island/shaper_2");
-	ResourceKey<DensityFunction> CAVE_NOODLE = id("cave/noodle");
 
 	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_INITIAL_DENSITY = compatId("initial_density");
 	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_FINAL_DENSITY = compatId("final_density");
@@ -38,7 +44,15 @@ public interface StellarityDensityFunctions {
 	static ResourceKey<DensityFunction> id(String id) {
 		return Stellarity.key(Registries.DENSITY_FUNCTION, id);
 	}
+
 	static ResourceKey<DensityFunction> compatId(String id) {
 		return Stellarity.key(Registries.DENSITY_FUNCTION, "nullscape_compat", id);
+	}
+
+	static void bootstrap(BootstrapContext<DensityFunction> context) {
+		var base3DNoise = context.register(BASE_3D_NOISE, new CacheFunction(new BinaryFunction(
+			BinaryFunction.Type.MAX, new BlendedNoise(0.225, 0.3, 400, 200, 7), new BlendedNoise(0.3, 0.15, 600, 160, 3)
+		).mul(1.2f)));
+
 	}
 }

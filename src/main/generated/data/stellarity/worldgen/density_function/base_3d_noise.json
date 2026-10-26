@@ -2,25 +2,25 @@
   "type": "minecraft:cache",
   "input": {
     "type": "minecraft:mul",
-    "left": 1.2,
-    "right": {
+    "left": {
       "type": "minecraft:max",
       "left": {
         "type": "minecraft:old_blended_noise",
+        "smear_scale_multiplier": 7.0,
+        "xz_factor": 400.0,
         "xz_scale": 0.225,
-        "y_scale": 0.3,
-        "xz_factor": 400,
-        "y_factor": 200,
-        "smear_scale_multiplier": 7
+        "y_factor": 200.0,
+        "y_scale": 0.3
       },
       "right": {
         "type": "minecraft:old_blended_noise",
+        "smear_scale_multiplier": 3.0,
+        "xz_factor": 600.0,
         "xz_scale": 0.3,
-        "y_scale": 0.15,
-        "xz_factor": 600,
-        "y_factor": 160,
-        "smear_scale_multiplier": 3
+        "y_factor": 160.0,
+        "y_scale": 0.15
       }
-    }
+    },
+    "right": 1.2
   }
 }

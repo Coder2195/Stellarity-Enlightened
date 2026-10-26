@@ -8,6 +8,7 @@ import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.util.FloralBloom;
 import dev.coder2195.stellarity.util.NetworkingUtil;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +65,7 @@ public class VoidArrow extends AbstractArrow {
 
 	@Override
 	protected SoundEvent getDefaultHitGroundSoundEvent() {
-		return SoundEvents.GLASS_BREAK;
+		return SoundEvents.GLASS.breakSound().map(Holder::value).orElseGet(super::getDefaultHitGroundSoundEvent);
 	}
 
 	@Override

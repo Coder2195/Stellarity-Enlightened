@@ -22,7 +22,7 @@ public record LoafOfPlentyEats(int amount) implements TooltipProvider {
 
 	@Override
 	public void addToTooltip(Item.TooltipContext context, Consumer<Component> consumer, TooltipFlag flag, DataComponentGetter components) {
-		for (int desc: DESCRIPTIONS[Mth.clamp(amount - 1, 0, DESCRIPTIONS.length - 1)]) {
+		for (int desc: DESCRIPTIONS[Math.clamp(amount - 1, 0, DESCRIPTIONS.length - 1)]) {
 			consumer.accept(Component.translatable("item.stellarity.loaf_of_plenty.description." + desc));
 		}
 	}

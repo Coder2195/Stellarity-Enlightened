@@ -61,7 +61,7 @@ public class StellarStriker extends Item {
 	}
 
 	public static double chargePercent(long rechargesAt, long gameTime) {
-		return Mth.clamp((TOTAL_CHARGE_TIME - (rechargesAt - gameTime)) / (double) TOTAL_CHARGE_TIME, 0, 1);
+		return Math.clamp((TOTAL_CHARGE_TIME - (rechargesAt - gameTime)) / (double) TOTAL_CHARGE_TIME, 0, 1);
 	}
 
 	public static int stars(double chargePercent) {

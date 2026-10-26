@@ -8,6 +8,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import dev.coder2195.stellarity.registry.StellarityBlocks;
@@ -21,7 +22,7 @@ public class EnderDirtPath extends PathBlock {
 	public static final Properties PROPERTIES = Properties.of()
 		.mapColor(MapColor.DIRT)
 		.strength(0.65F)
-		.sound(SoundType.GRASS)
+		.sound(BlockSoundSets.GRASS)
 		.isViewBlocking((_, _, _, _) -> true)
 		.isSuffocating((_, _, _) -> true).forceSolidOn();
 

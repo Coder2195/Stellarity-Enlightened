@@ -107,7 +107,7 @@ public record EndCrystalTowerFeature(IntProvider diameter, IntProvider height, H
 
 		var toPlace = material.value();
 
-		var pattern = PATTERNS[Mth.clamp(diameter, 1, 16)];
+		var pattern = PATTERNS[Math.clamp(diameter, 1, 16)];
 
 		Predicate<BlockPos> replaceable = canReplace.map((predicate) -> (Predicate<BlockPos>) ((pos) -> predicate.test(level, pos))).orElse((pos) -> {
 			var blockState = level.getBlockState(pos);

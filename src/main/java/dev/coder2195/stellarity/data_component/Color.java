@@ -14,6 +14,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.item.component.TooltipProvider;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 
@@ -33,52 +34,17 @@ public record Color(int rgb) implements TooltipProvider {
 
 	public static ItemStack applyDyes(final ItemStack itemStack, final List<DyeColor> dyes) {
 		Color currentDye = itemStack.get(StellarityDataComponents.COLOR);
-		Color newColor = applyDyes(currentDye, dyes);
 		ItemStack result = itemStack.copyWithCount(1);
+		if (currentDye == null) return result;
+
+		Color newColor = applyDyes(currentDye, dyes);
 		result.set(StellarityDataComponents.COLOR, newColor);
 		return result;
 	}
 
 
 	public static Color applyDyes(final Color currentDye, final List<DyeColor> dyes) {
-		int redTotal = 0;
-		int greenTotal = 0;
-		int blueTotal = 0;
-		int intensityTotal = 0;
-		int colorCount = 0;
-		if (currentDye != null) {
-			int red = ARGB.red(currentDye.rgb());
-			int green = ARGB.green(currentDye.rgb());
-			int blue = ARGB.blue(currentDye.rgb());
-			intensityTotal += Math.max(red, Math.max(green, blue));
-			redTotal += red;
-			greenTotal += green;
-			blueTotal += blue;
-			++colorCount;
-		}
-
-		for (DyeColor dye : dyes) {
-			int color = dye.getTextureDiffuseColor();
-			int red = ARGB.red(color);
-			int green = ARGB.green(color);
-			int blue = ARGB.blue(color);
-			intensityTotal += Math.max(red, Math.max(green, blue));
-			redTotal += red;
-			greenTotal += green;
-			blueTotal += blue;
-			++colorCount;
-		}
-
-		int red = redTotal / colorCount;
-		int green = greenTotal / colorCount;
-		int blue = blueTotal / colorCount;
-		float averageIntensity = (float) intensityTotal / (float) colorCount;
-		float resultIntensity = (float) Math.max(red, Math.max(green, blue));
-		red = (int) ((float) red * averageIntensity / resultIntensity);
-		green = (int) ((float) green * averageIntensity / resultIntensity);
-		blue = (int) ((float) blue * averageIntensity / resultIntensity);
-		int rgb = ARGB.color(0, red, green, blue);
-		return new Color(rgb);
+		return new Color(DyedItemColor.applyDyes(new DyedItemColor(currentDye.rgb), dyes).rgb());
 	}
 
 	public void addToTooltip(final Item.TooltipContext context, final Consumer<Component> consumer, final TooltipFlag flag, final DataComponentGetter components) {

@@ -7,6 +7,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import dev.coder2195.stellarity.mixin.accessor.EnderDragonFightAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
@@ -59,8 +60,8 @@ public abstract class EndCrystalMixin extends Entity implements ExtEndCrystal {
 				level.setBlock(blockPosition(), Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS);
 			}
 
-			playSound(SoundEvents.GLASS_BREAK, 1, 0.8f);
-			playSound(SoundEvents.AMETHYST_BLOCK_BREAK, 1, 0f);
+			SoundEvents.GLASS.breakSound().ifPresent(s -> playSound(s, 1, 0.8f));
+			SoundEvents.AMETHYST_BLOCK.breakSound().ifPresent(s -> playSound(s, 1, 0f));
 
 			if (shouldDrop(source) && !source.isCreativePlayer())
 				level.addFreshEntity(new ItemEntity(level, getX(), getY(), getZ(), new ItemStack(Items.END_CRYSTAL)));

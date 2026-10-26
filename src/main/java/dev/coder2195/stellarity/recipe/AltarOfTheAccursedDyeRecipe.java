@@ -2,12 +2,14 @@ package dev.coder2195.stellarity.recipe;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.coder2195.stellarity.mixin.accessor.DyedItemColorAccessor;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -65,7 +67,7 @@ public record AltarOfTheAccursedDyeRecipe(Ingredient item) implements AltarOfThe
 		if (target == null || dyes.isEmpty()) return null;
 
 		Color dyedItemColor = target.get(StellarityDataComponents.COLOR);
-		if (dyedItemColor == null) dyedItemColor = new Color(dyes.removeFirst().getTextureDiffuseColor());
+		if (dyedItemColor == null) dyedItemColor = new Color(DyedItemColorAccessor.DYE_COLORS().pick(dyes.removeFirst()));
 
 		target.set(StellarityDataComponents.COLOR, Color.applyDyes(dyedItemColor, dyes));
 

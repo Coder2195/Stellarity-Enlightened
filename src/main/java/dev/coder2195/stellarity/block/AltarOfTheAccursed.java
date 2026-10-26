@@ -2,7 +2,6 @@ package dev.coder2195.stellarity.block;
 
 
 import dev.coder2195.stellarity.block_entity.AltarOfTheAccursedBlockEntity;
-import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
@@ -10,10 +9,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -66,7 +65,7 @@ public class AltarOfTheAccursed extends Block implements EntityBlock {
 	public static final Properties PROPERTIES = Properties.of()
 		.mapColor(MapColor.COLOR_GREEN)
 		.instrument(NoteBlockInstrument.BASEDRUM)
-		.sound(SoundType.GLASS)
+		.sound(BlockSoundSets.GLASS)
 		.lightLevel((_) -> 7)
 		.strength(-1.0F, 6700000.0F)
 		.requiresCorrectToolForDrops();

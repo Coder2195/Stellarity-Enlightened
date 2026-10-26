@@ -7,15 +7,12 @@ inject-interface net/minecraft/world/entity/item/ItemEntity dev/coder2195/stella
 inject-interface net/minecraft/world/entity/projectile/arrow/AbstractArrow dev/coder2195/stellarity/interface_injection/ExtAbstractArrow
 inject-interface net/minecraft/world/level/levelgen/feature/EndSpikeFeature$EndSpike dev/coder2195/stellarity/interface_injection/ExtEndSpike
 inject-interface net/minecraft/world/level/dimension/end/EnderDragonFight dev/coder2195/stellarity/interface_injection/ExtEnderDragonFight
-inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature dev/coder2195/stellarity/interface_injection/ExtLargeDripstoneFeature
-inject-interface net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone dev/coder2195/stellarity/interface_injection/ExtLargeDripstone
 
 accessible class net/minecraft/world/effect/RegenerationMobEffect
 accessible class net/minecraft/server/commands/AdvancementCommands$Action
 accessible class net/minecraft/world/entity/projectile/FishingHook$FishHookState
 accessible class net/minecraft/world/level/levelgen/feature/EndSpikeFeature$SpikeCacheLoader
 accessible class net/minecraft/world/item/enchantment/EnchantmentHelper$EnchantmentInSlotVisitor
-accessible class net/minecraft/world/level/levelgen/feature/LargeDripstoneFeature$LargeDripstone
 accessible class net/minecraft/world/level/levelgen/presets/WorldPresets$Bootstrap
 accessible class net/minecraft/core/Holder$Reference$Type
 extendable class net/minecraft/world/item/equipment/ArmorMaterial

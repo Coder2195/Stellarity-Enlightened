@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.client.renderer.pipeline.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.GameType;
 import dev.coder2195.stellarity.Stellarity;
@@ -19,7 +19,7 @@ public interface StellarityHUDs {
 	Identifier ABILITIES = Stellarity.id("abilities");
 
 	static void init() {
-		HudElementRegistry.attachElementAfter(VanillaHudElements.HOTBAR, ABILITIES, (graphics, deltaTracker) -> {
+		HudElementRegistry.attachElementAfter(VanillaHudElements.HOTBAR, ABILITIES, (graphics) -> {
 			var minecraft = Minecraft.getInstance();
 			var player = minecraft.player;
 			if (player == null) return;

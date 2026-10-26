@@ -35,9 +35,9 @@ public class SatchelSigilModel extends EntityModel<SatchelSigilRenderer.SatchelS
 	public void setupAnim(SatchelSigilRenderer.SatchelSigilRenderState state) {
 		super.setupAnim(state);
 
-		float scale = state.state.equals(SatchelSigil.State.OPENING) ? Mth.clamp(state.elapsedTime / 10, 0, 1) :
+		float scale = state.state.equals(SatchelSigil.State.OPENING) ? Math.clamp(state.elapsedTime / 10, 0, 1) :
 			state.state.equals(SatchelSigil.State.CLOSING) ?
-				Mth.clamp((state.liveTime + SatchelSigil.TRANSITION_DURATION * 2 - state.elapsedTime) / SatchelSigil.TRANSITION_DURATION, 0, 1) : 1;
+				Math.clamp((state.liveTime + SatchelSigil.TRANSITION_DURATION * 2 - state.elapsedTime) / SatchelSigil.TRANSITION_DURATION, 0, 1) : 1;
 
 		top.xScale = top.zScale = bottom.xScale = bottom.zScale = scale;
 		top.yRot = state.elapsedTime / 20;
