@@ -2,8 +2,12 @@ package dev.coder2195.stellarity.util;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.BoundedFloatFunction;
+import net.minecraft.util.CubicSpline;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.block.Block;
@@ -12,6 +16,9 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.*;
+import net.minecraft.world.level.levelgen.densityfunction.DensityFunction;
+import net.minecraft.world.level.levelgen.densityfunction.DensityFunctions;
+import net.minecraft.world.level.levelgen.densityfunction.op.SplineFunction;
 import net.minecraft.world.level.levelgen.feature.BlockColumnFeature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.featuresize.ThreeLayersFeatureSize;
@@ -217,7 +224,7 @@ public interface WorldgenUtil {
 
 	static NormalNoise oldNoise(int baseOctave, double... amplitudeModifiers) {
 		var builder = NormalNoise.builder().setBaseOctave(baseOctave).setOctaveCount(amplitudeModifiers.length);
-		for (int i=0; i<amplitudeModifiers.length; i++) {
+		for (int i = 0; i < amplitudeModifiers.length; i++) {
 			builder.setAmplitudeModifier(i, amplitudeModifiers[i]);
 		}
 		return builder.build();
@@ -279,7 +286,6 @@ public interface WorldgenUtil {
 	static VerticalAnchor absolute(int y) {
 		return VerticalAnchor.absolute(y);
 	}
-	
 
 
 	static BlockPredicate not(BlockPredicate predicate) {
@@ -313,4 +319,30 @@ public interface WorldgenUtil {
 	static Holder<BlockStateProvider> randIntState(Block block, IntegerProperty property, IntProvider num) {
 		return Holder.direct(new RandomizedIntStateProvider(blockRaw(block), property, num));
 	}
+
+	static DensityFunctions.HolderHolder densityFunction(HolderGetter<DensityFunction> densityFunctions, ResourceKey<DensityFunction> key) {
+		return new DensityFunctions.HolderHolder(densityFunctions.getOrThrow(key));
+	}
+
+	static SplineFunction.Coordinate splineCoord(DensityFunction densityFunction) {
+		return new SplineFunction.Coordinate(densityFunction);
+	}
+
+	static SplineFunction.Coordinate splineCoord(HolderGetter<DensityFunction> densityFunctions, ResourceKey<DensityFunction> key) {
+		return splineCoord(densityFunction(densityFunctions, key));
+	}
+
+	static <I extends BoundedFloatFunction<?>> CubicSpline.Multipoint.Point<I> splinePoint(float location, CubicSpline<I> value, float derivative) {
+		return new CubicSpline.Multipoint.Point<>(location, value, derivative);
+	}
+
+	static <I extends BoundedFloatFunction<?>> CubicSpline.Multipoint.Point<I> splinePoint(float location, float value, float derivative) {
+		return new CubicSpline.Multipoint.Point<>(location, splineConstant(value), derivative);
+	}
+
+	static <I> CubicSpline<I> splineConstant(float value) {
+		return CubicSpline.constant(value);
+	}
+
+
 }

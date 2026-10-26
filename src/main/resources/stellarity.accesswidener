@@ -21,3 +21,4 @@ extendable class net/minecraft/world/level/block/grower/TreeGrower
 extendable method net/minecraft/world/item/ToolMaterial createSwordAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;
 extendable method net/minecraft/world/item/ToolMaterial createToolAttributes (FF)Lnet/minecraft/world/item/component/ItemAttributeModifiers;
 accessible method net/minecraft/data/BlockFamily <init> (Lnet/minecraft/world/level/block/Block;)V
+accessible class net/minecraft/util/CubicSpline$Multipoint$Point

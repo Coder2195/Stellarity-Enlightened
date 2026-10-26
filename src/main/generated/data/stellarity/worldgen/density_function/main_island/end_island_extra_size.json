@@ -1,7 +1,7 @@
 {
-  "type": "cache",
+  "type": "minecraft:cache",
   "input": {
-    "type": "add",
+    "type": "minecraft:add",
     "left": {
       "type": "minecraft:end_outer_islands"
     },

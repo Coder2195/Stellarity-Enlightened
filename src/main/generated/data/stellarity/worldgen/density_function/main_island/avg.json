@@ -1,7 +1,6 @@
 {
   "type": "minecraft:mul",
-  "left": 0.0625,
-  "right": {
+  "left": {
     "type": "minecraft:add",
     "left": {
       "type": "minecraft:add",
@@ -61,5 +60,6 @@
         }
       }
     }
-  }
+  },
+  "right": 0.0625
 }

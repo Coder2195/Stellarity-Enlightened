@@ -4,40 +4,40 @@
     "coordinate": "minecraft:end/islands",
     "points": [
       {
+        "derivative": 1.0,
         "location": -0.5,
-        "derivative": 1,
         "value": -0.5
       },
       {
-        "location": 0,
-        "derivative": 1,
+        "derivative": 1.0,
+        "location": 0.0,
         "value": {
           "coordinate": {
             "type": "minecraft:abs",
             "input": {
               "type": "minecraft:noise",
               "noise": "stellarity:main_island/shaper_1",
-              "xz_scale": 1,
-              "y_scale": 1
+              "xz_scale": 1.0,
+              "y_scale": 1.0
             }
           },
           "points": [
             {
-              "location": 0,
-              "derivative": 1,
+              "derivative": 1.0,
+              "location": 0.0,
               "value": 0.25
             },
             {
-              "location": 0,
-              "derivative": -1,
+              "derivative": -1.0,
+              "location": 0.0,
               "value": 0.25
             }
           ]
         }
       },
       {
+        "derivative": 1.0,
         "location": 0.5,
-        "derivative": 1,
         "value": 0.5
       }
     ]

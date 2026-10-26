@@ -2,25 +2,25 @@
   "type": "minecraft:square",
   "input": {
     "type": "minecraft:mul",
-    "left": 345.0,
-    "right": {
+    "left": {
       "type": "minecraft:add",
       "left": {
         "type": "minecraft:noise",
-        "noise": "stellarity:main_island/n10",
+        "noise": "stellarity:main_island/n3",
         "xz_scale": 1.0,
         "y_scale": 0.0
       },
       "right": {
         "type": "minecraft:mul",
-        "left": -1.0,
-        "right": {
+        "left": {
           "type": "minecraft:noise",
-          "noise": "stellarity:main_island/n10",
+          "noise": "stellarity:main_island/n3",
           "xz_scale": 0.95,
           "y_scale": 0.0
-        }
+        },
+        "right": -1.0
       }
-    }
+    },
+    "right": 345.0
   }
 }
