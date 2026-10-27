@@ -1,5 +1,6 @@
 package dev.coder2195.stellarity.util;
 
+import dev.coder2195.stellarity.mixin.accessor.CubicSplineMultipointAccessor;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -328,6 +329,16 @@ public interface WorldgenUtil {
 		return new SplineFunction.Coordinate(densityFunction);
 	}
 
+	static DensityFunctions.HolderHolder densityFunction(Holder<DensityFunction> densityFunction) {
+		return new DensityFunctions.HolderHolder(densityFunction);
+	}
+
+	static SplineFunction.Coordinate splineCoord(Holder<DensityFunction> densityFunction) {
+		return new SplineFunction.Coordinate(densityFunction(densityFunction));
+	}
+
+
+
 	static SplineFunction.Coordinate splineCoord(HolderGetter<DensityFunction> densityFunctions, ResourceKey<DensityFunction> key) {
 		return splineCoord(densityFunction(densityFunctions, key));
 	}
@@ -342,6 +353,12 @@ public interface WorldgenUtil {
 
 	static <I> CubicSpline<I> splineConstant(float value) {
 		return CubicSpline.constant(value);
+	}
+
+	static <I extends BoundedFloatFunction<?>> CubicSpline.Multipoint<I> spline(
+		final I coordinate, final List<CubicSpline.Multipoint.Point<I>> points
+	) {
+		return CubicSplineMultipointAccessor.createFromPoints(coordinate, points);
 	}
 
 

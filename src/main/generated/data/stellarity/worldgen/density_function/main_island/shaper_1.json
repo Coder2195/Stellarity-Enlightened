@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:mul",
+  "left": {
+    "type": "minecraft:noise",
+    "noise": "stellarity:main_island/shaper_2",
+    "shift_x": {
+      "type": "minecraft:mul",
+      "left": {
+        "type": "minecraft:noise",
+        "noise": "stellarity:main_island/shift_x",
+        "xz_scale": 2.0,
+        "y_scale": 4.0
+      },
+      "right": 300.0
+    },
+    "shift_y": {
+      "type": "minecraft:mul",
+      "left": {
+        "type": "minecraft:noise",
+        "noise": "stellarity:main_island/shift_y",
+        "xz_scale": 1.0,
+        "y_scale": 2.0
+      },
+      "right": 150.0
+    },
+    "shift_z": {
+      "type": "minecraft:mul",
+      "left": {
+        "type": "minecraft:noise",
+        "noise": "stellarity:main_island/shift_z",
+        "xz_scale": 2.0,
+        "y_scale": 4.0
+      },
+      "right": 300.0
+    },
+    "xz_scale": 2.0,
+    "y_scale": 1.0
+  },
+  "right": 2.0
+}

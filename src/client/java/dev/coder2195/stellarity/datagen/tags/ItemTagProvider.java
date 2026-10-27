@@ -44,6 +44,9 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 	@Override
 	public void addTags(HolderLookup.Provider provider) {
 		new BlockItemTagProvider<>(this::addTags, true).run();
+
+		addTags(ItemTags.FISHING_ENCHANTABLE).add(FISHER_OF_VOIDS);
+
 		addTags(StellarityItemTags.FISHES).add(
 			AMETHYST_BUDFISH,
 			BUBBLEFISH,

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:mul",
+  "left": {
+    "type": "minecraft:quarter_negative",
+    "input": {
+      "type": "minecraft:mul",
+      "left": "stellarity:climate/depth",
+      "right": {
+        "type": "minecraft:cache",
+        "input": "stellarity:factor"
+      }
+    }
+  },
+  "right": 4.0
+}

@@ -6,22 +6,22 @@
       "type": "minecraft:gradient",
       "axis": "y",
       "from_coordinate": 0,
+      "from_value": 0.0,
       "to_coordinate": 256,
-      "from_value": 0,
-      "to_value": 256
+      "to_value": 256.0
     },
-    "min_inclusive": 0,
-    "max_exclusive": 1,
-    "when_in_range": 2,
+    "max_exclusive": 1.0,
+    "min_inclusive": 0.0,
+    "when_in_range": 2.0,
     "when_out_of_range": {
       "type": "minecraft:mul",
       "left": {
         "type": "minecraft:gradient",
         "axis": "y",
         "from_coordinate": 24,
+        "from_value": -2.0,
         "to_coordinate": 256,
-        "from_value": -2,
-        "to_value": 2
+        "to_value": 2.0
       },
       "right": "stellarity:offset"
     }

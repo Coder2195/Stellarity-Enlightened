@@ -36,6 +36,9 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(VillagerTradeTagProvider::new);
 		pack.addProvider(VillagerProfessionTagProvider::new);
 		pack.addProvider(ArchaeologyLootTableProvider::new);
+		pack.addProvider(EnchantmentTagProvider::new);
+		pack.addProvider(PaintingTagProvider::new);
+		pack.addProvider(TimelineTagProvider::new);
 		pack.addProvider(FishingLootTableProvider::new);
 		pack.addProvider(ChestLootTableProvider::new);
 		pack.addProvider(EquipmentAssetProvider::new);
