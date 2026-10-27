@@ -5,6 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.templatesystem.CornerConstraint;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
@@ -16,7 +17,9 @@ import java.util.Optional;
 @Mixin(SinglePoolElement.class)
 public interface SinglePoolElementAccessor {
 	@Invoker("<init>")
-	static SinglePoolElement create(final Either<Identifier, StructureTemplate> template, final Holder<StructureProcessorList> processors, final StructureTemplatePool.Projection projection, final Optional<LiquidSettings> overrideLiquidSettings) {
+	static SinglePoolElement create(final Either<Identifier, StructureTemplate> template, final Holder<StructureProcessorList> processors, final StructureTemplatePool.Projection projection, final Optional<LiquidSettings> overrideLiquidSettings, Optional<CornerConstraint> cornerConstraint) {
 		throw new AssertionError("Not transformed!");
 	}
+
+
 }

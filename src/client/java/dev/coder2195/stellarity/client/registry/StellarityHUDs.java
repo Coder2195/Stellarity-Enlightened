@@ -1,17 +1,17 @@
 package dev.coder2195.stellarity.client.registry;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.item.CopperElektraShield;
 import dev.coder2195.stellarity.item.StellarStriker;
+import dev.coder2195.stellarity.registry.StellarityDataComponents;
+import dev.coder2195.stellarity.registry.StellarityItems;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudStatusBarHeightRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.pipeline.RenderPipelines;
+import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.GameType;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.StellarityDataComponents;
-import dev.coder2195.stellarity.registry.StellarityItems;
-import dev.coder2195.stellarity.item.CopperElektraShield;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public interface StellarityHUDs {
 				graphics.fill(left, screenBottom - offset - 2, right, screenBottom - offset + 1, 0x88888888);
 				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, 0xFFE0976B);
 				for (double percentage: List.of(1d/3, 2d/3, 1d))
-					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16, percentageCharged < percentage ? 0xff888888 : 0xffffffff);
+					graphics.blit(GuiPipeline.TEXTURED, Stellarity.mcId("textures/mob_effect/speed.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 8, 0, 0, 16, 16, 16, 16, percentageCharged < percentage ? 0xff888888 : 0xffffffff);
 
 
 				graphics.item(item, left - 8, screenBottom - offset - 8);
@@ -72,7 +72,7 @@ public interface StellarityHUDs {
 				graphics.fill(left, screenBottom - offset - 2, left + progress, screenBottom - offset + 1, disabled ? 0x88aa4444 : 0xFFE0976B);
 
 				for (double percentage: StellarStriker.STAR_PERCENTAGES) {
-					graphics.blit(RenderPipelines.GUI_TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16, disabled ? 0xff880000 : percentageCharged < percentage ? 0xff888888 : 0xffffffff);
+					graphics.blit(GuiPipeline.TEXTURED, Stellarity.mcId("textures/item/nether_star.png"), (int) (left + distance * percentage - 8), screenBottom - offset - 9, 0, 0, 16, 16, 16, 16, disabled ? 0xff880000 : percentageCharged < percentage ? 0xff888888 : 0xffffffff);
 				}
 
 				graphics.item(item, left - 10, screenBottom - offset - 8);
