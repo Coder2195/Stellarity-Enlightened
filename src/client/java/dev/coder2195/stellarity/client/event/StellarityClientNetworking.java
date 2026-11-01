@@ -4,6 +4,7 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.client.gui.screen.ConfigScreen;
 import dev.coder2195.stellarity.networking.*;
 import dev.coder2195.stellarity.registry.StellaritySoundEvents;
+import dev.coder2195.stellarity.util.VectorUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.*;
@@ -43,7 +44,11 @@ public interface StellarityClientNetworking {
 
 		var fromPosition = packet.fromPosition();
 		var toPosition = packet.toPosition();
+		var deltaVector = toPosition.subtract(fromPosition);
+		var normalDelta = deltaVector.normalize();
 		var hasFire = packet.hasFire();
+
+		ParticleOptions[] SPIRIT_COLORS = {new DustParticleOptions(0x97e1e4, 1.2f), new DustParticleOptions(0xc156cf, 1.2f), new DustParticleOptions(0xffe70c, 1.2f)};
 
 		for (ParticleOptions particle : List.of(ColorParticleOption.create(ParticleTypes.FLASH, 0xffffffff), ParticleTypes.EXPLOSION))
 			level.addAlwaysVisibleParticle(particle, true, toPosition.x, toPosition.y, toPosition.z, 0, 0, 0);
@@ -61,6 +66,27 @@ public interface StellarityClientNetworking {
 		if (hasFire) for (int i = 0; i < 21; i++) {
 			var particlePos = toPosition.add(new Vec3(random.nextGaussian() * 1.5, 0, random.nextGaussian() * 1.5));
 			level.addAlwaysVisibleParticle(ParticleTypes.FLAME, true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
+		}
+
+		double distance = 1 / fromPosition.distanceTo(toPosition);
+
+
+		for (double d = 0; d <= 1; d += distance) {
+			double originX = fromPosition.x + deltaVector.x * d;
+			double originY = fromPosition.y + deltaVector.y * d;
+			double originZ = fromPosition.z + deltaVector.z * d;
+			for (int i = 0; i < 20; i++) {
+				var particle = SPIRIT_COLORS[random.nextInt(SPIRIT_COLORS.length)];
+				var box = VectorUtil.relativeToNormalPlane(deltaVector, new Vec3(random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1));
+
+
+				level.addAlwaysVisibleParticle(particle, true,
+					originX + box.x,
+					originY + box.y,
+					originZ + box.z,
+					0, 0, 0
+				);
+			}
 		}
 
 		level.playLocalSound(toPosition.x, toPosition.y, toPosition.z, StellaritySoundEvents.SPIRIT_DAGGER_SLASH, SoundSource.PLAYERS, 1, 1, false);

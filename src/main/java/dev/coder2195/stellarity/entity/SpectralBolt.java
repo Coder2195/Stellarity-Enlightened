@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.entity;
 
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.util.FloralBloom;
+import dev.coder2195.stellarity.util.VectorUtil;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -88,17 +89,18 @@ public class SpectralBolt extends AbstractArrow {
 
 	private void drawTrail(Vec3 target) {
 		var level = level();
+		if (posOld == null) {
+			posOld = target;
+			return;
+		}
 		var delta = target.subtract(posOld);
 		var steps = delta.length() / 0.25;
 		var stepVec = delta.scale(1 / steps);
 
-		var move = delta.normalize();
-		var helper = Math.abs(move.x) > 0.9 ? new Vec3(0, 0, 100) : new Vec3(100, 0, 0);
-		var perpendicular = helper.cross(move);
 		for (int i = 0; i < steps; i++) {
-			var normal = move.cross(perpendicular).scale(Math.cos(spin)).add(perpendicular.scale(Math.sin(spin))).normalize().scale(0.5);
-			var particle1 = posOld.add(normal);
-			var particle2 = posOld.add(normal.scale(-1));
+			var relative = VectorUtil.relativeToNormalPlane(delta, new Vec3(0, 0, 1).yRot(spin));
+			var particle1 = posOld.add(relative);
+			var particle2 = posOld.add(relative.scale(-1));
 			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, particle1.x, particle1.y, particle1.z, 0, 0, 0);
 			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, particle2.x, particle2.y, particle2.z, 0, 0, 0);
 
