@@ -28,6 +28,12 @@ Structure Update
 
 **[+] Spirit**
 
+**[*] Spectral Bolt**
+- Fixes correct texture
+
+**[*] All Arrows**
+- Fixes bug where floral bloom would apply regardless of armor
+
 ## Mechanics
 **[*] Worldgen**
 - Synchronized with Stellarity worldgen, hopefully removing the end walls bug.

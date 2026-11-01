@@ -27,12 +27,12 @@ import java.util.Map;
 
 @SuppressWarnings("NonExtendableApiUsage")
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixinf extends Entity implements AttachmentTarget {
+public abstract class LivingEntityMixin extends Entity implements AttachmentTarget {
 
 	@Shadow
 	public abstract boolean isDeadOrDying();
 
-	public LivingEntityMixinf(EntityType<?> type, Level level) {
+	public LivingEntityMixin(EntityType<?> type, Level level) {
 		super(type, level);
 	}
 

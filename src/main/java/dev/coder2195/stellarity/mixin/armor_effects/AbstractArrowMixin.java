@@ -41,10 +41,10 @@ public abstract class AbstractArrowMixin extends Projectile implements ExtAbstra
 	private void applyFloralBloom(LivingEntity mob, CallbackInfo ci) {
 		var level = level();
 		if (level.isClientSide()) return;
+		if (!(getOwner() instanceof LivingEntity ownerEntity && ArmorEffectsHelper.isFullFloralArmor(ownerEntity))) return;
 
 		var floralBloom = mob.getAttached(StellarityDataAttachments.FLORAL_BLOOM);
 		var applier = stellarity$getFloralBloomApplier();
-		if (applier == null) return;
 
 		mob.setAttached(StellarityDataAttachments.FLORAL_BLOOM, new FloralBloom(
 			floralBloom == null ? applier.baseDamage() : floralBloom.damage() + applier.damageStack(),
