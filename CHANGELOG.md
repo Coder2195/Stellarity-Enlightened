@@ -2,7 +2,12 @@
 
 Structure Update
 
-## Item
+## Blocks
+
+**[*] Colored Hallow Leaves**
+- Gave the leaves a loot table
+
+## Items
 **[*] End Village Map**
 - Has its own decoration now
 - Uses item modifier `end_village_map` available for use in datapacks

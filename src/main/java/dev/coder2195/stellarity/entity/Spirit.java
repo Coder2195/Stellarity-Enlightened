@@ -146,12 +146,12 @@ public class Spirit extends Entity {
 			particlePos = eyePosition.add(new Vec3(0, 0, -0.75).yRot(0.1f * liveTime));
 			level.addAlwaysVisibleParticle(dust, true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
 
-			particlePos = eyePosition.add(new Vec3(random.nextDouble() * 6 - 3, random.nextDouble() * 6 - 3, random.nextDouble() * 6 - 3));
+			particlePos = eyePosition.add(new Vec3(random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1));
 			level.addAlwaysVisibleParticle(new DustParticleOptions(0xc156cf, 1), true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
 
 			var dragonBreath = PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
 			for (int i = 0; i < 3; i++) {
-				particlePos = eyePosition.add(new Vec3(random.nextDouble() * 6 - 3, random.nextDouble() * 6 - 3, random.nextDouble() * 6 - 3));
+				particlePos = eyePosition.add(new Vec3(random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1, random.nextDouble() * 2 - 1));
 				level.addAlwaysVisibleParticle(dragonBreath, true, particlePos.x, particlePos.y, particlePos.z, 0, 0, 0);
 			}
 			return;
@@ -262,6 +262,12 @@ public class Spirit extends Entity {
 	@Override
 	public void onClientRemoval() {
 		var level = this.level();
+		var position = position();
+
+		for (int i = 0; i < 25; i++) {
+			level.addAlwaysVisibleParticle(ParticleTypes.FIREWORK, true, position.x, position.y + 1, position.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.5);
+		}
+		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, true, position.x, position.y, position.z, 0, 0, 0);
 
 		super.onClientRemoval();
 	}

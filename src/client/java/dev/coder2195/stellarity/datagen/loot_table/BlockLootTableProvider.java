@@ -13,6 +13,7 @@ import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
 import static dev.coder2195.stellarity.registry.StellarityItems.ENDERITE_SHARD;
@@ -66,14 +67,14 @@ public class BlockLootTableProvider extends FabricBlockLootSubProvider {
 		INFERNO_DOOR,
 	};
 
-	private static final List<Tuple2<Block, Block>> LEAVES = List.of(
+	private static final List<Tuple2<Block, Block>> LEAVES = Stream.concat(Stream.of(
 		new Tuple2<>(StellarityBlocks.AMETHYII_LEAVES, StellarityBlocks.AMETHYII_SAPLING),
 		new Tuple2<>(StellarityBlocks.HALLOWED_LEAVES, StellarityBlocks.HALLOWED_SAPLING),
 		new Tuple2<>(StellarityBlocks.SHRUBBED_LEAVES, StellarityBlocks.SHRUBBED_SAPLING),
 		new Tuple2<>(StellarityBlocks.PRISMATIC_LEAVES, StellarityBlocks.PRISMATIC_SAPLING),
 		new Tuple2<>(StellarityBlocks.ASHEN_LEAVES, StellarityBlocks.ASHEN_SAPLING),
 		new Tuple2<>(StellarityBlocks.INFERNO_LEAVES, StellarityBlocks.INFERNO_SAPLING)
-	);
+	), COLORED_HALLOWED_LEAVES.map(b->new Tuple2<>(b, HALLOWED_SAPLING)).asList().stream()).toList();
 
 	@Override
 	public void generate() {
