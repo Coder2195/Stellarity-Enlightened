@@ -79,7 +79,7 @@ for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/struct
 			block = palette_item["Name"]
 			if not isinstance(block, StringTag): continue
 			block = str(block)
-			if block in ["minecraft:dirt", "dirt", "minecraft:grass_block", "grass_block", "minecraft:coarse_dirt", "coarse_dirt", "minecraft:rooted_dirt", "rooted_dirt"]:
+			if block in oldBlockMap.keys():
 				print("DETECTED OLD BLOCK", block, "in", resolved_path)
 				palette_item["Name"] = StringTag(oldBlockMap[block])
 				save = True
