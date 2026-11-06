@@ -2,7 +2,6 @@ import os
 import pathlib
 
 from pydub import AudioSegment
-from pydub.playback import play
 from pydub.utils import ratio_to_db
 
 pathlib.Path("input_audio").mkdir(exist_ok=True)
@@ -29,14 +28,30 @@ def mc(path: str,  volume: float, pitch: float):
 
 
 def check_stereo():
-	for root, dirs, files in os.walk("src/main/resources/assets/stellarity/sounds/", topdown=False):
+	reduced_sizes = 0
+	for root, dirs, files in os.walk("../src/main/resources/assets/stellarity/sounds/"):
 		for name in files:
 			path_joined = os.path.join(root, name)
 			if not path_joined.endswith(".ogg"): continue
-			channels = AudioSegment.from_ogg(path_joined).channels
+			audio_segment = AudioSegment.from_ogg(path_joined)
+			channels = audio_segment.channels
 			if channels == 1: continue
 
-			print(path_joined, channels, "NOT REMOVING BECAUSE STEREO IN NAME" if "stereo" in path_joined else "")
+			if "stereo" in path_joined:
+				continue
+
+			prev_size = os.path.getsize(path_joined)
+
+
+			audio_segment = audio_segment.set_channels(1).set_frame_rate(32000)
+			audio_segment.export(path_joined, format="ogg", bitrate="64k")
+
+			new_size = os.path.getsize(path_joined)
+			print(f"{path_joined} size from {prev_size / 1000}kb to {new_size/1000}kb ({new_size / prev_size * 100}% of original size)")
+			reduced_sizes -= (prev_size - new_size)
+
+	print(f"reduced {reduced_sizes/1000}kb")
+
 
 check_stereo()
 
