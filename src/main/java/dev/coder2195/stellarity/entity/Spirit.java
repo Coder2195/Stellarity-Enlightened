@@ -33,7 +33,9 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
@@ -110,6 +112,14 @@ public class Spirit extends Entity {
 		return owner == null ? null : owner.getEntity(level(), LivingEntity.class);
 	}
 
+	public boolean isOwnerCanSee(LivingEntity candidate) {
+		var owner = getOwner();
+		if (owner == null || !owner.is(candidate)) return false;
+		return level().clip(new ClipContext(candidate.getEyePosition(), this.getEyePosition(), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty())).getType() == HitResult.Type.MISS;
+	}
+
+
+
 	// transplanted from vanilla mc for being in livingEntityClass
 	public boolean isLookingAtMe(
 		final LivingEntity target, final double coneSize, final boolean adjustForDistance, final boolean seeThroughTransparentBlocks, final double... gazeHeights
@@ -169,7 +179,7 @@ public class Spirit extends Entity {
 		var offHand = owner.getOffhandItem();
 		if (!mainHand.is(StellarityItemTags.SPIRIT_DAGGERS) || !offHand.is(StellarityItemTags.SPIRIT_DAGGERS)) return;
 
-		if (isLookingAtMe(owner, 0.025, true, false, this.getEyeY())) {
+		if (isLookingAtMe(owner, 0.1, true, false, this.getEyeY())) {
 			lookedAtTicks++;
 		} else {
 			lookedAtTicks = 0;
