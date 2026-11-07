@@ -927,7 +927,7 @@ public interface StellarityFeatures {
 			block(HALLOWED_WOOD), new StraightTrunkPlacer(17, 6, 9),
 			blocks(property(leaves._1(), BlockStateProperties.PERSISTENT, true)), new MegaPineFoliagePlacer(numRaw(0, 1), numRaw(0), numRaw(12, 24)),
 			Optional.of(new MangroveRootPlacer(
-				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(STRIPPED_SPRUCE_WOOD), 0.5f)),
+				numRaw(0), block(HALLOWED_WOOD), Optional.of(new AboveRootPlacement(block(HALLOWED_WOOD), 0.5f)),
 				new MangroveRootPlacement(worldGenGrassBlock, worldGenDirt, block(STONE), 1, 3, 0.1f)
 			)), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);

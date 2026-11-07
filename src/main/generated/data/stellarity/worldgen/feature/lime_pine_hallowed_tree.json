@@ -43,7 +43,7 @@
     "above_root_placement": {
       "above_root_placement_chance": 0.5,
       "above_root_provider": {
-        "id": "minecraft:stripped_spruce_wood",
+        "id": "stellarity:hallowed_wood",
         "properties": {
           "axis": "y"
         }

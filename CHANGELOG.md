@@ -47,6 +47,7 @@ Structure Update
 - Synchronized with Stellarity worldgen, hopefully removing the end walls bug
 - Fixes [#5](https://github.com/Coder2195/Stellarity-Enlightened/issues/5) by adding biome tags and seperate deferred features in order to mitigate these issues
 - Red Hallowed Trees spawn weeping vines with nether wart for support
+- Fixes a bug with the wrong wood type generating for trees
 
 
 ## Structure
