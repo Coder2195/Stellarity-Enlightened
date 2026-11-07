@@ -485,6 +485,8 @@ public class ChestLootTableProvider extends SimpleFabricLootTableSubProvider {
 		);
 	}
 
+
+
 	@Override
 	public void run() {
 

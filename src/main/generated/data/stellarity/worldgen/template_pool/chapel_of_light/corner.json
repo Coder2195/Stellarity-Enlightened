@@ -1,0 +1,15 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel_of_light/corner",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:chapel_of_light_flowers",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

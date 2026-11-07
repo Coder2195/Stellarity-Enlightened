@@ -72,6 +72,11 @@ public interface StellarityLootTables {
 	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_COMMON = id("end_shipwreck/archaeology/common");
 	ResourceKey<LootTable> END_SHIPWRECK_ARCHAEOLOGY_RARE = id("end_shipwreck/archaeology/rare");
 
+	ResourceKey<LootTable> CHAPEL_OF_LIGHT_EQUIPMENT = id("chapel_of_light/equipment");
+	ResourceKey<LootTable> CHAPEL_OF_LIGHT_GARDEN = id("chapel_of_light/garden");
+	ResourceKey<LootTable> CHAPEL_OF_LIGHT_POT = id("chapel_of_light/pot");
+
+
 
 	static ResourceKey<LootTable> id(String id) {
 		return Stellarity.key(Registries.LOOT_TABLE, id);

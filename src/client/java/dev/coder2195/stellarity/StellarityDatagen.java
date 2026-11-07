@@ -44,6 +44,7 @@ public class StellarityDatagen implements DataGeneratorEntrypoint {
 		pack.addProvider(EquipmentAssetProvider::new);
 		pack.addProvider(BlockLootTableProvider::new);
 		pack.addProvider(EntityLootTableProvider::new);
+		pack.addProvider(GenericLootTableProvider::new);
 	}
 
 

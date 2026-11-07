@@ -1,6 +1,8 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.util.tuple.Tuple2;
+import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -9,6 +11,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.rule.blockentity.AppendLoot;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static dev.coder2195.stellarity.registry.StellarityBlocks.COARSE_ENDER_DIRT;
 import static dev.coder2195.stellarity.registry.StellarityBlocks.ENDER_DIRT;
@@ -21,6 +24,8 @@ public interface StellarityProcessorLists {
 	ResourceKey<StructureProcessorList> END_VILLAGE_FLOWERING_AZALEA_LEAVES = id("end_village_flowering_azalea_leaves");
 	ResourceKey<StructureProcessorList> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
 	ResourceKey<StructureProcessorList> END_SHIPWRECK = id("end_shipwreck");
+	ResourceKey<StructureProcessorList> CHAPEL_OF_LIGHT_FLOWERS = id("chapel_of_light_flowers");
+	ResourceKey<StructureProcessorList> IGNORE_STRUCTURE_VOID = id("ignore_structure_void");
 
 	static void bootstrap(BootstrapContext<StructureProcessorList> context) {
 
@@ -83,6 +88,29 @@ public interface StellarityProcessorLists {
 			)), numRaw(10, 18)),
 			new BlockIgnoreProcessor(List.of(STRUCTURE_VOID))
 		)));
+
+		context.register(CHAPEL_OF_LIGHT_FLOWERS, new StructureProcessorList(List.of(
+			new BlockIgnoreProcessor(List.of(STRUCTURE_VOID, STRUCTURE_BLOCK, BARRIER)),
+			new RuleProcessor(Stream.of(
+				new Tuple3<>(DANDELION, 0.4f, POPPY),
+				new Tuple3<>(DANDELION, 0.4f, BLUE_ORCHID),
+				new Tuple3<>(DANDELION, 0.4f, ALLIUM),
+				new Tuple3<>(DANDELION, 0.2f, AIR),
+				new Tuple3<>(DANDELION, 0.4f, TALL_GRASS),
+				new Tuple3<>(DANDELION, 0.4f, FERN),
+				new Tuple3<>(POPPY, 0.4f, ALLIUM),
+				new Tuple3<>(POPPY, 0.4f, TORCHFLOWER),
+				new Tuple3<>(POPPY, 0.4f, BAMBOO_SAPLING),
+				new Tuple3<>(POPPY, 0.4f, CHERRY_SAPLING),
+				new Tuple3<>(PINK_TULIP, 0.4f, WHITE_TULIP),
+				new Tuple3<>(PINK_TULIP, 0.4f, RED_TULIP),
+				new Tuple3<>(PINK_TULIP, 0.4f, ORANGE_TULIP)
+			).map(b ->
+				new ProcessorRule(new RandomBlockMatchTest(b._1(), b._2()), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE, from(b._3()))
+			).toList())
+		)));
+
+
 	}
 
 	private static ResourceKey<StructureProcessorList> id(String id) {
