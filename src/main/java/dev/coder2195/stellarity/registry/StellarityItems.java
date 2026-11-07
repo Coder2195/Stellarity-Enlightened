@@ -113,6 +113,7 @@ public interface StellarityItems {
 	Item ENDERITE_ORE = registerBlock(StellarityBlockItemIds.ENDERITE_ORE, StellarityBlocks.ENDERITE_ORE);
 	Item COARSE_ENDER_DIRT = registerBlock(StellarityBlockItemIds.COARSE_ENDER_DIRT, StellarityBlocks.COARSE_ENDER_DIRT);
 	ColorCollection<Item> COLORED_HALLOWED_LEAVES = ColorCollection.zipMap(StellarityBlockItemIds.COLORED_HALLOWED_LEAVES, StellarityBlocks.COLORED_HALLOWED_LEAVES, StellarityItems::registerBlock);
+	Item ALTAR_OF_THE_SACRED = registerBlock(StellarityBlockItemIds.ALTAR_OF_THE_SACRED, StellarityBlocks.ALTAR_OF_THE_SACRED);
 
 	Item AMETHYII_PLANKS = registerBlock(StellarityBlockItemIds.AMETHYII_PLANKS, StellarityBlocks.AMETHYII_PLANKS);
 	Item AMETHYII_SAPLING = registerBlock(StellarityBlockItemIds.AMETHYII_SAPLING, StellarityBlocks.AMETHYII_SAPLING);
@@ -507,6 +508,7 @@ public interface StellarityItems {
 	Item THE_END = register(StellarityItemIds.THE_END, SpiritDagger::new,  new Item.Properties().sword(StellarityToolMaterials.THE_END, 3, -2f));
 
 
+
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
 		return register(key, (props) -> new BoatItem(type, props), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
 	}
@@ -744,6 +746,7 @@ public interface StellarityItems {
 		put(SHARANGA, 0xFF6B6B);
 		put(TAMARIS, 0x9936D6);
 //		put(FLUFFY_HAMMER, 0x9936D6);
+		put(ALTAR_OF_THE_SACRED, 0xFFD655);
 	}};
 
 	static void init() {

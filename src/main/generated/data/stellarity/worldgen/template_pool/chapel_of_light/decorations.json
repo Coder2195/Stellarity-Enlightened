@@ -1,0 +1,105 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/lamp_1",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 13
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/lamp_2",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 11
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/lamp_3",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 9
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/rock_1",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/rock_2",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/fountain",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 7
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/pots_1",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 10
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/pots_2",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 10
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/pots_3",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 9
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/decorations/pots_4",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 9
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

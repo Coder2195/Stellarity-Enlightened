@@ -10,52 +10,52 @@ loot_tables = ["dungeon", "exit_portal", "campsite/trash", "campsite/food", "cam
                "end_village/toolsmith", "end_village/tree_farm_1", "end_village/tree_farm_2", "end_village/weaponsmith",
                "end_village/house/bookworm", "end_village/house/common", "end_village/house/lush", "end_village/house/music", "end_village/house/regular", "end_village/house/regular_shulker_box", "end_village/house/warped", "end_village/center/aether", "end_village/center/town_hall", "end_village/center/market/baker", "end_village/center/market/enchants", "end_village/center/market/explorer", "end_shipwreck/maps", "end_shipwreck/supplies", "end_shipwreck/treasure", "end_shipwreck/archaeology/dunes/common", "end_shipwreck/archaeology/dunes/rare", "end_shipwreck/archaeology/normal/common", "end_shipwreck/archaeology/normal/rare", "chapel_of_light/pot", "chapel_of_light/garden", "chapel_of_light/equipment"]
 
-# for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/structure/end_shipwreck"):
-# 	for file in files:
-# 		resolved_path = os.path.join(root, file)
-# 		print("tested: " + str(resolved_path))
-#
-# 		tag = amulet_nbt.load(resolved_path).tag
-#
-# 		save = False
-# 		for block in typing.cast(CompoundTag, tag).get_list("blocks"):
-# 			if "nbt" not in block.keys(): continue
-#
-# 			nbt = block.get_compound("nbt")
-#
-# 			if "LootTable" in nbt.keys():
-# 				loot_table = str(nbt.get_string("LootTable"))
-#
-# 				print(f"loot table in {resolved_path}: {loot_table}")
-#
-# 				nbt["LootTable"] = StringTag(loot_table.replace("stellarity:shipwreck", "stellarity:end_shipwreck"))
-# 				save = True
-#
-# 				print(f"broken loot table in {resolved_path}: {loot_table}")
-#
-# 			if "pool" in nbt.keys():
-# 				pool = str(nbt.get_string("pool"))
-#
-# 				print(f"pool in {resolved_path}: {pool}")
-# 				if "stellarity:shipwreck" not in pool: continue
-#
-# 				nbt["pool"] = StringTag(pool.replace("stellarity:shipwreck", "stellarity:end_shipwreck"))
-# 				save = True
-#
-# 				print(f"broken pool in {resolved_path}: {pool}")
-#
-# 			if "name" in nbt.keys():
-# 				name = str(nbt.get_string("name"))
-#
-# 				print(f"jigsaw name in {resolved_path}: {name}")
-# 				if "stellarity:shipwreck" not in name: continue
-#
-# 				nbt["name"] = StringTag(name.replace("stellarity:shipwreck", "stellarity:end_shipwreck"))
-# 				save = True
-#
-# 				print(f"broken structure name in {resolved_path}: {name}")
-# 		if save:
-# 			tag.save_to(resolved_path)
+for (root, dirs, files) in os.walk("../src/main/resources/data/stellarity/structure/chapel_of_light"):
+	for file in files:
+		resolved_path = os.path.join(root, file)
+		print("tested: " + str(resolved_path))
+
+		tag = amulet_nbt.load(resolved_path).tag
+
+		save = False
+		for block in typing.cast(CompoundTag, tag).get_list("blocks"):
+			if "nbt" not in block.keys(): continue
+
+			nbt = block.get_compound("nbt")
+
+			if "LootTable" in nbt.keys():
+				loot_table = str(nbt.get_string("LootTable"))
+
+				print(f"loot table in {resolved_path}: {loot_table}")
+
+				nbt["LootTable"] = StringTag(loot_table.replace("stellarity:chapel", "stellarity:chapel_of_light"))
+				save = True
+
+				print(f"broken loot table in {resolved_path}: {loot_table}")
+
+			if "pool" in nbt.keys():
+				pool = str(nbt.get_string("pool"))
+
+				print(f"pool in {resolved_path}: {pool}")
+				if "stellarity:chapel" not in pool: continue
+
+				nbt["pool"] = StringTag(pool.replace("stellarity:chapel", "stellarity:chapel_of_light"))
+				save = True
+
+				print(f"broken pool in {resolved_path}: {pool}")
+
+			if "name" in nbt.keys():
+				name = str(nbt.get_string("name"))
+
+				print(f"jigsaw name in {resolved_path}: {name}")
+				if "stellarity:chapel" not in name: continue
+
+				nbt["name"] = StringTag(name.replace("stellarity:chapel", "stellarity:chapel_of_light"))
+				save = True
+
+				print(f"broken structure name in {resolved_path}: {name}")
+		if save:
+			tag.save_to(resolved_path)
 
 oldBlockMap = {
 	"minecraft:dirt": "stellarity:ender_dirt",

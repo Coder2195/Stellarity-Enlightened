@@ -1,7 +1,6 @@
 package dev.coder2195.stellarity.registry;
 
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -25,7 +24,7 @@ public interface StellarityProcessorLists {
 	ResourceKey<StructureProcessorList> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
 	ResourceKey<StructureProcessorList> END_SHIPWRECK = id("end_shipwreck");
 	ResourceKey<StructureProcessorList> CHAPEL_OF_LIGHT_FLOWERS = id("chapel_of_light_flowers");
-	ResourceKey<StructureProcessorList> IGNORE_STRUCTURE_VOID = id("ignore_structure_void");
+	ResourceKey<StructureProcessorList> IGNORE_STRUCTURE_BLOCKS = id("ignore_structure_blocks");
 
 	static void bootstrap(BootstrapContext<StructureProcessorList> context) {
 
@@ -109,6 +108,9 @@ public interface StellarityProcessorLists {
 				new ProcessorRule(new RandomBlockMatchTest(b._1(), b._2()), AlwaysTrueTest.INSTANCE, PosAlwaysTrueTest.INSTANCE, from(b._3()))
 			).toList())
 		)));
+
+		context.register(IGNORE_STRUCTURE_BLOCKS, new StructureProcessorList(List.of(new BlockIgnoreProcessor(List.of(STRUCTURE_VOID, STRUCTURE_BLOCK, BARRIER)))));
+
 
 
 	}

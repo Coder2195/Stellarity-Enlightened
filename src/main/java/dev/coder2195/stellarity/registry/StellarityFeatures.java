@@ -907,7 +907,9 @@ public interface StellarityFeatures {
 			if (!add) return list;
 			var newList = new ArrayList<>(list);
 			newList.add(new HangingColumnDecorator(0.2f, 4, false, true, List.of(
-				new BlockColumnFeature.Layer(numRaw(3, 8), block(WEEPING_VINES_PLANT)), new BlockColumnFeature.Layer(numRaw(1), randIntState(WEEPING_VINES, WeepingVinesBlock.AGE, numRaw(21, 25)))
+				new BlockColumnFeature.Layer(numRaw(1), block(NETHER_WART_BLOCK)),
+				new BlockColumnFeature.Layer(numRaw(2, 7), block(WEEPING_VINES_PLANT)),
+				new BlockColumnFeature.Layer(numRaw(1), randIntState(WEEPING_VINES, WeepingVinesBlock.AGE, numRaw(21, 25)))
 			), true));
 			return newList;
 		};

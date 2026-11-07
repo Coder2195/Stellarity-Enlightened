@@ -12,6 +12,7 @@ import net.minecraft.data.worldgen.Pools;
 import net.minecraft.data.worldgen.ProcessorLists;
 import net.minecraft.data.worldgen.placement.VillagePlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.structure.pools.EmptyPoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.FeaturePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
@@ -155,15 +156,40 @@ public interface StellarityTemplatePools {
 				Either.left(Stellarity.id("end_shipwreck/" + index)), processorLists.getOrThrow(variant._2()), StructureTemplatePool.Projection.RIGID, Optional.empty(),
 				Optional.empty()), 1)).toList()));
 
-		for (var chapelPart: List.of(
+		for (var chapelPart : List.of(
 			new Tuple2<>(CHAPEL_OF_LIGHT_CENTER, "chapel_of_light/center"),
 			new Tuple2<>(CHAPEL_OF_LIGHT_CORNER, "chapel_of_light/corner"),
 			new Tuple2<>(CHAPEL_OF_LIGHT_SIDE, "chapel_of_light/side")
 
-		)) context.register(chapelPart._1(), new StructureTemplatePool(EMPTY, List.of(new Pair<>(SinglePoolElementAccessor.create(
+		))
+			context.register(chapelPart._1(), new StructureTemplatePool(EMPTY, List.of(new Pair<>(SinglePoolElementAccessor.create(
 				Either.left(Stellarity.id(chapelPart._2())), processorLists.getOrThrow(StellarityProcessorLists.CHAPEL_OF_LIGHT_FLOWERS),
+				StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING), Optional.empty()
+			), 1))));
+
+		context.register(CHAPEL_OF_LIGHT_DECORATIONS, new StructureTemplatePool(EMPTY, Stream.of(
+			new Tuple2<>("lamp_1", 13),
+			new Tuple2<>("lamp_2", 11),
+			new Tuple2<>("lamp_3", 9),
+			new Tuple2<>("rock_1", 3),
+			new Tuple2<>("rock_2", 2),
+			new Tuple2<>("fountain", 7),
+			new Tuple2<>("pots_1", 10),
+			new Tuple2<>("pots_2", 10),
+			new Tuple2<>("pots_3", 9),
+			new Tuple2<>("pots_4", 9)
+		).map(c -> new Pair<>((StructurePoolElement) SinglePoolElementAccessor.create(
+			Either.left(Stellarity.id("chapel/decorations/" + c._1())), processorLists.getOrThrow(StellarityProcessorLists.IGNORE_STRUCTURE_BLOCKS),
 			StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING), Optional.empty()
-		), 1))));
+		), c._2())).toList()));
+
+		context.register(CHAPEL_OF_LIGHT_TREES, new StructureTemplatePool(EMPTY, Stream.concat(
+			Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9).map(n ->new Pair<>((StructurePoolElement) SinglePoolElementAccessor.create(
+				Either.left(Stellarity.id("chapel/trees/" + n.toString())), processorLists.getOrThrow(StellarityProcessorLists.IGNORE_STRUCTURE_BLOCKS),
+				StructureTemplatePool.Projection.RIGID, Optional.of(LiquidSettings.IGNORE_WATERLOGGING), Optional.empty()
+			), 1)),
+			Stream.of(new Pair<>((StructurePoolElement) EmptyPoolElement.INSTANCE, 12))
+		).toList()));
 	}
 
 	private static ResourceKey<StructureTemplatePool> id(String id) {

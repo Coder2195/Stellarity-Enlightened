@@ -19,6 +19,7 @@ public interface StellarityStructureSets {
 	ResourceKey<StructureSet> END_VILLAGES = id("end_villages");
 	ResourceKey<StructureSet> FLOATING_TREASURES = id("floating_treasures");
 	ResourceKey<StructureSet> END_SHIPWRECKS = id("end_shipwrecks");
+	ResourceKey<StructureSet> CHAPEL_OF_LIGHT = id("chapel_of_light");
 
 	@SuppressWarnings("deprecation")
 	static void bootstrap(BootstrapContext<StructureSet> context) {
@@ -57,6 +58,15 @@ public interface StellarityStructureSets {
 			Vec3i.ZERO, AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT, 1f, 656346133,
 			Optional.of(new AbstractSpreadingStructurePlacement.ExclusionZone(structureSets.getOrThrow(BuiltinStructureSets.END_CITIES), 8)), 27, 20, RandomSpreadType.LINEAR
 		)));
+
+		context.register(CHAPEL_OF_LIGHT, new StructureSet(
+			List.of(new StructureSet.StructureSelectionEntry(structures.getOrThrow(StellarityStructures.CHAPEL_OF_LIGHT), 1)),
+			new RandomSpreadStructurePlacement(
+			Vec3i.ZERO, AbstractSpreadingStructurePlacement.FrequencyReductionMethod.DEFAULT, 1f, 100801420,
+			Optional.of(new AbstractSpreadingStructurePlacement.ExclusionZone(structureSets.getOrThrow(BuiltinStructureSets.END_CITIES), 10)),
+			21, 20, RandomSpreadType.LINEAR
+		)
+		));
 
 
 	}

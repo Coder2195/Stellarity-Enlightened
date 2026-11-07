@@ -1,0 +1,101 @@
+{
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/1",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/2",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/3",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/4",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/5",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/6",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/7",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/8",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "stellarity:chapel/trees/9",
+        "override_liquid_settings": "ignore_waterlogging",
+        "processors": "stellarity:ignore_structure_blocks",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      },
+      "weight": 12
+    }
+  ],
+  "fallback": "minecraft:empty"
+}

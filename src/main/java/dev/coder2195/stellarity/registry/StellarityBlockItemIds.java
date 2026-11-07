@@ -133,6 +133,7 @@ public interface StellarityBlockItemIds {
 	BlockItemId INFERNO_SIGN = id("inferno_sign");
 	BlockItemId INFERNO_HANGING_SIGN = id("inferno_hanging_sign");
 
+
 	private static BlockItemId id(String id) {
 		return BlockItemId.create(Stellarity.id(id), Stellarity.id(id));
 	}

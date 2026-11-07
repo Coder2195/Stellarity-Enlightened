@@ -188,6 +188,7 @@ public class ModelProvider extends FabricModelProvider {
 			generators.createTrivialCube(block);
 
 		generators.createNonTemplateModelBlock(StellarityBlocks.ALTAR_OF_THE_ACCURSED);
+		generators.createNonTemplateModelBlock(StellarityBlocks.ALTAR_OF_THE_SACRED);
 
 		var grass = plainModel(GRASS_BLOCK_TEMPLATE.create(StellarityBlocks.ENDER_GRASS_BLOCK, new TextureMapping()
 				.put(TextureSlot.BOTTOM, getBlockTexture(StellarityBlocks.ENDER_DIRT))

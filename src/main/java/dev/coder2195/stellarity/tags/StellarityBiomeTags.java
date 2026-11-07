@@ -15,7 +15,7 @@ public interface StellarityBiomeTags {
 	TagKey<Biome> SPAWNS_FLESH_VOIDED_SKELETON = id("spawns_flesh_voided_skeleton");
 
 	TagKey<Biome> HAS_STRUCTURE_CAMPSITE = id("has_structure/campsite");
-	TagKey<Biome> HAS_STRUCTURE_CHAPEL = id("has_structure/chapel");
+	TagKey<Biome> HAS_STRUCTURE_CHAPEL_OF_LIGHT = id("has_structure/chapel_of_light");
 	TagKey<Biome> HAS_STRUCTURE_DESERT_RUIN = id("has_structure/desert_ruin");
 	TagKey<Biome> HAS_STRUCTURE_FISHING_HUT = id("has_structure/fishing_hut");
 	TagKey<Biome> HAS_STRUCTURE_FOSSIL = id("has_structure/fossil");

@@ -31,6 +31,7 @@ public interface StellarityStructures {
 	ResourceKey<Structure> FLOATING_TREASURE = id("floating_treasure");
 	ResourceKey<Structure> END_SHIPWRECK = id("end_shipwreck");
 	ResourceKey<Structure> END_SHIPWRECK_DUNES = id("end_shipwreck_dunes");
+	ResourceKey<Structure> CHAPEL_OF_LIGHT= id("chapel_of_light");
 
 	static void bootstrap(BootstrapContext<Structure> context) {
 		var templatePools = context.lookup(Registries.TEMPLATE_POOL);
@@ -68,9 +69,16 @@ public interface StellarityStructures {
 				biomes.getOrThrow(endShipwreck._2()), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.NONE
 			), templatePools.getOrThrow(endShipwreck._3()), Optional.empty(), 1, height(absolute(-20), absolute(-15)), false, Optional.of(Heightmap.Types.WORLD_SURFACE), new JigsawStructure.MaxDistance(40), List.of(), new DimensionPadding(30, 0), LiquidSettings.APPLY_WATERLOGGING)
 		);
+
+		context.register(CHAPEL_OF_LIGHT, new JigsawStructure(
+			new Structure.StructureSettings(
+				biomes.getOrThrow(HAS_STRUCTURE_CHAPEL_OF_LIGHT), new HashMap<>(), GenerationStep.Decoration.SURFACE_STRUCTURES, TerrainAdjustment.BEARD_THIN
+			), templatePools.getOrThrow(StellarityTemplatePools.CHAPEL_OF_LIGHT_CENTER), Optional.empty(), 6, height(absolute(0)), false, Optional.of(Heightmap.Types.WORLD_SURFACE_WG), new JigsawStructure.MaxDistance(80), List.of(), new DimensionPadding(4, 0), LiquidSettings.APPLY_WATERLOGGING
+		));
 	}
 
 	private static ResourceKey<Structure> id(String id) {
 		return Stellarity.key(Registries.STRUCTURE, id);
 	}
+
 }
