@@ -81,7 +81,9 @@
       "stellarity:ashfall_deltas/grass_deltas",
       "stellarity:ashfall_deltas/basalt_columns"
     ],
-    [],
+    [
+      "stellarity:end_gateway_return"
+    ],
     [],
     [
       "stellarity:enderite_ore"

@@ -80,7 +80,9 @@
       "stellarity:flesh_tundra/bone_ceiling"
     ],
     [],
-    [],
+    [
+      "stellarity:end_gateway_return"
+    ],
     [],
     [
       "stellarity:enderite_ore"

@@ -10,6 +10,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.EndFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.world.level.block.Block;
@@ -43,6 +44,7 @@ public interface StellarityPlacedFeatures {
 	ResourceKey<PlacedFeature> OBSIDIAN_TOWERS_DEFERRED = id("obsidian_towers_deferred");
 	ResourceKey<PlacedFeature> ENDERITE_ORE = id("enderite_ore");
 	ResourceKey<PlacedFeature> ENDERITE_ORE_DEFERRED = id("enderite_ore_deferred");
+	ResourceKey<PlacedFeature> END_GATEWAY_RETURN = id("end_gateway_return");
 
 	ResourceKey<PlacedFeature> MAIN_ISLAND_RING = id("main_island/ring");
 	ResourceKey<PlacedFeature> MAIN_ISLAND_PORTAL_PLATFORM = id("main_island/portal_platform");
@@ -230,6 +232,8 @@ public interface StellarityPlacedFeatures {
 			rarity(40), inSquare(), heightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES), biome()
 		)));
 
+		context.register(END_GATEWAY_RETURN, new PlacedFeature(configured.getOrThrow(EndFeatures.END_GATEWAY_RETURN), List.of(rarity(400), inSquare(), heightmap(Heightmap.Types.MOTION_BLOCKING), randOffset(numRaw(0), numRaw(16)), randOffset(numRaw(0), numRaw(0, 16)), randOffset(numRaw(0), numRaw(0, 16)), biome())));
+
 		context.register(MAIN_ISLAND_RING, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_RING), List.of(biome())));
 		context.register(MAIN_ISLAND_PORTAL_PLATFORM, new PlacedFeature(configured.getOrThrow(StellarityFeatures.MAIN_ISLAND_PORTAL_PLATFORM), List.of(biome())));
 		context.register(MAIN_ISLAND_HILLS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.END_BARRENS_HILLS), List.of(
@@ -259,6 +263,7 @@ public interface StellarityPlacedFeatures {
 			countPlace(ValueUtil.weightedInts(15, 100, 25, 50, 35, 25, 45, 1)), inSquare(), noiseCount(25, 55, 0.1), aboveBelow0,
 			scanUpSolidAir32, biome()
 		)));
+
 
 		context.register(END_MIDLANDS_OBSIDIAN_SPIKES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.END_MIDLANDS_OBSIDIAN_SPIKE), List.of(
 			rarity(3), inSquare(), heightRange(height(aboveBottom(0), absolute(170))),

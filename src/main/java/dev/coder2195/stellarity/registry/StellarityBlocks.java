@@ -11,6 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.CommonColors;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.sounds.BlockSoundSets;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -137,7 +138,7 @@ public interface StellarityBlocks {
 	Block STRIPPED_HALLOWED_WOOD = register(StellarityBlockItemIds.STRIPPED_HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
 	Block HALLOWED_WOOD = register(StellarityBlockItemIds.HALLOWED_WOOD, RotatedPillarBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(BlockSoundSets.WOOD).ignitedByLava());
 	Block HALLOWED_LEAVES = register(StellarityBlockItemIds.HALLOWED_LEAVES, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS));
-	ColorCollection<Block> COLORED_HALLOWED_LEAVES = StellarityBlockItemIds.COLORED_HALLOWED_LEAVES.map(id -> register(id, p -> new TintedParticleLeavesBlock(0.01F, p), leavesProperties(BlockSoundSets.GRASS)));
+	ColorCollection<Block> COLORED_HALLOWED_LEAVES = ColorCollection.zipMap(CommonColors.TEXTURE_TINT_COLORS, StellarityBlockItemIds.COLORED_HALLOWED_LEAVES, (color, id) -> register(id, p -> new ColoredParticleLeavesBlock(0.01F, color, p), leavesProperties(BlockSoundSets.GRASS)));
 	Block HALLOWED_SLAB = BlocksAccessor.registerSlab(StellarityBlockItemIds.HALLOWED_SLAB, HALLOWED_PLANKS);
 	Block HALLOWED_SHELF = register(StellarityBlockItemIds.HALLOWED_SHELF, ShelfBlock::new,
 		BlockBehaviour.Properties.of()

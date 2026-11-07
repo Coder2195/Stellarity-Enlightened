@@ -6,6 +6,7 @@ Structure Update
 
 **[*] Colored Hallow Leaves**
 - Gave the leaves a loot table
+- Fixed the leaves particle color
 
 **[+] Altar of The Sacred**
 - No blessing or cursed functionality yet

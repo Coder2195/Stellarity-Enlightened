@@ -104,7 +104,9 @@
       "stellarity:amethyst_forest/dirt"
     ],
     [],
-    [],
+    [
+      "stellarity:end_gateway_return"
+    ],
     [],
     [
       "stellarity:enderite_ore"

@@ -73,7 +73,9 @@
       "stellarity:fiery_hills/gold_ore",
       "stellarity:fiery_hills/magma_ore"
     ],
-    [],
+    [
+      "stellarity:end_gateway_return"
+    ],
     [],
     [
       "stellarity:enderite_ore"

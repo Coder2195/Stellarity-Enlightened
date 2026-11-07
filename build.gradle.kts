@@ -1,6 +1,3 @@
-import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
-
 plugins {
 	id("net.fabricmc.fabric-loom") version "1.17-SNAPSHOT"
 	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
@@ -135,13 +132,13 @@ tasks.withType<ProcessResources> {
 	val mixinJava = "JAVA_${requiredJava.majorVersion}"
 	filesMatching("*.mixins.json") { expand("java" to mixinJava) }
 
-	doLast {
-		fileTree("${layout.buildDirectory.get()}/resources/")
-			.matching { include("**/*.json", "**/*.mcmeta", "*.json") }
-			.forEach {
-				it.writeText(JsonOutput.toJson(JsonSlurper().parse(it)))
-			}
-	}
+//	doLast {
+//		fileTree("${layout.buildDirectory.get()}/resources/")
+//			.matching { include("**/*.json", "**/*.mcmeta", "*.json") }
+//			.forEach {
+//				it.writeText(JsonOutput.toJson(JsonSlurper().parse(it)))
+//			}
+//	}
 }
 
 

@@ -83,7 +83,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "stellarity:end_gateway_return"
+    ],
     [],
     [
       "stellarity:frozen_spikes/blue_ice_ore",
