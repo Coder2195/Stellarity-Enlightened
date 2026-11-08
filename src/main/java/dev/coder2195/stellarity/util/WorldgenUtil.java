@@ -1,10 +1,12 @@
 package dev.coder2195.stellarity.util;
 
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.mixin.accessor.CubicSplineMultipointAccessor;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.BoundedFloatFunction;
@@ -323,6 +325,10 @@ public interface WorldgenUtil {
 
 	static DensityFunctions.HolderHolder densityFunction(HolderGetter<DensityFunction> densityFunctions, ResourceKey<DensityFunction> key) {
 		return new DensityFunctions.HolderHolder(densityFunctions.getOrThrow(key));
+	}
+
+	static DensityFunctions.HolderHolder densityFunction(HolderGetter<DensityFunction> densityFunctions, String namespace, String path) {
+		return densityFunction(densityFunctions, Stellarity.key(Registries.DENSITY_FUNCTION, namespace, path));
 	}
 
 	static SplineFunction.Coordinate splineCoord(DensityFunction densityFunction) {

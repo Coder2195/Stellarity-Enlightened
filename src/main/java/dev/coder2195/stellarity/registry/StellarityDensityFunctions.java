@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dev.coder2195.stellarity.util.DatagenUtil.FAKE_DENSITY_FUNCTIONS;
 import static dev.coder2195.stellarity.util.WorldgenUtil.*;
 import static dev.coder2195.stellarity.util.WorldgenUtil.spline;
 import static net.minecraft.world.level.levelgen.densityfunction.DensityFunctions.*;
@@ -69,6 +70,7 @@ public interface StellarityDensityFunctions {
 
 	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_INITIAL_DENSITY = compatId("initial_density");
 	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_FINAL_DENSITY = compatId("final_density");
+	ResourceKey<DensityFunction> NULLSCAPE_COMPAT_CLIMATE_DEPTH = compatId("climate/depth");
 
 	static ResourceKey<DensityFunction> id(String id) {
 		return Stellarity.key(Registries.DENSITY_FUNCTION, id);
@@ -442,5 +444,17 @@ public interface StellarityDensityFunctions {
 				clamp(beardifier(), -0.15f, 1)
 			)
 		));
+
+		context.register(NULLSCAPE_COMPAT_CLIMATE_DEPTH, cache(rangeChoice(
+			gradient(Direction.Axis.Y, TilingMode.CLAMP_TO_EDGE, 0, 256, 0, 256), 0, 24,
+			constant(2), max(
+				rangeChoice(
+					gradient(Direction.Axis.Y, TilingMode.CLAMP_TO_EDGE, 0, 384, 0, 384),
+					0, 4, constant(40),
+					densityFunction(FAKE_DENSITY_FUNCTIONS, "nullscape", "depth")
+				),
+				densityFunction(FAKE_DENSITY_FUNCTIONS, "nullscape", "void/emergency_exit")
+			)
+		)));
 	}
 }

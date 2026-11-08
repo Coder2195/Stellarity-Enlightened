@@ -5,10 +5,12 @@ import dev.coder2195.stellarity.registry.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,10 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 	}
 
 	public static final HashMap<ResourceKey<?>, ResourceCondition[]> RESOURCE_CONDITION_MAP = new HashMap<>() {{
-
+		ResourceCondition[] nullscapeCheck = {ResourceConditions.tagsPopulated(TagKey.create(BLOCK, Stellarity.id("nullscape", "amethyst_cut")))};
+		put(StellarityDensityFunctions.NULLSCAPE_COMPAT_CLIMATE_DEPTH, nullscapeCheck);
+		put(StellarityDensityFunctions.NULLSCAPE_COMPAT_FINAL_DENSITY, nullscapeCheck);
+		put(StellarityDensityFunctions.NULLSCAPE_COMPAT_INITIAL_DENSITY, nullscapeCheck);
 	}};
 
 	@SuppressWarnings("DuplicatedCode")

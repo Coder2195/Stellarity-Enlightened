@@ -50,6 +50,10 @@ Structure Update
 - Red Hallowed Trees spawn weeping vines with nether wart for support
 - Fixes a bug with the wrong wood type generating for trees
 
+## Dependencies
+
+**[-] Stellarity x Nullscape**
+Awaiting @void76767676-gif to push changes, nullscape is not supported at the moment
 
 ## Structure
 **[+] End Shipwreck**
