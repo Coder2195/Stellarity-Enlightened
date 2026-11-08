@@ -1,11 +1,16 @@
 package dev.coder2195.stellarity.datagen;
 
+import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.registry.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
+import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.resources.ResourceKey;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -16,6 +21,10 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 	public DynamicRegistriesProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
+
+	public static final HashMap<ResourceKey<?>, ResourceCondition[]> RESOURCE_CONDITION_MAP = new HashMap<>() {{
+
+	}};
 
 	@SuppressWarnings("DuplicatedCode")
 	public static void buildRegistry(RegistrySetBuilder builder) {
@@ -44,6 +53,12 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 		builder.add(STRUCTURE_SET, StellarityStructureSets::bootstrap);
 		builder.add(VILLAGER_TRADE, StellarityVillagerTrades::bootstrap);
 		builder.add(TRADE_SET, StellarityVillagerTradeSets::bootstrap);
+
+	}
+
+	@Override
+	public CompletableFuture<?> run(CachedOutput cache) {
+		return super.run(cache);
 	}
 
 	public static void buildReloableRegistry(RegistrySetBuilder builder) {
@@ -53,8 +68,21 @@ public class DynamicRegistriesProvider extends FabricDynamicRegistryProvider {
 	@Override
 	public void configure(HolderLookup.Provider provider, Entries entries) {
 		for (var registry : List.of(TIMELINE, NOISE, DENSITY_FUNCTION, ITEM_MODIFIER, JUKEBOX_SONG, PAINTING_VARIANT, COW_VARIANT, FROG_VARIANT, CAT_VARIANT, WOLF_VARIANT, PIG_VARIANT, CHICKEN_VARIANT, VOIDED_SKELETON_VARIANT, CARVER, FEATURE, PLACED_FEATURE, BIOME, PROCESSOR_LIST, TEMPLATE_POOL, ENCHANTMENT, STRUCTURE, STRUCTURE_SET, VILLAGER_TRADE, TRADE_SET, DAMAGE_TYPE)) {
-			entries.addAll(provider.lookupOrThrow(registry));
+			addAll(provider.lookupOrThrow(registry), entries);
 		}
+	}
+
+	public <T> void addAll(HolderLookup.RegistryLookup<T> registry, Entries entries) {
+		registry.listElementIds()
+			.forEach(resourceKey -> {
+				var conditions = RESOURCE_CONDITION_MAP.get(resourceKey);
+				if (conditions != null) {
+					entries.add(registry, resourceKey, conditions);
+					return;
+				}
+				if (resourceKey.identifier().getNamespace().equals(Stellarity.MOD_ID))
+					entries.add(registry, resourceKey);
+			});
 	}
 
 	@Override
