@@ -1,5 +1,5 @@
 plugins {
-	id("net.fabricmc.fabric-loom") version "1.17-SNAPSHOT"
+	id("net.fabricmc.fabric-loom") version "1.19-SNAPSHOT"
 	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
 	id("me.modmuss50.mod-publish-plugin") version "2.1.1"
 	// `maven-publish`

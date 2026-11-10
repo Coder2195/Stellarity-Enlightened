@@ -37,10 +37,15 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 
 
 	public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T blockEntity) {
+		if (blockEntity instanceof AltarOfTheAccursedBlockEntity entity) entity.tick(level, blockPos, blockState);
+	}
+
+	@SuppressWarnings("DuplicatedCode")
+	public void tick(Level level, BlockPos blockPos, BlockState blockState) {
 		boolean locked = blockState.getValue(AltarOfTheAccursed.LOCKED);
 		var placeType = blockState.getValue(AltarOfTheAccursed.PLACE_TYPE);
-		if (!(blockEntity instanceof AltarOfTheAccursedBlockEntity entity)) return;
-		entity.ticksPassed++;
+
+		this.ticksPassed++;
 		var centerPos = Vec3.atCenterOf(blockPos);
 		double x = centerPos.x;
 		double y = centerPos.y;
@@ -49,13 +54,12 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 		if (level.isClientSide()) {
 			if (locked) return;
 
-			float angle = entity.ticksPassed / 20f;
+			float angle = this.ticksPassed / 20f;
 			double dx = Mth.cos(angle);
 			double dz = Mth.sin(angle);
 
 
 			var purpleParticle = new DustColorTransitionOptions(0xbb00ff, 0x1b0025, 1.4f);
-
 
 			level.addParticle(
 				purpleParticle,
@@ -86,7 +90,8 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 				x - dx, y, z - dz,
 				0, 0, 0
 			);
-			if (entity.ticksPassed % 3 == 0) {
+
+			if (this.ticksPassed % 3 == 0) {
 				dx = level.getRandom().nextGaussian() * 0.5;
 				dz = level.getRandom().nextGaussian() * 0.5;
 				level.addParticle(
@@ -117,7 +122,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 				}
 			}
 
-			if (entity.ticksPassed % 10 == 0) {
+			if (this.ticksPassed % 10 == 0) {
 				AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
 			}
 

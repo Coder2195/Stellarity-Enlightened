@@ -55,9 +55,14 @@ Structure Update
 **[-] Stellarity x Nullscape**
 Awaiting @void76767676-gif to push changes, nullscape is not supported at the moment
 
+
 ## Structure
 **[+] End Shipwreck**
 
 **[+] Dune End Shipwreck**
 
 **[+] Chapel of Light**
+
+
+## Versions
+**[*] 26.3 → 26.4**

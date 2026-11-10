@@ -5,12 +5,12 @@ import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeBuilder;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public interface StellarityBlockSetTypes {
-	BlockSetType AMETHYII = new BlockSetTypeBuilder().register(Stellarity.id("amethyii"));
-	BlockSetType HALLOWED = new BlockSetTypeBuilder().register(Stellarity.id("hallowed"));
-	BlockSetType SHRUBBED = new BlockSetTypeBuilder().register(Stellarity.id("shrubbed"));
-	BlockSetType PRISMATIC = new BlockSetTypeBuilder().register(Stellarity.id("prismatic"));
-	BlockSetType ASHEN = new BlockSetTypeBuilder().register(Stellarity.id("ashen"));
-	BlockSetType INFERNO = new BlockSetTypeBuilder().register(Stellarity.id("inferno"));
+	BlockSetType AMETHYII = new BlockSetTypeBuilder().build();
+	BlockSetType HALLOWED = new BlockSetTypeBuilder().build();
+	BlockSetType SHRUBBED = new BlockSetTypeBuilder().build();
+	BlockSetType PRISMATIC = new BlockSetTypeBuilder().build();
+	BlockSetType ASHEN = new BlockSetTypeBuilder().build();
+	BlockSetType INFERNO = new BlockSetTypeBuilder().build();
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Block Set Types");

@@ -487,7 +487,7 @@ public interface StellarityBlocks {
 	);
 	Block POTTED_INFERNO_SAPLING = register(StellarityBlockIds.POTTED_INFERNO_SAPLING, p -> new FlowerPotBlock(INFERNO_SAPLING, p), flowerPotProperties());
 
-	Block ALTAR_OF_THE_SACRED = register(StellarityBlockItemIds.ALTAR_OF_THE_SACRED, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(50.0F, 1200.0F).lightLevel((state) -> 10).pushReaction(PushReaction.IMMOVEABLE));
+	Block ALTAR_OF_THE_SACRED = register(StellarityBlockItemIds.ALTAR_OF_THE_SACRED, AltarOfTheSacred::new, AltarOfTheSacred.PROPERTIES);
 
 	static Block register(BlockItemId id, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
 		return register(id.block(), blockFactory, settings);
