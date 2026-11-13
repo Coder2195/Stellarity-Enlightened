@@ -110,7 +110,7 @@ val copyToDocs = tasks.register("copyToDocs") {
 	description = "Copy to docs mod-data folder"
 	copy {
 		from(project.layout.buildDirectory.dir("resources/main"))
-		into(rootProject.file("docs/pages/public/mod-data/"))
+		into(rootProject.file("docs/docs/public/mod-data/"))
 	}
 }
 
