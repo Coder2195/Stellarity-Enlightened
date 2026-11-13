@@ -1,3 +1,7 @@
 [submodule "translations"]
 	path = translations
 	url = https://github.com/Prismatic-Shards/translations
+
+[submodule "docs"]
+	path = docs
+	url = https://github.com/coder2195/stellarity-enlightened-docs

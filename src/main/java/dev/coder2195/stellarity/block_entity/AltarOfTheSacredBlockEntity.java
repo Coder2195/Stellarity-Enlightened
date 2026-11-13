@@ -77,5 +77,7 @@ public class AltarOfTheSacredBlockEntity extends BlockEntity {
 		}
 
 
+
+
 	}
 }
