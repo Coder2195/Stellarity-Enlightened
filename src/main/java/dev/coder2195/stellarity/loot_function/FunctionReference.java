@@ -8,6 +8,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.context.ContextKey;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
@@ -15,8 +16,9 @@ import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 import java.util.Optional;
+import java.util.Set;
 
-public class FunctionReference extends LootItemConditionalFunction {
+public class FunctionReference extends LootItemConditionalFunction.ContextUser {
 	public static final MapCodec<FunctionReference> MAP_CODEC = RecordCodecBuilder.mapCodec(
 		i -> commonFields(i).and(Identifier.CODEC.fieldOf("name").forGetter(FunctionReference::getName)).apply(i, FunctionReference::new)
 	);
@@ -60,5 +62,10 @@ public class FunctionReference extends LootItemConditionalFunction {
 
 		Stellarity.LOGGER.error("Not bound {} in loot function reference", name);
 		return itemStack;
+	}
+
+	@Override
+	public Set<ContextKey<?>> getRequiredParams() {
+		return Set.of();
 	}
 }
