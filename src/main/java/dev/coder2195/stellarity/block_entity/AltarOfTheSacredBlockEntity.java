@@ -1,12 +1,24 @@
 package dev.coder2195.stellarity.block_entity;
 
+import dev.coder2195.stellarity.networking.ClientboundAltarOfTheSacredBlessPayload;
+import dev.coder2195.stellarity.networking.ClientboundAltarOfTheSacredRejectPayload;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
+import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,6 +27,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class AltarOfTheSacredBlockEntity extends BlockEntity {
 	private final RandomSource random = RandomSource.create();
+	private int craftCounter = 20;
 
 	public AltarOfTheSacredBlockEntity(BlockPos worldPosition, BlockState blockState) {
 		super(StellarityBlockEntityTypes.ALTAR_OF_THE_SACRED, worldPosition, blockState);
@@ -31,7 +44,7 @@ public class AltarOfTheSacredBlockEntity extends BlockEntity {
 
 		var itemsOnTop = level.getEntitiesOfClass(ItemEntity.class, AABB.encapsulatingFullBlocks(abovePos, abovePos));
 
-		if (level.isClientSide()) {
+		if (!(level instanceof ServerLevel serverLevel)) {
 
 			level.addAlwaysVisibleParticle(ParticleTypes.FIREWORK, true,
 				topCenterPos.x + random.nextGaussian() * 0.25, topCenterPos.y - 0.2, topCenterPos.z + random.nextGaussian() * 0.25,
@@ -75,6 +88,71 @@ public class AltarOfTheSacredBlockEntity extends BlockEntity {
 
 			return;
 		}
+
+		if (--craftCounter > 0) {
+			return;
+		}
+
+		craftCounter = 20;
+
+		if (itemsOnTop.isEmpty()) return;
+
+		var livingEntitiesNearMe = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(topCenterPos, 2.5, 2.5, 2.5), e -> e.distanceToSqr(topCenterPos) < 6.25f);
+
+
+
+		for (ItemEntity itemEntity : itemsOnTop) {
+			var itemStack = itemEntity.getItem();
+			boolean success = false;
+			if (itemStack.is(Items.IRON_INGOT)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 180 * 20)));
+				success = true;
+			}
+			if (itemStack.is(Items.GOLD_INGOT)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.HASTE, 210 * 20)));
+				success = true;
+			}
+			if (itemStack.is(Items.DIAMOND)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.SPEED, 330 * 20)));
+				success = true;
+			}
+			if (itemStack.is(Items.EMERALD)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 255 * 20)));
+				success = true;
+			}
+			if (itemStack.is(Items.NETHERITE_INGOT)) {
+				itemEntity.discard();
+				livingEntitiesNearMe.forEach(e -> e.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, itemStack.getCount() * 1200 * 20)));
+				success = true;
+			}
+
+			if (success) {
+				NetworkingUtil.sendTrackingPlayers(serverLevel, blockPos, new ClientboundAltarOfTheSacredBlessPayload(itemEntity.getEyePosition()));
+				continue;
+			}
+
+			if (itemStack.is(StellarityItems.SHULKER_BODY)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> {
+					if (e instanceof Player player) player.sendOverlayMessage(Component.literal("Oops... the shulking doesn't exist... get that shulker body off me pls >_<"));
+				});
+			} else if (itemStack.is(StellarityItems.STARLIGHT_SOOT)) {
+				itemStack.shrink(1);
+				livingEntitiesNearMe.forEach(e -> {
+					if (e instanceof Player player) player.sendOverlayMessage(Component.literal("Oops... the empress of light doesn't exist... get that shulker body off me pls >_<"));
+				});
+			}
+
+			NetworkingUtil.sendTrackingPlayers(serverLevel, blockPos, new ClientboundAltarOfTheSacredRejectPayload(itemEntity.getEyePosition()));
+
+			itemEntity.setDeltaMovement(new Vec3(0.5, 0.5, 0).yRot(random.nextFloat() * Mth.TWO_PI));
+		}
+
+
 
 
 

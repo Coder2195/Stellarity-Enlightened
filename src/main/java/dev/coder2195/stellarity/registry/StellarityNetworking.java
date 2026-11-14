@@ -22,6 +22,8 @@ public interface StellarityNetworking {
 		clientbound.register(ClientboundConsecrationCraftPayload.TYPE, ClientboundConsecrationCraftPayload.STREAM_CODEC);
 		clientbound.register(ClientboundCauldronCraftPayload.TYPE, ClientboundCauldronCraftPayload.STREAM_CODEC);
 		clientbound.register(ClientboundSpiritSlashPayload.TYPE, ClientboundSpiritSlashPayload.STREAM_CODEC);
+		clientbound.register(ClientboundAltarOfTheSacredBlessPayload.TYPE, ClientboundAltarOfTheSacredBlessPayload.STREAM_CODEC);
+		clientbound.register(ClientboundAltarOfTheSacredRejectPayload.TYPE, ClientboundAltarOfTheSacredRejectPayload.STREAM_CODEC);
 
 		Stellarity.LOGGER.info("Registering Stellarity Common Networking");
 	}

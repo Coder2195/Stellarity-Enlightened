@@ -30,9 +30,58 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundConsecrationCraftPayload.TYPE, StellarityClientNetworking::consecrationCraft);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundCauldronCraftPayload.TYPE, StellarityClientNetworking::cauldronCraft);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritSlashPayload.TYPE, StellarityClientNetworking::spiritSlash);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredBlessPayload.TYPE, StellarityClientNetworking::altarOfTheSacredBless);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredRejectPayload.TYPE, StellarityClientNetworking::altarOfTheSacredReject);
 
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void altarOfTheSacredReject(ClientboundAltarOfTheSacredRejectPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		var player = client.player;
+
+		if (level == null) return;
+
+		var position = packet.position();
+		var x = position.x;
+		var y = position.y;
+		var z = position.z;
+
+		for (int i = 0; i < 25; i++)
+			level.addAlwaysVisibleParticle(ParticleTypes.ANGRY_VILLAGER, true, x + random.nextGaussian() * 0.5, y + random.nextGaussian() * 0.5, z + random.nextGaussian() * 0.5, 0, 0, 0);
+
+		level.playSound(player, x, y, z, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.BLOCKS, 3f, 1f);
+	}
+
+	static void altarOfTheSacredBless(ClientboundAltarOfTheSacredBlessPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		var player = client.player;
+
+		if (level == null) return;
+
+		var position = packet.position();
+		var x = position.x;
+		var y = position.y;
+		var z = position.z;
+
+
+		level.addAlwaysVisibleParticle(ColorParticleOption.create(ParticleTypes.FLASH, 0xFFEBC64E), true, x, y, z, 0, 0, 0);
+		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, true, x, y, z, 0, 0, 0);
+
+		for (int i = 0; i < 25; i++)
+			level.addAlwaysVisibleParticle(ParticleTypes.HAPPY_VILLAGER, true, x + random.nextGaussian() * 0.5, y + random.nextGaussian() * 0.5, z + random.nextGaussian() * 0.5, 0, 0, 0);
+
+		for (int i = 0; i < 30; i++)
+			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, x + random.nextGaussian() * 0.2, y + random.nextGaussian() * 0.5, z + random.nextGaussian() * 0.2, random.nextGaussian() * 0.15, random.nextDouble() * 0.15, random.nextGaussian() * 0.15);
+
+		for (int i = 0; i < 40; i++)
+			level.addAlwaysVisibleParticle(ParticleTypes.TOTEM_OF_UNDYING, true, x + random.nextGaussian() * 0.3, y + random.nextGaussian() * 0.6, z + random.nextGaussian() * 0.3, random.nextGaussian() * 0.35, random.nextDouble() * 0.35, random.nextGaussian() * 0.35);
+
+		level.playSound(player, x, y, z, StellaritySoundEvents.ALTAR_OF_THE_SACRED_BLESS, SoundSource.BLOCKS);
+
 	}
 
 

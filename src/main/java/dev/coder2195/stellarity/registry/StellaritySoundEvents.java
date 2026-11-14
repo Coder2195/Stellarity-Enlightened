@@ -42,6 +42,8 @@ public interface StellaritySoundEvents {
 	SoundEvent THE_BEGINNING_EQUIP = register("item.the_beginning.equip");
 	SoundEvent THE_END_EQUIP = register("item.the_end.equip");
 
+	SoundEvent ALTAR_OF_THE_SACRED_BLESS = register("block.altar_of_the_sacred.bless");
+
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");
 	Holder<SoundEvent> PRECIPICE_STEREO = registerHolder("music_disc.precipice_stereo");
