@@ -9,6 +9,15 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 
 ## Blocks
 
+**[*] All Signs**
+- Fixes a bug where it would crash because block entities weren't properly registered
+
+**[*] All Hanging Signs**
+- Fixes a bug where it would crash because block entities weren't properly registered
+
+**[*] All Shelves**
+- Fixes a bug where it would crash because block entities weren't properly registered
+
 **[*] Colored Hallow Leaves**
 - Gave the leaves a loot table
 - Fixed the leaves particle color

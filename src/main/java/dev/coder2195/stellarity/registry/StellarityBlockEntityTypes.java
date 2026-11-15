@@ -10,6 +10,11 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityTypes;
+
+import java.util.List;
+
+import static dev.coder2195.stellarity.registry.StellarityBlocks.*;
 
 
 public interface StellarityBlockEntityTypes {
@@ -23,5 +28,14 @@ public interface StellarityBlockEntityTypes {
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Block Entities");
+
+		for (var shelf: List.of(AMETHYII_SHELF, HALLOWED_SHELF, ASHEN_SHELF, INFERNO_SHELF, PRISMATIC_SHELF, SHRUBBED_SHELF))
+			BlockEntityTypes.SHELF.addValidBlock(shelf);
+
+		for (var sign : List.of(AMETHYII_SIGN, HALLOWED_SIGN, ASHEN_SIGN, INFERNO_SIGN, PRISMATIC_SIGN, SHRUBBED_SIGN))
+			BlockEntityTypes.SIGN.addValidBlock(sign);
+
+		for (var hangingSign : List.of(AMETHYII_HANGING_SIGN, HALLOWED_HANGING_SIGN, ASHEN_HANGING_SIGN, INFERNO_HANGING_SIGN, PRISMATIC_HANGING_SIGN, SHRUBBED_SHELF))
+			BlockEntityTypes.HANGING_SIGN.addValidBlock(hangingSign);
 	}
 }
