@@ -2,6 +2,11 @@
 
 Structure Update
 
+# Changes
+
+Unless annotated, all changes are considered to be up to date with
+the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](https://modrinth.com/datapack/stellarity)
+
 ## Blocks
 
 **[*] Colored Hallow Leaves**
