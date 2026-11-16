@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.entity;
 
 import com.mojang.serialization.Codec;
+import dev.coder2195.stellarity.networking.ClientboundSpiritDespawnPayload;
 import dev.coder2195.stellarity.networking.ClientboundSpiritSlashPayload;
 import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDamageTypes;
@@ -170,6 +171,7 @@ public class Spirit extends Entity {
 		}
 
 		if (liveTime < 0) {
+			NetworkingUtil.sendTrackingPlayers(serverLevel, this, new ClientboundSpiritDespawnPayload(position));
 			this.discard();
 			return;
 		}
@@ -276,19 +278,6 @@ public class Spirit extends Entity {
 
 	public void setLiveTime(int liveTime) {
 		this.liveTime = liveTime;
-	}
-
-	@Override
-	public void onClientRemoval() {
-		var level = this.level();
-		var position = position();
-
-		for (int i = 0; i < 25; i++) {
-			level.addAlwaysVisibleParticle(ParticleTypes.FIREWORK, true, position.x, position.y + 1, position.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.5);
-		}
-		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, true, position.x, position.y, position.z, 0, 0, 0);
-
-		super.onClientRemoval();
 	}
 
 

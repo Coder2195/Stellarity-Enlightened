@@ -26,4 +26,13 @@ public interface StellarityToolMaterials {
 			return super.createSwordAttributes(attackDamageBaseline, attackSpeedBaseline).withModifierAdded(Attributes.MOVEMENT_SPEED, new AttributeModifier(Stellarity.id("the_end"), 0.05, AttributeModifier.Operation.ADD_MULTIPLIED_BASE), EquipmentSlotGroup.OFFHAND);
 		}
 	};
+
+	ToolMaterial DRAGONBLADE = new ToolMaterial(StellarityBlockTags.EMPTY, 999, 1, 5, 15,StellarityItemTags.EMPTY) {
+		@Override
+		protected ItemAttributeModifiers createSwordAttributes(float attackDamageBaseline, float attackSpeedBaseline) {
+			return super.createSwordAttributes(attackDamageBaseline, attackSpeedBaseline)
+				.withModifierAdded(Attributes.SWEEPING_DAMAGE_RATIO, new AttributeModifier(Stellarity.id("dragonblade"), 0.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+				.withModifierAdded(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(Stellarity.id("dragonblade"), 0.3, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+		}
+	};
 }

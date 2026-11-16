@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:end/kill_dragon",
+  "criteria": {
+    "obtain": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stellarity:dragonblade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.dragonborn.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "id": "stellarity:the_beginning"
+    },
+    "title": {
+      "translate": "advancements.stellarity.dragonborn"
+    }
+  },
+  "requirements": [
+    [
+      "obtain"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

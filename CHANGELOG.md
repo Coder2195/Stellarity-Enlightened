@@ -23,7 +23,7 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 - Fixed the leaves particle color
 
 **[+] Altar of The Sacred**
-- No blessing or cursed functionality yet
+- No spawning functionality
 
 ## Items
 **[*] End Village Map**
@@ -44,6 +44,8 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 **[+] The Beginning**
 
 **[+] The End**
+
+**[+] Dragonblade**
 
 ## Entities
 **[*] Pig**

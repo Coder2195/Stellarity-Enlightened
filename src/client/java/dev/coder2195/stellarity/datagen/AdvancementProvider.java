@@ -44,7 +44,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-
 public class AdvancementProvider extends FabricAdvancementProvider {
 
 
@@ -351,11 +350,20 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.requirements(requires("teleport"))
 			.build(Stellarity.id("exploration/spirit_assasin"));
 
+		final var DRAGONBORN = advancement().display(
+				StellarityItems.THE_BEGINNING,
+				Component.translatable("advancements.stellarity.dragonborn"), Component.translatable("advancements.stellarity.dragonborn.description"),
+				GOAL, true, true, false
+			).parent(KILL_DRAGON)
+			.addCriterion("obtain", InventoryChangeTrigger.TriggerInstance.hasItems(StellarityItems.DRAGONBLADE))
+			.requirements(requires("obtain"))
+			.build(Stellarity.id("dragons_den/dragonborn"));
+
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
 			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
-			KEEP_WARM, SPIRIT_ASSASIN
+			KEEP_WARM, SPIRIT_ASSASIN, DRAGONBORN
 		)) {
 			consumer.accept(advancement);
 		}

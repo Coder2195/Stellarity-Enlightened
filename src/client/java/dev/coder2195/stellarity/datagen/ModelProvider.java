@@ -13,10 +13,12 @@ import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
@@ -168,8 +170,6 @@ public class ModelProvider extends FabricModelProvider {
 	};
 
 
-
-
 	public void generateBush(BlockModelGenerators generators, Block block) {
 		generators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
 			.with(PropertyDispatch.initial(BlockStateProperties.AGE_3)
@@ -261,8 +261,8 @@ public class ModelProvider extends FabricModelProvider {
 		for (Tuple2<Block, Block> wood : WOOD_BLOCKS) generators.woodProvider(wood._1()).logWithHorizontal(wood._1()).wood(wood._2());
 
 		for (var shelf : SHELVES) generators.createShelf(shelf._1(), shelf._2());
-		for (var leaves: StellarityBlocks.TINTED_LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
-		for (var leaves: StellarityBlocks.COLORED_HALLOWED_LEAVES.asList()) generators.createTrivialCube(leaves);
+		for (var leaves : StellarityBlocks.TINTED_LEAVES) generators.createTintedLeaves(leaves, TexturedModel.LEAVES, -12012264);
+		for (var leaves : StellarityBlocks.COLORED_HALLOWED_LEAVES.asList()) generators.createTrivialCube(leaves);
 		for (Tuple2<Block, Block> sapling : SAPLINGS) generators.createPlantWithDefaultItem(sapling._1(), sapling._2(), PlantType.NOT_TINTED);
 	}
 
@@ -272,6 +272,14 @@ public class ModelProvider extends FabricModelProvider {
 			generators.generateBow(bow);
 			generators.createFlatItemModel(bow, ModelTemplates.BOW);
 		}
+
+		generators.itemModelOutput.accept(DRAGONBLADE, ItemModelUtils.select(new DisplayContext(), ItemModelUtils.plainModel(
+			ModelLocationUtils.getModelLocation(DRAGONBLADE)), ItemModelUtils.when(
+			List.of(
+				ItemDisplayContext.FIRST_PERSON_LEFT_HAND, ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, ItemDisplayContext.THIRD_PERSON_LEFT_HAND, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND
+			), ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(DRAGONBLADE, "_3d"))
+		)));
+		generators.createFlatItemModel(DRAGONBLADE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
 		generators.declareCustomModelItem(SHULKER_BODY);
 		generators.generateFishingRod(FISHER_OF_VOIDS);

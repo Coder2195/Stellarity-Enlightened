@@ -507,6 +507,8 @@ public interface StellarityItems {
 	Item THE_BEGINNING = register(StellarityItemIds.THE_BEGINNING, SpiritDagger::new,  new Item.Properties().sword(StellarityToolMaterials.THE_BEGINNING, 3, -2f));
 	Item THE_END = register(StellarityItemIds.THE_END, SpiritDagger::new,  new Item.Properties().sword(StellarityToolMaterials.THE_END, 3, -2f));
 
+	Item DRAGONBLADE = register(StellarityItemIds.DRAGONBLADE, Dragonblade::new, Dragonblade.PROPERTIES);
+
 
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {

@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
+@SuppressWarnings("DuplicatedCode")
 public interface StellarityClientNetworking {
 	RandomSource random = RandomSource.create();
 
@@ -32,9 +33,22 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritSlashPayload.TYPE, StellarityClientNetworking::spiritSlash);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredBlessPayload.TYPE, StellarityClientNetworking::altarOfTheSacredBless);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredRejectPayload.TYPE, StellarityClientNetworking::altarOfTheSacredReject);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritDespawnPayload.TYPE, StellarityClientNetworking::spiritDespawn);
 
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void spiritDespawn(ClientboundSpiritDespawnPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		if (level == null) return;
+		var position = packet.position();
+
+		for (int i = 0; i < 25; i++) {
+			level.addAlwaysVisibleParticle(ParticleTypes.FIREWORK, true, position.x, position.y + 1, position.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.5);
+		}
+		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION, true, position.x, position.y, position.z, 0, 0, 0);
 	}
 
 	static void altarOfTheSacredReject(ClientboundAltarOfTheSacredRejectPayload packet, ClientPlayNetworking.Context context) {
@@ -94,7 +108,6 @@ public interface StellarityClientNetworking {
 		var fromPosition = packet.fromPosition();
 		var toPosition = packet.toPosition();
 		var deltaVector = toPosition.subtract(fromPosition);
-		var normalDelta = deltaVector.normalize();
 		var hasFire = packet.hasFire();
 
 		ParticleOptions[] SPIRIT_COLORS = {new DustParticleOptions(0x97e1e4, 1.2f), new DustParticleOptions(0xc156cf, 1.2f), new DustParticleOptions(0xffe70c, 1.2f)};
@@ -109,7 +122,7 @@ public interface StellarityClientNetworking {
 
 		for (ParticleOptions particle : List.of(ParticleTypes.END_ROD, PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1)))
 			for (int i = 0; i < 16; i++) {
-				level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, toPosition.x, toPosition.y, toPosition.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
+				level.addAlwaysVisibleParticle(particle, true, toPosition.x, toPosition.y, toPosition.z, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1, random.nextGaussian() * 0.1);
 			}
 
 		if (hasFire) for (int i = 0; i < 21; i++) {
@@ -204,8 +217,6 @@ public interface StellarityClientNetworking {
 		if (level == null) return;
 
 		var position = packet.position();
-		var damage = packet.damage();
-
 
 		for (int i = 0; i < 360; i++) {
 			float angle = i * Mth.TWO_PI / 360;

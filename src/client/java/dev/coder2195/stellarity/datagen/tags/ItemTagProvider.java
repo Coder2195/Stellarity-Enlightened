@@ -75,7 +75,7 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		addTags(ItemTags.BOW_ENCHANTABLE, StellarityItemTags.BOWS);
 		addTags(StellarityItemTags.RANGED_ENCHANTABLE, ItemTags.BOW_ENCHANTABLE, ItemTags.CROSSBOW_ENCHANTABLE);
 
-		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER, THE_BEGINNING, THE_END);
+		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER, THE_BEGINNING, THE_END, DRAGONBLADE);
 
 		// TODO: add shulker spear, and ensure all implementations complete
 		var donator = addTags(StellarityItemTags.DONATOR);

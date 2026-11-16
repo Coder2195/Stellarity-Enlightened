@@ -113,6 +113,7 @@ public interface StellarityCreativeModeTabs {
 
 
 	ItemLike[] EQUIPMENT_ITEMS = new ItemLike[]{
+		DRAGONBLADE,
 		CALL_OF_THE_VOID,
 		FISHER_OF_VOIDS,
 		TAMARIS,
@@ -238,7 +239,6 @@ public interface StellarityCreativeModeTabs {
 		register(mc("spawn_eggs"), SPAWN_EGGS, SPAWN_EGGS_ITEMS);
 
 		Stellarity.LOGGER.info("Registering Stellarity Creative Mode Tabs");
-
 	}
 
 	static void register(ResourceKey<CreativeModeTab> key, CreativeModeTab tab, ItemLike[] items, List<ItemStackTemplate> stacks, List<Supplier<List<ItemStack>>> batchStacks) {
