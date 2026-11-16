@@ -2,7 +2,7 @@ package dev.coder2195.stellarity.datagen;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.criterion_trigger.DashTrigger;
+import dev.coder2195.stellarity.criterion_trigger.DamagingTeleportTrigger;
 import dev.coder2195.stellarity.criterion_trigger.HolyProtectionDodgeTrigger;
 import dev.coder2195.stellarity.criterion_trigger.SpecialCraftTrigger;
 import dev.coder2195.stellarity.criterion_trigger.VoidFishedTrigger;
@@ -12,6 +12,7 @@ import dev.coder2195.stellarity.entity_sub_predicate.NbtNumberPredicate;
 import dev.coder2195.stellarity.registry.*;
 import dev.coder2195.stellarity.tags.StellarityBiomeTags;
 import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
+import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
@@ -218,9 +219,10 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 				Component.translatable("advancements.stellarity.electrified"), Component.translatable("advancements.stellarity.electrified.description"),
 				TASK, true, true, false
 			).parent(ADVENTURE_ROOT)
-			.addCriterion("dash", StellarityCriteriaTriggers.DASH.createCriterion(new DashTrigger.TriggerInstance(
+			.addCriterion("dash", StellarityCriteriaTriggers.DAMAGING_TELEPORT.createCriterion(new DamagingTeleportTrigger.TriggerInstance(
 				Optional.empty(), List.of(), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.atLeast(5),
-				Optional.of(ItemPredicate.Builder.item().of(items, StellarityItems.COPPER_ELEKTRA_SHIELD).build())
+				Optional.of(ItemPredicate.Builder.item().of(items, StellarityItems.COPPER_ELEKTRA_SHIELD).build()),
+				Optional.empty(), Optional.empty(), Optional.empty()
 			)))
 			.requirements(requires("dash"))
 			.build(Stellarity.id("adventure/electrified"));
@@ -334,11 +336,26 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			).requirements(requires("keep_warm"))
 			.build(Stellarity.id("exploration/keep_warm"));
 
+			final var SPIRIT_ASSASIN = advancement().display(
+				StellarityItems.THE_BEGINNING,
+				Component.translatable("advancements.stellarity.spirit_assasin"), Component.translatable("advancements.stellarity.spirit_assasin.description"),
+				TASK, true, true, false
+			).parent(ENTER_END_GATEWAY)
+			.addCriterion("teleport", StellarityCriteriaTriggers.DAMAGING_TELEPORT.createCriterion(new DamagingTeleportTrigger.TriggerInstance(
+				Optional.of(Holder.direct(
+					LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, new EntityPredicate.Builder().equipment(EntityEquipmentPredicate.Builder.equipment().offhand(ItemPredicate.Builder.item().of(items, StellarityItemTags.SPIRIT_DAGGERS)))).build()
+				)), List.of(), MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY,
+				Optional.of(ItemPredicate.Builder.item().of(items, StellarityItemTags.SPIRIT_DAGGERS).build()),
+				Optional.empty(), Optional.empty(), Optional.of(DistancePredicate.absolute(MinMaxBounds.Doubles.atLeast(60)))
+			)))
+			.requirements(requires("teleport"))
+			.build(Stellarity.id("exploration/spirit_assasin"));
+
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
 			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
-			KEEP_WARM
+			KEEP_WARM, SPIRIT_ASSASIN
 		)) {
 			consumer.accept(advancement);
 		}

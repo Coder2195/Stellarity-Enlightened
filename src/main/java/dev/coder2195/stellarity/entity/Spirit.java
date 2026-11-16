@@ -2,6 +2,7 @@ package dev.coder2195.stellarity.entity;
 
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.networking.ClientboundSpiritSlashPayload;
+import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
 import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
@@ -16,6 +17,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -222,6 +224,8 @@ public class Spirit extends Entity {
 			}
 		}
 
+		ArrayList<Entity> victims = new ArrayList<>();
+
 		for (var entity : level.getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(3.5), e -> !(e.isInvulnerableTo(serverLevel, damageSource) || e.is(owner)))) {
 			hurtPositions.add(entity.position());
 
@@ -242,6 +246,7 @@ public class Spirit extends Entity {
 			}
 
 
+			victims.add(entity);
 			entity.hurtServer(serverLevel, damageSource, damage);
 			if (maxSlownessTicks > 20) entity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, random.nextInt(20, maxSlownessTicks), 3));
 			entity.setRemainingFireTicks(entity.getRemainingFireTicks() + fireTicks);
@@ -253,6 +258,10 @@ public class Spirit extends Entity {
 
 
 		var oldPos = owner.position();
+
+		if (owner instanceof ServerPlayer player) {
+			StellarityCriteriaTriggers.DAMAGING_TELEPORT.trigger(player, victims, mainHand, oldPos, position);
+		}
 
 		owner.teleportTo(position.x, position.y, position.z);
 		owner.addEffect(new MobEffectInstance(StellarityMobEffects.ASSASINATION, 4 * 20));

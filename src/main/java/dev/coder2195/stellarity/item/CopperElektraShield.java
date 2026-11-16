@@ -13,7 +13,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -114,12 +113,14 @@ public class CopperElektraShield extends ShieldItem {
 			}
 		}
 
-		NetworkingUtil.sendTrackingPlayers(serverLevel, player, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
-
 
 		if (player instanceof ServerPlayer serverPlayer) {
-			StellarityCriteriaTriggers.DASH.trigger(serverPlayer, victims, itemStack);
+			StellarityCriteriaTriggers.DAMAGING_TELEPORT.trigger(serverPlayer, victims, itemStack, player.position(), endLocation);
 		}
+
+
+		NetworkingUtil.sendTrackingPlayers(serverLevel, player, new ClientboundElectricDashPayload(ownerPosition, endLocation, creeperLocations));
+
 
 		player.teleport(new TeleportTransition(serverLevel, endLocation, player.getDeltaMovement(), player.getYRot(), player.getXRot(), TeleportTransition.DO_NOTHING));
 

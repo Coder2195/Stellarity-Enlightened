@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:end/enter_end_gateway",
+  "criteria": {
+    "teleport": {
+      "conditions": {
+        "distance": {
+          "absolute": {
+            "min": 60.0
+          }
+        },
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:equipment": {
+              "offhand": {
+                "items": "#stellarity:spirit_daggers"
+              }
+            }
+          }
+        },
+        "weapon": {
+          "items": "#stellarity:spirit_daggers"
+        }
+      },
+      "trigger": "stellarity:damaging_teleport"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.spirit_assasin.description"
+    },
+    "icon": {
+      "id": "stellarity:the_beginning"
+    },
+    "title": {
+      "translate": "advancements.stellarity.spirit_assasin"
+    }
+  },
+  "requirements": [
+    [
+      "teleport"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

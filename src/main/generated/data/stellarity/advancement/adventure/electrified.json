@@ -10,7 +10,7 @@
           "items": "stellarity:copper_elektra_shield"
         }
       },
-      "trigger": "stellarity:dash"
+      "trigger": "stellarity:damaging_teleport"
     }
   },
   "display": {
