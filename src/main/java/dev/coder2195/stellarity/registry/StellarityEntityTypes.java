@@ -58,6 +58,8 @@ public interface StellarityEntityTypes {
 
 	EntityType<Spirit> SPIRIT = register(StellarityEntityTypeIds.SPIRIT, EntityType.Builder.of(Spirit::new, MobCategory.MISC).sized(1, 1).eyeHeight(0.325f).noLootTable());
 
+	EntityType<RemovableItemDisplay> REMOVABLE_ITEM_DISPLAY = register(StellarityEntityTypeIds.REMOVABLE_ITEM_DISPLAY, EntityType.Builder.<RemovableItemDisplay>of(RemovableItemDisplay::new, MobCategory.MISC).sized(0, 0).eyeHeight(0).noLootTable());
+
 	EntityType<Boat> ASHEN_BOAT = registerBoat(StellarityEntityTypeIds.ASHEN_BOAT, StellarityItems.ASHEN_BOAT);
 	EntityType<Boat> AMETHYII_BOAT = registerBoat(StellarityEntityTypeIds.AMETHYII_BOAT, StellarityItems.AMETHYII_BOAT);
 	EntityType<Boat> HALLOWED_BOAT = registerBoat(StellarityEntityTypeIds.HALLOWED_BOAT, StellarityItems.HALLOWED_BOAT);

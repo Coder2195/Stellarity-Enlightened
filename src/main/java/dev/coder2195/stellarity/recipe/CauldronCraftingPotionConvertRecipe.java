@@ -37,7 +37,7 @@ public record CauldronCraftingPotionConvertRecipe(Ingredient potionItem, HolderS
 	public static final MapCodec<CauldronCraftingPotionConvertRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
 		Ingredient.CODEC.fieldOf("potion_item").forGetter(CauldronCraftingPotionConvertRecipe::potionItem),
 		HolderSetCodec.create(Registries.POTION, Potion.CODEC, false).fieldOf("original_potion").forGetter(CauldronCraftingPotionConvertRecipe::originalPotion),
-		CustomCodecs.INGREDIENT_MAP_CODEC.fieldOf("ingredients").forGetter(CauldronCraftingPotionConvertRecipe::ingredients),
+		CustomCodecs.INGREDIENT_MAP.fieldOf("ingredients").forGetter(CauldronCraftingPotionConvertRecipe::ingredients),
 		Potion.CODEC.fieldOf("result_potion").forGetter(CauldronCraftingPotionConvertRecipe::resultPotion)
 	).apply(instance, CauldronCraftingPotionConvertRecipe::new));
 

@@ -4,11 +4,13 @@ import dev.coder2195.stellarity.Stellarity;
 import dev.coder2195.stellarity.entity.SatchelSigil;
 import dev.coder2195.stellarity.entity.ThrownPrismaticPearl;
 import dev.coder2195.stellarity.entity.variant.VoidedSkeletonVariant;
+import dev.coder2195.stellarity.util.CustomStreamCodecs;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityDataRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataSerializer;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public interface StellarityEntityDataSerializers {
@@ -16,6 +18,7 @@ public interface StellarityEntityDataSerializers {
 	EntityDataSerializer<ThrownPrismaticPearl.Trail> PRISMATIC_PEARL_TRAIL = register("prismatic_pearl_trail", ThrownPrismaticPearl.Trail.STREAM_CODEC);
 	EntityDataSerializer<SatchelSigil.State> SATCHEL_SIGIL_STATE = register("satchel_sigil_state", SatchelSigil.State.STREAM_CODEC);
 	EntityDataSerializer<Vec3> VEC3 = register("vec3", Vec3.STREAM_CODEC);
+	EntityDataSerializer<AABB> AABB = register("aabb", CustomStreamCodecs.AABB);
 
 	static <T> EntityDataSerializer<T> register(String id, StreamCodec<? super RegistryFriendlyByteBuf, T> codec) {
 		var serializer = EntityDataSerializer.forValueType(codec);

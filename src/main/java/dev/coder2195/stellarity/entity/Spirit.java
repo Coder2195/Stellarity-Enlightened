@@ -117,7 +117,7 @@ public class Spirit extends Entity {
 
 	public boolean isOwnerCanSee(LivingEntity candidate) {
 		var owner = getOwner();
-		if (owner == null || !owner.is(candidate)) return false;
+		if (owner == null || !owner.equals(candidate)) return false;
 		return level().clip(new ClipContext(candidate.getEyePosition(), this.getEyePosition(), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty())).getType() == HitResult.Type.MISS;
 	}
 
@@ -228,7 +228,7 @@ public class Spirit extends Entity {
 
 		ArrayList<Entity> victims = new ArrayList<>();
 
-		for (var entity : level.getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(3.5), e -> !(e.isInvulnerableTo(serverLevel, damageSource) || e.is(owner)))) {
+		for (var entity : level.getEntitiesOfClass(LivingEntity.class, getBoundingBox().inflate(3.5), e -> !(e.isInvulnerableTo(serverLevel, damageSource) || e.equals(owner)))) {
 			hurtPositions.add(entity.position());
 
 			float damage = baseDamage;

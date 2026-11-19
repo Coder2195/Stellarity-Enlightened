@@ -83,7 +83,7 @@ public class SpectralWisp extends AbstractArrow {
 		var y = pos.y();
 		var z = pos.z();
 		targets = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(x - 16, y - 16, z - 16, x + 16, y + 16, z + 16), (entity) -> {
-			if (this.is(entity) || !canHitEntity(entity) || this.owner != null && this.owner.matches(entity)) return false;
+			if (this.equals(entity) || !canHitEntity(entity) || this.owner != null && this.owner.matches(entity)) return false;
 			return level().clip(new ClipContext(pos, entity.position(), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this)).getType().equals(HitResult.Type.MISS);
 		});
 	}

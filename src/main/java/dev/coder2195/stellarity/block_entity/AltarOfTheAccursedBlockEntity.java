@@ -1,8 +1,13 @@
 package dev.coder2195.stellarity.block_entity;
 
+import com.mojang.math.Transformation;
+import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.block.AltarOfTheAccursed;
+import dev.coder2195.stellarity.entity.RemovableItemDisplay;
 import dev.coder2195.stellarity.recipe.AltarOfTheAccursedRecipe;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
+import dev.coder2195.stellarity.registry.StellarityDataAttachments;
+import dev.coder2195.stellarity.registry.StellarityItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,12 +16,19 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Unit;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.end.EnderDragonFight;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 
 public class AltarOfTheAccursedBlockEntity extends BlockEntity {
@@ -25,6 +37,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 	}
 
 	private long ticksPassed = 0;
+	private int dragonbladeSpawnTime = -1;
 
 	public AltarOfTheAccursedBlockEntity(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
 		super(blockEntityType, blockPos, blockState);
@@ -35,6 +48,25 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 		return ClientboundBlockEntityDataPacket.create(this);
 	}
 
+	@Override
+	protected void saveAdditional(ValueOutput output) {
+		super.saveAdditional(output);
+		output.store("dragonblade_spawn_time", Codec.INT, dragonbladeSpawnTime);
+	}
+
+	@Override
+	protected void loadAdditional(ValueInput input) {
+		super.loadAdditional(input);
+		input.read("dragonblade_spawn_time", Codec.INT).ifPresent(this::setDragonbladeSpawnTime);
+	}
+
+	public void setDragonbladeSpawnTime(int dragonbladeSpawnTime) {
+		this.dragonbladeSpawnTime = dragonbladeSpawnTime;
+	}
+
+	public int getDragonbladeSpawnTime() {
+		return dragonbladeSpawnTime;
+	}
 
 	public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T blockEntity) {
 		if (blockEntity instanceof AltarOfTheAccursedBlockEntity entity) entity.tick(level, blockPos, blockState);
@@ -50,6 +82,8 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 		double x = centerPos.x;
 		double y = centerPos.y;
 		double z = centerPos.z;
+
+		var bottomCenterAbove = Vec3.atBottomCenterOf(blockPos.above());
 
 		if (level.isClientSide()) {
 			if (locked) return;
@@ -110,6 +144,8 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 
 		} else if (level instanceof ServerLevel serverLevel) {
 
+
+
 			if (!placeType.bypassesDragon()) {
 				var end = serverLevel.getServer().getLevel(Level.END);
 				EnderDragonFight dragonFight = end == null ? null : end.getDragonFight();
@@ -124,10 +160,30 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 
 			if (this.ticksPassed % 10 == 0) {
 				AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
+
+				if (!serverLevel.globalAttachments().hasAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE)) {
+					serverLevel.globalAttachments().setAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE, Unit.INSTANCE);
+					dragonbladeSpawnTime = 200;
+				}
 			}
+
+			if (placeType == AltarOfTheAccursed.PlaceType.NORMAL) {
+				if (dragonbladeSpawnTime >= 0 && dragonbladeSpawnTime-- == 0) {
+					var itemDisplay = new RemovableItemDisplay(serverLevel, bottomCenterAbove.x, bottomCenterAbove.y, bottomCenterAbove.z, new ItemStack(StellarityItems.DRAGONBLADE), Short.MIN_VALUE);
+					itemDisplay.setHeight(1);
+					itemDisplay.setWidth(0.5f);
+					itemDisplay.setTransformation(new Transformation(new Vector3f(0, 0.5f, -0.075f), new Quaternionf(1, 0, 0, 0), new Vector3f(1, 1, 1), new Quaternionf(0, 0, 0, 1)));
+					itemDisplay.setItemTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
+					level.addFreshEntity(itemDisplay);
+				}
+			}
+
+
 
 		}
 	}
+
+
 
 
 }

@@ -7,6 +7,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,22 +27,27 @@ public interface CustomCodecs {
 		}
 	};
 
-	MapCodec<Map.Entry<Ingredient, Integer>> INGREDIENT_MAP_ENTRY_CODEC = RecordCodecBuilder.mapCodec(
+	MapCodec<Map.Entry<Ingredient, Integer>> INGREDIENT_MAP_ENTRY = RecordCodecBuilder.mapCodec(
 		instance -> instance.group(
 			Ingredient.CODEC.fieldOf("ingredient").forGetter(Map.Entry::getKey),
 			Codec.INT.optionalFieldOf("count", 1).forGetter(Map.Entry::getValue)
 		).apply(instance, Map::entry)
 	);
 
-	Codec<HashMap<Ingredient, Integer>> INGREDIENT_MAP_CODEC =  INGREDIENT_MAP_ENTRY_CODEC.codec().listOf().xmap(
+	Codec<HashMap<Ingredient, Integer>> INGREDIENT_MAP = INGREDIENT_MAP_ENTRY.codec().listOf().xmap(
 		(entries) -> {
 			HashMap<Ingredient, Integer> hashMap = new HashMap<>();
 			entries.forEach(e -> hashMap.put(e.getKey(), e.getValue()));
 			return hashMap;
-		}, (map) -> {
-			return map.entrySet().stream().toList();
-		}
+		}, (map) -> map.entrySet().stream().toList()
 	);
+
+
+	// ugh aabb
+	Codec<AABB> AABB = RecordCodecBuilder.create(instance -> instance.group(
+		Vec3.CODEC.fieldOf("min").forGetter(net.minecraft.world.phys.AABB::getMinPosition),
+		Vec3.CODEC.fieldOf("ax").forGetter(net.minecraft.world.phys.AABB::getMaxPosition)
+	).apply(instance, AABB::new));
 
 	static <T extends Enum<T>> Codec<T> enumName(Class<T> enumClass, T defaultValue) {
 		return PrimitiveCodec.STRING.xmap(name -> {

@@ -23,6 +23,9 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 	@Shadow
 	public abstract void setPickUpDelay(int ticks);
 
+	@Shadow
+	private int age;
+
 	public ItemEntityMixin(EntityType<?> entityType, Level level) {
 		super(entityType, level);
 	}
@@ -51,5 +54,8 @@ public abstract class ItemEntityMixin extends Entity implements ExtItemEntity {
 		setItem(stack.copyWithCount(count));
 	}
 
-
+	@Override
+	public void stellarity$setAge(short age) {
+		this.age = age;
+	}
 }

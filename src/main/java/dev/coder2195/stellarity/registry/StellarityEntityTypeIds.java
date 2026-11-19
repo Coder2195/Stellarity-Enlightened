@@ -37,6 +37,7 @@ public interface StellarityEntityTypeIds {
 	ResourceKey<EntityType<?>> PRISMATIC_CHEST_BOAT = id("prismatic_chest_boat");
 	ResourceKey<EntityType<?>> INFERNO_CHEST_BOAT = id("inferno_chest_boat");
 	ResourceKey<EntityType<?>> SPIRIT = id("spirit");
+	ResourceKey<EntityType<?>> REMOVABLE_ITEM_DISPLAY = id("removeable_item_display");
 
 	static ResourceKey<EntityType<?>> id(String id) {
 		return Stellarity.key(Registries.ENTITY_TYPE, id);

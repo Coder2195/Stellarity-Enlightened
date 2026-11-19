@@ -39,7 +39,7 @@ public record CauldronCraftingSimpleRecipe(HashMap<Ingredient, Integer> ingredie
 
 	public static final MapCodec<CauldronCraftingSimpleRecipe> CODEC = RecordCodecBuilder.mapCodec(
 		instance -> instance.group(
-			CustomCodecs.INGREDIENT_MAP_CODEC.fieldOf("ingredients").forGetter(CauldronCraftingSimpleRecipe::ingredients),
+			CustomCodecs.INGREDIENT_MAP.fieldOf("ingredients").forGetter(CauldronCraftingSimpleRecipe::ingredients),
 			ItemStackTemplate.CODEC.fieldOf("result").forGetter(CauldronCraftingSimpleRecipe::result)
 		).apply(instance, CauldronCraftingSimpleRecipe::new));
 }

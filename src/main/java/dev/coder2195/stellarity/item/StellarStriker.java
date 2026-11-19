@@ -7,7 +7,6 @@ import dev.coder2195.stellarity.util.RaycastUtil;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -93,7 +92,7 @@ public class StellarStriker extends Item {
 
 		var raycastOrigin = player.getEyePosition();
 		var targetPosition = raycastOrigin.add(player.getLookAngle().normalize().scale(100));
-	  var result = RaycastUtil.raycastLine(level, raycastOrigin, targetPosition, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity->!player.is(entity) && entity instanceof LivingEntity livingEntity);
+	  var result = RaycastUtil.raycastLine(level, raycastOrigin, targetPosition, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity->!player.equals(entity) && entity instanceof LivingEntity);
 		if (!result.getType().equals(HitResult.Type.MISS)) targetPosition = result.getLocation();
 
 		for (int i=0; i<stars; i++) {

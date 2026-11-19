@@ -33,7 +33,6 @@ public class AltarOfTheSacredBlockEntity extends BlockEntity {
 		super(StellarityBlockEntityTypes.ALTAR_OF_THE_SACRED, worldPosition, blockState);
 	}
 
-
 	public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T blockEntity) {
 		if (blockEntity instanceof AltarOfTheSacredBlockEntity entity) entity.tick(level, blockPos, blockState);
 	}

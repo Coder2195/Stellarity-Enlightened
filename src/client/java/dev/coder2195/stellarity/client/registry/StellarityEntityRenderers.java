@@ -1,6 +1,7 @@
 package dev.coder2195.stellarity.client.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.client.mixin.accessor.ItemDisplayRendererAccessor;
 import dev.coder2195.stellarity.client.renderer.entity.*;
 import dev.coder2195.stellarity.registry.StellarityEntityTypes;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
@@ -36,6 +37,7 @@ public interface StellarityEntityRenderers {
 		register(StellarityEntityTypes.LIGHT_AURA, NoopRenderer::new);
 		register(StellarityEntityTypes.POTION_CLOUD, NoopRenderer::new);
 		register(StellarityEntityTypes.DRAGON_BREATH_CAULDRON_INGREDIENT, DragonBreathCauldronIngredientRenderer::new);
+		register(StellarityEntityTypes.REMOVABLE_ITEM_DISPLAY, ItemDisplayRendererAccessor::create);
 		for (Tuple2<? extends EntityType<? extends AbstractBoat>, ModelLayerLocation> boat: List.of(
 			new Tuple2<>(StellarityEntityTypes.AMETHYII_BOAT, StellarityModelLayers.AMETHYII_BOAT),
 			new Tuple2<>(StellarityEntityTypes.HALLOWED_BOAT, StellarityModelLayers.HALLOWED_BOAT),

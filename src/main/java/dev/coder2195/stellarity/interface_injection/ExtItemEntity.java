@@ -74,6 +74,10 @@ public interface ExtItemEntity extends AttachmentTarget, ExtEntity {
 		this.removeAttached(StellarityDataAttachments.GLOW_COLOR);
 	}
 
+	default void stellarity$setAge(short age) {
+		throw new AssertionError("Not transformed!");
+	}
+
 	default void stellarity$updateResults(HashMap<ItemStack, Integer> results) {
 		throw new AssertionError("Not transformed!");
 	}

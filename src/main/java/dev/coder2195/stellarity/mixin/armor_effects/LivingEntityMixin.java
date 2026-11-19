@@ -91,6 +91,7 @@ public abstract class LivingEntityMixin extends Entity {
 		var totalSize = hostiles.size();
 		if (totalSize > 0) for (int i = 0; i < 3; i++) {
 			if (random.nextBoolean()) break;
+			//noinspection DataFlowIssue it gets set to a nullable
 			var shulkerBullet = new ShulkerBullet(level, castedSelf, hostiles.get(i % totalSize), null);
 			shulkerBullet.setPos(position().add(0, getEyeHeight() * 0.6, 0));
 			level.addFreshEntity(shulkerBullet);
@@ -111,7 +112,7 @@ public abstract class LivingEntityMixin extends Entity {
 		var swarmCount = level.getEntitiesOfClass(Mob.class, new AABB(position, position).inflate(5), e -> {
 			if (!(e instanceof MobAccessor mob)) return false;
 			var target = mob.stellarity$target();
-			return target != null && castedSelf.is(target);
+			return castedSelf.equals(target);
 		}).size();
 
 		if (swarmCount < 3) return;
@@ -126,11 +127,11 @@ public abstract class LivingEntityMixin extends Entity {
 	private Predicate<LivingEntity> attackFilter(LivingEntity castedSelf) {
 		final var attacker = getLastAttacker();
 
-		return castedSelf instanceof Monster monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Player || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
-		) : castedSelf instanceof Player player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
-			e.is(attacker) || e instanceof Monster || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
-		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.is(attacker) || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target());
+		return castedSelf instanceof Monster ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
+			e.equals(attacker) || e instanceof Player || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
+		) : castedSelf instanceof Player ? (e) -> e != castedSelf && castedSelf.canAttack(e) && (
+			e.equals(attacker) || e instanceof Monster || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target()
+		) : (e) -> e != castedSelf && castedSelf.canAttack(e) && (e.equals(attacker) || e instanceof MobAccessor mob && castedSelf == mob.stellarity$target());
 	}
 
 	@WrapMethod(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z")

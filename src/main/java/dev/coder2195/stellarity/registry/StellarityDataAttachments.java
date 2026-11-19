@@ -66,8 +66,9 @@ public interface StellarityDataAttachments {
 
 	AttachmentType<Long> SPIRIT_ATTRACTABLE_AT = AttachmentRegistry.create(Stellarity.id("spirit_attractable_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
+	AttachmentType<Unit> DRAGONBLADE_EXISTANCE = AttachmentRegistry.create(Stellarity.id("dragonblade_existance"), builder -> builder.persistent(Unit.CODEC));
+
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");
-
 	}
 }

@@ -23,7 +23,7 @@ public interface StellarityClientTick {
 				var nearbyEntities = level.getEntitiesOfClass(
 					LivingEntity.class,
 					new AABB(position.subtract(10, 10, 10), position.add(10, 10, 10)),
-					e -> !e.is(player) && e.isAlive() && e.getHealth() / e.getMaxHealth() < 0.25f
+					e -> !e.equals(player) && e.isAlive() && e.getHealth() / e.getMaxHealth() < 0.25f
 				);
 
 				for (var nearbyEntity : nearbyEntities) {

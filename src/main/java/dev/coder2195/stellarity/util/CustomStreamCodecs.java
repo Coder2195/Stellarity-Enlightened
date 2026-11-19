@@ -9,6 +9,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
@@ -56,4 +57,5 @@ public interface CustomStreamCodecs {
 	StreamCodec<RegistryFriendlyByteBuf, HashMap<Ingredient, Integer>> INGREDIENTS_MAP = StreamCodec.of(CustomStreamCodecs::writeIngredients, CustomStreamCodecs::readIngredients);
 	StreamCodec<RegistryFriendlyByteBuf, List<Tuple2<ItemStackTemplate, Vec3>>> ITEM_STACK_TEMPLATE_VEC_3_TUPLES = Tuple2.streamCodec(ItemStackTemplate.STREAM_CODEC, Vec3.STREAM_CODEC).apply(ByteBufCodecs.list());
 	StreamCodec<ByteBuf, Direction.Axis> AXIS = enumName(Direction.Axis.class, Direction.Axis.X, Direction.Axis::getName, Direction.Axis::byName);
+	StreamCodec<ByteBuf, AABB> AABB = StreamCodec.composite(Vec3.STREAM_CODEC, net.minecraft.world.phys.AABB::getMinPosition, Vec3.STREAM_CODEC, net.minecraft.world.phys.AABB::getMaxPosition, AABB::new);
 }

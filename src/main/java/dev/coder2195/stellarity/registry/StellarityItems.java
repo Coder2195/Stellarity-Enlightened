@@ -512,7 +512,7 @@ public interface StellarityItems {
 
 
 	static Item registerBoat(ResourceKey<Item> key, EntityType<? extends AbstractBoat> type, Item.Properties properties) {
-		return register(key, (props) -> new BoatItem(type, props), properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1));
+		return register(key, BoatItem::new, properties.cookingFuel(ContextIntProviders.COOKING_TIME_BOATS).stacksTo(1).spawns(type));
 	}
 
 	static ItemStackTemplate createPotion(Holder<Potion> potion) {
@@ -540,7 +540,7 @@ public interface StellarityItems {
 	}
 
 	private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
-		return register(key, SpawnEggItem::new, (new Item.Properties()).spawnEgg(type));
+		return register(key, SpawnEggItem::new, (new Item.Properties()).spawns(type));
 	}
 
 	static Item register(ResourceKey<Item> key, Function<Item.Properties, Item> itemFactory) {
