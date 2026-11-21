@@ -18,7 +18,7 @@ public class EntityMixin {
 
 	@WrapMethod(method = "remove")
 	private void queueDragonbladeForResummon(Entity.RemovalReason reason, Operation<Void> original) {
-		// FIXME: in the future, this may dupe dragonblade if mc changes item pickup impl
+		// in the future, this may dupe dragonblade if mc changes item pickup impl
 		if ((Entity) (Object) this instanceof ItemEntity itemEntity && level instanceof ServerLevel serverLevel && itemEntity.getItem().is(StellarityItems.DRAGONBLADE)) {
 			serverLevel.globalAttachments().removeAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE);
 		}

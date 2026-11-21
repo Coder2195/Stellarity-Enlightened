@@ -352,7 +352,6 @@ public class RecipeProvider extends FabricRecipeProvider {
 		// TODO: STANDSTONE is a typo on mojank part, fix
 		consecration(output, "cut_red_sandstone_slab", Ingredient.of(CUT_STANDSTONE_SLAB), new ItemStackTemplate(CUT_RED_SANDSTONE_SLAB));
 		consecration(output, "cut_sandstone_slab", Ingredient.of(CUT_RED_SANDSTONE_SLAB), new ItemStackTemplate(CUT_STANDSTONE_SLAB));
-		// end TODO
 		consecration(output, "smooth_red_sandstone", Ingredient.of(SMOOTH_SANDSTONE), new ItemStackTemplate(SMOOTH_RED_SANDSTONE));
 		consecration(output, "smooth_sandstone", Ingredient.of(SMOOTH_RED_SANDSTONE), new ItemStackTemplate(SMOOTH_SANDSTONE));
 		consecration(output, "red_sandstone_stairs", Ingredient.of(SANDSTONE_STAIRS), new ItemStackTemplate(RED_SANDSTONE_STAIRS));

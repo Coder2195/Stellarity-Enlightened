@@ -34,9 +34,18 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredBlessPayload.TYPE, StellarityClientNetworking::altarOfTheSacredBless);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredRejectPayload.TYPE, StellarityClientNetworking::altarOfTheSacredReject);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritDespawnPayload.TYPE, StellarityClientNetworking::spiritDespawn);
-
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundDragonbladeSpawnPayload.TYPE, StellarityClientNetworking::dragonbladeSpawn);
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void dragonbladeSpawn(ClientboundDragonbladeSpawnPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		if (level == null) return;
+		var position = packet.position();
+
+
 	}
 
 	static void spiritDespawn(ClientboundSpiritDespawnPayload packet, ClientPlayNetworking.Context context) {

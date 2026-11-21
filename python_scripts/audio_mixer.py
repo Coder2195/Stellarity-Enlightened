@@ -1,5 +1,9 @@
+import json
 import os
 import pathlib
+from functools import reduce
+from itertools import product
+from random import randrange
 
 from pydub import AudioSegment
 from pydub.utils import ratio_to_db
@@ -22,9 +26,8 @@ def pitch_modulate(sound: AudioSegment, octaves: float):
 	return hipitch_sound
 
 
-def mc(path: str,  volume: float, pitch: float):
-	return pitch_modulate(AudioSegment.from_ogg(f"input_audio/{path}.ogg"), pitch).apply_gain(ratio_to_db(volume))
-
+def mc(path: str, volume: float, pitch: float):
+	return pitch_modulate(AudioSegment.from_ogg(f"../minecraft-assets/assets/minecraft/sounds/{path}.ogg"), pitch).apply_gain(ratio_to_db(volume))
 
 
 def check_stereo():
@@ -42,85 +45,92 @@ def check_stereo():
 
 			prev_size = os.path.getsize(path_joined)
 
-
 			audio_segment = audio_segment.set_channels(1).set_frame_rate(32000)
 			audio_segment.export(path_joined, format="ogg", bitrate="64k")
 
 			new_size = os.path.getsize(path_joined)
-			print(f"{path_joined} size from {prev_size / 1000}kb to {new_size/1000}kb ({new_size / prev_size * 100}% of original size)")
+			print(f"{path_joined} size from {prev_size / 1000}kb to {new_size / 1000}kb ({new_size / prev_size * 100}% of original size)")
 			reduced_sizes -= (prev_size - new_size)
 
-	print(f"reduced {reduced_sizes/1000}kb")
+	print(f"reduced {reduced_sizes / 1000}kb")
 
 
-check_stereo()
+# check_stereo()
 
 # everything below here is good for experimentation
 # this python file is for writing quick scripts to merge files
-#
-# first = ["entity/wind_charge/wind_burst1", "entity/wind_charge/wind_burst2", "entity/wind_charge/wind_burst3"]
-# second = ["random/explode1"]
-#
-#
-# num=0
-# combo = [(a, b) for a in first for b in second]
-# for (a, b) in combo:
-#
-# 	num+=1
-# 	a_sound = mc(a, 1, 1)
-# 	b_sound = mc(b, 0.333, 1.2)
-#
-# 	new_sound = a_sound.overlay(mc("block/beehive/enter", 1, 0.7)).overlay(a_sound).set_channels(1)
-# 	play(new_sound)
-# 	new_sound.export(f"output_audio/floral_bloom/bloom_{num}", format="ogg")
+
+class SoundEntry:
+	sounds: list[str]
+	volume: float
+	pitch: float
+
+	def __init__(self, sounds: list[str],
+							 volume: float,
+							 pitch: float):
+		self.sounds = sounds
+		self.volume = volume
+		self.pitch = pitch
 
 
-# thunder = ["ambient/weather/thunder1", "ambient/weather/thunder2", "ambient/weather/thunder3"]
-# illusioner = ["mob/illusion_illager/mirror_move1", "mob/illusion_illager/mirror_move2"]
-#
-# combo = [(thun, i) for thun in thunder for i in illusioner]
-# num = 0
-# for (thun, i) in combo:
-# 	num += 1
-# 	thunder_sound = mc(thun)
-# 	thunder_sound = pitch_modulate(thunder_sound, 1).apply_gain(ratio_to_db(0.8))
-# 	illusioner = mc(i)
-# 	bat = mc("mob/bat/takeoff")
-#
-# 	new_sound = thunder_sound.overlay(illusioner).overlay(bat)[:4000].set_channels(1)
-# 	new_sound.export(f"output_audio/copper_elektra_shield/dash_{num}.ogg", format="ogg")
+with open("../minecraft-assets/assets/minecraft/sounds.json") as sf:
+	sounds_index = json.load(sf)
 
-# booms = ["warden/sonic_boom1.ogg", "warden/sonic_boom2.ogg", "warden/sonic_boom3.ogg", "warden/sonic_boom4.ogg"]
-# souls = ["soul_speed/soulspeed1.ogg", "soul_speed/soulspeed2.ogg", "soul_speed/soulspeed3.ogg",
-#          "soul_speed/soulspeed4.ogg", "soul_speed/soulspeed5.ogg", "soul_speed/soulspeed6.ogg",
-#          "soul_speed/soulspeed7.ogg", "soul_speed/soulspeed8.ogg"]
-#
-# combo = [(boom, soul) for boom in booms for soul in souls]
-# print(combo)
-# for i in range(10):
-# 	boom, soul = combo.pop(randrange(len(combo)))
-# 	soul_sound = AudioSegment.from_ogg(f"input_audio/{soul}")
-# 	soul_sound = soul_sound.set_frame_rate(int(soul_sound.frame_rate * 0.9))
-# 	boom_sound = AudioSegment.from_ogg(f"input_audio/{boom}")
-# 	boom_sound = boom_sound.apply_gain(ratio_to_db(0.2))
-# 	boom_sound = pitch_modulate(boom_sound, 0.8)
-#
-# 	new_sound = boom_sound.overlay(soul_sound)
-# 	play(new_sound)
-# 	new_sound.export(f"output_audio/spectral_fury/shoot_{i + 1}.ogg", format="ogg")
+	to_combine: list[SoundEntry] = []
+	chosen_sounds = []
 
-# altar of the accursed
-# tridents = ["trident/thunder1.ogg", "trident/thunder2.ogg"]
-# wardens = ["warden/heartbeat_1.ogg", "warden/heartbeat_2.ogg", "warden/heartbeat_3.ogg", "warden/heartbeat_4.ogg"]
-#
-# index = 1
-#
-# for trident in tridents:
-# 	for warden in wardens:
-# 		print(trident, warden)
-# 		trident_sound = AudioSegment.from_ogg(f"input_audio/{trident}").apply_gain(ratio_to_db(0.88))
-# 		warden_sound = AudioSegment.from_ogg(f"input_audio/{warden}")
-# 		if len(trident_sound) > len(warden_sound):
-# 			new_sound = trident_sound.overlay(warden_sound)[:3000]
-# 			new_sound.export(f"output_audio/altar_of_the_accursed/craft_{index}.ogg", format="ogg")
-# 		index += 1
+	while True:
+		chosen_sound = input("Sound: ")
+
+		if chosen_sound == "":
+			break
+
+		if chosen_sound not in sounds_index:
+			print("Sound does not exist")
+			continue
+
+		if chosen_sound in chosen_sounds:
+			print("Sound chosen already")
+			continue
+
+		chosen_sounds.append(chosen_sound)
+		to_combine.append(SoundEntry(sounds_index[chosen_sound]["sounds"], float(input("Volume: ") or 1), float(input("Pitch: ") or 1)))
+
+	if len(to_combine) == 0: exit()
+
+	# noinspection bad-assignment
+	max_combo: int = reduce(lambda result, current: result * len(current.sounds), to_combine, initial=1)
+	how_many = max_combo if max_combo < 2 else (input(f"How many (1-{max_combo}): ") or max_combo)
+
+	combinations = list(product(*map(lambda entry: entry.sounds, to_combine)))
+	print(combinations)
+
+	while len(combinations) > how_many:
+		combinations.pop(randrange(0, len(combinations)))
+
+	
+	name = input("what should your files be called? ")
+
+	for combo_idx in range(len(combinations)):
+		combination = combinations[combo_idx]
+		final_sound: AudioSegment | None = None
+
+		for tuple_idx in range(len(combination)):
+			this_sound = mc(combination[tuple_idx], to_combine[tuple_idx].volume, to_combine[tuple_idx].pitch);
+			if final_sound == None:
+				final_sound = this_sound
+			else:
+				diff = len(this_sound) - len(final_sound)
+				if diff > 0:
+					final_sound += AudioSegment.silent(duration=diff)
+				final_sound = final_sound.overlay( mc(combination[tuple_idx], to_combine[tuple_idx].volume, to_combine[tuple_idx].pitch))
+
+		if final_sound == None:
+			print("warning, final sound shouldn't be None")
+			continue
+
+		final_sound.export(f"output_audio/{name}{"" if max_combo < 2 else f"_{combo_idx + 1}.ogg"}", format="ogg")
+
+
+
+
