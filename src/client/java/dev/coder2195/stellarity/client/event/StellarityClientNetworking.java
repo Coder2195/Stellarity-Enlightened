@@ -42,10 +42,28 @@ public interface StellarityClientNetworking {
 	static void dragonbladeSpawn(ClientboundDragonbladeSpawnPayload packet, ClientPlayNetworking.Context context) {
 		var client = context.client();
 		var level = client.level;
-		if (level == null) return;
+		var player = client.player;
+		if (level == null || player == null) return;
+
+		player.playSound(StellaritySoundEvents.ALTAR_OF_THE_ACCURSED_SPAWN_DRAGONBLADE, 1, 1);
+
+
 		var position = packet.position();
+		if ((client.options.getEffectiveRenderDistance() + 1) * 16 < position.distanceTo(player.position())) return;
 
+		level.addAlwaysVisibleParticle(ParticleTypes.EXPLOSION_EMITTER, true, position.x, position.y, position.z, random.nextGaussian(), random.nextGaussian(), random.nextGaussian());
+		for (int i=0; i<80; i++) level.addAlwaysVisibleParticle(ParticleTypes.SCULK_SOUL, true, position.x, position.y, position.z, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66);
+		var dragonBreath = PowerParticleOption.create(ParticleTypes.DRAGON_BREATH, 1);
+		for (int i=0; i<240; i++) {
+			level.addAlwaysVisibleParticle(dragonBreath, true, position.x, position.y, position.z, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66);
+			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, position.x, position.y, position.z, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66, random.nextGaussian() * 0.66);
+		}
 
+		for (float f=0; f<Mth.TWO_PI; f+=Mth.TWO_PI/360) {
+			var velocity = new Vec3(30, 0, 0).yRot(f);
+
+			level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, true, position.x, position.y, position.z, velocity.x, velocity.y, velocity.z);
+		}
 	}
 
 	static void spiritDespawn(ClientboundSpiritDespawnPayload packet, ClientPlayNetworking.Context context) {

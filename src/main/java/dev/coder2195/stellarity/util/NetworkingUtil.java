@@ -21,4 +21,8 @@ public interface NetworkingUtil {
 		var chunkPos = ChunkPos.containing(tracked);
 		PlayerLookup.tracking(serverLevel, chunkPos).forEach(player -> ServerPlayNetworking.send(player, packet));
 	}
+
+	static void sendAllPlayers(ServerLevel serverLevel, CustomPacketPayload packet) {
+		serverLevel.players().forEach(player -> ServerPlayNetworking.send(player, packet));
+	}
 }

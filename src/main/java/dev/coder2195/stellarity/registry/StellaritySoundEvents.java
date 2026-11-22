@@ -44,6 +44,8 @@ public interface StellaritySoundEvents {
 
 	SoundEvent ALTAR_OF_THE_SACRED_BLESS = register("block.altar_of_the_sacred.bless");
 
+	SoundEvent ALTAR_OF_THE_ACCURSED_SPAWN_DRAGONBLADE = register("block.altar_of_the_accursed.spawn_dragonblade");
+
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");
 	Holder<SoundEvent> PRECIPICE_STEREO = registerHolder("music_disc.precipice_stereo");

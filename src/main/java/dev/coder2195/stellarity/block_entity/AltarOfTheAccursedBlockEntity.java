@@ -4,10 +4,12 @@ import com.mojang.math.Transformation;
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.block.AltarOfTheAccursed;
 import dev.coder2195.stellarity.entity.RemovableItemDisplay;
+import dev.coder2195.stellarity.networking.ClientboundDragonbladeSpawnPayload;
 import dev.coder2195.stellarity.recipe.AltarOfTheAccursedRecipe;
 import dev.coder2195.stellarity.registry.StellarityBlockEntityTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -159,12 +161,12 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 			}
 
 			if (this.ticksPassed % 10 == 0) {
-				AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
-
 				if (!serverLevel.globalAttachments().hasAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE)) {
 					serverLevel.globalAttachments().setAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE, Unit.INSTANCE);
 					dragonbladeSpawnTime = 200;
 				}
+
+				if (dragonbladeSpawnTime <= 0) AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
 			}
 
 			if (placeType == AltarOfTheAccursed.PlaceType.NORMAL) {
@@ -175,6 +177,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 					itemDisplay.setTransformation(new Transformation(new Vector3f(0, 0.5f, -0.075f), new Quaternionf(1, 0, 0, 0), new Vector3f(1, 1, 1), new Quaternionf(0, 0, 0, 1)));
 					itemDisplay.setItemTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
 					level.addFreshEntity(itemDisplay);
+					NetworkingUtil.sendAllPlayers(serverLevel, new ClientboundDragonbladeSpawnPayload(Vec3.atBottomCenterOf(blockPos.above())));
 				}
 			}
 
