@@ -100,7 +100,7 @@ with open("../minecraft-assets/assets/minecraft/sounds.json") as sf:
 
 	# noinspection bad-assignment
 	max_combo: int = reduce(lambda result, current: result * len(current.sounds), to_combine, initial=1)
-	how_many = max_combo if max_combo < 2 else (input(f"How many (1-{max_combo}): ") or max_combo)
+	how_many = max_combo if max_combo < 2 else int(input(f"How many (1-{max_combo}): ") or max_combo)
 
 	combinations = list(product(*map(lambda entry: entry.sounds, to_combine)))
 	print(combinations)
@@ -116,8 +116,8 @@ with open("../minecraft-assets/assets/minecraft/sounds.json") as sf:
 		final_sound: AudioSegment | None = None
 
 		for tuple_idx in range(len(combination)):
-			this_sound = mc(combination[tuple_idx], to_combine[tuple_idx].volume, to_combine[tuple_idx].pitch);
-			if final_sound == None:
+			this_sound = mc(combination[tuple_idx], to_combine[tuple_idx].volume, to_combine[tuple_idx].pitch)
+			if final_sound is None:
 				final_sound = this_sound
 			else:
 				diff = len(this_sound) - len(final_sound)
@@ -125,7 +125,7 @@ with open("../minecraft-assets/assets/minecraft/sounds.json") as sf:
 					final_sound += AudioSegment.silent(duration=diff)
 				final_sound = final_sound.overlay( mc(combination[tuple_idx], to_combine[tuple_idx].volume, to_combine[tuple_idx].pitch))
 
-		if final_sound == None:
+		if final_sound is None:
 			print("warning, final sound shouldn't be None")
 			continue
 

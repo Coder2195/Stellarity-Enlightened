@@ -573,6 +573,12 @@
 		],
 		"subtitle": "subtitles.stellarity.block.altar_of_the_accursed.craft"
 	},
+	"block.altar_of_the_accursed.spawn_dragonblade": {
+		"sounds": [
+			"stellarity:block/altar_of_the_accursed/spawn_dragonblade"
+		],
+		"subtitle": "sutitles.stellarity.block.altar_of_the_accursed.spawn_dragonblade"
+	},
 	"item.copper_elektra_shield.dash": {
 		"sounds": [
 			"stellarity:item/copper_elektra_shield/dash_1",
