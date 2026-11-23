@@ -6,6 +6,7 @@ import dev.coder2195.stellarity.consume_effect.*;
 import dev.coder2195.stellarity.item.*;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentPatch;
@@ -43,6 +44,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -131,8 +133,8 @@ public interface StellarityItems {
 	Item AMETHYII_DOOR = registerBlock(StellarityBlockItemIds.AMETHYII_DOOR, StellarityBlocks.AMETHYII_DOOR);
 	Item AMETHYII_TRAPDOOR = registerBlock(StellarityBlockItemIds.AMETHYII_TRAPDOOR, StellarityBlocks.AMETHYII_TRAPDOOR);
 	Item AMETHYII_FENCE_GATE = registerBlock(StellarityBlockItemIds.AMETHYII_FENCE_GATE, StellarityBlocks.AMETHYII_FENCE_GATE);
-	Item AMETHYII_SIGN = registerBlock(StellarityBlockItemIds.AMETHYII_SIGN, StellarityBlocks.AMETHYII_SIGN);
-	Item AMETHYII_HANGING_SIGN = registerBlock(StellarityBlockItemIds.AMETHYII_HANGING_SIGN, StellarityBlocks.AMETHYII_HANGING_SIGN);
+	Item AMETHYII_SIGN = registerSign(StellarityBlockItemIds.AMETHYII_SIGN, StellarityBlocks.AMETHYII_SIGN, StellarityBlocks.AMETHYII_WALL_SIGN);
+	Item AMETHYII_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.AMETHYII_HANGING_SIGN, StellarityBlocks.AMETHYII_HANGING_SIGN, StellarityBlocks.AMETHYII_WALL_HANGING_SIGN);
 
 	Item HALLOWED_PLANKS = registerBlock(StellarityBlockItemIds.HALLOWED_PLANKS, StellarityBlocks.HALLOWED_PLANKS);
 	Item HALLOWED_SAPLING = registerBlock(StellarityBlockItemIds.HALLOWED_SAPLING, StellarityBlocks.HALLOWED_SAPLING);
@@ -150,8 +152,8 @@ public interface StellarityItems {
 	Item HALLOWED_DOOR = registerBlock(StellarityBlockItemIds.HALLOWED_DOOR, StellarityBlocks.HALLOWED_DOOR);
 	Item HALLOWED_TRAPDOOR = registerBlock(StellarityBlockItemIds.HALLOWED_TRAPDOOR, StellarityBlocks.HALLOWED_TRAPDOOR);
 	Item HALLOWED_FENCE_GATE = registerBlock(StellarityBlockItemIds.HALLOWED_FENCE_GATE, StellarityBlocks.HALLOWED_FENCE_GATE);
-	Item HALLOWED_SIGN = registerBlock(StellarityBlockItemIds.HALLOWED_SIGN, StellarityBlocks.HALLOWED_SIGN);
-	Item HALLOWED_HANGING_SIGN = registerBlock(StellarityBlockItemIds.HALLOWED_HANGING_SIGN, StellarityBlocks.HALLOWED_HANGING_SIGN);
+	Item HALLOWED_SIGN = registerSign(StellarityBlockItemIds.HALLOWED_SIGN, StellarityBlocks.HALLOWED_SIGN, StellarityBlocks.HALLOWED_WALL_SIGN);
+	Item HALLOWED_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.HALLOWED_HANGING_SIGN, StellarityBlocks.HALLOWED_HANGING_SIGN, StellarityBlocks.HALLOWED_WALL_HANGING_SIGN);
 
 	Item SHRUBBED_PLANKS = registerBlock(StellarityBlockItemIds.SHRUBBED_PLANKS, StellarityBlocks.SHRUBBED_PLANKS);
 	Item SHRUBBED_SAPLING = registerBlock(StellarityBlockItemIds.SHRUBBED_SAPLING, StellarityBlocks.SHRUBBED_SAPLING);
@@ -169,8 +171,8 @@ public interface StellarityItems {
 	Item SHRUBBED_DOOR = registerBlock(StellarityBlockItemIds.SHRUBBED_DOOR, StellarityBlocks.SHRUBBED_DOOR);
 	Item SHRUBBED_TRAPDOOR = registerBlock(StellarityBlockItemIds.SHRUBBED_TRAPDOOR, StellarityBlocks.SHRUBBED_TRAPDOOR);
 	Item SHRUBBED_FENCE_GATE = registerBlock(StellarityBlockItemIds.SHRUBBED_FENCE_GATE, StellarityBlocks.SHRUBBED_FENCE_GATE);
-	Item SHRUBBED_SIGN = registerBlock(StellarityBlockItemIds.SHRUBBED_SIGN, StellarityBlocks.SHRUBBED_SIGN);
-	Item SHRUBBED_HANGING_SIGN = registerBlock(StellarityBlockItemIds.SHRUBBED_HANGING_SIGN, StellarityBlocks.SHRUBBED_HANGING_SIGN);
+	Item SHRUBBED_SIGN = registerSign(StellarityBlockItemIds.SHRUBBED_SIGN, StellarityBlocks.SHRUBBED_SIGN, StellarityBlocks.SHRUBBED_WALL_SIGN);
+	Item SHRUBBED_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.SHRUBBED_HANGING_SIGN, StellarityBlocks.SHRUBBED_HANGING_SIGN, StellarityBlocks.SHRUBBED_WALL_HANGING_SIGN);
 
 	Item PRISMATIC_PLANKS = registerBlock(StellarityBlockItemIds.PRISMATIC_PLANKS, StellarityBlocks.PRISMATIC_PLANKS);
 	Item PRISMATIC_SAPLING = registerBlock(StellarityBlockItemIds.PRISMATIC_SAPLING, StellarityBlocks.PRISMATIC_SAPLING);
@@ -188,8 +190,8 @@ public interface StellarityItems {
 	Item PRISMATIC_DOOR = registerBlock(StellarityBlockItemIds.PRISMATIC_DOOR, StellarityBlocks.PRISMATIC_DOOR);
 	Item PRISMATIC_TRAPDOOR = registerBlock(StellarityBlockItemIds.PRISMATIC_TRAPDOOR, StellarityBlocks.PRISMATIC_TRAPDOOR);
 	Item PRISMATIC_FENCE_GATE = registerBlock(StellarityBlockItemIds.PRISMATIC_FENCE_GATE, StellarityBlocks.PRISMATIC_FENCE_GATE);
-	Item PRISMATIC_SIGN = registerBlock(StellarityBlockItemIds.PRISMATIC_SIGN, StellarityBlocks.PRISMATIC_SIGN);
-	Item PRISMATIC_HANGING_SIGN = registerBlock(StellarityBlockItemIds.PRISMATIC_HANGING_SIGN, StellarityBlocks.PRISMATIC_HANGING_SIGN);
+	Item PRISMATIC_SIGN = registerSign(StellarityBlockItemIds.PRISMATIC_SIGN, StellarityBlocks.PRISMATIC_SIGN, StellarityBlocks.PRISMATIC_WALL_SIGN);
+	Item PRISMATIC_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.PRISMATIC_HANGING_SIGN, StellarityBlocks.PRISMATIC_HANGING_SIGN, StellarityBlocks.PRISMATIC_WALL_HANGING_SIGN);
 
 	Item ASHEN_PLANKS = registerBlock(StellarityBlockItemIds.ASHEN_PLANKS, StellarityBlocks.ASHEN_PLANKS);
 	Item ASHEN_SAPLING = registerBlock(StellarityBlockItemIds.ASHEN_SAPLING, StellarityBlocks.ASHEN_SAPLING);
@@ -207,8 +209,8 @@ public interface StellarityItems {
 	Item ASHEN_DOOR = registerBlock(StellarityBlockItemIds.ASHEN_DOOR, StellarityBlocks.ASHEN_DOOR);
 	Item ASHEN_TRAPDOOR = registerBlock(StellarityBlockItemIds.ASHEN_TRAPDOOR, StellarityBlocks.ASHEN_TRAPDOOR);
 	Item ASHEN_FENCE_GATE = registerBlock(StellarityBlockItemIds.ASHEN_FENCE_GATE, StellarityBlocks.ASHEN_FENCE_GATE);
-	Item ASHEN_SIGN = registerBlock(StellarityBlockItemIds.ASHEN_SIGN, StellarityBlocks.ASHEN_SIGN);
-	Item ASHEN_HANGING_SIGN = registerBlock(StellarityBlockItemIds.ASHEN_HANGING_SIGN, StellarityBlocks.ASHEN_HANGING_SIGN);
+	Item ASHEN_SIGN = registerSign(StellarityBlockItemIds.ASHEN_SIGN, StellarityBlocks.ASHEN_SIGN, StellarityBlocks.ASHEN_WALL_SIGN);
+	Item ASHEN_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.ASHEN_HANGING_SIGN, StellarityBlocks.ASHEN_HANGING_SIGN, StellarityBlocks.ASHEN_WALL_HANGING_SIGN);
 
 	Item INFERNO_PLANKS = registerBlock(StellarityBlockItemIds.INFERNO_PLANKS, StellarityBlocks.INFERNO_PLANKS);
 	Item INFERNO_SAPLING = registerBlock(StellarityBlockItemIds.INFERNO_SAPLING, StellarityBlocks.INFERNO_SAPLING);
@@ -226,8 +228,8 @@ public interface StellarityItems {
 	Item INFERNO_DOOR = registerBlock(StellarityBlockItemIds.INFERNO_DOOR, StellarityBlocks.INFERNO_DOOR);
 	Item INFERNO_TRAPDOOR = registerBlock(StellarityBlockItemIds.INFERNO_TRAPDOOR, StellarityBlocks.INFERNO_TRAPDOOR);
 	Item INFERNO_FENCE_GATE = registerBlock(StellarityBlockItemIds.INFERNO_FENCE_GATE, StellarityBlocks.INFERNO_FENCE_GATE);
-	Item INFERNO_SIGN = registerBlock(StellarityBlockItemIds.INFERNO_SIGN, StellarityBlocks.INFERNO_SIGN);
-	Item INFERNO_HANGING_SIGN = registerBlock(StellarityBlockItemIds.INFERNO_HANGING_SIGN, StellarityBlocks.INFERNO_HANGING_SIGN);
+	Item INFERNO_SIGN = registerSign(StellarityBlockItemIds.INFERNO_SIGN, StellarityBlocks.INFERNO_SIGN, StellarityBlocks.INFERNO_WALL_SIGN);
+	Item INFERNO_HANGING_SIGN = registerHangingSign(StellarityBlockItemIds.INFERNO_HANGING_SIGN, StellarityBlocks.INFERNO_HANGING_SIGN, StellarityBlocks.INFERNO_WALL_HANGING_SIGN);
 
 	Item CALL_OF_THE_VOID = register(StellarityItemIds.CALL_OF_THE_VOID, CallOfTheVoid::new, CallOfTheVoid.PROPERTIES);
 	Item FISHER_OF_VOIDS = register(StellarityItemIds.FISHER_OF_VOIDS, FishingRodItem::new, new Item.Properties().stacksTo(1).durability(100).rarity(Rarity.UNCOMMON));
@@ -538,6 +540,14 @@ public interface StellarityItems {
 		return Registry.register(BuiltInRegistries.ITEM, itemKey, item);
 	}
 
+	static Item registerBlock(BlockItemId key, Block block, BiFunction<Block, Item.Properties, Item> itemFactory, Item.Properties properties) {
+		var itemKey = key.item();
+		properties.useBlockDescriptionPrefix().setId(itemKey);
+		Item item = itemFactory.apply(block, properties);
+
+		return Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+	}
+
 	private static Item registerSpawnEgg(ResourceKey<Item> key, final EntityType<?> type) {
 		return register(key, SpawnEggItem::new, (new Item.Properties()).spawns(type));
 	}
@@ -667,6 +677,16 @@ public interface StellarityItems {
 
 	static Item.Properties basicFood(int nutrition, float saturation) {
 		return foodProperties(nutrition, saturation, false);
+	}
+
+	static Item registerSign(BlockItemId id, Block block, Block wallBlock) {
+		return registerBlock(id, block, (b, p) -> new StandingAndWallBlockItem(b, wallBlock, Direction.DOWN, p),
+			new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE).stacksTo(16).signText());
+	}
+
+	static Item registerHangingSign(BlockItemId id, Block block, Block wallBlock) {
+		return registerBlock(id, block, (b, p) -> new StandingAndWallBlockItem(b, wallBlock, Direction.DOWN, p),
+			new Item.Properties().cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS).stacksTo(16).signText());
 	}
 
 	HashMap<Item, Integer> NAME_COLORS = new HashMap<>() {{

@@ -11,6 +11,7 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 
 **[*] All Signs**
 - Fixes a bug where it would crash because block entities weren't properly registered
+- Fixes wall placement
 
 **[*] All Hanging Signs**
 - Fixes a bug where it would crash because block entities weren't properly registered
@@ -24,6 +25,9 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 
 **[+] Altar of The Sacred**
 - No spawning functionality
+
+**[+] Altar of The Accursed**
+- Respawns dragonblade
 
 ## Items
 **[*] End Village Map**
@@ -81,4 +85,4 @@ Awaiting @void76767676-gif to push changes, nullscape is not supported at the mo
 
 
 ## Versions
-**[*] 26.3 → 26.4**
+**[*] 26.3 → 26.4**``
