@@ -31,8 +31,8 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.phys.Vec3;
@@ -178,9 +178,9 @@ public abstract class FishingHookMixin extends Projectile implements ExtFishingH
 	}
 
 
-	@WrapOperation(method = "catchingFish", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z"))
-	private boolean addVoidVishingToWaterCheck(BlockState instance, Object block, Operation<Boolean> original) {
-		return isVoidFishing || original.call(instance, block);
+	@WrapOperation(method = "catchingFish", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/material/FluidState;is(Ljava/lang/Object;)Z"))
+	private boolean voidFishingParticles(FluidState instance, Object o, Operation<Boolean> original) {
+		return isVoidFishing || original.call(instance, o);
 	}
 
 	@WrapOperation(method = "shouldStopFishing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Ljava/lang/Object;)Z"))

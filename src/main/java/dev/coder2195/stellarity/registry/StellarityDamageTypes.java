@@ -19,6 +19,7 @@ public interface StellarityDamageTypes {
 	ResourceKey<DamageType> STRIKER_STAR = id("striker_star");
 	ResourceKey<DamageType> BLOOM = id("bloom");
 	ResourceKey<DamageType> SPIRIT_SLASH = id("spirit_slash");
+	ResourceKey<DamageType> DRAGONBLADE_PUNCH = id("dragonblade_punch");
 
 	static void bootstrap(BootstrapContext<DamageType> context) {
 		context.register(StellarityDamageTypes.BRITTLE, new DamageType("stellarity.brittle", DamageScaling.NEVER, 0.1f, DamageEffects.FREEZING));
@@ -30,6 +31,7 @@ public interface StellarityDamageTypes {
 		context.register(StellarityDamageTypes.STRIKER_STAR, new DamageType("stellarity.striker_star", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.BLOOM, new DamageType("stellarity.bloom", DamageScaling.NEVER, 0.1f));
 		context.register(StellarityDamageTypes.SPIRIT_SLASH, new DamageType("stellarity.spirit_slash", DamageScaling.NEVER, 0.1f));
+		context.register(StellarityDamageTypes.DRAGONBLADE_PUNCH, new DamageType("stellarity.dragonblade_punch", DamageScaling.NEVER, 0.1f));
 	}
 
 	private static ResourceKey<DamageType> id(String id) {

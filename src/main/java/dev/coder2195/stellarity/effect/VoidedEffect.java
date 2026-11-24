@@ -1,18 +1,16 @@
 package dev.coder2195.stellarity.effect;
 
+import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.PowerParticleOption;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import dev.coder2195.stellarity.Stellarity;
-import dev.coder2195.stellarity.registry.StellarityMobEffects;
-import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 
 
 public class VoidedEffect extends MobEffect {
@@ -30,22 +28,18 @@ public class VoidedEffect extends MobEffect {
 	}
 
 	@Override
-	public boolean shouldApplyEffectTickThisTick(int i, int j) {
-		return true;
+	public void onEffectAdded(LivingEntity mob, int amplifier) {
+		super.onEffectAdded(mob, amplifier);
+
+		if (mob.getHealth() > mob.getMaxHealth()) {
+			mob.setHealth(mob.getMaxHealth());
+		}
 	}
 
 	@Override
-	public boolean applyEffectTick(ServerLevel level, LivingEntity livingEntity, int i) {
-		if (livingEntity.getHealth() > livingEntity.getMaxHealth()) {
-			livingEntity.setHealth(livingEntity.getMaxHealth());
-		}
-
-		var voided = livingEntity.getEffect(StellarityMobEffects.VOIDED);
-		if (voided != null && voided.getDuration() == 1) {
-			level.playSound(null, livingEntity.blockPosition(), StellaritySoundEvents.VOIDED_DEACTIVATE, livingEntity.getSoundSource(), 1, 1);
-		}
-
-		return super.applyEffectTick(level, livingEntity, i);
+	public void onEffectRemoved(MobEffectInstance effectInstance, LivingEntity entity) {
+		super.onEffectRemoved(effectInstance, entity);
+		entity.level().playSound(null, entity.blockPosition(), StellaritySoundEvents.VOIDED_DEACTIVATE, entity.getSoundSource(), 1, 1);
 	}
 
 }
