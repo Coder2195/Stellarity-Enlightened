@@ -1,9 +1,9 @@
 package dev.coder2195.stellarity.tags;
 
+import dev.coder2195.stellarity.Stellarity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageType;
-import dev.coder2195.stellarity.Stellarity;
 
 public interface StellarityDamageTypeTags {
 	TagKey<DamageType> MELEE = id("melee");
@@ -11,6 +11,7 @@ public interface StellarityDamageTypeTags {
 	TagKey<DamageType> TRIGGERS_FLESH_SPEED_BOOST = id("triggers_flesh_speed_boost");
 	TagKey<DamageType> BLOOD_FOR_BLOOD = id("blood_for_blood");
 	TagKey<DamageType> BLOCKS_SPIRIT_SUMMONING = id("blocks_spirit_summoning");
+	TagKey<DamageType> TRIGGERS_KALIYAH = id("triggers_kaliyah");
 
 	static TagKey<DamageType> id(String id) {
 		return TagKey.create(Registries.DAMAGE_TYPE, Stellarity.id(id));

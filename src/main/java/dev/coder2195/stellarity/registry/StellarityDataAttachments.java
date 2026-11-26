@@ -6,6 +6,7 @@ import dev.coder2195.stellarity.StellarityConfig;
 import dev.coder2195.stellarity.interface_injection.ExtEndCrystal;
 import dev.coder2195.stellarity.interface_injection.ExtItemEntity;
 import dev.coder2195.stellarity.recipe.ConsecrationRecipe;
+import dev.coder2195.stellarity.util.DragonStacks;
 import dev.coder2195.stellarity.util.FloralBloom;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
@@ -67,6 +68,7 @@ public interface StellarityDataAttachments {
 	AttachmentType<Long> SPIRIT_ATTRACTABLE_AT = AttachmentRegistry.create(Stellarity.id("spirit_attractable_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.all()));
 
 	AttachmentType<Unit> DRAGONBLADE_EXISTANCE = AttachmentRegistry.create(Stellarity.id("dragonblade_existance"), builder -> builder.persistent(Unit.CODEC));
+	AttachmentType<DragonStacks> DRAGON_STACKS = AttachmentRegistry.create(Stellarity.id("dragon_stacks"), builder -> builder.persistent(DragonStacks.CODEC).syncWith(DragonStacks.STREAM_CODEC, AttachmentSyncPredicate.all()));
 
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");

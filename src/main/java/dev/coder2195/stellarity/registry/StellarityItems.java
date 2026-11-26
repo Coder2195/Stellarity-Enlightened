@@ -758,7 +758,7 @@ public interface StellarityItems {
 //		put(HARVESTER, 0x4BC6FF);
 //		put(ANCIENT_WOODEN_SWORD, TextColor.WHITE.getValue());
 //		put(PRISMATIC_PUNCH, 0xFF76D0);
-//		put(DRAGONBLADE, 0xCD6AFF);
+		put(DRAGONBLADE, 0xCD6AFF);
 		put(SPECTRAL_FURY, 0xBDF1FF);
 //		put(KALEIDOSCOPE, 0xFFCF37);
 		put(THE_BEGINNING, 0xF5DC68);
