@@ -7,7 +7,7 @@ import dev.coder2195.stellarity.Stellarity;
 
 public interface StellarityEntityTypeTags {
 	TagKey<EntityType<?>> INVALID_TARGETS = id("invalid_targets");
-	TagKey<EntityType<?>> PLACEHOLDER_DONT_USE = id("placeholder_dont_use");
+	TagKey<EntityType<?>> IMMUNE_TO_DRAGONBLADE = id("immune_to_dragonblade");
 
 	static TagKey<EntityType<?>> id(String id) {
 		return TagKey.create(Registries.ENTITY_TYPE, Stellarity.id(id));

@@ -5,6 +5,7 @@ import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.registry.StellarityToolMaterials;
+import dev.coder2195.stellarity.tags.StellarityEntityTypeTags;
 import dev.coder2195.stellarity.util.DamageUtility;
 import dev.coder2195.stellarity.util.DragonStacks;
 import net.minecraft.core.Direction;
@@ -19,6 +20,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -50,7 +52,7 @@ public class Dragonblade extends Item {
 	public void postHurtEnemy(ItemStack itemStack, LivingEntity mob, LivingEntity attacker) {
 		super.postHurtEnemy(itemStack, mob, attacker);
 
-		if (attacker.isCrouching() && mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY).stacks() >= 3) {
+		if ((attacker instanceof Player player ? player.isShiftKeyDown() : attacker.isCrouching()) && mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY).stacks() >= 3) {
 			dragonBladePunch(itemStack, mob, attacker);
 			return;
 		}
@@ -59,7 +61,8 @@ public class Dragonblade extends Item {
 
 	public static void addDragonStack(LivingEntity mob) {
 		var level = mob.level();
-		if (level.isClientSide()) return;
+		if (level.isClientSide() || mob.is(StellarityEntityTypeTags.IMMUNE_TO_DRAGONBLADE)) return;
+
 		var gameTime = level.getGameTime();
 
 		var currentStack = mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY);
@@ -70,7 +73,7 @@ public class Dragonblade extends Item {
 	public static void dragonBladePunch(ItemStack itemStack, LivingEntity mob, LivingEntity attacker) {
 
 		var level = mob.level();
-		if (!(level instanceof ServerLevel serverLevel)) return;
+		if (!(level instanceof ServerLevel serverLevel) || mob.is(StellarityEntityTypeTags.IMMUNE_TO_DRAGONBLADE)) return;
 		var knockback = itemStack.getEnchantments().getLevel(level.registryAccess().getOrThrow(Enchantments.KNOCKBACK));
 		mob.addEffect(new MobEffectInstance(StellarityMobEffects.VOIDED, 10 * 20));
 		var damageSource = new DamageSource(level.damageSources().damageTypes.getOrThrow(StellarityDamageTypes.DRAGONBLADE_PUNCH), attacker);

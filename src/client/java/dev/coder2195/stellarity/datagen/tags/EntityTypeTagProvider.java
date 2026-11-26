@@ -42,5 +42,6 @@ public class EntityTypeTagProvider extends FabricTagsProvider.EntityTypeTagsProv
 		addTags(EntityTypeTags.ARROWS).add(SPECTRAL_BOLT, SPECTRAL_WISP, VOID_ARROW);
 		addTags(EntityTypeTags.FROG_FOOD).add(VOIDED_SLIME);
 		addTags(EntityTypeTags.DEFLECTS_PROJECTILES).add(OBSTRUCT_SPELL_BLOCK);
+		addTags(StellarityEntityTypeTags.IMMUNE_TO_DRAGONBLADE).add(ENDER_DRAGON);
 	}
 }
