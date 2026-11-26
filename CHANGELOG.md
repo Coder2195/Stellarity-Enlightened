@@ -75,6 +75,15 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 **[-] Stellarity x Nullscape**
 Awaiting @void76767676-gif to push changes, nullscape is not supported at the moment
 
+## Advancements
+**[+] God Slayer**
+
+**[+] KALIYAAAAH!**
+
+**[+] Pure Completion**
+
+**[+] Third Time's the Charm**
+
 
 ## Structure
 **[+] End Shipwreck**

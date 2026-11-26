@@ -168,14 +168,12 @@ public abstract class LivingEntityMixin extends Entity {
 
 		var gameTime = level().getGameTime();
 		var attachedCooldown = getAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL);
-		if (attachedCooldown == null) {
-			setAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL, gameTime + ArmorEffectsHelper.CHAMPION_BOOST_DURATION);
-			return;
+
+		if (attachedCooldown != null) {
+			if (gameTime < attachedCooldown) return;
+
+			removeAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL);
 		}
-
-		if (gameTime < attachedCooldown) return;
-
-		removeAttached(StellarityDataAttachments.CHAMPION_BOOST_UNTIL);
 
 		var attackDamage = getAttribute(Attributes.ATTACK_DAMAGE);
 		if (attackDamage == null || attackDamage.getModifier(ArmorEffectsHelper.CHAMPION_MODIFIER) == null) return;

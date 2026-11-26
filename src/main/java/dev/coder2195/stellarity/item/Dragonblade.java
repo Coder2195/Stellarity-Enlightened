@@ -5,6 +5,7 @@ import dev.coder2195.stellarity.registry.StellarityDamageTypes;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityMobEffects;
 import dev.coder2195.stellarity.registry.StellarityToolMaterials;
+import dev.coder2195.stellarity.util.DamageUtility;
 import dev.coder2195.stellarity.util.DragonStacks;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderSet;
@@ -35,6 +36,7 @@ public class Dragonblade extends Item {
 		))
 	).rarity(Rarity.EPIC);
 	public static final int STACK_DURATION = 16 * 20;
+	public static final int PUNCH_COOLDOWN = 8 * 20;
 
 	public Dragonblade(Properties properties) {
 		super(properties);
@@ -61,38 +63,43 @@ public class Dragonblade extends Item {
 		var gameTime = level.getGameTime();
 
 		var currentStack = mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY);
-		mob.setAttached(StellarityDataAttachments.DRAGON_STACKS, new DragonStacks(currentStack.stacks() < 3 ? (short) (currentStack.stacks() + 1) : currentStack.stacks(), gameTime + STACK_DURATION));
+		if (currentStack.punched()) return;
+		mob.setAttached(StellarityDataAttachments.DRAGON_STACKS, new DragonStacks(currentStack.stacks() < 3 ? (short) (currentStack.stacks() + 1) : currentStack.stacks(), false, gameTime + STACK_DURATION));
 	}
 
 	public static void dragonBladePunch(ItemStack itemStack, LivingEntity mob, LivingEntity attacker) {
 
 		var level = mob.level();
 		if (!(level instanceof ServerLevel serverLevel)) return;
+		var knockback = itemStack.getEnchantments().getLevel(level.registryAccess().getOrThrow(Enchantments.KNOCKBACK));
 		mob.addEffect(new MobEffectInstance(StellarityMobEffects.VOIDED, 10 * 20));
-		mob.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 7 * 20));
-		mob.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 20, 255));
 		var damageSource = new DamageSource(level.damageSources().damageTypes.getOrThrow(StellarityDamageTypes.DRAGONBLADE_PUNCH), attacker);
 
-		float damage = 7 + itemStack.getEnchantments().getLevel(level.registryAccess().getOrThrow(Enchantments.KNOCKBACK)) * 1.5f;
+		float damage = 7 + knockback * 1.5f;
 
 		var mobPos = mob.position();
 		var directionVector = mobPos.subtract(attacker.position()).with(Direction.Axis.Y, 0);
-		directionVector = directionVector.scale(8 / directionVector.length()).with(Direction.Axis.Y, 0.5);
+		directionVector = directionVector.scale((8 + knockback * 1.4) / directionVector.length()).with(Direction.Axis.Y, 0.5);
 
 		var hitResult = ProjectileUtilAccessor.getHitResult(mobPos, mob, _ -> false, directionVector, level, 0.1f, ClipContext.Block.COLLIDER);
 
-		if (hitResult.getType() == HitResult.Type.BLOCK) {
-			damage += 25;
+		boolean hitBlock = hitResult.getType() == HitResult.Type.BLOCK;
+		if (hitBlock) {
+			damage += 24;
 			for (var nearbyEntity : level.getEntitiesOfClass(LivingEntity.class, mob.getBoundingBox().inflate(4), entity -> !entity.equals(mob) && !entity.isInvulnerableTo(serverLevel, damageSource))) {
 				nearbyEntity.hurtServer(serverLevel, damageSource, 4);
+				mob.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3 * 20));
 			}
 		}
 
+		mob.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, (7 + (hitBlock ? 4 : 0)) * 20));
+		mob.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 20 * (hitBlock ? 2 : 1), 255));
+
 		var finalPos = hitResult.getLocation();
-		mob.hurtServer(serverLevel, damageSource, damage);
+		DamageUtility.damageEntity(serverLevel, mob, damageSource, damage, 0.4f, 0f);
 		mob.setPos(finalPos.x, finalPos.y, finalPos.z);
 		mob.setDeltaMovement(directionVector.scale(0.1));
-		mob.removeAttached(StellarityDataAttachments.DRAGON_STACKS);
+		mob.setAttached(StellarityDataAttachments.DRAGON_STACKS, new DragonStacks((short) 0, true, level.getGameTime() + PUNCH_COOLDOWN));
 	}
 
 
