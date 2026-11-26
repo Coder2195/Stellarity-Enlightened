@@ -12,8 +12,12 @@ public interface ExtEnderDragonFight {
 		throw new AssertionError("Not transformed!");
 	}
 
+	default boolean stellarity$dragonKilled() {
+		throw new AssertionError("Not transformed!");
+	}
+
 	static EnderDragonFight apply(EnderDragonFight fight, boolean generated) {
-		fight.stellarity$setPortalChestGenerated(true);
+		fight.stellarity$setPortalChestGenerated(generated);
 
 		return fight;
 	}

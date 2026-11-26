@@ -147,12 +147,9 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 		} else if (level instanceof ServerLevel serverLevel) {
 
 
-
+			var end = serverLevel.getServer().getLevel(Level.END);
+			EnderDragonFight dragonFight = end == null ? null : end.getDragonFight();
 			if (!placeType.bypassesDragon()) {
-				var end = serverLevel.getServer().getLevel(Level.END);
-				EnderDragonFight dragonFight = end == null ? null : end.getDragonFight();
-
-
 				boolean newLocked = dragonFight != null && !dragonFight.hasPreviouslyKilledDragon();
 				if (locked != newLocked) {
 					locked = newLocked;
@@ -161,7 +158,7 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 			}
 
 			if (this.ticksPassed % 10 == 0) {
-				if (!serverLevel.globalAttachments().hasAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE)) {
+				if (dragonFight != null && dragonFight.hasPreviouslyKilledDragon() && dragonFight.stellarity$dragonKilled() && !serverLevel.globalAttachments().hasAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE) ) {
 					serverLevel.globalAttachments().setAttached(StellarityDataAttachments.DRAGONBLADE_EXISTANCE, Unit.INSTANCE);
 					dragonbladeSpawnTime = 200;
 				}
@@ -169,24 +166,23 @@ public class AltarOfTheAccursedBlockEntity extends BlockEntity {
 				if (dragonbladeSpawnTime <= 0) AltarOfTheAccursedRecipe.handleItems(serverLevel, x, y, z, locked);
 			}
 
-			if (placeType == AltarOfTheAccursed.PlaceType.NORMAL) {
-				if (dragonbladeSpawnTime >= 0 && dragonbladeSpawnTime-- == 0) {
-					var itemDisplay = new RemovableItemDisplay(serverLevel, bottomCenterAbove.x, bottomCenterAbove.y, bottomCenterAbove.z, new ItemStack(StellarityItems.DRAGONBLADE), Short.MIN_VALUE);
-					itemDisplay.setHeight(1);
-					itemDisplay.setWidth(0.5f);
-					itemDisplay.setTransformation(new Transformation(new Vector3f(0, 0.5f, -0.075f), new Quaternionf(1, 0, 0, 0), new Vector3f(1, 1, 1), new Quaternionf(0, 0, 0, 1)));
-					itemDisplay.setItemTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
-					level.addFreshEntity(itemDisplay);
-					NetworkingUtil.sendAllPlayers(serverLevel, new ClientboundDragonbladeSpawnPayload(Vec3.atBottomCenterOf(blockPos.above())));
-				}
+
+			if (placeType == AltarOfTheAccursed.PlaceType.NORMAL  && dragonbladeSpawnTime >= 0 && dragonbladeSpawnTime-- == 0) {
+				var itemDisplay = new RemovableItemDisplay(serverLevel, bottomCenterAbove.x, bottomCenterAbove.y, bottomCenterAbove.z, new ItemStack(StellarityItems.DRAGONBLADE), Short.MIN_VALUE);
+				itemDisplay.setHeight(1);
+				itemDisplay.setWidth(0.5f);
+				itemDisplay.setTransformation(new Transformation(new Vector3f(0, 0.5f, -0.075f), new Quaternionf(1, 0, 0, 0), new Vector3f(1, 1, 1), new Quaternionf(0, 0, 0, 1)));
+				itemDisplay.setItemTransform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND);
+				level.addFreshEntity(itemDisplay);
+				NetworkingUtil.sendAllPlayers(serverLevel, new ClientboundDragonbladeSpawnPayload(Vec3.atBottomCenterOf(blockPos.above())));
 			}
-
-
-
 		}
+
+
 	}
-
-
-
-
 }
+
+
+
+
+

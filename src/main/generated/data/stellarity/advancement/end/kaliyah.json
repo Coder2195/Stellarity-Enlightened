@@ -1,0 +1,48 @@
+{
+  "parent": "stellarity:end/dragonborn",
+  "criteria": {
+    "hit": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "#stellarity:triggers_kaliyah"
+              }
+            ]
+          },
+          "dealt": {
+            "min": 32.0
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "extra": [
+        "\n",
+        {
+          "color": "#EAA7FF",
+          "translate": "advancements.stellarity.kaliyah.tip"
+        }
+      ],
+      "translate": "advancements.stellarity.kaliyah.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "stellarity:dragonblade"
+    },
+    "title": {
+      "translate": "advancements.stellarity.kaliyah"
+    }
+  },
+  "requirements": [
+    [
+      "hit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,52 @@
+{
+  "parent": "stellarity:end/god_slayer",
+  "criteria": {
+    "summon": {
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:ender_dragon"
+          }
+        },
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:type_specific/player": {
+              "stats": [
+                {
+                  "type": "minecraft:killed",
+                  "stat": "minecraft:ender_dragon",
+                  "value": {
+                    "min": 2
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:summoned_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.third_times_the_charm.description"
+    },
+    "hidden": true,
+    "icon": {
+      "id": "minecraft:ender_dragon_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.stellarity.third_times_the_charm"
+    }
+  },
+  "requirements": [
+    [
+      "summon"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

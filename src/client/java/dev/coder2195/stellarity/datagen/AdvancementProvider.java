@@ -144,7 +144,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 				Optional.of(Holder.direct(
 					LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(entities, EntityTypes.FOX).build()).build()
 				))))
-			.addCriterion("place", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(blocks,StellarityBlocks.DUSKBERRY_BUSH))
+			.addCriterion("place", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(blocks, StellarityBlocks.DUSKBERRY_BUSH))
 			.parent(FIND_DUSKBERRY)
 			.requirements(requires("eat", "feed", "place"))
 			.build(Stellarity.id("exploration/duskberry/poor_life_choices"));
@@ -166,41 +166,58 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			).parent(KILL_DRAGON)
 			.addCriterion("summon", CriteriaTriggers.SUMMONED_ENTITY.createCriterion(new SummonedEntityTrigger.TriggerInstance(
 				Optional.of(EntityPredicate.wrap(new EntityPredicate.Builder().player(
-					PlayerPredicate.Builder.player().checkAdvancementDone(Stellarity.mcId("end/kill_dragon"), true).build()
+					PlayerPredicate.Builder.player().addStat(Stats.ENTITY_KILLED, entities.getOrThrow(EntityTypeIds.ENDER_DRAGON), MinMaxBounds.Ints.atLeast(1)).build()
 				))),
 				Optional.of(EntityPredicate.wrap(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityTypes.ENDER_DRAGON))))
 			)))
-			.requirements(
-				requires("summon")
-			).build(Stellarity.mcId("end/respawn_dragon"));
+			.requirements(requires("summon"))
+			.build(Stellarity.mcId("end/respawn_dragon"));
 
+		// 1 because 1 is before 2 and this counts before logging
 		final var GOD_SLAYER = advancement().display(
 				Items.NETHERITE_AXE,
 				Component.translatable("advancements.stellarity.god_slayer"), Component.translatable("advancements.stellarity.god_slayer.description"),
 				CHALLENGE, true, true, true
 			).parent(RESPAWN_DRAGON)
-			.addCriterion("kill", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(entities, EntityTypes.ENDER_DRAGON).player(
-				PlayerPredicate.Builder.player().addStat(Stats.ENTITY_KILLED, entities.getOrThrow(EntityTypeIds.ENDER_DRAGON), MinMaxBounds.Ints.atLeast(2)).build()
+			.addCriterion("kill", CriteriaTriggers.PLAYER_KILLED_ENTITY.createCriterion(new KilledTrigger.TriggerInstance(
+				Optional.of(EntityPredicate.wrap(EntityPredicate.Builder.entity().player(
+					PlayerPredicate.Builder.player().addStat(Stats.ENTITY_KILLED, entities.getOrThrow(EntityTypeIds.ENDER_DRAGON), MinMaxBounds.Ints.atLeast(1)).build()
+				))),
+				Optional.of(EntityPredicate.wrap(EntityPredicate.Builder.entity().of(entities, EntityTypes.ENDER_DRAGON))),
+				Optional.empty()
 			)))
-			.requirements(
-				requires("kill")
-			).build(Stellarity.id("end/respawn_dragon"));
+			.requirements(requires("kill"))
+			.rewards(new AdvancementRewards.Builder().addExperience(2000).build())
+			.build(Stellarity.id("end/god_slayer"));
 
 
 		final var THIRD_TIMES_THE_CHARM = advancement().display(
-				Items.END_CRYSTAL,
+				Items.ENDER_DRAGON_SPAWN_EGG,
 				Component.translatable("advancements.stellarity.third_times_the_charm"), Component.translatable("advancements.stellarity.third_times_the_charm.description"),
-				CHALLENGE, true, true, true
+				TASK, true, true, true
 			).parent(GOD_SLAYER)
 			.addCriterion("summon", CriteriaTriggers.SUMMONED_ENTITY.createCriterion(new SummonedEntityTrigger.TriggerInstance(
 				Optional.of(EntityPredicate.wrap(new EntityPredicate.Builder().player(
-					PlayerPredicate.Builder.player().checkAdvancementDone(Stellarity.mcId("end/kill_dragon"), true).build()
+					PlayerPredicate.Builder.player().addStat(Stats.ENTITY_KILLED, entities.getOrThrow(EntityTypeIds.ENDER_DRAGON), MinMaxBounds.Ints.atLeast(2)).build()
 				))),
 				Optional.of(EntityPredicate.wrap(new EntityPredicate.Builder().entityType(EntityTypePredicate.of(entities, EntityTypes.ENDER_DRAGON))))
 			)))
-			.requirements(
-				requires("summon")
-			).build(Stellarity.id("end/respawn_dragon"));
+			.requirements(requires("summon"))
+			.build(Stellarity.id("end/third_times_the_charm"));
+
+		// therefore 19 for 20
+		final var PURE_COMPLETION = advancement().display(
+				StellarityItems.DRAGON_WINGS,
+				Component.translatable("advancements.stellarity.pure_completion"), Component.translatable("advancements.stellarity.pure_completion.description"),
+				CHALLENGE, true, true, true
+			).parent(RESPAWN_DRAGON)
+			.addCriterion("kill", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(entities, EntityTypes.ENDER_DRAGON).player(
+				PlayerPredicate.Builder.player().addStat(Stats.ENTITY_KILLED, entities.getOrThrow(EntityTypeIds.ENDER_DRAGON), MinMaxBounds.Ints.atLeast(19)).build()
+			)))
+			.requirements(requires("kill"))
+			.rewards(new AdvancementRewards.Builder().addExperience(20000).build())
+			.build(Stellarity.id("end/pure_completion"));
+
 
 		final var ALTAR_OF_THE_ACCURSED_INTRO = advancement().display(
 				StellarityItems.ENDONOMICON,
@@ -366,7 +383,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			).requirements(requires("keep_warm"))
 			.build(Stellarity.id("exploration/keep_warm"));
 
-			final var SPIRIT_ASSASIN = advancement().display(
+		final var SPIRIT_ASSASIN = advancement().display(
 				StellarityItems.THE_BEGINNING,
 				Component.translatable("advancements.stellarity.spirit_assasin"), Component.translatable("advancements.stellarity.spirit_assasin.description"),
 				TASK, true, true, false
@@ -391,10 +408,10 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.build(Stellarity.id("end/dragonborn"));
 
 		final var KALIYAH = advancement().display(
-			StellarityItems.DRAGONBLADE,
-			Component.translatable("advancements.stellarity.kaliyah"), Component.translatable("advancements.stellarity.kaliyah.description").append("\n").append(Component.translatable("advancements.stellarity.kaliyah.tip").withColor(0xeaa7ff)),
-			CHALLENGE, true, true, false
-		).parent(DRAGONBORN)
+				StellarityItems.DRAGONBLADE,
+				Component.translatable("advancements.stellarity.kaliyah"), Component.translatable("advancements.stellarity.kaliyah.description").append("\n").append(Component.translatable("advancements.stellarity.kaliyah.tip").withColor(0xeaa7ff)),
+				CHALLENGE, true, true, false
+			).parent(DRAGONBORN)
 			.addCriterion("hit", PlayerHurtEntityTrigger.TriggerInstance.playerHurtEntityWithDamage(
 				new DamagePredicate.Builder().dealtDamage(MinMaxBounds.Doubles.atLeast(32))
 					.type(DamageSourcePredicate.Builder.damageType().tag(new TagPredicate<>(damageTypes.getOrThrow(StellarityDamageTypeTags.TRIGGERS_KALIYAH), true)))
@@ -403,9 +420,9 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.build(Stellarity.id("end/kaliyah"));
 
 
-
 		for (var advancement : List.of(
-			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES, SACRIFICAL_RITUAL, RESPAWN_DRAGON,
+			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES,
+			SACRIFICAL_RITUAL, RESPAWN_DRAGON, GOD_SLAYER, THIRD_TIMES_THE_CHARM, PURE_COMPLETION,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
 			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
 			KEEP_WARM, SPIRIT_ASSASIN, DRAGONBORN, KALIYAH

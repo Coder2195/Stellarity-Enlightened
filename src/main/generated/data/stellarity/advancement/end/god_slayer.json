@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:end/kill_dragon",
+  "parent": "minecraft:end/respawn_dragon",
   "criteria": {
-    "summon": {
+    "kill": {
       "conditions": {
         "entity": {
           "type": "minecraft:entity_properties",
@@ -15,31 +15,42 @@
           "entity": "this",
           "predicate": {
             "minecraft:type_specific/player": {
-              "advancements": {
-                "stellarity:ender_dragon/sacrificial_ritual": true
-              }
+              "stats": [
+                {
+                  "type": "minecraft:killed",
+                  "stat": "minecraft:ender_dragon",
+                  "value": {
+                    "min": 1
+                  }
+                }
+              ]
             }
           }
         }
       },
-      "trigger": "minecraft:summoned_entity"
+      "trigger": "minecraft:player_killed_entity"
     }
   },
   "display": {
     "description": {
-      "translate": "advancements.end.respawn_dragon.description"
+      "translate": "advancements.stellarity.god_slayer.description"
     },
+    "frame": "challenge",
+    "hidden": true,
     "icon": {
-      "id": "minecraft:end_crystal"
+      "id": "minecraft:netherite_axe"
     },
     "title": {
-      "translate": "advancements.end.respawn_dragon.title"
+      "translate": "advancements.stellarity.god_slayer"
     }
   },
   "requirements": [
     [
-      "summon"
+      "kill"
     ]
   ],
+  "rewards": {
+    "experience": 2000
+  },
   "sends_telemetry_event": true
 }

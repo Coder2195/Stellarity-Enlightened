@@ -1,0 +1,50 @@
+{
+  "parent": "minecraft:end/respawn_dragon",
+  "criteria": {
+    "kill": {
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:ender_dragon",
+            "minecraft:type_specific/player": {
+              "stats": [
+                {
+                  "type": "minecraft:killed",
+                  "stat": "minecraft:ender_dragon",
+                  "value": {
+                    "min": 20
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.pure_completion.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "stellarity:dragon_wings"
+    },
+    "title": {
+      "translate": "advancements.stellarity.pure_completion"
+    }
+  },
+  "requirements": [
+    [
+      "kill"
+    ]
+  ],
+  "rewards": {
+    "experience": 20000
+  },
+  "sends_telemetry_event": true
+}

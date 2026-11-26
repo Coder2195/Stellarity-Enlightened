@@ -31,7 +31,7 @@ import java.util.UUID;
 @Mixin(EnderDragonFight.class)
 public abstract class EnderDragonFightMixin {
 	@Shadow
-	public boolean dragonKilled;
+	private boolean dragonKilled;
 
 	@Shadow
 	private int aliveCrystals;
@@ -57,6 +57,8 @@ public abstract class EnderDragonFightMixin {
 			crystalsRemaining.setName(Component.translatable("bossbar.stellarity.crystals_left", aliveCrystals).withStyle(Style.EMPTY.withColor(0x4C0081)));
 		}
 	}
+
+
 
 
 	@Inject(method = "updatePlayers", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerBossEvent;addPlayer(Lnet/minecraft/server/level/ServerPlayer;)V"))
