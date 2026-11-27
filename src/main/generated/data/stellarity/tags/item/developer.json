@@ -15,6 +15,14 @@
     {
       "id": "stellarity:potassifish",
       "required": false
+    },
+    {
+      "id": "stellarity:the_beginning",
+      "required": false
+    },
+    {
+      "id": "stellarity:the_end",
+      "required": false
     }
   ]
 }

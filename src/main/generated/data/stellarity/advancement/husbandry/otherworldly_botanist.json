@@ -1,0 +1,94 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "plant_chorus_fruit_end": {
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:the_end"
+              }
+            },
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:chorus_flower"
+              }
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "plant_chorus_fruit_nether": {
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:the_nether"
+              }
+            },
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:chorus_flower"
+              }
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "plant_chorus_fruit_overworld": {
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:location_check",
+              "predicate": {
+                "dimension": "minecraft:overworld"
+              }
+            },
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:chorus_flower"
+              }
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.otherworldly_botanist.description"
+    },
+    "icon": {
+      "id": "minecraft:chorus_flower"
+    },
+    "title": {
+      "translate": "advancements.stellarity.otherworldly_botanist"
+    }
+  },
+  "requirements": [
+    [
+      "plant_chorus_fruit_overworld"
+    ],
+    [
+      "plant_chorus_fruit_nether"
+    ],
+    [
+      "plant_chorus_fruit_end"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

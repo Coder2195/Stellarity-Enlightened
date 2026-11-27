@@ -11,7 +11,7 @@ import dev.coder2195.stellarity.util.Constants;
 import dev.coder2195.stellarity.util.ValueUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
-import dev.coder2195.stellarity.util.tuple.Tuple7;
+import dev.coder2195.stellarity.util.tuple.Tuple8;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -193,7 +193,10 @@ public interface StellarityFeatures {
 	ResourceKey<Feature> PRISMARINE_FOREST_POND = id("prismarine_forest/pond");
 	ResourceKey<Feature> PRISMARINE_FOREST_FLOWER = id("prismarine_forest/flower");
 	ResourceKey<Feature> PRISMARINE_FOREST_GRASS = id("prismarine_forest/grass");
-	ResourceKey<Feature> PRISMATIC_TREE = id("prismatic_/tree");
+	ResourceKey<Feature> PRISMATIC_TREE_1 = id("prismatic_tree_1");
+	ResourceKey<Feature> PRISMATIC_TREE_2 = id("prismatic_tree_2");
+	ResourceKey<Feature> PRISMATIC_TREE_3 = id("prismatic_tree_3");
+	ResourceKey<Feature> PRISMARINE_FOREST_FOLIAGE = id("prismarine_forest/prismatic_tree");
 
 	ResourceKey<Feature> PRISMATIC_DUNES_DELTA = id("prismatic_dunes/delta");
 	ResourceKey<Feature> PRISMATIC_DUNES_GLASS_SPIKE = id("prismatic_dunes/glass_spike");
@@ -512,41 +515,44 @@ public interface StellarityFeatures {
 			tag(WORLDGEN_GRASS_BLOCK), weightedBlocks(new Block[]{ROOTED_ENDER_DIRT, ENDER_GRASS_BLOCK}, new int[]{6, 50}), nothing,
 			CaveSurface.FLOOR, numRaw(2), 0, 5, 0, numRaw(1, 3), 0.5f
 		));
-		context.register(SHRUBBED_TREE, new RandomSelectorFeature(List.of(
-			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new TreeFeature(
-					block(SHRUBBED_WOOD), new StraightTrunkPlacer(1, 0, 0),
-					block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
-					Optional.of(new MangroveRootPlacer(
-						numRaw(2, 4), block(SHRUBBED_WOOD),
-						Optional.of(new AboveRootPlacement(
-							block(SHRUBBED_WOOD), 0.25f
-						)),
-						new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), HolderSet.empty(), block(COBBLESTONE), 4, 15, 0.15f)
-					)), twoLayersSize(0, 0, 0), List.of(), true, block(SHRUBBED_LOG)
-				)
-			), List.of(
-				countPlace(50), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0))
-			))), 0.6f),
-			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new TreeFeature(
-					block(SHRUBBED_WOOD), new StraightTrunkPlacer(5, 0, 2),
-					block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
-					Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
-				)
-			), List.of(
-				countPlace(4), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(3))
-			))), 0.6f),
-			new WeightedPlacedFeature(direct(new PlacedFeature(direct(
-				new TreeFeature(
-					block(SHRUBBED_LOG), new ForkingTrunkPlacer(9, 0, 3),
-					block(property(SHRUBBED_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(numRaw(4), numRaw(0),
-					numRaw(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
-				)
-			), List.of(
-				countPlace(3), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(9))
-			))), 0.6f)
-		), nothing));
+		// todo: make it less cursed with actual trunk and foliage placer
+		context.register(SHRUBBED_TREE, new RandomSelectorFeature(List.of(), direct(new PlacedFeature(
+			direct(new RandomSelectorFeature(List.of(
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+					new TreeFeature(
+						block(SHRUBBED_WOOD), new StraightTrunkPlacer(1, 0, 0),
+						block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
+						Optional.of(new MangroveRootPlacer(
+							numRaw(2, 4), block(SHRUBBED_WOOD),
+							Optional.of(new AboveRootPlacement(
+								block(SHRUBBED_WOOD), 0.25f
+							)),
+							new MangroveRootPlacement(blocksGetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH), HolderSet.empty(), block(COBBLESTONE), 4, 15, 0.15f)
+						)), twoLayersSize(0, 0, 0), List.of(), true, block(SHRUBBED_LOG)
+					)
+				), List.of(
+					countPlace(50), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0))
+				))), 0.6f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+					new TreeFeature(
+						block(SHRUBBED_WOOD), new StraightTrunkPlacer(5, 0, 2),
+						block(AIR), new BlobFoliagePlacer(numRaw(0), numRaw(0), 0),
+						Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
+					)
+				), List.of(
+					countPlace(4), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(3))
+				))), 0.6f),
+				new WeightedPlacedFeature(direct(new PlacedFeature(direct(
+					new TreeFeature(
+						block(SHRUBBED_LOG), new ForkingTrunkPlacer(9, 0, 3),
+						block(property(SHRUBBED_LEAVES, BlockStateProperties.DISTANCE, 1)), new RandomSpreadFoliagePlacer(numRaw(4), numRaw(0),
+						numRaw(2), 200), Optional.empty(), twoLayersSize(), List.of(), true, block(SHRUBBED_WOOD)
+					)
+				), List.of(
+					countPlace(3), randOffset(trapezoid(-2, 2, 0), trapezoid(0, 0, 0)), randOffset(numRaw(0), numRaw(9))
+				))), 0.6f)
+			), nothing)), List.of(countPlace(64), randOffset(trapezoid(0, 0, 0), trapezoid(0, 0, 0)))
+		))));
 		context.register(END_WILDS_GRASS, new SimpleBlockFeature(weightedBlocksRaw(
 			new Block[]{FERN, SHORT_GRASS, TALL_GRASS, LARGE_FERN}, new int[]{2, 11, 2, 2}
 		)));
@@ -937,13 +943,14 @@ public interface StellarityFeatures {
 			Optional.empty(), twoLayersSize(), optionalVineDecor.apply(leaves._2(), List.of()), true, block(ENDER_DIRT)
 		);
 
-		for (Tuple2<ColorCollection<ResourceKey<Feature>>, Function<Tuple2<Block, Boolean>, TreeFeature>> treeData: List.of(
+		for (Tuple2<ColorCollection<ResourceKey<Feature>>, Function<Tuple2<Block, Boolean>, TreeFeature>> treeData : List.of(
 			new Tuple2<>(COLORED_REGULAR_HALLOWED_TREE, regular),
 			new Tuple2<>(COLORED_PINE_HALLOWED_TREE, pine),
 			new Tuple2<>(COLORED_MEGA_HALLOWED_TREE, mega)
-		)) ColorCollection.zipApply(treeData._1(), COLORED_HALLOWED_LEAVES, (tree, leaves) ->
-			context.register(tree, treeData._2().apply(new Tuple2<>(leaves, tree.equals(COLORED_REGULAR_HALLOWED_TREE.red()))))
-		);
+		))
+			ColorCollection.zipApply(treeData._1(), COLORED_HALLOWED_LEAVES, (tree, leaves) ->
+				context.register(tree, treeData._2().apply(new Tuple2<>(leaves, tree.equals(COLORED_REGULAR_HALLOWED_TREE.red()))))
+			);
 
 		var hallowTrees = Stream.concat(Stream.concat(COLORED_REGULAR_HALLOWED_TREE.asList().stream(), COLORED_PINE_HALLOWED_TREE.asList().stream()), COLORED_MEGA_HALLOWED_TREE.asList().stream()).toList();
 
@@ -994,23 +1001,25 @@ public interface StellarityFeatures {
 			new Block[]{SHORT_GRASS, TALL_GRASS, NETHER_SPROUTS, WARPED_ROOTS}, new int[]{5, 1, 2, 2}
 		)));
 		var prismarineForestTreeLeaves = weightedBlocks(Stream.of(PRISMATIC_LEAVES, HALLOWED_LEAVES).map(b -> property(b, LeavesBlock.PERSISTENT, true)).toArray(BlockState[]::new), new int[]{32, 15});
-		context.register(PRISMATIC_TREE, new RandomSelectorFeature(
+
+		var prismaticBush = direct((Feature) new TreeFeature(
+			block(PRISMATIC_WOOD), new StraightTrunkPlacer(1, 0, 0),
+			block(PRISMATIC_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
+			Optional.empty(), twoLayersSize(), List.of(), false, block(ROOTED_ENDER_DIRT)
+		));
+		context.register(PRISMARINE_FOREST_FOLIAGE, new RandomSelectorFeature(
 			Stream.of(
 				// baseHeight, heightRandA, heightRandB, radius, height, minSize, chance
-				new Tuple7<>(9, 4, 9, 4, 5, threeLayersSize(), 0.66f),
-				new Tuple7<>(6, 1, 4, 4, 5, twoLayersSize(), 0.15f),
-				new Tuple7<>(4, 0, 3, 3, 4, twoLayersSize(), 0.3f)
-			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(direct(new TreeFeature(
+				new Tuple8<>(9, 4, 9, 4, 5, threeLayersSize(), 0.66f, PRISMATIC_TREE_1),
+				new Tuple8<>(6, 1, 4, 4, 5, twoLayersSize(), 0.15f, PRISMATIC_TREE_2),
+				new Tuple8<>(4, 0, 3, 3, 4, twoLayersSize(), 0.3f, PRISMATIC_TREE_3)
+			).map(t -> new WeightedPlacedFeature(direct(new PlacedFeature(context.register(t._8(), new TreeFeature(
 				block(PRISMATIC_WOOD), new DarkOakTrunkPlacer(t._1(), t._2(), t._3()),
 				prismarineForestTreeLeaves, new CherryFoliagePlacer(numRaw(t._4()), numRaw(0), numRaw(t._5()), 0.25f, 0.25f, 0.24f, 0.37f),
 				Optional.empty(), t._6(),
 				List.of(new LeaveVineDecorator(0.0555f), new AttachedToLeavesDecorator(0.08f, 3, 2, block(SEA_LANTERN), 2, List.of(Direction.DOWN))), false, block(ENDER_DIRT)
 			)), List.of())), t._7())).toList(),
-			direct(new PlacedFeature(direct(new TreeFeature(
-				block(PRISMATIC_WOOD), new StraightTrunkPlacer(1, 0, 0),
-				block(PRISMATIC_LEAVES), new BushFoliagePlacer(numRaw(2), numRaw(1), 2),
-				Optional.empty(), twoLayersSize(), List.of(), false, block(ROOTED_ENDER_DIRT)
-			)), List.of()))
+			direct(new PlacedFeature(prismaticBush, List.of()))
 		));
 
 

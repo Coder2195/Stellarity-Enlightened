@@ -80,9 +80,8 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 		var donator = addTags(StellarityItemTags.DONATOR);
 		List.of(BELL_FLOWER, LOAF_OF_PLENTY, FLUFFY_HAMMER, SANDSTORM_TRIDENT, SHULKER_PICKAXE, SHULKER_SHOVEL, SHULKER_SWORD, SHULKER_AXE, LOAF_OF_PLENTY,  SHULKER_AXE, SHULKER_PICKAXE, SHULKER_HOE, SHULKER_SPEAR, SHULKER_SHOVEL, SHULKER_SWORD).forEach(donator::addOptional);
 
-		// TODO: add beginning and the end, and ensure all implementations complete
 		var developer = addTags(StellarityItemTags.DEVELOPER);
-		List.of(TAMARIS, HARVESTER, STELLAR_STRIKER, POTASSIFISH).forEach(developer::addOptional);
+		List.of(TAMARIS, HARVESTER, STELLAR_STRIKER, POTASSIFISH, THE_BEGINNING, THE_END).forEach(developer::addOptional);
 
 		addTags(StellarityItemTags.REPAIRS_CHAMPION_ARMOR).add(CHORUS_PLATING);
 		addTags(StellarityItemTags.REPAIRS_HALLOWED_ARMOR).add(HALLOWED_INGOT);

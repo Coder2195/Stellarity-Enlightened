@@ -89,6 +89,11 @@ Awaiting @void76767676-gif to push changes, nullscape is not supported at the mo
 
 **[+] Absolute Devotion**
 
+**[*] I am Titanium!**
+- Added 150 xp reward
+
+**[+] Otherworldly Botanist**
+
 
 ## Structure
 **[+] End Shipwreck**

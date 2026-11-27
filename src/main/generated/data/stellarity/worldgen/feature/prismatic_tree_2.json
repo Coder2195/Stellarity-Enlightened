@@ -1,0 +1,78 @@
+{
+  "type": "minecraft:tree",
+  "below_trunk_provider": {
+    "id": "stellarity:ender_dirt"
+  },
+  "decorators": [
+    {
+      "type": "minecraft:leave_vine",
+      "probability": 0.0555
+    },
+    {
+      "type": "minecraft:attached_to_leaves",
+      "block_provider": {
+        "id": "minecraft:sea_lantern"
+      },
+      "directions": [
+        "down"
+      ],
+      "exclusion_radius_xz": 3,
+      "exclusion_radius_y": 2,
+      "probability": 0.08,
+      "required_empty_blocks": 2
+    }
+  ],
+  "foliage_placer": {
+    "type": "minecraft:cherry_foliage_placer",
+    "corner_hole_chance": 0.25,
+    "hanging_leaves_chance": 0.24,
+    "hanging_leaves_extension_chance": 0.37,
+    "height": 5,
+    "offset": 0,
+    "radius": 4,
+    "wide_bottom_layer_hole_chance": 0.25
+  },
+  "foliage_provider": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": {
+          "id": "stellarity:prismatic_leaves",
+          "properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
+        "weight": 32
+      },
+      {
+        "data": {
+          "id": "stellarity:hallowed_leaves",
+          "properties": {
+            "distance": "7",
+            "persistent": "true",
+            "waterlogged": "false"
+          }
+        },
+        "weight": 15
+      }
+    ]
+  },
+  "ignore_vines": false,
+  "minimum_size": {
+    "type": "minecraft:two_layers_feature_size"
+  },
+  "trunk_placer": {
+    "type": "minecraft:dark_oak_trunk_placer",
+    "base_height": 6,
+    "height_rand_a": 1,
+    "height_rand_b": 4
+  },
+  "trunk_provider": {
+    "id": "stellarity:prismatic_wood",
+    "properties": {
+      "axis": "y"
+    }
+  }
+}

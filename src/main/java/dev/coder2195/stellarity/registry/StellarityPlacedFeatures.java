@@ -422,7 +422,7 @@ public interface StellarityPlacedFeatures {
 			blockFilter(all(matchBlocks(AIR), matchBlocks(vec(0, 1, 0), ENDER_DIRT, ENDER_GRASS_BLOCK, ROOTED_ENDER_DIRT)))
 		)));
 		context.register(END_WILDS_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.SHRUBBED_TREE), List.of(
-			everyLayer(1), rarity(130), blockFilter(matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK)), biome(), countPlace(64), randOffset(trapezoid(0, 0, 0), trapezoid(0, 0, 0))
+			everyLayer(1), rarity(130), blockFilter(matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK)), biome()
 		)));
 		context.register(END_WILDS_FOREST, new PlacedFeature(configured.getOrThrow(StellarityFeatures.SHRUBBED_TREE), List.of(
 			noiseCount(13, 1100, -0.3), inSquare(), aboveBelow0, envScan(Direction.DOWN, all(replaceable(), matchBlocks(vec(0, -1, 0), ENDER_GRASS_BLOCK)), all(), 32), rarity(1), biome(), countPlace(64), randOffset(trapezoid(0, 0, 0), trapezoid(0, 0, 0))
@@ -592,7 +592,7 @@ public interface StellarityPlacedFeatures {
 		context.register(PRISMARINE_FOREST_FLOWERS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_FLOWER), List.of(
 			everyLayer(4), biome(), countPlace(12), randOffset(trapezoid(-6, 6, 0), trapezoid(-2, 2, 0)), blockFilter(matchBlocks(AIR))
 		)));
-		context.register(PRISMARINE_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMATIC_TREE), List.of(
+		context.register(PRISMARINE_FOREST_TREES, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_FOLIAGE), List.of(
 			everyLayer(5), blockFilter(all(matchBlocks(AIR), wouldSurvive(DARK_OAK_SAPLING))), biome()
 		)));
 		context.register(PRISMARINE_FOREST_GRASS, new PlacedFeature(configured.getOrThrow(StellarityFeatures.PRISMARINE_FOREST_GRASS), List.of(

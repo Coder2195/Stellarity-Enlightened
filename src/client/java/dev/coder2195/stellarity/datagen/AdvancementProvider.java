@@ -13,6 +13,7 @@ import dev.coder2195.stellarity.registry.*;
 import dev.coder2195.stellarity.tags.StellarityBiomeTags;
 import dev.coder2195.stellarity.tags.StellarityDamageTypeTags;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
+import dev.coder2195.stellarity.util.LootUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple2;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
@@ -36,10 +37,13 @@ import net.minecraft.world.entity.EntityTypeIds;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.LocationCheck;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -89,6 +93,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 		final var ADVENTURE_ROOT = dummy(Stellarity.mcId("adventure/root"));
 		final var KILL_A_MOB = dummy(Stellarity.mcId("adventure/kill_a_mob"));
 		final var OBTAIN_NETHERITE_HOE = dummy(Stellarity.mcId("husbandry/obtain_netherite_hoe"));
+		final var HUSBANDRY_ROOT = dummy(Stellarity.mcId("husbandry/root"));
 
 
 		final var VOID_REELS = advancement()
@@ -260,6 +265,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.addCriterion("leggings", InventoryChangeTrigger.TriggerInstance.hasItems(StellarityItems.SHULKER_LEGGINGS))
 			.addCriterion("boots", InventoryChangeTrigger.TriggerInstance.hasItems(StellarityItems.SHULKER_BOOTS))
 			.requirements(requires("helmet", "chestplate", "leggings", "boots"))
+			.rewards(new AdvancementRewards.Builder().addExperience(150).build())
 			.build(Stellarity.id("altar_of_the_accursed/craft_full_shulker_armor"));
 
 		final var ELECTRIFIED = advancement().display(
@@ -323,7 +329,9 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			biomes.add(name);
 			DISCOVER_ALL_BIOMES_BUILDER.addCriterion(name, PlayerTrigger.TriggerInstance.located(new LocationPredicate.Builder().setBiomes(HolderSet.direct(registryLookup.getOrThrow(biome)))));
 		}
-		var DISCOVER_ALL_BIOMES = DISCOVER_ALL_BIOMES_BUILDER.requirements(requires(biomes.toArray(String[]::new))).build(Stellarity.id("exploration/discover_all_biomes"));
+		var DISCOVER_ALL_BIOMES = DISCOVER_ALL_BIOMES_BUILDER
+			.requirements(requires(biomes.toArray(String[]::new)))
+			.build(Stellarity.id("exploration/discover_all_biomes"));
 
 		var FIND_END_VILLAGE = advancement().display(
 				StellarityItems.ENDERITE_SHARD,
@@ -418,6 +426,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 					.type(DamageSourcePredicate.Builder.damageType().tag(new TagPredicate<>(damageTypes.getOrThrow(StellarityDamageTypeTags.TRIGGERS_KALIYAH), true)))
 			))
 			.requirements(requires("hit"))
+			.rewards(new AdvancementRewards.Builder().addExperience(50).build())
 			.build(Stellarity.id("end/kaliyah"));
 
 		final var ABSOLUTE_DEVOTION = advancement().display(
@@ -427,7 +436,28 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 		).parent(OBTAIN_NETHERITE_HOE)
 			.addCriterion("shulker_hoe", InventoryChangeTrigger.TriggerInstance.hasItems(StellarityItems.SHULKER_HOE))
 			.requirements(requires("shulker_hoe"))
+			.rewards(new AdvancementRewards.Builder().addExperience(150))
 			.build(Stellarity.id("husbandry/absolute_devotion"));
+
+		final var OTHERWORLDLY_BOTANIST = advancement().display(
+				Items.CHORUS_FLOWER,
+				Component.translatable("advancements.stellarity.otherworldly_botanist"), Component.translatable("advancements.stellarity.otherworldly_botanist.description"),
+				TASK, true, true, false
+			).parent(HUSBANDRY_ROOT)
+			.addCriterion("plant_chorus_fruit_overworld", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(LootUtil.all(
+				LocationCheck.checkLocation(new LocationPredicate.Builder().setDimension(Level.OVERWORLD)),
+				MatchTool.toolMatches(new ItemPredicate.Builder().of(items, Items.CHORUS_FLOWER))
+			)))
+			.addCriterion("plant_chorus_fruit_nether", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(LootUtil.all(
+				LocationCheck.checkLocation(new LocationPredicate.Builder().setDimension(Level.NETHER)),
+				MatchTool.toolMatches(new ItemPredicate.Builder().of(items, Items.CHORUS_FLOWER))
+			)))
+			.addCriterion("plant_chorus_fruit_end", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(LootUtil.all(
+				LocationCheck.checkLocation(new LocationPredicate.Builder().setDimension(Level.END)),
+				MatchTool.toolMatches(new ItemPredicate.Builder().of(items, Items.CHORUS_FLOWER))
+			)))
+			.requirements(requires("plant_chorus_fruit_overworld", "plant_chorus_fruit_nether", "plant_chorus_fruit_end"))
+			.build(Stellarity.id("husbandry/otherworldly_botanist"));
 
 
 
@@ -437,7 +467,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
 			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
 			KEEP_WARM, SPIRIT_ASSASIN, DRAGONBORN, KALIYAH,
-			ABSOLUTE_DEVOTION
+			ABSOLUTE_DEVOTION, OTHERWORLDLY_BOTANIST
 		)) {
 			consumer.accept(advancement);
 		}

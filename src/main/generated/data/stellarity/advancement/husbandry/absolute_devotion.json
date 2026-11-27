@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:husbandry/obtain_netherite_hoe",
+  "criteria": {
+    "shulker_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stellarity:shulker_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stellarity.absolute_devotion.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "id": "stellarity:shulker_hoe"
+    },
+    "title": {
+      "translate": "advancements.stellarity.absolute_devotion"
+    }
+  },
+  "requirements": [
+    [
+      "shulker_hoe"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  },
+  "sends_telemetry_event": true
+}
