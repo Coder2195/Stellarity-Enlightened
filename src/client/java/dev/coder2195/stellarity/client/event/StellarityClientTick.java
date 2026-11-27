@@ -17,14 +17,14 @@ import net.minecraft.world.item.Item;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
-public interface StellarityClientTick {
-	Map<Item, BiConsumer<ClientLevel, LocalPlayer>> ITEM_HELD_TICKERS = ImmutableMap.<Item, BiConsumer<ClientLevel, LocalPlayer>>builder()
+public class StellarityClientTick {
+	public static final Map<Item, BiConsumer<ClientLevel, LocalPlayer>> ITEM_HELD_TICKERS = ImmutableMap.<Item, BiConsumer<ClientLevel, LocalPlayer>>builder()
 		.put(StellarityItems.TAMARIS, StellarityClientTick::tamarisHeldTick)
 		.put(StellarityItems.COPPER_ELEKTRA_SHIELD, StellarityClientTick::copperElektraShieldHeldTick)
 		.put(StellarityItems.DRAGONBLADE, StellarityClientTick::dragonbladeHeldTick)
 		.build();
 
-	static void tamarisHeldTick(ClientLevel level, LocalPlayer player) {
+	public static void tamarisHeldTick(ClientLevel level, LocalPlayer player) {
 		var nearbyEntities = level.getEntitiesOfClass(
 			LivingEntity.class, player.getBoundingBox().inflate(10),
 			e -> !e.equals(player) && e.isAlive() && e.getHealth() / e.getMaxHealth() < 0.25f
@@ -36,7 +36,7 @@ public interface StellarityClientTick {
 		}
 	}
 
-	static void copperElektraShieldHeldTick(ClientLevel level, LocalPlayer player) {
+	public static void copperElektraShieldHeldTick(ClientLevel level, LocalPlayer player) {
 		var mainHand = player.getMainHandItem();
 		var offHand = player.getOffhandItem();
 
@@ -50,7 +50,7 @@ public interface StellarityClientTick {
 			player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 1.0f, 0f);
 	}
 
-	static void dragonbladeHeldTick(ClientLevel level, LocalPlayer player) {
+	public static void dragonbladeHeldTick(ClientLevel level, LocalPlayer player) {
 		var nearbyEntities = level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(20), e -> e.hasAttached(StellarityDataAttachments.DRAGON_STACKS));
 		for (var nearbyEntity : nearbyEntities) {
 			var dragonStacks = nearbyEntity.getAttached(StellarityDataAttachments.DRAGON_STACKS);
@@ -73,7 +73,7 @@ public interface StellarityClientTick {
 
 	}
 
-	static void init() {
+	public static void init() {
 		ClientTickEvents.START_CLIENT_TICK.register((client) -> {
 			var level = client.level;
 			var player = client.player;

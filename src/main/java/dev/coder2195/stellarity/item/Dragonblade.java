@@ -1,26 +1,28 @@
 package dev.coder2195.stellarity.item;
 
 import dev.coder2195.stellarity.mixin.accessor.ProjectileUtilAccessor;
-import dev.coder2195.stellarity.registry.StellarityDamageTypes;
-import dev.coder2195.stellarity.registry.StellarityDataAttachments;
-import dev.coder2195.stellarity.registry.StellarityMobEffects;
-import dev.coder2195.stellarity.registry.StellarityToolMaterials;
+import dev.coder2195.stellarity.networking.ClientboundDragonbladePunchPayload;
+import dev.coder2195.stellarity.registry.*;
 import dev.coder2195.stellarity.tags.StellarityEntityTypeTags;
 import dev.coder2195.stellarity.util.DamageUtility;
 import dev.coder2195.stellarity.util.DragonStacks;
+import dev.coder2195.stellarity.util.NetworkingUtil;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Unit;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -28,6 +30,9 @@ import net.minecraft.world.item.component.DamageResistant;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.ArrayList;
 
 public class Dragonblade extends Item {
 	public static final Properties PROPERTIES = new Properties().sword(StellarityToolMaterials.DRAGONBLADE, 3, -2.9f).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).delayedComponent(
@@ -52,11 +57,17 @@ public class Dragonblade extends Item {
 	public void postHurtEnemy(ItemStack itemStack, LivingEntity mob, LivingEntity attacker) {
 		super.postHurtEnemy(itemStack, mob, attacker);
 
-		if ((attacker instanceof Player player ? player.isShiftKeyDown() : attacker.isCrouching()) && mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY).stacks() >= 3) {
+		var dragonStacks = mob.getAttachedOrElse(StellarityDataAttachments.DRAGON_STACKS, DragonStacks.EMPTY);
+		var player = attacker instanceof ServerPlayer p ? p : null;
+
+		if ((player != null ? player.isShiftKeyDown() : attacker.isCrouching()) && dragonStacks.stacks() >= 3) {
 			dragonBladePunch(itemStack, mob, attacker);
 			return;
 		}
+		if (player != null && dragonStacks.stacks() == 2) player.connection.send(new ClientboundSoundPacket(Holder.direct(StellaritySoundEvents.DRAGONBLADE_PREPARE), SoundSource.PLAYERS, attacker.getX(), attacker.getY(), attacker.getZ(), 1f, 1f, player.level().getRandom().nextLong()));
 		addDragonStack(mob);
+
+
 	}
 
 	public static void addDragonStack(LivingEntity mob) {
@@ -71,7 +82,6 @@ public class Dragonblade extends Item {
 	}
 
 	public static void dragonBladePunch(ItemStack itemStack, LivingEntity mob, LivingEntity attacker) {
-
 		var level = mob.level();
 		if (!(level instanceof ServerLevel serverLevel) || mob.is(StellarityEntityTypeTags.IMMUNE_TO_DRAGONBLADE)) return;
 		var knockback = itemStack.getEnchantments().getLevel(level.registryAccess().getOrThrow(Enchantments.KNOCKBACK));
@@ -87,11 +97,13 @@ public class Dragonblade extends Item {
 		var hitResult = ProjectileUtilAccessor.getHitResult(mobPos, mob, _ -> false, directionVector, level, 0.1f, ClipContext.Block.COLLIDER);
 
 		boolean hitBlock = hitResult.getType() == HitResult.Type.BLOCK;
+		ArrayList<Vec3> secondaryPositions = new ArrayList<>();
 		if (hitBlock) {
 			damage += 24;
-			for (var nearbyEntity : level.getEntitiesOfClass(LivingEntity.class, mob.getBoundingBox().inflate(4), entity -> !entity.equals(mob) && !entity.isInvulnerableTo(serverLevel, damageSource))) {
+			for (var nearbyEntity : level.getEntitiesOfClass(LivingEntity.class, mob.getBoundingBox().inflate(4), entity -> !entity.equals(mob) && !entity.isInvulnerableTo(serverLevel, damageSource) && !entity.is(StellarityEntityTypeTags.IMMUNE_TO_DRAGONBLADE))) {
 				nearbyEntity.hurtServer(serverLevel, damageSource, 4);
 				mob.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3 * 20));
+				secondaryPositions.add(nearbyEntity.position());
 			}
 		}
 
@@ -103,6 +115,8 @@ public class Dragonblade extends Item {
 		mob.setPos(finalPos.x, finalPos.y, finalPos.z);
 		mob.setDeltaMovement(directionVector.scale(0.1));
 		mob.setAttached(StellarityDataAttachments.DRAGON_STACKS, new DragonStacks((short) 0, true, level.getGameTime() + PUNCH_COOLDOWN));
+
+		NetworkingUtil.sendTrackingPlayers(serverLevel, mob, new ClientboundDragonbladePunchPayload(mobPos, finalPos, secondaryPositions, hitBlock));
 	}
 
 

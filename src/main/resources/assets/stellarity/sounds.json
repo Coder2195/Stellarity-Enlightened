@@ -142,28 +142,28 @@
 			"stellarity:item/stellar_striker/thorn_apart"
 		]
 	},
-	"item.dragonblade.pre_punch": {
+	"item.dragonblade.prepare": {
 		"sounds": [
-			"stellarity:item/dragonblade/kaliyah_prepare"
+			"stellarity:item/dragonblade/prepare"
 		]
 	},
 	"item.dragonblade.punch": {
 		"sounds": [
-			"stellarity:item/dragonblade/kaliyah_punch"
+			"stellarity:item/dragonblade/punch"
 		]
 	},
 	"item.dragonblade.damage": {
 		"sounds": [
-			"stellarity:item/dragonblade/punch_damage_1",
-			"stellarity:item/dragonblade/punch_damage_2",
-			"stellarity:item/dragonblade/punch_damage_3"
+			"stellarity:item/dragonblade/damage_1",
+			"stellarity:item/dragonblade/damage_2",
+			"stellarity:item/dragonblade/damage_3"
 		]
 	},
 	"item.dragonblade.damage_wall": {
 		"sounds": [
-			"stellarity:item/dragonblade/punch_damage_wall_1",
-			"stellarity:item/dragonblade/punch_damage_wall_2",
-			"stellarity:item/dragonblade/punch_damage_wall_3"
+			"stellarity:item/dragonblade/damage_wall_1",
+			"stellarity:item/dragonblade/damage_wall_2",
+			"stellarity:item/dragonblade/damage_wall_3"
 		]
 	},
 	"item.dragonblade.drop": {
@@ -173,9 +173,9 @@
 	},
 	"item.dragonblade.prepare_punch": {
 		"sounds": [
-			"stellarity:item/dragonblade/prepare_1",
-			"stellarity:item/dragonblade/prepare_2",
-			"stellarity:item/dragonblade/prepare_3"
+			"stellarity:item/dragonblade/prepare_punch_1",
+			"stellarity:item/dragonblade/prepare_punch_2",
+			"stellarity:item/dragonblade/prepare_punch_3"
 		]
 	},
 	"item.tamaris.execute": {

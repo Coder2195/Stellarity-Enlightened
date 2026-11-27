@@ -35,8 +35,31 @@ public interface StellarityClientNetworking {
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundAltarOfTheSacredRejectPayload.TYPE, StellarityClientNetworking::altarOfTheSacredReject);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundSpiritDespawnPayload.TYPE, StellarityClientNetworking::spiritDespawn);
 		ClientPlayNetworking.registerGlobalReceiver(ClientboundDragonbladeSpawnPayload.TYPE, StellarityClientNetworking::dragonbladeSpawn);
+		ClientPlayNetworking.registerGlobalReceiver(ClientboundDragonbladePunchPayload.TYPE, StellarityClientNetworking::dragonbladePunch);
 
 		Stellarity.LOGGER.info("Registering Stellarity Client Networking");
+	}
+
+	static void dragonbladePunch(ClientboundDragonbladePunchPayload packet, ClientPlayNetworking.Context context) {
+		var client = context.client();
+		var level = client.level;
+		var player = client.player;
+		if (level == null) return;
+
+		var originalPosition = packet.originalPosition();
+		var targetPosition = packet.targetPosition();
+		var secondaryPositions = packet.secondaryPositions();
+		var wallPunch = packet.wallPunch();
+
+
+
+		level.playSound(player, originalPosition.x, originalPosition.y, originalPosition.z, StellaritySoundEvents.DRAGONBLADE_PUNCH, SoundSource.PLAYERS, 1, 1);
+		level.playSound(player, targetPosition.x, targetPosition.y, targetPosition.z, wallPunch ? StellaritySoundEvents.DRAGONBLADE_DAMAGE_WALL : StellaritySoundEvents.DRAGONBLADE_DAMAGE, SoundSource.PLAYERS, 1, 1);
+
+		for (var secondaryPosition : secondaryPositions) {
+
+		}
+
 	}
 
 	static void dragonbladeSpawn(ClientboundDragonbladeSpawnPayload packet, ClientPlayNetworking.Context context) {

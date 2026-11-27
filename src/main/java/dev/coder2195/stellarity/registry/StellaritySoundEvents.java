@@ -46,6 +46,12 @@ public interface StellaritySoundEvents {
 
 	SoundEvent ALTAR_OF_THE_ACCURSED_SPAWN_DRAGONBLADE = register("block.altar_of_the_accursed.spawn_dragonblade");
 
+	SoundEvent DRAGONBLADE_PUNCH = register("item.dragonblade.punch");
+	SoundEvent DRAGONBLADE_PREPARE = register("item.dragonblade.prepare");
+	SoundEvent DRAGONBLADE_DAMAGE = register("item.dragonblade.damage");
+	SoundEvent DRAGONBLADE_DAMAGE_WALL = register("item.dragonblade.damage_wall");
+	SoundEvent DRAGONBLADE_PREPARE_PUNCH = register("item.dragonblade.prepare_punch");
+
 	Holder<SoundEvent> FIRES_OF_HOKKAI = registerHolder("music_disc.fires_of_hokkai");
 	Holder<SoundEvent> DEVIANTS_LIGHT_MUSIC_BOX = registerHolder("music_disc.deviants_light_music_box");
 	Holder<SoundEvent> PRECIPICE_STEREO = registerHolder("music_disc.precipice_stereo");
