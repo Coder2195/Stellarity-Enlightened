@@ -6,6 +6,7 @@ import dev.coder2195.stellarity.item.Dragonblade;
 import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
+import dev.coder2195.stellarity.registry.StellaritySoundEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;

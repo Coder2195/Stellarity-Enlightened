@@ -1,8 +1,10 @@
 package dev.coder2195.stellarity.client.registry;
 
 import dev.coder2195.stellarity.Stellarity;
+import dev.coder2195.stellarity.entity.Spirit;
 import dev.coder2195.stellarity.item.CopperElektraShield;
 import dev.coder2195.stellarity.item.StellarStriker;
+import dev.coder2195.stellarity.registry.StellarityDataAttachments;
 import dev.coder2195.stellarity.registry.StellarityDataComponents;
 import dev.coder2195.stellarity.registry.StellarityItems;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -11,6 +13,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiPipeline;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 
 import java.util.List;
@@ -76,6 +80,19 @@ public interface StellarityHUDs {
 				}
 
 				graphics.item(item, left - 10, screenBottom - offset - 8);
+			}
+
+			var spiritSlashAt = player.getAttached(StellarityDataAttachments.SPIRIT_SLASH_AT);
+
+			if (spiritSlashAt != null && spiritSlashAt > gameTime) {
+				String text = String.format("%d/%d", Math.clamp(Spirit.LOOK_ACTIVATE_DURATION - (spiritSlashAt - gameTime), 0, Spirit.LOOK_ACTIVATE_DURATION), Spirit.LOOK_ACTIVATE_DURATION);
+				var textWidth = minecraft.font.width(text);
+				offset += 18;
+
+				graphics.text(minecraft.font, text, center - textWidth / 2, screenBottom - offset - 8 + minecraft.font.lineHeight / 2, 0xffffffff);
+
+				graphics.item(player.getOffhandItem(), center - textWidth / 2 - 20, screenBottom - offset - 8);
+				graphics.item(player.getMainHandItem(), center + textWidth / 2 + 4, screenBottom - offset - 8);
 			}
 		});
 	}

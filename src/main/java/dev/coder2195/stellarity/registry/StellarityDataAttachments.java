@@ -70,6 +70,9 @@ public interface StellarityDataAttachments {
 	AttachmentType<Unit> DRAGONBLADE_EXISTANCE = AttachmentRegistry.create(Stellarity.id("dragonblade_existance"), builder -> builder.persistent(Unit.CODEC));
 	AttachmentType<DragonStacks> DRAGON_STACKS = AttachmentRegistry.create(Stellarity.id("dragon_stacks"), builder -> builder.persistent(DragonStacks.CODEC).syncWith(DragonStacks.STREAM_CODEC, AttachmentSyncPredicate.all()));
 
+	AttachmentType<Long> SPIRIT_SLASH_AT = AttachmentRegistry.create(Stellarity.id("spirit_slash_at"), builder -> builder.syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.targetOnly()));
+	AttachmentType<Long> DRAGONBLADE_PUNCH_AT = AttachmentRegistry.create(Stellarity.id("dragonblade_punch_at"), builder -> builder.persistent(Codec.LONG).syncWith(ByteBufCodecs.VAR_LONG, AttachmentSyncPredicate.targetOnly()));
+
 	static void init() {
 		Stellarity.LOGGER.info("Registering Stellarity Data Attachments");
 	}

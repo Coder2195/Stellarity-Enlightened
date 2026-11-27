@@ -77,7 +77,6 @@ public class ItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
 		addTags(ItemTags.SWORDS).add(TAMARIS, STELLAR_STRIKER, THE_BEGINNING, THE_END, DRAGONBLADE);
 
-		// TODO: add shulker spear, and ensure all implementations complete
 		var donator = addTags(StellarityItemTags.DONATOR);
 		List.of(BELL_FLOWER, LOAF_OF_PLENTY, FLUFFY_HAMMER, SANDSTORM_TRIDENT, SHULKER_PICKAXE, SHULKER_SHOVEL, SHULKER_SWORD, SHULKER_AXE, LOAF_OF_PLENTY,  SHULKER_AXE, SHULKER_PICKAXE, SHULKER_HOE, SHULKER_SPEAR, SHULKER_SHOVEL, SHULKER_SWORD).forEach(donator::addOptional);
 

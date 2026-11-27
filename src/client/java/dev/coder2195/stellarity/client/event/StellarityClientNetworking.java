@@ -56,6 +56,8 @@ public interface StellarityClientNetworking {
 		level.playSound(player, originalPosition.x, originalPosition.y, originalPosition.z, StellaritySoundEvents.DRAGONBLADE_PUNCH, SoundSource.PLAYERS, 1, 1);
 		level.playSound(player, targetPosition.x, targetPosition.y, targetPosition.z, wallPunch ? StellaritySoundEvents.DRAGONBLADE_DAMAGE_WALL : StellaritySoundEvents.DRAGONBLADE_DAMAGE, SoundSource.PLAYERS, 1, 1);
 
+
+
 		for (var secondaryPosition : secondaryPositions) {
 
 		}

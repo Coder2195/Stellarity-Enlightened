@@ -88,6 +88,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 		final var KILL_DRAGON = dummy(Stellarity.mcId("end/kill_dragon"));
 		final var ADVENTURE_ROOT = dummy(Stellarity.mcId("adventure/root"));
 		final var KILL_A_MOB = dummy(Stellarity.mcId("adventure/kill_a_mob"));
+		final var OBTAIN_NETHERITE_HOE = dummy(Stellarity.mcId("husbandry/obtain_netherite_hoe"));
 
 
 		final var VOID_REELS = advancement()
@@ -158,7 +159,7 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.requirements(requires("summon"))
 			.build(Stellarity.id("end/sacrificial_ritual"));
 
-		// todo: replace kill dragon advancement with mob kill counter stuff
+		// dragon spawn after kill
 		final var RESPAWN_DRAGON = advancement().display(
 				Items.END_CRYSTAL,
 				Component.translatable("advancements.end.respawn_dragon.title"), Component.translatable("advancements.end.respawn_dragon.description"),
@@ -419,13 +420,24 @@ public class AdvancementProvider extends FabricAdvancementProvider {
 			.requirements(requires("hit"))
 			.build(Stellarity.id("end/kaliyah"));
 
+		final var ABSOLUTE_DEVOTION = advancement().display(
+			StellarityItems.SHULKER_HOE,
+			Component.translatable("advancements.stellarity.absolute_devotion"), Component.translatable("advancements.stellarity.absolute_devotion.description"),
+			CHALLENGE, true, true, false
+		).parent(OBTAIN_NETHERITE_HOE)
+			.addCriterion("shulker_hoe", InventoryChangeTrigger.TriggerInstance.hasItems(StellarityItems.SHULKER_HOE))
+			.requirements(requires("shulker_hoe"))
+			.build(Stellarity.id("husbandry/absolute_devotion"));
+
+
 
 		for (var advancement : List.of(
 			VOID_REELS, TOPPED_OFF, FIND_DUSKBERRY, POOR_LIFE_CHOICES,
 			SACRIFICAL_RITUAL, RESPAWN_DRAGON, GOD_SLAYER, THIRD_TIMES_THE_CHARM, PURE_COMPLETION,
 			CURSED_CRAFTING, CRAFT_FULL_SHULKER_ARMOR, ALTAR_OF_THE_ACCURSED_INTRO, ELECTRIFIED, BLOOD_FOR_BLOOD,
 			NIGHT_SKY_STALKERS, KILL_LARGE_PHANTOM, DISCOVER_ALL_BIOMES, FIND_END_VILLAGE, HALLELUJAH, ENTER_HALLOW,
-			KEEP_WARM, SPIRIT_ASSASIN, DRAGONBORN, KALIYAH
+			KEEP_WARM, SPIRIT_ASSASIN, DRAGONBORN, KALIYAH,
+			ABSOLUTE_DEVOTION
 		)) {
 			consumer.accept(advancement);
 		}

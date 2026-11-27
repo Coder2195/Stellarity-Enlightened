@@ -51,6 +51,9 @@ the [wiki](https://stellarity-enlightened.coder2195.dev) and the [datapack](http
 
 **[+] Dragonblade**
 
+**[*] All Shulker Tools**
+- Have an attribute modifier identical to Haste, allowing compounding with Haste
+
 ## Entities
 **[*] Pig**
 - Fixes Ender variant baby pig's texture
@@ -83,6 +86,8 @@ Awaiting @void76767676-gif to push changes, nullscape is not supported at the mo
 **[+] Pure Completion**
 
 **[+] Third Time's the Charm**
+
+**[+] Absolute Devotion**
 
 
 ## Structure

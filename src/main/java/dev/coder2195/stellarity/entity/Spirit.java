@@ -3,9 +3,7 @@ package dev.coder2195.stellarity.entity;
 import com.mojang.serialization.Codec;
 import dev.coder2195.stellarity.networking.ClientboundSpiritDespawnPayload;
 import dev.coder2195.stellarity.networking.ClientboundSpiritSlashPayload;
-import dev.coder2195.stellarity.registry.StellarityCriteriaTriggers;
-import dev.coder2195.stellarity.registry.StellarityDamageTypes;
-import dev.coder2195.stellarity.registry.StellarityMobEffects;
+import dev.coder2195.stellarity.registry.*;
 import dev.coder2195.stellarity.tags.StellarityItemTags;
 import dev.coder2195.stellarity.util.NetworkingUtil;
 import dev.coder2195.stellarity.util.tuple.Tuple3;
@@ -19,6 +17,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -48,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spirit extends Entity {
+	public static final int LOOK_ACTIVATE_DURATION = 10;
 	@Nullable
 	private EntityReference<LivingEntity> owner = null;
 
@@ -185,12 +185,19 @@ public class Spirit extends Entity {
 
 		if (isLookingAtMe(owner, 0.1, true, false, this.getEyeY())) {
 			lookedAtTicks++;
-		} else {
+			if (owner instanceof ServerPlayer player && !player.hasAttached(StellarityDataAttachments.SPIRIT_SLASH_AT)) {
+				player.setAttached(StellarityDataAttachments.SPIRIT_SLASH_AT, level.getGameTime() + LOOK_ACTIVATE_DURATION);
+				level.playSound(null, player.blockPosition(), StellaritySoundEvents.SPIRIT_DAGGER_CHARGE, SoundSource.PLAYERS);
+			}
+		} else if (lookedAtTicks != 0) {
 			lookedAtTicks = 0;
+			if (owner instanceof ServerPlayer player && player.hasAttached(StellarityDataAttachments.SPIRIT_SLASH_AT)) {
+				player.removeAttached(StellarityDataAttachments.SPIRIT_SLASH_AT);
+			}
 			return;
 		}
 
-		if (lookedAtTicks < 10) return;
+		if (lookedAtTicks < LOOK_ACTIVATE_DURATION) return;
 
 		List<Vec3> hurtPositions = new ArrayList<>();
 
